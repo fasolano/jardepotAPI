@@ -1,0 +1,8 @@
+[
+    { "title": "Jardinería", "subtitle": "Todo para tu jardin", "image": "https://www.jardepot.com/images/Cover/jardiner%C3%ADa.jpg" },
+    { "title": "Agricolas", "subtitle": "Todo para lo agricola", "image": "https://www.jardepot.com/images/Cover/agricultura.jpg" },
+    { "title": "Forestal", "subtitle": "Todo para el bosque", "image": "https://www.jardepot.com/images/Cover/aspersoras%20motor%20a%20gasolina.jpg" },
+    { "title": "Motobombas", "subtitle": "Al mejor precio", "image": "https://www.jardepot.com/images/Cover/motobombas.jpg" },
+    { "title": "Aspersoras y fumigadoras", "subtitle": "Encuentra productos apartir $890", "image": "https://www.jardepot.com/images/Cover/aspersoras%20y%20fumigadoras.jpg" },
+    { "title": "Motosierras", "subtitle": "Precios apartir de $1799", "image": "https://www.jardepot.com/images/Cover/motosierras.jpg" }
+]
