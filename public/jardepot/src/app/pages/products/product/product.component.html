@@ -1,0 +1,140 @@
+<div fxLayout="row wrap">
+
+    <div fxLayout="column" fxFlex.gt-md="80">
+        <div fxLayout="row wrap">
+            <div fxFlex="100" fxFlex.gt-md="35" fxFlex.md="45" fxFlex.lt-md="95">
+                <mat-card class="product-image">
+                    <mat-chip-list *ngIf="product?.discount">
+                        <mat-chip  class="bg-color-jd" selected="true">{{product?.discount}}% OFF</mat-chip>
+                    </mat-chip-list>
+                    <button mat-icon-button (click)="openZoomViewer()" fxHide="false" fxHide.gt-md><mat-icon>fullscreen</mat-icon></button>
+                    <img *ngIf="image" [src]="image" (mousemove)="onMouseMove($event)" (mouseleave)="onMouseLeave($event)"/>
+                </mat-card>
+
+                <div class="small-carousel">
+                    <div class="swiper-container" [swiper]="config">
+                        <div class="swiper-wrapper">
+                            <div *ngFor="let image of product?.images" class="swiper-slide">
+                                <mat-card (click)="selectImage(image)" class="p-1">
+                                    <img [attr.data-src]="image.small" class="swiper-lazy"/>
+                                    <div class="swiper-lazy-preloader"></div>
+                                </mat-card>
+                            </div>
+                        </div>
+                        <button mat-icon-button class="swiper-button-prev swipe-arrow"><mat-icon>keyboard_arrow_left</mat-icon></button>
+                        <button mat-icon-button class="swiper-button-next swipe-arrow"><mat-icon>keyboard_arrow_right</mat-icon></button>
+                    </div>
+                </div>
+            </div>
+
+            <div fxFlex="100"  fxLayout="column " fxFlex.gt-md="65" fxFlex.md="55" ngClass.gt-sm="px-3 m-0" ngClass.sm="mt-2" ngClass.xs="mt-2">
+
+                <div #zoomViewer fxShow="false" fxShow.gt-md>
+                    <mat-card *ngIf="zoomImage" class="zoom-viewer mat-elevation-z18" [ngStyle]="{'background-image': 'url(' + zoomImage + ')'}"></mat-card>
+                </div>
+
+                <div fxLayout="row" fxLayoutAlign="start center" fxLayoutAlign.lt-md="space-between center">
+                    <h2 >{{product?.name}}</h2>
+                    <button mat-button (click)="sidenav.toggle()" class="bg-color-jd"  fxHide fxShow.lt-md>
+                        Secciones
+                    </button>
+                </div>
+                <div class="py-1 lh">
+                    <p><span class="fw-500 fn-color-jd">Categoría: </span><span></span></p>
+                    <p><span class="fw-500 fn-color-jd">Disponibilidad: </span><span>{{ (product?.availibilityCount > 0) ? 'In stock':'Unavailable'}}</span></p>
+                </div>
+                <p class="py-1 text-muted lh">{{product?.description}}</p>
+
+                <div class="divider mt-1"></div>
+                <div class="py-2">
+                    <h3 class="old-price text-muted"><span *ngIf="product?.oldPrice">${{product?.oldPrice | number : '1.2-2'}}</span></h3>
+                    <h2 class="new-price fn-color-jd">${{product?.newPrice | number : '1.2-2'}}</h2>
+                    <p>IVA incluido</p>
+                    <p>Sujeto a existencias. Precios sujetos a cambio sin precio aviso.</p>
+                    <p>Envío GRATIS a partir de $2,500 de compra! *Consulte condiciones</p>
+                </div>
+
+
+                <div class="py-1">
+                    <app-controls [product]="product" [type]="'all'"></app-controls>
+                </div>
+
+                <div class="divider"></div>
+
+                <div fxLayout="row" fxLayoutAlign="space-between center" class="text-muted py-1">
+                    <button mat-button><mat-icon>mail_outline</mat-icon> Enviar ficha técnica por mail</button>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div fxLayout="row wrap" fxFlex="100" class="mt-2">
+            <div fxFlex="100" fxFlex.gt-md="98" fxFlex.md="94">
+                <mat-card>
+                    <mat-tab-group [@.disabled]="true" [selectedIndex]="0">
+                        <mat-tab label="Ficha técnica">
+                            <div class="full-desc lh">
+                                <p class="fw-500 mt-2" style="color: black !important;" [innerHTML]="dataSheet">
+                                </p>
+                            </div>
+                        </mat-tab>
+                    </mat-tab-group>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div fxFlex="100" fxFlex.gt-md="20" fxHide fxShow.gt-md>
+        <app-sections-side [productTypes]="productTypes" [brands]="brands" [additional]="additional"></app-sections-side>
+    </div>
+</div>
+
+<div class="py-2 mt-2">
+    <h2>Productos relacionados</h2>
+    <div class="divider"></div>
+    <app-products-carousel [products]="relatedProducts"></app-products-carousel>
+</div>
+
+
+<div fxLayout="row wrap" class="info-bar">
+    <div fxFlex="100" fxFlex.gt-md="25" fxFlex.gt-xs="50">
+        <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
+            <mat-icon class="mat-icon-xlg m-0 fn-color-jd">build</mat-icon>
+            <div class="content">
+                <p style="color: rgba(0, 0, 0, 0.87) !important;">Garantía y Refacciones</p>
+                <span class="text-muted m-0">Todos los equipos cuentan con una garantía contra defectos de fábrica y son respaldados con repuestos originales disponibles.</span>
+            </div>
+        </mat-card>
+    </div>
+    <div fxFlex="100" fxFlex.gt-md="25" fxFlex.gt-xs="50">
+        <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
+            <mat-icon class="mat-icon-xlg fn-color-jd m-0">local_shipping</mat-icon>
+            <div class="content">
+                <p style="color: rgba(0, 0, 0, 0.87) !important;">Envío Seguro</p>
+                <span class="text-muted m-0">Mediante nuestros contratos de servicios, realizamos envíos sin costo con paqueterías confiables y profesionales.</span>
+            </div>
+        </mat-card>
+    </div>
+    <div fxFlex="100" fxFlex.gt-md="25" fxFlex.gt-xs="50">
+        <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
+            <mat-icon class="mat-icon-xlg m-0 fn-color-jd">monetization_on</mat-icon>
+            <div class="content">
+                <p style="color: rgba(0, 0, 0, 0.87) !important;">Paga Seguro</p>
+                <span class="text-muted m-0">Contamos con métodos de pago en bancarias confiables,
+                    ya que somos una empresa afiliada a la canacintra.</span>
+            </div>
+        </mat-card>
+    </div>
+    <div fxFlex="100" fxFlex.gt-md="25" fxFlex.gt-xs="50">
+        <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
+            <mat-icon class="mat-icon-xlg m-0 fn-color-jd">perm_phone_msg</mat-icon>
+            <div class="content">
+                <p style="color: rgba(0, 0, 0, 0.87) !important;">Soporte y asesoria</p>
+                <span class="text-muted m-0">Un equipo de ingenieros para dar un asesoria por medio de llamadas o mensajería instantanea a todos nuestros clientes </span>
+            </div>
+        </mat-card>
+    </div>
+</div>

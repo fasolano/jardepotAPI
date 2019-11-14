@@ -1,0 +1,47 @@
+
+
+<mat-accordion displayMode="flat" multi="true">
+    <mat-expansion-panel expanded>
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                <h4>Secciones por tipo de productos</h4>
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div fxLayout="row wrap" fxLayoutAlign="space-between center" class="filter-buttons">
+            <a routerLink="/productos/Equipos/{{type.name}}" mat-button  fxFlex="46" *ngFor="let type of productTypes" class="bg-color-jd">
+                {{type.name}}
+            </a>
+        </div>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel expanded>
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                <h4>Secciones por marcas</h4>
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div fxLayout="row wrap" fxLayoutAlign="space-between center" class="filter-brands">
+
+            <a mat-button *ngFor="let brand of brands" routerLink="/productos/Marcas/{{brand.name}}">
+                <img [src]="brand.image"/>
+            </a>
+            <!--<button mat-button *ngFor="let brand of brands">
+                <img [src]="brand.image"/>
+            </button>-->
+        </div>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel *ngFor="let add of additional">
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                <h4>{{add.name}}</h4>
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div fxLayout="row wrap" fxLayoutAlign="space-between center" class="filter-buttons">
+            <a routerLink="/productos/{{add.name}}/{{option.name}}" mat-button  fxFlex="46" *ngFor="let option of add.options" class="bg-color-jd">
+                {{option.name}}
+            </a>
+        </div>
+    </mat-expansion-panel>
+
+</mat-accordion>

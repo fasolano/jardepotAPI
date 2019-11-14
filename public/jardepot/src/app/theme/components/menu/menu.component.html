@@ -1,0 +1,25 @@
+<mat-toolbar class="top-navbar mat-elevation-z2" fxLayoutAlign="center center">
+
+    <div *ngFor="let option of menuTopBar">
+        <a *ngIf="option.nivel2?.length > 0" mat-button [matMenuTriggerFor]="subMenu" >
+            {{option.nivel1}} <mat-icon *ngIf="option.nivel2?.length > 0" class="caret">arrow_drop_down</mat-icon>
+        </a>
+        <mat-menu #subMenu="matMenu" [overlapTrigger]="false" class="app-dropdown">
+            <a *ngFor="let subOption of option.nivel2" style="color: #424242 !important; font-weight: 500;" mat-menu-item routerLink="/productos/{{changeString(option.nivel1)}}/{{changeString(subOption)}}"
+               routerLinkActive="horizontal-active-link" [routerLinkActiveOptions]="{exact:true}">
+                {{subOption}}
+            </a>
+        </mat-menu>
+    </div>
+    <a href="https://wa.me/525551857805?text=Hola,%20me%20gustaría%20saber%20" target="_blank" mat-raised-button class="no-mobile whats">
+
+        <fa-icon [icon]="faWhatsapp" style="font-size: 20px;"></fa-icon> Escríbenos
+    </a>
+
+
+    <!--<a mat-button [matMenuTriggerFor]="animals">Pages<mat-icon class="caret">arrow_drop_down</mat-icon></a>
+    <mat-menu #animals="matMenu" [overlapTrigger]="false" class="app-dropdown">
+        <a mat-menu-item [routerLink]="['/products', '2', 'PC All-in-One']" routerLinkActive="horizontal-active-link" [routerLinkActiveOptions]="{exact:true}">Product detail</a>
+    </mat-menu>-->
+</mat-toolbar>
+

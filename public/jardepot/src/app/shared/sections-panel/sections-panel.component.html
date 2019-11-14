@@ -1,0 +1,66 @@
+<div fxLayout="row wrap" fxLayoutGap="3%">
+    <mat-card fxFlex="31" fxFlex.lt-md="100">
+        <mat-card-title>Equipos</mat-card-title>
+        <mat-card-content>
+            <mat-list fxFlex="100" fxLayout="row wrap">
+                <mat-list-item *ngFor="let type of productsType" fxFlex="50">
+                    <a title="Aspersoras" class="link-type" fxLayoutAlign="start center" routerLink="/productos/Equipos/{{changeString(type.name)}}">
+                        <mat-icon class="fn-color-jd bold">keyboard_arrow_right</mat-icon>
+                        <span class="link-obscure">{{type.name}}</span>
+                    </a>
+                </mat-list-item>
+            </mat-list>
+        </mat-card-content>
+    </mat-card>
+    <mat-card fxFlex="31" fxFlex.lt-md="100" fxLayoutGap="3">
+        <mat-card-title>Marcas</mat-card-title>
+        <mat-card-content>
+            <mat-list fxFlex="100" fxLayout="row wrap">
+                <mat-list-item *ngFor="let brand of brands" fxFlex="50">
+                    <a title="Aspersoras" class="link-type" fxLayoutAlign="start center" routerLink="/productos/Marcas/{{changeString(brand.name)}}">
+                        <mat-icon class="fn-color-jd bold">keyboard_arrow_right</mat-icon>
+                        <span class="link-obscure">{{brand.name}}</span>
+                    </a>
+                </mat-list-item>
+            </mat-list>
+        </mat-card-content>
+    </mat-card>
+    <mat-card fxFlex="31" fxFlex.lt-md="100" fxLayoutGap="3" fxLayout="column">
+        <mat-card-title>Otros</mat-card-title>
+        <mat-card-content>
+            <mat-expansion-panel *ngFor="let add of additional; let first = first" [expanded]="first">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        {{add.name}}
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <mat-list fxFlex="100" fxLayout="row wrap">
+                    <mat-list-item *ngFor="let option of add.options" fxFlex="50">
+                        <a title="" class="link-type" fxLayoutAlign="start center" routerLink="/productos/{{changeString(add.name)}}/{{changeString(option.name)}}">
+                            <mat-icon class="fn-color-jd bold">keyboard_arrow_right</mat-icon>
+                            <span class="link-obscure">{{ option.name }}</span>
+                        </a>
+                    </mat-list-item>
+                </mat-list>
+            </mat-expansion-panel>
+
+
+
+
+
+            <!--<mat-list>
+                <ng-container *ngFor="let add of additionals">
+                    <mat-list-item>{{add.name}}</mat-list-item>
+                    <mat-list style="margin-left:30px;">
+                        <div *ngFor="let option of add.options">
+                            <mat-list-item>{{ option.name }}</mat-list-item>
+                        </div>
+                    </mat-list>
+                </ng-container>
+            </mat-list>-->
+
+
+        </mat-card-content>
+    </mat-card>
+</div>
+
