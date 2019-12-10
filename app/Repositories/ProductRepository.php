@@ -7,8 +7,7 @@ use DB;
 
 class ProductRepository{
 
-    public function getProducts($nivel3){
-
+    public function getProducts($nivel2){
         $datos = DB::table('productos')
             ->join("XML", function($join){
                 $join->on("productos.productType","=","XML.productType")
@@ -19,6 +18,11 @@ class ProductRepository{
                 $join->on("productos.productType", DB::raw("REPLACE(productosCategoriasNivel3.productType,'_',' ')"))
                     ->on("productos.brand", DB::raw("REPLACE(productosCategoriasNivel3.brand,'_',' ')"))
                     ->on("productos.mpn", DB::raw("REPLACE(productosCategoriasNivel3.mpn,'_',' ')"));
+            })
+            ->join('categoriasnivel3 as c3', 'c3.idCategoriasNivel3', '=', 'productosCategoriasNivel3.idCategoriasNivel3')
+            ->leftJoin('producto_caracteristica as pc', function ($join){
+                $join->on("pc.producto",
+                    DB::raw("binary CONCAT(productos.productType,' ',productos.brand,' ',productos.mpn)"));
             })
             ->select(
                 'productos.id',
@@ -40,10 +44,66 @@ class ProductRepository{
                 'XML.descriptionweb',
                 'XML.resenia'
             )
+            ->distinct('productos.mpn')
+            ->orderBy('pc.producto', 'asc')
             ->where([
                 "productos.visible" => "si",
-                "productosCategoriasNivel3.idCategoriasNivel3" => $nivel3
+                "c3.idCategoriasNivel2" => $nivel2
             ])
+            ->get();
+
+        return $datos;
+    }
+
+    public function getProductsFilters($nivel2, $filtros, $cant){
+        $valores = array();
+        array_push($valores, ["productos.visible", '=', "si"]);
+        array_push($valores, ["c3.idCategoriasNivel2", '=', $nivel2]);
+        $datos = DB::table('productos')
+            ->join("XML", function($join){
+                $join->on("productos.productType","=","XML.productType")
+                    ->on("productos.brand","=","XML.brand")
+                    ->on("productos.mpn","=","XML.mpn");
+            })
+            ->join("productosCategoriasNivel3", function ($join){
+                $join->on("productos.productType", DB::raw("REPLACE(productosCategoriasNivel3.productType,'_',' ')"))
+                    ->on("productos.brand", DB::raw("REPLACE(productosCategoriasNivel3.brand,'_',' ')"))
+                    ->on("productos.mpn", DB::raw("REPLACE(productosCategoriasNivel3.mpn,'_',' ')"));
+            })
+            ->join('categoriasnivel3 as c3', 'c3.idCategoriasNivel3', '=', 'productosCategoriasNivel3.idCategoriasNivel3')
+            ->leftJoin('producto_caracteristica as pc', function ($join){
+                $join->on("pc.producto",
+                    DB::raw("binary CONCAT(productos.productType,' ',productos.brand,' ',productos.mpn)"));
+            })
+            ->leftJoin('caracteristica as c', 'c.id_caracterisca', '=', 'pc.fk_caracteristica')
+            ->leftJoin('opcion_caracteristica as opc', 'c.id_caracterisca', '=', 'opc.fk_caracteristica')
+            ->select(
+                'productos.id',
+                'productos.productType',
+                'productos.brand',
+                'productos.mpn',
+                'productos.description',
+                'productos.availability',
+                'productos.priceweb',
+                'productos.oferta',
+                'productos.PrecioDeLista',
+                'productos.offer',
+                'productos.iva',
+                'productos.video',
+                'productos.volada',
+                'productos.visible',
+                'XML.keywords',
+                'XML.metadesc',
+                'XML.descriptionweb',
+                'XML.resenia',
+                DB::raw('COUNT(productos.mpn) AS r')
+            )
+            ->distinct('productos.mpn')
+            ->orderBy('pc.producto', 'asc')
+            ->where($valores)
+            ->whereRaw($filtros)
+            ->groupBy('productos.mpn')
+            ->having('r', '=', $cant)
             ->get();
 
         return $datos;
@@ -165,6 +225,71 @@ class ProductRepository{
             ->get();
 
         return $categoriasNivel3;
+    }
+
+    public function getCaracteristicas($productType){
+        $filters = DB::table('caracteristica as c')
+            ->select(
+                'c.nombre',
+                'c.medida',
+                'c.id_caracterisca',
+                'c.tipo'
+            )
+            ->where([
+                ['c.productType', $productType]
+            ])
+            ->orderBy('c.nombre', 'asc')
+            ->get();
+
+        return $filters;
+    }
+
+    public function getProductosCaracteristica($id_caracterisca){
+        $filters = DB::table('producto_caracteristica as pc')
+            ->select(
+                'pc.producto as name',
+                'pc.valor as value'
+            )
+            ->where([
+                ['pc.fk_caracteristica', $id_caracterisca]
+            ])
+            ->orderBy('pc.producto', 'asc')
+            ->get();
+
+        return $filters;
+    }
+
+    public function getProductosCaracteristicaValorMax($id_caracterisca){
+        $filters = DB::table('producto_caracteristica as pc')
+            ->select(DB::raw('MAX(valor_numero) as valor'))
+            ->where([
+                ['pc.fk_caracteristica', $id_caracterisca]
+            ])
+            ->first();
+
+        return $filters->valor;
+    }
+
+    public function getProductosCaracteristicaValorMin($id_caracterisca){
+        $filters = DB::table('producto_caracteristica as pc')
+            ->select(DB::raw('MIN(valor_numero) as valor'))
+            ->where([
+                ['pc.fk_caracteristica', $id_caracterisca]
+            ])
+            ->first();
+
+        return $filters->valor;
+    }
+
+    public function getProductosCaracteristicaOpciones($id_caracterisca){
+        $filters = DB::table('opcion_caracteristica')
+            ->select('nombre as name', 'id_opcion_caracteristica as id')
+            ->where([
+                'fk_caracteristica' => $id_caracterisca
+            ])
+            ->get();
+
+        return $filters;
     }
 
 }

@@ -17,6 +17,7 @@ use Illuminate\Http\Request;
 
 Route::get('products', 'ProductController@getProducts');
 Route::get('products/sections', 'ProductController@getSections');
+Route::get('products/filters', 'ProductController@getFilters');
 Route::get('product', 'ProductController@getProduct');
 Route::get('products/related', 'ProductController@getProductsRelated');
 
