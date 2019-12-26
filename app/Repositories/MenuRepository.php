@@ -2,7 +2,7 @@
 
 
 namespace App\Repositories;
-use DB;
+use Illuminate\Support\Facades\DB;
 
 
 class MenuRepository{

@@ -2,7 +2,7 @@
 
 
 namespace App\Repositories;
-use DB;
+use Illuminate\Support\Facades\DB;
 
 
 class ProductRepository{
@@ -95,18 +95,33 @@ class ProductRepository{
                 'XML.keywords',
                 'XML.metadesc',
                 'XML.descriptionweb',
-                'XML.resenia',
-                DB::raw('COUNT(productos.mpn) AS r')
+                'XML.resenia'
             )
             ->distinct('productos.mpn')
             ->orderBy('pc.producto', 'asc')
             ->where($valores)
             ->whereRaw($filtros)
             ->groupBy('productos.mpn')
-            ->having('r', '=', $cant)
             ->get();
 
         return $datos;
+    }
+
+    public function getProductFiltered($producto, $filtros, $cant){
+        $datos = DB::table('producto_caracteristica as pc')
+            ->leftJoin('caracteristica as c', 'c.id_caracterisca', '=', 'pc.fk_caracteristica')
+            ->select(
+                'pc.producto',
+                DB::raw('COUNT(pc.producto) AS r')
+            )
+            ->groupBy('pc.producto')
+            ->where(['pc.producto' => $producto])
+            ->whereRaw($filtros)
+            ->groupBy('pc.producto')
+            ->having('r', '=', $cant)
+            ->get();
+
+        return count($datos);
     }
 
     public function getProduct($productType, $brand, $mpn){
@@ -189,11 +204,9 @@ class ProductRepository{
     }
 
     public function getIdNivel2($nivel1, $nivel2){
-        $categoriaNivel1 = str_replace("-", " ", $nivel1);
-        $categoriaNivel2 = str_replace("-", " ", $nivel2);
 
-        $categoriaNivel1 = str_replace("_", "-", $categoriaNivel1);
-        $categoriaNivel2 = str_replace("_", "-", $categoriaNivel2);
+        $categoriaNivel1 = str_replace("_", "-", $nivel1);
+        $categoriaNivel2 = str_replace("_", "-", $nivel2);
 
         $id = DB::table('categoriasNivel2')
             ->join('categoriasNivel1', 'categoriasNivel2.idCategoriasNivel1', '=', 'categoriasNivel1.idCategoriasNivel1')
@@ -290,6 +303,19 @@ class ProductRepository{
             ->get();
 
         return $filters;
+    }
+
+    public function getProductlevels($productType){
+        $levels = DB::table('categoriasnivel2')
+            ->join('categoriasnivel1', 'categoriasnivel2.idCategoriasNivel1', '=', 'categoriasnivel1.idCategoriasNivel1')
+            ->select('nombreCategoriaNivel2 as name')
+            ->where([
+                ['nombreCategoriaNivel2', 'like', "%$productType%"],
+                ['nombreCategoriaNivel1', '=', 'Equipos']
+            ])
+            ->get();
+
+        return $levels;
     }
 
 }
