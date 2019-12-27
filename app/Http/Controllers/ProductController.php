@@ -24,8 +24,6 @@ class ProductController extends Controller{
          */
         $nivel1 = $request->get('nivel1');
         $nivel2 = $request->get('nivel2');
-        echo $nivel1." ".$nivel2;
-        die();
         $idNivel2 = $this->productoRepository->getIdNivel2($nivel1, $nivel2);
         $response = array();
         $iterator = 0;
@@ -42,6 +40,8 @@ class ProductController extends Controller{
         $filtrosValores = "";
         $filtrosOrdenados = array();
 
+        echo $nivel1." ".$nivel2;
+        die();
         //revisa sienen vacios los filtros
         if($brandFilters[0] == "" && count($characteristicsFilters) == 0){
             $productosCategoria = $this->productoRepository->getProducts($idNivel2);
