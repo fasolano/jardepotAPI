@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 class ProductRepository{
 
     public function getProducts($nivel2){
+        echo "3";
         $datos = DB::table('productos')
             ->join("XML", function($join){
                 $join->on("productos.productType","=","XML.productType")
@@ -51,6 +52,8 @@ class ProductRepository{
                 "c3.idCategoriasNivel2" => $nivel2
             ])
             ->get();
+
+        echo "4";
 
         return $datos;
     }
