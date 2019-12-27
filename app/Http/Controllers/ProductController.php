@@ -66,6 +66,7 @@ class ProductController extends Controller{
                 $stringFiltros .= ") ";
                 $stringFiltros .= count($characteristicsFilters) > 0?"AND ":"";
             }
+            echo $nivel1." ".$nivel2;
             if (count($characteristicsFilters) > 0){
                 $stringFiltros .= " pc.fk_caracteristica in (";
                 foreach ($characteristicsFilters as $key => $item) {
@@ -98,6 +99,8 @@ class ProductController extends Controller{
                 $stringFiltros .= ") ";
 
             }
+            echo $nivel1." ".$nivel2;
+            die();
             $productosCategoria = $this->productoRepository->getProductsFilters($idNivel2, $stringFiltros, count($characteristicsFilters));
         }
         foreach ($productosCategoria as $keyProducto => $item) {
