@@ -70,7 +70,7 @@ class ProductRepository{
                     ->on("productos.brand", DB::raw("REPLACE(productosCategoriasNivel3.brand,'_',' ')"))
                     ->on("productos.mpn", DB::raw("REPLACE(productosCategoriasNivel3.mpn,'_',' ')"));
             })
-            ->join('categoriasnivel3 as c3', 'c3.idCategoriasNivel3', '=', 'productosCategoriasNivel3.idCategoriasNivel3')
+            ->join('categoriasNivel3 as c3', 'c3.idCategoriasNivel3', '=', 'productosCategoriasNivel3.idCategoriasNivel3')
             ->leftJoin('producto_caracteristica as pc', function ($join){
                 $join->on("pc.producto",
                     DB::raw("binary CONCAT(productos.productType,' ',productos.brand,' ',productos.mpn)"));
