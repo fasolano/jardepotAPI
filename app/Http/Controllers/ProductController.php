@@ -24,6 +24,8 @@ class ProductController extends Controller{
          */
         $nivel1 = $request->get('nivel1');
         $nivel2 = $request->get('nivel2');
+        echo $nivel1." ".$nivel2;
+        die();
         $idNivel2 = $this->productoRepository->getIdNivel2($nivel1, $nivel2);
         $response = array();
         $iterator = 0;

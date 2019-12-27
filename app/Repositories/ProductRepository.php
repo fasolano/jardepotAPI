@@ -204,6 +204,9 @@ class ProductRepository{
     }
 
     public function getIdNivel2($nivel1, $nivel2){
+/*
+        $nivel1 = str_replace("-", " ", $nivel1);
+        $nivel2 = str_replace("-", " ", $nivel2);*/
 
         $categoriaNivel1 = str_replace("_", "-", $nivel1);
         $categoriaNivel2 = str_replace("_", "-", $nivel2);
