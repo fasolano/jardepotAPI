@@ -20,10 +20,6 @@ class ProductRepository{
                     ->on("productos.mpn", DB::raw("REPLACE(productosCategoriasNivel3.mpn,'_',' ')"));
             })
             ->join('categoriasNivel3 as c3', 'c3.idCategoriasNivel3', '=', 'productosCategoriasNivel3.idCategoriasNivel3')
-            ->leftJoin('producto_caracteristica as pc', function ($join){
-                $join->on("pc.producto",
-                    DB::raw("binary CONCAT(productos.productType,' ',productos.brand,' ',productos.mpn)"));
-            })
             ->select(
                 'productos.id',
                 'productos.productType',
@@ -45,7 +41,6 @@ class ProductRepository{
                 'XML.resenia'
             )
             ->distinct('productos.mpn')
-            ->orderBy('pc.producto', 'asc')
             ->where([
                 "productos.visible" => "si",
                 "c3.idCategoriasNivel2" => $nivel2
