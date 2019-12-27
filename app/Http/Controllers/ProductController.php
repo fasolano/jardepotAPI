@@ -40,8 +40,6 @@ class ProductController extends Controller{
         $filtrosValores = "";
         $filtrosOrdenados = array();
 
-        echo $nivel1." ".$nivel2;
-        die();
         //revisa sienen vacios los filtros
         if($brandFilters[0] == "" && count($characteristicsFilters) == 0){
             $productosCategoria = $this->productoRepository->getProducts($idNivel2);
