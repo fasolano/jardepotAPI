@@ -40,16 +40,11 @@ class ProductController extends Controller{
         $filtrosValores = "";
         $filtrosOrdenados = array();
 
-        echo "1";
         //revisa sienen vacios los filtros
         if($brandFilters[0] == "" && count($characteristicsFilters) == 0){
-            echo "2";
             $productosCategoria = $this->productoRepository->getProducts($idNivel2);
-            echo "3";
         }else{
-            echo "4";
             if ($brandFilters[0] != ""){
-                echo "5";
                 // si el nivel que se buscan son marcas la busqueda se hace por tipo de producto en vez de marca
                 $stringFiltros .= $nivel1 == "Marcas"? " productos.productType in ( ":" productos.brand in (";
                 foreach ($brandFilters as $key => $item) {
@@ -72,7 +67,6 @@ class ProductController extends Controller{
                 $stringFiltros .= count($characteristicsFilters) > 0?"AND ":"";
             }
             if (count($characteristicsFilters) > 0){
-                echo "6";
                 $stringFiltros .= " pc.fk_caracteristica in (";
                 foreach ($characteristicsFilters as $key => $item) {
                     $filtrosOrdenados[$item['id']] = $item;
@@ -104,8 +98,6 @@ class ProductController extends Controller{
                 $stringFiltros .= ") ";
 
             }
-            echo $nivel1." ".$nivel2;
-            die();
             $productosCategoria = $this->productoRepository->getProductsFilters($idNivel2, $stringFiltros, count($characteristicsFilters));
         }
         foreach ($productosCategoria as $keyProducto => $item) {
