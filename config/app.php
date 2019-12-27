@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => env('APP_NAME', 'JardepotAPI'),
 
     /*
     |--------------------------------------------------------------------------
@@ -225,6 +225,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        'MP' => MercadoPago\SDK::class,
         Barryvdh\Cors\ServiceProvider::class,
     ],
 

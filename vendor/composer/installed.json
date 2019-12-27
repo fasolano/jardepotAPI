@@ -59,12 +59,12 @@
         "version_normalized": "0.11.4.0",
         "source": {
             "type": "git",
-            "url": "https://github.com/barryvdh/laravel-cors.git",
+            "url": "https://github.com/fruitcake/laravel-cors.git",
             "reference": "03492f1a3bc74a05de23f93b94ac7cc5c173eec9"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/barryvdh/laravel-cors/zipball/03492f1a3bc74a05de23f93b94ac7cc5c173eec9",
+            "url": "https://api.github.com/repos/fruitcake/laravel-cors/zipball/03492f1a3bc74a05de23f93b94ac7cc5c173eec9",
             "reference": "03492f1a3bc74a05de23f93b94ac7cc5c173eec9",
             "shasum": ""
         },
@@ -1845,8 +1845,8 @@
     },
     {
         "name": "mercadopago/dx-php",
-        "version": "1.6.0",
-        "version_normalized": "1.6.0.0",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
         "source": {
             "type": "git",
             "url": "https://github.com/mercadopago/dx-php.git",
@@ -1874,7 +1874,7 @@
         },
         "time": "2019-11-18T20:42:44+00:00",
         "type": "library",
-        "installation-source": "dist",
+        "installation-source": "source",
         "autoload": {
             "psr-4": {
                 "MercadoPago\\": [
