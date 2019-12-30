@@ -38,14 +38,13 @@ class CheckoutController extends Controller {
         $cart = isset($cookie->carrito)? $cookie->carrito: false;
 
         //Si no se mando o si no se encuentra activo o no pertenece al usuario se crea uno nuevo
-        if(!$cart && !$cartRepository->verifyCart($user, $cart)){
-            $client = $this->datosCli();
+        if($cart && $cartRepository->verifyCart($user, $cart)){
             $cartRepository->updateCart($cart);
-            $this->setUpOrder($cart);
+            $this->setUpOrder($cart, $request);
 
         }
-
-        return response()->json(['data' => 'successful'], 201);
+        return json_encode(1);
+//        return response()->json(['data' => 'successful'], 201);
     }
 
     public function createOrder(Request $request) {
@@ -53,7 +52,7 @@ class CheckoutController extends Controller {
 
         $order = $this->setUpOrder($request);
 
-        $this->notify($order);
+//        $this->notify($order);
         $url = $this->generatePaymentGateway(
             $request->get('payment_method'),
             $order
@@ -61,16 +60,26 @@ class CheckoutController extends Controller {
         return redirect()->to($url);
     }
 
-    protected function setUpOrder($cart){
+    protected function setUpOrder($cart, Request $request){
         $productRepository = new ProductRepository();
         $cartRepository = new CartRepository();
-        $products = $cartRepository->getProductsFromCart($cart);
-        $cart = $cartRepository->getProductsFromCart($cart);
-        $order = $this->repository->insertOrder($cart, $products);
+
+        $clienteForm = $this->datosCli();
+
+        $client = $this->repository->insertClient($clienteForm);
+
+        //Obtiene el carro completo
+        $cart = $cartRepository->getCart($cart);
+
+        $order = $this->repository->insertOrder($client, $cart);
+
+        $products = $cartRepository->getProductsFromCart($cart->id_carrito);
+
+        $this->repository->insertProductsOrder($order, $products);
 
     }
 
-    protected function generatePaymentGateway($paymentMethod, Order $order) : string {
+    protected function generatePaymentGateway($paymentMethod, $order) : string {
         $method = new \App\PaymentMethods\MercadoPago;
 
         return $method->setupPaymentAndGetRedirectURL($order);

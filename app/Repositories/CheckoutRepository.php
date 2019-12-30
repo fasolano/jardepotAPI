@@ -11,7 +11,7 @@ class CheckoutRepository {
         $client = DB::connection('digicom')
             ->table('clientes_jardepot')
             ->insertGetId([
-                'nombre' => $cliente['nombre']." ".$cliente['apellido'],
+                'nombre' => $cliente['nombre']." ".$cliente['apellidos'],
                 'correo' => $cliente['email'],
                 'telefono' => $cliente['telefono'],
                 'estado' => $cliente['estado'],
@@ -26,34 +26,44 @@ class CheckoutRepository {
 
     public function insertOrder($client, $cart){
         $date = date('Y-m-d H:i:s');
+
         $order = DB::connection('digicom')
             ->table('pedidos_jardepot')
             ->insertGetId([
                 'idClientes' => $client,
+                'descuento' => 0,
                 'fecha' => $date,
                 'total' => $cart->total,
                 'estado' => 1,
                 'idusuario' => 2
             ]);
 
+        $order = DB::connection('digicom')
+            ->table('pedidos_jardepot')
+            ->select('*')
+            ->where('idPedidos', $order)
+            ->first();
+
         return $order;
     }
 
     public function insertProductsOrder($order, $products){
-        $date = date('Y-m-d H:i:s');
         foreach ($products as $product) {
+            if($product->offer == 'si'){
+                $precio = $product->oferta;
+            }else{
+                $precio = $product->priceweb;
+            }
+            $precio = $product->cantidad * $precio;
             $order = DB::connection('digicom')
                 ->table('productosPedidos_jardepot')
                 ->insertGetId([
-                    'idClientes' => $client,
-                    'fecha' => $date,
-                    'total' => $cart->total,
-                    'estado' => 1,
-                    'idusuario' => 2
+                    'idPedidos' => $order,
+                    'cantidad' => $product->cantidad,
+                    'nombre' => $product->producto,
+                    'precio' => $precio
                 ]);
-            return $order;
         }
-
     }
 
 }

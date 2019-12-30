@@ -25,15 +25,15 @@ class MercadoPago{
     }
 
 
-    public function setupPaymentAndGetRedirectURL($order): string
+    public function setupPaymentAndGetRedirectURL($order, $products): string
     {
         # Create a preference object
         $preference = new Preference();
 
         # Create an item object
         $item = new Item();
-        $item->id = $order->id;
-        $item->title = $order->title;
+        $item->id = $order->id; // numero de pedio
+        $item->title = $order->title; //Articulo
         $item->quantity = 1;
         $item->currency_id = 'MXN';
         $item->unit_price = $order->total_price;
@@ -56,7 +56,6 @@ class MercadoPago{
         ];
 
         $preference->auto_return = "all";
-        $preference->notification_url = route('ipn');
         # Save and POST preference
         $preference->save();
 

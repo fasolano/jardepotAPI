@@ -132,7 +132,10 @@ class CartRepository{
             ->update(['estado' => 'Eliminado']);
     }
 
-
+    public function getCart($cart){
+        $cart = DB::table('carrito')->select('*')->where(['id_carrito' => $cart, 'estado' => 'Activo'])->first();
+        return $cart;
+    }
 
 
 }

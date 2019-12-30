@@ -37,5 +37,5 @@ Route::get('cart/products', 'CartController@getCartProducts');
 Route::delete('cart/removeProduct', 'CartController@removeProductCart');
 
 
-Route::get('checkout', 'CheackoutController@index');
+Route::get('checkout', 'CheckoutController@index');
 
