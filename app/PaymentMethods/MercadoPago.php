@@ -32,27 +32,31 @@ class MercadoPago{
 
         # Create an item object
         $item = new Item();
-        $item->id = $order->id; // numero de pedio
-        $item->title = $order->title; //Articulo
+        $item->id = $order->idPedidos; // numero de pedio
+        $item->title = $order->idPedidos; //Articulo
         $item->quantity = 1;
         $item->currency_id = 'MXN';
-        $item->unit_price = $order->total_price;
-        $item->picture_url = $order->featured_img;
+        $item->unit_price = $order->total;
+    //    $item->picture_url = $order->featured_img;
 
         # Create a payer object
         $payer = new Payer();
-        $payer->email = $order->preorder->billing['email'];
+        //$payer->email = $order->preorder->billing['email'];
+        $payer->email = 'test@test.com';
 
         # Setting preference properties
         $preference->items = [$item];
         $preference->payer = $payer;
 
         # Save External Reference
-        $preference->external_reference = $order->id;
+        $preference->external_reference = $order->idPedidos;
         $preference->back_urls = [
-            "success" => route('checkout.thanks'),
-            "pending" => route('checkout.pending'),
-            "failure" => route('checkout.error'),
+//            "success" => route('checkout.thanks'),
+//            "pending" => route('checkout.pending'),
+//            "failure" => route('checkout.error'),
+            "success" => 'http://localhost:4200/checkout/success',
+            "pending" => 'http://localhost:4200/checkout/pending',
+            "failure" => 'http://localhost:4200/checkout/failure',
         ];
 
         $preference->auto_return = "all";

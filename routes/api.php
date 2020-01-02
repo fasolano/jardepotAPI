@@ -21,6 +21,7 @@ Route::get('products/filters', 'ProductController@getFilters');
 Route::get('product', 'ProductController@getProduct');
 Route::get('product/levels', 'ProductController@getProductlevels');
 Route::get('products/related', 'ProductController@getProductsRelated');
+Route::get('products/search', 'ProductController@getProductsSearch');
 
 Route::get('menu/navbar', 'MenuController@getMenuNavbar');
 Route::get('menu/additional', 'MenuController@getAdditional');
@@ -38,4 +39,5 @@ Route::delete('cart/removeProduct', 'CartController@removeProductCart');
 
 
 Route::get('checkout', 'CheckoutController@index');
+Route::get('checkout/createOrder', 'CheckoutController@createOrder');
 

@@ -50,12 +50,14 @@ class CheckoutController extends Controller {
     public function createOrder(Request $request) {
         $allowedPaymentMethods = config('payment-methods.enabled');
 
-        $order = $this->setUpOrder($request);
-
-//        $this->notify($order);
+        $forms = json_decode($request->get('forms'));
+        $cookie = json_decode($request->get('sessionCookie'));
+      //echo $cookie->carrito;
+        $data = $this->setUpOrder($cookie->carrito,$request);
+     //     $this->notify($order);
         $url = $this->generatePaymentGateway(
-            $request->get('payment_method'),
-            $order
+            $forms->paymentMethod,
+            $data
         );
         return redirect()->to($url);
     }
@@ -76,13 +78,13 @@ class CheckoutController extends Controller {
         $products = $cartRepository->getProductsFromCart($cart->id_carrito);
 
         $this->repository->insertProductsOrder($order, $products);
-
+        return array("order" => $order, "products" => $products);
     }
 
-    protected function generatePaymentGateway($paymentMethod, $order) : string {
+    protected function generatePaymentGateway($paymentMethod, $data) : string {
         $method = new \App\PaymentMethods\MercadoPago;
 
-        return $method->setupPaymentAndGetRedirectURL($order);
+        return $method->setupPaymentAndGetRedirectURL($data['order'],$data['products']);
     }
 
     public function datosCli(){

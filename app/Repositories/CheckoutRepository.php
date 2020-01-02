@@ -48,6 +48,7 @@ class CheckoutRepository {
     }
 
     public function insertProductsOrder($order, $products){
+        $idPedidos=$order->idPedidos;
         foreach ($products as $product) {
             if($product->offer == 'si'){
                 $precio = $product->oferta;
@@ -58,7 +59,7 @@ class CheckoutRepository {
             $order = DB::connection('digicom')
                 ->table('productosPedidos_jardepot')
                 ->insertGetId([
-                    'idPedidos' => $order,
+                    'idPedidos' => $idPedidos,
                     'cantidad' => $product->cantidad,
                     'nombre' => $product->producto,
                     'precio' => $precio

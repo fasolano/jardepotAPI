@@ -321,4 +321,68 @@ class ProductRepository{
         return $levels;
     }
 
+
+    public function getProductsSearch($search){
+        $datos = DB::table('productos')
+            ->join("XML", function($join){
+                $join->on("productos.productType","=","XML.productType")
+                    ->on("productos.brand","=","XML.brand")
+                    ->on("productos.mpn","=","XML.mpn");
+            })
+            ->join("productosCategoriasNivel3", function ($join){
+                $join->on("productos.productType", DB::raw("REPLACE(productosCategoriasNivel3.productType,'_',' ')"))
+                    ->on("productos.brand", DB::raw("REPLACE(productosCategoriasNivel3.brand,'_',' ')"))
+                    ->on("productos.mpn", DB::raw("REPLACE(productosCategoriasNivel3.mpn,'_',' ')"));
+            })
+            ->join('categoriasNivel3 as c3', 'c3.idCategoriasNivel3', '=', 'productosCategoriasNivel3.idCategoriasNivel3')
+            ->leftJoin('producto_caracteristica as pc', function ($join){
+                $join->on("pc.producto",
+                    DB::raw("CONCAT(productos.productType,' ',productos.brand,' ',productos.mpn)"));
+            })
+            ->select(
+                'productos.id',
+                'productos.productType',
+                'productos.brand',
+                'productos.mpn',
+                'productos.description',
+                'productos.availability',
+                'productos.priceweb',
+                'productos.oferta',
+                'productos.PrecioDeLista',
+                'productos.offer',
+                'productos.iva',
+                'productos.video',
+                'productos.volada',
+                'productos.visible',
+                'XML.keywords',
+                'XML.metadesc',
+                'XML.descriptionweb',
+                'XML.resenia'
+            )
+            ->distinct('productos.mpn')
+            ->orderBy('productos.priceweb', 'asc')
+            ->where([
+                ["productos.visible" , '=',"si"],
+                ["productos.brand" ,"like", "%".$search."%"]
+            ])
+            ->orWhere([
+                ["productos.visible" , '=',"si"],
+                ["productos.productType","like", "%".$search."%"]
+            ])
+            ->orWhere([
+                ["productos.visible" , '=',"si"],
+                ["productos.brand","like", "%".$search."%"]
+            ])
+            ->orWhere([
+                ["productos.visible" , '=',"si"],
+                ["productos.mpn" ,"like", "%".$search."%"]
+            ])
+            ->orWhereRaw(
+                "(productos.visible = 'si' and CONCAT(productos.productType,' ',productos.brand,' ',productos.mpn) like '%".$search."%')"
+            )
+            ->get();
+
+        return $datos;
+    }
+
 }
