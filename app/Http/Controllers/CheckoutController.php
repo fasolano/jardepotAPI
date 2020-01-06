@@ -29,22 +29,8 @@ class CheckoutController extends Controller {
     }
 
     public function index(Request $request){
-        $user = Auth::guard()->user();
-        $productRepository = new ProductRepository();
-        $cartRepository = new CartRepository();
-
-        $cookie = json_decode($request->get('sessionCookie'));
-
-        $cart = isset($cookie->carrito)? $cookie->carrito: false;
-
-        //Si no se mando o si no se encuentra activo o no pertenece al usuario se crea uno nuevo
-        if($cart && $cartRepository->verifyCart($user, $cart)){
-            $cartRepository->updateCart($cart);
-            $this->setUpOrder($cart, $request);
-
-        }
-        return json_encode(1);
-//        return response()->json(['data' => 'successful'], 201);
+        print_r($request->toArray());
+        return;
     }
 
     public function createOrder(Request $request) {
@@ -52,64 +38,122 @@ class CheckoutController extends Controller {
 
         $forms = json_decode($request->get('forms'));
         $cookie = json_decode($request->get('sessionCookie'));
-      //echo $cookie->carrito;
-        $data = $this->setUpOrder($cookie->carrito,$request);
-     //     $this->notify($order);
+        $formPayment = json_decode($forms->payment);
+
+        $data = $this->setUpOrder($cookie->carrito, $forms);
+
         $url = $this->generatePaymentGateway(
-            $forms->paymentMethod,
+            $formPayment->paymentMethod->value,
             $data
         );
-        return redirect()->to($url);
+
+        return response()->json(['data' => $url], 201);
     }
 
-    protected function setUpOrder($cart, Request $request){
+    protected function setUpOrder($cart, $forms){
         $productRepository = new ProductRepository();
         $cartRepository = new CartRepository();
 
-        $clienteForm = $this->datosCli();
+        $clientForm = $this->dataClient(json_decode($forms->billing));
 
-        $client = $this->repository->insertClient($clienteForm);
+        $billingForm = $this->dataBilling(json_decode($forms->billMandatory));
+
+        $deliveryForm = $this->dataDelivery(json_decode($forms->billing));
+
+        $client = $this->repository->insertClient($clientForm);
 
         //Obtiene el carro completo
         $cart = $cartRepository->getCart($cart);
 
         $order = $this->repository->insertOrder($client, $cart);
 
+        $billingDeleveryData = array_merge($deliveryForm, $billingForm, ['idPedidos' => $order->idPedidos]);
+
+        $this->repository->insertDeliveryBilling($billingDeleveryData);
+
         $products = $cartRepository->getProductsFromCart($cart->id_carrito);
 
-        $this->repository->insertProductsOrder($order, $products);
-        return array("order" => $order, "products" => $products);
+        $this->repository->insertProductsOrder($order, $products, json_decode($forms->delivery));
+
+        return array("order" => $order, "products" => $products, 'client' => $clientForm);
     }
 
     protected function generatePaymentGateway($paymentMethod, $data) : string {
-        $method = new \App\PaymentMethods\MercadoPago;
+        switch ($paymentMethod){
+            case 'MercadoPago':
+                $method = new \App\PaymentMethods\MercadoPago;
+                break;
 
-        return $method->setupPaymentAndGetRedirectURL($data['order'],$data['products']);
+            case 'Paypal':
+                $method = new \App\PaymentMethods\Paypal;
+                break;
+
+            case 'Transferencia':
+                $method = new \App\PaymentMethods\Transferencia;
+                break;
+
+        }
+
+        return $method->setupPaymentAndGetRedirectURL($data['order'], $data['products'], $data['client']);
     }
 
-    public function datosCli(){
+    public function dataClient($clientForm){
         return [
-            'nombre' => 'Fernando',
-            'apellidos' => 'Solano',
-            'email' => 'algo@algo.com',
-            'telefono' => '3155382',
-            'estado' => 'Morelos',
-            'ciudad' => 'Cuernavaca',
-            'colonia' => 'Tulipanes',
-            'cp' => '62388',
-            'direccion' => 'Tulipan Venezolano #14'
+            'nombre' => $clientForm->firstName,
+            'apellidos' => $clientForm->lastName,
+            'email' => $clientForm->email,
+            'telefono' => $clientForm->phone,
+            'estado' => $clientForm->state,
+            'ciudad' => $clientForm->city,
+            'colonia' => $clientForm->suburb,
+            'cp' => $clientForm->zip,
+            'direccion' => $clientForm->address
         ];
     }
 
-    public function datosCart(){
+    public function dataDelivery($clientForm){
         return [
-            'nombre' => 'Fernando',
-            'apellidos' => 'Solano',
-            'correo' => 'algo@algo.com',
-            'telefono' => '3155382',
-            'estado' => 'Morelos',
-            'ciudad' => 'Cuernavaca'
+            'recibeEnvio' => $clientForm->firstName." ".$clientForm->lastName,
+            'calleEnvio' => $clientForm->address,
+            'coloniaEnvio' => $clientForm->suburb,
+            'ciudadEnvio' => $clientForm->city,
+            'estadoEnvio' => $clientForm->state,
+            'telefonoEnvio' => $clientForm->phone,
+            'cpEnvio' => $clientForm->zip
         ];
+    }
+
+    public function dataBilling($billingForm){
+        if($billingForm->need == false){
+            return [
+                'razonSocialFacturacion' => '',
+                'tipoPersonaFacturacion' => 'general',
+                'rfcFacturacion' => '',
+                'calleFacturacion' => '',
+                'ciudadFacturacion' => '',
+                'estadoFacturacion' => '',
+                'correoFacturacion' => '',
+                'cpFacturacion' => '',
+                'metodoDePagoFacturacion' => 'PUE Pago en una sola exhibición',
+                'formaDePagoFacturacion' => '03 Transferencia electrónica de fondos',
+                'usoDelCFDIFacturacion' => 'G01 Adquisición de mercancías'
+            ];
+        }else{
+            return [
+                'razonSocialFacturacion' => $billingForm->socialReason,
+                'tipoPersonaFacturacion' => $billingForm->typePerson,
+                'rfcFacturacion' => $billingForm->rfc,
+                'calleFacturacion' => $billingForm->address,
+                'ciudadFacturacion' => $billingForm->city,
+                'estadoFacturacion' => $billingForm->state,
+                'correoFacturacion' => $billingForm->email,
+                'cpFacturacion' => $billingForm->zip,
+                'metodoDePagoFacturacion' => 'PUE Pago en una sola exhibición',
+                'formaDePagoFacturacion' => '03 Transferencia electrónica de fondos',
+                'usoDelCFDIFacturacion' => $billingForm->usoCFDI
+            ];
+        }
+
     }
 
 }

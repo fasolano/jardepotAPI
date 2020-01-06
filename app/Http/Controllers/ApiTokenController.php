@@ -43,4 +43,9 @@ class ApiTokenController extends Controller {
         return $user->getSession($carrito);
     }
 
+    public function index(Request $request){
+        print_r($request->toArray());
+        return;
+    }
+
 }

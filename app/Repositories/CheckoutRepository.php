@@ -47,7 +47,7 @@ class CheckoutRepository {
         return $order;
     }
 
-    public function insertProductsOrder($order, $products){
+    public function insertProductsOrder($order, $products, $deliveryMethod){
         $idPedidos=$order->idPedidos;
         foreach ($products as $product) {
             if($product->offer == 'si'){
@@ -56,7 +56,7 @@ class CheckoutRepository {
                 $precio = $product->priceweb;
             }
             $precio = $product->cantidad * $precio;
-            $order = DB::connection('digicom')
+            $orderProductInserted = DB::connection('digicom')
                 ->table('productosPedidos_jardepot')
                 ->insertGetId([
                     'idPedidos' => $idPedidos,
@@ -65,6 +65,24 @@ class CheckoutRepository {
                     'precio' => $precio
                 ]);
         }
+        // Despues de haber insertado productos evalua si es necesario cobrar envio de ser así se agrega a la orden
+        if($order->total < $deliveryMethod->deliveryMethod->min){
+            $orderProductInserted = DB::connection('digicom')
+                ->table('productosPedidos_jardepot')
+                ->insertGetId([
+                    'idPedidos' => $idPedidos,
+                    'cantidad' => 1,
+                    'nombre' => 'Manejo de Mercancía Envío paquetería',
+                    'precio' => $deliveryMethod->deliveryMethod->cost
+                ]);
+        }
+    }
+
+    public function insertDeliveryBilling($data){
+        $rowInserted = DB::connection('digicom')
+            ->table('datosenvioyfacturacion_jardepot')
+            ->insertGetId($data);
+        return $rowInserted;
     }
 
 }

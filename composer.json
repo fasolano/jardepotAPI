@@ -14,7 +14,8 @@
         "fideloper/proxy": "^4.0",
         "laravel/framework": "^6.0",
         "laravel/tinker": "^1.0",
-        "mercadopago/dx-php": "dev-master"
+        "mercadopago/dx-php": "dev-master",
+        "paypal/rest-api-sdk-php": "*"
     },
     "require-dev": {
         "facade/ignition": "^1.4",
