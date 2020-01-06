@@ -65,7 +65,7 @@ class Paypal {
         $transaction->setAmount($amount)
             ->setItemList($itemList)
             ->setDescription("Pago por compra en linea")
-            ->setInvoiceNumber(uniqid());
+            ->setReferenceId($order->token);
 
 //        $baseUrl = getBaseUrl();
         $checkUrl = 'http://koot.mx/jardepotAPI/public/api/checkout/success';

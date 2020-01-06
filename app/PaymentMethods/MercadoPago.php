@@ -60,7 +60,7 @@ class MercadoPago{
         $preference->items = $items;
 
         # Save External Reference
-        $preference->external_reference = $order->idPedidos;
+        $preference->external_reference = $order->token;
         $preference->back_urls = [
             "success" => 'http://localhost/jardepotAPI/api/checkout/success',
             "pending" => 'http://localhost/jardepotAPI/api/checkout/success',

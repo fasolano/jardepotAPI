@@ -3,6 +3,7 @@
 
 namespace App\Repositories;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 
 class CheckoutRepository {
@@ -47,8 +48,27 @@ class CheckoutRepository {
         return $order;
     }
 
+    public function insertWebOrder($order, $cart){
+        $token = hash('sha256', Str::random(60));
+        $order = DB::connection('digicom')
+            ->table('pedidos_web')
+            ->insertGetId([
+                'idPedidos' => $order->idPedidos,
+                'fk_carrito' => $cart->id_carrito,
+                'token' => $token
+            ]);
+
+        $order = DB::connection('digicom')
+            ->table('pedidos_web')
+            ->select('*')
+            ->where('id_pedidos_web', $order)
+            ->first();
+
+        return $order;
+    }
+
     public function insertProductsOrder($order, $products, $deliveryMethod){
-        $idPedidos=$order->idPedidos;
+        $idPedidos = $order->idPedidos;
         foreach ($products as $product) {
             if($product->offer == 'si'){
                 $precio = $product->oferta;

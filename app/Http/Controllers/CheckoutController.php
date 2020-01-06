@@ -67,6 +67,10 @@ class CheckoutController extends Controller {
 
         $order = $this->repository->insertOrder($client, $cart);
 
+        $webOrder = $this->repository->insertWebOrder($order, $cart);
+
+        $order->token = $webOrder->token;
+
         $billingDeleveryData = array_merge($deliveryForm, $billingForm, ['idPedidos' => $order->idPedidos]);
 
         $this->repository->insertDeliveryBilling($billingDeleveryData);
