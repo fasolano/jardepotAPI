@@ -26,7 +26,6 @@ class MercadoPago{
     public function setupPaymentAndGetRedirectURL($order, $products, $client): string {
         # Create a preference object
         $preference = new Preference();
-        $preference->
         $items = array();
 
         foreach ($products as $key => $product) {
@@ -62,9 +61,9 @@ class MercadoPago{
         # Save External Reference
         $preference->external_reference = $order->token;
         $preference->back_urls = [
-            "success" => 'http://localhost/jardepotAPI/api/checkout/success',
-            "pending" => 'http://localhost/jardepotAPI/api/checkout/success',
-            "failure" => 'http://localhost/jardepotAPI/api/checkout/success',
+            "success" => 'http://localhost/jardepotAPI/public/api/checkout/success',
+            "pending" => 'http://localhost/jardepotAPI/public/api/checkout/success',
+            "failure" => 'http://localhost/jardepotAPI/public/api/checkout/success',
         ];
 
         $preference->auto_return = "all";
