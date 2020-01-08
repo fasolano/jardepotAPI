@@ -68,11 +68,11 @@ class Paypal {
             ->setReferenceId($order->token);
 
 //        $baseUrl = getBaseUrl();
-        $checkUrl = 'http://koot.mx/jardepotAPI/public/api/checkout/success';
-        $checkUrl = 'http://koot.mx/jardepotAPI/public/api/checkout/success';
+        $checkUrlSuccess = 'http://localhost:4200/confirmation/success/Paypal';
+        $checkUrlFail = 'http://localhost:4200/confirmation/failure/Paypal';
         $redirectUrls = new RedirectUrls();
-        $redirectUrls->setReturnUrl($checkUrl)
-            ->setCancelUrl($checkUrl);
+        $redirectUrls->setReturnUrl($checkUrlSuccess)
+            ->setCancelUrl($checkUrlFail);
 
         $payment = new Payment();
         $payment->setIntent("sale")

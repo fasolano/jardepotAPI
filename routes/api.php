@@ -29,10 +29,9 @@ Route::get('menu/additional/options', 'MenuController@getOptionsAdditional');
 Route::get('menu/brands', 'MenuController@getBrands');
 Route::get('menu/productsTypes', 'MenuController@getProductTypes');
 
-
-Route::get('cart/productos', 'CartController@getCartProducts');
 Route::get('session', 'ApiTokenController@getSession');
 
+//Route::get('cart/productos', 'CartController@getCartProducts');
 Route::post('cart/addProduct', 'CartController@addProduct');
 Route::get('cart/products', 'CartController@getCartProducts');
 Route::delete('cart/removeProduct', 'CartController@removeProductCart');
