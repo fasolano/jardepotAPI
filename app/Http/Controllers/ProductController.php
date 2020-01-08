@@ -8,7 +8,7 @@ use Symfony\Component\HttpFoundation\Request;
 class ProductController extends Controller{
 
     private $productoRepository;
-
+    //Todas las consultas tienen join con inventario, si se implementa openjardepot se deberan de quitar esos left join con  sus groupby
     public function __construct(){
         $this->productoRepository = new ProductRepository();
     }
@@ -127,12 +127,13 @@ class ProductController extends Controller{
                     $response[$iterator]['newPrice'] = $item->priceweb;
                     $response[$iterator]['description'] = $item->description;
                     $response[$iterator]['dataSheet'] = $item->resenia;
-                    $response[$iterator]['availibilityCount'] = 20;
+                    $response[$iterator]['availibilityCount'] = 100;
                     $response[$iterator]['cartCount'] = 0;
                     $response[$iterator]['brand'] = $item->brand;
                     $response[$iterator]['mpn'] = $item->mpn;
                     $response[$iterator]['productType'] = $item->productType;
                     $response[$iterator]['metaDescription'] = $item->metadesc;
+                    $response[$iterator]['inventory'] = $item->cantidadInventario;
                     $iterator++;
                 }
             }else{
@@ -152,12 +153,13 @@ class ProductController extends Controller{
                 $response[$iterator]['newPrice'] = $item->priceweb;
                 $response[$iterator]['description'] = $item->description;
                 $response[$iterator]['dataSheet'] = $item->resenia;
-                $response[$iterator]['availibilityCount'] = 20;
+                $response[$iterator]['availibilityCount'] = 100;
                 $response[$iterator]['cartCount'] = 0;
                 $response[$iterator]['brand'] = $item->brand;
                 $response[$iterator]['mpn'] = $item->mpn;
                 $response[$iterator]['productType'] = $item->productType;
                 $response[$iterator]['metaDescription'] = $item->metadesc;
+                $response[$iterator]['inventory'] = $item->cantidadInventario;
                 $iterator++;
             }
         }
@@ -243,7 +245,7 @@ class ProductController extends Controller{
         $levels = $this->productoRepository->getProductlevels($productType);
         return json_encode($levels);
     }
-
+     //esta externamente en otras dos funciones y en el repository
     public function model_format_products($products){
         $iterator = 0;
         $response = array();
@@ -270,7 +272,7 @@ class ProductController extends Controller{
             }
             $response[$iterator]['description'] = $item->description;
             $response[$iterator]['dataSheet'] = $item->resenia;
-            $response[$iterator]['availibilityCount'] = 20;
+            $response[$iterator]['availibilityCount'] = 100;
             if(isset($item->cantidad)){
                 $response[$iterator]['cartCount'] = $item->cantidad;
             }else{
@@ -280,6 +282,7 @@ class ProductController extends Controller{
             $response[$iterator]['mpn'] = $item->mpn;
             $response[$iterator]['productType'] = $item->productType;
             $response[$iterator]['metaDescription'] = $item->metadesc;
+            $response[$iterator]['inventory'] = $item->cantidadInventario;
             $iterator++;
         }
         return $response;
@@ -293,7 +296,9 @@ class ProductController extends Controller{
             return json_encode('vacio');
         }
         $productos = $this->productoRepository->getProductsSearch($search);
-
+        if(count($productos) == 0){
+            $productos='emptyProducts';
+        }
         return json_encode($productos);
     }
 }

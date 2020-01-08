@@ -32,6 +32,11 @@ class ProductRepository{
                 $join->on("pc.producto",
                     DB::raw("CONCAT(productos.productType,' ',productos.brand,' ',productos.mpn)"));
             })
+            ->leftJoin("inventario",function($join){
+                $join->on("productos.productType","=","inventario.productType")
+                    ->on("productos.brand","=","inventario.brand")
+                    ->on("productos.mpn","=","inventario.mpn");
+            })
             ->select(
                 'productos.id',
                 'productos.productType',
@@ -50,14 +55,18 @@ class ProductRepository{
                 'XML.keywords',
                 'XML.metadesc',
                 'XML.descriptionweb',
-                'XML.resenia'
+                'XML.resenia',
+                DB::raw('SUM(inventario.cantidad) as cantidadInventario')
             )
             ->distinct('productos.mpn')
             ->orderBy('pc.producto', 'asc')
+
             ->where([
                 "productos.visible" => "si",
                 "c3.idCategoriasNivel2" => $nivel2
             ])
+            ->groupBy('productos.productType',
+                'productos.brand','productos.mpn')
             ->get();
 
         return $datos;
@@ -85,6 +94,11 @@ class ProductRepository{
             })
             ->leftJoin('caracteristica as c', 'c.id_caracterisca', '=', 'pc.fk_caracteristica')
             ->leftJoin('opcion_caracteristica as opc', 'c.id_caracterisca', '=', 'opc.fk_caracteristica')
+            ->leftJoin("inventario",function($join){
+                $join->on("productos.productType","=","inventario.productType")
+                    ->on("productos.brand","=","inventario.brand")
+                    ->on("productos.mpn","=","inventario.mpn");
+            })
             ->select(
                 'productos.id',
                 'productos.productType',
@@ -103,13 +117,15 @@ class ProductRepository{
                 'XML.keywords',
                 'XML.metadesc',
                 'XML.descriptionweb',
-                'XML.resenia'
+                'XML.resenia',
+                DB::raw('SUM(inventario.cantidad) as cantidadInventario')
             )
             ->distinct('productos.mpn')
             ->orderBy('pc.producto', 'asc')
             ->where($valores)
             ->whereRaw($filtros)
-            ->groupBy('productos.mpn')
+            ->groupBy('productos.productType',
+                'productos.brand','productos.mpn')
             ->get();
 
         return $datos;
@@ -139,42 +155,10 @@ class ProductRepository{
                     ->on("productos.brand","=","XML.brand")
                     ->on("productos.mpn","=","XML.mpn");
             })
-            ->select(
-                'productos.id',
-                'productos.productType',
-                'productos.brand',
-                'productos.mpn',
-                'productos.description',
-                'productos.availability',
-                'productos.priceweb',
-                'productos.oferta',
-                'productos.PrecioDeLista',
-                'productos.offer',
-                'productos.iva',
-                'productos.video',
-                'productos.volada',
-                'productos.visible',
-                'XML.keywords',
-                'XML.metadesc',
-                'XML.descriptionweb',
-                'XML.resenia'
-            )
-            ->where([
-                'productos.productType' => $productType,
-                'productos.brand' => $brand,
-                'productos.mpn' => $mpn,
-            ])
-            ->get();
-
-        return $datos;
-    }
-
-    public function getProductsRelated($productType, $brand, $mpn){
-        $datos = DB::table('productos')
-            ->join("XML",function($join){
-                $join->on("productos.productType","=","XML.productType")
-                    ->on("productos.brand","=","XML.brand")
-                    ->on("productos.mpn","=","XML.mpn");
+            ->leftJoin("inventario",function($join){
+                $join->on("productos.productType","=","inventario.productType")
+                    ->on("productos.brand","=","inventario.brand")
+                    ->on("productos.mpn","=","inventario.mpn");
             })
             ->select(
                 'productos.id',
@@ -194,7 +178,55 @@ class ProductRepository{
                 'XML.keywords',
                 'XML.metadesc',
                 'XML.descriptionweb',
-                'XML.resenia'
+                'XML.resenia',
+                DB::raw('SUM(inventario.cantidad) as cantidadInventario')
+            )
+            ->where([
+                'productos.productType' => $productType,
+                'productos.brand' => $brand,
+                'productos.mpn' => $mpn,
+            ])
+            ->groupBy(
+                'productos.productType',
+                'productos.brand','productos.mpn'
+            )
+            ->get();
+
+        return $datos;
+    }
+
+    public function getProductsRelated($productType, $brand, $mpn){
+        $datos = DB::table('productos')
+            ->join("XML",function($join){
+                $join->on("productos.productType","=","XML.productType")
+                    ->on("productos.brand","=","XML.brand")
+                    ->on("productos.mpn","=","XML.mpn");
+            })
+            ->leftJoin("inventario",function($join){
+                $join->on("productos.productType","=","inventario.productType")
+                    ->on("productos.brand","=","inventario.brand")
+                    ->on("productos.mpn","=","inventario.mpn");
+            })
+            ->select(
+                'productos.id',
+                'productos.productType',
+                'productos.brand',
+                'productos.mpn',
+                'productos.description',
+                'productos.availability',
+                'productos.priceweb',
+                'productos.oferta',
+                'productos.PrecioDeLista',
+                'productos.offer',
+                'productos.iva',
+                'productos.video',
+                'productos.volada',
+                'productos.visible',
+                'XML.keywords',
+                'XML.metadesc',
+                'XML.descriptionweb',
+                'XML.resenia',
+                DB::raw('SUM(inventario.cantidad) as cantidadInventario')
             )
             ->where([
                 ['productos.productType', $productType],
@@ -205,6 +237,10 @@ class ProductRepository{
             ->whereRaw(
                 "productos.priceweb >= (select priceweb * 0.75 as priceweb from productos where productType = '".$productType."' AND brand = '".$brand."' AND mpn = '".$mpn."') AND ".
                 "productos.priceweb <= (select priceweb * 1.5 as priceweb from productos where productType = '".$productType."' AND brand = '".$brand."' AND mpn = '".$mpn."')"
+            )
+            ->groupBy(
+                'productos.productType',
+                'productos.brand','productos.mpn'
             )
             ->get();
 
@@ -346,7 +382,6 @@ class ProductRepository{
         $encontrados = "";
         $matches = array();
         $matchesCount = 0;
-        $busqueda2 = "%".$search."%";
 
         //busqueda simple
         $productos = $this -> clasificarBusqueda($search);
@@ -367,6 +402,7 @@ class ProductRepository{
                     $matches[$key][$producto -> id]["priceweb"] = $producto -> priceweb;
                     $matches[$key][$producto -> id]["resenia"] = $producto -> resenia;
                     $matches[$key][$producto -> id]["metadesc"] = $producto -> metadesc;
+                    $matches[$key][$producto -> id]["cantidadInventario"] = $producto -> cantidadInventario;
                     $matchesCount ++;
 
                 }
@@ -392,6 +428,11 @@ class ProductRepository{
                             ->on("productos.brand","=","XML.brand")
                             ->on("productos.mpn","=","XML.mpn");
                     })
+                    ->leftJoin("inventario",function($join){
+                        $join->on("productos.productType","=","inventario.productType")
+                            ->on("productos.brand","=","inventario.brand")
+                            ->on("productos.mpn","=","inventario.mpn");
+                    })
                     ->select(
                         'productos.id',
                         'productos.productType',
@@ -410,7 +451,8 @@ class ProductRepository{
                         'XML.keywords',
                         'XML.metadesc',
                         'XML.descriptionweb',
-                        'XML.resenia'
+                        'XML.resenia',
+                        DB::raw('SUM(inventario.cantidad) as cantidadInventario')
                     )
                     ->distinct('productos.mpn')
                     ->where([
@@ -426,6 +468,10 @@ class ProductRepository{
                         ["productos.visible" , '=',"si"],
                         ["productos.mpn" ,"like", $search2]
                     ])
+                    ->groupBy(
+                        'productos.productType',
+                        'productos.brand','productos.mpn'
+                    )
                     ->get();
 
                 foreach ($productos as $producto) {
@@ -443,6 +489,7 @@ class ProductRepository{
                         $matches[4][$producto -> id]["priceweb"] = $producto -> priceweb;
                         $matches[4][$producto -> id]["resenia"] = $producto -> resenia;
                         $matches[4][$producto -> id]["metadesc"] = $producto -> metadesc;
+                        $matches[4][$producto -> id]["cantidadInventario"] = $producto -> cantidadInventario;
                         $matchesCount ++;
 
                     }
@@ -459,12 +506,18 @@ class ProductRepository{
                 //remueve
                 $search2 = chop($search2,"es");
                 $search2 = chop($search2,"s");
+                $search2 = "%".$search2."%";
 
                 $productos = DB::table('productos')
                     ->join("XML", function($join){
                         $join->on("productos.productType","=","XML.productType")
                             ->on("productos.brand","=","XML.brand")
                             ->on("productos.mpn","=","XML.mpn");
+                    })
+                    ->leftJoin("inventario",function($join){
+                        $join->on("productos.productType","=","inventario.productType")
+                            ->on("productos.brand","=","inventario.brand")
+                            ->on("productos.mpn","=","inventario.mpn");
                     })
                     ->select('productos.id',
                         'productos.productType',
@@ -483,7 +536,8 @@ class ProductRepository{
                         'XML.keywords',
                         'XML.metadesc',
                         'XML.descriptionweb',
-                        'XML.resenia'
+                        'XML.resenia',
+                        DB::raw('SUM(inventario.cantidad) as cantidadInventario')
                     )
                     ->where([
                         ["productos.visible" , '=',"si"],
@@ -497,6 +551,10 @@ class ProductRepository{
                         ["productos.visible" , '=',"si"],
                         ["productos.mpn" ,"like", $search2]
                     ])
+                    ->groupBy(
+                        'productos.productType',
+                        'productos.brand','productos.mpn'
+                    )
                     ->get();
 
                 foreach ($productos as $producto) {
@@ -515,6 +573,7 @@ class ProductRepository{
                         $matches[4][$producto -> id]["priceweb"] = $producto -> priceweb;
                         $matches[4][$producto -> id]["resenia"] = $producto -> resenia;
                         $matches[4][$producto -> id]["metadesc"] = $producto -> metadesc;
+                        $matches[4][$producto -> id]["cantidadInventario"] = $producto -> cantidadInventario;
                         $matchesCount ++;
 
                     }
@@ -524,6 +583,7 @@ class ProductRepository{
 
         //imprime los resultados de la búsqueda
         $iterator=0;
+        $response = array();
         foreach ($matches as $matchNivel) {
 
             foreach ($matchNivel as $key => $match) {
@@ -577,12 +637,13 @@ class ProductRepository{
                 $response[$iterator]['newPrice'] = $match["priceweb"];
                 $response[$iterator]['description'] = $match["description"];
                 $response[$iterator]['dataSheet'] = $match["resenia"];
-                $response[$iterator]['availibilityCount'] = 20;
+                $response[$iterator]['availibilityCount'] = 100;
                 $response[$iterator]['cartCount'] = 0;
                 $response[$iterator]['brand'] = $match["brand"];
                 $response[$iterator]['mpn'] = $match["mpn"];
                 $response[$iterator]['productType'] = $match["productType"];
                 $response[$iterator]['metaDescription'] = $match["metadesc"];
+                $response[$iterator]['inventory'] = $match["cantidadInventario"];
                 $iterator++;
             }//fin de foreach match
         }
@@ -596,8 +657,10 @@ class ProductRepository{
         $sql = "SELECT productos.id, productos.productType, productos.brand, productos.mpn, productos.description,
         productos.availability,productos.offer, productos.PrecioDeLista, productos.oferta, productos.priceweb,
         productos.visible, productos.iva, productos.video,productos.volada,productos.visible,
-        XML.keywords,XML.metadesc,XML.descriptionweb,XML.resenia FROM productos
-        join  XML on productos.productType = XML.productType and productos.brand = XML.brand and  productos.mpn = XML.mpn ";
+        XML.keywords,XML.metadesc,XML.descriptionweb,XML.resenia, SUM(inventario.cantidad) as cantidadInventario
+        FROM productos
+        join  XML on productos.productType = XML.productType and productos.brand = XML.brand and  productos.mpn = XML.mpn
+        left join  inventario on productos.productType = inventario.productType and productos.brand = inventario.brand and  productos.mpn = inventario.mpn";
 
         $sqlType = "";
         $sqlMpn = "";
