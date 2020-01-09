@@ -41,6 +41,11 @@ class CartRepository{
                     ->on("productos.brand","=","XML.brand")
                     ->on("productos.mpn","=","XML.mpn");
             })
+            ->leftJoin("inventario",function($join){
+                $join->on("productos.productType","=","inventario.productType")
+                    ->on("productos.brand","=","inventario.brand")
+                    ->on("productos.mpn","=","inventario.mpn");
+            })
             ->select('pc.producto',
                 'pc.cantidad',
                 'productos.id',
@@ -60,12 +65,17 @@ class CartRepository{
                 'XML.keywords',
                 'XML.metadesc',
                 'XML.descriptionweb',
-                'XML.resenia'
+                'XML.resenia',
+                DB::raw('SUM(inventario.cantidad) as cantidadInventario')
             )
             ->where([
                 'pc.fk_carrito' => $cart,
                 'pc.estado' => 'Activo'
-            ])->get();
+            ])
+            ->groupBy(
+                'productos.productType',
+                'productos.brand','productos.mpn'
+            )->get();
 
         return $products;
     }
