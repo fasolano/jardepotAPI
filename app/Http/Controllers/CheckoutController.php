@@ -7,7 +7,7 @@ use App\Repositories\CheckoutRepository;
 use App\Repositories\ProductRepository;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
-use MP;
+use Illuminate\Support\Facades\Mail;
 
 
 class CheckoutController extends Controller {
@@ -40,14 +40,123 @@ class CheckoutController extends Controller {
         $cookie = json_decode($request->get('sessionCookie'));
         $formPayment = json_decode($forms->payment);
 
-        $data = $this->setUpOrder($cookie->carrito, $forms);
+        if($formPayment->paymentMethod->value == "Transferencia"){
+            $data = $this->setUpQuotation($cookie->carrito, $forms);
+            return response()->json(['data' => 'success'], 200);
+        }else{
+            $data = $this->setUpOrder($cookie->carrito, $forms);
 
-        $url = $this->generatePaymentGateway(
-            $formPayment->paymentMethod->value,
-            $data
+            $url = $this->generatePaymentGateway(
+                $formPayment->paymentMethod->value,
+                $data
+            );
+
+            return response()->json(['data' => $url], 201);
+        }
+
+
+        /*if(!$this->isWholesale($cookie->carrito)){*/
+
+        /*}else{
+
+        }*/
+
+
+    }
+
+    protected function setUpQuotation($cart, $forms){
+        $cartRepository = new CartRepository();
+
+        $clientForm = $this->dataClient(json_decode($forms->billing));
+
+        $billingForm = $this->dataBilling(json_decode($forms->billMandatory));
+
+        $deliveryForm = $this->dataDelivery(json_decode($forms->billing));
+
+        $billingDeleveryData = array_merge($deliveryForm, $billingForm);
+
+        $client = $this->repository->insertClient($clientForm);
+
+        $cart = $cartRepository->getCart($cart);
+
+        $quotation = $this->repository->insertQuotation($client, $cart->total, json_decode($forms->delivery));
+
+        $products = $cartRepository->getProductsFromCart($cart->id_carrito);
+
+        $this->repository->insertProductsQuotation($products, $quotation, json_decode($forms->delivery));
+
+        //Obtiene el carro completo
+        $content = array();
+        foreach ($products as $key => $product) {
+            if($product->offer == 'si'){
+                $precio = $product->oferta;
+            }else{
+                $precio = $product->priceweb;
+            }
+            $content[$key]["cantidad"] = $product->cantidad;
+            $content[$key]["nombre"] = $product->producto;
+            $content[$key]["precio"] = $precio;
+            $content[$key]["productType"] = $product->productType;
+            $content[$key]["brand"] = $product->brand;
+            $content[$key]["mpn"] = $product->mpn;
+        }
+
+        $nombre = $clientForm['nombre']. " " .$clientForm['apellidos'];
+        if($this->sendQuotationMail($clientForm['email'], $nombre, $quotation->clave, $content)){
+            return $this->sendAlertMail($clientForm, $billingDeleveryData, $quotation->idCotizaciones);
+        }
+
+    }
+
+    protected function sendAlertMail($clientForm, $billingDeleveryData, $quotation){
+        $destino = "fasolanof@gmail.com";
+        $dia = date('Y-m-d');
+        $hora = date('H:i:s');
+
+        $data = [
+            'nombre' => $clientForm['nombre']. " ". $clientForm['apellidos'],
+            'telefono' => $clientForm['telefono'],
+            'mail' => $clientForm['email'],
+            'dia' => $dia,
+            'hora' => $hora,
+            'cotizacion' => $quotation
+        ];
+        Mail::send('mails.webPucharse', $data, function ($message) use ($destino) {
+            $message->to($destino)->subject
+            ('Pedido en linea Jardepot');
+            $message->from('sistemas1@jardepot.com', 'Sitemas Jardepot');
+        });
+    }
+
+    protected function sendQuotationMail($correo, $nombre, $quotation, $content){
+        $url = 'https://digicom.mx/instalar_virus/sitios/jardepot/ventas/cotizaciones/enviarCotizacionDesdePagina.php';
+        $fields = array(
+            'para' => urlencode($correo),
+            'nombre' => urlencode($nombre),
+            'quotation' => urlencode($quotation),
+            'content' => urlencode(serialize($content))
         );
 
-        return response()->json(['data' => $url], 201);
+        $fields_string = "";
+        //url-ify the data for the POST
+        foreach($fields as $key=>$value) { $fields_string .= $key.'='.$value.'&'; }
+        rtrim($fields_string, '&');
+
+        //open connection
+        $ch = curl_init();
+
+        //set the url, number of POST vars, POST data
+        curl_setopt($ch,CURLOPT_URL, $url);
+        curl_setopt($ch,CURLOPT_POST, count($fields));
+        curl_setopt($ch,CURLOPT_POSTFIELDS, $fields_string);
+
+        //execute post
+        $result = curl_exec($ch);
+
+        //close connection
+        curl_close($ch);
+
+        return true;
     }
 
     protected function setUpOrder($cart, $forms){
@@ -65,7 +174,7 @@ class CheckoutController extends Controller {
         //Obtiene el carro completo
         $cart = $cartRepository->getCart($cart);
 
-        $order = $this->repository->insertOrder($client, $cart);
+        $order = $this->repository->insertOrder($client, $cart, json_decode($forms->delivery));
 
         $webOrder = $this->repository->insertWebOrder($order, $cart);
 
@@ -91,11 +200,6 @@ class CheckoutController extends Controller {
             case 'Paypal':
                 $method = new \App\PaymentMethods\Paypal;
                 break;
-
-            case 'Transferencia':
-                $method = new \App\PaymentMethods\Transferencia;
-                break;
-
         }
 
         return $method->setupPaymentAndGetRedirectURL($data['order'], $data['products'], $data['client']);
@@ -159,5 +263,42 @@ class CheckoutController extends Controller {
         }
 
     }
+
+    /*public function isWholesale($cart, $forms){
+        $cartRepository = new CartRepository();
+        $products = $cartRepository->getProductsFromCart($cart);
+        $whosale = false;
+        foreach ($products as $product) {
+            if($product->cantidad >= 10){
+                $whosale = true;
+            }
+        }
+        if($whosale){
+            $clientForm = $this->dataClient(json_decode($forms->billing));
+            $day = date('d-m-Y');
+            $hour = date('H:i');
+
+        }
+
+    }*/
+
+    /*public function sendAlert(){
+        $destino = "fasolanof@gmail.com";
+//        $destino = "ventas4@jardepot.com";
+
+        $data = [
+            'nombre' => $nombre,
+            'telefono' => $telefono,
+            'mail' => $mail,
+            'comentario' => $comentarios,
+            'carrito' => $carrito,
+            'total' => $total
+        ];
+        Mail::send('mails.whosale', $data, function ($message) use ($destino) {
+            $message->to($destino)->subject
+            ('Consulta de refacciones en Jardepot');
+            $message->from('sistemas1@jardepot.com', 'Sitemas Jardepot');
+        });
+    }*/
 
 }

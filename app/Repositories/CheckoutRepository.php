@@ -25,9 +25,11 @@ class CheckoutRepository {
         return $client;
     }
 
-    public function insertOrder($client, $cart){
+    public function insertOrder($client, $cart, $deliveryMethod){
         $date = date('Y-m-d H:i:s');
-
+        if($cart->total < $deliveryMethod->deliveryMethod->min){
+            $total = $deliveryMethod->deliveryMethod->cost + $cart->total;
+        }
         $order = DB::connection('digicom')
             ->table('pedidos_jardepot')
             ->insertGetId([
@@ -96,6 +98,93 @@ class CheckoutRepository {
                     'precio' => $deliveryMethod->deliveryMethod->cost
                 ]);
         }
+    }
+
+    public function insertQuotation($client, $total, $deliveryMethod){
+        if($total < $deliveryMethod->deliveryMethod->min){
+            $total = $total + $deliveryMethod->deliveryMethod->cost;
+        }
+        $date = date('Y-m-d H:i:s');
+        $rowInserted = DB::connection('digicom')
+            ->table('cotizaciones_jardepot')
+            ->insertGetId([
+                'idClientes' => $client,
+                'fecha' => $date,
+                'total' => $total,
+                'idusuario' => 2
+            ]);
+        DB::connection('digicom')
+            ->table('seguimiento_cotizacion')
+            ->insertGetId([
+                'fk_cotizacion' => $rowInserted
+            ]);
+
+        $bandera = false;
+        while(!$bandera){
+            //genera la clave
+            $clave = substr(str_shuffle(MD5(microtime())), 0, 5);
+            while (is_numeric($clave)){
+                $clave = substr(str_shuffle(MD5(microtime())), 0, 5);
+            }
+            $claveSelect = DB::connection('digicom')
+                ->table('clavesWebCotizaciones_jardepot')
+                ->select('clave')
+                ->where('clave', $clave)
+                ->get();
+            if(count($claveSelect) == 0){
+                $bandera = true;
+            }
+
+        }
+
+        DB::connection('digicom')
+            ->table('clavesWebCotizaciones_jardepot')
+            ->insertGetId([
+                'idCotizaciones' => $rowInserted,
+                'clave' => $clave
+            ]);
+
+        $rowInserted = DB::connection('digicom')
+            ->table('cotizaciones_jardepot')
+            ->select('*')
+            ->where('idCotizaciones', $rowInserted)
+            ->first();
+
+        $rowInserted->clave = $clave;
+        return $rowInserted;
+    }
+
+    public function insertProductsQuotation($products, $quotation, $deliveryMethod){
+        foreach ($products as $product) {
+            if($product->offer == 'si'){
+                $precio = $product->oferta;
+            }else{
+                $precio = $product->priceweb;
+            }
+            $rowInserted = DB::connection('digicom')
+                ->table('productoscotizados_jardepot')
+                ->insertGetId([
+                    'idCotizaciones' => $quotation->idCotizaciones,
+                    'cantidad' => $product->cantidad,
+                    'nombre' => $product->producto,
+                    'precio' => $precio,
+                    'marca' => $product->brand,
+                    'iva' => 'no'
+                ]);
+        }
+        if($quotation->total < $deliveryMethod->deliveryMethod->min){
+            $rowInserted = DB::connection('digicom')
+                ->table('productoscotizados_jardepot')
+                ->insertGetId([
+                    'idCotizaciones' => $quotation->idCotizaciones,
+                    'cantidad' => 1,
+                    'nombre' => 'Manejo de Mercancía Envío paquetería',
+                    'precio' => $deliveryMethod->deliveryMethod->cost,
+                    'marca' => '',
+                    'iva' => 'no'
+                ]);
+        }
+        return $rowInserted;
     }
 
     public function insertDeliveryBilling($data){
