@@ -40,3 +40,5 @@ Route::delete('cart/removeProduct', 'CartController@removeProductCart');
 Route::get('checkout/success', 'ApiTokenController@index');
 Route::post('checkout/createOrder', 'CheckoutController@createOrder');
 
+Route::post('confirm/checkout', 'ConfirmController@index');
+

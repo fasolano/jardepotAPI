@@ -27,6 +27,7 @@ class CheckoutRepository {
 
     public function insertOrder($client, $cart, $deliveryMethod){
         $date = date('Y-m-d H:i:s');
+        $total = $cart->total;
         if($cart->total < $deliveryMethod->deliveryMethod->min){
             $total = $deliveryMethod->deliveryMethod->cost + $cart->total;
         }
@@ -36,7 +37,7 @@ class CheckoutRepository {
                 'idClientes' => $client,
                 'descuento' => 0,
                 'fecha' => $date,
-                'total' => $cart->total,
+                'total' => $total,
                 'estado' => 1,
                 'idusuario' => 2
             ]);

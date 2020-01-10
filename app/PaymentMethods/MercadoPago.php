@@ -23,10 +23,11 @@ class MercadoPago{
         );
     }
 
-    public function setupPaymentAndGetRedirectURL($order, $products, $client): string {
+    public function setupPaymentAndGetRedirectURL($order, $products, $client, $delivery): string {
         # Create a preference object
         $preference = new Preference();
         $items = array();
+        $total = 0;
 
         foreach ($products as $key => $product) {
             if($product->offer == 'si'){
@@ -41,6 +42,18 @@ class MercadoPago{
             $item->quantity = $product->cantidad;
             $item->currency_id = 'MXN';
             $item->unit_price = $price;
+
+            $total += $product->cantidad * $price;
+            array_push($items, $item);
+        }
+
+        if($total < $delivery->deliveryMethod->min){
+            $item = new Item();
+            $item->id = 'paq001'; // numero de pedio
+            $item->title = 'Manejo de Mercancía Envío paquetería'; //Articulo
+            $item->quantity = 1;
+            $item->currency_id = 'MXN';
+            $item->unit_price = $delivery->deliveryMethod->cost;
 
             array_push($items, $item);
         }

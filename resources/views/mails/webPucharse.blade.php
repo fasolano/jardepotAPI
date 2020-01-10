@@ -65,7 +65,7 @@
                             <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:300px;">
                                 <tr>
                                     <td align="left" valign="top" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 36px; font-weight: 800; line-height: 48px;" class="mobile-center">
-                                        <h1 style="font-size: 36px; font-weight: 800; margin: 0; color: #ffffff;">Notificación de mayoreo</h1>
+                                        <h1 style="font-size: 36px; font-weight: 800; margin: 0; color: #ffffff;">Notificación de compra</h1>
                                     </td>
                                 </tr>
                             </table>
@@ -108,7 +108,7 @@
                             <tr>
                                 <td align="center" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding-bottom: 15px; border-bottom: 3px solid #eeeeee;">
                                     <p style=" font-weight: 800; line-height: 25px; color: #333333; margin: 0;">
-                                        Un cliente ha realizado una compra en linea el día {{$dia}} a las {{$hora}}, el método de pago es transferencia bancaría
+                                        Un cliente ha realizado una orden de pago en linea el día {{$dia}} a las {{$hora}}, el método de pago es transferencia bancaría
                                         Ponte en contacto con el, dejó los siguientes datos.
                                     </p>
 
@@ -224,7 +224,22 @@
                                     </table>
                                 </td>
                             </tr>
-
+                            @foreach ($datos as $key => $value)
+                                <tr>
+                                    <td align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding-bottom: 15px; border-bottom: 3px solid #eeeeee;">
+                                        <table border="0" cellspacing="0" cellpadding="0" width="100%">
+                                            <tr>
+                                                <td width="30%">
+                                                    {{$key}}
+                                                </td>
+                                                <td width="70%" style="text-align: right;">
+                                                    {{$value}}
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            @endforeach
                         </table>
                         <!--[if (gte mso 9)|(IE)]>
                         </td>

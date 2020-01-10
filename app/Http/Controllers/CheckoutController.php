@@ -29,6 +29,7 @@ class CheckoutController extends Controller {
     }
 
     public function index(Request $request){
+
         print_r($request->toArray());
         return;
     }
@@ -46,6 +47,8 @@ class CheckoutController extends Controller {
         }else{
             $data = $this->setUpOrder($cookie->carrito, $forms);
 
+            $data['delivery'] = json_decode($forms->delivery);
+
             $url = $this->generatePaymentGateway(
                 $formPayment->paymentMethod->value,
                 $data
@@ -54,14 +57,6 @@ class CheckoutController extends Controller {
             return response()->json(['data' => $url], 201);
         }
 
-
-        /*if(!$this->isWholesale($cookie->carrito)){*/
-
-        /*}else{
-
-        }*/
-
-
     }
 
     protected function setUpQuotation($cart, $forms){
@@ -69,7 +64,7 @@ class CheckoutController extends Controller {
 
         $clientForm = $this->dataClient(json_decode($forms->billing));
 
-        $billingForm = $this->dataBilling(json_decode($forms->billMandatory));
+        $billingForm = $this->dataBilling(json_decode($forms->billMandatory), json_decode($forms->needBilling));
 
         $deliveryForm = $this->dataDelivery(json_decode($forms->billing));
 
@@ -108,9 +103,55 @@ class CheckoutController extends Controller {
 
     }
 
+    protected function setUpOrder($cart, $forms){
+        $productRepository = new ProductRepository();
+        $cartRepository = new CartRepository();
+
+        $clientForm = $this->dataClient(json_decode($forms->billing));
+
+        $billingForm = $this->dataBilling(json_decode($forms->billMandatory), json_decode($forms->needBilling));
+
+        $deliveryForm = $this->dataDelivery(json_decode($forms->billing));
+
+        $client = $this->repository->insertClient($clientForm);
+
+        //Obtiene el carro completo
+        $cart = $cartRepository->getCart($cart);
+
+        $order = $this->repository->insertOrder($client, $cart, json_decode($forms->delivery));
+
+        $webOrder = $this->repository->insertWebOrder($order, $cart);
+
+        $order->token = $webOrder->token;
+
+        $billingDeleveryData = array_merge($deliveryForm, $billingForm, ['idPedidos' => $order->idPedidos]);
+
+        $this->repository->insertDeliveryBilling($billingDeleveryData);
+
+        $products = $cartRepository->getProductsFromCart($cart->id_carrito);
+
+        $this->repository->insertProductsOrder($order, $products, json_decode($forms->delivery));
+
+        return array("order" => $order, "products" => $products, 'client' => $clientForm);
+    }
+
+    protected function generatePaymentGateway($paymentMethod, $data) : string {
+        switch ($paymentMethod){
+            case 'MercadoPago':
+                $method = new \App\PaymentMethods\MercadoPago;
+                break;
+
+            case 'Paypal':
+                $method = new \App\PaymentMethods\Paypal;
+                break;
+        }
+
+        return $method->setupPaymentAndGetRedirectURL($data['order'], $data['products'], $data['client'], $data['delivery']);
+    }
+
     protected function sendAlertMail($clientForm, $billingDeleveryData, $quotation){
         $destino = "fasolanof@gmail.com";
-        $dia = date('Y-m-d');
+        $dia = date('d-m-Y');
         $hora = date('H:i:s');
 
         $data = [
@@ -119,6 +160,7 @@ class CheckoutController extends Controller {
             'mail' => $clientForm['email'],
             'dia' => $dia,
             'hora' => $hora,
+            'datos' => $billingDeleveryData,
             'cotizacion' => $quotation
         ];
         Mail::send('mails.webPucharse', $data, function ($message) use ($destino) {
@@ -159,52 +201,6 @@ class CheckoutController extends Controller {
         return true;
     }
 
-    protected function setUpOrder($cart, $forms){
-        $productRepository = new ProductRepository();
-        $cartRepository = new CartRepository();
-
-        $clientForm = $this->dataClient(json_decode($forms->billing));
-
-        $billingForm = $this->dataBilling(json_decode($forms->billMandatory));
-
-        $deliveryForm = $this->dataDelivery(json_decode($forms->billing));
-
-        $client = $this->repository->insertClient($clientForm);
-
-        //Obtiene el carro completo
-        $cart = $cartRepository->getCart($cart);
-
-        $order = $this->repository->insertOrder($client, $cart, json_decode($forms->delivery));
-
-        $webOrder = $this->repository->insertWebOrder($order, $cart);
-
-        $order->token = $webOrder->token;
-
-        $billingDeleveryData = array_merge($deliveryForm, $billingForm, ['idPedidos' => $order->idPedidos]);
-
-        $this->repository->insertDeliveryBilling($billingDeleveryData);
-
-        $products = $cartRepository->getProductsFromCart($cart->id_carrito);
-
-        $this->repository->insertProductsOrder($order, $products, json_decode($forms->delivery));
-
-        return array("order" => $order, "products" => $products, 'client' => $clientForm);
-    }
-
-    protected function generatePaymentGateway($paymentMethod, $data) : string {
-        switch ($paymentMethod){
-            case 'MercadoPago':
-                $method = new \App\PaymentMethods\MercadoPago;
-                break;
-
-            case 'Paypal':
-                $method = new \App\PaymentMethods\Paypal;
-                break;
-        }
-
-        return $method->setupPaymentAndGetRedirectURL($data['order'], $data['products'], $data['client']);
-    }
-
     public function dataClient($clientForm){
         return [
             'nombre' => $clientForm->firstName,
@@ -231,22 +227,8 @@ class CheckoutController extends Controller {
         ];
     }
 
-    public function dataBilling($billingForm){
-        if($billingForm->need == false){
-            return [
-                'razonSocialFacturacion' => '',
-                'tipoPersonaFacturacion' => 'general',
-                'rfcFacturacion' => '',
-                'calleFacturacion' => '',
-                'ciudadFacturacion' => '',
-                'estadoFacturacion' => '',
-                'correoFacturacion' => '',
-                'cpFacturacion' => '',
-                'metodoDePagoFacturacion' => 'PUE Pago en una sola exhibición',
-                'formaDePagoFacturacion' => '03 Transferencia electrónica de fondos',
-                'usoDelCFDIFacturacion' => 'G01 Adquisición de mercancías'
-            ];
-        }else{
+    public function dataBilling($billingForm, $needBilling){
+        if($needBilling){
             return [
                 'razonSocialFacturacion' => $billingForm->socialReason,
                 'tipoPersonaFacturacion' => $billingForm->typePerson,
@@ -259,6 +241,20 @@ class CheckoutController extends Controller {
                 'metodoDePagoFacturacion' => 'PUE Pago en una sola exhibición',
                 'formaDePagoFacturacion' => '03 Transferencia electrónica de fondos',
                 'usoDelCFDIFacturacion' => $billingForm->usoCFDI
+            ];
+        }else{
+            return [
+                'razonSocialFacturacion' => '',
+                'tipoPersonaFacturacion' => 'general',
+                'rfcFacturacion' => '',
+                'calleFacturacion' => '',
+                'ciudadFacturacion' => '',
+                'estadoFacturacion' => '',
+                'correoFacturacion' => '',
+                'cpFacturacion' => '',
+                'metodoDePagoFacturacion' => 'PUE Pago en una sola exhibición',
+                'formaDePagoFacturacion' => '03 Transferencia electrónica de fondos',
+                'usoDelCFDIFacturacion' => 'G01 Adquisición de mercancías'
             ];
         }
 
