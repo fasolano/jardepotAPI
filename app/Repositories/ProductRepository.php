@@ -3,6 +3,7 @@
 
 namespace App\Repositories;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 
 
 class ProductRepository{
@@ -828,6 +829,50 @@ class ProductRepository{
             $format = str_replace($fmatch[0], $value, $format);
         }
         return $format;
+    }
+
+    public function sendBusqueda($form, $busqueda){
+        $tipo= $busqueda != '' ? 'busqueda':'duda';
+
+        $destino='emlynmd@gmail.com';
+        $asunto='';
+        switch ($tipo){
+            case 'duda':
+                $asunto='Duda o Comentario de Producto';
+                $data = [
+                    'nombre' => $form->nombre,
+                    'telefono' => $form->telefono,
+                    'comentario' => $form->comentario,
+                    'whatsapp' => $form->whatsapp,
+                    'email' => $form->email,
+                    'tipo'=>$tipo,
+                    'busqueda' => $busqueda,
+                ];
+                break;
+            case 'busqueda':
+                $asunto='Notificación de búsqueda';
+                $data = [
+                    'nombre' => $form->nombre,
+                    'telefono' => $form->telefono,
+                    'comentario' => $form->comentario,
+                    'tipo'=>$tipo,
+                    'busqueda' => $busqueda,
+                ];
+
+                break;
+            default:
+                $asunto='Notificación';
+        }
+
+        Mail::send('mails.sendSearchMail', $data, function ($message) use ($asunto, $destino) {
+            $message->to($destino)->subject($asunto);
+            $message->from('sistemas1@jardepot.com', 'Sistemas Jardepot');
+        });
+
+        if( count( Mail::failures() ) > 0 ) {
+          return false;
+        }
+        return true;
     }
 
 }
