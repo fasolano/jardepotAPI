@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Repositories\ProductRepository;
-use Symfony\Component\HttpFoundation\Request;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class ProductController extends Controller{
 
@@ -300,5 +301,12 @@ class ProductController extends Controller{
             $productos='emptyProducts';
         }
         return json_encode($productos);
-    }
+   }
+
+   public function sendSearch(Request $request){
+        $forms = json_decode($request->get('forms'));
+        $busqueda = $request->get('textoBuscado');
+        $res = $this -> productoRepository -> sendBusqueda($forms,$busqueda);
+        return json_encode(['resultado'=> $res]);
+   }
 }

@@ -22,6 +22,7 @@ Route::get('product', 'ProductController@getProduct');
 Route::get('product/levels', 'ProductController@getProductlevels');
 Route::get('products/related', 'ProductController@getProductsRelated');
 Route::get('products/search', 'ProductController@getProductsSearch');
+Route::post('products/sendSearch', 'ProductController@sendSearch');
 
 Route::get('menu/navbar', 'MenuController@getMenuNavbar');
 Route::get('menu/additional', 'MenuController@getAdditional');
