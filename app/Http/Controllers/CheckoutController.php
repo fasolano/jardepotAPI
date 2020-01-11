@@ -45,7 +45,7 @@ class CheckoutController extends Controller {
             $data = $this->setUpQuotation($cookie->carrito, $forms);
             return response()->json(['data' => 'success'], 200);
         }else{
-            $data = $this->setUpOrder($cookie->carrito, $forms);
+            $data = $this->setUpOrder($cookie->carrito, $forms, $formPayment->paymentMethod->value);
 
             $data['delivery'] = json_decode($forms->delivery);
 
@@ -103,7 +103,7 @@ class CheckoutController extends Controller {
 
     }
 
-    protected function setUpOrder($cart, $forms){
+    protected function setUpOrder($cart, $forms, $payment){
         $productRepository = new ProductRepository();
         $cartRepository = new CartRepository();
 
@@ -120,7 +120,7 @@ class CheckoutController extends Controller {
 
         $order = $this->repository->insertOrder($client, $cart, json_decode($forms->delivery));
 
-        $webOrder = $this->repository->insertWebOrder($order, $cart);
+        $webOrder = $this->repository->insertWebOrder($order, $cart, $payment);
 
         $order->token = $webOrder->token;
 

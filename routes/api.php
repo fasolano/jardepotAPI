@@ -36,9 +36,9 @@ Route::post('cart/addProduct', 'CartController@addProduct');
 Route::get('cart/products', 'CartController@getCartProducts');
 Route::delete('cart/removeProduct', 'CartController@removeProductCart');
 
+Route::post('confirm/checkout', 'ConfirmController@index');
+
 
 Route::get('checkout/success', 'ApiTokenController@index');
 Route::post('checkout/createOrder', 'CheckoutController@createOrder');
-
-Route::post('confirm/checkout', 'ConfirmController@index');
 

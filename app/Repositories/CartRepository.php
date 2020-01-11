@@ -18,6 +18,19 @@ class CartRepository{
     }
 
     public function verifyCart($user, $cart){
+        $twoDaysBefore = date('Y-m-d H:i:s', strtotime("-2 days"));
+
+        DB::table('users')
+            ->leftJoin('carrito', 'carrito.fk_user', '=', 'users.id')
+            ->where([
+                ['fk_user', '=', $user->id],
+                ['api_token', '=', $user->api_token],
+                ['alta', '<=', $twoDaysBefore]
+            ])
+            ->update([
+                'estado' => 'Vencido'
+            ]);
+
         $cart = DB::table('users')
             ->leftJoin('carrito', 'carrito.fk_user', '=', 'users.id')
             ->select('id_carrito')

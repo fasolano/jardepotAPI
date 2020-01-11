@@ -51,13 +51,14 @@ class CheckoutRepository {
         return $order;
     }
 
-    public function insertWebOrder($order, $cart){
+    public function insertWebOrder($order, $cart, $payment){
         $token = hash('sha256', Str::random(60));
         $order = DB::connection('digicom')
             ->table('pedidos_web')
             ->insertGetId([
                 'idPedidos' => $order->idPedidos,
                 'fk_carrito' => $cart->id_carrito,
+                'medio_pago' => $payment,
                 'token' => $token
             ]);
 
