@@ -846,7 +846,7 @@ class ProductRepository{
                     'whatsapp' => $form->whatsapp,
                     'email' => $form->email,
                     'tipo'=>$tipo,
-                    'busqueda' => $busqueda,
+                    'producto' => $form->producto,
                 ];
                 break;
             case 'busqueda':
