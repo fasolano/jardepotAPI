@@ -141,7 +141,7 @@ class CheckoutController extends Controller {
                 $method = new \App\PaymentMethods\MercadoPago;
                 break;
 
-            case 'Paypal':
+            case 'PayPal':
                 $method = new \App\PaymentMethods\Paypal;
                 break;
         }

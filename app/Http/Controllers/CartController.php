@@ -53,6 +53,7 @@ class CartController extends Controller {
         if($cart && $repository->verifyCart($user, $cart)){
             $products = $repository->getProductsFromCart($cart);
             $cart = $productController->model_format_products($products);
+            $cart = count($cart)>0?$cart:array();
             return response()->json([json_encode($cart)], 201);
         }else{
             return response()->json(null, 204);

@@ -8,6 +8,7 @@ use PayPal\Api\Item;
 use PayPal\Api\ItemList;
 use PayPal\Api\Payer;
 use PayPal\Api\Payment;
+use PayPal\Api\PaymentExecution;
 use PayPal\Api\RedirectUrls;
 use PayPal\Api\Transaction;
 use PayPal\Auth\OAuthTokenCredential;
@@ -17,7 +18,7 @@ use PayPal\Validation\UrlValidator;
 
 class Paypal {
 
-    public function setupPaymentAndGetRedirectURL($order, $products, $client){
+    public function setupPaymentAndGetRedirectURL($order, $products, $client, $delivery){
         $apiContext = new ApiContext(new OAuthTokenCredential(
             'AXYsm9VJ1VvDrdy5xzQHHJBnnhuhEKcFWhhFPkXBZI9V-G4CmfiXDpNh2DaKT06EaWDFnqWG_1z5ztbi',
             'EB_7zrhzobGhC9Pp4NrLp-uMw_VhowRAvdDROZfGKtHto6LTMz1aUhtTS50INu-Jq5Qodx6raDPEp5fO'
@@ -47,6 +48,29 @@ class Paypal {
             $totalprice += $price * $product->cantidad;
             array_push($items, $item);
         }
+
+        if($totalprice < $delivery->deliveryMethod->min){
+            $item = new Item();
+            $item->setName('Manejo de Mercancía Envío paquetería')
+                ->setCurrency('MXN')
+                ->setQuantity(1)
+                ->setSku('ENV001') // Similar to `item_number` in Classic API
+                ->setPrice($delivery->deliveryMethod->cost);
+
+            $totalprice += $delivery->deliveryMethod->cost;
+            array_push($items, $item);
+        }
+        $commission = $totalprice * 0.04;
+
+        $item = new Item();
+        $item->setName('Comisión de pago en paypal')
+            ->setCurrency('MXN')
+            ->setQuantity(1)
+            ->setSku('COM001') // Similar to `item_number` in Classic API
+            ->setPrice($commission);
+        array_push($items, $item);
+
+        $totalprice += $commission;
 
         $itemList = new ItemList();
         $itemList->setItems($items);
@@ -92,6 +116,30 @@ class Paypal {
 //        $approvalUrl = $payment->getApprovalLink();
 
         return $response->getApprovalLink();
+    }
+
+    public function executePayment($paymentId, $payerID){
+        $apiContext = new ApiContext(new OAuthTokenCredential(
+            'AXYsm9VJ1VvDrdy5xzQHHJBnnhuhEKcFWhhFPkXBZI9V-G4CmfiXDpNh2DaKT06EaWDFnqWG_1z5ztbi',
+            'EB_7zrhzobGhC9Pp4NrLp-uMw_VhowRAvdDROZfGKtHto6LTMz1aUhtTS50INu-Jq5Qodx6raDPEp5fO'
+        ));
+
+        $payment = Payment::get($paymentId, $apiContext);
+
+        $execution = new PaymentExecution();
+        $execution->setPayerId($payerID);
+        try {
+            $result = $payment->execute($execution, $apiContext);
+            $payment->getId();
+            try {
+                $payment = Payment::get($paymentId, $apiContext);
+            } catch (Exception $ex) {
+                exit(1);
+            }
+        }catch (\Exception $ex) {
+            exit(1);
+        }
+        return $payment;
     }
 
     public function setNotifyUrl($notify_url)

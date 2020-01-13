@@ -11,17 +11,25 @@ class ConfirmRepository {
 
     public function verifyTokenAndPaymentMethod($payment, $token){
         $webOrder = DB::connection('digicom')
-            ->table('pedidos_web as a')
-            ->select('*')
+            ->table('pedidos_web')
+            ->join('pedidos_jardepot', 'pedidos_jardepot.idPedidos', '=', 'pedidos_web.idPedidos')
+            ->select('pedidos_jardepot.*', 'pedidos_web.fk_carrito')
             ->where([
                 'token' => $token,
                 'medio_pago' => $payment
             ])
             ->first();
-        return $webOrder;
+        $validCart = DB::table('carrito')
+            ->select('*')
+            ->where([
+                'id_carrito' => $webOrder->fk_carrito,
+                'estado' => 'Activo'
+            ])
+            ->get();
+        return count($validCart)?$webOrder:null;
     }
 
-    public function createDeposit($total, $order, $payment){
+    public function createDeposit($total, $order, $payment, $carrito){
         $date = date('Y-m-d H:i:s');
         $deposit = DB::connection('digicom')
             ->table('depositos_jardepot')
@@ -35,6 +43,15 @@ class ConfirmRepository {
                 'pagoTransferenciaElectronicaDepositar' => 1,
                 'referencia' => 'Pago en linea desde la página web'
             ]);
+
+        DB::connection('digicom')
+            ->table('pedidos_jardepot')
+            ->where('idPedidos', $order)
+            ->update(['estado' => 2]);
+
+        DB::table('carrito')
+            ->where('id_carrito', $carrito)
+            ->update(['estado' => 'Comprado']);
 
         return $deposit;
     }
