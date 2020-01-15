@@ -358,8 +358,7 @@ class ProductRepository{
             ->join('categoriasNivel1', 'categoriasNivel2.idCategoriasNivel1', '=', 'categoriasNivel1.idCategoriasNivel1')
             ->select('nombreCategoriaNivel2 as name')
             ->where([
-                ['nombreCategoriaNivel2', 'like', "%$productType%"],
-                ['nombreCategoriaNivel1', '=', 'Equipos']
+                ['nombreCategoriaNivel2', 'like', "%$productType%"]
             ])
             ->get();
 

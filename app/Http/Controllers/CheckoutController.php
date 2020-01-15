@@ -111,7 +111,7 @@ class CheckoutController extends Controller {
 
         $billingForm = $this->dataBilling(json_decode($forms->billMandatory), json_decode($forms->needBilling));
 
-        $deliveryForm = $this->dataDelivery(json_decode($forms->billing));
+        $deliveryForm = $this->dataDelivery(json_decode($forms->billing), json_decode($forms->delivery));
 
         $client = $this->repository->insertClient($clientForm);
 
@@ -218,16 +218,36 @@ class CheckoutController extends Controller {
         ];
     }
 
-    public function dataDelivery($clientForm){
-        return [
-            'recibeEnvio' => $clientForm->firstName." ".$clientForm->lastName,
-            'calleEnvio' => $clientForm->address,
-            'coloniaEnvio' => $clientForm->suburb,
-            'ciudadEnvio' => $clientForm->city,
-            'estadoEnvio' => $clientForm->state,
-            'telefonoEnvio' => $clientForm->phone,
-            'cpEnvio' => $clientForm->zip
-        ];
+    public function dataDelivery($clientForm, $delivery){
+        switch ($delivery->deliveryMethod->value){
+            case "domicilio":
+
+                break;
+
+            case "cuernavaca":
+        }
+        if($delivery->deliveryMethod->value == "domicilio"){
+            return [
+                'recibeEnvio' => $clientForm->firstName." ".$clientForm->lastName,
+                'calleEnvio' => $clientForm->address,
+                'coloniaEnvio' => $clientForm->suburb,
+                'ciudadEnvio' => $clientForm->city,
+                'estadoEnvio' => $clientForm->state,
+                'telefonoEnvio' => $clientForm->phone,
+                'cpEnvio' => $clientForm->zip
+            ];
+        }else{
+            return [
+                'recibeEnvio' => "Recoge en tienda cuernavaca",
+                'calleEnvio' => "Recoge en tienda cuernavaca",
+                'coloniaEnvio' => "Recoge en tienda cuernavaca",
+                'ciudadEnvio' => "Recoge en tienda cuernavaca",
+                'estadoEnvio' => $clientForm->state,
+                'telefonoEnvio' => $clientForm->phone,
+                'cpEnvio' => $clientForm->zip
+            ];
+        }
+
     }
 
     public function dataBilling($billingForm, $needBilling){
