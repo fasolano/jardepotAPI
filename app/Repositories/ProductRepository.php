@@ -622,12 +622,7 @@ class ProductRepository{
                 }
 
               //  $direccion = strtr("/catalogo/".$lowerBrand."/".$lowerProductType."-".$lowerBrand."-".$lowerMpn, $this -> unwanted_array);
-                $img = strtolower( $match["productType"] . "-" . $match["brand"] . "-" . $match["mpn"]);
-                $response[$iterator]['id'] = $match["id"];
-                $response[$iterator]['name'] = $match["productType"] . " " . $match["brand"] . " " . $match["mpn"];
-                $response[$iterator]['images'][0]['small'] = 'assets/images/images/' . $img . '.jpg';
-                $response[$iterator]['images'][0]['medium'] = 'assets/images/images/' . $img . '.jpg';
-                $response[$iterator]['images'][0]['big'] = 'assets/images/images/' . $img . '.jpg';
+
                 if (isset($match->offer) && $match->offer == 'si') {
                     $response[$iterator]['oldPrice'] = $match["priceweb"];
                     $response[$iterator]['discount'] = "OFERTA";
@@ -636,10 +631,39 @@ class ProductRepository{
                     $response[$iterator]['newPrice'] = $match["priceweb"];
                 }
                 $response[$iterator]['newPrice'] = $match["priceweb"];
+
+
+
+
+
+                $img = strtolower( $match["productType"] . "-" . $match["brand"] . "-" . $match["mpn"]);
+                $response[$iterator]['id'] = $match["id"];
+                $response[$iterator]['name'] = $match["productType"] . " " . $match["brand"] . " " . $match["mpn"];
+                $response[$iterator]['images'][0]['small'] = 'assets/images/images/' . $img . '.jpg';
+                $response[$iterator]['images'][0]['medium'] = 'assets/images/images/' . $img . '.jpg';
+                $response[$iterator]['images'][0]['big'] = 'assets/images/images/' . $img . '.jpg';
+                if ($match["PrecioDeLista"] == $match["priceweb"] ) {
+                    $response[$iterator]['newPrice'] = $match["priceweb"];
+
+                } else {
+                    $response[$iterator]['oldPrice'] = $match["PrecioDeLista"];
+                    $response[$iterator]['newPrice'] = $match["priceweb"];
+                }
+                if (isset($match["offer"]) && $match["offer"] == 'si') {
+                    $response[$iterator]['oldPrice'] = $match["PrecioDeLista"];
+                    $response[$iterator]['discount'] = "OFERTA";
+                    $response[$iterator]['newPrice'] = $match["oferta"];
+                } else {
+                    $response[$iterator]['newPrice'] = $match["priceweb"];
+                }
                 $response[$iterator]['description'] = $match["description"];
                 $response[$iterator]['dataSheet'] = $match["resenia"];
                 $response[$iterator]['availibilityCount'] = 100;
-                $response[$iterator]['cartCount'] = 0;
+                if(isset($match->cantidad)){
+                    $response[$iterator]['cartCount'] = $match["cantidad"];
+                }else{
+                    $response[$iterator]['cartCount'] = 0;
+                }
                 $response[$iterator]['brand'] = $match["brand"];
                 $response[$iterator]['mpn'] = $match["mpn"];
                 $response[$iterator]['productType'] = $match["productType"];

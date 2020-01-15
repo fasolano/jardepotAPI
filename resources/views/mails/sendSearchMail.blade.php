@@ -110,7 +110,7 @@
                                         @elseif($tipo == 'duda')
                                             Un cliente tiene una duda o comentario sobre este producto: {{$producto}}.
                                         @endif
-                                        Ponte en contacto con el, dejó los siguientes datos.
+                                        Ponte en contacto con él, dejó los siguientes datos.
                                     </p>
 
                                 </td>
