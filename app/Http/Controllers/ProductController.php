@@ -190,9 +190,18 @@ class ProductController extends Controller{
     public function getProduct(Request $request){
         $product = $request->get('product');
         $product = explode("-", $product);
-        $productType = str_replace("_", " ", $product[0]);
-        $brand = str_replace("_", " ", $product[1]);
-        $mpn = str_replace("_", "-", $product[2]);
+        if($product[0].'-'.$product[1] == 'Hilo-Nylon'){
+            $productType = 'Hilo-Nylon';
+            $brand = str_replace("_", " ", $product[2]);
+            $mpn = str_replace("_", "-", $product[3]);
+        } else {
+            $productType = str_replace("_", " ", $product[0]);
+            $brand = str_replace("_", " ", $product[1]);
+            $mpn = str_replace("_", "-", $product[2]);
+        }
+//        $productType = str_replace("_", " ", $product[0]);
+//        $brand = str_replace("_", " ", $product[1]);
+//        $mpn = str_replace("_", "-", $product[2]);
 
         $data = $this->productoRepository->getProduct($productType, $brand, $mpn);
         $response = $this->model_format_products($data)[0];
@@ -248,10 +257,16 @@ class ProductController extends Controller{
     public function getProductsRelated(Request $request){
         $product = $request->get('product');
         $product = explode("-", $product);
-        $productType = str_replace("_", " ", $product[0]);
-        $brand = str_replace("_", " ", $product[1]);
-        $mpn = str_replace("_", "-", $product[2]);
-
+        $ptemp = $product[0].'-'.$product[1];
+        if($ptemp == 'Hilo-Nylon'){
+            $productType = 'Hilo-Nylon';
+            $brand = str_replace("_", " ", $product[2]);
+            $mpn = str_replace("_", "-", $product[3]);
+        } else {
+            $productType = str_replace("_", " ", $product[0]);
+            $brand = str_replace("_", " ", $product[1]);
+            $mpn = str_replace("_", "-", $product[2]);
+        }
         $data = $this->productoRepository->getProductsRelated($productType, $brand, $mpn);
         $response = array();
         $iterator = 0;
@@ -321,6 +336,14 @@ class ProductController extends Controller{
             $productos='emptyProducts';
         }
         return json_encode($productos);
+   }
+
+   public function getDescriptionNivel2(Request $request){
+        $nivel1= $request->get('nivel1');
+        $nivel2= $request->get('nivel2');
+        $idNivel2 = $this->productoRepository->getIdNivel2($nivel1, $nivel2);
+        $texto = $this->productoRepository->getDescriptionNivel2($idNivel2);
+        return json_encode(['result'=>$texto]);
    }
 
    public function sendSearch(Request $request){

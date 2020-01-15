@@ -897,5 +897,11 @@ class ProductRepository{
         }
         return true;
     }
-
+    public function getDescriptionNivel2($idNivel2){
+        $texto = DB::table('datosCategoriasNivel2')->select('texto')
+            ->where(
+                "idCategoriasNivel2" ,$idNivel2
+            )->first();
+        return $texto;
+    }
 }

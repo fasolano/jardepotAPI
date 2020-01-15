@@ -86,6 +86,7 @@ class MenuRepository{
                 ['nombreCategoriaNivel1', '!=', 'Equipos']
             ])
             ->whereRaw("(ubicacion = 'ambos' OR ubicacion = 'sidebar')")
+            ->orderBy('name','asc')
             ->get();
 
         return $idCategorias;
