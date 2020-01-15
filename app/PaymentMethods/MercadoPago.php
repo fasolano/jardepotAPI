@@ -26,6 +26,7 @@ class MercadoPago{
     public function setupPaymentAndGetRedirectURL($order, $products, $client, $delivery): string {
         # Create a preference object
         $preference = new Preference();
+        $preference->
         $items = array();
         $total = 0;
 
@@ -73,6 +74,7 @@ class MercadoPago{
 
         # Save External Reference
         $preference->external_reference = $order->token;
+        $preference->notification_url = 'http://localhost:4200/confirmation/success/MercadoPago';
         $preference->back_urls = [
             "success" => 'http://localhost:4200/confirmation/success/MercadoPago',
             "pending" => 'http://localhost:4200/confirmation/pending/MercadoPago',
@@ -89,4 +91,15 @@ class MercadoPago{
 
         return $preference->init_point;
     }
+
+    public function verifyPayment($preference_id){
+        $preference = new Preference();
+        $payment = $preference::get($preference_id);
+        if($payment){
+            return $payment->external_reference;
+        }else{
+            return null;
+        }
+    }
+
 }

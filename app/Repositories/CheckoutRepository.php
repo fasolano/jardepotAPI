@@ -79,7 +79,7 @@ class CheckoutRepository {
             }else{
                 $precio = $product->priceweb;
             }
-            $precio = $product->cantidad * $precio;
+//            $precio = $product->cantidad * $precio;
             $orderProductInserted = DB::connection('digicom')
                 ->table('productosPedidos_jardepot')
                 ->insertGetId([

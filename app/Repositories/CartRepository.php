@@ -160,5 +160,15 @@ class CartRepository{
         return $cart;
     }
 
+    public function closeCart($cart){
+        DB::table('carrito')
+            ->where([
+                ['id_carrito', '=', $cart->id_carrito]
+            ])
+            ->update([
+                'estado' => 'Pendiente'
+            ]);
+    }
+
 
 }

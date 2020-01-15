@@ -87,19 +87,21 @@ class Paypal {
 
         $transaction = new Transaction();
         $transaction->setAmount($amount)
+            ->setInvoiceNumber($order->token)
             ->setItemList($itemList)
-            ->setDescription("Pago por compra en linea")
+            ->setDescription($order->token)
             ->setReferenceId($order->token);
 
 //        $baseUrl = getBaseUrl();
-        $checkUrlSuccess = 'http://localhost:4200/confirmation/success/Paypal';
-        $checkUrlFail = 'http://localhost:4200/confirmation/failure/Paypal';
+        $checkUrlSuccess = 'http://localhost:4200/confirmation/success/PayPal';
+        $checkUrlFail = 'http://localhost:4200/confirmation/failure/PayPal';
         $redirectUrls = new RedirectUrls();
         $redirectUrls->setReturnUrl($checkUrlSuccess)
             ->setCancelUrl($checkUrlFail);
 
         $payment = new Payment();
         $payment->setIntent("sale")
+            ->setId($order->token)
             ->setPayer($payer)
             ->setRedirectUrls($redirectUrls)
             ->setTransactions(array($transaction));
@@ -123,12 +125,13 @@ class Paypal {
             'AXYsm9VJ1VvDrdy5xzQHHJBnnhuhEKcFWhhFPkXBZI9V-G4CmfiXDpNh2DaKT06EaWDFnqWG_1z5ztbi',
             'EB_7zrhzobGhC9Pp4NrLp-uMw_VhowRAvdDROZfGKtHto6LTMz1aUhtTS50INu-Jq5Qodx6raDPEp5fO'
         ));
-
-        $payment = Payment::get($paymentId, $apiContext);
-
-        $execution = new PaymentExecution();
-        $execution->setPayerId($payerID);
         try {
+
+            $payment = Payment::get($paymentId, $apiContext);
+
+            $execution = new PaymentExecution();
+            $execution->setPayerId($payerID);
+
             $result = $payment->execute($execution, $apiContext);
             $payment->getId();
             try {
@@ -137,6 +140,7 @@ class Paypal {
                 exit(1);
             }
         }catch (\Exception $ex) {
+            response()->json(['data' => 'failed'], 201);
             exit(1);
         }
         return $payment;

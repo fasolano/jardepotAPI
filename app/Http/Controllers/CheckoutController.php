@@ -118,6 +118,9 @@ class CheckoutController extends Controller {
         //Obtiene el carro completo
         $cart = $cartRepository->getCart($cart);
 
+        //Finaliza el carro para que no se vuelva a cargar
+        $cartRepository->closeCart($cart);
+
         $order = $this->repository->insertOrder($client, $cart, json_decode($forms->delivery));
 
         $webOrder = $this->repository->insertWebOrder($order, $cart, $payment);
