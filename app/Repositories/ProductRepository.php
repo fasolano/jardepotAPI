@@ -386,7 +386,11 @@ class ProductRepository{
         XML.keywords,XML.metadesc,XML.descriptionweb,XML.resenia, SUM(inventario.cantidad) as cantidadInventario
         FROM productos
         join  XML on productos.productType = XML.productType and productos.brand = XML.brand and  productos.mpn = XML.mpn
-        left join  inventario on productos.productType = inventario.productType and productos.brand = inventario.brand and  productos.mpn = inventario.mpn";
+        left join  inventario on productos.productType = inventario.productType and productos.brand = inventario.brand and  productos.mpn = inventario.mpn
+
+        join productosCategoriasNivel3 on productos.productType = REPLACE(productosCategoriasNivel3.productType,'_',' ')
+                    and productos.brand = REPLACE(productosCategoriasNivel3.brand,'_',' ') and productos.mpn = REPLACE(productosCategoriasNivel3.mpn,'_',' ')
+        join categoriasNivel3 as c3 on c3.idCategoriasNivel3 = productosCategoriasNivel3.idCategoriasNivel3 ";
 
         $sqlType = "";
         $sqlMpn = "";
@@ -471,9 +475,8 @@ class ProductRepository{
     public function sendBusqueda($form, $busqueda){
         $tipo= $busqueda != '' ? 'busqueda':'duda';
 
-        $email = ['ventas1@jardepot.com','ventas3@jardepot.com','ventas4@jardepot.com'];
-
-        $destino='emlynmd@gmail.com';
+       // $email = ['ventas1@jardepot.com','ventas2@jardepot.com','ventas4@jardepot.com'];
+        $destino='ventas@jardepot.com';
         $asunto='';
         switch ($tipo){
             case 'duda':

@@ -62,7 +62,12 @@
                             <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:300px;">
                                 <tr>
                                     <td align="left" valign="top" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 36px; font-weight: 800; line-height: 48px;" class="mobile-center">
-                                        <h1 style="font-size: 36px; font-weight: 800; margin: 0; color: #ffffff;">Notificación de busqueda</h1>
+
+                                            @if ($tipo == 'busqueda')
+                                            <h1 style="font-size: 36px; font-weight: 800; margin: 0; color: #ffffff;">Notificación de Busqueda</h1>
+                                            @elseif($tipo == 'duda')
+                                            <h1 style="font-size: 36px; font-weight: 800; margin: 0; color: #ffffff;">Notificación de Duda o Comentario</h1>
+                                            @endif
                                     </td>
                                 </tr>
                             </table>
@@ -212,7 +217,7 @@
                                             </td>
                                             <td>
                                                 <p style="font-size: 16px; font-weight: 400; line-height: 24px; color: #777777;">
-                                                    {{$comentario}}
+                                                     {{$comentario}}
                                                 </p>
                                             </td>
                                         </tr>
