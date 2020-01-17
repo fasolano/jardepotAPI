@@ -156,4 +156,13 @@ class Paypal {
         return $this;
     }
 
+    public function prueba(){
+        $apiContext = new ApiContext(new OAuthTokenCredential(
+            'AXYsm9VJ1VvDrdy5xzQHHJBnnhuhEKcFWhhFPkXBZI9V-G4CmfiXDpNh2DaKT06EaWDFnqWG_1z5ztbi',
+            'EB_7zrhzobGhC9Pp4NrLp-uMw_VhowRAvdDROZfGKtHto6LTMz1aUhtTS50INu-Jq5Qodx6raDPEp5fO'
+        ));
+        $ps = Payment::all([], $apiContext);
+        print_r($ps);
+    }
+
 }

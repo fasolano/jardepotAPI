@@ -58,20 +58,12 @@ class ConfirmController extends Controller {
                     case 'MercadoPago':
                         $client = $this->getClient($content->external_reference);
                         $this->sendFailedMail($client, $payment);
-                        return response()->json(['data' => 'success'], 200);
                         break;
 
                     case 'PayPal':
-                        $token = $this->getTokenFromPayment($content);
-                        $order = $this->repository->verifyTokenAndPaymentMethod($payment, $token);
-                        if ($order == null) {
-                            return response()->json(['data' => 'failure'], 500);
-                        }
-                        $this->repository->createDeposit($order->total, $order->idPedidos, $payment, $order->fk_carrito);
-                        $this->sendConfirmationMails($order->idPedidos);
-                        return response()->json(['data' => 'success'], 200);
                         break;
                 }
+                return response()->json(['data' => 'failure'], 200);
                 break;
         }
 
@@ -138,13 +130,7 @@ class ConfirmController extends Controller {
     }
 
     public function prueba(){
-        $mp = new MercadoPago();
-        $res = $mp->prueba();
-        if(count($res)){
-            echo $res[0]->status;
-            echo $res[0]->status_detail;
-        }else{
-            echo "a";
-        }
+        $mp = new Paypal();
+        $mp->prueba();
     }
 }
