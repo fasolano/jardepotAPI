@@ -56,4 +56,15 @@ class ConfirmRepository {
         return $deposit;
     }
 
+    public function getClientFromToken($token){
+        $client = DB::connection('digicom')
+            ->table('pedidos_web')
+            ->join('pedidos_jardepot', 'pedidos_web.idPedidos', '=', 'pedidos_jardepot.idPedidos')
+            ->join('clientes_jardepot', 'pedidos_jardepot.idClientes', '=','clientes_jardepot.idClientes')
+            ->select('clientes_jardepot.*')
+            ->where(['token' => $token])
+            ->first();
+        return $client;
+    }
+
 }

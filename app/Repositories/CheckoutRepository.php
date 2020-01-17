@@ -31,6 +31,7 @@ class CheckoutRepository {
         if($cart->total < $deliveryMethod->deliveryMethod->min){
             $total = $deliveryMethod->deliveryMethod->cost + $cart->total;
         }
+        $total *= 1.04;
         $order = DB::connection('digicom')
             ->table('pedidos_jardepot')
             ->insertGetId([
@@ -80,6 +81,7 @@ class CheckoutRepository {
                 $precio = $product->priceweb;
             }
 //            $precio = $product->cantidad * $precio;
+            $precio *= 1.04;
             $orderProductInserted = DB::connection('digicom')
                 ->table('productosPedidos_jardepot')
                 ->insertGetId([
@@ -97,7 +99,7 @@ class CheckoutRepository {
                     'idPedidos' => $idPedidos,
                     'cantidad' => 1,
                     'nombre' => 'Manejo de Mercancía Envío paquetería',
-                    'precio' => $deliveryMethod->deliveryMethod->cost
+                    'precio' => $deliveryMethod->deliveryMethod->cost * 1.04
                 ]);
         }
     }
@@ -107,6 +109,7 @@ class CheckoutRepository {
             $total = $total + $deliveryMethod->deliveryMethod->cost;
         }
         $date = date('Y-m-d H:i:s');
+        $total *= 1.04;
         $rowInserted = DB::connection('digicom')
             ->table('cotizaciones_jardepot')
             ->insertGetId([
@@ -163,6 +166,7 @@ class CheckoutRepository {
             }else{
                 $precio = $product->priceweb;
             }
+            $precio *= 1.04;
             $rowInserted = DB::connection('digicom')
                 ->table('productoscotizados_jardepot')
                 ->insertGetId([
@@ -181,7 +185,7 @@ class CheckoutRepository {
                     'idCotizaciones' => $quotation->idCotizaciones,
                     'cantidad' => 1,
                     'nombre' => 'Manejo de Mercancía Envío paquetería',
-                    'precio' => $deliveryMethod->deliveryMethod->cost,
+                    'precio' => $deliveryMethod->deliveryMethod->cost *1.04,
                     'marca' => '',
                     'iva' => 'no'
                 ]);
