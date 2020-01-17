@@ -118,20 +118,26 @@ class ProductController extends Controller{
                     $response[$iterator]['images'][0]['small'] = 'assets/images/images/' . $img . '.jpg';
                     $response[$iterator]['images'][0]['medium'] = 'assets/images/images/' . $img . '.jpg';
                     $response[$iterator]['images'][0]['big'] = 'assets/images/images/' . $img . '.jpg';
-                    if ($item->PrecioDeLista == $item->priceweb ) {
-                        $response[$iterator]['newPrice'] = $item->priceweb;
-
-                    } else {
-                        $response[$iterator]['oldPrice'] = $item->PrecioDeLista;
-                        $response[$iterator]['newPrice'] = $item->priceweb;
-                    }
+                    //empieza la seccion de precios
                     if (isset($item->offer) && $item->offer == 'si') {
-                        $response[$iterator]['oldPrice'] = $item->PrecioDeLista;
                         $response[$iterator]['discount'] = "OFERTA";
-                        $response[$iterator]['newPrice'] = $item->oferta;
+
+                        if ($item->PrecioDeLista > $item->oferta ) {
+                            $response[$iterator]['oldPrice'] = $item->PrecioDeLista;
+                            $response[$iterator]['newPrice'] = $item->priceweb;
+                        } else {
+                            $response[$iterator]['newPrice'] = $item->oferta;
+                        }
                     } else {
-                        $response[$iterator]['newPrice'] = $item->priceweb;
+                        if ($item->PrecioDeLista > $item->priceweb ) {
+                            $response[$iterator]['oldPrice'] = $item->PrecioDeLista;
+                            $response[$iterator]['newPrice'] = $item->priceweb;
+                        } else {
+                            $response[$iterator]['newPrice'] = $item->priceweb;
+
+                        }
                     }
+                    //termina seccion de precios
                     $response[$iterator]['description'] = $item->description;
                     $response[$iterator]['dataSheet'] = $item->resenia;
                     $response[$iterator]['availibilityCount'] = 100;
@@ -154,20 +160,26 @@ class ProductController extends Controller{
                 $response[$iterator]['images'][0]['small'] = 'assets/images/images/' . $img . '.jpg';
                 $response[$iterator]['images'][0]['medium'] = 'assets/images/images/' . $img . '.jpg';
                 $response[$iterator]['images'][0]['big'] = 'assets/images/images/' . $img . '.jpg';
-                if ($item->PrecioDeLista == $item->priceweb ) {
-                    $response[$iterator]['newPrice'] = $item->priceweb;
-
-                } else {
-                    $response[$iterator]['oldPrice'] = $item->PrecioDeLista;
-                    $response[$iterator]['newPrice'] = $item->priceweb;
-                }
+                //empieza la seccion de precios
                 if (isset($item->offer) && $item->offer == 'si') {
-                    $response[$iterator]['oldPrice'] = $item->PrecioDeLista;
                     $response[$iterator]['discount'] = "OFERTA";
-                    $response[$iterator]['newPrice'] = $item->oferta;
+
+                    if ($item->PrecioDeLista > $item->oferta ) {
+                        $response[$iterator]['oldPrice'] = $item->PrecioDeLista;
+                        $response[$iterator]['newPrice'] = $item->priceweb;
+                    } else {
+                        $response[$iterator]['newPrice'] = $item->oferta;
+                    }
                 } else {
-                    $response[$iterator]['newPrice'] = $item->priceweb;
+                    if ($item->PrecioDeLista > $item->priceweb ) {
+                        $response[$iterator]['oldPrice'] = $item->PrecioDeLista;
+                        $response[$iterator]['newPrice'] = $item->priceweb;
+                    } else {
+                        $response[$iterator]['newPrice'] = $item->priceweb;
+
+                    }
                 }
+                //termina seccion de precios
                 $response[$iterator]['description'] = $item->description;
                 $response[$iterator]['dataSheet'] = $item->resenia;
                 $response[$iterator]['availibilityCount'] = 100;
@@ -292,20 +304,26 @@ class ProductController extends Controller{
             $response[$iterator]['images'][0]['small'] = 'assets/images/images/' . $img . '.jpg';
             $response[$iterator]['images'][0]['medium'] = 'assets/images/images/' . $img . '.jpg';
             $response[$iterator]['images'][0]['big'] = 'assets/images/images/' . $img . '.jpg';
-            if ($item->PrecioDeLista == $item->priceweb ) {
-                $response[$iterator]['newPrice'] = $item->priceweb;
-
-            } else {
-                $response[$iterator]['oldPrice'] = $item->PrecioDeLista;
-                $response[$iterator]['newPrice'] = $item->priceweb;
-            }
+            //empieza la seccion de precios
             if (isset($item->offer) && $item->offer == 'si') {
-                $response[$iterator]['oldPrice'] = $item->PrecioDeLista;
                 $response[$iterator]['discount'] = "OFERTA";
-                $response[$iterator]['newPrice'] = $item->oferta;
+
+                if ($item->PrecioDeLista > $item->oferta ) {
+                    $response[$iterator]['oldPrice'] = $item->PrecioDeLista;
+                    $response[$iterator]['newPrice'] = $item->priceweb;
+                } else {
+                    $response[$iterator]['newPrice'] = $item->oferta;
+                }
             } else {
-                $response[$iterator]['newPrice'] = $item->priceweb;
+                if ($item->PrecioDeLista > $item->priceweb ) {
+                    $response[$iterator]['oldPrice'] = $item->PrecioDeLista;
+                    $response[$iterator]['newPrice'] = $item->priceweb;
+                } else {
+                    $response[$iterator]['newPrice'] = $item->priceweb;
+
+                }
             }
+            //termina seccion de precios
             $response[$iterator]['description'] = $item->description;
             $response[$iterator]['dataSheet'] = $item->resenia;
             $response[$iterator]['availibilityCount'] = 100;
