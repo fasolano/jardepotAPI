@@ -93,8 +93,8 @@ class Paypal {
             ->setReferenceId($order->token);
 
 //        $baseUrl = getBaseUrl();
-        $checkUrlSuccess = 'http://localhost:4200/confirmation/success/PayPal';
-        $checkUrlFail = 'http://localhost:4200/confirmation/failure/PayPal';
+        $checkUrlSuccess = 'http://koot.mx/jardepot/confirmation/success/PayPal';
+        $checkUrlFail = 'http://koot.mx/jardepot/confirmation/failure/PayPal';
         $redirectUrls = new RedirectUrls();
         $redirectUrls->setReturnUrl($checkUrlSuccess)
             ->setCancelUrl($checkUrlFail);
