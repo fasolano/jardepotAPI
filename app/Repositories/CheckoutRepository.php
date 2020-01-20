@@ -195,7 +195,7 @@ class CheckoutRepository {
 
     public function insertDeliveryBilling($data){
         $rowInserted = DB::connection('digicom')
-            ->table('datosenvioyfacturacion_jardepot')
+            ->table('datosEnvioYFacturacion_jardepot')
             ->insertGetId($data);
         return $rowInserted;
     }
