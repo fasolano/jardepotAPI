@@ -18,10 +18,13 @@ use PayPal\Validation\UrlValidator;
 
 class Paypal {
 
+    protected $client_id = "AU1Jzf7ziTCncrNsNBjmk_tD03Iz_1o8J4FNGTh5Z2mYHRSV21eh6rQbPDiQgOzTFiVXFmLdtzT4XzI_";
+    protected $client_secret = "EOAduWQh9BvX-i78i9RPD0emR85RE2PWwDaMEs2KG96Z5cOSShn7Sepw_YKmU5Z2GKapucmXO9zFIsYo";
+
     public function setupPaymentAndGetRedirectURL($order, $products, $client, $delivery){
         $apiContext = new ApiContext(new OAuthTokenCredential(
-            'AV2uvUfs9XUFfpi6s-mEsyTNyqYknJcHxGwSo6gzluCfn9ALf0m7f1qgFrscrUQ0rq54KZ2PTDrsqDYh',
-            'EH9p-fTzo0TkwZGTjD04kg4Clpqd3_tSUBtFaLfJe6kdisZUWweWVX27AEpSTK4wVwKNrHLg1uyeDeEa'
+            $this->client_id,
+            $this->client_secret
         ));
 
         $payer = new Payer();
@@ -122,8 +125,8 @@ class Paypal {
 
     public function executePayment($paymentId, $payerID){
         $apiContext = new ApiContext(new OAuthTokenCredential(
-            'AV2uvUfs9XUFfpi6s-mEsyTNyqYknJcHxGwSo6gzluCfn9ALf0m7f1qgFrscrUQ0rq54KZ2PTDrsqDYh',
-            'EH9p-fTzo0TkwZGTjD04kg4Clpqd3_tSUBtFaLfJe6kdisZUWweWVX27AEpSTK4wVwKNrHLg1uyeDeEa'
+            $this->client_id,
+            $this->client_secret
         ));
         try {
 
@@ -158,8 +161,8 @@ class Paypal {
 
     public function prueba(){
         $apiContext = new ApiContext(new OAuthTokenCredential(
-            'AV2uvUfs9XUFfpi6s-mEsyTNyqYknJcHxGwSo6gzluCfn9ALf0m7f1qgFrscrUQ0rq54KZ2PTDrsqDYh',
-            'EH9p-fTzo0TkwZGTjD04kg4Clpqd3_tSUBtFaLfJe6kdisZUWweWVX27AEpSTK4wVwKNrHLg1uyeDeEa'
+            $this->client_id,
+            $this->client_secret
         ));
         $ps = Payment::all([], $apiContext);
         print_r($ps);
