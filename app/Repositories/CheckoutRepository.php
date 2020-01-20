@@ -168,7 +168,7 @@ class CheckoutRepository {
             }
             $precio *= 1.04;
             $rowInserted = DB::connection('digicom')
-                ->table('productoscotizados_jardepot')
+                ->table('productosCotizados_jardepot')
                 ->insertGetId([
                     'idCotizaciones' => $quotation->idCotizaciones,
                     'cantidad' => $product->cantidad,
@@ -180,7 +180,7 @@ class CheckoutRepository {
         }
         if($quotation->total < $deliveryMethod->deliveryMethod->min){
             $rowInserted = DB::connection('digicom')
-                ->table('productoscotizados_jardepot')
+                ->table('productosCotizados_jardepot')
                 ->insertGetId([
                     'idCotizaciones' => $quotation->idCotizaciones,
                     'cantidad' => 1,
