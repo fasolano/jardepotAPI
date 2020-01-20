@@ -17,9 +17,11 @@ use PayPal\Validation\UrlValidator;
 
 
 class Paypal {
-
-    protected $client_id = "AU1Jzf7ziTCncrNsNBjmk_tD03Iz_1o8J4FNGTh5Z2mYHRSV21eh6rQbPDiQgOzTFiVXFmLdtzT4XzI_";
-    protected $client_secret = "EOAduWQh9BvX-i78i9RPD0emR85RE2PWwDaMEs2KG96Z5cOSShn7Sepw_YKmU5Z2GKapucmXO9zFIsYo";
+//    PRODUCCCIÓN
+//    protected $client_id = "AU1Jzf7ziTCncrNsNBjmk_tD03Iz_1o8J4FNGTh5Z2mYHRSV21eh6rQbPDiQgOzTFiVXFmLdtzT4XzI_";
+//    protected $client_secret = "EOAduWQh9BvX-i78i9RPD0emR85RE2PWwDaMEs2KG96Z5cOSShn7Sepw_YKmU5Z2GKapucmXO9zFIsYo";
+    protected $client_id = "ASOLVloSK-ZQqY7U_hPQeRih6TuIW49a6KMmmj3l1CMC4GjEZfJN6bdG8QwuT1g38Uxg31ASTovsaSR2";
+    protected $client_secret = "EKh5fZe4QqiJwXTn7kBH-L1oAZ5yG8UTV9DiekA5-CuT3N2-Pmd_6P3KVglIZl_N5d8PXaaZWLdOhT1B";
 
     public function setupPaymentAndGetRedirectURL($order, $products, $client, $delivery){
         $apiContext = new ApiContext(new OAuthTokenCredential(
