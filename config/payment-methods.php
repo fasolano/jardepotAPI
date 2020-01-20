@@ -7,7 +7,7 @@ return [
         'paypal'
     ],
 
-    'use_sandbox' => env('SANDBOX_GATEWAYS', true),
+    'use_sandbox' => env('SANDBOX_GATEWAYS', false),
 
     'mercadopago' => [
         'logo' => '/img/payment/mercadopago.png',
@@ -17,7 +17,6 @@ return [
     ],
 
     'paypal' => [
-//        'logo' => '/img/payment/mercadopago.png',
         'display' => 'PayPal',
         'client' => env('PP_ID'),
         'secret' => env('PP_SECRET'),
