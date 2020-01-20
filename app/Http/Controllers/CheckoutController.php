@@ -66,7 +66,7 @@ class CheckoutController extends Controller {
 
         $billingForm = $this->dataBilling(json_decode($forms->billMandatory), json_decode($forms->needBilling));
 
-        $deliveryForm = $this->dataDelivery(json_decode($forms->billing));
+        $deliveryForm = $this->dataDelivery(json_decode($forms->billing), json_decode($forms->delivery));
 
         $billingDeleveryData = array_merge($deliveryForm, $billingForm);
 
