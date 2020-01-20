@@ -95,9 +95,19 @@ class CheckoutController extends Controller {
             $content[$key]["brand"] = $product->brand;
             $content[$key]["mpn"] = $product->mpn;
         }
+        $formDelivery = json_decode($forms->delivery);
+        if($quotation->total < $formDelivery->deliveryMethod->min){
+            $send['cantidad'] = 1;
+            $send['nombre'] ='Manejo de Mercancía Envío paquetería';
+            $send['precio'] = $formDelivery->deliveryMethod->cost;
+            $send['productType'] = '';
+            $send['brand'] = '';
+            $send['mpn'] = '';
+            array_push($content, $send);
+        }
 
         $nombre = $clientForm['nombre']. " " .$clientForm['apellidos'];
-        if($this->sendQuotationMail($clientForm['email'], $nombre, $quotation->clave, $content)){
+        if($this->sendQuotationMail($clientForm['email'], $nombre, $quotation->idCotizaciones, $content)){
             return $this->sendAlertMail($clientForm, $billingDeleveryData, $quotation->idCotizaciones);
         }
 
@@ -174,8 +184,8 @@ class CheckoutController extends Controller {
     }
 
     protected function sendQuotationMail($correo, $nombre, $quotation, $content){
-//        $url = 'https://digicom.mx/instalar_virus/sitios/jardepot/ventas/cotizaciones/enviarCotizacionDesdePagina.php';
-        $url = 'https://koot.mx/digicom/public/instalar_virus/sitios/jardepot/ventas/cotizaciones/enviarCotizacionDesdePagina.php';
+//        $url = 'http://digicom.mx/instalar_virus/sitios/jardepot/ventas/cotizaciones/enviarCotizacionDesdePagina.php';
+        $url = 'http://koot.mx/digicom/public/instalar_virus/sitios/jardepot/ventas/cotizaciones/enviarCotizacionDesdePagina.php';
         $fields = array(
             'para' => urlencode($correo),
             'nombre' => urlencode($nombre),
