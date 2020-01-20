@@ -115,9 +115,11 @@ class CheckoutController extends Controller {
 
         $client = $this->repository->insertClient($clientForm);
 
+        print_r($cart);
         //Obtiene el carro completo
         $cart = $cartRepository->getCart($cart);
 
+        print_r($cart);
         //Finaliza el carro para que no se vuelva a cargar
         $cartRepository->closeCart($cart);
 
