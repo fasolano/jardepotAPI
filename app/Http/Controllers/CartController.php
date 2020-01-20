@@ -20,7 +20,7 @@ class CartController extends Controller {
         $cookie = json_decode($request->get('sessionCookie'));
         $user = $api->evaluate($cookie);
         if(!$user){
-            echo json_encode([null, 'status' => 401]);
+            echo json_encode(null);
             die();
         }
     }
