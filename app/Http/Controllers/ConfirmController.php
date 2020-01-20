@@ -25,11 +25,11 @@ class ConfirmController extends Controller {
                     case 'MercadoPago':
                         $token = $this->getExternalReference($content->external_reference);
                         if ($token == null) {
-                            return response()->json(['data' => 'failure'], 500);
+                            return response()->json(['data' => 'failure'], 200);
                         }
                         $order = $this->repository->verifyTokenAndPaymentMethod($payment, $token);
                         if ($order == null) {
-                            return response()->json(['data' => 'failure'], 500);
+                            return response()->json(['data' => 'failure'], 200);
                         }
                         $this->repository->createDeposit($order->total, $order->idPedidos, $payment, $order->fk_carrito);
                         $this->sendConfirmationMails($order->idPedidos);
@@ -40,7 +40,7 @@ class ConfirmController extends Controller {
                         $token = $this->getTokenFromPayment($content);
                         $order = $this->repository->verifyTokenAndPaymentMethod($payment, $token);
                         if ($order == null) {
-                            return response()->json(['data' => 'failure'], 500);
+                            return response()->json(['data' => 'failure'], 200);
                         }
                         $this->repository->createDeposit($order->total, $order->idPedidos, $payment, $order->fk_carrito);
                         $this->sendConfirmationMails($order->idPedidos);
