@@ -21,8 +21,8 @@ class MercadoPago{
         SDK::setClientSecret(
             config("payment-methods.mercadopago.secret")
         );
-        SDK::setAccessToken('TEST-5638063890376208-011617-1a3cddb25af402b23f7c009bb6c31a55-64380403');
-        SDK::setPublicKey('TEST-27d7cde2-7090-414d-a3f6-86af0cec99af');
+        SDK::setAccessToken('APP_USR-8224945122859735-122615-a76e6f063a67e18cdf0480846f99ba5e-191284474');
+        SDK::setPublicKey('APP_USR-63cd8043-c639-4031-84dd-648178659e68');
     }
 
     public function notification($id){
@@ -99,9 +99,9 @@ class MercadoPago{
         # Save External Reference
         $preference->external_reference = $order->token;
         $preference->back_urls = [
-            "success" => 'http://localhost:4200/confirmation/success/MercadoPago',
-            "pending" => 'http://localhost:4200/confirmation/pending/MercadoPago',
-            "failure" => 'http://localhost:4200/confirmation/failure/MercadoPago',
+            "success" => 'http://koot.mx/jardepot/confirmation/success/MercadoPago',
+            "pending" => 'http://koot.mx/jardepot/confirmation/pending/MercadoPago',
+            "failure" => 'http://koot.mx/jardepot/confirmation/failure/MercadoPago',
         ];
         $preference->notification_url = 'http://koot.mx/jardepot/jardepotAPI/public/api/confirm/prueba/confirmation/notification/MercadoPago';
 
