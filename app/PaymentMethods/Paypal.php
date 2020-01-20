@@ -20,8 +20,8 @@ class Paypal {
 
     public function setupPaymentAndGetRedirectURL($order, $products, $client, $delivery){
         $apiContext = new ApiContext(new OAuthTokenCredential(
-            'AXYsm9VJ1VvDrdy5xzQHHJBnnhuhEKcFWhhFPkXBZI9V-G4CmfiXDpNh2DaKT06EaWDFnqWG_1z5ztbi',
-            'EB_7zrhzobGhC9Pp4NrLp-uMw_VhowRAvdDROZfGKtHto6LTMz1aUhtTS50INu-Jq5Qodx6raDPEp5fO'
+            'AV2uvUfs9XUFfpi6s-mEsyTNyqYknJcHxGwSo6gzluCfn9ALf0m7f1qgFrscrUQ0rq54KZ2PTDrsqDYh',
+            'EH9p-fTzo0TkwZGTjD04kg4Clpqd3_tSUBtFaLfJe6kdisZUWweWVX27AEpSTK4wVwKNrHLg1uyeDeEa'
         ));
 
         $payer = new Payer();
@@ -122,8 +122,8 @@ class Paypal {
 
     public function executePayment($paymentId, $payerID){
         $apiContext = new ApiContext(new OAuthTokenCredential(
-            'AXYsm9VJ1VvDrdy5xzQHHJBnnhuhEKcFWhhFPkXBZI9V-G4CmfiXDpNh2DaKT06EaWDFnqWG_1z5ztbi',
-            'EB_7zrhzobGhC9Pp4NrLp-uMw_VhowRAvdDROZfGKtHto6LTMz1aUhtTS50INu-Jq5Qodx6raDPEp5fO'
+            'AV2uvUfs9XUFfpi6s-mEsyTNyqYknJcHxGwSo6gzluCfn9ALf0m7f1qgFrscrUQ0rq54KZ2PTDrsqDYh',
+            'EH9p-fTzo0TkwZGTjD04kg4Clpqd3_tSUBtFaLfJe6kdisZUWweWVX27AEpSTK4wVwKNrHLg1uyeDeEa'
         ));
         try {
 
@@ -158,8 +158,8 @@ class Paypal {
 
     public function prueba(){
         $apiContext = new ApiContext(new OAuthTokenCredential(
-            'AXYsm9VJ1VvDrdy5xzQHHJBnnhuhEKcFWhhFPkXBZI9V-G4CmfiXDpNh2DaKT06EaWDFnqWG_1z5ztbi',
-            'EB_7zrhzobGhC9Pp4NrLp-uMw_VhowRAvdDROZfGKtHto6LTMz1aUhtTS50INu-Jq5Qodx6raDPEp5fO'
+            'AV2uvUfs9XUFfpi6s-mEsyTNyqYknJcHxGwSo6gzluCfn9ALf0m7f1qgFrscrUQ0rq54KZ2PTDrsqDYh',
+            'EH9p-fTzo0TkwZGTjD04kg4Clpqd3_tSUBtFaLfJe6kdisZUWweWVX27AEpSTK4wVwKNrHLg1uyeDeEa'
         ));
         $ps = Payment::all([], $apiContext);
         print_r($ps);
