@@ -127,7 +127,7 @@ class ProductController extends Controller{
                     $response[$iterator]['images'][0]['big'] = 'assets/images/images/' . $img . '.jpg';
                     //empieza la seccion de precios
                     if (isset($item->offer) && $item->offer == 'si') {
-                        $response[$iterator]['discount'] = "Producto en Oferta";
+                        $response[$iterator]['discount'] = "Oferta";
 
                         if ($item->PrecioDeLista > $item->oferta ) {
                             $response[$iterator]['oldPrice'] = $item->PrecioDeLista;
@@ -169,7 +169,7 @@ class ProductController extends Controller{
                 $response[$iterator]['images'][0]['big'] = 'assets/images/images/' . $img . '.jpg';
                 //empieza la seccion de precios
                 if (isset($item->offer) && $item->offer == 'si') {
-                    $response[$iterator]['discount'] = "Producto en Oferta";
+                    $response[$iterator]['discount'] = "Oferta";
 
                     if ($item->PrecioDeLista > $item->oferta ) {
                         $response[$iterator]['oldPrice'] = $item->PrecioDeLista;
@@ -320,7 +320,7 @@ class ProductController extends Controller{
             }
             //empieza la seccion de precios
             if (isset($item->offer) && $item->offer == 'si') {
-                $response[$iterator]['discount'] = "Producto en Oferta";
+                $response[$iterator]['discount'] = "Oferta";
 
                 if ($item->PrecioDeLista > $item->oferta ) {
                     $response[$iterator]['oldPrice'] = $item->PrecioDeLista;
