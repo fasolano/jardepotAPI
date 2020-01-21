@@ -127,11 +127,11 @@ class ProductController extends Controller{
                     $response[$iterator]['images'][0]['big'] = 'assets/images/images/' . $img . '.jpg';
                     //empieza la seccion de precios
                     if (isset($item->offer) && $item->offer == 'si') {
-                        $response[$iterator]['discount'] = "OFERTA";
+                        $response[$iterator]['discount'] = "Producto en Oferta";
 
                         if ($item->PrecioDeLista > $item->oferta ) {
                             $response[$iterator]['oldPrice'] = $item->PrecioDeLista;
-                            $response[$iterator]['newPrice'] = $item->priceweb;
+                            $response[$iterator]['newPrice'] = $item->oferta;
                         } else {
                             $response[$iterator]['newPrice'] = $item->oferta;
                         }
@@ -169,11 +169,11 @@ class ProductController extends Controller{
                 $response[$iterator]['images'][0]['big'] = 'assets/images/images/' . $img . '.jpg';
                 //empieza la seccion de precios
                 if (isset($item->offer) && $item->offer == 'si') {
-                    $response[$iterator]['discount'] = "OFERTA";
+                    $response[$iterator]['discount'] = "Producto en Oferta";
 
                     if ($item->PrecioDeLista > $item->oferta ) {
                         $response[$iterator]['oldPrice'] = $item->PrecioDeLista;
-                        $response[$iterator]['newPrice'] = $item->priceweb;
+                        $response[$iterator]['newPrice'] = $item->oferta;
                     } else {
                         $response[$iterator]['newPrice'] = $item->oferta;
                     }
@@ -320,11 +320,11 @@ class ProductController extends Controller{
             }
             //empieza la seccion de precios
             if (isset($item->offer) && $item->offer == 'si') {
-                $response[$iterator]['discount'] = "OFERTA";
+                $response[$iterator]['discount'] = "Producto en Oferta";
 
                 if ($item->PrecioDeLista > $item->oferta ) {
                     $response[$iterator]['oldPrice'] = $item->PrecioDeLista;
-                    $response[$iterator]['newPrice'] = $item->priceweb;
+                    $response[$iterator]['newPrice'] = $item->oferta;
                 } else {
                     $response[$iterator]['newPrice'] = $item->oferta;
                 }
