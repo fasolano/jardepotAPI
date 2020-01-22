@@ -762,7 +762,7 @@ class ProductRepository{
                     $response[$iterator]['images'][0]['medium'] = 'assets/images/images/' . $img . '.jpg';
                     $response[$iterator]['images'][0]['big'] = 'assets/images/images/' . $img . '.jpg';
                     if ($match["offer"] == "si") {
-                        $response[$iterator]['discount'] = "Producto en Oferta";
+                        $response[$iterator]['discount'] = "Oferta";
                         //solo pone precio de lista cuando es mayor!!
                         if ( $match["PrecioDeLista"] > $match["oferta"]) {
                             $response[$iterator]['oldPrice'] = $match["PrecioDeLista"];
