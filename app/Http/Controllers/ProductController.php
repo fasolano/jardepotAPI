@@ -384,4 +384,32 @@ class ProductController extends Controller{
         $res = $this -> productoRepository -> sendBusqueda($forms,$busqueda);
         return json_encode(['resultado'=> $res]);
    }
+
+    public function validateImages(){
+        $products = $this->productoRepository->validateImages();
+        $iterator = 0;
+        $response = array();
+        foreach ($products as $item) {
+            $img = strtolower($item->productType . "-" . $item->brand . "-" . $item->mpn);
+
+            $contadorCarrusel = 1;
+            $ima=file_exists(strtr('http://localhost/jardepot'.'/assets/images/images/'.$img.'.jpg', $this-> unwanted_array));
+            $ima1=file_exists(strtr('http://localhost/jardepot'.'/assets/images/images/'.$img.'-'.$contadorCarrusel.'.jpg', $this-> unwanted_array));
+            echo $ima == true ? 'si' : 'no';
+            echo $ima1 == true ? 'si' : 'no';
+//            $response[$iterator]['existe']=file_exists(strtr('http://localhost:4200'.'/jardepot/assets/images/images/'.$img.'.jpg', $this-> unwanted_array));
+          /*  if($ima == false && $ima1 == false){
+                //echo $img;
+                echo $item->productType . " " . $item->brand . " " . $item->mpn;
+                echo '<br>';
+//                $response[$iterator]['nombre'] = $item->productType . " " . $item->brand . " " . $item->mpn;
+//                $response[$iterator]['existe']=$ima;
+//                $response[$iterator]['existe1']=$ima1;
+//                $iterator++;
+            }*/
+
+        }
+       // return [$response];
+    }
+
 }

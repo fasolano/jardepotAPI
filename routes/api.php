@@ -45,3 +45,4 @@ Route::get('confirm/prueba', 'ConfirmController@prueba');
 Route::get('checkout/success', 'ApiTokenController@index');
 Route::post('checkout/createOrder', 'CheckoutController@createOrder');
 
+Route::get('products/validateImages', 'ProductController@validateImages');
