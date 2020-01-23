@@ -163,7 +163,8 @@ class CheckoutController extends Controller {
     }
 
     protected function sendAlertMail($clientForm, $billingDeleveryData, $quotation){
-        $destino = "fasolanof@gmail.com";
+//        $destino = "fasolanof@gmail.com";
+        $destino = "ventas@jardepot.com";
         $dia = date('d-m-Y');
         $hora = date('H:i:s');
 
@@ -185,7 +186,8 @@ class CheckoutController extends Controller {
 
     protected function sendQuotationMail($correo, $nombre, $quotation, $content){
 //        $url = 'http://digicom.mx/instalar_virus/sitios/jardepot/ventas/cotizaciones/enviarCotizacionDesdePagina.php';
-        $url = 'http://koot.mx/digicom/public/instalar_virus/sitios/jardepot/ventas/cotizaciones/enviarCotizacionDesdePagina.php';
+//        $url = 'http://koot.mx/digicom/public/instalar_virus/sitios/jardepot/ventas/cotizaciones/enviarCotizacionDesdePagina.php';
+        $url = 'https://jardepot.com/digicom/public/instalar_virus/sitios/jardepot/ventas/cotizaciones/enviarCotizacionDesdePagina.php';
         $fields = array(
             'para' => urlencode($correo),
             'nombre' => urlencode($nombre),
@@ -301,42 +303,5 @@ class CheckoutController extends Controller {
         }
 
     }
-
-    /*public function isWholesale($cart, $forms){
-        $cartRepository = new CartRepository();
-        $products = $cartRepository->getProductsFromCart($cart);
-        $whosale = false;
-        foreach ($products as $product) {
-            if($product->cantidad >= 10){
-                $whosale = true;
-            }
-        }
-        if($whosale){
-            $clientForm = $this->dataClient(json_decode($forms->billing));
-            $day = date('d-m-Y');
-            $hour = date('H:i');
-
-        }
-
-    }*/
-
-    /*public function sendAlert(){
-        $destino = "fasolanof@gmail.com";
-//        $destino = "ventas4@jardepot.com";
-
-        $data = [
-            'nombre' => $nombre,
-            'telefono' => $telefono,
-            'mail' => $mail,
-            'comentario' => $comentarios,
-            'carrito' => $carrito,
-            'total' => $total
-        ];
-        Mail::send('mails.whosale', $data, function ($message) use ($destino) {
-            $message->to($destino)->subject
-            ('Consulta de refacciones en Jardepot');
-            $message->from('sistemas1@jardepot.com', 'Sitemas Jardepot');
-        });
-    }*/
 
 }

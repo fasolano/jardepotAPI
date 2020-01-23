@@ -61,7 +61,6 @@ class ProductRepository{
             )
             ->distinct('productos.mpn')
             ->orderBy('pc.producto', 'asc')
-
             ->where([
                 "productos.visible" => "si",
                 "c3.idCategoriasNivel2" => $nivel2
