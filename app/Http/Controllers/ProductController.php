@@ -122,9 +122,9 @@ class ProductController extends Controller{
                     $img = strtolower($item->productType . "-" . $item->brand . "-" . $item->mpn);
                     $response[$iterator]['id'] = $item->id;
                     $response[$iterator]['name'] = $item->productType . " " . $item->brand . " " . $item->mpn;
-                    $response[$iterator]['images'][0]['small'] = 'assets/images/images/' . $img . '.jpg';
-                    $response[$iterator]['images'][0]['medium'] = 'assets/images/images/' . $img . '.jpg';
-                    $response[$iterator]['images'][0]['big'] = 'assets/images/images/' . $img . '.jpg';
+                    $response[$iterator]['images'][0]['small'] = 'assets/images/productos/' . $img . '.jpg';
+                    $response[$iterator]['images'][0]['medium'] = 'assets/images/productos/' . $img . '.jpg';
+                    $response[$iterator]['images'][0]['big'] = 'assets/images/productos/' . $img . '.jpg';
                     //empieza la seccion de precios
                     if (isset($item->offer) && $item->offer == 'si') {
                         $response[$iterator]['discount'] = "Oferta";
@@ -164,9 +164,9 @@ class ProductController extends Controller{
                 $img = strtolower($item->productType . "-" . $item->brand . "-" . $item->mpn);
                 $response[$iterator]['id'] = $item->id;
                 $response[$iterator]['name'] = $item->productType . " " . $item->brand . " " . $item->mpn;
-                $response[$iterator]['images'][0]['small'] = 'assets/images/images/' . $img . '.jpg';
-                $response[$iterator]['images'][0]['medium'] = 'assets/images/images/' . $img . '.jpg';
-                $response[$iterator]['images'][0]['big'] = 'assets/images/images/' . $img . '.jpg';
+                $response[$iterator]['images'][0]['small'] = 'assets/images/productos/' . $img . '.jpg';
+                $response[$iterator]['images'][0]['medium'] = 'assets/images/productos/' . $img . '.jpg';
+                $response[$iterator]['images'][0]['big'] = 'assets/images/productos/' . $img . '.jpg';
                 //empieza la seccion de precios
                 if (isset($item->offer) && $item->offer == 'si') {
                     $response[$iterator]['discount'] = "Oferta";
@@ -308,14 +308,14 @@ class ProductController extends Controller{
             $img = strtolower($item->productType . "-" . $item->brand . "-" . $item->mpn);
             $response[$iterator]['id'] = $item->id;
             $response[$iterator]['name'] = $item->productType . " " . $item->brand . " " . $item->mpn;
-            $response[$iterator]['images'][0]['small'] = 'assets/images/images/' . $img . '.jpg';
-            $response[$iterator]['images'][0]['medium'] = 'assets/images/images/' . $img . '.jpg';
-            $response[$iterator]['images'][0]['big'] = 'assets/images/images/' . $img . '.jpg';
+            $response[$iterator]['images'][0]['small'] = 'assets/images/productos/' . $img . '.jpg';
+            $response[$iterator]['images'][0]['medium'] = 'assets/images/productos/' . $img . '.jpg';
+            $response[$iterator]['images'][0]['big'] = 'assets/images/productos/' . $img . '.jpg';
             $contadorCarrusel = 1;
-            while (file_exists(strtr(public_path().'/jardepot/assets/images/images/'.$img.'-'.$contadorCarrusel.'.jpg', $this-> unwanted_array )) && $contadorCarrusel < 4) {
-                $response[$iterator]['images'][$contadorCarrusel]['small'] = 'assets/images/images/' . $img . '-'.$contadorCarrusel.'.jpg';
-                $response[$iterator]['images'][$contadorCarrusel]['medium'] = 'assets/images/images/' . $img . '-'.$contadorCarrusel.'.jpg';
-                $response[$iterator]['images'][$contadorCarrusel]['big'] = 'assets/images/images/' . $img . '-'.$contadorCarrusel.'.jpg';
+            while (file_exists(strtr(public_path().'/jardepot/assets/images/productos/'.$img.'-'.$contadorCarrusel.'.jpg', $this-> unwanted_array )) && $contadorCarrusel < 4) {
+                $response[$iterator]['images'][$contadorCarrusel]['small'] = 'assets/images/productos/' . $img . '-'.$contadorCarrusel.'.jpg';
+                $response[$iterator]['images'][$contadorCarrusel]['medium'] = 'assets/images/productos/' . $img . '-'.$contadorCarrusel.'.jpg';
+                $response[$iterator]['images'][$contadorCarrusel]['big'] = 'assets/images/productos/' . $img . '-'.$contadorCarrusel.'.jpg';
                 $contadorCarrusel ++;
             }
             //empieza la seccion de precios
@@ -392,7 +392,7 @@ class ProductController extends Controller{
         foreach ($products as $item) {
             $img = strtolower($item->productType . "-" . $item->brand . "-" . $item->mpn);
             $contadorCarrusel = 1;
-            $ima=file_exists(strtr(base_path().'/../jardepot/assets/images/images/'.$img.'.jpg', $this-> unwanted_array));
+            $ima=file_exists(strtr(base_path().'/../jardepot/assets/images/productos/'.$img.'.jpg', $this-> unwanted_array));
             if(!$ima){
                 echo "Nombre imagen: ".$img." Nombre producto: ".$item->productType . " " . $item->brand . " " . $item->mpn;
                 echo "<br>";
