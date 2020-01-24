@@ -21,8 +21,8 @@ class MercadoPago{
         SDK::setAccessToken('TEST-5218597946840536-011519-f0feee1d9aa73c866bf25d8975e45fa9-509669228');*/
         SDK::setClientId("8224945122859735");
         SDK::setClientSecret("oezGzmodwi7mKkC7xOQ7wvi8niF6xKSd");
-        SDK::setPublicKey('TEST-6dd5ef51-65da-4835-90ac-015e71ae3621');
-        SDK::setAccessToken('TEST-8224945122859735-122615-d88844d56e86f435b36882b456e1adfb-191284474');
+        SDK::setPublicKey('APP_USR-63cd8043-c639-4031-84dd-648178659e68');
+        SDK::setAccessToken('APP_USR-8224945122859735-122615-a76e6f063a67e18cdf0480846f99ba5e-191284474');
     }
 
     public function notification($id){
