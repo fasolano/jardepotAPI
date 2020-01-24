@@ -147,7 +147,9 @@ class ConfirmController extends Controller {
     }
 
     public function prueba(){
-        $mp = new Paypal();
-        $mp->prueba();
+        $curl_info = curl_version();
+        echo "protocol: " . $curl_info['ssl_version'];
+        /*$mp = new Paypal();
+        $mp->prueba();*/
     }
 }
