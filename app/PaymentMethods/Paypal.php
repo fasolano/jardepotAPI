@@ -147,6 +147,16 @@ class Paypal {
             $this->client_id,
             $this->client_secret
         ));
+
+
+        $apiContext->setConfig(
+            array(
+                'log.LogEnabled' => true,
+                'log.FileName' => 'PayPal.log',
+                'log.LogLevel' => 'DEBUG',
+                'mode' => 'live'
+            )
+        );
         try {
 
             $payment = Payment::get($paymentId, $apiContext);
@@ -159,6 +169,7 @@ class Paypal {
             try {
                 $payment = Payment::get($paymentId, $apiContext);
             } catch (Exception $ex) {
+                response()->json(['data' => 'failed'], 201);
                 exit(1);
             }
         }catch (\Exception $ex) {
