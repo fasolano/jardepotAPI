@@ -19,8 +19,8 @@ use PayPal\Validation\UrlValidator;
 class Paypal {
 //    PRODUCCCIÓN
 
-    protected $client_id = "AV2uvUfs9XUFfpi6s-mEsyTNyqYknJcHxGwSo6gzluCfn9ALf0m7f1qgFrscrUQ0rq54KZ2PTDrsqDYh";
-    protected $client_secret = "EH9p-fTzo0TkwZGTjD04kg4Clpqd3_tSUBtFaLfJe6kdisZUWweWVX27AEpSTK4wVwKNrHLg1uyeDeEa";
+    protected $client_id = "AU1Jzf7ziTCncrNsNBjmk_tD03Iz_1o8J4FNGTh5Z2mYHRSV21eh6rQbPDiQgOzTFiVXFmLdtzT4XzI_";
+    protected $client_secret = "EOAduWQh9BvX-i78i9RPD0emR85RE2PWwDaMEs2KG96Z5cOSShn7Sepw_YKmU5Z2GKapucmXO9zFIsYo";
 //    protected $client_id = "AU1Jzf7ziTCncrNsNBjmk_tD03Iz_1o8J4FNGTh5Z2mYHRSV21eh6rQbPDiQgOzTFiVXFmLdtzT4XzI_";
 //    protected $client_secret = "EOAduWQh9BvX-i78i9RPD0emR85RE2PWwDaMEs2KG96Z5cOSShn7Sepw_YKmU5Z2GKapucmXO9zFIsYo";
 //    protected $client_id = "ASOLVloSK-ZQqY7U_hPQeRih6TuIW49a6KMmmj3l1CMC4GjEZfJN6bdG8QwuT1g38Uxg31ASTovsaSR2";
@@ -31,6 +31,15 @@ class Paypal {
             $this->client_id,
             $this->client_secret
         ));
+
+        $apiContext->setConfig(
+            array(
+                'log.LogEnabled' => true,
+                'log.FileName' => 'PayPal.log',
+                'log.LogLevel' => 'DEBUG',
+                'mode' => 'live'
+            )
+        );
 
         $payer = new Payer();
         $payer->setPaymentMethod("paypal");
@@ -100,11 +109,11 @@ class Paypal {
             ->setDescription($order->token)
             ->setReferenceId($order->token);
 
-//        $checkUrlSuccess = 'http://koot.mx/jardepot/confirmation/success/PayPal';
-//        $checkUrlFail = 'http://koot.mx/jardepot/confirmation/failure/PayPal';
+        $checkUrlSuccess = 'https://seragromex.com/confirmation/success/PayPal';
+        $checkUrlFail = 'https://seragromex.com/confirmation/failure/PayPal';
 
-        $checkUrlSuccess = 'https://jardepot.com/confirmation/success/PayPal';
-        $checkUrlFail = 'https://jardepot.com/confirmation/failure/PayPal';
+//        $checkUrlSuccess = 'https://jardepot.com/confirmation/success/PayPal';
+//        $checkUrlFail = 'https://jardepot.com/confirmation/failure/PayPal';
 
 //        $checkUrlSuccess = 'http://localhost/jardepot/confirmation/success/PayPal';
 //        $checkUrlFail = 'http://localhost/jardepot/confirmation/failure/PayPal/'.$order->token;

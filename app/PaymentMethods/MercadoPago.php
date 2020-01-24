@@ -98,27 +98,27 @@ class MercadoPago{
 
         # Save External Reference
         $preference->external_reference = $order->token;
-        /*$preference->back_urls = [
-            "success" => 'http://koot.mx/jardepot/confirmation/success/MercadoPago',
-            "pending" => 'http://koot.mx/jardepot/confirmation/pending/MercadoPago',
-            "failure" => 'http://koot.mx/jardepot/confirmation/failure/MercadoPago',
-        ];*/
+        $preference->back_urls = [
+            "success" => 'http://seragromex.com/confirmation/success/MercadoPago',
+            "pending" => 'http://seragromex.com/confirmation/pending/MercadoPago',
+            "failure" => 'http://seragromex.com/confirmation/failure/MercadoPago',
+        ];
         /*$preference->back_urls = [
             "success" => 'http://localhost/jardepot/confirmation/success/MercadoPago',
             "pending" => 'http://localhost/jardepot/confirmation/pending/MercadoPago',
             "failure" => 'http://localhost/jardepot/confirmation/failure/MercadoPago',
         ];*/
-        $preference->back_urls = [
+        /*$preference->back_urls = [
             "success" => 'http://jardepot.com/confirmation/success/MercadoPago',
             "pending" => 'http://jardepot.com/confirmation/pending/MercadoPago',
             "failure" => 'http://jardepot.com/confirmation/failure/MercadoPago',
-        ];
+        ];*/
 
-//        $preference->notification_url = 'http://koot.mx/jardepot/jardepotAPI/public/api/confirm/prueba/confirmation/notification/MercadoPago';
+        $preference->notification_url = 'http://seragromex.com/jardepotAPI/public/api/confirm/prueba/confirmation/notification/MercadoPago';
 
 //        $preference->notification_url = 'http://localhost/jardepotAPI/public/api/confirmation/notification/MercadoPago';
 
-        $preference->notification_url = 'http://jardepot.com/jardepotAPI/public/api/confirm/prueba/confirmation/notification/MercadoPago';
+//        $preference->notification_url = 'http://jardepot.com/jardepotAPI/public/api/confirm/prueba/confirmation/notification/MercadoPago';
 
         $preference->auto_return = "all";
         # Save and POST preference
