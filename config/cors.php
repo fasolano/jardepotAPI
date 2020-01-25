@@ -14,7 +14,7 @@ return [
 
     'supportsCredentials' => false,
     'allowedOrigins' => ['jardepot.com', 'www.jardepot.com', 'https://wwww.jardepot.com', 'https://jardepot.com'],
-    'allowedOriginsPatterns' => [],
+    'allowedOriginsPatterns' => ['*'],
     'allowedHeaders' => ['*'],
     'allowedMethods' => ['*'],
     'exposedHeaders' => [],
