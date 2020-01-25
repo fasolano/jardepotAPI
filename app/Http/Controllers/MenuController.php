@@ -5,8 +5,6 @@ namespace App\Http\Controllers;
 use App\Repositories\MenuRepository;
 use Symfony\Component\HttpFoundation\Request;
 
-header("Access-Control-Allow-Origin: *");
-header("Content-Type: application/json; charset=UTF-8");
 
 class MenuController extends Controller{
 
