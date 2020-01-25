@@ -109,11 +109,11 @@ class Paypal {
             ->setDescription($order->token)
             ->setReferenceId($order->token);
 
-        $checkUrlSuccess = 'https://seragromex.com/confirmation/success/PayPal';
-        $checkUrlFail = 'https://seragromex.com/confirmation/failure/PayPal';
+//        $checkUrlSuccess = 'https://seragromex.com/confirmation/success/PayPal';
+//        $checkUrlFail = 'https://seragromex.com/confirmation/failure/PayPal';
 
-//        $checkUrlSuccess = 'https://jardepot.com/confirmation/success/PayPal';
-//        $checkUrlFail = 'https://jardepot.com/confirmation/failure/PayPal';
+        $checkUrlSuccess = 'https://jardepot.com/confirmation/success/PayPal';
+        $checkUrlFail = 'https://jardepot.com/confirmation/failure/PayPal';
 
 //        $checkUrlSuccess = 'http://localhost/jardepot/confirmation/success/PayPal';
 //        $checkUrlFail = 'http://localhost/jardepot/confirmation/failure/PayPal/'.$order->token;
