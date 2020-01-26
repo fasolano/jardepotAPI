@@ -1,8 +1,5 @@
 <?php
-header('content-type: application/json; charset=utf-8');
-header('Access-Control-Allow-Origin: *');
-header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
-header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE');
+
 return [
 
     /*
@@ -16,7 +13,7 @@ return [
     */
 
     'supportsCredentials' => false,
-    'allowedOrigins' => ['jardepot.com', 'www.jardepot.com', 'https://wwww.jardepot.com', 'https://jardepot.com'],
+    'allowedOrigins' => ['*'],
     'allowedOriginsPatterns' => ['*'],
     'allowedHeaders' => ['*'],
     'allowedMethods' => ['*'],
