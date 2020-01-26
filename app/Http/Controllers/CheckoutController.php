@@ -208,14 +208,20 @@ class CheckoutController extends Controller {
         curl_setopt($ch,CURLOPT_URL, $url);
 //        curl_setopt($ch,CURLOPT_POST, count($fields));
 //        curl_setopt($ch,CURLOPT_POSTFIELDS, $fields_string);
-
+        if(curl_exec($ch) === false)
+        {
+            echo 'Curl error: ' . curl_error($ch);
+        }
+        else
+        {
+            echo 'Operación completada sin errores';
+        }
         //execute post
-        $result = curl_exec($ch);
-        print_r($result);
-        die();
+//        $result = curl_exec($ch);
 
         //close connection
         curl_close($ch);
+        die();
 
         return true;
     }
