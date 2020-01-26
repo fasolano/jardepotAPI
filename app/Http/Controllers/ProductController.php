@@ -212,11 +212,16 @@ class ProductController extends Controller{
         if($product[0].'-'.$product[1] == 'Hilo-Nylon'){
             $productType = 'Hilo-Nylon';
             $brand = str_replace("_", " ", $product[2]);
+            $brand = ucfirst($brand);
             $mpn = str_replace("_", "-", $product[3]);
+            $brand = ucfirst($brand);
         } else {
             $productType = str_replace("_", " ", $product[0]);
+            $productType = ucfirst($productType);
             $brand = str_replace("_", " ", $product[1]);
+            $brand = ucfirst($brand);
             $mpn = str_replace("_", "-", $product[2]);
+            $brand = ucfirst($brand);
         }
 //        $productType = str_replace("_", " ", $product[0]);
 //        $brand = str_replace("_", " ", $product[1]);
