@@ -186,9 +186,8 @@ class CheckoutController extends Controller {
 
     protected function sendQuotationMail($correo, $nombre, $quotation, $content){
 //        $url = 'http://digicom.mx/instalar_virus/sitios/jardepot/ventas/cotizaciones/enviarCotizacionDesdePagina.php';
-//        $url = 'http://koot.mx/digicom/public/instalar_virus/sitios/jardepot/ventas/cotizaciones/enviarCotizacionDesdePagina.php';
+        $url = 'http://koot.mx/digicom/public/instalar_virus/sitios/jardepot/ventas/cotizaciones/enviarCotizacionDesdePagina.php';
 //        $url = 'https://jardepot.com/digicom/public/instalar_virus/sitios/jardepot/ventas/cotizaciones/enviarCotizacionDesdePagina.php';
-        $url = 'https://www.jardepot.com/digicom/public/instalar_virus/sitios/jardepot/ventas/cotizaciones/prueba.txt';
         $fields = array(
             'para' => urlencode($correo),
             'nombre' => urlencode($nombre),
@@ -206,22 +205,14 @@ class CheckoutController extends Controller {
 
         //set the url, number of POST vars, POST data
         curl_setopt($ch,CURLOPT_URL, $url);
-//        curl_setopt($ch,CURLOPT_POST, count($fields));
-//        curl_setopt($ch,CURLOPT_POSTFIELDS, $fields_string);
-        if(curl_exec($ch) === false)
-        {
-            echo 'Curl error: ' . curl_error($ch);
-        }
-        else
-        {
-            echo 'Operación completada sin errores';
-        }
+        curl_setopt($ch,CURLOPT_POST, count($fields));
+        curl_setopt($ch,CURLOPT_POSTFIELDS, $fields_string);
+
         //execute post
-//        $result = curl_exec($ch);
+        $result = curl_exec($ch);
 
         //close connection
         curl_close($ch);
-        die();
 
         return true;
     }
