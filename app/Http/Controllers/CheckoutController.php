@@ -199,7 +199,8 @@ class CheckoutController extends Controller {
         //url-ify the data for the POST
         foreach($fields as $key=>$value) { $fields_string .= $key.'='.$value.'&'; }
         rtrim($fields_string, '&');
-
+        print_r($fields_string);
+        die();
         //open connection
         $ch = curl_init();
 
