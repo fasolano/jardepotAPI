@@ -188,6 +188,7 @@ class CheckoutController extends Controller {
 //        $url = 'http://digicom.mx/instalar_virus/sitios/jardepot/ventas/cotizaciones/enviarCotizacionDesdePagina.php';
 //        $url = 'http://koot.mx/digicom/public/instalar_virus/sitios/jardepot/ventas/cotizaciones/enviarCotizacionDesdePagina.php';
         $url = 'https://jardepot.com/digicom/public/instalar_virus/sitios/jardepot/ventas/cotizaciones/enviarCotizacionDesdePagina.php';
+//        $url = 'https://jardepot.com/digicom/public/instalar_virus/sitios/jardepot/ventas/cotizaciones/prueba.txt';
         $fields = array(
             'para' => urlencode($correo),
             'nombre' => urlencode($nombre),
@@ -210,6 +211,7 @@ class CheckoutController extends Controller {
 
         //execute post
         $result = curl_exec($ch);
+        print_r($result);
 
         //close connection
         curl_close($ch);
