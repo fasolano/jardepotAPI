@@ -209,7 +209,7 @@ class ProductController extends Controller{
     public function getProduct(Request $request){
         $product = $request->get('product');
         $product = explode("-", $product);
-        if($product[0].'-'.$product[1] == 'Hilo-Nylon'){
+        if($product[0].'-'.$product[1] == 'Hilo-Nylon' || $product[0].'-'.$product[1] == 'hilo-nylon'){
             $productType = 'Hilo-Nylon';
             $brand = str_replace("_", " ", $product[2]);
             $brand = ucfirst($brand);
