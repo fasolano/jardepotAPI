@@ -109,7 +109,6 @@ class CheckoutRepository {
             $total = $total + $deliveryMethod->deliveryMethod->cost;
         }
         $date = date('Y-m-d H:i:s');
-        $total *= 1.04;
         $rowInserted = DB::connection('digicom')
             ->table('cotizaciones_jardepot')
             ->insertGetId([
