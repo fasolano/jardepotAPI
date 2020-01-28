@@ -60,7 +60,7 @@ class ProductRepository{
                 DB::raw('SUM(inventario.cantidad) as cantidadInventario')
             )
             ->distinct('productos.mpn')
-            ->orderBy('pc.producto', 'asc')
+            ->orderBy('c3.prioridad', 'asc')
             ->where([
                 "productos.visible" => "si",
                 "c3.idCategoriasNivel2" => $nivel2
