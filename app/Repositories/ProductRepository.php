@@ -63,7 +63,61 @@ class ProductRepository{
             ->orderBy('c3.prioridad', 'asc')
             ->where([
                 "productos.visible" => "si",
-                "c3.idCategoriasNivel2" => $nivel2
+                "c3.idCategoriasNivel2" => $nivel2,
+                "productos.availability" => "in stock"
+            ])
+            ->groupBy('productos.productType',
+                'productos.brand','productos.mpn')
+            ->get();
+
+        return $datos;
+    }
+
+    public function getProductsOffer(){
+        $datos = DB::table('productos')
+            ->join("XML", function($join){
+                $join->on("productos.productType","=","XML.productType")
+                    ->on("productos.brand","=","XML.brand")
+                    ->on("productos.mpn","=","XML.mpn");
+            })
+            ->join("productosCategoriasNivel3", function ($join){
+                $join->on("productos.productType", DB::raw("REPLACE(productosCategoriasNivel3.productType,'_',' ')"))
+                    ->on("productos.brand", DB::raw("REPLACE(productosCategoriasNivel3.brand,'_',' ')"))
+                    ->on("productos.mpn", DB::raw("REPLACE(productosCategoriasNivel3.mpn,'_',' ')"));
+            })
+            ->join('categoriasNivel3 as c3', 'c3.idCategoriasNivel3', '=', 'productosCategoriasNivel3.idCategoriasNivel3')
+            ->leftJoin("inventario",function($join){
+                $join->on("productos.productType","=","inventario.productType")
+                    ->on("productos.brand","=","inventario.brand")
+                    ->on("productos.mpn","=","inventario.mpn");
+            })
+            ->select(
+                'productos.id',
+                'productos.productType',
+                'productos.brand',
+                'productos.mpn',
+                'productos.description',
+                'productos.availability',
+                'productos.priceweb',
+                'productos.oferta',
+                'productos.PrecioDeLista',
+                'productos.offer',
+                'productos.iva',
+                'productos.video',
+                'productos.volada',
+                'productos.visible',
+                'XML.keywords',
+                'XML.metadesc',
+                'XML.descriptionweb',
+                'XML.resenia',
+                DB::raw('SUM(inventario.cantidad) as cantidadInventario')
+            )
+            ->distinct('productos.mpn')
+            ->orderBy('productos.productType', 'asc')
+            ->where([
+                "productos.visible" => "si",
+                "productos.offer" => "si",
+                "productos.availability" => "in stock"
             ])
             ->groupBy('productos.productType',
                 'productos.brand','productos.mpn')
@@ -76,6 +130,7 @@ class ProductRepository{
         $valores = array();
         array_push($valores, ["productos.visible", '=', "si"]);
         array_push($valores, ["c3.idCategoriasNivel2", '=', $nivel2]);
+        array_push($valores, ["productos.availability", "=", "in stock"]);
         $datos = DB::table('productos')
             ->join("XML", function($join){
                 $join->on("productos.productType","=","XML.productType")
@@ -139,7 +194,10 @@ class ProductRepository{
                 DB::raw('COUNT(pc.producto) AS r')
             )
             ->groupBy('pc.producto')
-            ->where(['pc.producto' => $producto])
+            ->where([
+                'pc.producto' => $producto,
+                "productos.availability" => "in stock"
+            ])
             ->whereRaw($filtros)
             ->groupBy('pc.producto')
             ->having('r', '=', $cant)
@@ -191,6 +249,7 @@ class ProductRepository{
                 'productos.productType' => $productType,
                 'productos.brand' => $brand,
                 'productos.mpn' => $mpn,
+                "productos.availability" => "in stock"
             ])
             ->groupBy(
                 'productos.productType',
@@ -244,7 +303,8 @@ class ProductRepository{
                 ['productos.productType', $productType],
                 ['productos.kind', 'MAQ'],
                 ['productos.visible', 'si'],
-                ['productos.mpn', '!=', $mpn]
+                ['productos.mpn', '!=', $mpn],
+                ["productos.availability", "=", "in stock"]
             ])
             ->whereRaw(
                 "productos.priceweb >= (select priceweb * 0.75 as priceweb from productos where productType = '".$productType."' AND brand = '".$brand."' AND mpn = '".$mpn."') AND ".
@@ -425,7 +485,7 @@ class ProductRepository{
 
         $groupBy = "group by productos.productType, productos.brand,productos.mpn";
         if($banderaWhere){
-            $sql .= " WHERE ";
+            $sql .= " WHERE productos.availability = 'in stock' and ";
             $productosType = DB::select( DB::raw($sql . $sqlType . $groupBy) );
             $productosMpn = DB::select( DB::raw($sql . $sqlMpn. $groupBy) );
             $productosBrand = DB::select( DB::raw($sql . $sqlBrand. $groupBy) );
@@ -525,18 +585,6 @@ class ProductRepository{
     }
 
     public function getProductsSearch($busqueda){
-        $busqueda = trim($busqueda);
-
-        //Dia y hora actual de la transacción
-        $diaActual = date('Y-m-d H:m:s');
-
-        //Registro de todas las busquedas que se hacen
-        DB::table('busqueda')->insert(
-            [
-                'textoBusqueda'=>$busqueda,
-                'fechaBusqueda'=>$diaActual
-            ]
-        );
 
         $encontrados = "";
         $matches = array();
@@ -620,7 +668,8 @@ class ProductRepository{
                     )
                     ->distinct('productos.mpn')
                     ->where([
-                        ["productos.brand" ,"like",$busqueda2 ]
+                        ["productos.brand" ,"like",$busqueda2 ],
+                        ["productos.availability" , "=", "in stock"]
                     ])
                     ->orWhere([
                         ["productos.visible" , '=',"si"],
@@ -707,7 +756,8 @@ class ProductRepository{
                         DB::raw('SUM(inventario.cantidad) as cantidadInventario')
                     )
                     ->where([
-                        ["productos.brand" ,"like", $busqueda2]
+                        ["productos.brand" ,"like", $busqueda2],
+                        ["productos.availability" , "=", "in stock"]
                     ])
                     ->orWhere([
                         ["productos.productType","like", $busqueda2]

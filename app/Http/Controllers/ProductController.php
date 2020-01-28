@@ -232,7 +232,6 @@ class ProductController extends Controller{
                 $mpnTemp .= "-".$product[$conta];
                 $conta++;
             }
-
             $mpn = str_replace("_", "-", $mpnTemp);
             $brand = ucfirst($brand);
         }
@@ -318,6 +317,7 @@ class ProductController extends Controller{
         $levels = $this->productoRepository->getProductlevels($productType);
         return json_encode($levels);
     }
+
      //esta externamente en otras dos funciones y en el repository
     public function model_format_products($products){
         $iterator = 0;
@@ -385,6 +385,15 @@ class ProductController extends Controller{
         if(count($productos) == 0){
             $productos='emptyProducts';
         }
+        return json_encode($productos);
+   }
+
+   public function getProductsOffer(Request $request){
+        $productos = $this->productoRepository->getProductsOffer();
+        if(count($productos) == 0){
+            $productos='emptyProducts';
+        }
+       $productos = $this->model_format_products($productos);
         return json_encode($productos);
    }
 
