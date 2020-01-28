@@ -213,7 +213,12 @@ class ProductController extends Controller{
             $productType = 'Hilo-Nylon';
             $brand = str_replace("_", " ", $product[2]);
             $brand = ucfirst($brand);
-            $mpnTemp = $product[3]."-".(isset($product[4])?$product[4]:"");
+            $conta = 4;
+            $mpnTemp = $product[3];
+            while(isset($product[$conta])){
+                $mpnTemp .= "-".$product[$conta];
+                $conta++;
+            }
             $mpn = str_replace("_", "-", $mpnTemp);
             $brand = ucfirst($brand);
         } else {
@@ -221,7 +226,13 @@ class ProductController extends Controller{
             $productType = ucfirst($productType);
             $brand = str_replace("_", " ", $product[1]);
             $brand = ucfirst($brand);
-            $mpnTemp = $product[2]."-".(isset($product[3])?$product[3]:"");
+            $conta = 3;
+            $mpnTemp = $product[2];
+            while(isset($product[$conta])){
+                $mpnTemp .= "-".$product[$conta];
+                $conta++;
+            }
+
             $mpn = str_replace("_", "-", $mpnTemp);
             $brand = ucfirst($brand);
         }
