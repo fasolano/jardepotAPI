@@ -158,6 +158,7 @@ class ProductController extends Controller{
                     $response[$iterator]['mpn'] = $item->mpn;
                     $response[$iterator]['productType'] = $item->productType;
                     $response[$iterator]['metaDescription'] = $item->metadesc;
+                    $response[$iterator]['metaTitle'] = $item->titleweb;
                     $response[$iterator]['inventory'] = $item->cantidadInventario;
                     $iterator++;
                 }
@@ -201,6 +202,7 @@ class ProductController extends Controller{
                 $response[$iterator]['mpn'] = $item->mpn;
                 $response[$iterator]['productType'] = $item->productType;
                 $response[$iterator]['metaDescription'] = $item->metadesc;
+                $response[$iterator]['metaTitle'] = $item->titleweb;
                 $response[$iterator]['inventory'] = $item->cantidadInventario;
                 $iterator++;
             }
@@ -371,6 +373,7 @@ class ProductController extends Controller{
             $response[$iterator]['mpn'] = $item->mpn;
             $response[$iterator]['productType'] = $item->productType;
             $response[$iterator]['metaDescription'] = $item->metadesc;
+            $response[$iterator]['metaTitle'] = $item->titleweb == ""?$item->productType." ".$item->brand." ".$item->mpn:$item->titleweb;
             $response[$iterator]['inventory'] = $item->cantidadInventario;
             $iterator++;
         }

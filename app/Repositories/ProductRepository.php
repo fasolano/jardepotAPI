@@ -56,6 +56,7 @@ class ProductRepository{
                 'XML.keywords',
                 'XML.metadesc',
                 'XML.descriptionweb',
+                'XML.titleweb',
                 'XML.resenia',
                 DB::raw('SUM(inventario.cantidad) as cantidadInventario')
             )
@@ -108,6 +109,7 @@ class ProductRepository{
                 'XML.keywords',
                 'XML.metadesc',
                 'XML.descriptionweb',
+                'XML.titleweb',
                 'XML.resenia',
                 DB::raw('SUM(inventario.cantidad) as cantidadInventario')
             )
@@ -169,6 +171,7 @@ class ProductRepository{
                 'XML.keywords',
                 'XML.metadesc',
                 'XML.descriptionweb',
+                'XML.titleweb',
                 'XML.resenia',
                 DB::raw('SUM(inventario.cantidad) as cantidadInventario')
             )
@@ -236,6 +239,7 @@ class ProductRepository{
                 'XML.keywords',
                 'XML.metadesc',
                 'XML.descriptionweb',
+                'XML.titleweb',
                 'XML.resenia',
                 DB::raw('SUM(inventario.cantidad) as cantidadInventario')
             )
@@ -289,6 +293,7 @@ class ProductRepository{
                 'XML.keywords',
                 'XML.metadesc',
                 'XML.descriptionweb',
+                'XML.titleweb',
                 'XML.resenia',
                 DB::raw('SUM(inventario.cantidad) as cantidadInventario')
             )
@@ -434,7 +439,7 @@ class ProductRepository{
         $sql = "SELECT productos.id, productos.productType, productos.brand, productos.mpn, productos.description,
         productos.availability,productos.offer, productos.PrecioDeLista, productos.oferta, productos.priceweb,
         productos.visible, productos.iva, productos.video,productos.volada,productos.visible,
-        XML.keywords,XML.metadesc,XML.descriptionweb,XML.resenia, SUM(inventario.cantidad) as cantidadInventario
+        XML.keywords,XML.metadesc,XML.descriptionweb,XML.titleweb,XML.resenia, SUM(inventario.cantidad) as cantidadInventario
         FROM productos
         join  XML on productos.productType = XML.productType and productos.brand = XML.brand and  productos.mpn = XML.mpn
         left join  inventario on productos.productType = inventario.productType and productos.brand = inventario.brand and  productos.mpn = inventario.mpn
@@ -603,6 +608,7 @@ class ProductRepository{
                     $matches[$key][$producto -> id]["priceweb"] = $producto -> priceweb;
                     $matches[$key][$producto -> id]["resenia"] = $producto -> resenia;
                     $matches[$key][$producto -> id]["metadesc"] = $producto -> metadesc;
+                    $matches[$key][$producto -> id]["metaTitle"] = $producto -> titleweb;
                     $matches[$key][$producto -> id]["cantidadInventario"] = $producto -> cantidadInventario;
                     $matchesCount ++;
 
@@ -656,6 +662,7 @@ class ProductRepository{
                         'XML.keywords',
                         'XML.metadesc',
                         'XML.descriptionweb',
+                        'XML.titleweb',
                         'XML.resenia',
                         DB::raw('SUM(inventario.cantidad) as cantidadInventario')
                     )
@@ -694,6 +701,7 @@ class ProductRepository{
                         $matches[4][$producto -> id]["priceweb"] = $producto -> priceweb;
                         $matches[4][$producto -> id]["resenia"] = $producto -> resenia;
                         $matches[4][$producto -> id]["metadesc"] = $producto -> metadesc;
+                        $matches[4][$producto -> id]["metaTitle"] = $producto -> titleweb;
                         $matches[4][$producto -> id]["cantidadInventario"] = $producto -> cantidadInventario;
                         $matchesCount ++;
 
@@ -745,6 +753,7 @@ class ProductRepository{
                         'XML.keywords',
                         'XML.metadesc',
                         'XML.descriptionweb',
+                        'XML.titleweb',
                         'XML.resenia',
                         DB::raw('SUM(inventario.cantidad) as cantidadInventario')
                     )
@@ -780,6 +789,7 @@ class ProductRepository{
                         $matches[4][$producto -> id]["priceweb"] = $producto -> priceweb;
                         $matches[4][$producto -> id]["resenia"] = $producto -> resenia;
                         $matches[4][$producto -> id]["metadesc"] = $producto -> metadesc;
+                        $matches[4][$producto -> id]["metaTitle"] = $producto -> titleweb;
                         $matches[4][$producto -> id]["cantidadInventario"] = $producto -> cantidadInventario;
                         $matchesCount ++;
 
@@ -835,6 +845,7 @@ class ProductRepository{
                     $response[$iterator]['mpn'] = $match["mpn"];
                     $response[$iterator]['productType'] = $match["productType"];
                     $response[$iterator]['metaDescription'] = $match["metadesc"];
+                    $response[$iterator]['metaTitle'] = $match["metaTitle"];
                     $response[$iterator]['inventory'] = $match["cantidadInventario"];
                     $iterator++;
 //                }
@@ -874,6 +885,7 @@ class ProductRepository{
                 'XML.keywords',
                 'XML.metadesc',
                 'XML.descriptionweb',
+                'XML.titleweb',
                 'XML.resenia'
             )
             ->distinct('productos.mpn')
