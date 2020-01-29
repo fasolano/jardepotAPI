@@ -145,9 +145,10 @@ class ProductController extends Controller{
                         }
                     }
                     //termina seccion de precios
-                    $response[$iterator]['description'] = $item->description;
+                    $response[$iterator]['description'] = $item->descriptionweb;
                     $response[$iterator]['dataSheet'] = $item->resenia;
                     $response[$iterator]['availibilityCount'] = 100;
+                    $response[$iterator]['stock'] = $item->availability == 'in stock' ?true:false;
                     if(isset($item->cantidad)){
                         $response[$iterator]['cartCount'] = $item->cantidad;
                     }else{
@@ -187,9 +188,10 @@ class ProductController extends Controller{
                     }
                 }
                 //termina seccion de precios
-                $response[$iterator]['description'] = $item->description;
+                $response[$iterator]['description'] = $item->descriptionweb;
                 $response[$iterator]['dataSheet'] = $item->resenia;
                 $response[$iterator]['availibilityCount'] = 100;
+                $response[$iterator]['stock'] = $item->availability == 'in stock' ?true:false;
                 if(isset($item->cantidad)){
                     $response[$iterator]['cartCount'] = $item->cantidad;
                 }else{
@@ -356,9 +358,10 @@ class ProductController extends Controller{
                 }
             }
             //termina seccion de precios
-            $response[$iterator]['description'] = $item->description;
+            $response[$iterator]['description'] = $item->descriptionweb;
             $response[$iterator]['dataSheet'] = $item->resenia;
             $response[$iterator]['availibilityCount'] = 100;
+            $response[$iterator]['stock'] = $item->availability == 'in stock' ?true:false;
             if(isset($item->cantidad)){
                 $response[$iterator]['cartCount'] = $item->cantidad;
             }else{

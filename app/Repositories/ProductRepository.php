@@ -63,8 +63,7 @@ class ProductRepository{
             ->orderBy('c3.prioridad', 'asc')
             ->where([
                 "productos.visible" => "si",
-                "c3.idCategoriasNivel2" => $nivel2,
-                "productos.availability" => "in stock"
+                "c3.idCategoriasNivel2" => $nivel2
             ])
             ->groupBy('productos.productType',
                 'productos.brand','productos.mpn')
@@ -116,8 +115,7 @@ class ProductRepository{
             ->orderBy('productos.productType', 'asc')
             ->where([
                 "productos.visible" => "si",
-                "productos.offer" => "si",
-                "productos.availability" => "in stock"
+                "productos.offer" => "si"
             ])
             ->groupBy('productos.productType',
                 'productos.brand','productos.mpn')
@@ -130,7 +128,6 @@ class ProductRepository{
         $valores = array();
         array_push($valores, ["productos.visible", '=', "si"]);
         array_push($valores, ["c3.idCategoriasNivel2", '=', $nivel2]);
-        array_push($valores, ["productos.availability", "=", "in stock"]);
         $datos = DB::table('productos')
             ->join("XML", function($join){
                 $join->on("productos.productType","=","XML.productType")
@@ -194,10 +191,7 @@ class ProductRepository{
                 DB::raw('COUNT(pc.producto) AS r')
             )
             ->groupBy('pc.producto')
-            ->where([
-                'pc.producto' => $producto,
-                "productos.availability" => "in stock"
-            ])
+            ->where(['pc.producto' => $producto])
             ->whereRaw($filtros)
             ->groupBy('pc.producto')
             ->having('r', '=', $cant)
@@ -249,7 +243,6 @@ class ProductRepository{
                 'productos.productType' => $productType,
                 'productos.brand' => $brand,
                 'productos.mpn' => $mpn,
-                "productos.availability" => "in stock"
             ])
             ->groupBy(
                 'productos.productType',
@@ -303,8 +296,7 @@ class ProductRepository{
                 ['productos.productType', $productType],
                 ['productos.kind', 'MAQ'],
                 ['productos.visible', 'si'],
-                ['productos.mpn', '!=', $mpn],
-                ["productos.availability", "=", "in stock"]
+                ['productos.mpn', '!=', $mpn]
             ])
             ->whereRaw(
                 "productos.priceweb >= (select priceweb * 0.75 as priceweb from productos where productType = '".$productType."' AND brand = '".$brand."' AND mpn = '".$mpn."') AND ".
@@ -485,7 +477,7 @@ class ProductRepository{
 
         $groupBy = "group by productos.productType, productos.brand,productos.mpn";
         if($banderaWhere){
-            $sql .= " WHERE productos.availability = 'in stock' and ";
+            $sql .= " WHERE ";
             $productosType = DB::select( DB::raw($sql . $sqlType . $groupBy) );
             $productosMpn = DB::select( DB::raw($sql . $sqlMpn. $groupBy) );
             $productosBrand = DB::select( DB::raw($sql . $sqlBrand. $groupBy) );
@@ -602,11 +594,12 @@ class ProductRepository{
                     $matches[$key][$producto -> id]["productType"] = $producto -> productType;
                     $matches[$key][$producto -> id]["brand"] = $producto -> brand;
                     $matches[$key][$producto -> id]["mpn"] = $producto -> mpn;
-                    $matches[$key][$producto -> id]["description"] = $producto -> description;
+                    $matches[$key][$producto -> id]["description"] = $producto -> descriptionweb;
                     $matches[$key][$producto -> id]["availability"] = $producto -> availability;
                     $matches[$key][$producto -> id]["offer"] = $producto -> offer;
                     $matches[$key][$producto -> id]["PrecioDeLista"] = $producto -> PrecioDeLista;
                     $matches[$key][$producto -> id]["oferta"] = $producto -> oferta;
+                    $matches[$key][$producto -> id]["stock"] = $producto -> availability == 'in stock' ?true:false;
                     $matches[$key][$producto -> id]["priceweb"] = $producto -> priceweb;
                     $matches[$key][$producto -> id]["resenia"] = $producto -> resenia;
                     $matches[$key][$producto -> id]["metadesc"] = $producto -> metadesc;
@@ -668,8 +661,7 @@ class ProductRepository{
                     )
                     ->distinct('productos.mpn')
                     ->where([
-                        ["productos.brand" ,"like",$busqueda2 ],
-                        ["productos.availability" , "=", "in stock"]
+                        ["productos.brand" ,"like",$busqueda2 ]
                     ])
                     ->orWhere([
                         ["productos.visible" , '=',"si"],
@@ -693,11 +685,12 @@ class ProductRepository{
                         $matches[4][$producto -> id]["productType"] = $producto -> productType;
                         $matches[4][$producto -> id]["brand"] = $producto -> brand;
                         $matches[4][$producto -> id]["mpn"] = $producto -> mpn;
-                        $matches[4][$producto -> id]["description"] = $producto -> description;
+                        $matches[4][$producto -> id]["description"] = $producto -> descriptionweb;
                         $matches[4][$producto -> id]["availability"] = $producto -> availability;
                         $matches[4][$producto -> id]["offer"] = $producto -> offer;
                         $matches[4][$producto -> id]["PrecioDeLista"] = $producto -> PrecioDeLista;
                         $matches[4][$producto -> id]["oferta"] = $producto -> oferta;
+                        $matches[4][$producto -> id]["oferta"] = $producto -> availability == 'in stock' ?true:false;
                         $matches[4][$producto -> id]["priceweb"] = $producto -> priceweb;
                         $matches[4][$producto -> id]["resenia"] = $producto -> resenia;
                         $matches[4][$producto -> id]["metadesc"] = $producto -> metadesc;
@@ -756,8 +749,7 @@ class ProductRepository{
                         DB::raw('SUM(inventario.cantidad) as cantidadInventario')
                     )
                     ->where([
-                        ["productos.brand" ,"like", $busqueda2],
-                        ["productos.availability" , "=", "in stock"]
+                        ["productos.brand" ,"like", $busqueda2]
                     ])
                     ->orWhere([
                         ["productos.productType","like", $busqueda2]
@@ -779,11 +771,12 @@ class ProductRepository{
                         $matches[4][$producto -> id]["productType"] = $producto -> productType;
                         $matches[4][$producto -> id]["brand"] = $producto -> brand;
                         $matches[4][$producto -> id]["mpn"] = $producto -> mpn;
-                        $matches[4][$producto -> id]["description"] = "!!!!".$producto -> description;
+                        $matches[4][$producto -> id]["description"] = $producto -> descriptionweb;
                         $matches[4][$producto -> id]["availability"] = $producto -> availability;
                         $matches[4][$producto -> id]["offer"] = $producto -> offer;
                         $matches[4][$producto -> id]["PrecioDeLista"] = $producto -> PrecioDeLista;
                         $matches[4][$producto -> id]["oferta"] = $producto -> oferta;
+                        $matches[4][$producto -> id]["stock"] = $producto -> availability == 'in stock' ?true:false;
                         $matches[4][$producto -> id]["priceweb"] = $producto -> priceweb;
                         $matches[4][$producto -> id]["resenia"] = $producto -> resenia;
                         $matches[4][$producto -> id]["metadesc"] = $producto -> metadesc;
@@ -802,7 +795,7 @@ class ProductRepository{
 
             foreach ($matchNivel as $key => $match) {
                 //solo pone precios si tenemos producto en stock
-                if ($match["availability"] == "in stock") {
+//                if ($match["availability"] == "in stock") {
                     $img = strtolower( $match["productType"] . "-" . $match["brand"] . "-" . $match["mpn"]);
 
                     $response[$iterator]['id'] = $match["id"];
@@ -829,9 +822,10 @@ class ProductRepository{
                             $response[$iterator]['newPrice'] = $match["priceweb"];
                         }
                     }
-                    $response[$iterator]['description'] = $match["description"];
+                    $response[$iterator]['description'] = $match["descriptionweb"];
                     $response[$iterator]['dataSheet'] = $match["resenia"];
                     $response[$iterator]['availibilityCount'] = 100;
+                    $response[$iterator]['stock'] = $match['availability'] == 'in stock'  ?true:false ;
                     if(isset($match['cantidad'])){
                         $response[$iterator]['cartCount'] = $match["cantidad"];
                     }else{
@@ -843,7 +837,7 @@ class ProductRepository{
                     $response[$iterator]['metaDescription'] = $match["metadesc"];
                     $response[$iterator]['inventory'] = $match["cantidadInventario"];
                     $iterator++;
-                }
+//                }
             }//fin de foreach match
         }
         return $response;
