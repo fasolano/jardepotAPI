@@ -822,7 +822,7 @@ class ProductRepository{
                             $response[$iterator]['newPrice'] = $match["priceweb"];
                         }
                     }
-                    $response[$iterator]['description'] = $match["descriptionweb"];
+                    $response[$iterator]['description'] = $match["description"];
                     $response[$iterator]['dataSheet'] = $match["resenia"];
                     $response[$iterator]['availibilityCount'] = 100;
                     $response[$iterator]['stock'] = $match['availability'] == 'in stock'  ?true:false ;
