@@ -54,16 +54,16 @@ class ProductController extends Controller{
         }else{
             if ($brandFilters[0] != ""){
                 // si el nivel que se buscan son marcas la busqueda se hace por tipo de producto en vez de marca
-                $stringFiltros .= $nivel1 == "Marcas"? " productos.productType in ( ":" productos.brand in (";
+                $stringFiltros .= " c3.nombreCategoriaNivel3 in ( ";
                 foreach ($brandFilters as $key => $item) {
                     // Si son marcas a los tipo de productos se les debe de cambiar la cadena para poder encontrarlos en las consultas
-                    if($nivel1 == "Marcas"){
+                    /*if($nivel1 == "Marcas"){
                         if (substr($item, strlen($item)- 2, strlen($item)- 1) == 'as' || substr($item, strlen($item)- 2, strlen($item)- 1) == 'os'){
                             $item = substr($item , 0,strlen($item)- 1);
                         }else if(substr($item, strlen($item)- 2, strlen($item)- 1) == 'es' ){
                             $item = substr($item , 0,strlen($item)- 2);
                         }
-                    }
+                    }*/
 
                     if ($key == 0){
                         $stringFiltros .= "'$item'";
