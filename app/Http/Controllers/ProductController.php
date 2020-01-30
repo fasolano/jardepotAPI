@@ -244,7 +244,8 @@ class ProductController extends Controller{
 //        $mpn = str_replace("_", "-", $product[2]);
 
         $data = $this->productoRepository->getProduct($productType, $brand, $mpn);
-        $response = $this->model_format_products($data)[0];
+        $productResponse = $this->model_format_products($data);
+        $response = count($productResponse)>0?$productResponse[0]:0;
 
         return json_encode($response);
     }
@@ -289,7 +290,6 @@ class ProductController extends Controller{
                     break;
             }
         }
-
         return json_encode($response);
 
     }

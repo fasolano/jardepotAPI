@@ -138,7 +138,7 @@ class ConfirmController extends Controller {
     public function notification(){
         $mp = new MercadoPago();
         $payment = $mp->notification($_GET);
-        $destino = 'sistemas1@jardepot.com';
+        $destino = 'fasolanof@gmail.com';
         $data = ['data' => $payment];
 
         Mail::send('mails.pendingPayment', $data, function ($message) use ($destino) {
@@ -146,6 +146,7 @@ class ConfirmController extends Controller {
             $message->from('sistemas1@jardepot.com', 'Sitemas Jardepot');
         });
 
+        return response()->json(['data' => 'success'], 204);
     }
 
     public function prueba(){
