@@ -372,9 +372,22 @@ class ProductController extends Controller{
             $response[$iterator]['brand'] = $item->brand;
             $response[$iterator]['mpn'] = $item->mpn;
             $response[$iterator]['productType'] = $item->productType;
-            $response[$iterator]['metaDescription'] = $item->metadesc;
-            $response[$iterator]['metaTitle'] = $item->titleweb == ""?$item->productType." ".$item->brand." ".$item->mpn:$item->titleweb;
+
+//                Metas
+            $response[$iterator]['keywords'] = $item->productType.' '.$item->brand.' '.$item->mpn;
+            if ($item->metadesc == ''){
+                $response[$iterator]['metaDescription'] = $item->productType.' '.$item->brand.' '.$item->mpn;
+            }else{
+                $response[$iterator]['metaDescription'] = $item->metadesc;
+            }
+            if ($item->titleweb == ''){
+                $response[$iterator]['metaTitle'] = $item->productType.' '.$item->brand.' '.$item->mpn;
+            }else{
+                $response[$iterator]['metaTitle'] = $item->titleweb;
+            }
+
             $response[$iterator]['inventory'] = $item->cantidadInventario;
+
             $iterator++;
         }
         return $response;
@@ -431,6 +444,24 @@ class ProductController extends Controller{
                 echo "<br>";
             }
 
+        }
+    }
+
+    public function singular($pal) {
+        $palabraAr = explode(" ", $pal);
+        $palabra= strtolower($palabraAr[0]);
+        $lng=mb_strlen($palabra,'UTF-8'); // Obtener la longitud de la palabra
+        $ultima=mb_substr($palabra,$lng-1,1,'UTF-8');	// Extraer el último carácter
+        $penultima=mb_substr($palabra,$lng-2,1,'UTF-8');	// Extraer el penúltimo carácter
+
+        if($ultima =='s' ){
+            if ($penultima != 'e' || $palabra == 'aceites' ){
+                return substr($palabra,0,-1);
+            }else{
+                return substr($palabra,0,-2);
+            }
+        }else{
+            return $palabra;
         }
     }
 

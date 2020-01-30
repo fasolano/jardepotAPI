@@ -439,7 +439,7 @@ class ProductRepository{
         $sql = "SELECT productos.id, productos.productType, productos.brand, productos.mpn, productos.description,
         productos.availability,productos.offer, productos.PrecioDeLista, productos.oferta, productos.priceweb,
         productos.visible, productos.iva, productos.video,productos.volada,productos.visible,
-        XML.keywords,XML.metadesc,XML.descriptionweb,XML.titleweb,XML.resenia, SUM(inventario.cantidad) as cantidadInventario
+        XML.keywords,XML.metadesc,XML.descriptionweb,XML.resenia,XML.titleweb, SUM(inventario.cantidad) as cantidadInventario
         FROM productos
         join  XML on productos.productType = XML.productType and productos.brand = XML.brand and  productos.mpn = XML.mpn
         left join  inventario on productos.productType = inventario.productType and productos.brand = inventario.brand and  productos.mpn = inventario.mpn
@@ -574,10 +574,23 @@ class ProductRepository{
     }
 
     public function getDescriptionNivel2($idNivel2){
-        $texto = DB::table('datosCategoriasNivel2')->select('texto','metadescription','metatitle')
+        $texto = DB::table('categoriasNivel2')
+            ->leftjoin('datosCategoriasNivel2', 'datosCategoriasNivel2.idCategoriasNivel2', '=', 'categoriasNivel2.idCategoriasNivel2')
+            ->select('datosCategoriasNivel2.texto','datosCategoriasNivel2.metadescription','datosCategoriasNivel2.metatitle',
+                'categoriasNivel2.nombreCategoriaNivel2')
             ->where(
-                "idCategoriasNivel2" ,$idNivel2
+                "categoriasNivel2.idCategoriasNivel2" ,"=",$idNivel2
             )->first();
+        if($texto->metadescription == ''){
+            $texto->metadescription = $texto->nombreCategoriaNivel2.' - Catálogo de equipos y precios en Jardepot';
+        }
+        if($texto->metatitle == ''){
+            $texto->metatitle = 'Encuentra los equipos '.$texto->nombreCategoriaNivel2.' de venta en Jardepot, tu tienda en linea.';
+        }
+        if($texto->texto == ''){
+            $texto->texto = $texto->nombreCategoriaNivel2;
+        }
+        $texto->keywords = $this->singular($texto->nombreCategoriaNivel2);
         return $texto;
     }
 
@@ -608,7 +621,8 @@ class ProductRepository{
                     $matches[$key][$producto -> id]["priceweb"] = $producto -> priceweb;
                     $matches[$key][$producto -> id]["resenia"] = $producto -> resenia;
                     $matches[$key][$producto -> id]["metadesc"] = $producto -> metadesc;
-                    $matches[$key][$producto -> id]["metaTitle"] = $producto -> titleweb;
+                    $matches[$key][$producto -> id]["titleweb"] = $producto -> titleweb;
+                    $matches[$key][$producto -> id]["keywords"] = $producto -> keywords;
                     $matches[$key][$producto -> id]["cantidadInventario"] = $producto -> cantidadInventario;
                     $matchesCount ++;
 
@@ -701,7 +715,8 @@ class ProductRepository{
                         $matches[4][$producto -> id]["priceweb"] = $producto -> priceweb;
                         $matches[4][$producto -> id]["resenia"] = $producto -> resenia;
                         $matches[4][$producto -> id]["metadesc"] = $producto -> metadesc;
-                        $matches[4][$producto -> id]["metaTitle"] = $producto -> titleweb;
+                        $matches[4][$producto -> id]["titleweb"] = $producto -> titleweb;
+                        $matches[4][$producto -> id]["keywords"] = $producto -> keywords;
                         $matches[4][$producto -> id]["cantidadInventario"] = $producto -> cantidadInventario;
                         $matchesCount ++;
 
@@ -789,7 +804,8 @@ class ProductRepository{
                         $matches[4][$producto -> id]["priceweb"] = $producto -> priceweb;
                         $matches[4][$producto -> id]["resenia"] = $producto -> resenia;
                         $matches[4][$producto -> id]["metadesc"] = $producto -> metadesc;
-                        $matches[4][$producto -> id]["metaTitle"] = $producto -> titleweb;
+                        $matches[4][$producto -> id]["titleweb"] = $producto -> titleweb;
+                        $matches[4][$producto -> id]["keywords"] = $producto -> keywords;
                         $matches[4][$producto -> id]["cantidadInventario"] = $producto -> cantidadInventario;
                         $matchesCount ++;
 
@@ -844,8 +860,19 @@ class ProductRepository{
                     $response[$iterator]['brand'] = $match["brand"];
                     $response[$iterator]['mpn'] = $match["mpn"];
                     $response[$iterator]['productType'] = $match["productType"];
-                    $response[$iterator]['metaDescription'] = $match["metadesc"];
-                    $response[$iterator]['metaTitle'] = $match["metaTitle"];
+
+                    $response[$iterator]['keywords'] = $match["productType"] . " " . $match["brand"] . " " . $match["mpn"];
+                    if ($match["metadesc"] == ''){
+                        $response[$iterator]['metaDescription'] = $match["productType"] . " " . $match["brand"] . " " . $match["mpn"];
+                    }else{
+                        $response[$iterator]['metaDescription'] = $match["metadesc"];
+                    }
+                    if ($match["titleweb"] == ''){
+                        $response[$iterator]['metaTitle'] = $match["productType"] . " " . $match["brand"] . " " . $match["mpn"];
+                    }else{
+                        $response[$iterator]['metaTitle'] = $match["titleweb"];
+                    }
+
                     $response[$iterator]['inventory'] = $match["cantidadInventario"];
                     $iterator++;
 //                }
@@ -895,4 +922,23 @@ class ProductRepository{
             ->get();
         return $productos;
     }
+
+    public function singular($pal) {
+        $palabraAr = explode(" ", $pal);
+        $palabra= strtolower($palabraAr[0]);
+        $lng=mb_strlen($palabra,'UTF-8'); // Obtener la longitud de la palabra
+        $ultima=mb_substr($palabra,$lng-1,1,'UTF-8');	// Extraer el último carácter
+        $penultima=mb_substr($palabra,$lng-2,1,'UTF-8');	// Extraer el penúltimo carácter
+
+        if($ultima =='s' ){
+            if ($penultima != 'e' || $palabra == 'aceites' ){
+                return substr($palabra,0,-1);
+            }else{
+                return substr($palabra,0,-2);
+            }
+        }else{
+            return $palabra;
+        }
+    }
+
 }
