@@ -419,8 +419,12 @@ class ProductController extends Controller{
    public function getDescriptionNivel2(Request $request){
         $nivel1= $request->get('nivel1');
         $nivel2= $request->get('nivel2');
-        $idNivel2 = $this->productoRepository->getIdNivel2($nivel1, $nivel2);
-        $texto = $this->productoRepository->getDescriptionNivel2($idNivel2);
+        if($nivel1 != 'index' && $nivel2 != 'index'){
+            $idNivel2 = $this->productoRepository->getIdNivel2($nivel1, $nivel2);
+            $texto = $this->productoRepository->getDescriptionNivel2($idNivel2);
+        }else{
+            $texto = $this->productoRepository->getDescriptionNivel2(0);
+        }
         return json_encode(['result'=>$texto]);
    }
 

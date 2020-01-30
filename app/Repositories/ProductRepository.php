@@ -574,23 +574,31 @@ class ProductRepository{
     }
 
     public function getDescriptionNivel2($idNivel2){
-        $texto = DB::table('categoriasNivel2')
-            ->leftjoin('datosCategoriasNivel2', 'datosCategoriasNivel2.idCategoriasNivel2', '=', 'categoriasNivel2.idCategoriasNivel2')
-            ->select('datosCategoriasNivel2.texto','datosCategoriasNivel2.metadescription','datosCategoriasNivel2.metatitle',
-                'categoriasNivel2.nombreCategoriaNivel2')
-            ->where(
-                "categoriasNivel2.idCategoriasNivel2" ,"=",$idNivel2
-            )->first();
-        if($texto->metadescription == ''){
-            $texto->metadescription = $texto->nombreCategoriaNivel2.' - Catálogo de equipos y precios en Jardepot';
+        if ($idNivel2 != 0){
+            $texto = DB::table('categoriasNivel2')
+                ->leftjoin('datosCategoriasNivel2', 'datosCategoriasNivel2.idCategoriasNivel2', '=', 'categoriasNivel2.idCategoriasNivel2')
+                ->select('datosCategoriasNivel2.texto','datosCategoriasNivel2.metadescription','datosCategoriasNivel2.metatitle',
+                    'categoriasNivel2.nombreCategoriaNivel2')
+                ->where(
+                    "categoriasNivel2.idCategoriasNivel2" ,"=",$idNivel2
+                )->first();
+            if($texto->metadescription == ''){
+                $texto->metadescription = $texto->nombreCategoriaNivel2.' - Catálogo de equipos y precios en Jardepot';
+            }
+            if($texto->metatitle == ''){
+                $texto->metatitle = 'Encuentra los equipos '.$texto->nombreCategoriaNivel2.' de venta en Jardepot, tu tienda en linea.';
+            }
+            if($texto->texto == ''){
+                $texto->texto = $texto->nombreCategoriaNivel2;
+            }
+            $texto->keywords = $this->singular($texto->nombreCategoriaNivel2);
+        }else{
+            $texto = DB::table('datosCategoriasNivel2')
+                ->select('metadescription','metatitle','metawords as keywords')
+                ->where(
+                    ".idCategoriasNivel2" ,"=",$idNivel2
+                )->first();
         }
-        if($texto->metatitle == ''){
-            $texto->metatitle = 'Encuentra los equipos '.$texto->nombreCategoriaNivel2.' de venta en Jardepot, tu tienda en linea.';
-        }
-        if($texto->texto == ''){
-            $texto->texto = $texto->nombreCategoriaNivel2;
-        }
-        $texto->keywords = $this->singular($texto->nombreCategoriaNivel2);
         return $texto;
     }
 
