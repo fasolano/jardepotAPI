@@ -49,7 +49,7 @@ class MenuController extends Controller{
             foreach ($data as $key => $item) {
                 $nombre = strtolower($item->name);
                 $dataFormato[$key]['name'] = $item->name;
-                $dataFormato[$key]['image'] = 'assets/images/brands/'.strtolower($item->name).'.png';
+                $dataFormato[$key]['image'] = 'assets/images/brands/'.strtolower($item->name).'.jpg';
             }
         }else{
             $dataFormato = array();
