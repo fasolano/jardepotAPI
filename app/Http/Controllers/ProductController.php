@@ -374,7 +374,7 @@ class ProductController extends Controller{
             $response[$iterator]['productType'] = $item->productType;
 
 //                Metas
-            $response[$iterator]['keywords'] = $item->productType.' '.$item->brand.' '.$item->mpn;
+            $response[$iterator]['keywords'] = $item->productType.', '.$item->brand.', '.$item->mpn;
             if ($item->metadesc == ''){
                 $response[$iterator]['metaDescription'] = $item->productType.' '.$item->brand.' '.$item->mpn;
             }else{

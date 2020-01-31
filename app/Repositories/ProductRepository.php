@@ -869,7 +869,7 @@ class ProductRepository{
                     $response[$iterator]['mpn'] = $match["mpn"];
                     $response[$iterator]['productType'] = $match["productType"];
 
-                    $response[$iterator]['keywords'] = $match["productType"] . " " . $match["brand"] . " " . $match["mpn"];
+                    $response[$iterator]['keywords'] = $match["productType"] . ", " . $match["brand"] . ", " . $match["mpn"];
                     if ($match["metadesc"] == ''){
                         $response[$iterator]['metaDescription'] = $match["productType"] . " " . $match["brand"] . " " . $match["mpn"];
                     }else{
