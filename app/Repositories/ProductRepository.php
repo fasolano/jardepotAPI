@@ -428,7 +428,7 @@ class ProductRepository{
             ->where([
                 ['nombreCategoriaNivel2', 'like', "%$productType%"]
             ])
-            ->get();
+            ->first();
 
         return $levels;
     }
