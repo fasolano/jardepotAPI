@@ -424,9 +424,9 @@ class ProductRepository{
     public function getProductlevels($productType){
         $levels = DB::table('categoriasNivel2')
             ->join('categoriasNivel1', 'categoriasNivel2.idCategoriasNivel1', '=', 'categoriasNivel1.idCategoriasNivel1')
-            ->select('nombreCategoriaNivel2 as name', 'categoriasNivel1 as level1')
+            ->select('categoriasNivel2.nombreCategoriaNivel2 as name', 'categoriasNivel1.nombreCategoriaNivel1 as level1')
             ->where([
-                ['nombreCategoriaNivel2', 'like', "%$productType%"]
+                ['categoriasNivel2.nombreCategoriaNivel2', 'like', "%$productType%"]
             ])
             ->first();
 
