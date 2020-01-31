@@ -75,7 +75,7 @@ class MenuController extends Controller{
         $params = json_decode($request->get('params'));
         $previousUrl = urldecode($request->get('previousUrl'));
         $breadcrumbs = array();
-        if($component == "ProductComponent"){
+        if(isset($params->product)){
             $breadcrumbs = $this->setBreadcrumbProduct($params->product, $previousUrl);
         }else{
             $breadcrumbs = $this->setBreadcrumbSection($params);
