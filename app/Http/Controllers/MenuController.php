@@ -204,7 +204,7 @@ class MenuController extends Controller{
         array_push($breadcrumbs, [
             'name'=> $level->name,
             'url' => '/',
-            'level1' => 'Equipos',
+            'level1' => $level->level1,
             'level2' => $level->name
         ]);
         array_push($breadcrumbs, [
