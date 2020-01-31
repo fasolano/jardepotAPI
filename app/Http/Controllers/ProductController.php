@@ -316,10 +316,8 @@ class ProductController extends Controller{
         return json_encode($response);
     }
 
-    public function getProductlevels(Request $request){
-        $productType = $request->get('productType');
-        $levels = $this->productoRepository->getProductlevels($productType);
-        return json_encode($levels);
+    public function getProductlevels($productType){
+        return $this->productoRepository->getProductlevels($productType);
     }
 
      //esta externamente en otras dos funciones y en el repository

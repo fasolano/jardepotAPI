@@ -31,6 +31,7 @@ Route::get('menu/additional', 'MenuController@getAdditional');
 Route::get('menu/additional/options', 'MenuController@getOptionsAdditional');
 Route::get('menu/brands', 'MenuController@getBrands');
 Route::get('menu/productsTypes', 'MenuController@getProductTypes');
+Route::get('menu/breadcrumb', 'MenuController@getBreadcrumb');
 
 Route::get('session', 'ApiTokenController@getSession');
 
