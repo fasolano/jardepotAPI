@@ -239,9 +239,6 @@ class ProductController extends Controller{
             $mpn = str_replace("_", "-", $mpnTemp);
             $brand = ucfirst($brand);
         }
-//        $productType = str_replace("_", " ", $product[0]);
-//        $brand = str_replace("_", " ", $product[1]);
-//        $mpn = str_replace("_", "-", $product[2]);
 
         $data = $this->productoRepository->getProduct($productType, $brand, $mpn);
         $productResponse = $this->model_format_products($data);
@@ -297,6 +294,35 @@ class ProductController extends Controller{
     public function getProductsRelated(Request $request){
         $product = $request->get('product');
         $product = explode("-", $product);
+        if($product[0].'-'.$product[1] == 'Hilo-Nylon' || $product[0].'-'.$product[1] == 'hilo-nylon'){
+            $productType = 'Hilo-Nylon';
+            $brand = str_replace("_", " ", $product[2]);
+            $brand = ucfirst($brand);
+            $conta = 4;
+            $mpnTemp = $product[3];
+            while(isset($product[$conta])){
+                $mpnTemp .= "-".$product[$conta];
+                $conta++;
+            }
+            $mpn = str_replace("_", "-", $mpnTemp);
+            $brand = ucfirst($brand);
+        } else {
+            $productType = str_replace("_", " ", $product[0]);
+            $productType = ucfirst($productType);
+            $brand = str_replace("_", " ", $product[1]);
+            $brand = ucfirst($brand);
+            $conta = 3;
+            $mpnTemp = $product[2];
+            while(isset($product[$conta])){
+                $mpnTemp .= "-".$product[$conta];
+                $conta++;
+            }
+            $mpn = str_replace("_", "-", $mpnTemp);
+            $brand = ucfirst($brand);
+        }
+
+        /*$product = $request->get('product');
+        $product = explode("-", $product);
         $ptemp = $product[0].'-'.$product[1];
         if($ptemp == 'Hilo-Nylon'){
             $productType = 'Hilo-Nylon';
@@ -306,7 +332,7 @@ class ProductController extends Controller{
             $productType = str_replace("_", " ", $product[0]);
             $brand = str_replace("_", " ", $product[1]);
             $mpn = str_replace("_", "-", $product[2]);
-        }
+        }*/
         $data = $this->productoRepository->getProductsRelated($productType, $brand, $mpn);
         $response = array();
         $iterator = 0;

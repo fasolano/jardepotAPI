@@ -98,27 +98,24 @@ class MercadoPago{
 
         # Save External Reference
         $preference->external_reference = $order->token;
-        /*$preference->back_urls = [
-            "success" => 'https://www.seragromex.com/confirmation/success/MercadoPago',
-            "pending" => 'https://www.seragromex.com/confirmation/pending/MercadoPago',
-            "failure" => 'https://www.seragromex.com/confirmation/failure/MercadoPago',
-        ];*/
+
         /*$preference->back_urls = [
             "success" => 'http://localhost/jardepot/confirmation/success/MercadoPago',
             "pending" => 'http://localhost/jardepot/confirmation/pending/MercadoPago',
             "failure" => 'http://localhost/jardepot/confirmation/failure/MercadoPago',
         ];*/
+
         $preference->back_urls = [
             "success" => 'https://www.jardepot.com/confirmation/success/MercadoPago',
             "pending" => 'https://www.jardepot.com/confirmation/pending/MercadoPago',
             "failure" => 'https://www.jardepot.com/confirmation/failure/MercadoPago',
         ];
 
+        $preference->notification_url = 'https://www.jardepot.com/jardepotAPI/public/api/confirm/prueba/confirmation/notification/MercadoPago';
+
 //        $preference->notification_url = 'https://www.seragromex.com/jardepotAPI/public/api/confirm/prueba/confirmation/notification/MercadoPago';
 
 //        $preference->notification_url = 'http://localhost/jardepotAPI/public/api/confirmation/notification/MercadoPago';
-
-        $preference->notification_url = 'https://www.jardepot.com/jardepotAPI/public/api/confirm/prueba/confirmation/notification/MercadoPago';
 
         $preference->auto_return = "all";
         # Save and POST preference
