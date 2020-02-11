@@ -404,7 +404,7 @@ class ProductController extends Controller{
             }else{
                 $response[$iterator]['metaDescription'] = $item->metadesc;
             }
-            if ($item->titleweb == ''){
+            if (!isset($item->titleweb) || $item->titleweb == ''){
                 $response[$iterator]['metaTitle'] = $item->productType.' '.$item->brand.' '.$item->mpn;
             }else{
                 $response[$iterator]['metaTitle'] = $item->titleweb;

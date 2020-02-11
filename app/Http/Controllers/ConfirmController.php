@@ -138,7 +138,8 @@ class ConfirmController extends Controller {
     public function notification(){
         $mp = new MercadoPago();
         $payment = $mp->notification($_GET);
-        $destino = 'fasolanof@gmail.com';
+//        $destino = 'fasolanof@gmail.com';
+        $destino = 'contabilidad@jardepot.com';
         $data = ['data' => $payment];
 
         Mail::send('mails.pendingPayment', $data, function ($message) use ($destino) {

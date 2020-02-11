@@ -165,7 +165,7 @@ class CheckoutRepository {
             }else{
                 $precio = $product->priceweb;
             }
-            $precio *= 1.04;
+
             $rowInserted = DB::connection('digicom')
                 ->table('productosCotizados_jardepot')
                 ->insertGetId([
