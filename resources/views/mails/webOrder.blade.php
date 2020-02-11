@@ -197,49 +197,6 @@
                                     </table>
                                 </td>
                             </tr>
-
-                            <tr>
-                                <td align="center" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding-bottom: 15px; border-bottom: 3px solid #eeeeee;">
-                                    <h2 style="font-size: 25px; font-weight: 800; line-height: 31px; color: #333333; margin: 0;">
-                                        Datos de envio y facturación
-                                    </h2>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding-bottom: 15px; border-bottom: 3px solid #eeeeee;">
-                                    <table border="0" cellspacing="0" cellpadding="0" width="100%">
-                                        <tr>
-                                            <td width="30%">
-                                                <p style="font-size: 16px; font-weight: 800; line-height: 24px; color: #777777;">
-                                                    Campo
-                                                </p>
-
-                                            </td>
-                                            <td width="70%">
-                                                <p style="font-size: 16px; font-weight: 400; line-height: 24px; color: #777777;">
-                                                    Datos
-                                                </p>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </td>
-                            </tr>
-                            @foreach ($datos as $key => $value)
-                                <tr>
-                                    <td align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding-bottom: 15px; border-bottom: 3px solid #eeeeee;">
-                                        <table border="0" cellspacing="0" cellpadding="0" width="100%">
-                                            <tr>
-                                                <td width="30%">
-                                                    {{$key}}
-                                                </td>
-                                                <td width="70%" style="text-align: right;">
-                                                    {{$value}}
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </td>
-                                </tr>
-                            @endforeach
                         </table>
                         <!--[if (gte mso 9)|(IE)]>
                         </td>

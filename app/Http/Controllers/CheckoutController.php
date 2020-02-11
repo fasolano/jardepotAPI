@@ -149,7 +149,7 @@ class CheckoutController extends Controller {
 
         $this->repository->insertProductsOrder($order, $products, json_decode($forms->delivery));
 
-        $this->sendAlertMailOrder($client, $billingDeleveryData, $order->idPedidos, $payment, $mailSeller);
+        $this->sendAlertMailOrder($client, $order->idPedidos, $payment, $mailSeller);
 
         return array("order" => $order, "products" => $products, 'client' => $clientForm);
     }
@@ -191,7 +191,7 @@ class CheckoutController extends Controller {
         });
     }
 
-    protected function sendAlertMailOrder($clientForm, $billingDeleveryData, $order, $payment, $mailSeller){
+    protected function sendAlertMailOrder($clientForm, $order, $payment, $mailSeller){
 //        $destino = "fasolanof@gmail.com";
 //        $destino = "ventas@jardepot.com";
         $destino = $mailSeller;
@@ -204,7 +204,6 @@ class CheckoutController extends Controller {
             'mail' => $clientForm['email'],
             'dia' => $dia,
             'hora' => $hora,
-            'datos' => $billingDeleveryData,
             'order' => $order,
             'payment' => $payment
         ];
