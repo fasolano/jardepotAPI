@@ -170,5 +170,27 @@ class CartRepository{
             ]);
     }
 
+    public function setSellerToCart($cart){
+        $mails = array("ventas@jardepot.com","ventas1@jardepot.com", "ventas2@jardepot.com", "ventas4@jardepot.com");
+        $mailsSent = DB::table('carrito')
+            ->select(DB::raw('count(fk_vendedor) as cant'), 'fk_vendedor')
+            ->whereNotNull('fk_vendedor')
+            ->groupBy('fk_vendedor')
+            ->get();
+        $min = 100000000;
+        $mailMin = 0;
+        foreach ($mailsSent as $item) {
+            if($item->cant < $min){
+                $min = $item->cant;
+                $mailMin = $item->fk_vendedor;
+            }
+        }
+        $mailMin = $mails[$mailMin];
+        DB::table('carrito')
+            ->where(['id_carrito' => $cart, 'estado' => 'Activo'])
+            ->update(['fk_vendedor' => $mailMin]);
+        return $mailMin;
+    }
+
 
 }

@@ -42,7 +42,7 @@ class CheckoutController extends Controller {
         $formPayment = json_decode($forms->payment);
 
         if($formPayment->paymentMethod->value == "Transferencia"){
-            $data = $this->setUpQuotation($cookie->carrito, $forms);
+            $this->setUpQuotation($cookie->carrito, $forms);
             return response()->json(['data' => 'success'], 200);
         }else{
             $data = $this->setUpOrder($cookie->carrito, $forms, $formPayment->paymentMethod->value);
@@ -79,7 +79,7 @@ class CheckoutController extends Controller {
         $products = $cartRepository->getProductsFromCart($cart->id_carrito);
 
         $this->repository->insertProductsQuotation($products, $quotation, json_decode($forms->delivery));
-
+        $mailSeller = $cartRepository->setSellerToCart($cart->id_carritpo);
         //Obtiene el carro completo
         $content = array();
         foreach ($products as $key => $product) {
@@ -107,8 +107,8 @@ class CheckoutController extends Controller {
         }
 
         $nombre = $clientForm['nombre']. " " .$clientForm['apellidos'];
-        if($this->sendQuotationMail($clientForm['email'], $nombre, $quotation->idCotizaciones, $content)){
-            return $this->sendAlertMail($clientForm, $billingDeleveryData, $quotation->idCotizaciones);
+        if($this->sendQuotationMail($clientForm['email'], $nombre, $quotation->idCotizaciones, $content, $mailSeller)){
+            return $this->sendAlertMail($clientForm, $billingDeleveryData, $quotation->idCotizaciones, $mailSeller);
         }
 
     }
@@ -137,6 +137,8 @@ class CheckoutController extends Controller {
 
         $order->token = $webOrder->token;
 
+        $mailSeller = $this->repository->setSellerToOrder($order->idPedidos);
+
         $billingDeleveryData = array_merge($deliveryForm, $billingForm, ['idPedidos' => $order->idPedidos]);
 
         $this->repository->insertDeliveryBilling($billingDeleveryData);
@@ -144,6 +146,8 @@ class CheckoutController extends Controller {
         $products = $cartRepository->getProductsFromCart($cart->id_carrito);
 
         $this->repository->insertProductsOrder($order, $products, json_decode($forms->delivery));
+
+        $this->sendAlertMailOrder($client, $billingDeleveryData, $order->idPedidos, $payment, $mailSeller);
 
         return array("order" => $order, "products" => $products, 'client' => $clientForm);
     }
@@ -162,9 +166,10 @@ class CheckoutController extends Controller {
         return $method->setupPaymentAndGetRedirectURL($data['order'], $data['products'], $data['client'], $data['delivery']);
     }
 
-    protected function sendAlertMail($clientForm, $billingDeleveryData, $quotation){
+    protected function sendAlertMail($clientForm, $billingDeleveryData, $quotation, $mailSeller){
 //        $destino = "fasolanof@gmail.com";
-        $destino = "ventas@jardepot.com";
+//        $destino = "ventas@jardepot.com";
+        $destino = $mailSeller;
         $dia = date('d-m-Y');
         $hora = date('H:i:s');
 
@@ -184,12 +189,37 @@ class CheckoutController extends Controller {
         });
     }
 
-    protected function sendQuotationMail($correo, $nombre, $quotation, $content){
+    protected function sendAlertMailOrder($clientForm, $billingDeleveryData, $order, $payment, $mailSeller){
+//        $destino = "fasolanof@gmail.com";
+//        $destino = "ventas@jardepot.com";
+        $destino = $mailSeller;
+        $dia = date('d-m-Y');
+        $hora = date('H:i:s');
+
+        $data = [
+            'nombre' => $clientForm['nombre']. " ". $clientForm['apellidos'],
+            'telefono' => $clientForm['telefono'],
+            'mail' => $clientForm['email'],
+            'dia' => $dia,
+            'hora' => $hora,
+            'datos' => $billingDeleveryData,
+            'order' => $order,
+            'payment' => $payment
+        ];
+        Mail::send('mails.webPucharse', $data, function ($message) use ($destino) {
+            $message->to($destino)->subject
+            ('Pedido en linea Jardepot');
+            $message->from('sistemas1@jardepot.com', 'Sitemas Jardepot');
+        });
+    }
+
+    protected function sendQuotationMail($correo, $nombre, $quotation, $content, $mailSeller){
         $url = 'http://digicom.mx/instalar_virus/sitios/jardepot/ventas/cotizaciones/enviarCotizacionDesdePagina.php';
 //        $url = 'http://koot.mx/digicom/public/instalar_virus/sitios/jardepot/ventas/cotizaciones/enviarCotizacionDesdePagina.php';
 //        $url = 'https://jardepot.com/digicom/public/instalar_virus/sitios/jardepot/ventas/cotizaciones/enviarCotizacionDesdePagina.php';
         $fields = array(
             'para' => urlencode($correo),
+            'de' => urlencode($mailSeller),
             'nombre' => urlencode($nombre),
             'quotation' => urlencode($quotation),
             'content' => urlencode(serialize($content))
