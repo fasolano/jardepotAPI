@@ -185,10 +185,12 @@ class CartRepository{
                 $mailMin = $item->fk_vendedor;
             }
         }
-        $mailMin = $mails[$mailMin];
+
         DB::table('carrito')
             ->where(['id_carrito' => $cart, 'estado' => 'Activo'])
             ->update(['fk_vendedor' => $mailMin]);
+
+        $mailMin = $mails[$mailMin];
         return $mailMin;
     }
 

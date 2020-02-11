@@ -79,7 +79,9 @@ class CheckoutController extends Controller {
         $products = $cartRepository->getProductsFromCart($cart->id_carrito);
 
         $this->repository->insertProductsQuotation($products, $quotation, json_decode($forms->delivery));
+
         $mailSeller = $cartRepository->setSellerToCart($cart->id_carrito);
+
         //Obtiene el carro completo
         $content = array();
         foreach ($products as $key => $product) {
