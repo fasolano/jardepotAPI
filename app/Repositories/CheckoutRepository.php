@@ -88,11 +88,11 @@ class CheckoutRepository {
                 $mailMin = $item->fk_vendedor;
             }
         }
-        $mailMin = $mails[$mailMin];
         DB::connection('digicom')
             ->table('pedidos_web')
             ->where(['idPedidos' => $order])
             ->update(['fk_vendedor' => $mailMin]);
+        $mailMin = $mails[$mailMin];
         return $mailMin;
     }
 
