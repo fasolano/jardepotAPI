@@ -88,7 +88,7 @@ class MercadoPago{
             "number" => $client['telefono']
         );
         $payer->address = array(
-            "street_name" => $client['calle'],
+            "street_name" => $client['direccion'],
             "zip_code" => $client['cp']
         );
 
