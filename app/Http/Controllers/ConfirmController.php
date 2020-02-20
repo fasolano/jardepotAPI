@@ -160,10 +160,9 @@ class ConfirmController extends Controller {
     public function createMercadopago(Request $request){
         $method = new \App\PaymentMethods\MercadoPago;
         $order = json_decode($request->get('order'));
-        print_r($order);
-        $products = json_decode(unserialize($request->get('products')));
-        $client = json_decode(unserialize($request->get('client')));
-        $delivery = json_decode(unserialize($request->get('delivery')));
+        $products = json_decode($request->get('products'));
+        $client = json_decode($request->get('client'));
+        $delivery = json_decode($request->get('delivery'));
         return $method->setupPaymentAndGetRedirectURL($order, $products, $client, $delivery);
     }
 }
