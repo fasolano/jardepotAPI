@@ -159,10 +159,10 @@ class CheckoutController extends Controller {
             case 'MercadoPago':
                 $url = 'https://fasolano.com/jardepotAPI/public/api/checkout/mercadopago';
                 $fields = array(
-                    'order' => urlencode($data['order']),
-                    'products' => urlencode($data['products']),
-                    'client' => urlencode($data['client']),
-                    'delivery' => urlencode($data['delivery'])
+                    'order' => urlencode(json_encode($data['order'])),
+                    'products' => urlencode(json_encode($data['products'])),
+                    'client' => urlencode(json_encode($data['client'])),
+                    'delivery' => urlencode(json_encode($data['delivery']))
                 );
 
                 $fields_string = "";
@@ -196,10 +196,10 @@ class CheckoutController extends Controller {
 
     public function createMercadopago(Request $request){
         $method = new \App\PaymentMethods\MercadoPago;
-        $order = unserialize($_GET["order"]);
-        $products = unserialize($_GET["products"]);
-        $client = unserialize($_GET["client"]);
-        $delivery = unserialize($_GET["delivery"]);
+        $order = json_decode(unserialize($_GET["order"]));
+        $products = json_decode(unserialize($_GET["products"]));
+        $client = json_decode(unserialize($_GET["client"]));
+        $delivery = json_decode(unserialize($_GET["delivery"]));
         return $method->setupPaymentAndGetRedirectURL($order, $products, $client, $delivery);
     }
 
