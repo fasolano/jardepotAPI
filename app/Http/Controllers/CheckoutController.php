@@ -196,14 +196,11 @@ class CheckoutController extends Controller {
 
     public function createMercadopago(Request $request){
         $method = new \App\PaymentMethods\MercadoPago;
-        $order = json_decode(unserialize($_GET["order"]));
-        $products = json_decode(unserialize($_GET["products"]));
-        $client = json_decode(unserialize($_GET["client"]));
-        $delivery = json_decode(unserialize($_GET["delivery"]));
-        print_r($order);
-        print_r($products);
-        print_r($client);
-        print_r($delivery);
+
+        $order = json_decode(unserialize($request->get('order')));
+        $products = json_decode(unserialize($request->get('products')));
+        $client = json_decode(unserialize($request->get('client')));
+        $delivery = json_decode(unserialize($request->get('delivery')));
         return $method->setupPaymentAndGetRedirectURL($order, $products, $client, $delivery);
     }
 
