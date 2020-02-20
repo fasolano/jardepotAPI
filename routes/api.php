@@ -49,7 +49,7 @@ Route::get('confirm/prueba', 'ConfirmController@prueba');
 
 
 Route::get('checkout/success', 'ApiTokenController@index');
-Route::post('checkout/mercadopago', 'CheckoutController@createMercadopago');
+Route::post('checkout/mercadopago', 'ConfirmController@createMercadopago');
 Route::post('checkout/createOrder', 'CheckoutController@createOrder');
 
 
