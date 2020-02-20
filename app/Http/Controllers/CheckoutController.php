@@ -177,7 +177,7 @@ class CheckoutController extends Controller {
                 curl_setopt($ch,CURLOPT_URL, $url);
                 curl_setopt($ch,CURLOPT_POST, count($fields));
                 curl_setopt($ch,CURLOPT_POSTFIELDS, $fields_string);
-
+                print_r($fields_string);
                 //execute post
                 $result = curl_exec($ch);
 
@@ -196,7 +196,6 @@ class CheckoutController extends Controller {
 
     public function createMercadopago(Request $request){
         $method = new \App\PaymentMethods\MercadoPago;
-
         $order = json_decode(unserialize($request->get('order')));
         $products = json_decode(unserialize($request->get('products')));
         $client = json_decode(unserialize($request->get('client')));
