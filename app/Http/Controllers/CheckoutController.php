@@ -157,7 +157,6 @@ class CheckoutController extends Controller {
     protected function generatePaymentGateway($paymentMethod, $data) : string {
         switch ($paymentMethod){
             case 'MercadoPago':
-                $method = new \App\PaymentMethods\MercadoPago;
                 $url = 'https://fasolano.com/jardepotAPI/public/api/checkout/mercadopago';
                 $fields = array(
                     'order' => urlencode($data['order']),
