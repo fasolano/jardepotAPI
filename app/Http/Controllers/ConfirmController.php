@@ -161,7 +161,7 @@ class ConfirmController extends Controller {
         $method = new \App\PaymentMethods\MercadoPago;
         $order = json_decode($request->get('order'));
         $products = json_decode($request->get('products'));
-        $client = json_decode($request->get('client'));
+        $client = json_decode($request->get('client'), true);
         $delivery = json_decode($request->get('delivery'));
         return $method->setupPaymentAndGetRedirectURL($order, $products, $client, $delivery);
     }
