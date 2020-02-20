@@ -23,8 +23,9 @@ Route::get('product/levels', 'ProductController@getProductlevels');
 Route::get('products/related', 'ProductController@getProductsRelated');
 Route::get('products/search', 'ProductController@getProductsSearch');
 Route::get('products/offer', 'ProductController@getProductsOffer');
-Route::post('products/sendSearch', 'ProductController@sendSearch');
 Route::get('products/getDescriptionNivel2', 'ProductController@getDescriptionNivel2');
+Route::post('products/sendSearch', 'ProductController@sendSearch');
+
 
 Route::get('menu/navbar', 'MenuController@getMenuNavbar');
 Route::get('menu/additional', 'MenuController@getAdditional');
@@ -33,12 +34,14 @@ Route::get('menu/brands', 'MenuController@getBrands');
 Route::get('menu/productsTypes', 'MenuController@getProductTypes');
 Route::get('menu/breadcrumb', 'MenuController@getBreadcrumb');
 
+
 Route::get('session', 'ApiTokenController@getSession');
 
-//Route::get('cart/productos', 'CartController@getCartProducts');
-Route::post('cart/addProduct', 'CartController@addProduct');
+
 Route::get('cart/products', 'CartController@getCartProducts');
+Route::post('cart/addProduct', 'CartController@addProduct');
 Route::delete('cart/removeProduct', 'CartController@removeProductCart');
+
 
 Route::post('confirm/checkout', 'ConfirmController@index');
 Route::post('confirm/notification_url', 'ConfirmController@notification');
@@ -46,6 +49,8 @@ Route::get('confirm/prueba', 'ConfirmController@prueba');
 
 
 Route::get('checkout/success', 'ApiTokenController@index');
+Route::get('checkout/mercadopago', 'CheckoutController@createMercadopago');
 Route::post('checkout/createOrder', 'CheckoutController@createOrder');
+
 
 Route::get('products/validateImages', 'ProductController@validateImages');

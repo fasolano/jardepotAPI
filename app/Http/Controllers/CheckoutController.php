@@ -158,14 +158,50 @@ class CheckoutController extends Controller {
         switch ($paymentMethod){
             case 'MercadoPago':
                 $method = new \App\PaymentMethods\MercadoPago;
+                $url = 'https://fasolano.com/jardepotAPI/public/api/checkout/mercadopago';
+                $fields = array(
+                    'order' => urlencode($data['order']),
+                    'products' => urlencode($data['products']),
+                    'client' => urlencode($data['client']),
+                    'delivery' => urlencode($data['delivery'])
+                );
+
+                $fields_string = "";
+                //url-ify the data for the POST
+                foreach($fields as $key=>$value) { $fields_string .= $key.'='.$value.'&'; }
+                rtrim($fields_string, '&');
+
+                //open connection
+                $ch = curl_init();
+
+                //set the url, number of POST vars, POST data
+                curl_setopt($ch,CURLOPT_URL, $url);
+                curl_setopt($ch,CURLOPT_POST, count($fields));
+                curl_setopt($ch,CURLOPT_POSTFIELDS, $fields_string);
+
+                //execute post
+                $result = curl_exec($ch);
+
+                //close connection
+                curl_close($ch);
                 break;
 
             case 'PayPal':
                 $method = new \App\PaymentMethods\Paypal;
+                $result = $method->setupPaymentAndGetRedirectURL($data['order'], $data['products'], $data['client'], $data['delivery']);
                 break;
         }
 
-        return $method->setupPaymentAndGetRedirectURL($data['order'], $data['products'], $data['client'], $data['delivery']);
+        return $result;
+    }
+
+    public function createMercadopago(Request $request){
+        $method = new \App\PaymentMethods\MercadoPago;
+        $order = unserialize($_GET["order"]);
+        $products = unserialize($_GET["products"]);
+        $client = unserialize($_GET["client"]);
+        $delivery = unserialize($_GET["delivery"]);
+        return $method->setupPaymentAndGetRedirectURL($order, $products, $client, $delivery);
     }
 
     protected function sendAlertMail($clientForm, $billingDeleveryData, $quotation, $mailSeller){
