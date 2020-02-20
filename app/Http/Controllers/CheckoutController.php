@@ -200,6 +200,10 @@ class CheckoutController extends Controller {
         $products = json_decode(unserialize($_GET["products"]));
         $client = json_decode(unserialize($_GET["client"]));
         $delivery = json_decode(unserialize($_GET["delivery"]));
+        print_r($order);
+        print_r($products);
+        print_r($client);
+        print_r($delivery);
         return $method->setupPaymentAndGetRedirectURL($order, $products, $client, $delivery);
     }
 
