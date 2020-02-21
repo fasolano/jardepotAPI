@@ -23,10 +23,7 @@ class ConfirmController extends Controller {
             case 'success':
                 switch ($payment) {
                     case 'MercadoPago':
-                        $token = $this->getExternalReference($content->external_reference);
-                        if ($token == null) {
-                            return response()->json(['data' => 'failure'], 200);
-                        }
+                        $token = $request->get('token');
                         $order = $this->repository->verifyTokenAndPaymentMethod($payment, $token);
                         if ($order == null) {
                             return response()->json(['data' => 'failure'], 200);
@@ -66,8 +63,15 @@ class ConfirmController extends Controller {
                 return response()->json(['data' => 'failure'], 200);
                 break;
         }
+    }
 
-
+    public function mercadopagoToken(Request $request){
+        $content = json_decode($request->get('data'));
+        $token = $this->getExternalReference($content->external_reference);
+        if ($token == null) {
+            return response()->json(['data' => 'failure'], 200);
+        }
+        return response()->json(['data' => $token], 200);
     }
 
     public function getClient($external_reference){

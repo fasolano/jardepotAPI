@@ -45,12 +45,13 @@ Route::delete('cart/removeProduct', 'CartController@removeProductCart');
 
 Route::post('confirm/checkout', 'ConfirmController@index');
 Route::post('confirm/notification_url', 'ConfirmController@notification');
+Route::post('confirm/mercadopago', 'ConfirmController@mercadopagoToken');
 Route::get('confirm/prueba', 'ConfirmController@prueba');
 
 
-Route::get('checkout/success', 'ApiTokenController@index');
 Route::post('checkout/mercadopago', 'ConfirmController@createMercadopago');
 Route::post('checkout/createOrder', 'CheckoutController@createOrder');
+Route::get('checkout/success', 'ApiTokenController@index');
 
 
 Route::get('products/validateImages', 'ProductController@validateImages');
