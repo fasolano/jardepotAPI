@@ -154,10 +154,10 @@ class CheckoutController extends Controller {
         return array("order" => $order, "products" => $products, 'client' => $clientForm);
     }
 
-    protected function generatePaymentGateway($paymentMethod, $data) : string {
+    protected function generatePaymentGateway($paymentMethod, $data) {
         switch ($paymentMethod){
             case 'MercadoPago':
-                $url = 'https://fasolano.com/jardepotAPI/public/api/checkout/mercadopago';
+                /*$url = 'https://fasolano.com/jardepotAPI/public/api/checkout/mercadopago';
                 $fields = array(
                     'order' => urlencode(json_encode($data['order'])),
                     'products' => urlencode(json_encode($data['products'])),
@@ -177,17 +177,19 @@ class CheckoutController extends Controller {
                 curl_setopt($ch,CURLOPT_URL, $url);
                 curl_setopt($ch,CURLOPT_POST, count($fields));
                 curl_setopt($ch,CURLOPT_POSTFIELDS, $fields_string);
-                print_r($fields_string);
+
                 //execute post
                 $result = curl_exec($ch);
 
                 //close connection
-                curl_close($ch);
+                curl_close($ch);*/
+                $result = ['order' => $data['order'], 'products' => $data['products'], 'client' => $data['client'], 'delivery' => $data['delivery'], 'state' => 'Mercadopago'];
                 break;
 
             case 'PayPal':
                 $method = new \App\PaymentMethods\Paypal;
                 $result = $method->setupPaymentAndGetRedirectURL($data['order'], $data['products'], $data['client'], $data['delivery']);
+                $result = ['state' => 'Paypal', 'url' => $result];
                 break;
         }
 

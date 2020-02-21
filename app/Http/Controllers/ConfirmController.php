@@ -163,6 +163,7 @@ class ConfirmController extends Controller {
         $products = json_decode($request->get('products'));
         $client = json_decode($request->get('client'), true);
         $delivery = json_decode($request->get('delivery'));
-        return $method->setupPaymentAndGetRedirectURL($order, $products, $client, $delivery);
+        $url =  $method->setupPaymentAndGetRedirectURL($order, $products, $client, $delivery);
+        return response()->json(['data' => $url], 201);
     }
 }
