@@ -131,7 +131,7 @@ class MercadoPago{
     public function verifyPayment($preference_id){
         $payment = Payment::search(['external_reference' => $preference_id]);
         if(count($payment)){
-            if($payment[0]->external_reference == 'approved' && $payment[0]->external_reference == 'accredited'){
+            if($payment[0]->status == 'approved' && $payment[0]->status_detail == 'accredited'){
                 return $payment[0]->external_reference;
             }else{
                 return null;

@@ -67,7 +67,6 @@ class ConfirmController extends Controller {
 
     public function mercadopagoToken(Request $request){
         $content = json_decode($request->get('data'));
-        print_r($content);
         $token = $this->getExternalReference($content->external_reference);
         if ($token == null) {
             return response()->json(['data' => 'failure'], 200);
