@@ -358,7 +358,7 @@ class ProductController extends Controller{
             $response[$iterator]['images'][0]['medium'] = 'assets/images/productos/' . $img . '.jpg';
             $response[$iterator]['images'][0]['big'] = 'assets/images/productos/' . $img . '.jpg';
             $contadorCarrusel = 1;
-            while (file_exists(strtr(public_path().'/assets/images/productos/'.$img.'-'.$contadorCarrusel.'.jpg', $this-> unwanted_array )) && $contadorCarrusel < 4) {
+            while (file_exists(strtr(public_path().'/../assets/images/productos/'.$img.'-'.$contadorCarrusel.'.jpg', $this-> unwanted_array )) && $contadorCarrusel < 4) {
                 $response[$iterator]['images'][$contadorCarrusel]['small'] = 'assets/images/productos/' . $img . '-'.$contadorCarrusel.'.jpg';
                 $response[$iterator]['images'][$contadorCarrusel]['medium'] = 'assets/images/productos/' . $img . '-'.$contadorCarrusel.'.jpg';
                 $response[$iterator]['images'][$contadorCarrusel]['big'] = 'assets/images/productos/' . $img . '-'.$contadorCarrusel.'.jpg';
