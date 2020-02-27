@@ -467,6 +467,7 @@ class ProductController extends Controller{
             $img = strtolower($item->productType . "-" . $item->brand . "-" . $item->mpn);
             $contadorCarrusel = 1;
             $ima=file_exists(strtr(base_path().'/images/productos/'.$img.'.jpg', $this-> unwanted_array));
+            echo base_path().'/images/productos/'.$img.'.jpg <br>';
             if(!$ima){
                 echo "Nombre imagen: ".$img." Nombre producto: ".$item->productType . " " . $item->brand . " " . $item->mpn;
                 echo "<br>";

@@ -891,7 +891,7 @@ class ProductRepository{
 
     public function validateImages(){
         $productos = DB::table('productos')
-            ->join("XML", function($join){
+            ->leftJoin("XML", function($join){
                 $join->on("productos.productType","=","XML.productType")
                     ->on("productos.brand","=","XML.brand")
                     ->on("productos.mpn","=","XML.mpn");
@@ -918,6 +918,7 @@ class ProductRepository{
                 'XML.resenia'
             )
             ->distinct('productos.mpn')
+            ->orderBy('productos.productType')
             ->get();
         return $productos;
     }
