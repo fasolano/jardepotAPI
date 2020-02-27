@@ -466,7 +466,7 @@ class ProductController extends Controller{
         foreach ($products as $item) {
             $img = strtolower($item->productType . "-" . $item->brand . "-" . $item->mpn);
             $contadorCarrusel = 1;
-            $ima=file_exists(strtr(base_path().'/../jardepot/assets/images/productos/'.$img.'.jpg', $this-> unwanted_array));
+            $ima=file_exists(strtr(base_path().'/images/productos/'.$img.'.jpg', $this-> unwanted_array));
             if(!$ima){
                 echo "Nombre imagen: ".$img." Nombre producto: ".$item->productType . " " . $item->brand . " " . $item->mpn;
                 echo "<br>";
