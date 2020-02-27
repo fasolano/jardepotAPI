@@ -531,8 +531,9 @@ class ProductRepository{
     public function sendBusqueda($form, $busqueda){
         $tipo= $busqueda != '' ? 'busqueda':'duda';
 
-       // $email = ['ventas1@jardepot.com','ventas2@jardepot.com','ventas4@jardepot.com'];
-        $destino='ventas@jardepot.com';
+        $email = ['ventas1@jardepot.com','ventas2@jardepot.com','ventas4@jardepot.com'];
+        $num = rand(0,2);
+        $destino = $email[$num];
         $asunto='';
         switch ($tipo){
             case 'duda':
@@ -603,7 +604,6 @@ class ProductRepository{
     }
 
     public function getProductsSearch($busqueda){
-
         $encontrados = "";
         $matches = array();
         $matchesCount = 0;
