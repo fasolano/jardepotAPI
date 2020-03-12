@@ -67,4 +67,63 @@ class ConfirmRepository {
         return $client;
     }
 
+    public function insertOrder($client, $cart){
+        $date = date('Y-m-d H:i:s');
+        $total = $cart->total;
+        if($cart->total < 3000){
+            $total = 300 + $cart->total;
+        }
+        $total *= 1.04;
+        $order = DB::connection('digicom')
+            ->table('pedidos_jardepot')
+            ->insertGetId([
+                'idClientes' => $client,
+                'descuento' => 0,
+                'fecha' => $date,
+                'total' => $total,
+                'estado' => 1,
+                'idusuario' => 2
+            ]);
+
+        $order = DB::connection('digicom')
+            ->table('pedidos_jardepot')
+            ->select('*')
+            ->where('idPedidos', $order)
+            ->first();
+
+        return $order;
+    }
+
+    public function insertProductsOrder($order, $products){
+        $idPedidos = $order->idPedidos;
+        foreach ($products as $product) {
+            if($product->offer == 'si'){
+                $precio = $product->oferta;
+            }else{
+                $precio = $product->priceweb;
+            }
+//            $precio = $product->cantidad * $precio;
+            $precio *= 1.04;
+            $orderProductInserted = DB::connection('digicom')
+                ->table('productosPedidos_jardepot')
+                ->insertGetId([
+                    'idPedidos' => $idPedidos,
+                    'cantidad' => $product->cantidad,
+                    'nombre' => $product->producto,
+                    'precio' => $precio
+                ]);
+        }
+        // Despues de haber insertado productos evalua si es necesario cobrar envio de ser así se agrega a la orden
+        if($order->total < 3000){
+            $orderProductInserted = DB::connection('digicom')
+                ->table('productosPedidos_jardepot')
+                ->insertGetId([
+                    'idPedidos' => $idPedidos,
+                    'cantidad' => 1,
+                    'nombre' => 'Manejo de Mercancía Envío paquetería',
+                    'precio' => 300 * 1.04
+                ]);
+        }
+    }
+
 }

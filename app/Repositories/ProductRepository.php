@@ -324,7 +324,7 @@ class ProductRepository{
         $categoriaNivel1 = str_replace("_", "-", $nivel1);
         $categoriaNivel2 = str_replace("_", "-", $nivel2);
 
-        $id = DB::table('categoriasNivel2')
+        $query = DB::table('categoriasNivel2')
             ->join('categoriasNivel1', 'categoriasNivel2.idCategoriasNivel1', '=', 'categoriasNivel1.idCategoriasNivel1')
             ->select(
                 'categoriasNivel2.idCategoriasNivel2'
@@ -334,8 +334,8 @@ class ProductRepository{
                 ['categoriasNivel1.nombreCategoriaNivel1', $categoriaNivel1]
             ])
             ->first();
-
-        return $id->idCategoriasNivel2;
+        $idReturn = is_object($query) ? $query->idCategoriasNivel2 : null;
+        return $idReturn;
     }
 
     public function getCategoriasNivel3($idCategoriaNivel2){

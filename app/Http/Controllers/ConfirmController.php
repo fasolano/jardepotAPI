@@ -6,9 +6,12 @@ namespace App\Http\Controllers;
 
 use App\PaymentMethods\MercadoPago;
 use App\PaymentMethods\Paypal;
+use App\Repositories\CartRepository;
+use App\Repositories\CheckoutRepository;
 use App\Repositories\ConfirmRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use PayPal\Api\Payment;
 
 class ConfirmController extends Controller {
 
@@ -40,6 +43,51 @@ class ConfirmController extends Controller {
                             return response()->json(['data' => 'failure'], 200);
                         }
                         $this->repository->createDeposit($order->total, $order->idPedidos, $payment, $order->fk_carrito);
+                        $this->sendConfirmationMails($order->idPedidos);
+                        return response()->json(['data' => 'success'], 200);
+                        break;
+
+                    case 'button':
+                        $repositoryCheckout = new CheckoutRepository();
+                        $cookie = json_decode($request->get('sessionCookie'));
+                        if(!$cookie){
+                            return response()->json(['data' => 'failure'], 200);
+                        }
+                        $token = $request->get('token');
+                        $order = $this->validateButtonID($token);
+                        if ($order == null){
+                            return response()->json(['data' => 'failure'], 200);
+                        }
+
+                        $cartRepository = new CartRepository();
+                        $clientForm = json_decode($content->client);
+                        $address = explode(",", $content->address);
+                        $name = $content->name;
+                        $clientData = $this->dataClient($clientForm, $address);
+                        $client = $repositoryCheckout->insertClient($clientData);
+
+                        //Obtiene el carro completo
+                        $cart = $cartRepository->getCart($cookie->carrito);
+
+                        //Finaliza el carro para que no se vuelva a cargar
+                        $cartRepository->closeCart($cart);
+                        $order = $this->repository->insertOrder($client, $cart);
+                        $webOrder = $repositoryCheckout->insertWebOrder($order, $cart, $payment);
+                        $order = $this->repository->verifyTokenAndPaymentMethod($payment, $webOrder->token);
+                        $order->token = $webOrder->token;
+                        $mailSeller = $repositoryCheckout->setSellerToOrder($order->idPedidos);
+
+                        $this->repository->createDeposit($order->total, $order->idPedidos, $payment, $order->fk_carrito);
+
+                        $billingForm = $this->dataBilling();
+                        $deliveryForm = $this->dataDelivery($address, $name);
+
+                        $billingDeleveryData = array_merge($deliveryForm, $billingForm, ['idPedidos' => $order->idPedidos]);
+                        $repositoryCheckout->insertDeliveryBilling($billingDeleveryData);
+
+                        $products = $cartRepository->getProductsFromCart($cart->id_carrito);
+                        $this->repository->insertProductsOrder($order, $products);
+
                         $this->sendConfirmationMails($order->idPedidos);
                         return response()->json(['data' => 'success'], 200);
                         break;
@@ -90,7 +138,7 @@ class ConfirmController extends Controller {
         return $token;
     }
 
-    public function getExternalReference($preference_id) {
+    public function getExternalReference($preference_id){
         $mercado_pago = new MercadoPago();
         return $mercado_pago->verifyPayment($preference_id);
     }
@@ -100,14 +148,13 @@ class ConfirmController extends Controller {
 //        $url = 'https://jardepot.com/digicom/public/instalar_virus/ajax/sitios/jardepot/ventas/correoProcesamientoPedido/web?idPedidos='.$order.'&mail=sistemas1@jardepot.com';
 //        $url = 'http://koot.mx/digicom/public/instalar_virus/ajax/sitios/jardepot/ventas/correoProcesamientoPedido/web?idPedidos='.$order.'&mail=sistemas1@jardepot.com';
 //        $url = 'https://seragromex.com/digicom/public/instalar_virus/ajax/sitios/jardepot/ventas/correoProcesamientoPedido/web?idPedidos='.$order.'&mail=sistemas1@jardepot.com';
-//        $url = 'http://localhost/digicom5/public/instalar_virus/ajax/sitios/jardepot/ventas/correoProcesamientoPedido/web?idPedidos='.$order.'&mail=sistemas1@jardepot.com';
+//        $url = 'http://localhost/digicom5/public/instalar_virus/ajax/sitios/jardepot/ventas/correoProcesamientoPedido/web?idPedidos='.$order.'&mail=contabilidad@jardepot.com';
         //open connection
         $ch = curl_init();
         curl_setopt($ch,CURLOPT_URL, $url);
         curl_exec($ch);
         //close connection
         curl_close($ch);
-
         $url1 = 'http://digicom.mx/instalar_virus/sitios/jardepot/ventas/90-100/enviar90-100web.php?idPedidos='.$order.'&username=Sistemas&user_email=sistemas1@jardepot.com';
 //        $url1 = 'https://jardepot.com/digicom/public/instalar_virus/sitios/jardepot/ventas/90-100/enviar90-100web.php?idPedidos='.$order.'&username=Sistemas&user_email=sistemas1@jardepot.com';
 //        $url1 = 'http://koot.mx/digicom/public/instalar_virus/sitios/jardepot/ventas/90-100/enviar90-100web.php?idPedidos='.$order.'&username=Sistemas&user_email=sistemas1@jardepot.com';
@@ -154,11 +201,13 @@ class ConfirmController extends Controller {
         return response()->json(['data' => 'success'], 204);
     }
 
+    public function validateButtonID($id){
+        $paypal = new Paypal();
+        return $paypal->validateID($id);
+    }
+
     public function prueba(){
-        $curl_info = curl_version();
-        echo "protocol: " . $curl_info['ssl_version'];
-        /*$mp = new Paypal();
-        $mp->prueba();*/
+        $this->sendConfirmationMails(25);
     }
 
     public function createMercadopago(Request $request){
@@ -170,4 +219,47 @@ class ConfirmController extends Controller {
         $url =  $method->setupPaymentAndGetRedirectURL($order, $products, $client, $delivery);
         return response()->json(['data' => $url], 201);
     }
+
+    public function dataClient($client, $address){
+        return [
+            'nombre' => $client->firstName,
+            'apellidos' => $client->lastName,
+            'email' => $client->email,
+            'telefono' => $client->phone,
+            'cp' => $address[4],
+            'estado' => $address[3],
+            'ciudad' => $address[2],
+            'colonia' => $address[1],
+            'direccion' => $address[0]
+        ];
+    }
+
+    public function dataDelivery($address, $name){
+        return [
+            'recibeEnvio' => $name,
+            'calleEnvio' => $address[0],
+            'coloniaEnvio' => $address[1],
+            'ciudadEnvio' => $address[2],
+            'estadoEnvio' => $address[3],
+            'cpEnvio' => $address[4]
+        ];
+    }
+
+    public function dataBilling(){
+        return [
+            'razonSocialFacturacion' => '',
+            'tipoPersonaFacturacion' => 'general',
+            'rfcFacturacion' => '',
+            'calleFacturacion' => '',
+            'ciudadFacturacion' => '',
+            'estadoFacturacion' => '',
+            'correoFacturacion' => '',
+            'cpFacturacion' => '',
+            'metodoDePagoFacturacion' => 'PUE Pago en una sola exhibición',
+            'formaDePagoFacturacion' => '03 Transferencia electrónica de fondos',
+            'usoDelCFDIFacturacion' => 'G01 Adquisición de mercancías'
+        ];
+
+    }
+
 }

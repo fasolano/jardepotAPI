@@ -28,12 +28,6 @@ class CheckoutController extends Controller {
         }
     }
 
-    public function index(Request $request){
-
-        print_r($request->toArray());
-        return;
-    }
-
     public function createOrder(Request $request) {
         $allowedPaymentMethods = config('payment-methods.enabled');
 
@@ -120,9 +114,7 @@ class CheckoutController extends Controller {
         $cartRepository = new CartRepository();
 
         $clientForm = $this->dataClient(json_decode($forms->billing));
-
         $billingForm = $this->dataBilling(json_decode($forms->billMandatory), json_decode($forms->needBilling));
-
         $deliveryForm = $this->dataDelivery(json_decode($forms->billing), json_decode($forms->delivery));
 
         $client = $this->repository->insertClient($clientForm);

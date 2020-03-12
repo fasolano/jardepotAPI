@@ -33,6 +33,9 @@ class ProductController extends Controller{
         $nivel1 = $request->get('nivel1');
         $nivel2 = $request->get('nivel2');
         $idNivel2 = $this->productoRepository->getIdNivel2($nivel1, $nivel2);
+        if($idNivel2 == null){
+            return json_encode([]);
+        }
         $response = array();
         $iterator = 0;
 
@@ -321,18 +324,6 @@ class ProductController extends Controller{
             $brand = ucfirst($brand);
         }
 
-        /*$product = $request->get('product');
-        $product = explode("-", $product);
-        $ptemp = $product[0].'-'.$product[1];
-        if($ptemp == 'Hilo-Nylon'){
-            $productType = 'Hilo-Nylon';
-            $brand = str_replace("_", " ", $product[2]);
-            $mpn = str_replace("_", "-", $product[3]);
-        } else {
-            $productType = str_replace("_", " ", $product[0]);
-            $brand = str_replace("_", " ", $product[1]);
-            $mpn = str_replace("_", "-", $product[2]);
-        }*/
         $data = $this->productoRepository->getProductsRelated($productType, $brand, $mpn);
         $response = array();
         $iterator = 0;

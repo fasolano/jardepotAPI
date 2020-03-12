@@ -38,8 +38,10 @@ class CartRepository{
                 'fk_user' => $user->id,
                 'api_token' => $user->api_token,
                 'id_carrito' => $cart,
-                'estado' => 'Activo'
-            ])->get();
+            ])
+            ->orWhere('estado', 'Activo')
+            ->orWhere('estado', 'Pendiente')
+            ->get();
 
         return count($cart);
     }
@@ -156,7 +158,11 @@ class CartRepository{
     }
 
     public function getCart($cart){
-        $cart = DB::table('carrito')->select('*')->where(['id_carrito' => $cart, 'estado' => 'Activo'])->first();
+        $cart = DB::table('carrito')
+            ->select('*')
+            ->where(['id_carrito' => $cart])
+            ->orWhere([['estado', 'Pendiente'], ['estado','Activo']])
+            ->first();
         return $cart;
     }
 

@@ -9,20 +9,32 @@ use Illuminate\Support\Str;
 class CheckoutRepository {
 
     public function insertClient($cliente){
-        $client = DB::connection('digicom')
+        $clientRegistered = DB::connection('digicom')
             ->table('clientes_jardepot')
-            ->insertGetId([
-                'nombre' => $cliente['nombre']." ".$cliente['apellidos'],
+            ->select('*')
+            ->where([
                 'correo' => $cliente['email'],
-                'telefono' => $cliente['telefono'],
-                'estado' => $cliente['estado'],
-                'ciudad' => $cliente['ciudad'],
-                'tipo' => 1,
-                'comentarios' => "Se registro a través de un pedido en la página web",
-                'idUsuarios' => 2
-            ]);
+                'telefono' => $cliente['telefono']
+            ])
+            ->first();
 
-        return $client;
+        if(!is_object($clientRegistered)){
+            $clientRegistered = DB::connection('digicom')
+                ->table('clientes_jardepot')
+                ->insertGetId([
+                    'nombre' => $cliente['nombre']." ".$cliente['apellidos'],
+                    'correo' => $cliente['email'],
+                    'telefono' => $cliente['telefono'],
+                    'estado' => $cliente['estado'],
+                    'ciudad' => $cliente['ciudad'],
+                    'tipo' => 1,
+                    'comentarios' => "Se registro a través de un pedido en la página web",
+                    'idUsuarios' => 2
+                ]);
+        }else{
+            $clientRegistered = $clientRegistered->idClientes;
+        }
+        return $clientRegistered;
     }
 
     public function insertOrder($client, $cart, $deliveryMethod){

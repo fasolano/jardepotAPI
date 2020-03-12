@@ -1,0 +1,12 @@
+[09-03-2020 12:28:41] PayPal\Core\PayPalHttpConnection : INFO: POST https://api.sandbox.paypal.com/v1/oauth2/token
+[09-03-2020 12:28:41] PayPal\Core\PayPalHttpConnection : INFO: Response Status 	: 200
+[09-03-2020 12:28:41] PayPal\Core\PayPalHttpConnection : INFO: GET https://api.sandbox.paypal.com/v1/payments/orders/60355843MY413270N
+[09-03-2020 12:28:42] PayPal\Core\PayPalHttpConnection : INFO: Response Status 	: 404
+[09-03-2020 12:28:42] PayPal\Core\PayPalHttpConnection : ERROR: Got Http response code 404 when accessing https://api.sandbox.paypal.com/v1/payments/orders/60355843MY413270N. {"name":"INVALID_RESOURCE_ID","message":"The requested resource ID was not found","information_link":"https://developer.paypal.com/docs/api/payments/#errors","debug_id":"875af88ea456c"}
+[09-03-2020 12:44:45] PayPal\Core\PayPalHttpConnection : INFO: POST https://api.sandbox.paypal.com/v1/oauth2/token
+[09-03-2020 12:44:46] PayPal\Core\PayPalHttpConnection : INFO: Response Status 	: 401
+[09-03-2020 12:44:46] PayPal\Core\PayPalHttpConnection : ERROR: Got Http response code 401 when accessing https://api.sandbox.paypal.com/v1/oauth2/token. {"error":"invalid_client","error_description":"Client Authentication failed"}
+[09-03-2020 12:45:02] PayPal\Core\PayPalHttpConnection : INFO: POST https://api.paypal.com/v1/oauth2/token
+[09-03-2020 12:45:03] PayPal\Core\PayPalHttpConnection : INFO: Response Status 	: 200
+[09-03-2020 12:45:03] PayPal\Core\PayPalHttpConnection : INFO: GET https://api.paypal.com/v1/payments/payment?
+[09-03-2020 12:45:06] PayPal\Core\PayPalHttpConnection : INFO: Response Status 	: 200
