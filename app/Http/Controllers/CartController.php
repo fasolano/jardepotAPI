@@ -36,6 +36,7 @@ class CartController extends Controller {
         $product = json_decode($request->get('product'));
         $quantity = json_decode($request->get('quantity'));
         $cart = isset($cookie->carrito)? $cookie->carrito: false;
+
         //Si no se mando o si no se encuentra activo o no pertenece al usuario se crea uno nuevo
         if(!$cart || !$repository->verifyCart($user, $cart)){
             $cart = $repository->addCart($user);

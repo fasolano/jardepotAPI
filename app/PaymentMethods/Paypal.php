@@ -197,14 +197,14 @@ class Paypal {
             $this->client_secret
         ));
 
-        /*$apiContext->setConfig(
+        $apiContext->setConfig(
             array(
                 'log.LogEnabled' => true,
                 'log.FileName' => 'PayPal.log',
                 'log.LogLevel' => 'DEBUG',
                 'mode' => 'live'
             )
-        );*/
+        );
         try {
             $result = Order::get($id, $apiContext);
         } catch (PayPalConnectionException $ex) {
