@@ -139,11 +139,11 @@ class ProductController extends Controller{
                             $response[$iterator]['newPrice'] = $item->oferta;
                         }
                     } else {
-                        if ($item->PrecioDeLista > $item->priceweb ) {
+                        if ($item->PrecioDeLista > $item->price ) {
                             $response[$iterator]['oldPrice'] = $item->PrecioDeLista;
-                            $response[$iterator]['newPrice'] = $item->priceweb;
+                            $response[$iterator]['newPrice'] = $item->price;
                         } else {
-                            $response[$iterator]['newPrice'] = $item->priceweb;
+                            $response[$iterator]['newPrice'] = $item->price;
 
                         }
                     }
@@ -183,11 +183,11 @@ class ProductController extends Controller{
                         $response[$iterator]['newPrice'] = $item->oferta;
                     }
                 } else {
-                    if ($item->PrecioDeLista > $item->priceweb ) {
+                    if ($item->PrecioDeLista > $item->price ) {
                         $response[$iterator]['oldPrice'] = $item->PrecioDeLista;
-                        $response[$iterator]['newPrice'] = $item->priceweb;
+                        $response[$iterator]['newPrice'] = $item->price;
                     } else {
-                        $response[$iterator]['newPrice'] = $item->priceweb;
+                        $response[$iterator]['newPrice'] = $item->price;
 
                     }
                 }
@@ -366,11 +366,11 @@ class ProductController extends Controller{
                     $response[$iterator]['newPrice'] = $item->oferta;
                 }
             } else {
-                if ($item->PrecioDeLista > $item->priceweb ) {
+                if ($item->PrecioDeLista > $item->price ) {
                     $response[$iterator]['oldPrice'] = $item->PrecioDeLista;
-                    $response[$iterator]['newPrice'] = $item->priceweb;
+                    $response[$iterator]['newPrice'] = $item->price;
                 } else {
-                    $response[$iterator]['newPrice'] = $item->priceweb;
+                    $response[$iterator]['newPrice'] = $item->price;
 
                 }
             }
