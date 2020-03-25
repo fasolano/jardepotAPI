@@ -45,7 +45,7 @@ class ProductRepository{
                 'productos.mpn',
                 'productos.description',
                 'productos.availability',
-                'productos.priceweb',
+                'productos.price',
                 'productos.oferta',
                 'productos.PrecioDeLista',
                 'productos.offer',
@@ -98,7 +98,7 @@ class ProductRepository{
                 'productos.mpn',
                 'productos.description',
                 'productos.availability',
-                'productos.priceweb',
+                'productos.price',
                 'productos.oferta',
                 'productos.PrecioDeLista',
                 'productos.offer',
@@ -160,7 +160,7 @@ class ProductRepository{
                 'productos.mpn',
                 'productos.description',
                 'productos.availability',
-                'productos.priceweb',
+                'productos.price',
                 'productos.oferta',
                 'productos.PrecioDeLista',
                 'productos.offer',
@@ -228,7 +228,7 @@ class ProductRepository{
                 'productos.mpn',
                 'productos.description',
                 'productos.availability',
-                'productos.priceweb',
+                'productos.price',
                 'productos.oferta',
                 'productos.PrecioDeLista',
                 'productos.offer',
@@ -282,7 +282,7 @@ class ProductRepository{
                 'productos.mpn',
                 'productos.description',
                 'productos.availability',
-                'productos.priceweb',
+                'productos.price',
                 'productos.oferta',
                 'productos.PrecioDeLista',
                 'productos.offer',
@@ -304,8 +304,8 @@ class ProductRepository{
                 ['productos.mpn', '!=', $mpn]
             ])
             ->whereRaw(
-                "productos.priceweb >= (select priceweb * 0.75 as priceweb from productos where productType = '".$productType."' AND brand = '".$brand."' AND mpn = '".$mpn."') AND ".
-                "productos.priceweb <= (select priceweb * 1.5 as priceweb from productos where productType = '".$productType."' AND brand = '".$brand."' AND mpn = '".$mpn."')"
+                "productos.price >= (select price * 0.75 as price from productos where productType = '".$productType."' AND brand = '".$brand."' AND mpn = '".$mpn."') AND ".
+                "productos.price <= (select price * 1.5 as price from productos where productType = '".$productType."' AND brand = '".$brand."' AND mpn = '".$mpn."')"
             )
             ->groupBy(
                 'productos.productType',
@@ -437,7 +437,7 @@ class ProductRepository{
         //Este metodo calcula si alguna de las palabras buscadas tiene mayor coincidencias y regresa eso
         $split = explode(" ", $busqueda);
         $sql = "SELECT productos.id, productos.productType, productos.brand, productos.mpn, productos.description,
-        productos.availability,productos.offer, productos.PrecioDeLista, productos.oferta, productos.priceweb,
+        productos.availability,productos.offer, productos.PrecioDeLista, productos.oferta, productos.price,
         productos.visible, productos.iva, productos.video,productos.volada,productos.visible,
         XML.keywords,XML.metadesc,XML.descriptionweb,XML.resenia,XML.titleweb, SUM(inventario.cantidad) as cantidadInventario
         FROM productos
@@ -626,7 +626,7 @@ class ProductRepository{
                     $matches[$key][$producto -> id]["PrecioDeLista"] = $producto -> PrecioDeLista;
                     $matches[$key][$producto -> id]["oferta"] = $producto -> oferta;
                     $matches[$key][$producto -> id]["stock"] = $producto -> availability == 'in stock' ?true:false;
-                    $matches[$key][$producto -> id]["priceweb"] = $producto -> priceweb;
+                    $matches[$key][$producto -> id]["price"] = $producto -> price;
                     $matches[$key][$producto -> id]["resenia"] = $producto -> resenia;
                     $matches[$key][$producto -> id]["metadesc"] = $producto -> metadesc;
                     $matches[$key][$producto -> id]["titleweb"] = $producto -> titleweb;
@@ -673,7 +673,7 @@ class ProductRepository{
                         'productos.mpn',
                         'productos.description',
                         'productos.availability',
-                        'productos.priceweb',
+                        'productos.price',
                         'productos.oferta',
                         'productos.PrecioDeLista',
                         'productos.offer',
@@ -720,7 +720,7 @@ class ProductRepository{
                         $matches[4][$producto -> id]["PrecioDeLista"] = $producto -> PrecioDeLista;
                         $matches[4][$producto -> id]["oferta"] = $producto -> oferta;
                         $matches[4][$producto -> id]["oferta"] = $producto -> availability == 'in stock' ?true:false;
-                        $matches[4][$producto -> id]["priceweb"] = $producto -> priceweb;
+                        $matches[4][$producto -> id]["price"] = $producto -> price;
                         $matches[4][$producto -> id]["resenia"] = $producto -> resenia;
                         $matches[4][$producto -> id]["metadesc"] = $producto -> metadesc;
                         $matches[4][$producto -> id]["titleweb"] = $producto -> titleweb;
@@ -765,7 +765,7 @@ class ProductRepository{
                         'productos.mpn',
                         'productos.description',
                         'productos.availability',
-                        'productos.priceweb',
+                        'productos.price',
                         'productos.oferta',
                         'productos.PrecioDeLista',
                         'productos.offer',
@@ -809,7 +809,7 @@ class ProductRepository{
                         $matches[4][$producto -> id]["PrecioDeLista"] = $producto -> PrecioDeLista;
                         $matches[4][$producto -> id]["oferta"] = $producto -> oferta;
                         $matches[4][$producto -> id]["stock"] = $producto -> availability == 'in stock' ?true:false;
-                        $matches[4][$producto -> id]["priceweb"] = $producto -> priceweb;
+                        $matches[4][$producto -> id]["price"] = $producto -> price;
                         $matches[4][$producto -> id]["resenia"] = $producto -> resenia;
                         $matches[4][$producto -> id]["metadesc"] = $producto -> metadesc;
                         $matches[4][$producto -> id]["titleweb"] = $producto -> titleweb;
@@ -849,11 +849,11 @@ class ProductRepository{
                         //no está de oferta :(
                     }else{
                         //solo pone precio de lista cuando es mayor!!
-                        if ($match["PrecioDeLista"] > $match["priceweb"]) {
+                        if ($match["PrecioDeLista"] > $match["price"]) {
                             $response[$iterator]['oldPrice'] = $match["PrecioDeLista"];
-                            $response[$iterator]['newPrice'] = $match["priceweb"];
+                            $response[$iterator]['newPrice'] = $match["price"];
                         }else{
-                            $response[$iterator]['newPrice'] = $match["priceweb"];
+                            $response[$iterator]['newPrice'] = $match["price"];
                         }
                     }
                     $response[$iterator]['description'] = $match["description"];
@@ -903,7 +903,7 @@ class ProductRepository{
                 'productos.mpn',
                 'productos.description',
                 'productos.availability',
-                'productos.priceweb',
+                'productos.price',
                 'productos.oferta',
                 'productos.PrecioDeLista',
                 'productos.offer',
