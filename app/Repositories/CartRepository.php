@@ -69,7 +69,7 @@ class CartRepository{
                 'productos.mpn',
                 'productos.description',
                 'productos.availability',
-                'productos.priceweb',
+                'productos.price',
                 'productos.oferta',
                 'productos.PrecioDeLista',
                 'productos.offer',
@@ -128,7 +128,7 @@ class CartRepository{
         foreach ($products as $productCart) {
             $product = DB::table('productos')
                 ->select(DB::raw("IF(offer = 'si', (oferta * ".$productCart->cantidad."),
-                (priceweb * ".$productCart->cantidad.")) precio"))
+                (price * ".$productCart->cantidad.")) precio"))
                 ->whereRaw("concat(productType, ' ', brand, ' ', mpn) = '".$productCart->producto."'")
                 ->first();
             $totalPrice += $product->precio;
