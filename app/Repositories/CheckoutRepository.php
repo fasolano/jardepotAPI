@@ -44,6 +44,7 @@ class CheckoutRepository {
             $total = $deliveryMethod->deliveryMethod->cost + $cart->total;
         }
         $total *= 1.04;
+        $total = round($total, 2);
         $order = DB::connection('digicom')
             ->table('pedidos_jardepot')
             ->insertGetId([

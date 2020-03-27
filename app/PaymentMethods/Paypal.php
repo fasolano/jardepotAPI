@@ -80,6 +80,7 @@ class Paypal {
             array_push($items, $item);
         }
         $commission = $totalprice * 0.04;
+        $commission = round($commission, 2);
 
         $item = new Item();
         $item->setName('Comisión de pago en paypal')
