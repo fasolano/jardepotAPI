@@ -82,7 +82,7 @@ class CheckoutController extends Controller {
             if($product->offer == 'si'){
                 $precio = $product->oferta;
             }else{
-                $precio = $product->priceweb;
+                $precio = $product->price;
             }
             $content[$key]["cantidad"] = $product->cantidad;
             $content[$key]["nombre"] = $product->producto;
@@ -189,9 +189,9 @@ class CheckoutController extends Controller {
     }
 
     protected function sendAlertMail($clientForm, $billingDeleveryData, $quotation, $mailSeller){
-//        $destino = "fasolanof@gmail.com";
+        $destino = "fasolanof@gmail.com";
 //        $destino = "ventas@jardepot.com";
-        $destino = $mailSeller;
+//        $destino = $mailSeller;
         $dia = date('d-m-Y');
         $hora = date('H:i:s');
 

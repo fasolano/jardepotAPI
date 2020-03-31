@@ -100,7 +100,7 @@ class ConfirmRepository {
             if($product->offer == 'si'){
                 $precio = $product->oferta;
             }else{
-                $precio = $product->priceweb;
+                $precio = $product->price;
             }
 //            $precio = $product->cantidad * $precio;
             $precio *= 1.04;
