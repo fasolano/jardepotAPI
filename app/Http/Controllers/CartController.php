@@ -18,7 +18,11 @@ class CartController extends Controller {
     public function __construct(Request $request){
         $api = new ApiTokenController();
         $cookie = json_decode($request->get('sessionCookie'));
-        $this->user = $api->evaluate($cookie);
+        if($cookie == ""){
+            $this->user = null;
+        }else{
+            $this->user = $api->evaluate($cookie);
+        }
         /*if(!$user){
             echo json_encode(1);
             die();
@@ -49,13 +53,13 @@ class CartController extends Controller {
     }
 
     public function getCartProducts(Request $request){
-        if(!$this->user){
+        $cookie = json_decode($request->get('sessionCookie'));
+        if(!$this->user || $cookie == ""){
             return response()->json(null, 204);
         }
         $user = Auth::guard()->user();
         $repository = new CartRepository();
         $productController = new ProductController();
-        $cookie = json_decode($request->get('sessionCookie'));
         $cart = isset($cookie->carrito)? $cookie->carrito: false;
         if($cart && $repository->verifyCart($user, $cart)){
             $products = $repository->getProductsFromCart($cart);
