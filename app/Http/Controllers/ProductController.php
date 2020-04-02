@@ -127,7 +127,7 @@ class ProductController extends Controller{
                     $response[$iterator]['name'] = $item->productType . " " . $item->brand . " " . $item->mpn;
                     $response[$iterator]['images'][0]['small'] = 'assets/images/productos/' . $img . '.jpg';
                     $response[$iterator]['images'][0]['medium'] = 'assets/images/productos/' . $img . '.jpg';
-                    $response[$iterator]['images'][0]['big'] = 'assets/images/productos/' . $img . '.jpg';
+                    $response[$iterator]['images'][0]['big'] = 'assets/images/productos/zoom/' . $img . '.jpg';
                     //empieza la seccion de precios
                     if (isset($item->offer) && $item->offer == 'si') {
                         $response[$iterator]['discount'] = "Oferta";
@@ -171,7 +171,7 @@ class ProductController extends Controller{
                 $response[$iterator]['name'] = $item->productType . " " . $item->brand . " " . $item->mpn;
                 $response[$iterator]['images'][0]['small'] = 'assets/images/productos/' . $img . '.jpg';
                 $response[$iterator]['images'][0]['medium'] = 'assets/images/productos/' . $img . '.jpg';
-                $response[$iterator]['images'][0]['big'] = 'assets/images/productos/' . $img . '.jpg';
+                $response[$iterator]['images'][0]['big'] = 'assets/images/productos/zoom/' . $img . '.jpg';
                 //empieza la seccion de precios
                 if (isset($item->offer) && $item->offer == 'si') {
                     $response[$iterator]['discount'] = "Oferta";
