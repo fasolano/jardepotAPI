@@ -69,6 +69,10 @@ class ConfirmController extends Controller {
                         //Obtiene el carro completo
                         $cart = $cartRepository->getCart($cookie->carrito);
 
+                        if (!$cart){
+                            return response()->json(['data' => 'success'], 200);
+                        }
+
                         $order = $this->repository->insertOrder($client, $cart);
                         $webOrder = $repositoryCheckout->insertWebOrder($order, $cart, $payment);
                         $order = $this->repository->verifyTokenAndPaymentMethod($payment, $webOrder->token);
