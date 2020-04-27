@@ -43,6 +43,10 @@ class CartRepository{
             ->orWhere('estado', 'Pendiente')
             ->get();
 
+        if ($cart[0]->estado == 'Comprado' || $cart[0]->estado == 'Vencido'){
+            return 0;
+        }
+
         return count($cart);
     }
 
