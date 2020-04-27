@@ -90,7 +90,7 @@ class ConfirmController extends Controller {
                         $products = $cartRepository->getProductsFromCartFinal($cart->id_carrito);
                         $this->repository->insertProductsOrder($order, $products);
 
-                        $this->sendConfirmationMails($order->idPedidos);
+                        // $this->sendConfirmationMails($order->idPedidos);
                         return response()->json(['data' => 'success'], 200);
                         break;
                 }
