@@ -38,14 +38,9 @@ class CartRepository{
                 'fk_user' => $user->id,
                 'api_token' => $user->api_token,
                 'id_carrito' => $cart,
+                'estado' => 'Activo',
             ])
-            ->orWhere('estado', 'Activo')
-            ->orWhere('estado', 'Pendiente')
             ->get();
-
-        if ($cart[0]->estado == 'Comprado' || $cart[0]->estado == 'Vencido'){
-            return 0;
-        }
 
         return count($cart);
     }
