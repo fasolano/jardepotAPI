@@ -34,7 +34,7 @@ class ApiTokenController extends Controller {
     public function getSession(Request $request){
         $user = null;
         $registro = new RegisterController();
-        $user = $registro->register();
+        $user = $registro->create();
 
         //Tambien se inicia el carrito para que se agreguen los productos
         $carritoController = new CartRepository();
