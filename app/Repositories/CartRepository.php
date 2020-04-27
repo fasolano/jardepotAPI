@@ -95,6 +95,54 @@ class CartRepository{
         return $products;
     }
 
+    public function getProductsFromCartFinal($cart){
+        $products = DB::table('producto_carrito as pc')
+            ->join('productos', function($join){
+                $join->on("pc.producto", DB::raw("binary CONCAT(productos.productType,' ',productos.brand,' ',productos.mpn)"));
+            })
+            ->join("XML", function($join){
+                $join->on("productos.productType","=","XML.productType")
+                    ->on("productos.brand","=","XML.brand")
+                    ->on("productos.mpn","=","XML.mpn");
+            })
+            ->leftJoin("inventario",function($join){
+                $join->on("productos.productType","=","inventario.productType")
+                    ->on("productos.brand","=","inventario.brand")
+                    ->on("productos.mpn","=","inventario.mpn");
+            })
+            ->select('pc.producto',
+                'pc.cantidad',
+                'productos.id',
+                'productos.productType',
+                'productos.brand',
+                'productos.mpn',
+                'productos.description',
+                'productos.availability',
+                'productos.price',
+                'productos.oferta',
+                'productos.PrecioDeLista',
+                'productos.offer',
+                'productos.iva',
+                'productos.video',
+                'productos.volada',
+                'productos.visible',
+                'XML.keywords',
+                'XML.metadesc',
+                'XML.descriptionweb',
+                'XML.resenia',
+                DB::raw('SUM(inventario.cantidad) as cantidadInventario')
+            )
+            ->where([
+                'pc.fk_carrito' => $cart
+            ])
+            ->groupBy(
+                'productos.productType',
+                'productos.brand','productos.mpn'
+            )->get();
+
+        return $products;
+    }
+
     public function addProductCart($cart, $product, $quantity){
         $date = date('Y-m-d H:i:s');
         DB::table('producto_carrito')
@@ -172,7 +220,7 @@ class CartRepository{
                 ['id_carrito', '=', $cart->id_carrito]
             ])
             ->update([
-                'estado' => 'Pendiente'
+                'estado' => 'Comprado'
             ]);
     }
 

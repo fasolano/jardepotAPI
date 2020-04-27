@@ -69,15 +69,17 @@ class ConfirmController extends Controller {
                         //Obtiene el carro completo
                         $cart = $cartRepository->getCart($cookie->carrito);
 
-                        //Finaliza el carro para que no se vuelva a cargar
-                        $cartRepository->closeCart($cart);
                         $order = $this->repository->insertOrder($client, $cart);
                         $webOrder = $repositoryCheckout->insertWebOrder($order, $cart, $payment);
                         $order = $this->repository->verifyTokenAndPaymentMethod($payment, $webOrder->token);
+
+                        //Finaliza el carro para que no se vuelva a cargar
+                        $cartRepository->closeCart($cart->id_carrito);
+
                         $order->token = $webOrder->token;
                         $mailSeller = $repositoryCheckout->setSellerToOrder($order->idPedidos);
 
-                        $this->repository->createDeposit($order->total, $order->idPedidos, $payment, $order->fk_carrito);
+                        // $this->repository->createDeposit($order->total, $order->idPedidos, $payment, $order->fk_carrito);
 
                         $billingForm = $this->dataBilling();
                         $deliveryForm = $this->dataDelivery($address, $name);
@@ -85,7 +87,7 @@ class ConfirmController extends Controller {
                         $billingDeleveryData = array_merge($deliveryForm, $billingForm, ['idPedidos' => $order->idPedidos]);
                         $repositoryCheckout->insertDeliveryBilling($billingDeleveryData);
 
-                        $products = $cartRepository->getProductsFromCart($cart->id_carrito);
+                        $products = $cartRepository->getProductsFromCartFinal($cart->id_carrito);
                         $this->repository->insertProductsOrder($order, $products);
 
                         $this->sendConfirmationMails($order->idPedidos);
@@ -145,22 +147,14 @@ class ConfirmController extends Controller {
 
     public function sendConfirmationMails($order){
         $url = 'http://digicom.mx/instalar_virus/ajax/sitios/jardepot/ventas/correoProcesamientoPedido/web?idPedidos='.$order.'&mail=sistemas1@jardepot.com';
-//        $url = 'https://jardepot.com/digicom/public/instalar_virus/ajax/sitios/jardepot/ventas/correoProcesamientoPedido/web?idPedidos='.$order.'&mail=sistemas1@jardepot.com';
-//        $url = 'http://koot.mx/digicom/public/instalar_virus/ajax/sitios/jardepot/ventas/correoProcesamientoPedido/web?idPedidos='.$order.'&mail=sistemas1@jardepot.com';
-//        $url = 'https://seragromex.com/digicom/public/instalar_virus/ajax/sitios/jardepot/ventas/correoProcesamientoPedido/web?idPedidos='.$order.'&mail=sistemas1@jardepot.com';
-//        $url = 'http://localhost/digicom5/public/instalar_virus/ajax/sitios/jardepot/ventas/correoProcesamientoPedido/web?idPedidos='.$order.'&mail=contabilidad@jardepot.com';
         //open connection
         $ch = curl_init();
         curl_setopt($ch,CURLOPT_URL, $url);
         curl_exec($ch);
         //close connection
         curl_close($ch);
-        $url1 = 'http://digicom.mx/instalar_virus/sitios/jardepot/ventas/90-100/enviar90-100web.php?idPedidos='.$order.'&username=Sistemas&user_email=sistemas1@jardepot.com';
-//        $url1 = 'https://jardepot.com/digicom/public/instalar_virus/sitios/jardepot/ventas/90-100/enviar90-100web.php?idPedidos='.$order.'&username=Sistemas&user_email=sistemas1@jardepot.com';
-//        $url1 = 'http://koot.mx/digicom/public/instalar_virus/sitios/jardepot/ventas/90-100/enviar90-100web.php?idPedidos='.$order.'&username=Sistemas&user_email=sistemas1@jardepot.com';
-//        $url1 = 'https://seragromex.com/digicom/public/instalar_virus/sitios/jardepot/ventas/90-100/enviar90-100web.php?idPedidos='.$order.'&username=Sistemas&user_email=sistemas1@jardepot.com';
-//        $url1 = 'http://localhost/digicom5/public/instalar_virus/sitios/jardepot/ventas/90-100/enviar90-100web.php?idPedidos='.$order.'&username=Sistemas&user_email=sistemas1@jardepot.com';
 
+        $url1 = 'http://digicom.mx/instalar_virus/sitios/jardepot/ventas/90-100/enviar90-100web.php?idPedidos='.$order.'&username=Sistemas&user_email=sistemas1@jardepot.com';
         //open connection
         $ch1 = curl_init();
         curl_setopt($ch1,CURLOPT_URL, $url1);

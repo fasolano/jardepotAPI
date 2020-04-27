@@ -23,10 +23,6 @@ class CartController extends Controller {
         }else{
             $this->user = $api->evaluate($cookie);
         }
-        /*if(!$user){
-            echo json_encode(1);
-            die();
-        }*/
     }
 
     public function addProduct(Request $request){
