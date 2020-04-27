@@ -29,22 +29,20 @@ class CheckoutController extends Controller {
     }
 
     public function createOrder(Request $request) {
-        $allowedPaymentMethods = config('payment-methods.enabled');
-
         $forms = json_decode($request->get('forms'));
         $cookie = json_decode($request->get('sessionCookie'));
         $formPayment = json_decode($forms->payment);
 
-        if($formPayment->paymentMethod->value == "Transferencia"){
+        if($formPayment->value == "Transferencia"){
             $this->setUpQuotation($cookie->carrito, $forms);
             return response()->json(['data' => 'success'], 200);
         }else{
-            $data = $this->setUpOrder($cookie->carrito, $forms, $formPayment->paymentMethod->value);
+            $data = $this->setUpOrder($cookie->carrito, $forms, $formPayment->value);
 
             $data['delivery'] = json_decode($forms->delivery);
 
             $url = $this->generatePaymentGateway(
-                $formPayment->paymentMethod->value,
+                $formPayment->value,
                 $data
             );
 
@@ -237,8 +235,6 @@ class CheckoutController extends Controller {
 
     protected function sendQuotationMail($correo, $nombre, $quotation, $content, $mailSeller){
         $url = 'http://digicom.mx/instalar_virus/sitios/jardepot/ventas/cotizaciones/enviarCotizacionDesdePagina.php';
-//        $url = 'http://koot.mx/digicom/public/instalar_virus/sitios/jardepot/ventas/cotizaciones/enviarCotizacionDesdePagina.php';
-//        $url = 'https://jardepot.com/digicom/public/instalar_virus/sitios/jardepot/ventas/cotizaciones/enviarCotizacionDesdePagina.php';
         $fields = array(
             'para' => urlencode($correo),
             'de' => urlencode($mailSeller),
