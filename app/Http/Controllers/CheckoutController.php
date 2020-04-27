@@ -234,7 +234,7 @@ class CheckoutController extends Controller {
     }
 
     protected function sendQuotationMail($correo, $nombre, $quotation, $content, $mailSeller){
-        $url = 'http://digicom.mx/instalar_virus/sitios/jardepot/ventas/cotizaciones/enviarCotizacionDesdePagina.php';
+        $url = 'https://digicom.mx/instalar_virus/sitios/jardepot/ventas/cotizaciones/enviarCotizacionDesdePagina.php';
         $fields = array(
             'para' => urlencode($correo),
             'de' => urlencode($mailSeller),
