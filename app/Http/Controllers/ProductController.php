@@ -215,33 +215,11 @@ class ProductController extends Controller{
 
     public function getProduct(Request $request){
         $product = $request->get('product');
-        $product = explode("-", $product);
-        if($product[0].'-'.$product[1] == 'Hilo-Nylon' || $product[0].'-'.$product[1] == 'hilo-nylon'){
-            $productType = 'Hilo-Nylon';
-            $brand = str_replace("_", " ", $product[2]);
-            $brand = ucfirst($brand);
-            $conta = 4;
-            $mpnTemp = $product[3];
-            while(isset($product[$conta])){
-                $mpnTemp .= "-".$product[$conta];
-                $conta++;
-            }
-            $mpn = str_replace("_", "-", $mpnTemp);
-            $brand = ucfirst($brand);
-        } else {
-            $productType = str_replace("_", " ", $product[0]);
-            $productType = ucfirst($productType);
-            $brand = str_replace("_", " ", $product[1]);
-            $brand = ucfirst($brand);
-            $conta = 3;
-            $mpnTemp = $product[2];
-            while(isset($product[$conta])){
-                $mpnTemp .= "-".$product[$conta];
-                $conta++;
-            }
-            $mpn = str_replace("_", "-", $mpnTemp);
-            $brand = ucfirst($brand);
-        }
+
+        $product = $this->spliceProduct($product);
+        $productType = $product[0];
+        $brand = $product[1];
+        $mpn = $product[2];
 
         $data = $this->productoRepository->getProduct($productType, $brand, $mpn);
         $productResponse = $this->model_format_products($data);
@@ -296,37 +274,14 @@ class ProductController extends Controller{
 
     public function getProductsRelated(Request $request){
         $product = $request->get('product');
-        $product = explode("-", $product);
-        if($product[0].'-'.$product[1] == 'Hilo-Nylon' || $product[0].'-'.$product[1] == 'hilo-nylon'){
-            $productType = 'Hilo-Nylon';
-            $brand = str_replace("_", " ", $product[2]);
-            $brand = ucfirst($brand);
-            $conta = 4;
-            $mpnTemp = $product[3];
-            while(isset($product[$conta])){
-                $mpnTemp .= "-".$product[$conta];
-                $conta++;
-            }
-            $mpn = str_replace("_", "-", $mpnTemp);
-            $brand = ucfirst($brand);
-        } else {
-            $productType = str_replace("_", " ", $product[0]);
-            $productType = ucfirst($productType);
-            $brand = str_replace("_", " ", $product[1]);
-            $brand = ucfirst($brand);
-            $conta = 3;
-            $mpnTemp = $product[2];
-            while(isset($product[$conta])){
-                $mpnTemp .= "-".$product[$conta];
-                $conta++;
-            }
-            $mpn = str_replace("_", "-", $mpnTemp);
-            $brand = ucfirst($brand);
-        }
+
+        $product = $this->spliceProduct($product);
+
+        $productType = $product[0];
+        $brand = $product[1];
+        $mpn = $product[2];
 
         $data = $this->productoRepository->getProductsRelated($productType, $brand, $mpn);
-        $response = array();
-        $iterator = 0;
 
         $response = $this->model_format_products($data);
 
@@ -482,6 +437,36 @@ class ProductController extends Controller{
         }else{
             return $palabra;
         }
+    }
+
+    public function spliceProduct($product) {
+        $product = explode("-", $product);
+        $productType = $product[0];
+        $brand = $product[1];
+        $mpn = array_slice($product, 2);
+        if($productType.'-'.$brand == 'hilo-nylon'){
+            $productType = $productType.'-'.$brand;
+            $brand = $mpn[0];
+            $mpn1 = $mpn[1];
+            if(isset( $mpn[2])){
+                $mpn = $mpn1.'-'.$mpn[2];
+            }else{
+                $mpn = $mpn1;
+            }
+        }else if(!$this->productoRepository->brandExiste($brand)){
+
+            if(isset( $mpn[2])){
+                $brand = $brand.' '.$mpn[0];
+                $mpn = $mpn[1].'-'.$mpn[2];
+                // $mpn = implode("-", array_slice($mpn, 1));
+            }else if(isset( explode("-", $mpn)[1])){
+                $brand = $brand.' '. $mpn[0];
+                $mpn = $mpn[1];
+            }
+        }
+        $mpn = is_array($mpn)?$mpn[0]:$mpn;
+        return [$productType, $brand, $mpn];
+
     }
 
 }

@@ -941,4 +941,23 @@ class ProductRepository{
         }
     }
 
+    public function brandExiste($brand){
+        $ids = DB::table('productos')
+            ->select(
+                'productos.id'
+            )
+            ->where([
+                ['productos.brand', $brand]
+            ])
+            ->get();
+
+        if (count($ids)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+
+
 }
