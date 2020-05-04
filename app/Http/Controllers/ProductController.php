@@ -10,6 +10,7 @@ class ProductController extends Controller{
 
     private $productoRepository;
     private $unwanted_array;
+
     //Todas las consultas tienen join con inventario, si se implementa openjardepot se deberan de quitar esos left join con  sus groupby
     public function __construct(){
         $this->productoRepository = new ProductRepository();
@@ -18,7 +19,6 @@ class ProductController extends Controller{
             'Ú'=>'U', 'Û'=>'U', 'Ü'=>'U', 'Ý'=>'Y', 'Þ'=>'B', 'ß'=>'Ss', 'à'=>'a', 'á'=>'a', 'â'=>'a', 'ã'=>'a', 'ä'=>'a', 'å'=>'a', 'æ'=>'a', 'ç'=>'c',
             'è'=>'e', 'é'=>'e', 'ê'=>'e', 'ë'=>'e', 'ì'=>'i', 'í'=>'i', 'î'=>'i', 'ï'=>'i', 'ð'=>'o', 'ñ'=>'n', 'ò'=>'o', 'ó'=>'o', 'ô'=>'o', 'õ'=>'o',
             'ö'=>'o', 'ø'=>'o', 'ù'=>'u', 'ú'=>'u', 'û'=>'u', 'ý'=>'y', 'þ'=>'b', 'ÿ'=>'y' );
-
     }
 
     /*
@@ -459,12 +459,12 @@ class ProductController extends Controller{
                 $brand = $brand.' '.$mpn[0];
                 $mpn = $mpn[1].'-'.$mpn[2];
                 // $mpn = implode("-", array_slice($mpn, 1));
-            }else if(isset( explode("-", $mpn)[1])){
+            }else if(isset(  $mpn[1] )){
                 $brand = $brand.' '. $mpn[0];
                 $mpn = $mpn[1];
             }
         }
-        $mpn = is_array($mpn)?$mpn[0]:$mpn;
+        $mpn = is_array($mpn)?implode("-", $mpn):$mpn;
         return [$productType, $brand, $mpn];
 
     }
