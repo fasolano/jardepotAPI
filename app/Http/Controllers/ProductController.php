@@ -358,6 +358,8 @@ class ProductController extends Controller{
 
             $response[$iterator]['inventory'] = $item->cantidadInventario;
 
+            $response[$iterator]['video'] = isset($item->video)?$item->video:"";
+
             $iterator++;
         }
         return $response;
