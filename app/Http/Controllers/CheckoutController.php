@@ -75,7 +75,7 @@ class CheckoutController extends Controller {
 
         $this->repository->insertProductsQuotation($products, $quotation, json_decode($forms->delivery));
 
-        $mailSeller = $cartRepository->setSellerToCart($cart->id_carrito);
+        // $mailSeller = $cartRepository->setSellerToCart($cart->id_carrito);
 
         //Obtiene el carro completo
         $content = array();
@@ -243,7 +243,7 @@ class CheckoutController extends Controller {
 
     protected function sendQuotationMail($correo, $nombre, $quotation, $content, $mailSeller){
         $url = 'https://digicom.mx/instalar_virus/sitios/jardepot/ventas/cotizaciones/enviarCotizacionDesdePagina.php';
-        $mailSeller = "pspfer15@gmail.com";
+
         $fields = array(
             'para' => urlencode($correo),
             'de' => urlencode($mailSeller),
