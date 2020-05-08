@@ -34,8 +34,11 @@ class CheckoutController extends Controller {
         $formPayment = json_decode($forms->payment);
 
         if($formPayment->value == "Transferencia"){
-            $this->setUpQuotation($cookie->carrito, $forms);
-            return response()->json(['data' => 'success'], 200);
+
+            if ($this->setUpQuotation($cookie->carrito, $forms))
+                return response()->json(['data' => 'success'], 200);
+            else
+                return response()->json(['data' => 'failure'], 200);
         }else{
             $data = $this->setUpOrder($cookie->carrito, $forms, $formPayment->value);
 
@@ -102,7 +105,10 @@ class CheckoutController extends Controller {
 
         $nombre = $clientForm['nombre']. " " .$clientForm['apellidos'];
         if($this->sendQuotationMail($clientForm['email'], $nombre, $quotation->idCotizaciones, $content, $mailSeller)){
-            return $this->sendAlertMail($clientForm, $billingDeleveryData, $quotation->idCotizaciones, $mailSeller);
+            return true;
+            //return $this->sendAlertMail($clientForm, $billingDeleveryData, $quotation->idCotizaciones, $mailSeller);
+        }else{
+            return false;
         }
 
     }
@@ -193,6 +199,8 @@ class CheckoutController extends Controller {
         $dia = date('d-m-Y');
         $hora = date('H:i:s');
 
+        print_r($billingDeleveryData);
+        return true;
         $data = [
             'nombre' => $clientForm['nombre']. " ". $clientForm['apellidos'],
             'telefono' => $clientForm['telefono'],
@@ -235,6 +243,7 @@ class CheckoutController extends Controller {
 
     protected function sendQuotationMail($correo, $nombre, $quotation, $content, $mailSeller){
         $url = 'https://digicom.mx/instalar_virus/sitios/jardepot/ventas/cotizaciones/enviarCotizacionDesdePagina.php';
+        $mailSeller = "pspfer15@gmail.com";
         $fields = array(
             'para' => urlencode($correo),
             'de' => urlencode($mailSeller),
