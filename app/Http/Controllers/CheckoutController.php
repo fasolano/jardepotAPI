@@ -34,11 +34,11 @@ class CheckoutController extends Controller {
         $formPayment = json_decode($forms->payment);
 
         if($formPayment->value == "Transferencia"){
-
-            if ($this->setUpQuotation($cookie->carrito, $forms))
+            if ($this->setUpQuotation($cookie->carrito, $forms)){
                 return response()->json(['data' => 'success'], 200);
-            else
+            }else{
                 return response()->json(['data' => 'failure'], 200);
+            }
         }else{
             $data = $this->setUpOrder($cookie->carrito, $forms, $formPayment->value);
 
@@ -75,7 +75,7 @@ class CheckoutController extends Controller {
 
         $this->repository->insertProductsQuotation($products, $quotation, json_decode($forms->delivery));
 
-        // $mailSeller = $cartRepository->setSellerToCart($cart->id_carrito);
+        $mailSeller = $cartRepository->setSellerToCart($cart->id_carrito);
 
         //Obtiene el carro completo
         $content = array();
