@@ -105,7 +105,7 @@ class CheckoutController extends Controller {
 
         $nombre = $clientForm['nombre']. " " .$clientForm['apellidos'];
         if($this->sendQuotationMail($clientForm['email'], $nombre, $quotation->idCotizaciones, $content, $mailSeller)){
-            return true;
+            // return true;
             return $this->sendAlertMail($clientForm, $billingDeleveryData, $quotation->idCotizaciones, $mailSeller);
         }else{
             return false;
