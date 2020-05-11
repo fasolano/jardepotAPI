@@ -5,28 +5,26 @@ error_reporting(E_ERROR | E_PARSE);
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    @include('layouts.head')
+    @include('layout.head')
 </head>
 
-<body oncopy="return false">
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T2GB24V"
-                  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
+<body>
 
+<div class="row">
 
+    <!-- Contenedor Principal -->
+    <div class="col-md-12">
+        @include('layout.navbar')
 
-<!-- Contenedor Principal -->
-<div class="jd-main-cont col-md-12">
-    @include('layouts.navbar')
+        {{--    @yield('content')--}}
 
-    @yield('content')
+        @include('layout.footer')
+    </div>
+    <!-- Fin Contenedor Principal -->
 
-    @include('layouts.footer')
 </div>
-<!-- Fin Contenedor Principal -->
 
-@include('layouts.cierre')
+@include('layout.cierre')
 
 </body>
 </html>

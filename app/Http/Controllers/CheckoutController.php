@@ -106,7 +106,7 @@ class CheckoutController extends Controller {
         $nombre = $clientForm['nombre']. " " .$clientForm['apellidos'];
         if($this->sendQuotationMail($clientForm['email'], $nombre, $quotation->idCotizaciones, $content, $mailSeller)){
             return true;
-            //return $this->sendAlertMail($clientForm, $billingDeleveryData, $quotation->idCotizaciones, $mailSeller);
+            return $this->sendAlertMail($clientForm, $billingDeleveryData, $quotation->idCotizaciones, $mailSeller);
         }else{
             return false;
         }
@@ -199,8 +199,6 @@ class CheckoutController extends Controller {
         $dia = date('d-m-Y');
         $hora = date('H:i:s');
 
-        print_r($billingDeleveryData);
-        return true;
         $data = [
             'nombre' => $clientForm['nombre']. " ". $clientForm['apellidos'],
             'telefono' => $clientForm['telefono'],
@@ -215,6 +213,7 @@ class CheckoutController extends Controller {
             ('Pedido en linea Jardepot');
             $message->from('sistemas1@jardepot.com', 'Sitemas Jardepot');
         });
+        return true;
     }
 
     protected function sendAlertMailOrder($clientForm, $billingDeleveryData, $order, $payment, $mailSeller){
