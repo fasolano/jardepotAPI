@@ -77,8 +77,9 @@ class ConfirmController extends Controller {
                         $webOrder = $repositoryCheckout->insertWebOrder($order, $cart, $payment);
                         $order = $this->repository->verifyTokenAndPaymentMethod($payment, $webOrder->token);
 
+
                         //Finaliza el carro para que no se vuelva a cargar
-                        $cartRepository->closeCart($cart->id_carrito);
+                        $cartRepository->closeCart($cart);
 
                         $order->token = $webOrder->token;
                         $mailSeller = $repositoryCheckout->setSellerToOrder($order->idPedidos);

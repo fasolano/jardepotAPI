@@ -22,8 +22,7 @@ class ConfirmRepository {
         $validCart = DB::table('carrito')
             ->select('*')
             ->where([
-                'id_carrito' => $webOrder->fk_carrito,
-                'estado' => 'Pendiente'
+                'id_carrito' => $webOrder->fk_carrito
             ])
             ->get();
         return count($validCart)?$webOrder:null;
