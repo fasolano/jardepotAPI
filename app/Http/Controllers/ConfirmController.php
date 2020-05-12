@@ -60,11 +60,6 @@ class ConfirmController extends Controller {
                         }
 
                         $cartRepository = new CartRepository();
-                        $clientForm = json_decode($content->client);
-                        $address = explode(",", $content->address);
-                        $name = $content->name;
-                        $clientData = $this->dataClient($clientForm, $address);
-                        $client = $repositoryCheckout->insertClient($clientData);
 
                         //Obtiene el carro completo
                         $cart = $cartRepository->getCart($cookie->carrito);
@@ -72,6 +67,12 @@ class ConfirmController extends Controller {
                         if (!$cart){
                             return response()->json(['data' => 'success'], 200);
                         }
+
+                        $clientForm = json_decode($content->client);
+                        $address = explode(",", $content->address);
+                        $name = $content->name;
+                        $clientData = $this->dataClient($clientForm, $address);
+                        $client = $repositoryCheckout->insertClient($clientData);
 
                         $order = $this->repository->insertOrder($client, $cart);
                         $webOrder = $repositoryCheckout->insertWebOrder($order, $cart, $payment);

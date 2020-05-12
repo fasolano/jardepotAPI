@@ -207,8 +207,7 @@ class CartRepository{
     public function getCart($cart){
         $cart = DB::table('carrito')
             ->select('*')
-            ->where(['id_carrito' => $cart])
-            ->orWhere([['estado', 'Pendiente'], ['estado','Activo']])
+            ->where(['id_carrito' => $cart, 'estado' =>'Activo'])
             ->first();
         return $cart;
     }
