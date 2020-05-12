@@ -96,8 +96,7 @@ class ConfirmController extends Controller {
                         $products = $cartRepository->getProductsFromCartFinal($cart->id_carrito);
                         $this->repository->insertProductsOrder($order, $products);
 
-                        $checkoutController = new CheckoutController();
-                        $checkoutController->sendAlertMailOrder($clientForm, $order->idPedidos, $payment, $mailSeller);
+                        $this->sendAlertMailOrder($clientData, $order->idPedidos, $payment, $mailSeller);
 
                         return response()->json(['data' => 'success'], 200);
                         break;
@@ -220,6 +219,30 @@ class ConfirmController extends Controller {
         $delivery = json_decode($request->get('delivery'));
         $url =  $method->setupPaymentAndGetRedirectURL($order, $products, $client, $delivery);
         return response()->json(['data' => $url], 201);
+    }
+
+    public function sendAlertMailOrder($clientForm, $order, $payment, $mailSeller){
+        $destino = "fasolanof@gmail.com";
+        //        $destino = "ventas@jardepot.com";
+        // $destino = $mailSeller;
+
+        $dia = date('d-m-Y');
+        $hora = date('H:i:s');
+
+        $data = [
+            'nombre' => $clientForm['nombre']. " ". $clientForm['apellidos'],
+            'telefono' => $clientForm['telefono'],
+            'mail' => $clientForm['email'],
+            'dia' => $dia,
+            'hora' => $hora,
+            'order' => $order,
+            'payment' => $payment
+        ];
+        Mail::send('mails.webOrder', $data, function ($message) use ($destino) {
+            $message->to($destino)->subject
+            ('Pedido en linea Jardepot');
+            $message->from('sistemas1@jardepot.com', 'Sitemas Jardepot');
+        });
     }
 
     public function dataClient($client, $address){

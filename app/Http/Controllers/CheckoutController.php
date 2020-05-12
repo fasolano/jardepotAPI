@@ -216,10 +216,10 @@ class CheckoutController extends Controller {
         return true;
     }
 
-    public function sendAlertMailOrder($clientForm, $order, $payment, $mailSeller){
-//        $destino = "fasolanof@gmail.com";
+    /*public function sendAlertMailOrder($clientForm, $order, $payment, $mailSeller){
+        $destino = "fasolanof@gmail.com";
 //        $destino = "ventas@jardepot.com";
-        $destino = $mailSeller;
+        // $destino = $mailSeller;
         $dia = date('d-m-Y');
         $hora = date('H:i:s');
 
@@ -237,7 +237,7 @@ class CheckoutController extends Controller {
             ('Pedido en linea Jardepot');
             $message->from('sistemas1@jardepot.com', 'Sitemas Jardepot');
         });
-    }
+    }*/
 
     protected function sendQuotationMail($correo, $nombre, $quotation, $content, $mailSeller){
         $url = 'https://digicom.mx/instalar_virus/sitios/jardepot/ventas/cotizaciones/enviarCotizacionDesdePagina.php';
