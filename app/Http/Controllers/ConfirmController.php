@@ -96,7 +96,9 @@ class ConfirmController extends Controller {
                         $products = $cartRepository->getProductsFromCartFinal($cart->id_carrito);
                         $this->repository->insertProductsOrder($order, $products);
 
-                        // $this->sendConfirmationMails($order->idPedidos);
+                        $checkoutController = new CheckoutController();
+                        $checkoutController->sendAlertMailOrder($clientForm, $order->idPedidos, $payment, $mailSeller);
+
                         return response()->json(['data' => 'success'], 200);
                         break;
                 }

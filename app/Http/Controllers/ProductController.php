@@ -459,8 +459,8 @@ class ProductController extends Controller{
 
             if(isset( $mpn[2])){
                 $brand = $brand.' '.$mpn[0];
-                $mpn = $mpn[1].'-'.$mpn[2];
-                // $mpn = implode("-", array_slice($mpn, 1));
+                // $mpn = $mpn[1].'-'.$mpn[2];
+                $mpn = implode("-", array_slice($mpn, 1));
             }else if(isset(  $mpn[1] )){
                 $brand = $brand.' '. $mpn[0];
                 $mpn = $mpn[1];

@@ -216,7 +216,7 @@ class CheckoutController extends Controller {
         return true;
     }
 
-    protected function sendAlertMailOrder($clientForm, $billingDeleveryData, $order, $payment, $mailSeller){
+    public function sendAlertMailOrder($clientForm, $order, $payment, $mailSeller){
 //        $destino = "fasolanof@gmail.com";
 //        $destino = "ventas@jardepot.com";
         $destino = $mailSeller;
@@ -229,7 +229,6 @@ class CheckoutController extends Controller {
             'mail' => $clientForm['email'],
             'dia' => $dia,
             'hora' => $hora,
-            'datos' => $billingDeleveryData,
             'order' => $order,
             'payment' => $payment
         ];
