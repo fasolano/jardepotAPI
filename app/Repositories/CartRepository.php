@@ -132,7 +132,8 @@ class CartRepository{
                 DB::raw('SUM(inventario.cantidad) as cantidadInventario')
             )
             ->where([
-                'pc.fk_carrito' => $cart
+                'pc.fk_carrito' => $cart,
+                'pc.estado' => 'Activo'
             ])
             ->groupBy(
                 'productos.productType',
