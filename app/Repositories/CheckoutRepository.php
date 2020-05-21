@@ -29,6 +29,7 @@ class CheckoutRepository {
                     'ciudad' => $cliente['ciudad'],
                     'tipo' => 1,
                     'comentarios' => "Se registro a través de un pedido en la página web",
+                    'origen' => 2,
                     'idUsuarios' => 2
                 ]);
         }else{
@@ -43,7 +44,7 @@ class CheckoutRepository {
         if($cart->total < $deliveryMethod->deliveryMethod->min){
             $total = $deliveryMethod->deliveryMethod->cost + $cart->total;
         }
-        $total *= 1.04;
+        // $total *= 1.04;
         $total = round($total, 2);
         $order = DB::connection('digicom')
             ->table('pedidos_jardepot')
@@ -118,7 +119,7 @@ class CheckoutRepository {
                 $precio = $product->price;
             }
 //            $precio = $product->cantidad * $precio;
-            $precio *= 1.04;
+            // $precio *= 1.04;
             $orderProductInserted = DB::connection('digicom')
                 ->table('productosPedidos_jardepot')
                 ->insertGetId([
@@ -130,13 +131,15 @@ class CheckoutRepository {
         }
         // Despues de haber insertado productos evalua si es necesario cobrar envio de ser así se agrega a la orden
         if($order->total < $deliveryMethod->deliveryMethod->min){
+            // $precioEnvio = $deliveryMethod->deliveryMethod->cost * 1.04;
+            $precioEnvio = $deliveryMethod->deliveryMethod->cost;
             $orderProductInserted = DB::connection('digicom')
                 ->table('productosPedidos_jardepot')
                 ->insertGetId([
                     'idPedidos' => $idPedidos,
                     'cantidad' => 1,
                     'nombre' => 'Manejo de Mercancía Envío paquetería',
-                    'precio' => $deliveryMethod->deliveryMethod->cost * 1.04
+                    'precio' => $precioEnvio
                 ]);
         }
     }
