@@ -90,7 +90,7 @@ class ConfirmController extends Controller {
                         $billingForm = $this->dataBilling();
                         $deliveryForm = $this->dataDelivery($address, $name);
 
-                        $billingDeleveryData = array_merge($deliveryForm, $billingForm, ['idPedidos' => $order->idPedidos]);
+                        $billingDeleveryData = array_merge($deliveryForm, $billingForm, ['idPedidos' => $order->idPedidos], ['id_cliente' =>$client]);
                         $repositoryCheckout->insertDeliveryBilling($billingDeleveryData);
 
                         $products = $cartRepository->getProductsFromCartFinal($cart->id_carrito);
