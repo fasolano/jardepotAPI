@@ -72,7 +72,7 @@ class ConfirmRepository {
         if($cart->total < 3000){
             $total = 300 + $cart->total;
         }
-        $total *= 1.04;
+        // $total *= 1.04;
         $order = DB::connection('digicom')
             ->table('pedidos_jardepot')
             ->insertGetId([
