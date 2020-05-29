@@ -223,7 +223,7 @@ class ConfirmController extends Controller {
 
     public function sendAlertMailOrder($clientForm, $order, $payment, $mailSeller){
         // $destino = "fasolanof@gmail.com";
-        $destino = "gerencia@jardepot.com";
+        $destino = "alcocer@jardepot.com";
         //$destino = $mailSeller;
 
         $dia = date('d-m-Y');
@@ -240,7 +240,7 @@ class ConfirmController extends Controller {
         ];
         Mail::send('mails.webOrder', $data, function ($message) use ($destino) {
             $message->to($destino)->subject
-            ('Pedido en linea Jardepot');
+            ('Compra en Línea PAYPAL');
             $message->from('sistemas1@jardepot.com', 'Sitemas Jardepot');
         });
     }
