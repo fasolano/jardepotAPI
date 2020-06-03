@@ -125,6 +125,7 @@ class CartRepository{
                 'productos.video',
                 'productos.volada',
                 'productos.visible',
+                'productos.proveedor',
                 'XML.keywords',
                 'XML.metadesc',
                 'XML.descriptionweb',

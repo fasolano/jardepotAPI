@@ -109,6 +109,8 @@ class ConfirmRepository {
                     'idPedidos' => $idPedidos,
                     'cantidad' => $product->cantidad,
                     'nombre' => $product->producto,
+                    'proveedor' => $product->proveedor,
+                    'marca' => $product->brand,
                     'precio' => $precio
                 ]);
         }
