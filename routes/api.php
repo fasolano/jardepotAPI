@@ -15,6 +15,8 @@ use Illuminate\Http\Request;
 
 
 
+Route::post('confirm/mercadopago', 'ConfirmController@mercadopagoToken');
+
 Route::get('products', 'ProductController@getProducts');
 Route::get('products/sections', 'ProductController@getSections');
 Route::get('products/filters', 'ProductController@getFilters');
@@ -45,11 +47,10 @@ Route::delete('cart/removeProduct', 'CartController@removeProductCart');
 
 Route::post('confirm/checkout', 'ConfirmController@index');
 Route::post('confirm/notification_url', 'ConfirmController@notification');
-Route::post('confirm/mercadopago', 'ConfirmController@mercadopagoToken');
 Route::get('confirm/prueba', 'ConfirmController@prueba');
 
 
-Route::post('checkout/mercadopago', 'ConfirmController@createMercadopago');
+Route::post('checkout/mercadopago', 'CheckoutController@getLinkPayment');
 Route::post('checkout/createOrder', 'CheckoutController@createOrder');
 Route::get('checkout/success', 'ApiTokenController@index');
 

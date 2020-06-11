@@ -13,16 +13,15 @@ use MercadoPago\SDK;
 
 class MercadoPago{
 
-    public function __construct()
-    {
-        /*SDK::setClientId("5218597946840536");
+    public function __construct() {
+        SDK::setClientId("5218597946840536");
         SDK::setClientSecret("jRqFu65og5OeqwhTIicRMROzVJWTM0jv");
         SDK::setPublicKey('TEST-f69e04b9-b984-490f-ac0f-48bf0b6f48ca');
-        SDK::setAccessToken('TEST-5218597946840536-011519-f0feee1d9aa73c866bf25d8975e45fa9-509669228');*/
-        SDK::setClientId("8224945122859735");
+        SDK::setAccessToken('TEST-5218597946840536-011519-f0feee1d9aa73c866bf25d8975e45fa9-509669228');
+        /*SDK::setClientId("8224945122859735");
         SDK::setClientSecret("oezGzmodwi7mKkC7xOQ7wvi8niF6xKSd");
         SDK::setPublicKey('APP_USR-63cd8043-c639-4031-84dd-648178659e68');
-        SDK::setAccessToken('APP_USR-8224945122859735-122615-a76e6f063a67e18cdf0480846f99ba5e-191284474');
+        SDK::setAccessToken('APP_USR-8224945122859735-122615-a76e6f063a67e18cdf0480846f99ba5e-191284474');*/
     }
 
     public function notification($id){
@@ -31,7 +30,7 @@ class MercadoPago{
         return $res;
     }
 
-    public function setupPaymentAndGetRedirectURL($order, $products, $client, $delivery): string {
+    public function setupPaymentAndGetRedirectURL($products, $client): string {
         # Create a preference object
         $preference = new Preference();
         $items = array();
@@ -41,7 +40,7 @@ class MercadoPago{
             if($product->offer == 'si'){
                 $price = $product->oferta;
             }else{
-                $price = $product->priceweb;
+                $price = $product->price;
             }
             # Create an item object
             $item = new Item();
@@ -55,14 +54,14 @@ class MercadoPago{
             array_push($items, $item);
         }
 
-        if($total < $delivery->deliveryMethod->min){
+        if($total < 3000){
             $item = new Item();
             $item->id = 'paq001'; // numero de pedio
             $item->title = 'Manejo de Mercancía Envío paquetería'; //Articulo
             $item->quantity = 1;
             $item->currency_id = 'MXN';
-            $item->unit_price = $delivery->deliveryMethod->cost;
-            $total += $delivery->deliveryMethod->cost;
+            $item->unit_price = 300;
+            $total += 300;
             array_push($items, $item);
         }
 
@@ -97,19 +96,19 @@ class MercadoPago{
         $preference->items = $items;
 
         # Save External Reference
-        $preference->external_reference = $order->token;
-
-        /*$preference->back_urls = [
-            "success" => 'http://localhost/jardepot/confirmation/success/MercadoPago',
-            "pending" => 'http://localhost/jardepot/confirmation/pending/MercadoPago',
-            "failure" => 'http://localhost/jardepot/confirmation/failure/MercadoPago',
-        ];*/
+        //$preference->external_reference = $order->token;
 
         $preference->back_urls = [
+            "success" => 'http://localhost:4200/confirmation/success/MercadoPago',
+            "pending" => 'http://localhost:4200/confirmation/pending/MercadoPago',
+            "failure" => 'http://localhost:4200/confirmation/failure/MercadoPago',
+        ];
+
+        /*$preference->back_urls = [
             "success" => 'https://www.jardepot.com/confirmation/success/MercadoPago',
             "pending" => 'https://www.jardepot.com/confirmation/pending/MercadoPago',
             "failure" => 'https://www.jardepot.com/confirmation/failure/MercadoPago',
-        ];
+        ];*/
 
         $preference->notification_url = 'https://www.jardepot.com/jardepotAPI/public/api/confirm/prueba/confirmation/notification/MercadoPago';
 
@@ -129,8 +128,11 @@ class MercadoPago{
     }
 
     public function verifyPayment($preference_id){
-        $payment = Payment::search(['external_reference' => $preference_id]);
-        if(count($payment)){
+        $payment = Preference::get($preference_id);
+        print_r($payment);
+        echo "!!!!!!!!!!!!!1";
+        return null;
+        /*if(count($payment)){
             if($payment[0]->status == 'approved' && $payment[0]->status_detail == 'accredited'){
                 return $payment[0]->external_reference;
             }else{
@@ -138,7 +140,7 @@ class MercadoPago{
             }
         }else{
             return null;
-        }
+        }*/
     }
 
     public function getPaymentFromNotification($data){

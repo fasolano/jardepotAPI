@@ -2,6 +2,7 @@
 
 
 namespace App\Http\Controllers;
+use App\PaymentMethods\MercadoPago;
 use App\Repositories\CartRepository;
 use App\Repositories\CheckoutRepository;
 use App\Repositories\ProductRepository;
@@ -40,7 +41,13 @@ class CheckoutController extends Controller {
                 return response()->json(['data' => 'failure'], 200);
             }
         }else{
-            $data = $this->setUpOrder($cookie->carrito, $forms, $formPayment->value);
+            $clientForm = $this->dataClient(json_decode($forms->billing));
+            $client = $this->repository->insertClient($clientForm);
+            $deliveryForm = $this->dataDelivery(json_decode($forms->billing), json_decode($forms->delivery));
+
+            $url = $this->getLinkPayment($client, $deliveryForm, $cookie->carrito);
+
+            /*$data = $this->setUpOrder($cookie->carrito, $forms, $formPayment->value);
 
             $data['delivery'] = json_decode($forms->delivery);
 
@@ -49,9 +56,25 @@ class CheckoutController extends Controller {
                 $data
             );
 
-            return response()->json(['data' => $url], 201);
+            return response()->json(['data' => $url], 201);*/
         }
 
+    }
+
+    protected function getLinkPayment(Request $request) {
+        $productRepository = new ProductRepository();
+        $cartRepository = new CartRepository();
+
+        $form = json_decode($request->get('form'));
+        $cookie = json_decode($request->get('sessionCookie'));
+        $form = json_decode($form);
+        $clientForm = $this->dataClient($form);
+
+        $client = $this->repository->insertClient($clientForm);
+        $products = $cartRepository->getProductsFromCart($cookie->carrito);
+        $mercado = new MercadoPago();
+        $url = $mercado->setupPaymentAndGetRedirectURL($products, $clientForm);
+        return response()->json(['data' => $url, 'state' => 'success'], 201);
     }
 
     protected function setUpQuotation($cart, $forms){
@@ -113,85 +136,6 @@ class CheckoutController extends Controller {
 
     }
 
-    protected function setUpOrder($cart, $forms, $payment){
-        $productRepository = new ProductRepository();
-        $cartRepository = new CartRepository();
-
-        $clientForm = $this->dataClient(json_decode($forms->billing));
-        $billingForm = $this->dataBilling(json_decode($forms->billMandatory), json_decode($forms->needBilling));
-        $deliveryForm = $this->dataDelivery(json_decode($forms->billing), json_decode($forms->delivery));
-
-        $client = $this->repository->insertClient($clientForm);
-
-        //Obtiene el carro completo
-        $cart = $cartRepository->getCart($cart);
-
-        //Finaliza el carro para que no se vuelva a cargar
-        $cartRepository->closeCart($cart);
-
-        $order = $this->repository->insertOrder($client, $cart, json_decode($forms->delivery));
-
-        $webOrder = $this->repository->insertWebOrder($order, $cart, $payment);
-
-        $order->token = $webOrder->token;
-
-        $mailSeller = $this->repository->setSellerToOrder($order->idPedidos);
-
-        $billingDeleveryData = array_merge($deliveryForm, $billingForm, ['idPedidos' => $order->idPedidos]);
-
-        $this->repository->insertDeliveryBilling($billingDeleveryData);
-
-        $products = $cartRepository->getProductsFromCart($cart->id_carrito);
-
-        $this->repository->insertProductsOrder($order, $products, json_decode($forms->delivery));
-
-        $this->sendAlertMailOrder($client, $billingDeleveryData, $order->idPedidos, $payment, $mailSeller);
-
-        return array("order" => $order, "products" => $products, 'client' => $clientForm);
-    }
-
-    protected function generatePaymentGateway($paymentMethod, $data) {
-        switch ($paymentMethod){
-            case 'MercadoPago':
-                /*$url = 'https://fasolano.com/jardepotAPI/public/api/checkout/mercadopago';
-                $fields = array(
-                    'order' => urlencode(json_encode($data['order'])),
-                    'products' => urlencode(json_encode($data['products'])),
-                    'client' => urlencode(json_encode($data['client'])),
-                    'delivery' => urlencode(json_encode($data['delivery']))
-                );
-
-                $fields_string = "";
-                //url-ify the data for the POST
-                foreach($fields as $key=>$value) { $fields_string .= $key.'='.$value.'&'; }
-                rtrim($fields_string, '&');
-
-                //open connection
-                $ch = curl_init();
-
-                //set the url, number of POST vars, POST data
-                curl_setopt($ch,CURLOPT_URL, $url);
-                curl_setopt($ch,CURLOPT_POST, count($fields));
-                curl_setopt($ch,CURLOPT_POSTFIELDS, $fields_string);
-
-                //execute post
-                $result = curl_exec($ch);
-
-                //close connection
-                curl_close($ch);*/
-                $result = ['order' => $data['order'], 'products' => $data['products'], 'client' => $data['client'], 'delivery' => $data['delivery'], 'state' => 'Mercadopago'];
-                break;
-
-            case 'PayPal':
-                $method = new \App\PaymentMethods\Paypal;
-                $result = $method->setupPaymentAndGetRedirectURL($data['order'], $data['products'], $data['client'], $data['delivery']);
-                $result = ['state' => 'Paypal', 'url' => $result];
-                break;
-        }
-
-        return $result;
-    }
-
     protected function sendAlertMail($clientForm, $billingDeleveryData, $quotation, $mailSeller){
 //        $destino = "fasolanof@gmail.com";
         $destino = "gerencia@jardepot.com";
@@ -215,29 +159,6 @@ class CheckoutController extends Controller {
         });
         return true;
     }
-
-    /*public function sendAlertMailOrder($clientForm, $order, $payment, $mailSeller){
-        $destino = "fasolanof@gmail.com";
-//        $destino = "ventas@jardepot.com";
-        // $destino = $mailSeller;
-        $dia = date('d-m-Y');
-        $hora = date('H:i:s');
-
-        $data = [
-            'nombre' => $clientForm['nombre']. " ". $clientForm['apellidos'],
-            'telefono' => $clientForm['telefono'],
-            'mail' => $clientForm['email'],
-            'dia' => $dia,
-            'hora' => $hora,
-            'order' => $order,
-            'payment' => $payment
-        ];
-        Mail::send('mails.webOrder', $data, function ($message) use ($destino) {
-            $message->to($destino)->subject
-            ('Pedido en linea Jardepot');
-            $message->from('sistemas1@jardepot.com', 'Sitemas Jardepot');
-        });
-    }*/
 
     protected function sendQuotationMail($correo, $nombre, $quotation, $content, $mailSeller){
         $url = 'https://digicom.mx/instalar_virus/sitios/jardepot/ventas/cotizaciones/enviarCotizacionDesdePagina.php';

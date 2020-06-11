@@ -31,7 +31,7 @@ class ConfirmController extends Controller {
                         if ($order == null) {
                             return response()->json(['data' => 'failure'], 200);
                         }
-                        $this->repository->createDeposit($order->total, $order->idPedidos, $payment, $order->fk_carrito);
+                        //$this->repository->createDeposit($order->total, $order->idPedidos, $payment, $order->fk_carrito);
                         $this->sendConfirmationMails($order->idPedidos);
                         return response()->json(['data' => 'success'], 200);
                         break;
@@ -124,7 +124,7 @@ class ConfirmController extends Controller {
 
     public function mercadopagoToken(Request $request){
         $content = json_decode($request->get('data'));
-        $token = $this->getExternalReference($content->external_reference);
+        $token = $this->getExternalReference($content->preference_id);
         if ($token == null) {
             return response()->json(['data' => 'failure'], 200);
         }
@@ -209,16 +209,6 @@ class ConfirmController extends Controller {
 
     public function prueba(){
         $this->sendConfirmationMails(25);
-    }
-
-    public function createMercadopago(Request $request){
-        $method = new \App\PaymentMethods\MercadoPago;
-        $order = json_decode($request->get('order'));
-        $products = json_decode($request->get('products'));
-        $client = json_decode($request->get('client'), true);
-        $delivery = json_decode($request->get('delivery'));
-        $url =  $method->setupPaymentAndGetRedirectURL($order, $products, $client, $delivery);
-        return response()->json(['data' => $url], 201);
     }
 
     public function sendAlertMailOrder($clientForm, $order, $payment, $mailSeller){
