@@ -66,11 +66,20 @@ class ConfirmRepository {
         return $client;
     }
 
-    public function insertOrder($client, $cart){
+    public function getClientFromMailPhone($mail, $phone){
+        $client = DB::connection('digicom')
+            ->table('clientes_jardepot')
+            ->select('*')
+            ->where(['correo' => $mail, 'telefono' => $phone])
+            ->first();
+        return$client;
+    }
+
+    public function insertOrder($client, $total){
         $date = date('Y-m-d H:i:s');
-        $total = $cart->total;
-        if($cart->total < 3000){
-            $total = 300 + $cart->total;
+        //$total = $cart->total;
+        if($total < 3000){
+            $total = 300 + $total;
         }
         // $total *= 1.04;
         $order = DB::connection('digicom')

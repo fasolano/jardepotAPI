@@ -17,24 +17,24 @@ class ConfirmController extends Controller {
 
     protected $repository = null;
 
-    public function index(Request $request){
+    public function index(Request $request) {
         $this->repository = new ConfirmRepository();
         $content = json_decode($request->get('data'));
         $state = $request->get('state');
         $payment = $request->get('payment');
-        switch ($state){
+        switch ($state) {
             case 'success':
                 switch ($payment) {
                     case 'MercadoPago':
-                        $token = $request->get('token');
-                        $order = $this->repository->verifyTokenAndPaymentMethod($payment, $token);
-                        if ($order == null) {
+                        $cookie = json_decode($request->get('sessionCookie'));
+                        if (!$cookie) {
                             return response()->json(['data' => 'failure'], 200);
                         }
-                        //$this->repository->createDeposit($order->total, $order->idPedidos, $payment, $order->fk_carrito);
-                        $this->sendConfirmationMails($order->idPedidos);
-                        return response()->json(['data' => 'success'], 200);
-                        break;
+
+                        $content = $request->get('data');
+                        $state = $this->mercadopayment($content, $cookie);
+                        return response()->json(['data' => $state], 200);
+                    break;
 
                     case 'PayPal':
                         $token = $this->getTokenFromPayment($content);
@@ -45,17 +45,17 @@ class ConfirmController extends Controller {
                         $this->repository->createDeposit($order->total, $order->idPedidos, $payment, $order->fk_carrito);
                         $this->sendConfirmationMails($order->idPedidos);
                         return response()->json(['data' => 'success'], 200);
-                        break;
+                    break;
 
                     case 'button':
                         $repositoryCheckout = new CheckoutRepository();
                         $cookie = json_decode($request->get('sessionCookie'));
-                        if(!$cookie){
+                        if (!$cookie) {
                             return response()->json(['data' => 'failure'], 200);
                         }
                         $token = $request->get('token');
                         $order = $this->validateButtonID($token);
-                        if ($order == null){
+                        if ($order == null) {
                             return response()->json(['data' => 'failure'], 200);
                         }
 
@@ -64,7 +64,7 @@ class ConfirmController extends Controller {
                         //Obtiene el carro completo
                         $cart = $cartRepository->getCart($cookie->carrito);
 
-                        if (!$cart){
+                        if (!$cart) {
                             return response()->json(['data' => 'success'], 200);
                         }
 
@@ -74,7 +74,7 @@ class ConfirmController extends Controller {
                         $clientData = $this->dataClient($clientForm, $address);
                         $client = $repositoryCheckout->insertClient($clientData);
 
-                        $order = $this->repository->insertOrder($client, $cart);
+                        $order = $this->repository->insertOrder($client, $cart->total);
                         $webOrder = $repositoryCheckout->insertWebOrder($order, $cart, $payment);
                         $order = $this->repository->verifyTokenAndPaymentMethod($payment, $webOrder->token);
 
@@ -90,7 +90,7 @@ class ConfirmController extends Controller {
                         $billingForm = $this->dataBilling();
                         $deliveryForm = $this->dataDelivery($address, $name);
 
-                        $billingDeleveryData = array_merge($deliveryForm, $billingForm, ['idPedidos' => $order->idPedidos], ['id_cliente' =>$client]);
+                        $billingDeleveryData = array_merge($deliveryForm, $billingForm, ['idPedidos' => $order->idPedidos], ['id_cliente' => $client]);
                         $repositoryCheckout->insertDeliveryBilling($billingDeleveryData);
 
                         $products = $cartRepository->getProductsFromCartFinal($cart->id_carrito);
@@ -99,36 +99,82 @@ class ConfirmController extends Controller {
                         $this->sendAlertMailOrder($clientData, $order->idPedidos, $payment, $mailSeller);
 
                         return response()->json(['data' => 'success'], 200);
-                        break;
+                    break;
                 }
-                break;
+            break;
 
             case 'pending':
                 return response()->json(['data' => 'pending'], 200);
-                break;
+            break;
 
             case 'failure':
                 switch ($payment) {
                     case 'MercadoPago':
                         $client = $this->getClient($content->external_reference);
                         $this->sendFailedMail($client, $payment);
-                        break;
+                    break;
 
                     case 'PayPal':
-                        break;
+                    break;
                 }
                 return response()->json(['data' => 'failure'], 200);
-                break;
+            break;
         }
     }
 
-    public function mercadopagoToken(Request $request){
-        $content = json_decode($request->get('data'));
-        $token = $this->getExternalReference($content->preference_id);
-        if ($token == null) {
-            return response()->json(['data' => 'failure'], 200);
+    /*
+     * Recupera los datos de el preference creado para el pago y todos los datos
+     * guardados: productos, telefono, correo y los verifica en la BD
+     */
+    public function mercadopayment($content, $cookie){
+        $cartRepository = new CartRepository();
+        $repositoryCheckout = new CheckoutRepository();
+        $cart = $cartRepository->getCart($cookie->carrito);
+        if (!$cart) {
+            return 'failure';
         }
-        return response()->json(['data' => $token], 200);
+        $payment = 'MercadoPago';
+
+        $content = json_decode($content);
+        $preference = $this->getExternalReference($content->preference_id);
+        $preference = json_decode($preference);
+
+        $phone = $preference->payer->phone->number;
+        $mail = $preference->payer->email;
+        $client = $this->repository->getClientFromMailPhone($mail, $phone);
+        $total = 0;
+        foreach ($preference->items as $item) {
+            $total += $item->unit_price * $item->quantity;
+        }
+        $order = $this->repository->insertOrder($client->idClientes, $total);
+        $webOrder = $repositoryCheckout->insertWebOrder($order, $cart, $payment);
+        $order = $this->repository->verifyTokenAndPaymentMethod($payment, $webOrder->token);
+
+        //Finaliza el carro para que no se vuelva a cargar
+        $cartRepository->closeCart($cart);
+
+        $order->token = $webOrder->token;
+        $mailSeller = $repositoryCheckout->setSellerToOrder($order->idPedidos);
+
+        // $this->repository->createDeposit($order->total, $order->idPedidos, $payment, $order->fk_carrito);
+
+        $billingForm = $this->dataBilling();
+        $deliveryForm = $this->dataDeliveryMercado($preference->shipments->receiver_address, $preference->payer);
+
+        $billingDeleveryData = array_merge($deliveryForm, $billingForm, ['idPedidos' => $order->idPedidos], ['id_cliente' => $client->idClientes]);
+        $repositoryCheckout->insertDeliveryBilling($billingDeleveryData);
+
+        $products = $cartRepository->getProductsFromCartFinal($cart->id_carrito);
+        $this->repository->insertProductsOrder($order, $products);
+        $clientData = (array) $client;
+        $clientData['email'] = $clientData['correo'];
+        $clientData['apellidos'] = "";
+        $this->sendAlertMailOrder($clientData, $order->idPedidos, $payment, $mailSeller);
+
+        return 'success';
+        //return response()->json(['data' => 'success'], 200);
+
+        //return $preference;
     }
 
     public function getClient($external_reference){
@@ -212,15 +258,15 @@ class ConfirmController extends Controller {
     }
 
     public function sendAlertMailOrder($clientForm, $order, $payment, $mailSeller){
-        // $destino = "fasolanof@gmail.com";
-        $destino = "alcocer@jardepot.com";
+        $destino = "fasolanof@gmail.com";
+        // $destino = "alcocer@jardepot.com";
         //$destino = $mailSeller;
 
         $dia = date('d-m-Y');
         $hora = date('H:i:s');
-
+        $name = $clientForm['nombre']. " ". $clientForm['apellidos'];
         $data = [
-            'nombre' => $clientForm['nombre']. " ". $clientForm['apellidos'],
+            'nombre' => $name,
             'telefono' => $clientForm['telefono'],
             'mail' => $clientForm['email'],
             'dia' => $dia,
@@ -228,9 +274,9 @@ class ConfirmController extends Controller {
             'order' => $order,
             'payment' => $payment
         ];
-        Mail::send('mails.webOrder', $data, function ($message) use ($destino) {
+        Mail::send('mails.webOrder', $data, function ($message) use ($destino, $payment) {
             $message->to($destino)->subject
-            ('Compra en Línea PAYPAL');
+            ('Compra en Línea '.$payment);
             $message->from('sistemas1@jardepot.com', 'Sitemas Jardepot');
         });
     }
@@ -257,6 +303,18 @@ class ConfirmController extends Controller {
             'ciudadEnvio' => $address[2],
             'estadoEnvio' => $address[3],
             'cpEnvio' => $address[4]
+        ];
+    }
+
+    public function dataDeliveryMercado($shipment, $payer){
+        $street = explode(',', $shipment->street_name);
+        return [
+            'recibeEnvio' => $payer->name." ".$payer->surname,
+            'calleEnvio' => $street[1],
+            'coloniaEnvio' => $street[0],
+            'ciudadEnvio' => $shipment->city_name,
+            'estadoEnvio' => $shipment->state_name,
+            'cpEnvio' => $shipment->zip_code
         ];
     }
 

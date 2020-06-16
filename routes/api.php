@@ -46,6 +46,7 @@ Route::delete('cart/removeProduct', 'CartController@removeProductCart');
 
 
 Route::post('confirm/checkout', 'ConfirmController@index');
+Route::post('confirm/mercadopayment', 'ConfirmController@mercadopayment');
 Route::post('confirm/notification_url', 'ConfirmController@notification');
 Route::get('confirm/prueba', 'ConfirmController@prueba');
 

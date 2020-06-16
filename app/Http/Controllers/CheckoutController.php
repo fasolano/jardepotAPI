@@ -41,22 +41,7 @@ class CheckoutController extends Controller {
                 return response()->json(['data' => 'failure'], 200);
             }
         }else{
-            $clientForm = $this->dataClient(json_decode($forms->billing));
-            $client = $this->repository->insertClient($clientForm);
-            $deliveryForm = $this->dataDelivery(json_decode($forms->billing), json_decode($forms->delivery));
-
-            $url = $this->getLinkPayment($client, $deliveryForm, $cookie->carrito);
-
-            /*$data = $this->setUpOrder($cookie->carrito, $forms, $formPayment->value);
-
-            $data['delivery'] = json_decode($forms->delivery);
-
-            $url = $this->generatePaymentGateway(
-                $formPayment->value,
-                $data
-            );
-
-            return response()->json(['data' => $url], 201);*/
+            return response()->json(['data' => 'failure'], 200);
         }
 
     }

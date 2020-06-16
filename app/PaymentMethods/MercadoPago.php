@@ -10,8 +10,14 @@ use MercadoPago\Payer;
 use MercadoPago\Payment;
 use MercadoPago\Preference;
 use MercadoPago\SDK;
+use MercadoPago\Shipments;
 
 class MercadoPago{
+
+    protected $client_id = "5218597946840536";
+    protected $client_secret = "jRqFu65og5OeqwhTIicRMROzVJWTM0jv";
+    protected $public_key = "TEST-f69e04b9-b984-490f-ac0f-48bf0b6f48ca";
+    protected $access_token = "TEST-5218597946840536-011519-f0feee1d9aa73c866bf25d8975e45fa9-509669228";
 
     public function __construct() {
         SDK::setClientId("5218597946840536");
@@ -75,14 +81,11 @@ class MercadoPago{
 
         array_push($items, $item);
 
-    //    $item->picture_url = $order->featured_img;
-
         # Create a payer object
         $payer = new Payer();
-        //$payer->email = $order->preorder->billing['email'];
         $payer->email = $client['email'];
-        $payer->first_name = $client['nombre'];
-        $payer->last_name = $client['apellidos'];
+        $payer->name = $client['nombre'];
+        $payer->surname = $client['apellidos'];
         $payer->phone = array(
             "number" => $client['telefono']
         );
@@ -91,9 +94,23 @@ class MercadoPago{
             "zip_code" => $client['cp']
         );
 
+        # Create a payer object
+        $shipment = new Shipments();
+        $shipment->receiver_address = array(
+            'zip_code' => $client['cp'],
+            'street_name' => $client['colonia'].", ".$client['direccion'],
+            'street_number' => "",
+            'floor' => "",
+            'apartment' => "",
+            'city_name' => $client['ciudad'],
+            'state_name' => $client['estado'],
+            'country_name' => "México",
+        );
+
         # Setting preference properties
         $preference->payer = $payer;
         $preference->items = $items;
+        $preference->shipments = $shipment;
 
         # Save External Reference
         //$preference->external_reference = $order->token;
@@ -112,10 +129,6 @@ class MercadoPago{
 
         $preference->notification_url = 'https://www.jardepot.com/jardepotAPI/public/api/confirm/prueba/confirmation/notification/MercadoPago';
 
-//        $preference->notification_url = 'https://www.seragromex.com/jardepotAPI/public/api/confirm/prueba/confirmation/notification/MercadoPago';
-
-//        $preference->notification_url = 'http://localhost/jardepotAPI/public/api/confirmation/notification/MercadoPago';
-
         $preference->auto_return = "all";
         # Save and POST preference
         $preference->save();
@@ -128,41 +141,22 @@ class MercadoPago{
     }
 
     public function verifyPayment($preference_id){
-        $payment = Preference::get($preference_id);
-        print_r($payment);
-        echo "!!!!!!!!!!!!!1";
-        return null;
-        /*if(count($payment)){
-            if($payment[0]->status == 'approved' && $payment[0]->status_detail == 'accredited'){
-                return $payment[0]->external_reference;
-            }else{
-                return null;
-            }
-        }else{
-            return null;
-        }*/
-    }
+        $url = 'https://api.mercadopago.com/checkout/preferences/'.$preference_id.'?access_token='.$this->access_token;
+        //open connection
+        $ch = curl_init();
+        curl_setopt($ch,CURLOPT_URL, $url);
+        curl_setopt($ch,CURLOPT_RETURNTRANSFER, true);
 
-    public function getPaymentFromNotification($data){
-        $payment = null;
+        $response = curl_exec($ch);
+        $err = curl_error($ch);
 
-        switch($data["topic"]) {
-            case "payment":
-                $payment = MercadoPago\Payment::find_by_id($data["id"]);
-                // Get the payment and the corresponding merchant_order reported by the IPN.
-//                $merchant_order = MercadoPago\MerchantOrder::find_by_id($payment->order->id);
-                break;
-            case "merchant_order":
-//                $merchant_order = MercadoPago\MerchantOrder::find_by_id($_GET["id"]);
-                break;
+        $resp = $response;
+        curl_close($ch);
+
+        if ($err) {
+            return 'error';
+        } else {
+            return $resp;
         }
-
-        return $payment;
     }
-
-    public function prueba(){
-        $payment = Payment::search(['external_reference' => 'e84dfd93bfeff87acf21de3651cd32b2c4c95c4832178c37e610ce542f3f']);
-        return $payment;
-    }
-
 }
