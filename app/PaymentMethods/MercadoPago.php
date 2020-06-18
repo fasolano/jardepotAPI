@@ -120,17 +120,17 @@ class MercadoPago{
         # Save External Reference
         //$preference->external_reference = $order->token;
 
-        $preference->back_urls = [
+        /*$preference->back_urls = [
             "success" => 'http://localhost:4200/confirmation/success/MercadoPago',
             "pending" => 'http://localhost:4200/confirmation/pending/MercadoPago',
             "failure" => 'http://localhost:4200/confirmation/failure/MercadoPago',
-        ];
+        ];*/
 
-        /*$preference->back_urls = [
+        $preference->back_urls = [
             "success" => 'https://www.jardepot.com/confirmation/success/MercadoPago',
             "pending" => 'https://www.jardepot.com/confirmation/pending/MercadoPago',
             "failure" => 'https://www.jardepot.com/confirmation/failure/MercadoPago',
-        ];*/
+        ];
 
         $preference->notification_url = 'https://www.jardepot.com/jardepotAPI/public/api/confirm/prueba/confirmation/notification/MercadoPago';
 
