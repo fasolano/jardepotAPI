@@ -252,6 +252,7 @@ class ProductRepository{
                 'productos.productType' => $productType,
                 'productos.brand' => $brand,
                 'productos.mpn' => $mpn,
+                'productos.visible' => 'si',
             ])
             ->groupBy(
                 'productos.productType',
