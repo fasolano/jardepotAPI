@@ -15,7 +15,6 @@ use Illuminate\Http\Request;
 
 
 
-Route::post('confirm/mercadopago', 'ConfirmController@mercadopagoToken');
 
 Route::get('products', 'ProductController@getProducts');
 Route::get('products/sections', 'ProductController@getSections');
@@ -27,6 +26,7 @@ Route::get('products/search', 'ProductController@getProductsSearch');
 Route::get('products/offer', 'ProductController@getProductsOffer');
 Route::get('products/getDescriptionNivel2', 'ProductController@getDescriptionNivel2');
 Route::post('products/sendSearch', 'ProductController@sendSearch');
+Route::get('products/validateImages', 'ProductController@validateImages');
 
 
 Route::get('menu/navbar', 'MenuController@getMenuNavbar');
@@ -48,13 +48,9 @@ Route::delete('cart/removeProduct', 'CartController@removeProductCart');
 Route::post('confirm/checkout', 'ConfirmController@index');
 Route::post('confirm/mercadopayment', 'ConfirmController@mercadopayment');
 Route::post('confirm/notification_url', 'ConfirmController@notification');
-Route::get('confirm/prueba', 'ConfirmController@prueba');
+Route::post('confirm/mercadopago', 'ConfirmController@mercadopagoToken');
 
 
 Route::post('checkout/mercadopago', 'CheckoutController@getLinkPayment');
 Route::post('checkout/createOrder', 'CheckoutController@createOrder');
 Route::get('checkout/success', 'ApiTokenController@index');
-
-
-Route::get('products/validateImages', 'ProductController@validateImages');
-Route::get('pruebas', 'ConfirmController@prueba');

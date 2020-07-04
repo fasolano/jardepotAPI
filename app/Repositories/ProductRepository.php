@@ -39,25 +39,9 @@ class ProductRepository{
                     ->on("productos.mpn","=","inventario.mpn");
             })
             ->select(
-                'productos.id',
-                'productos.productType',
-                'productos.brand',
-                'productos.mpn',
-                'productos.description',
-                'productos.availability',
-                'productos.price',
-                'productos.oferta',
-                'productos.PrecioDeLista',
-                'productos.offer',
-                'productos.iva',
-                'productos.video',
-                'productos.volada',
-                'productos.visible',
-                'XML.keywords',
-                'XML.metadesc',
-                'XML.descriptionweb',
-                'XML.titleweb',
-                'XML.resenia',
+                'productos.id','productos.productType', 'productos.brand', 'productos.mpn', 'productos.description', 'productos.availability',
+                'productos.price', 'productos.oferta', 'productos.PrecioDeLista', 'productos.offer', 'productos.iva', 'productos.video',
+                'productos.volada', 'productos.visible', 'XML.keywords', 'XML.metadesc', 'XML.descriptionweb', 'XML.titleweb', 'XML.resenia',
                 DB::raw('SUM(inventario.cantidad) as cantidadInventario')
             )
             ->distinct('productos.mpn')
@@ -241,6 +225,7 @@ class ProductRepository{
                 'productos.video',
                 'productos.volada',
                 'productos.visible',
+                'productos.stock',
                 'XML.keywords',
                 'XML.metadesc',
                 'XML.descriptionweb',
