@@ -225,7 +225,7 @@ class ProductRepository{
                 'productos.video',
                 'productos.volada',
                 'productos.visible',
-                'productos.stock',
+                'productos.availability',
                 'XML.keywords',
                 'XML.metadesc',
                 'XML.descriptionweb',
