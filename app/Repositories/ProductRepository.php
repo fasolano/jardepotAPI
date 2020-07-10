@@ -47,9 +47,8 @@ class ProductRepository{
             ->distinct('productos.mpn')
             ->orderBy('c3.prioridad', 'asc')
             ->where([
-                ["productos.visible", "=", "si"],
-                ["c3.idCategoriasNivel2", "=", $nivel2],
-                ['inventario.idAlmacenes', "!=", 17]
+                "productos.visible" => "si",
+                "c3.idCategoriasNivel2" => $nivel2
             ])
             ->groupBy('productos.productType',
                 'productos.brand','productos.mpn')
@@ -105,10 +104,9 @@ class ProductRepository{
             ->distinct('productos.mpn')
             ->orderBy('c3.prioridad', 'asc')
             ->where([
-                ["productos.visible", "=", "si"],
-                ["productos.availability", "=", "in stock"],
-                ["productos.offer", "=", "si"],
-                ['inventario.idAlmacenes', "!=", 17]
+                "productos.visible" => "si",
+                "productos.availability" => "in stock",
+                "productos.offer" => "si"
             ])
             ->groupBy('productos.productType',
                 'productos.brand','productos.mpn')
@@ -121,7 +119,6 @@ class ProductRepository{
         $valores = array();
         array_push($valores, ["productos.visible", '=', "si"]);
         array_push($valores, ["c3.idCategoriasNivel2", '=', $nivel2]);
-        array_push($valores, ['inventario.idAlmacenes', "!=", 17]);
         $datos = DB::table('productos')
             ->join("XML", function($join){
                 $join->on("productos.productType","=","XML.productType")
@@ -237,11 +234,10 @@ class ProductRepository{
                 DB::raw('SUM(inventario.cantidad) as cantidadInventario')
             )
             ->where([
-                ['productos.productType', "=", $productType],
-                ['productos.brand', "=", $brand],
-                ['productos.mpn', "=", $mpn],
-                ['productos.visible', "=", 'si'],
-                ['inventario.idAlmacenes', "<>", 17]
+                'productos.productType' => $productType,
+                'productos.brand' => $brand,
+                'productos.mpn' => $mpn,
+                'productos.visible' => 'si',
             ])
             ->groupBy(
                 'productos.productType',
@@ -296,8 +292,7 @@ class ProductRepository{
                 ['productos.productType', $productType],
                 ['productos.kind', 'MAQ'],
                 ['productos.visible', 'si'],
-                ['productos.mpn', '!=', $mpn],
-                ['inventario.idAlmacenes', '!=', 17]
+                ['productos.mpn', '!=', $mpn]
             ])
             ->whereRaw(
                 "productos.price >= (select price * 0.75 as price from productos where productType = '".$productType."' AND brand = '".$brand."' AND mpn = '".$mpn."') AND ".
