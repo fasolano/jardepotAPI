@@ -14,6 +14,6 @@
 
 <link href='https://fonts.googleapis.com/css?family=Lato:100,200,300,400,500,600,700' rel='stylesheet' type='text/css'>
 
-<link rel="stylesheet" href="{{$path}}assets/css/bootstrap.min.css">
+<link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}">
 
 
