@@ -8,7 +8,7 @@ error_reporting(E_ERROR | E_PARSE);
     @include('layout.head')
 </head>
 
-<body>
+<body style="font-family: Roboto !important;">
 @include('layout.navbar')
 <div class="container">
     <!-- Contenedor Principal -->
@@ -38,12 +38,12 @@ error_reporting(E_ERROR | E_PARSE);
 
         {{--    @yield('content')--}}
 
-        @include('layout.footer')
     </div>
-    <!-- Fin Contenedor Principal -->
 
+    <!-- Fin Contenedor Principal -->
 </div>
 
+@include('layout.footer')
 @include('layout.cierre')
 
 </body>
