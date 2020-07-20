@@ -1,29 +1,26 @@
-.navbar-heigth{
-    height: 10%;
-}
-
-.div-navbar{
-    border-radius: 0 0 10px 10px;
-    background-color: #f68600 !important;
-    height: 60px;
-    width: 98%;
-    max-width: 1300px;
-    z-index: 3;
-    margin-top: -21px;
-    position: fixed;
-}
-.div-navbar-position {
-    flex-direction: row;
-    box-sizing: border-box;
-    display: flex;
-    place-content: center space-between;
-    align-items: center;
-}
-
-.logo-navbar{
-    height: 80%;
-}
 .align-cont{
-margin: 0 auto;
+    margin: 0 auto;
     position: relative;
+}
+
+.bg-color-jd{
+    background-color: #f68600 !important;
+    color: white !important;
+}
+
+.fn-color-jd{
+    color: #f68600 !important;
+}
+
+.title-muted{
+    color: #616161!important;
+    display: block;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 18px;
+}
+
+.bg-color-oferta{
+    background-color: #de1f21 !important;
+    color: #fff !important;
 }

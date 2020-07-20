@@ -1,0 +1,23 @@
+.navbar-heigth{
+    height: 10%;
+}
+
+.div-navbar{
+    border-radius: 0 0 10px 10px;
+    background-color: #f68600 !important;
+    height: 60px;
+    width: 100%;
+    z-index: 3;
+}
+
+.div-navbar-position {
+    flex-direction: row;
+    box-sizing: border-box;
+    display: flex;
+    place-content: center space-between;
+    align-items: center;
+}
+
+.logo-navbar{
+    height: 80%;
+}
