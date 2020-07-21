@@ -1,111 +1,182 @@
-{{--
-    --}}
-
-<nav class="sticky-top navbar-dark bg-dark navbar-heigth container-fluid">
+{{--Vista escritorio--}}
+<nav class="sticky-top navbar-dark bg-dark container-fluid d-none d-sm-none d-md-block">
     <div class="row justify-content-md-center flex-column align-items-center">
-        <div class="div-navbar col-xl-9 col-lg-11">
+        <div class="div-navbar col-12 col-xl-12 col-lg-12 col-md-12">
             <div class="row" style="color: white;">
-                <div class="col-4 font-weight-bold" style="font-size: 25px;">
-                    Llámanos al:
-                    <a href="tel:8002129225" style="text-decoration: none; color: white;">
-                        <i class="material-icons mr-2">local_phone</i>(800)212 9225
+                <div class="col-3 d-none d-sm-none d-md-block">
+                    <div class="col-12">
+                        <div class="text-barra text-left">
+                            Llámanos al:<br>
+                            <a href="tel:8002129225">
+                                <i class="material-icons iconMod">local_phone</i>(800) 212 9225
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-8 d-flex">
+                    <div class="row">
+                        <div class="col-3">
+                            <div class="text-barra text-left">
+                                CDMX <br><a href="tel:5549968849"><i class="material-icons iconMod">call</i>(55) 4996
+                                    8849</a>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="text-barra text-left">
+                                GDL<br>
+                                <a href="tel:3317283353"><i class="material-icons iconMod">call</i>(33) 1728 3353</a>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="text-barra text-left">
+                                EDOMX<br>
+                                <a href="tel:7226481040"><i class="material-icons iconMod">call</i>(722) 648 1040</a>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="text-barra text-left">
+                                Mayoreo<br>
+                                <a href="tel:5544598506"><i class="material-icons iconMod">call</i>(55) 4459 8506</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-1" style="font-size: 35px;cursor:pointer;">
+                    <a data-toggle="modal" data-target="#modalTelefonos">
+                        <i class="material-icons">add_ic_call <i class="material-icons iconMod">keyboard_arrow_down</i></i>
                     </a>
                 </div>
-                <div class="col-7 d-flex">
-                    <div class="col-4">CDMX:<br>(55) 4996 8849</div>
-                    <div class="col-4">GDL:<br>(33) 1728 3353</div>
-                    <div class="col-4">EDOMX:<br>(722) 648 1040</div>
-                </div>
-                <div class="col-1">
-                    <span>+</span>
-                    <i class="material-icons mr-2">local_phone</i>
-                </div>
-                {{--            <div>Más teléfonos</div>--}}
-
-            </div>
-        </div>
-        <div>
-            <a class="navbar-brand" href="#"><img class="logo-navbar" src="{{asset('img/logos/logoJardepot.png')}}"></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample06" aria-controls="navbarsExample06" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarsExample06">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        {{--                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>--}}
-                    </li>
-                </ul>
-                <form class="form-inline my-2 my-md-0">
-                    <input class="form-control" type="text"  placeholder="Search">
-                </form>
             </div>
         </div>
     </div>
-
+    <div class="container-xl">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <a class="navbar-brand" href="#">
+                        <img class="logo-navbar" style="width: 80%" src="{{asset('img/logos/logoJardepot.png')}}">
+                    </a>
+                </div>
+                <div class="col-md-7">
+                    <div class="" id="navbarsExample06">
+                        <form class="form-inline my-2 my-md-0">
+                            <div class="input-group mb-3" style="width: 100%">
+                                <input type="text" class="form-control inputSearch" placeholder="Busca tu producto..."
+                                       aria-label="Busca tu producto" aria-describedby="Busca tu producto.">
+                                <div class="input-group-append">
+                                    <span class="input-group-addon">
+                                        <a class="btn btnSearch" type="submit" id=""><i style="color: gray" class="material-icons d-flex">search</i></a></span>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-md-2" style="margin-top: 5px">
+                    <span style="color: #fff;cursor:pointer;font-size: 15px">
+                        <i class="material-icons d-flex" style="color: #f68600;font-size: 24px !important;">shopping_cart</i>
+                    Carrito de compras</span>
+                </div>
+            </div>
+        </div>
+    </div>
 </nav>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light d-none d-sm-none d-md-block">
     <div class="container-xl">
-{{--        <a class="navbar-brand" href="#">Container XL</a>--}}
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample07XL" aria-controls="navbarsExample07XL" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
+        {{--        <a class="navbar-brand" href="#">Container XL</a>--}}
         <div class="collapse navbar-collapse" id="navbarsExample07XL">
             <ul class="navbar-nav mr-auto">
-{{--                <li class="nav-item active">--}}
-{{--                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>--}}
-{{--                </li>--}}
+                {{--                <li class="nav-item active">--}}
+                {{--                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>--}}
+                {{--                </li>--}}
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="dropdown07XL" data-toggle="dropdown" aria-expanded="false">Agricultura</a>
+                    <a class="nav-link dropdown-toggle" href="#" id="dropdown07XL" data-toggle="dropdown"
+                       aria-expanded="false">Agricultura</a>
                     <div class="dropdown-menu" aria-labelledby="dropdown07XL">
                         <a class="dropdown-item" href="#">Action</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="dropdown07XL" data-toggle="dropdown" aria-expanded="false">Sanitizacion</a>
+                    <a class="nav-link dropdown-toggle" href="#" id="dropdown07XL" data-toggle="dropdown"
+                       aria-expanded="false">Sanitizacion y fumigación</a>
                     <div class="dropdown-menu" aria-labelledby="dropdown07XL">
                         <a class="dropdown-item" href="#">Action</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="dropdown07XL" data-toggle="dropdown" aria-expanded="false">Jardinería</a>
+                    <a class="nav-link dropdown-toggle" href="#" id="dropdown07XL" data-toggle="dropdown"
+                       aria-expanded="false">Jardinería</a>
                     <div class="dropdown-menu" aria-labelledby="dropdown07XL">
                         <a class="dropdown-item" href="#">Action</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="dropdown07XL" data-toggle="dropdown" aria-expanded="false">construccion</a>
+                    <a class="nav-link dropdown-toggle" href="#" id="dropdown07XL" data-toggle="dropdown"
+                       aria-expanded="false">Riego</a>
                     <div class="dropdown-menu" aria-labelledby="dropdown07XL">
                         <a class="dropdown-item" href="#">Action</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="dropdown07XL" data-toggle="dropdown"
+                       aria-expanded="false">Construccion</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdown07XL">
+                        <a class="dropdown-item" href="#">Action</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="dropdown07XL" data-toggle="dropdown"
+                       aria-expanded="false">Refacciones</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdown07XL">
+                        <a class="dropdown-item" href="#">Refacciones</a>
                     </div>
                 </li>
             </ul>
-            <a class="mr-2 nav-link btn btn-danger" href="#">Ofertas</a>
-            <a class="mr-2 nav-link btn btn-success" href="#">Whatsapp</a>
-            <a class="mr-2 nav-link btn btn-warning" href="#">Refacciones</a>
+            <a class="mr-2 btn btn-danger btn-sm d-flex" href="#"><i class="material-icons iconMod">attach_money</i>Ofertas</a>
+            <a class="mr-2 btn-success btn-sm d-flex" href="https://wa.me/525551857805?text=Hola,%20me%20gustaría%20saber%20" style="text-decoration: none;">
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true"
+                     focusable="false" width="20px" height="20px" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);"
+                     preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91c0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23c-1.48 0-2.93-.39-4.19-1.15l-.3-.17l-3.12.82l.83-3.04l-.2-.32a8.188 8.188 0 0 1-1.26-4.38c.01-4.54 3.7-8.24 8.25-8.24M8.53 7.33c-.16 0-.43.06-.66.31c-.22.25-.87.86-.87 2.07c0 1.22.89 2.39 1 2.56c.14.17 1.76 2.67 4.25 3.73c.59.27 1.05.42 1.41.53c.59.19 1.13.16 1.56.1c.48-.07 1.46-.6 1.67-1.18c.21-.58.21-1.07.15-1.18c-.07-.1-.23-.16-.48-.27c-.25-.14-1.47-.74-1.69-.82c-.23-.08-.37-.12-.56.12c-.16.25-.64.81-.78.97c-.15.17-.29.19-.53.07c-.26-.13-1.06-.39-2-1.23c-.74-.66-1.23-1.47-1.38-1.72c-.12-.24-.01-.39.11-.5c.11-.11.27-.29.37-.44c.13-.14.17-.25.25-.41c.08-.17.04-.31-.02-.43c-.06-.11-.56-1.35-.77-1.84c-.2-.48-.4-.42-.56-.43c-.14 0-.3-.01-.47-.01z" fill="#fff"/><rect x="0" y="0" width="24" height="24" fill="rgba(0, 0, 0, 0)" />
+                </svg>Whatsapp</a>
+            <a class="mr-2 btn-warning btn-sm d-flex" href="https://wa.me/7226481040?text=Hola,%20me%20gustaría%20saber%20sobre%20sus%20refacciones"
+               style="text-decoration: none;"><i class="material-icons iconMod">settings</i>Refacciones</a>
         </div>
     </div>
 </nav>
 
-{{--
-<nav class="navbar navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">Never expand</a>
-    <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarsExample01" aria-controls="navbarsExample01" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+{{--Vista Movil --}}
+<nav class="navbar navbar-dark sticky-top bg-dark  d-block d-sm-block d-md-none">
+    <div class="div-navbar-movil">
+        <div class="row" style="width: 100%">
+            <div class="col-9">
+                <div class="text-left">
+                    <span><i class="material-icons">call</i>
+                        <a data-toggle="modal" data-target="#modalTelefonos">Más Teléfonos</a>
+                        <i class="material-icons ">keyboard_arrow_down</i></span>
+                </div>
+            </div>
+            <div class="col-3 text-right">
+                <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarsExample01"
+                        aria-controls="navbarsExample01" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="material-icons">menu</i>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-8">
+            <a class="navbar-brand" href="#">
+                <img class="logo-navbar" style="width: 150px" src="{{asset('img/logos/logoJardepot.png')}}">
+            </a>
+        </div>
+        <div class="col-4" style="margin-top: 8px">
+                <span style="color: #fff;cursor:pointer;font-size: 15px;">
+                    <i class="material-icons d-flex" style="color: #f68600;font-size: 30px !important;">shopping_cart<i class="material-icons ">keyboard_arrow_down</i></i></span>
+        </div>
+    </div>
 
     <div class="navbar-collapse collapse" id="navbarsExample01" style="">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-            </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
                 <div class="dropdown-menu" aria-labelledby="dropdown01">
@@ -115,9 +186,125 @@
                 </div>
             </li>
         </ul>
+    </div>
+    <div class="navbar-collapse">
         <form class="form-inline my-2 my-md-0">
-            <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+            <div class="input-group" style="width: 95%">
+                <input type="text" class="form-control inputSearch" placeholder="Busca tu producto..."
+                       aria-label="Busca tu producto" aria-describedby="Busca tu producto.">
+                <div class="input-group-append">
+                    <span class="input-group-addon">
+                        <a class="btn btnSearch" type="submit" id=""><i style="color: gray" class="material-icons d-flex">search</i></a></span>
+                </div>
+            </div>
         </form>
     </div>
 </nav>
---}}
+
+<nav class="navbar navbar-light bg-light  d-block d-sm-block d-md-none">
+    <div class="row">
+        <div class="col-6">
+            <a class="mr-2 btn-success btn-sm d-flex" href="https://wa.me/525551857805?text=Hola,%20me%20gustaría%20saber%20" style="text-decoration: none;">
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true"
+                     focusable="false" width="20px" height="20px" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);"
+                     preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91c0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23c-1.48 0-2.93-.39-4.19-1.15l-.3-.17l-3.12.82l.83-3.04l-.2-.32a8.188 8.188 0 0 1-1.26-4.38c.01-4.54 3.7-8.24 8.25-8.24M8.53 7.33c-.16 0-.43.06-.66.31c-.22.25-.87.86-.87 2.07c0 1.22.89 2.39 1 2.56c.14.17 1.76 2.67 4.25 3.73c.59.27 1.05.42 1.41.53c.59.19 1.13.16 1.56.1c.48-.07 1.46-.6 1.67-1.18c.21-.58.21-1.07.15-1.18c-.07-.1-.23-.16-.48-.27c-.25-.14-1.47-.74-1.69-.82c-.23-.08-.37-.12-.56.12c-.16.25-.64.81-.78.97c-.15.17-.29.19-.53.07c-.26-.13-1.06-.39-2-1.23c-.74-.66-1.23-1.47-1.38-1.72c-.12-.24-.01-.39.11-.5c.11-.11.27-.29.37-.44c.13-.14.17-.25.25-.41c.08-.17.04-.31-.02-.43c-.06-.11-.56-1.35-.77-1.84c-.2-.48-.4-.42-.56-.43c-.14 0-.3-.01-.47-.01z" fill="#fff"/><rect x="0" y="0" width="24" height="24" fill="rgba(0, 0, 0, 0)" />
+                </svg>Whatsapp</a>
+        </div>
+        <div class="col-6">
+            <a class="mr-2 btn-warning btn-sm d-flex" href="tel:8002129225"
+               style="text-decoration: none;"><i class="material-icons iconMod">call</i>Llámanos</a>
+        </div>
+    </div>
+</nav>
+
+<!-- Modal Teléfonos-->
+<div class="modal fade" id="modalTelefonos" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog"
+     aria-labelledby="modalTelefonosLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalTelefonosLabel">Nuestros números teléfonicos</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container row">
+                    <div class="row">
+                        <div class="col-md-12 col-6">
+                            Del Interior<br>
+                            <a class="telModal" href="tel:8002129225"><i class="material-icons">call</i>(800) 212
+                                9225</a>
+                        </div>
+                        <div class="col-md-3 col-6">
+                            CDMX<br>
+                            <a class="telModal" class="telModal" href="tel:5549974360"><i
+                                    class="material-icons">call</i>(55) 4997 4360</a>
+                        </div>
+                        <div class="col-md-3 col-6">
+                            CDMX<br>
+                            <a class="telModal" class="telModal" href="tel:5549968849"><i
+                                    class="material-icons">call</i>(55) 4996 8849</a>
+                        </div>
+                        <div class="col-md-3 col-6">
+                            Guadalajara<br>
+                            <a class="telModal" href="tel:3317283353"><i class="material-icons">call</i>(33) 1728
+                                3353</a>
+                        </div>
+                        <div class="col-md-3 col-6">
+                            Nuevo León<br>
+                            <a class="telModal" href="tel:8120635708"><i class="material-icons">call</i>8120635708</a>
+                        </div>
+                        <div class="col-md-3 col-6">
+                            Edo. Mex.<br>
+                            <a class="telModal" href="tel:7226481040"><i class="material-icons">call</i>(722) 648
+                                1040</a>
+                        </div>
+                        <div class="col-md-3 col-6">
+                            Morelos<br>
+                            <a class="telModal" href="tel:7773179630"><i class="material-icons">call</i>(777) 317
+                                9630</a>
+                        </div>
+                        <div class="col-md-3 col-6">
+                            Puebla<br>
+                            <a class="telModal" href="tel:2227051726"><i class="material-icons">call</i> (222) 705 1726</a>
+                        </div>
+                        <div class="col-md-3 col-6">
+                            Q. Roo<br>
+                            <a class="telModal" href="tel:9982940670"><i class="material-icons">call</i>(998) 294
+                                0670</a>
+                        </div>
+                        <div class="col-md-3 col-6">
+                            S.L.P.<br>
+                            <a class="telModal" href="tel:4443280420"><i class="material-icons">call</i>(444) 328
+                                0420</a>
+                        </div>
+                        <div class="col-md-3 col-6">
+                            Michoacán<br>
+                            <a class="telModal" href="tel:4433560484"><i class="material-icons">call</i>(443) 356
+                                0484</a>
+                        </div>
+                        <div class="col-md-3 col-6">
+                            Tabasco<br>
+                            <a class="telModal" href="tel:9933070286"><i class="material-icons">call</i>(993) 307
+                                0286</a>
+                        </div>
+                        <div class="col-md-3 col-6">
+                            Veracruz<br>
+                            <a class="telModal" href="tel:2293300992"><i class="material-icons">call</i>(229) 330
+                                0992</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalTelefonosLabel2">Atención a Comercializadoras y Mayoristas</h5>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                        <a class="telModal" href="tel:5587598891"><i class="material-icons">call</i>(55) 8759 8891</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

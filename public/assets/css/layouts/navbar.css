@@ -1,5 +1,12 @@
-.navbar-heigth{
-    height: 10%;
+.navbar-light .navbar-nav .nav-link {
+    color: #f68600;
+    font-weight: 500;
+}
+.navbar-light .navbar-nav .nav-link:hover, .navbar-light .navbar-nav .nav-link:focus {
+    color: #c16c05;
+}
+.navbar-light .navbar-nav .show > .nav-link, .navbar-light .navbar-nav .active > .nav-link, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .nav-link.active {
+    color: #c16c05;
 }
 
 .div-navbar{
@@ -7,8 +14,23 @@
     background-color: #f68600 !important;
     height: 60px;
     width: 100%;
+    max-width: 1300px;
     z-index: 3;
 }
+
+.div-navbar-movil{
+    border-radius: 0 0 10px 10px;
+    background-color: #f68600 !important;
+    height: 38px;
+    width: 108% !important;
+    z-index: 3;
+    margin-top: -10px !important;
+    margin-left: -15px !important;
+    color: #fff;
+    font-size: 22px !important;
+    font-weight: 600;
+}
+
 
 .div-navbar-position {
     flex-direction: row;
@@ -20,4 +42,36 @@
 
 .logo-navbar{
     height: 80%;
+}
+
+.text-barra{
+    font-size: 21px;
+    color: white !important;
+    font-weight: 600;
+    text-decoration: none;
+}
+.text-barra a{
+    color: #ffffff !important;
+    text-decoration: none;
+    font-weight: 600
+}
+
+.telModal{
+    font-weight: 600;
+    color: #0000008A !important;
+    text-decoration: none;
+}
+
+.inputSearch{
+    width: 100%;
+    border-radius: 20px 0 0 20px;
+    margin-top: 10px;
+}
+.btnSearch{
+    background: white;
+    border-radius: 0 20px 20px 0;
+    margin-top: 10px;
+}
+.iconMod{
+    font-size: 20px;
 }
