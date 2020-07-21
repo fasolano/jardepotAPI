@@ -1,16 +1,26 @@
-<?php
-date_default_timezone_set('America/Mexico_City');
-error_reporting(E_ERROR | E_PARSE);
-?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    {{--  Metatitle, metadescripcion, titulo de página, etc.  --}}
+    @yield('metaData')
+
     @include('layout.head')
+
+    {{--  Css especifico de cada página  --}}
+    @yield('specificCSS')
 </head>
 
 <body style="font-family: Roboto !important;">
 @include('layout.navbar')
-<div class="container">
+<div class="container-fluid">
+    <div class="row justify-content-md-center">
+        <div class="col-xl-9 col-lg-11 my-4">
+            {{--  Contenido de la página  --}}
+            @yield('content')
+        </div>
+    </div>
+</div>
+{{--<div class="container">
     <!-- Contenedor Principal -->
 
     <div class="col-md-12 offset-md-1">
@@ -36,15 +46,17 @@ error_reporting(E_ERROR | E_PARSE);
         </main><!-- /.container -->
 
 
-        {{--    @yield('content')--}}
+        --}}{{--    @yield('content')--}}{{--
 
     </div>
 
     <!-- Fin Contenedor Principal -->
-</div>
+</div>--}}
 
 @include('layout.footer')
 @include('layout.cierre')
 
+{{--  Js especifico de cada página  --}}
+@yield('specificJS')
 </body>
 </html>
