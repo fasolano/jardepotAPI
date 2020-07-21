@@ -14,7 +14,7 @@
 @include('layout.navbar')
 <div class="container-fluid">
     <div class="row justify-content-md-center">
-        <div class="col-xl-9 col-lg-11 my-4">
+        <div class="col-xl-9 col-lg-11">
             {{--  Contenido de la página  --}}
             @yield('content')
         </div>
