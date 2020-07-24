@@ -2,7 +2,7 @@
 
     {{--  INFORMACION DE CONTACTO  --}}
     <div class="row justify-content-md-center">
-        <div class="col-xl-9 col-lg-11 my-4">
+        <div class="col-xl-9 col-lg-11 my-4" style="max-width: 1300px;">
             <div class="row">
                 <div class="col-md-7">
                     <p class="font-weight-bold">INFORMACIÓN DE CONTACTO</p>
@@ -35,8 +35,8 @@
     </div>
 
     {{--  TELÉFONOS  --}}
-    <div class="row justify-content-md-center d-none d-sm-none d-md-flex">
-        <div class="col-xl-9 col-lg-11 my-4" style="display: flex; flex-wrap: wrap;">
+    <div class="row justify-content-md-center d-none d-md-flex">
+        <div class="col-xl-9 col-lg-11 my-4" style="display: flex; flex-wrap: wrap; max-width: 1300px;">
             <div class="w-20-tel">
                 <div>
                     <p>Ciudad de México</p>
@@ -122,7 +122,7 @@
 
     {{--  INFORMACION DE LEGAL  --}}
     <div class="row justify-content-md-center">
-        <div class="col-xl-9 col-lg-11 my-4">
+        <div class="col-xl-9 col-lg-11 my-4" style="max-width: 1300px;">
             <div class="row">
                 <div class="col-lg-4 col-xl-3" style="display: flex; justify-content: space-around;">
                         <a data-toggle="modal" data-target="#modalAvisoPrivacidad" style="color: #fff; text-decoration: underline;" href="javascript: void(0)" onclick="openAvisoPrivacidadDialog()">Aviso de Privacidad&nbsp;</a>

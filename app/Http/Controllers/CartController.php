@@ -3,8 +3,6 @@
 
 namespace App\Http\Controllers;
 
-
-use App\Http\Controllers\Auth\RegisterController;
 use App\Repositories\CartRepository;
 use App\Repositories\ProductRepository;
 use Illuminate\Http\Request;

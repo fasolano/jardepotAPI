@@ -29,9 +29,6 @@ class ProductRepository{
                     ->on("productos.mpn", '=' , "productosCategoriasNivel3.mpn");
             })
             ->join('categoriasNivel3 as c3', 'c3.idCategoriasNivel3', '=', 'productosCategoriasNivel3.idCategoriasNivel3')
-            ->leftJoin('producto_caracteristica as pc', function ($join){
-                $join->on("pc.producto",'=' , DB::raw("CONCAT(productos.productType,' ',productos.brand,' ',productos.mpn)"));
-            })
             ->leftJoin("inventario",function($join){
                 $join->on("productos.productType","=","inventario.productType")
                     ->on("productos.brand","=","inventario.brand")
@@ -216,6 +213,7 @@ class ProductRepository{
             ->distinct('productos.mpn')
             ->orderBy('productos.brand', 'asc')//Se cmabio a brand ya que pc.prodcuto no se consulta
             ->where($valores)
+            ->whereRaw($filtros)
             ->groupBy('productos.productType','productos.brand','productos.mpn')
             ->get();
         return $datos;
@@ -342,6 +340,7 @@ class ProductRepository{
                 "productos.price <= (select price * 1.5 as price from productos where productType = '".$productType."' AND brand = '".$brand."' AND mpn = '".$mpn."')"
             )
             ->groupBy('productos.productType','productos.brand','productos.mpn' )
+            ->limit(8)
             ->get();
 
         return $datos;

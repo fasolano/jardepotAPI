@@ -60,14 +60,6 @@ class ProductController extends Controller{
                 $stringFiltros .= " c3.nombreCategoriaNivel3 in ( ";
                 foreach ($brandFilters as $key => $item) {
                     // Si son marcas a los tipo de productos se les debe de cambiar la cadena para poder encontrarlos en las consultas
-                    /*if($nivel1 == "Marcas"){
-                        if (substr($item, strlen($item)- 2, strlen($item)- 1) == 'as' || substr($item, strlen($item)- 2, strlen($item)- 1) == 'os'){
-                            $item = substr($item , 0,strlen($item)- 1);
-                        }else if(substr($item, strlen($item)- 2, strlen($item)- 1) == 'es' ){
-                            $item = substr($item , 0,strlen($item)- 2);
-                        }
-                    }*/
-
                     if ($key == 0){
                         $stringFiltros .= "'$item'";
                     }else{
@@ -118,11 +110,11 @@ class ProductController extends Controller{
                 $queryProducto = $this->productoRepository->getProductFiltered($item->productType . " " . $item->brand . " " . $item->mpn,
                     $filtrosValores, count($characteristicsFilters));
             }
+            $img = strtolower($item->productType . "-" . $item->brand . "-" . $item->mpn);
             //Si hay filtros aplicados va a verificar
             if(count($characteristicsFilters) > 0 ){
                 // Se verifica si se encontró con los filtros aplicado sino, no se agrega a los productos a mostrar
                 if($queryProducto){
-                    $img = strtolower($item->productType . "-" . $item->brand . "-" . $item->mpn);
                     $response[$iterator]['id'] = $item->id;
                     $response[$iterator]['name'] = $item->productType . " " . $item->brand . " " . $item->mpn;
                     $response[$iterator]['images'][0]['small'] = 'assets/images/productos/' . $img . '.jpg';
@@ -166,7 +158,6 @@ class ProductController extends Controller{
                     $iterator++;
                 }
             }else{
-                $img = strtolower($item->productType . "-" . $item->brand . "-" . $item->mpn);
                 $response[$iterator]['id'] = $item->id;
                 $response[$iterator]['name'] = $item->productType . " " . $item->brand . " " . $item->mpn;
                 $response[$iterator]['images'][0]['small'] = 'assets/images/productos/' . $img . '.jpg';
@@ -292,7 +283,7 @@ class ProductController extends Controller{
         return $this->productoRepository->getProductlevels($productType);
     }
 
-     //esta externamente en otras dos funciones y en el repository
+    //esta externamente en otras dos funciones y en el repository
     public function model_format_products($products){
         $iterator = 0;
         $response = array();
