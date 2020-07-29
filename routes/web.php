@@ -13,11 +13,8 @@
 
 Route::get('/', function () {
     return view('pages/home');
-});
+})->name('home');
 
 
 Route::get('/{categoriaNivel1}/{categoriaNivel2}' , 'views\ProductController@productList');
 
-Route::get('/products', function () {
-    return view('pages/home');
-});

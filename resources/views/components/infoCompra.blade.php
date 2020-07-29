@@ -6,7 +6,7 @@
             </div>
             <div class="col-md-9" style="padding: 10px;font-size: 14px">
                 <p style="color: rgba(0, 0, 0, 0.87) !important;"><strong>Garantía y Refacciones</strong></p>
-                <span class="text-muted">Todos nuestros equipos cuentan con garantía, contra defectos de fábrica y contamos con las refacciones originales de los mismos.</span>
+                <span class="text-muted" style="font-weight: 400;">Todos nuestros equipos cuentan con garantía, contra defectos de fábrica y contamos con las refacciones originales de los mismos.</span>
             </div>
         </div>
     </div>
@@ -17,8 +17,8 @@
             </div>
             <div class="col-md-9" style="padding: 10px;font-size: 14px">
                 <p style="color: rgba(0, 0, 0, 0.87) !important;"><strong>Envío Gratis</strong></p>
-                <span class="text-muted m-0">En compras superiores a $3,000 pesos.</span>
-                <p><a href="javascript: void(0)" style="color: rgba(0, 0, 0, 0.54) !important;">*Condiciones</a></p>
+                <span class="text-muted m-0" style="font-weight: 400;">En compras superiores a $3,000 pesos.</span>
+                <p><a href="javascript: void(0)" style="color: rgba(0, 0, 0, 0.54) !important; font-weight: bold;">*Condiciones</a></p>
             </div>
         </div>
     </div>
@@ -29,8 +29,7 @@
             </div>
             <div class="col-md-9" style="padding: 10px;font-size: 14px">
                 <p style="color: rgba(0, 0, 0, 0.87) !important;"><strong>Paga Seguro</strong></p>
-                <span
-                    class="text-muted m-0">Aceptamos pagos mediante PayPal, transferencia y Deposito Bancario.</span>
+                <span class="text-muted m-0" style="font-weight: 400;">Aceptamos pagos mediante PayPal, transferencia y Deposito Bancario.</span>
             </div>
         </div>
     </div>
@@ -41,7 +40,7 @@
             </div>
             <div class="col-md-9" style="padding: 10px;font-size: 14px">
                 <p style="color: rgba(0, 0, 0, 0.87) !important;"><strong>Soporte y Asesoría</strong></p>
-                <span class="text-muted m-0">¿Dudas sobre tu equipo?, nuestros ingenieros te pueden apoyar por teléfono, Whatsapp o en nuestras tiendas.</span>
+                <span class="text-muted m-0" style="font-weight: 400;">¿Dudas sobre tu equipo?, nuestros ingenieros te pueden apoyar por teléfono, Whatsapp o en nuestras tiendas.</span>
             </div>
         </div>
     </div>

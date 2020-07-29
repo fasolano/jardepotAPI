@@ -1,46 +1,135 @@
-<div class="accordion" id="accordionSide">
+<div class="accordion" id="accordionSide{{ $id }}">
     <div>
         <div id="heading1">
             <h2 class="mb-0">
-                <div class="text-left head-collapse fn-color-jd" data-toggle="collapse" data-target="#collapse1" aria-expanded="true" aria-controls="collapse1">
+                <div class="text-left head-collapse fn-color-jd px-2" data-toggle="collapse" data-target="#collapse1"
+                     aria-expanded="true" aria-controls="collapse1">
                     <span>Filtros de Aspersoras</span>
                     <i class="material-icons">keyboard_arrow_up</i>
 
                 </div>
             </h2>
         </div>
-
-        <div id="collapse1" class="collapse show" aria-labelledby="heading1" data-parent="#accordionSide">
-            <div>
-                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+        <div id="collapse1" class="collapse show px-2" aria-labelledby="heading1" data-parent="#accordionSide{{ $id }}">
+            <div class="row">
+                <p class="text-center col-12 title-muted">Organizar por ... :</p>
+                <div class="text-center col-6 my-1">
+                    <div class="btn-group-toggle" data-toggle="buttons">
+                        <label class="btn btn-secondary btn-sm btn-filter btn-no-border">
+                            <input type="checkbox"> Takashi
+                        </label>
+                    </div>
+                </div>
+                <div class="text-center col-6 my-1">
+                    <div class="btn-group-toggle" data-toggle="buttons">
+                        <label class="btn btn-secondary btn-sm btn-filter btn-no-border">
+                            <input type="checkbox"> Takashi
+                        </label>
+                    </div>
+                </div>
+                <div class="text-center col-6 my-1">
+                    <div class="btn-group-toggle" data-toggle="buttons">
+                        <label class="btn btn-secondary btn-sm btn-filter btn-no-border">
+                            <input type="checkbox"> Takashi
+                        </label>
+                    </div>
+                </div>
+                <div class="text-center col-6 my-1">
+                    <div class="btn-group-toggle" data-toggle="buttons">
+                        <label class="btn btn-secondary btn-sm btn-filter btn-no-border">
+                            <input type="checkbox"> Takashi
+                        </label>
+                    </div>
+                </div>
+                <div class="text-center col-6 my-1">
+                    <div class="btn-group-toggle" data-toggle="buttons">
+                        <label class="btn btn-secondary btn-sm btn-filter btn-no-border">
+                            <input type="checkbox"> Takashi
+                        </label>
+                    </div>
+                </div>
+                <div class="text-center col-6 my-1">
+                    <div class="btn-group-toggle" data-toggle="buttons">
+                        <label class="btn btn-secondary btn-sm btn-filter btn-no-border">
+                            <input type="checkbox"> Takashi
+                        </label>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
     <div>
         <div id="heading2">
             <h2 class="mb-0">
-                <div class="text-left head-collapse collapsed fn-color-jd" data-toggle="collapse" data-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
-                    Collapsible Group Item #2
+                <div class="text-left head-collapse collapsed fn-color-jd px-2" data-toggle="collapse"
+                     data-target="#collapse2" aria-expanded="true" aria-controls="collapse2">
+                    <span>Secciones por tipo de producto</span>
+                    <i class="material-icons">keyboard_arrow_up</i>
                 </div>
             </h2>
         </div>
-        <div id="collapse2" class="collapse" aria-labelledby="heading2" data-parent="#accordionSide">
-            <div>
-                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+        <div id="collapse2" class="collapse show px-2" aria-labelledby="heading2" data-parent="#accordionSide{{ $id }}">
+            <div class="row">
+                <div class="col-6 text-center my-1">
+                    <button type="button" class="btn bg-color-jd btn-no-border">Small button</button>
+                </div>
+                <div class="col-6 text-center my-1">
+                    <button type="button" class="btn bg-color-jd btn-no-border">Small button</button>
+                </div>
+                <div class="col-6 text-center my-1">
+                    <button type="button" class="btn bg-color-jd btn-no-border">Small button</button>
+                </div>
+                <div class="col-6 text-center my-1">
+                    <button type="button" class="btn bg-color-jd btn-no-border">Small button</button>
+                </div>
+                <div class="col-6 text-center my-1">
+                    <button type="button" class="btn bg-color-jd btn-no-border">Small button</button>
+                </div>
+                <div class="col-6 text-center my-1">
+                    <button type="button" class="btn bg-color-jd btn-no-border">Small button</button>
+                </div>
+                <div class="col-6 text-center my-1">
+                    <button type="button" class="btn bg-color-jd btn-no-border">Small button</button>
+                </div>
+                <div class="col-6 text-center my-1">
+                    <button type="button" class="btn bg-color-jd btn-no-border">Small button</button>
+                </div>
+                <div class="col-6 text-center my-1">
+                    <button type="button" class="btn bg-color-jd btn-no-border">Small button</button>
+                </div>
+                <div class="col-6 text-center my-1">
+                    <button type="button" class="btn bg-color-jd btn-no-border">Small button</button>
+                </div>
             </div>
         </div>
     </div>
     <div>
         <div id="heading3">
             <h2 class="mb-0">
-                <div class="text-left head-collapse collapsed fn-color-jd" data-toggle="collapse" data-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
-                    Collapsible Group Item #3
+                <div class="text-left head-collapse collapsed fn-color-jd px-2" data-toggle="collapse"
+                     data-target="#collapse3" aria-expanded="true" aria-controls="collapse3">
+                    <span>Filtros de Aspersoras</span>
+                    <i class="material-icons">keyboard_arrow_up</i>
                 </div>
             </h2>
         </div>
-        <div id="collapse3" class="collapse" aria-labelledby="heading3" data-parent="#accordionSide">
-            <div>
-                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+        <div id="collapse3" class="collapse show px-2" aria-labelledby="heading3" data-parent="#accordionSide{{ $id }}">
+            <div class="row">
+                <div class="col-4 px-2">
+                    <button type="button" class="btn btn-light p-0" style="width: 100%">
+                        <img src="{{asset('assets/images/brands/shindaiwa.jpg')}}" alt="shindaiwa" style="width: 100%">
+                    </button>
+                </div>
+                <div class="col-4 px-2">
+                    <button type="button" class="btn btn-light p-0" style="width: 100%">
+                        <img src="{{asset('assets/images/brands/shindaiwa.jpg')}}" alt="shindaiwa" style="width: 100%">
+                    </button>
+                </div>
+                <div class="col-4 px-2">
+                    <button type="button" class="btn btn-light p-0" style="width: 100%">
+                        <img src="{{asset('assets/images/brands/shindaiwa.jpg')}}" alt="shindaiwa" style="width: 100%">
+                    </button>
+                </div>
             </div>
         </div>
     </div>

@@ -20,6 +20,11 @@
     font-size: 18px;
 }
 
+.text-muted{
+    color: #616161!important;
+    font-weight: 500;
+}
+
 .bg-color-oferta{
     background-color: #de1f21 !important;
     color: #fff !important;
@@ -216,7 +221,7 @@
 
 .img-carousel{
     width: 150px;
-    height: 150px;
+    height: 120px;
 }
 
 .info{

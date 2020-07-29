@@ -12,7 +12,7 @@
 
 <body style="font-family: Roboto !important;">
 @include('layout.navbar')
-<div class="container-fluid">
+<div class="container-fluid" style="background: #fafafa;">
     <div class="row justify-content-md-center">
         <div class="col-xl-12 col-lg-12" style="max-width: 1300px;">
             {{--  Contenido de la página  --}}

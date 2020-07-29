@@ -1,7 +1,7 @@
 
 <div class="row shadow border border-light p-3 bg-white m-1 mt-3 rounded">
     <div id="carouselExample" class="carousel slide" data-ride="carousel" data-interval="9000" style="width: 100% !important;height: 80%">
-        <p style="font-size: 24px;font-weight: 500;"> Nuestros canales de distribución en México</p>
+        <p style="font-size: 24px;font-weight: 500; margin-bottom: 0;"> Nuestros canales de distribución en México</p>
         <div class="carousel-inner row w-100 mx-auto"  role="listbox">
             <div class="carousel-item col-md-3 active">
                 <a style="text-decoration: none;" target="_blank" href="https://eshops.mercadolibre.com.mx/jardepot">
