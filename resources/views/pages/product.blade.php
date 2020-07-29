@@ -53,6 +53,34 @@
                             <img class="free-delivery" src="{{asset('assets/images/otros/gratis.png')}}"
                                  title="Envío gratis Jardepot" alt="Envío gratis Jardepot">
                         </div>
+                        <!-- Swiper -->
+                        <div class="swiper-container p-1">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <div class="card shadow-sm product-item" style="border-radius: 5px;overflow: hidden;">
+                                        <div class="product-image" >
+                                            <img style="max-width: 80%"
+                                                 src="{{asset('assets/images/productos/desbrozadora-kawashima-dkm43k.jpg')}}"
+                                                 title="" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="card shadow-sm product-item" style="border-radius: 5px;">
+                                        <div class="">
+                                            <img style="max-width: 80%"
+                                                 src="{{asset('assets/images/productos/desbrozadora-kawashima-dkm43k.jpg')}}"
+                                                 title="" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Add Pagination -->
+                            <div class="mt-3"></div>
+                            <!-- Add Arrows -->
+                            <div class="swiper-button-next"></div>
+                            <div class="swiper-button-prev"></div>
+                        </div>
                     </div>
                     <div class="col-md-7 mt-2 p-3">
                         <h2 class="py-1 description-product"> Esta desbrozadora Kawashima Montana
@@ -88,8 +116,9 @@
                         <div class="divider"></div>
                         <div style="font-weight: bold !important;">
                             <p class="conditons"><i class="material-icons" style="color: #f68600;font-size: 18px">local_shipping</i>
-                                Envio gratis a partir de $3,000 de compra. <a href="javascript: void(0)"
-                                                                              style="color: rgba(0, 0, 0, 0.87);">*Condiciones</a>
+                                Envio gratis a partir de $3,000 de compra.
+                                <a href="javascript: void(0)" data-toggle="modal" data-target="#modalCondicionEnvio"
+                                   style="color: rgba(0, 0, 0, 0.87);">*Condiciones</a>
                             </p>
                             <p class="conditons"><i class="material-icons" style="color: #f68600;font-size: 18px">perm_phone_msg</i>
                                 Soporte y asesoria </p>

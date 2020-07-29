@@ -72,16 +72,16 @@
                     </div>
                 </div>
                 <div class="col-md-2" style="margin-top: 5px">
-
                     <button class="btn dropdown-toggle" style="color: #FFF" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                         <span style="color: #fff !important;cursor:pointer;font-size: 15px">
+                        <span style="color: #fff !important;cursor:pointer;font-size: 15px">
                         <i class="material-icons d-flex" style="color: #f68600;font-size: 24px !important;">shopping_cart</i>
-                             <span class="cart-items-count">0</span>
-                    Carrito de compras</span>
+                            <span class="cart-items-count">0</span> Carrito de compras</span>
                     </button>
-                    <div class="dropdown-menu mat-menu-content" aria-labelledby="dropdownMenuButton">
-                        <div class="dropdown-item"><span style="font-size: 15px">2 Productos</span>&nbsp;&nbsp;<a href="#" class="text-muted">Ver carrito</a></div>
-                        <div class="divider"></div>
+                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left" aria-labelledby="dropdownMenuButton" style="width: 300px">
+                        <div class="dropdown-item">
+                            <span style="font-size: 15px">2 Productos</span>&nbsp;&nbsp;<a href="#" class="text-muted">Ver carrito</a>
+                        </div>
+                        <div class="dropdown-divider"></div>
                         <div class="dropdown-item">
                             <div class="row">
                                 <div class="col-10">
@@ -104,17 +104,18 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="dropdown-divider"></div>
                         <div class="dropdown-item">
-                            <div class="text-muted mt-1">
-                                <b>TOTAL: $15,687.00</b>
-                            </div>
+                            <div class="text-muted mt-1"><b>TOTAL: $15,687.00</b></div>
                         </div>
+                        <div class="dropdown-divider"></div>
                         <div class="dropdown-item">
                             <div class="mt-1"style="flex-direction: row; box-sizing: border-box; display: flex; place-content: center space-between; align-items: center;">
-                                <button class="btn btn-secondary btn-circle" style="touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
-                                    <span class="mat-button-wrapper"><i class="material-icons" >remove_shopping_cart</i></span>
+                                <button class="btn btn-secondary btn-lg btn-circle" title="Borrar todo">
+                                    <i class="material-icons" >remove_shopping_cart</i>
                                 </button>
-                                <a class="btn btn-warning btn-circle" href="/cart" style="touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);"><span class="mat-button-wrapper"><i class="material-icons">check</i></span><div class="mat-button-ripple mat-ripple mat-button-ripple-round" ></div>
+                                <a class="btn btn-warning btn- btn-circle" href="/cart" title="Pagar">
+                                    <i class="material-icons">check</i>
                                 </a>
                             </div>
                         </div>
@@ -189,16 +190,16 @@
 <nav class="navbar navbar-dark sticky-top bg-dark  d-block d-sm-block d-md-none">
     <div class="div-navbar-movil">
         <div class="row" style="width: 100%">
-            <div class="col-9">
+            <div class="col-10">
                 <div class="text-left">
-                    <span><i class="material-icons">call</i>
-                        <a data-toggle="modal" data-target="#modalTelefonos">Más Teléfonos</a>
-                        <i class="material-icons ">keyboard_arrow_down</i></span>
+                    <a data-toggle="modal" data-target="#modalTelefonos">
+                        <i class="material-icons">call</i>Más Teléfonos<i class="material-icons">keyboard_arrow_down</i>
+                    </a>
                 </div>
             </div>
-            <div class="col-3 text-right">
-                <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarsExample01"
-                        aria-controls="navbarsExample01" aria-expanded="false" aria-label="Toggle navigation">
+            <div class="col-2 text-right">
+                <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarsMovil"
+                        aria-controls="navbarsMovil" aria-expanded="false" aria-label="Toggle navigation" style="border-color: transparent">
                     <i class="material-icons">menu</i>
                 </button>
             </div>
@@ -211,12 +212,60 @@
             </a>
         </div>
         <div class="col-4" style="margin-top: 8px">
-                <span style="color: #fff;cursor:pointer;font-size: 15px;">
-                    <i class="material-icons d-flex" style="color: #f68600;font-size: 30px !important;">shopping_cart<i class="material-icons ">keyboard_arrow_down</i></i></span>
+            <button class="btn dropdown-toggle" style="color: #FFF" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span style="color: #fff !important;cursor:pointer;">
+                    <i class="material-icons" style="color: #f68600;font-size: 30px !important;">shopping_cart</i>
+                    <span class="cart-items-count">0</span>
+                </span>
+            </button>
+            <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left" aria-labelledby="dropdownMenuButton" style="width: 300px">
+                <div class="dropdown-item">
+                    <span style="font-size: 15px">2 Productos</span>&nbsp;&nbsp;<a href="#" class="text-muted">Ver carrito</a>
+                </div>
+                <div class="dropdown-divider"></div>
+                <div class="dropdown-item">
+                    <div class="row">
+                        <div class="col-10">
+                            <p class="text-muted mat-line">Motocultor Ducati DTL7000 </p>
+                            <p class="text-muted mat-line">1 x $15,687.00</p>
+                        </div>
+                        <div class="col-2" >
+                            <button class="btn"><i class="material-icons">close</i></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="dropdown-item">
+                    <div class="row">
+                        <div class="col-10">
+                            <p class="text-muted mat-line">Motocultor Ducati DTL7000 </p>
+                            <p class="text-muted mat-line">1 x $15,687.00</p>
+                        </div>
+                        <div class="col-2" >
+                            <button class="btn"><i class="material-icons">close</i></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="dropdown-divider"></div>
+                <div class="dropdown-item">
+                    <div class="text-muted mt-1"><b>TOTAL: $15,687.00</b></div>
+                </div>
+                <div class="dropdown-divider"></div>
+                <div class="dropdown-item">
+                    <div class="mt-1"style="flex-direction: row; box-sizing: border-box; display: flex; place-content: center space-between; align-items: center;">
+                        <button class="btn btn-secondary btn-lg btn-circle" title="Borrar todo">
+                            <i class="material-icons" >remove_shopping_cart</i>
+                        </button>
+                        <a class="btn btn-warning btn- btn-circle" href="/cart" title="Pagar">
+                            <i class="material-icons">check</i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 
-    <div class="navbar-collapse collapse" id="navbarsExample01" style="">
+    <div class="navbar-collapse collapse" id="navbarsMovil">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="dropdown07XL" data-toggle="dropdown"
@@ -264,12 +313,13 @@
     </div>
     <div class="navbar-collapse">
         <form class="form-inline my-2 my-md-0">
-            <div class="input-group" style="width: 95%">
+            <div class="input-group" style="width: 95%;margin-top: 0">
                 <input type="text" class="form-control inputSearch" placeholder="Busca tu producto..."
-                       aria-label="Busca tu producto" aria-describedby="Busca tu producto.">
+                       aria-label="Busca tu producto" aria-describedby="Busca tu producto...."
+                       style="margin-top: 0">
                 <div class="input-group-append">
                     <span class="input-group-addon">
-                        <a class="btn btnSearch" type="submit" id=""><i style="color: gray" class="material-icons d-flex">search</i></a></span>
+                        <a class="btn btnSearch" type="submit" id="" style="margin-top: 0"><i style="color: gray" class="material-icons d-flex">search</i></a></span>
                 </div>
             </div>
         </form>

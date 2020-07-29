@@ -18,7 +18,7 @@
             <div class="col-md-9" style="padding: 10px;font-size: 14px">
                 <p style="color: rgba(0, 0, 0, 0.87) !important;"><strong>Envío Gratis</strong></p>
                 <span class="text-muted m-0" style="font-weight: 400;">En compras superiores a $3,000 pesos.</span>
-                <p><a href="javascript: void(0)" style="color: rgba(0, 0, 0, 0.54) !important; font-weight: bold;">*Condiciones</a></p>
+                <p><a href="javascript: void(0)" data-toggle="modal" data-target="#modalCondicionEnvio"  style="color: rgba(0, 0, 0, 0.54) !important; font-weight: bold;">*Condiciones</a></p>
             </div>
         </div>
     </div>

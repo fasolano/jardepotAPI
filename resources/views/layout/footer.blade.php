@@ -428,3 +428,27 @@
         </div>
     </div>
 </div>
+
+<!-- Modal condiciones de envío -->
+<div class="modal fade" id="modalCondicionEnvio" tabindex="-1" role="dialog" aria-labelledby="modalCondicionEnvio" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Condiciones de envíos Gratis:</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Los envíos gratuitos que ofrece JarDepot son a la cobertura terrestre normal de las paqueterías con las que tenemos convenio (ODM).<br>
+                NO aplica a zonas extendidas (En extra coberturas se le indicará la diferencia a pagar para su consideración).<br>
+                NO aplica con otras paqueterías.<br>
+                El tiempo de entrega estimado y sujeto a existencias es de 2 a 6 días hábiles, (Mínimo/Máximo) contados a partir de las siguientes
+                24 hrs de que su depósito se ha verificado y de recibir su correo con los datos completos para facturar y enviar su producto.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn  bg-color-jd" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>

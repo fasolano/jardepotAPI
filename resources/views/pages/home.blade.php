@@ -1,10 +1,10 @@
 @extends('pages')
 
 @section('content')
-    <div class="row" style="height: 530px !important;">
-        <div class="col-xl-5">
+    <div class="row div-banners">
+        <div class="col-xl-5 pr-0">
             <div class="mb-2 banner divimg"
-                 style="background-position-y: inherit;background-image: url('assets/images/banner/podadora.jpg'); flex: 1 1 100%;box-sizing: border-box;max-height: 60%;min-height: 117px;">
+                 style="background-position-y: inherit;background-image: url('assets/images/banner/podadora.jpg');box-sizing: border-box;max-height: 60%;">
                 <a style="text-decoration: none; width: 100%;" href="/Equipos/Podadoras">
                     <div class="info" style="place-content: flex-start; align-items: flex-start; flex-direction: row;">
                         <div class="px-2" style="background: rgba(0,0,0,.4);flex-direction: column; box-sizing: border-box; display: flex; place-content: flex-start; align-items: flex-start;">
@@ -15,9 +15,8 @@
                 </a>
             </div>
             <div class="mt-1 banner divimg"
-                 style="background-position-y: inherit; background-image: url('assets/images/banner/motocultor.jpg');flex: 1 1 100%; box-sizing: border-box;max-height: 40%;min-height: 117px">
-                <a style="text-decoration: none; width: 100%; flex-direction: row; box-sizing: border-box; display: flex;"
-                   href="/Equipos/Motocultores">
+                 style="background-position-y: inherit; background-image: url('assets/images/banner/motocultor.jpg'); box-sizing: border-box;max-height: 40%;">
+                <a style="text-decoration: none; width: 100%; flex-direction: row; box-sizing: border-box; display: flex;" href="/Equipos/Motocultores">
                     <div class="info" style="place-content: flex-end; align-items: flex-end; flex-direction: row;">
                         <div class="px-2" style="background: rgba(0,0,0,.4);flex-direction: column; box-sizing: border-box; display: flex; place-content: flex-end; align-items: flex-end;">
                             <h2 class="title">Agricultura</h2>
@@ -27,15 +26,13 @@
                 </a>
             </div>
         </div>
-        <div class="mt-0 col-xl-7" style="height: 96%">
-            <div class="banner divimg" style="background-image: url('assets/images/banner/aspersora.jpg'); order: 2; box-sizing: border-box; max-height: 100%;min-height: 100%;">
+        <div class="mt-xl-0 col-xl-7 pl-xl-0">
+            <div class="banner divimg2" style="background-image: url('assets/images/banner/aspersora.jpg');max-height: 96%">
                 <a style="text-decoration: none; height: 100% !important;" href="/Equipos/Aspersoras">
                     <div class="info" style="place-content: flex-start center;align-items: flex-start;flex-direction: column;">
-                        <div class="px-2"
-                             style="background: rgba(0,0,0,.4);flex-direction: column; box-sizing: border-box; display: flex; place-content: flex-start center; align-items: flex-start;">
+                        <div class="px-2" style="background: rgba(0,0,0,.4);flex-direction: column; box-sizing: border-box; display: flex; place-content: flex-start center; align-items: flex-start;">
                             <h2 class="title">Aspersoras</h2>
-                            <h3 class="subtitle" style="text-align: left;">Para cuidar tu esfuerzo,<br>es bueno contar
-                                con el mejor equipo</h3>
+                            <h3 class="subtitle" style="text-align: left;">Para cuidar tu esfuerzo,<br>es bueno contar con el mejor equipo</h3>
                         </div>
                     </div>
                 </a>
@@ -47,8 +44,7 @@
 
     <div class="row mt-4">
         <div class="col-md-4">
-            <div class="border shadow p-3 bg-white rounded"
-                 style="min-height: 420px">
+            <div class="border shadow p-3 bg-white rounded div-sublinks">
                 <h3>Equipos</h3>
                 <div class="col-sm-12">
                     <div class="jd-sublinks-items">
@@ -70,8 +66,8 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-4" style="height: 100% !important;">
-            <div class="border shadow p-3 bg-white rounded" style="min-height: 420px">
+        <div class="col-md-4" >
+            <div class="border shadow p-3 bg-white rounded div-sublinks">
                 <h3>Marcas</h3>
                 <div class="col-sm-12">
                     <div class="jd-sublinks-items">
@@ -93,8 +89,8 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-4" style="height: 100% !important;">
-            <div class="border shadow p-3 bg-white rounded" style="min-height: 420px">
+        <div class="col-md-4" >
+            <div class="border shadow p-3 bg-white rounded div-sublinks">
                 <h3>Otros</h3>
                 <div class=" md-accordion" id="accordionEx" role="tablist" aria-multiselectable="true">
                     <!-- Accordion card -->
