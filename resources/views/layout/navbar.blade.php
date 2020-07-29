@@ -72,9 +72,53 @@
                     </div>
                 </div>
                 <div class="col-md-2" style="margin-top: 5px">
-                    <span style="color: #fff;cursor:pointer;font-size: 15px">
+
+                    <button class="btn dropdown-toggle" style="color: #FFF" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                         <span style="color: #fff !important;cursor:pointer;font-size: 15px">
                         <i class="material-icons d-flex" style="color: #f68600;font-size: 24px !important;">shopping_cart</i>
+                             <span class="cart-items-count">0</span>
                     Carrito de compras</span>
+                    </button>
+                    <div class="dropdown-menu mat-menu-content" aria-labelledby="dropdownMenuButton">
+                        <div class="dropdown-item"><span style="font-size: 15px">2 Productos</span>&nbsp;&nbsp;<a href="#" class="text-muted">Ver carrito</a></div>
+                        <div class="divider"></div>
+                        <div class="dropdown-item">
+                            <div class="row">
+                                <div class="col-10">
+                                    <p class="text-muted mat-line">Motocultor Ducati DTL7000 </p>
+                                    <p class="text-muted mat-line">1 x $15,687.00</p>
+                                </div>
+                                <div class="col-2" >
+                                    <button class="btn"><i class="material-icons">close</i></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="dropdown-item">
+                            <div class="row">
+                                <div class="col-10">
+                                    <p class="text-muted mat-line">Motocultor Ducati DTL7000 </p>
+                                    <p class="text-muted mat-line">1 x $15,687.00</p>
+                                </div>
+                                <div class="col-2" >
+                                    <button class="btn"><i class="material-icons">close</i></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="dropdown-item">
+                            <div class="text-muted mt-1">
+                                <b>TOTAL: $15,687.00</b>
+                            </div>
+                        </div>
+                        <div class="dropdown-item">
+                            <div class="mt-1"style="flex-direction: row; box-sizing: border-box; display: flex; place-content: center space-between; align-items: center;">
+                                <button class="btn btn-secondary btn-circle" style="touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+                                    <span class="mat-button-wrapper"><i class="material-icons" >remove_shopping_cart</i></span>
+                                </button>
+                                <a class="btn btn-warning btn-circle" href="/cart" style="touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);"><span class="mat-button-wrapper"><i class="material-icons">check</i></span><div class="mat-button-ripple mat-ripple mat-button-ripple-round" ></div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

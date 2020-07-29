@@ -18,3 +18,4 @@ Route::get('/', function () {
 
 Route::get('/{categoriaNivel1}/{categoriaNivel2}' , 'views\ProductController@productList');
 
+Route::get('/catalogo/{marca}/{productType}-{brand}-{mpn}' , 'views\ProductController@product');

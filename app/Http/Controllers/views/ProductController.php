@@ -11,4 +11,7 @@ class ProductController {
         return view('pages/products');
     }
 
+    public function product(){
+        return view('pages/product');
+    }
 }
