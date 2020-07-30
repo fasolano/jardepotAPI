@@ -4,16 +4,9 @@
 namespace App\Http\Controllers\views;
 
 
-use App\Http\Controllers\MenuController;
+use App\Http\Controllers\Controller;
 
-class ProductController {
-
-    public function productList($categoryLevel1, $categoryLevel2){
-        $menu = new MenuController();
-        $sidebar = $menu->getSidebar();
-
-        return view('pages/products', compact('sidebar'));
-    }
+class ProductController extends Controller {
 
     public function product(){
         return view('pages/product');
