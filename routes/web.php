@@ -15,7 +15,6 @@ Route::get('/', function () {
     return view('pages/home');
 })->name('home');
 
-
-Route::get('/{categoriaNivel1}/{categoriaNivel2}' , 'views\ProductController@productList');
+Route::get('/{categoryLevel1}/{categoryLevel2}' , 'views\ProductController@productList')->name('products');
 
 Route::get('/catalogo/{marca}/{productType}-{brand}-{mpn}' , 'views\ProductController@product');

@@ -7,6 +7,24 @@ use Illuminate\Support\Facades\DB;
 
 class MenuRepository{
 
+    public function getNivel1Sidebar():object{
+        $categoriasNivel1 = DB::table('categoriasNivel1')
+            ->select(
+                'idCategoriasNivel1',
+                'nombreCategoriaNivel1'
+            )
+            ->where([
+                ['ubicacion', 'sidebar']
+            ])
+            ->orWhere([
+                ['ubicacion', 'ambos']
+            ])
+            ->orderBy('prioridad', 'asc')
+            ->get();
+
+        return $categoriasNivel1;
+    }
+
     public function getNivel1(){
         $categoriasNivel1 = DB::table('categoriasNivel1')
             ->select(
