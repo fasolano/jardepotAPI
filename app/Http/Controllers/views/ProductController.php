@@ -9,6 +9,8 @@ use App\Http\Controllers\Controller;
 class ProductController extends Controller {
 
     public function product(){
-        return view('pages/product');
+        $menu = new MenuController();
+        $sidebar = $menu->getSidebar();
+        return view('pages/product',compact('sidebar'));
     }
 }

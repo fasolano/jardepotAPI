@@ -17,8 +17,7 @@
                     <div class="row">
                         <div class="col-3">
                             <div class="text-barra text-left">
-                                CDMX <br><a href="tel:5549968849"><i class="material-icons iconMod">call</i>(55) 4996
-                                    8849</a>
+                                CDMX <br><a href="tel:5549968849"><i class="material-icons iconMod">call</i>(55) 4996 8849</a>
                             </div>
                         </div>
                         <div class="col-3">
@@ -53,8 +52,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-3">
-                    <a class="navbar-brand" href="#">
-                        <img class="logo-navbar" style="width: 80%" src="{{asset('img/logos/logoJardepot.png')}}">
+                    <a class="navbar-brand" href="{{url('/')}}">
+                        <img class="logo-navbar" style="width: 80%" src="{{asset('img/logos/logoJardepot.png')}}"
+                            alt="Logo Jardepot" title="Logo Jardepot">
                     </a>
                 </div>
                 <div class="col-md-7">
@@ -129,50 +129,19 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm d-none d-sm-none d-md-block">
     <div class="container-xl">
         {{--        <a class="navbar-brand" href="#">Container XL</a>--}}
-        <div class="collapse navbar-collapse" id="navbarsExample07XL">
+        <div class="collapse navbar-collapse" id="navbarsDesktopL">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="dropdown07XL" data-toggle="dropdown"
-                       aria-expanded="false">Agricultura</a>
-                    <div class="dropdown-menu" aria-labelledby="dropdown07XL">
-                        <a class="dropdown-item" href="#">Action</a>
-                    </div>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="dropdown07XL" data-toggle="dropdown"
-                       aria-expanded="false">Sanitizacion y fumigación</a>
-                    <div class="dropdown-menu" aria-labelledby="dropdown07XL">
-                        <a class="dropdown-item" href="#">Action</a>
-                    </div>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="dropdown07XL" data-toggle="dropdown"
-                       aria-expanded="false">Jardinería</a>
-                    <div class="dropdown-menu" aria-labelledby="dropdown07XL">
-                        <a class="dropdown-item" href="#">Action</a>
-                    </div>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="dropdown07XL" data-toggle="dropdown"
-                       aria-expanded="false">Riego</a>
-                    <div class="dropdown-menu" aria-labelledby="dropdown07XL">
-                        <a class="dropdown-item" href="#">Action</a>
-                    </div>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="dropdown07XL" data-toggle="dropdown"
-                       aria-expanded="false">Construccion</a>
-                    <div class="dropdown-menu" aria-labelledby="dropdown07XL">
-                        <a class="dropdown-item" href="#">Action</a>
-                    </div>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="dropdown07XL" data-toggle="dropdown"
-                       aria-expanded="false">Refacciones</a>
-                    <div class="dropdown-menu" aria-labelledby="dropdown07XL">
-                        <a class="dropdown-item" href="#">Refacciones</a>
-                    </div>
-                </li>
+               @foreach ($navbar as $key => $categoria1)
+                    <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="dropdown{{$key}}" data-toggle="dropdown"
+                               aria-expanded="false">{{$categoria1['nivel1']}}</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdown{{$key}}">
+                            @foreach($categoria1['nivel2'] as $categoria2)
+                                <a class="dropdown-item" href="{{url($categoria2['href'])}}">{{$categoria2['name']}}</a>
+                            @endforeach
+                        </div>
+                    </li>
+                @endforeach
             </ul>
             <a class="mr-2 btn btn-danger btn-sm d-flex" href="#"><i class="material-icons iconMod">attach_money</i>Ofertas</a>
             <a class="mr-2 btn-success btn-sm d-flex" href="https://wa.me/525551857805?text=Hola,%20me%20gustaría%20saber%20" style="text-decoration: none;">
@@ -207,8 +176,9 @@
     </div>
     <div class="row">
         <div class="col-8">
-            <a class="navbar-brand" href="#">
-                <img class="logo-navbar" style="width: 150px" src="{{asset('img/logos/logoJardepot.png')}}">
+            <a class="navbar-brand" href="{{url('/')}}">
+                <img class="logo-navbar" style="width: 150px" src="{{asset('img/logos/logoJardepot.png')}}"
+                alt="Logo Jardepot" title="Logo Jardepot">
             </a>
         </div>
         <div class="col-4" style="margin-top: 8px">
@@ -261,65 +231,35 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 
     <div class="navbar-collapse collapse" id="navbarsMovil">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="dropdown07XL" data-toggle="dropdown"
-                   aria-expanded="false">Agricultura</a>
-                <div class="dropdown-menu" aria-labelledby="dropdown07XL">
-                    <a class="dropdown-item" href="#">Action</a>
-                </div>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="dropdown07XL" data-toggle="dropdown"
-                   aria-expanded="false">Sanitizacion y fumigación</a>
-                <div class="dropdown-menu" aria-labelledby="dropdown07XL">
-                    <a class="dropdown-item" href="#">Action</a>
-                </div>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="dropdown07XL" data-toggle="dropdown"
-                   aria-expanded="false">Jardinería</a>
-                <div class="dropdown-menu" aria-labelledby="dropdown07XL">
-                    <a class="dropdown-item" href="#">Action</a>
-                </div>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="dropdown07XL" data-toggle="dropdown"
-                   aria-expanded="false">Riego</a>
-                <div class="dropdown-menu" aria-labelledby="dropdown07XL">
-                    <a class="dropdown-item" href="#">Action</a>
-                </div>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="dropdown07XL" data-toggle="dropdown"
-                   aria-expanded="false">Construccion</a>
-                <div class="dropdown-menu" aria-labelledby="dropdown07XL">
-                    <a class="dropdown-item" href="#">Action</a>
-                </div>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="dropdown07XL" data-toggle="dropdown"
-                   aria-expanded="false">Refacciones</a>
-                <div class="dropdown-menu" aria-labelledby="dropdown07XL">
-                    <a class="dropdown-item" href="#">Refacciones</a>
-                </div>
-            </li>
+            @foreach ($navbar as $categoria1)
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="dropdown{{$key}}" data-toggle="dropdown"
+                       aria-expanded="false">{{$categoria1['nivel1']}}</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdown{{$key}}">
+                        @foreach($categoria1['nivel2'] as $categoria2)
+                            <a class="dropdown-item" href="{{url($categoria2['href'])}}">{{$categoria2['name']}}</a>
+                        @endforeach
+                    </div>
+                </li>
+            @endforeach
         </ul>
     </div>
     <div class="navbar-collapse">
         <form class="form-inline my-2 my-md-0">
             <div class="input-group" style="width: 95%;margin-top: 0">
                 <input type="text" class="form-control inputSearch" placeholder="Busca tu producto..."
-                       aria-label="Busca tu producto" aria-describedby="Busca tu producto...."
-                       style="margin-top: 0">
+                       aria-label="Busca tu producto" aria-describedby="Busca tu producto..." style="margin-top: 0">
                 <div class="input-group-append">
                     <span class="input-group-addon">
-                        <a class="btn btnSearch" type="submit" id="" style="margin-top: 0"><i style="color: gray" class="material-icons d-flex">search</i></a></span>
+                        <a class="btn btnSearch" type="submit" id="" style="margin-top: 0">
+                            <i style="color: gray" class="material-icons d-flex">search</i>
+                        </a>
+                    </span>
                 </div>
             </div>
         </form>
@@ -358,8 +298,7 @@
                     <div class="row">
                         <div class="col-md-12 col-6">
                             Del Interior<br>
-                            <a class="telModal" href="tel:8002129225"><i class="material-icons">call</i>(800) 212
-                                9225</a>
+                            <a class="telModal" href="tel:8002129225"><i class="material-icons">call</i>(800) 212 9225</a>
                         </div>
                         <div class="col-md-3 col-6">
                             CDMX<br>
