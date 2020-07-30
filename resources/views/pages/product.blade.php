@@ -29,6 +29,7 @@
             </div>
             @component('components.sidebar')
                 @slot('id', 'Movil')
+                @slot('sections', $sidebar)
             @endcomponent
         </nav>
         <!-- Page Content  -->
@@ -36,6 +37,7 @@
             <div class="card d-none d-lg-block col-lg-3 mr-3" style="max-width: 23%">
                 @component('components.sidebar')
                     @slot('id', 'Desktop')
+                    @slot('sections', $sidebar)
                 @endcomponent
             </div>
 
