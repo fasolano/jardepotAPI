@@ -73,7 +73,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="card shadow-sm product-item col-md-3 p-0" style="border-radius: 5px;overflow: hidden;">
+                        <div class="card shadow-sm product-item col-md-3 p-0 mt-2" style="border-radius: 5px;overflow: hidden;">
                             <a href="">
                                 <div class="ribbon ribbon-top-right" style="display: block"><span>Oferta</span></div>
                                 <div class="product-image" style="height: 205px">
@@ -225,7 +225,7 @@
                                 <p class="little-letters text-center">*Precios sujetos a cambio sin previo aviso.</p>
                             </div>
                         </div>
-                        <div class="card shadow-sm product-item col-md-3 p-0" style="border-radius: 5px;overflow: hidden;">
+                        <div class="card shadow-sm product-item col-md-3 p-0 mt-2" style="border-radius: 5px;overflow: hidden;">
                             <a href="">
                                 <div class="ribbon ribbon-top-right" style="display: block"><span>Oferta</span></div>
                                 <div class="product-image" style="height: 205px">
@@ -263,7 +263,7 @@
                                 <p class="little-letters text-center">*Precios sujetos a cambio sin previo aviso.</p>
                             </div>
                         </div>
-                        <div class="card shadow-sm product-item col-md-3 p-0" style="border-radius: 5px;overflow: hidden;">
+                        <div class="card shadow-sm product-item col-md-3 p-0 mt-2" style="border-radius: 5px;overflow: hidden;">
                             <a href="">
                                 <div class="ribbon ribbon-top-right" style="display: block"><span>Oferta</span></div>
                                 <div class="product-image" style="height: 205px">

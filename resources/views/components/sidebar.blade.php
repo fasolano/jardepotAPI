@@ -69,13 +69,13 @@
                 <div id="heading{{ $id.$loop->iteration }}">
                     <h2 class="mb-0">
                         <div class="text-left head-collapse collapsed fn-color-jd px-2" data-toggle="collapse"
-                             data-target="#collapse{{ $id.$loop->iteration }}" aria-expanded="true" aria-controls="collapse{{ $id.$loop->iteration }}">
+                             data-target="#collapse{{ $id.$loop->iteration }}" aria-expanded="false" aria-controls="collapse{{ $id.$loop->iteration }}">
                             <span>Secciones de {{$itemLevel1->nombreCategoriaNivel1}}</span>
                             <i class="material-icons">keyboard_arrow_up</i>
                         </div>
                     </h2>
                 </div>
-                <div id="collapse{{ $id.$loop->iteration }}" class="collapse show px-2" aria-labelledby="heading{{ $id.$loop->iteration }}" data-parent="#accordionSide{{ $id }}">
+                <div id="collapse{{ $id.$loop->iteration }}" class="collapse show px-2">
                     <div class="row">
                         @foreach ($itemLevel1->nivel2 as $keyLevel2 => $itemLevel2)
                             <div class="col-4 px-2">
@@ -93,7 +93,7 @@
                 <div id="heading{{ $id.$loop->iteration }}">
                     <h2 class="mb-0">
                         <div class="text-left head-collapse collapsed fn-color-jd px-2" data-toggle="collapse"
-                             data-target="#collapse{{ $id.$loop->iteration }}" aria-expanded="true" aria-controls="collapse{{ $id.$loop->iteration }}">
+                             data-target="#collapse{{ $id.$loop->iteration }}" aria-expanded="false" aria-controls="collapse{{ $id.$loop->iteration }}">
                             <span>
                                 @if ($loop->iteration == 1)
                                     Secciones por
@@ -104,7 +104,7 @@
                         </div>
                     </h2>
                 </div>
-                <div id="collapse{{ $id.$loop->iteration }}" class="collapse show px-2" aria-labelledby="heading{{ $id.$loop->iteration }}" data-parent="#accordionSide{{ $id }}">
+                <div id="collapse{{ $id.$loop->iteration }}" class="collapse show px-2">
                     <div class="row">
                         @foreach ($itemLevel1->nivel2 as $keyLevel2 => $itemLevel2)
                             <div class="col-6 text-center my-1 p-0">
