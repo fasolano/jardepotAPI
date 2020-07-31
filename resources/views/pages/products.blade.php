@@ -73,20 +73,23 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="card shadow-sm product-item col-md-3 p-0 mt-2" style="border-radius: 5px;overflow: hidden;">
+                        @foreach($products as $key => $item)
+                            <div class="card shadow-sm product-item col-md-3 p-0 mt-2" style="border-radius: 5px;overflow: hidden;">
                             <a href="">
-                                <div class="ribbon ribbon-top-right" style="display: block"><span>Oferta</span></div>
+                                @if(isset($item['discount']))
+                                    <div class="ribbon ribbon-top-right" style="display: block"><span>Oferta</span></div>
+                                @endif
                                 <div class="product-image" style="height: 205px">
                                     <img style="max-width: 80%"
-                                         src="{{asset('assets/images/productos/desbrozadora-kawashima-dkm43k.jpg')}}"
-                                         title="" alt="">
+                                         src="{{asset($item['images'][0]['medium'])}}"
+                                         title="{{$item['name']}}" alt="{{$item['name']}}">
                                 </div>
                                 <img class="free-delivery-recom" src="{{asset('assets/images/otros/gratis.png')}}"
                                      title="Envío gratis Jardepot" alt="Envío gratis Jardepot">
                             </a>
                             <div class="d-flex align-items-center flex-column">
-                                <p class="text-muted text-center" style="font-weight: 500; font-size: 18px;">Multifuncional Ducati DBC3301M</p>
-                                <p class="old-price">$4,422.00</p>
+                                <p class="text-muted text-center" style="font-weight: 500; font-size: 18px;">{{$item['name']}}</p>
+                                <p class="old-price">{{$item['name']}}</p>
                                 <p class="new-price">$3,359.00</p>
                                 <button class="btn btn-buy d-flex justify-content-center align-items-center">
                                     <i class="material-icons" style="font-size: 16px;">shopping_cart</i> Comprar
@@ -111,196 +114,7 @@
                                 <p class="little-letters text-center">*Precios sujetos a cambio sin previo aviso.</p>
                             </div>
                         </div>
-                        <div class="card shadow-sm product-item col-md-3 p-0" style="border-radius: 5px;overflow: hidden;">
-                            <a href="">
-                                <div class="ribbon ribbon-top-right" style="display: block"><span>Oferta</span></div>
-                                <div class="product-image" style="height: 205px">
-                                    <img style="max-width: 80%"
-                                         src="{{asset('assets/images/productos/desbrozadora-kawashima-dkm43k.jpg')}}"
-                                         title="" alt="">
-                                </div>
-                                <img class="free-delivery-recom" src="{{asset('assets/images/otros/gratis.png')}}"
-                                     title="Envío gratis Jardepot" alt="Envío gratis Jardepot">
-                            </a>
-                            <div class="d-flex align-items-center flex-column">
-                                <p class="text-muted text-center" style="font-weight: 500; font-size: 18px;">Multifuncional Ducati DBC3301M</p>
-                                <p class="old-price">$4,422.00</p>
-                                <p class="new-price">$3,359.00</p>
-                                <button class="btn btn-buy d-flex justify-content-center align-items-center">
-                                    <i class="material-icons" style="font-size: 16px;">shopping_cart</i> Comprar
-                                </button>
-                                <p class="envio-volada d-flex justify-content-center align-items-center my-2">
-                                    <i class="material-icons" style="font-size: 16px;">flash_on</i>Envio de volada
-                                </p>
-                                <p class="little-letters">*Envio gratis a partir de $3,000 de compra</p>
-                                <p class="little-letters">*Consulte condiciones.</p>
-                                <p class="product-description py-2 text-center" data-toggle="tooltip" data-placement="bottom"
-                                   title="Aspersora Agrícola ECHO SHP-800-2, 22.8CC, 25L, 2 Salidas Fumigadora de alta presión de doble lanza para duplicar la eficiencia.">
-                                    Aspersora Agrícola ECHO SHP-800-2, 22.8CC, 25L, 2 Salidas Fumigadora de alta presión de do...
-                                </p>
-                            </div>
-                            <hr>
-                            <div class="d-flex align-items-center flex-column">
-                                <button type="button" class="btn-add-cart d-flex justify-content-center align-items-center" style="font-size: 14px;">
-                                    <i class="material-icons fn-color-jd">shopping_cart</i>
-                                    <span class="text-muted" style="font-size: 14px; font-weight: 500;">Agregar al carrito</span>
-                                </button>
-                                <p class="little-letters text-center">*Sujeto a existencias.</p>
-                                <p class="little-letters text-center">*Precios sujetos a cambio sin previo aviso.</p>
-                            </div>
-                        </div>
-                        <div class="card shadow-sm product-item col-md-3 p-0" style="border-radius: 5px;overflow: hidden;">
-                            <a href="">
-                                <div class="ribbon ribbon-top-right" style="display: block"><span>Oferta</span></div>
-                                <div class="product-image" style="height: 205px">
-                                    <img style="max-width: 80%"
-                                         src="{{asset('assets/images/productos/desbrozadora-kawashima-dkm43k.jpg')}}"
-                                         title="" alt="">
-                                </div>
-                                <img class="free-delivery-recom" src="{{asset('assets/images/otros/gratis.png')}}"
-                                     title="Envío gratis Jardepot" alt="Envío gratis Jardepot">
-                            </a>
-                            <div class="d-flex align-items-center flex-column">
-                                <p class="text-muted text-center" style="font-weight: 500; font-size: 18px;">Multifuncional Ducati DBC3301M</p>
-                                <p class="old-price">$4,422.00</p>
-                                <p class="new-price">$3,359.00</p>
-                                <button class="btn btn-buy d-flex justify-content-center align-items-center">
-                                    <i class="material-icons" style="font-size: 16px;">shopping_cart</i> Comprar
-                                </button>
-                                <p class="envio-volada d-flex justify-content-center align-items-center my-2">
-                                    <i class="material-icons" style="font-size: 16px;">flash_on</i>Envio de volada
-                                </p>
-                                <p class="little-letters">*Envio gratis a partir de $3,000 de compra</p>
-                                <p class="little-letters">*Consulte condiciones.</p>
-                                <p class="product-description py-2 text-center" data-toggle="tooltip" data-placement="bottom"
-                                   title="Aspersora Agrícola ECHO SHP-800-2, 22.8CC, 25L, 2 Salidas Fumigadora de alta presión de doble lanza para duplicar la eficiencia.">
-                                    Aspersora Agrícola ECHO SHP-800-2, 22.8CC, 25L, 2 Salidas Fumigadora de alta presión de do...
-                                </p>
-                            </div>
-                            <hr>
-                            <div class="d-flex align-items-center flex-column">
-                                <button type="button" class="btn-add-cart d-flex justify-content-center align-items-center" style="font-size: 14px;">
-                                    <i class="material-icons fn-color-jd">shopping_cart</i>
-                                    <span class="text-muted" style="font-size: 14px; font-weight: 500;">Agregar al carrito</span>
-                                </button>
-                                <p class="little-letters text-center">*Sujeto a existencias.</p>
-                                <p class="little-letters text-center">*Precios sujetos a cambio sin previo aviso.</p>
-                            </div>
-                        </div>
-                        <div class="card shadow-sm product-item col-md-3 p-0" style="border-radius: 5px;overflow: hidden;">
-                            <a href="">
-                                <div class="ribbon ribbon-top-right" style="display: block"><span>Oferta</span></div>
-                                <div class="product-image" style="height: 205px">
-                                    <img style="max-width: 80%"
-                                         src="{{asset('assets/images/productos/desbrozadora-kawashima-dkm43k.jpg')}}"
-                                         title="" alt="">
-                                </div>
-                                <img class="free-delivery-recom" src="{{asset('assets/images/otros/gratis.png')}}"
-                                     title="Envío gratis Jardepot" alt="Envío gratis Jardepot">
-                            </a>
-                            <div class="d-flex align-items-center flex-column">
-                                <p class="text-muted text-center" style="font-weight: 500; font-size: 18px;">Multifuncional Ducati DBC3301M</p>
-                                <p class="old-price">$4,422.00</p>
-                                <p class="new-price">$3,359.00</p>
-                                <button class="btn btn-buy d-flex justify-content-center align-items-center">
-                                    <i class="material-icons" style="font-size: 16px;">shopping_cart</i> Comprar
-                                </button>
-                                <p class="envio-volada d-flex justify-content-center align-items-center my-2">
-                                    <i class="material-icons" style="font-size: 16px;">flash_on</i>Envio de volada
-                                </p>
-                                <p class="little-letters">*Envio gratis a partir de $3,000 de compra</p>
-                                <p class="little-letters">*Consulte condiciones.</p>
-                                <p class="product-description py-2 text-center" data-toggle="tooltip" data-placement="bottom"
-                                   title="Aspersora Agrícola ECHO SHP-800-2, 22.8CC, 25L, 2 Salidas Fumigadora de alta presión de doble lanza para duplicar la eficiencia.">
-                                    Aspersora Agrícola ECHO SHP-800-2, 22.8CC, 25L, 2 Salidas Fumigadora de alta presión de do...
-                                </p>
-                            </div>
-                            <hr>
-                            <div class="d-flex align-items-center flex-column">
-                                <button type="button" class="btn-add-cart d-flex justify-content-center align-items-center" style="font-size: 14px;">
-                                    <i class="material-icons fn-color-jd">shopping_cart</i>
-                                    <span class="text-muted" style="font-size: 14px; font-weight: 500;">Agregar al carrito</span>
-                                </button>
-                                <p class="little-letters text-center">*Sujeto a existencias.</p>
-                                <p class="little-letters text-center">*Precios sujetos a cambio sin previo aviso.</p>
-                            </div>
-                        </div>
-                        <div class="card shadow-sm product-item col-md-3 p-0 mt-2" style="border-radius: 5px;overflow: hidden;">
-                            <a href="">
-                                <div class="ribbon ribbon-top-right" style="display: block"><span>Oferta</span></div>
-                                <div class="product-image" style="height: 205px">
-                                    <img style="max-width: 80%"
-                                         src="{{asset('assets/images/productos/desbrozadora-kawashima-dkm43k.jpg')}}"
-                                         title="" alt="">
-                                </div>
-                                <img class="free-delivery-recom" src="{{asset('assets/images/otros/gratis.png')}}"
-                                     title="Envío gratis Jardepot" alt="Envío gratis Jardepot">
-                            </a>
-                            <div class="d-flex align-items-center flex-column">
-                                <p class="text-muted text-center" style="font-weight: 500; font-size: 18px;">Multifuncional Ducati DBC3301M</p>
-                                <p class="old-price">$4,422.00</p>
-                                <p class="new-price">$3,359.00</p>
-                                <button class="btn btn-buy d-flex justify-content-center align-items-center">
-                                    <i class="material-icons" style="font-size: 16px;">shopping_cart</i> Comprar
-                                </button>
-                                <p class="envio-volada d-flex justify-content-center align-items-center my-2">
-                                    <i class="material-icons" style="font-size: 16px;">flash_on</i>Envio de volada
-                                </p>
-                                <p class="little-letters">*Envio gratis a partir de $3,000 de compra</p>
-                                <p class="little-letters">*Consulte condiciones.</p>
-                                <p class="product-description py-2 text-center" data-toggle="tooltip" data-placement="bottom"
-                                   title="Aspersora Agrícola ECHO SHP-800-2, 22.8CC, 25L, 2 Salidas Fumigadora de alta presión de doble lanza para duplicar la eficiencia.">
-                                    Aspersora Agrícola ECHO SHP-800-2, 22.8CC, 25L, 2 Salidas Fumigadora de alta presión de do...
-                                </p>
-                            </div>
-                            <hr>
-                            <div class="d-flex align-items-center flex-column">
-                                <button type="button" class="btn-add-cart d-flex justify-content-center align-items-center" style="font-size: 14px;">
-                                    <i class="material-icons fn-color-jd">shopping_cart</i>
-                                    <span class="text-muted" style="font-size: 14px; font-weight: 500;">Agregar al carrito</span>
-                                </button>
-                                <p class="little-letters text-center">*Sujeto a existencias.</p>
-                                <p class="little-letters text-center">*Precios sujetos a cambio sin previo aviso.</p>
-                            </div>
-                        </div>
-                        <div class="card shadow-sm product-item col-md-3 p-0 mt-2" style="border-radius: 5px;overflow: hidden;">
-                            <a href="">
-                                <div class="ribbon ribbon-top-right" style="display: block"><span>Oferta</span></div>
-                                <div class="product-image" style="height: 205px">
-                                    <img style="max-width: 80%"
-                                         src="{{asset('assets/images/productos/desbrozadora-kawashima-dkm43k.jpg')}}"
-                                         title="" alt="">
-                                </div>
-                                <img class="free-delivery-recom" src="{{asset('assets/images/otros/gratis.png')}}"
-                                     title="Envío gratis Jardepot" alt="Envío gratis Jardepot">
-                            </a>
-                            <div class="d-flex align-items-center flex-column">
-                                <p class="text-muted text-center" style="font-weight: 500; font-size: 18px;">Multifuncional Ducati DBC3301M</p>
-                                <p class="old-price">$4,422.00</p>
-                                <p class="new-price">$3,359.00</p>
-                                <button class="btn btn-buy d-flex justify-content-center align-items-center">
-                                    <i class="material-icons" style="font-size: 16px;">shopping_cart</i> Comprar
-                                </button>
-                                <p class="envio-volada d-flex justify-content-center align-items-center my-2">
-                                    <i class="material-icons" style="font-size: 16px;">flash_on</i>Envio de volada
-                                </p>
-                                <p class="little-letters">*Envio gratis a partir de $3,000 de compra</p>
-                                <p class="little-letters">*Consulte condiciones.</p>
-                                <p class="product-description py-2 text-center" data-toggle="tooltip" data-placement="bottom"
-                                   title="Aspersora Agrícola ECHO SHP-800-2, 22.8CC, 25L, 2 Salidas Fumigadora de alta presión de doble lanza para duplicar la eficiencia.">
-                                    Aspersora Agrícola ECHO SHP-800-2, 22.8CC, 25L, 2 Salidas Fumigadora de alta presión de do...
-                                </p>
-                            </div>
-                            <hr>
-                            <div class="d-flex align-items-center flex-column">
-                                <button type="button" class="btn-add-cart d-flex justify-content-center align-items-center" style="font-size: 14px;">
-                                    <i class="material-icons fn-color-jd">shopping_cart</i>
-                                    <span class="text-muted" style="font-size: 14px; font-weight: 500;">Agregar al carrito</span>
-                                </button>
-                                <p class="little-letters text-center">*Sujeto a existencias.</p>
-                                <p class="little-letters text-center">*Precios sujetos a cambio sin previo aviso.</p>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
                 <div id="list-products-search" class="row">
