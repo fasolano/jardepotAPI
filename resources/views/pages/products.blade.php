@@ -20,6 +20,8 @@
 
 @section('content')
     @component('components.breadcrumb')
+        @slot('level1', $categoryLevel1)
+        @slot('level2', $categoryLevel2)
     @endcomponent
 
     <div class="wrapper">
@@ -28,6 +30,9 @@
             @component('components.sidebar')
                 @slot('id', 'Movil')
                 @slot('sections', $sidebar)
+                @slot('filters', $filters)
+                @slot('textFilter', $textFilter)
+                @slot('level2', $categoryLevel2)
             @endcomponent
         </nav>
 
@@ -37,6 +42,9 @@
                 @component('components.sidebar')
                     @slot('id', 'Desktop')
                     @slot('sections', $sidebar)
+                    @slot('filters', $filters)
+                    @slot('textFilter', $textFilter)
+                    @slot('level2', $categoryLevel2)
                 @endcomponent
             </div>
 
@@ -61,21 +69,22 @@
                         <div>
                             <div class="dropdown">
                                 <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Mostrar 8
+                                    Mostrar <span class="current-number-items">8</span>
                                 </a>
 
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                    <a class="dropdown-item" href="#">8</a>
-                                    <a class="dropdown-item" href="#">12</a>
-                                    <a class="dropdown-item" href="#">16</a>
+                                    <a class="dropdown-item number-items" data-val="8" href="#">8</a>
+                                    <a class="dropdown-item number-items" data-val="12" href="#">12</a>
+                                    <a class="dropdown-item number-items" data-val="16" href="#">16</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         @foreach($products as $key => $item)
-                            <div class="card shadow-sm product-item col-md-3 p-0 mt-2" style="border-radius: 5px;overflow: hidden;">
-                            <a href="">
+                            <div class="card shadow-sm product-item col-sm-6 col-md-4 col-lg-3 p-0 mt-2 @if($loop->iteration > 8) d-none  @endif" style="border-radius: 5px;overflow: hidden;">
+                            <a href="{{route('product',
+                                ['marca'=> strtolower($item['brand']), 'productType'=> strtolower($item['productType']), 'brand'=> strtolower($item['brand']), 'mpn'=> strtolower($item['mpn'])])}}">
                                 @if(isset($item['discount']))
                                     <div class="ribbon ribbon-top-right" style="display: block"><span>Oferta</span></div>
                                 @endif
@@ -87,21 +96,28 @@
                                 <img class="free-delivery-recom" src="{{asset('assets/images/otros/gratis.png')}}"
                                      title="Envío gratis Jardepot" alt="Envío gratis Jardepot">
                             </a>
-                            <div class="d-flex align-items-center flex-column">
+                            <div class="d-flex align-items-center flex-column" style="height: 245px;">
                                 <p class="text-muted text-center" style="font-weight: 500; font-size: 18px;">{{$item['name']}}</p>
-                                <p class="old-price">{{$item['name']}}</p>
-                                <p class="new-price">$3,359.00</p>
+                                    <p class="old-price" style="height: 21px;">
+                                        @if(isset($item['oldPrice']))
+                                            {{$item['oldPrice']}}
+                                        @endif
+                                    </p>
+                                <p class="new-price">{{$item['newPrice']}}</p>
                                 <button class="btn btn-buy d-flex justify-content-center align-items-center">
                                     <i class="material-icons" style="font-size: 16px;">shopping_cart</i> Comprar
                                 </button>
-                                <p class="envio-volada d-flex justify-content-center align-items-center my-2">
-                                    <i class="material-icons" style="font-size: 16px;">flash_on</i>Envio de volada
+
+                                <p class="envio-volada d-flex justify-content-center align-items-center my-2" style="height: 24px; max-height: 24px;">
+                                    @if($item['inventory'] > 0)
+                                        <i class="material-icons" style="font-size: 16px;">flash_on</i>Envio de volada
+                                    @endif
                                 </p>
                                 <p class="little-letters">*Envio gratis a partir de $3,000 de compra</p>
                                 <p class="little-letters">*Consulte condiciones.</p>
-                                <p class="product-description py-2 text-center" data-toggle="tooltip" data-placement="bottom"
-                                   title="Aspersora Agrícola ECHO SHP-800-2, 22.8CC, 25L, 2 Salidas Fumigadora de alta presión de doble lanza para duplicar la eficiencia.">
-                                    Aspersora Agrícola ECHO SHP-800-2, 22.8CC, 25L, 2 Salidas Fumigadora de alta presión de do...
+                                <p class="product-description p-2 text-center text-truncate" data-toggle="tooltip" data-placement="bottom" style="min-height: 74px; max-height: 74px; white-space: normal;"
+                                   title="{{$item['description']}}">
+                                    {{$item['description']}}
                                 </p>
                             </div>
                             <hr>
@@ -116,6 +132,27 @@
                         </div>
                         @endforeach
                     </div>
+                    <div id="pagination-container" class="row border shadow bg-white rounded mt-2">
+                        <div class="col-12" style="border-radius: 5px;overflow: hidden;">
+                            <nav aria-label="Search results products">
+                                <ul class="pagination d-flex justify-content-center align-items-center my-2">
+                                    <li class="page-item previous-page disabled">
+                                        <a class="page-link" data-val="--" href="#" tabindex="-1" aria-disabled="true">Anterior</a>
+                                    </li>
+                                    @for ($i = 0; $i < $numberPages; $i++)
+                                        <li class="page-item number-page @if($i == 0) active @endif">
+                                            <a class="page-link" data-val="{{ $i+1 }}" href="#">{{ $i+1 }}</a>
+                                        </li>
+                                    @endfor
+                                    <li class="page-item next-page @if($numberPages <= 1) disabled @endif">
+                                        <a class="page-link" data-val="++" href="#">Siguiente</a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+
+                    </div>
+
                 </div>
                 <div id="list-products-search" class="row">
                 </div>

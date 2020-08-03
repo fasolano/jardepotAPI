@@ -84,9 +84,36 @@
     border: none;
     box-shadow: none !important;
 }
+
+.page-item.active .page-link{
+    background-color: #f68600 !important;
+    border-color: #f68600 !important;
+}
+
+.page-link{
+    color: #f68600;
+}
+
 @media (min-width: 992px){
     #content-products-principal{
         max-width: 78%;
         margin-left: 1%;
     }
 }
+
+@media (max-width: 992px){
+    .product-item{
+        max-width: 32%;
+        margin-left: 0.5%;
+        margin-right: 0.5%;
+    }
+}
+
+@media (max-width: 767px){
+    .product-item{
+        max-width: 49%;
+        margin-left: 0.5%;
+        margin-right: 0.5%;
+    }
+}
+

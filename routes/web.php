@@ -15,8 +15,8 @@ Route::get('/', function () {
     return view('pages/home');
 })->name('home');
 
-Route::get('/{categoryLevel1}/{categoryLevel2}' , 'views\ProductsController@productList')->name('products');
+Route::get('/{categoryLevel1}/{categoryLevel2}' , 'views\ProductsController@productsList')->name('products');
 
-Route::get('/catalogo/{marca}/{productType}-{brand}-{mpn}' , 'views\ProductController@product');
+Route::get('/catalogo/{marca}/{productType}-{brand}-{mpn}' , 'views\ProductController@product')->name('product');
 
 Route::post('product/sendSearch', 'views\ProductController@sendSearch');

@@ -6,18 +6,39 @@ namespace App\Http\Controllers\views;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\MenuController;
+use Illuminate\Http\Request;
 
 class ProductsController extends Controller {
 
-    public function productList($categoryLevel1, $categoryLevel2){
+    private $unwanted_array;
+
+    public function __construct() {
+        $this->unwanted_array = array('Š' => 'S', 'š' => 's', 'Ž' => 'Z', 'ž' => 'z', 'À' => 'A', 'Á' => 'A', 'Â' => 'A', 'Ã' => 'A', 'Ä' => 'A', 'Å' => 'A', 'Æ' => 'A', 'Ç' => 'C', 'È' => 'E', 'É' => 'E', 'Ê' => 'E', 'Ë' => 'E', 'Ì' => 'I', 'Í' => 'I', 'Î' => 'I', 'Ï' => 'I', 'Ñ' => 'N', 'Ò' => 'O', 'Ó' => 'O', 'Ô' => 'O', 'Õ' => 'O', 'Ö' => 'O', 'Ø' => 'O', 'Ù' => 'U', 'Ú' => 'U', 'Û' => 'U', 'Ü' => 'U', 'Ý' => 'Y', 'Þ' => 'B', 'ß' => 'Ss', 'à' => 'a', 'á' => 'a', 'â' => 'a', 'ã' => 'a', 'ä' => 'a', 'å' => 'a', 'æ' => 'a', 'ç' => 'c', 'è' => 'e', 'é' => 'e', 'ê' => 'e', 'ë' => 'e', 'ì' => 'i', 'í' => 'i', 'î' => 'i', 'ï' => 'i', 'ð' => 'o', 'ñ' => 'n', 'ò' => 'o', 'ó' => 'o', 'ô' => 'o', 'õ' => 'o', 'ö' => 'o', 'ø' => 'o', 'ù' => 'u', 'ú' => 'u', 'û' => 'u', 'ý' => 'y', 'þ' => 'b', 'ÿ' => 'y');
+    }
+
+    public function productsList($categoryLevel1, $categoryLevel2){
         $menuController = new MenuController();
         $sidebar = $menuController->getSidebar();
         $productController = new \App\Http\Controllers\ProductController();
         $products = $productController->getProductsList($categoryLevel1, $categoryLevel2);
         $products = $this->porductModelFormat($products);
+        $numberPages = count($products) / 8;
+        $filters = $productController->getSectionsLevel3($categoryLevel1, $categoryLevel2);
+        $textFilter = "";
+        if($categoryLevel1 == "marcas" || $categoryLevel1 == "refacciones"){
+            $textFilter = "equipos";
+        }else{
+            $textFilter = "marcas";
+        }
 
+        return view('pages/products', compact('sidebar', 'categoryLevel1', 'categoryLevel2', 'products', 'numberPages', 'filters', 'textFilter'));
+    }
 
-        return view('pages/products', compact('sidebar', 'categoryLevel1', 'categoryLevel2', 'products'));
+    function productsListFiltered(Request $request){
+        /*$productController = new \App\Http\Controllers\ProductController();
+        $products = $productController->getProductsList($categoryLevel1, $categoryLevel2);
+        $products = $this->porductModelFormat($products);
+        $numberPages = count($products) / 8;*/
     }
 
     function porductModelFormat($productosCategoria){
@@ -30,9 +51,11 @@ class ProductsController extends Controller {
             //Si hay filtros aplicados va a verificar
             $response[$iterator]['id'] = $item->id;
             $response[$iterator]['name'] = $item->productType . " " . $item->brand . " " . $item->mpn;
-            $response[$iterator]['images'][0]['small'] = 'assets/images/productos/' . $img . '.jpg';
-            $response[$iterator]['images'][0]['medium'] = 'assets/images/productos/' . $img . '.jpg';
-            $response[$iterator]['images'][0]['big'] = 'assets/images/productos/zoom/' . $img . '.jpg';
+            if(file_exists(strtr(base_path() . '/public/assets/images/productos/' . $img . '.jpg', $this->unwanted_array))){
+                $response[$iterator]['images'][0]['medium'] = 'assets/images/productos/' . $img . '.jpg';
+            }else{
+                $response[$iterator]['images'][0]['medium'] = 'assets/images/productos/generico2.jpg';
+            }
             //empieza la seccion de precios
             if (isset($item->offer) && $item->offer == 'si') {
                 $response[$iterator]['discount'] = "Oferta";
@@ -57,20 +80,10 @@ class ProductsController extends Controller {
             }
             //termina seccion de precios
             $response[$iterator]['description'] = $item->descriptionweb;
-            $response[$iterator]['dataSheet'] = $item->resenia;
-            $response[$iterator]['availibilityCount'] = 100;
-            $response[$iterator]['stock'] = $item->availability == 'in stock' ? true : false;
-            if (isset($item->cantidad)) {
-                $response[$iterator]['cartCount'] = $item->cantidad;
-            }
-            else {
-                $response[$iterator]['cartCount'] = 0;
-            }
+            $response[$iterator]['stock'] = $item->availability == 'in stock';
             $response[$iterator]['brand'] = $item->brand;
             $response[$iterator]['mpn'] = $item->mpn;
             $response[$iterator]['productType'] = $item->productType;
-            $response[$iterator]['metaDescription'] = $item->metadesc;
-            $response[$iterator]['metaTitle'] = $item->titleweb;
             $response[$iterator]['inventory'] = $item->cantidadInventario;
             $iterator++;
         }

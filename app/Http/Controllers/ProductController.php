@@ -254,7 +254,19 @@ class ProductController extends Controller {
         }
 
         return json_encode($response);
+    }
 
+    public function getSectionsLevel3($nivel1, $nivel2) {
+        $idNivel2 = $this->productoRepository->getIdNivel2($nivel1, $nivel2);
+        $secciones = $this->productoRepository->getCategoriasNivel3($idNivel2);
+        $response = array();
+        foreach ($secciones as $key => $seccion) {
+
+            $response[$key]['name'] = $seccion->nombreCategoriaNivel3;
+            $response[$key]['id'] = $seccion->idCategoriasNivel3;
+        }
+
+        return $response;
     }
 
     public function getFilters(Request $request) {
