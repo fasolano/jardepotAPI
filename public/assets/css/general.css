@@ -11,7 +11,9 @@
 .fn-color-jd{
     color: #f68600 !important;
 }
-
+.error{
+    color: #de1f21;
+}
 .title-muted{
     color: #616161!important;
     display: block;

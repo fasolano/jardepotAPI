@@ -19,5 +19,5 @@
 <link rel="stylesheet" href="{{asset('assets/css/general.css')}}">
 <link rel="stylesheet" href="{{asset('assets/css/layouts/footer.css')}}">
 <link rel="stylesheet" href="{{asset('assets/css/layouts/navbar.css')}}">
-
+<script type="text/javascript" src="{{ asset('assets/js/jquery-3.5.1.min.js') }}"></script>
 

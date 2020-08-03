@@ -18,3 +18,5 @@ Route::get('/', function () {
 Route::get('/{categoryLevel1}/{categoryLevel2}' , 'views\ProductsController@productList')->name('products');
 
 Route::get('/catalogo/{marca}/{productType}-{brand}-{mpn}' , 'views\ProductController@product');
+
+Route::post('product/sendSearch', 'views\ProductController@sendSearch');

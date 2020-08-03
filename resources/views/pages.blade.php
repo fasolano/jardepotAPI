@@ -4,6 +4,8 @@
     {{--  Metatitle, metadescripcion, titulo de página, etc.  --}}
     @yield('metaData')
 
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
+
     @include('layout.head')
 
     {{--  Css especifico de cada página  --}}
