@@ -15,8 +15,6 @@
 @endsection
 
 @section('content')
-    @component('components.breadcrumb')
-    @endcomponent
     <div class="wrapper">
         <!-- Page Content  -->
         <div id="content" class="row">

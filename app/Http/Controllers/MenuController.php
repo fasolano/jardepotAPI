@@ -241,10 +241,10 @@ class MenuController extends Controller{
             $categoriasNivel2 = $menuRepository->getNivel2($categoria1->idCategoriasNivel1);
             foreach ($categoriasNivel2 as $key2 => $categoria2){
                 $menuNavbar[$key]['nivel2'][$key2]['name'] = $categoria2->name;
-                $niv1 = str_replace(' ','-', strtolower($categoria1->nombreCategoriaNivel1));
-                $niv2 = str_replace(' ','-',strtolower($categoria2->name));
+                $niv1 = str_replace(' ','-', $categoria1->nombreCategoriaNivel1);
+                $niv2 = str_replace(' ','-',$categoria2->name);
                 $href = strtr($niv1.'/'.$niv2, $unwanted_array);
-                $menuNavbar[$key]['nivel2'][$key2]['href'] = $href;
+                $menuNavbar[$key]['nivel2'][$key2]['href'] = strtolower($href);
             }
         }
         return $menuNavbar;

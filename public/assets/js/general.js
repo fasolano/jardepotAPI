@@ -16,12 +16,6 @@ $('#search-form').submit(function (e) {
     window.location = "/jardepotAPI/public/busqueda/"+search;
 })
 
-$.ajaxSetup({
-    headers: {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-    }
-});
-
 var bussy = false;
 
 
