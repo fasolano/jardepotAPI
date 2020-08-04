@@ -59,9 +59,9 @@
                 </div>
                 <div class="col-md-7">
                     <div class="" id="navbarsExample06">
-                        <form class="form-inline my-2 my-md-0">
+                        <form id="search-form" class="form-inline my-2 my-md-0">
                             <div class="input-group mb-3" style="width: 100%">
-                                <input type="text" class="form-control inputSearch" placeholder="Busca tu producto..."
+                                <input id="inputSearch" type="text" class="form-control inputSearch" placeholder="Busca tu producto..."
                                        aria-label="Busca tu producto" aria-describedby="Busca tu producto.">
                                 <div class="input-group-append">
                                     <span class="input-group-addon">

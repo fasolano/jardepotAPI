@@ -1,3 +1,4 @@
+var filters = [];
 $(document).ready(function () {
     $("#sidebar").mCustomScrollbar({
         theme: "minimal"
@@ -8,7 +9,7 @@ $(document).ready(function () {
         $('.overlay').removeClass('active');
     });
 
-    $('#sidebarCollapse').on('click', function () {
+    $('.sidebarCollapse').on('click', function () {
         $('#sidebar').addClass('active');
         $('.overlay').addClass('active');
         $('.collapse.in').toggleClass('in');
@@ -24,11 +25,16 @@ $(document).ready(function () {
     });
 
     $('.btn-filter').click(function () {
+        filters = [];
         if($(this).hasClass('active-filter')){
             $(this).removeClass('active-filter').removeClass('bg-color-jd');
         }else{
             $(this).addClass('active-filter').addClass('bg-color-jd');
         }
+        $('.active-filter').each(function (i,e) {
+            filters.push($(this).data('val'));
+        });
+        reloadProducts();
     });
 
 });

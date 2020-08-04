@@ -6,6 +6,7 @@ namespace App\Http\Controllers\views;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\MenuController;
+use App\Repositories\ProductRepository;
 use Illuminate\Http\Request;
 
 class ProductsController extends Controller {
@@ -13,6 +14,7 @@ class ProductsController extends Controller {
     private $unwanted_array;
 
     public function __construct() {
+        $this->comprobarMoneyFormat();
         $this->unwanted_array = array('Š' => 'S', 'š' => 's', 'Ž' => 'Z', 'ž' => 'z', 'À' => 'A', 'Á' => 'A', 'Â' => 'A', 'Ã' => 'A', 'Ä' => 'A', 'Å' => 'A', 'Æ' => 'A', 'Ç' => 'C', 'È' => 'E', 'É' => 'E', 'Ê' => 'E', 'Ë' => 'E', 'Ì' => 'I', 'Í' => 'I', 'Î' => 'I', 'Ï' => 'I', 'Ñ' => 'N', 'Ò' => 'O', 'Ó' => 'O', 'Ô' => 'O', 'Õ' => 'O', 'Ö' => 'O', 'Ø' => 'O', 'Ù' => 'U', 'Ú' => 'U', 'Û' => 'U', 'Ü' => 'U', 'Ý' => 'Y', 'Þ' => 'B', 'ß' => 'Ss', 'à' => 'a', 'á' => 'a', 'â' => 'a', 'ã' => 'a', 'ä' => 'a', 'å' => 'a', 'æ' => 'a', 'ç' => 'c', 'è' => 'e', 'é' => 'e', 'ê' => 'e', 'ë' => 'e', 'ì' => 'i', 'í' => 'i', 'î' => 'i', 'ï' => 'i', 'ð' => 'o', 'ñ' => 'n', 'ò' => 'o', 'ó' => 'o', 'ô' => 'o', 'õ' => 'o', 'ö' => 'o', 'ø' => 'o', 'ù' => 'u', 'ú' => 'u', 'û' => 'u', 'ý' => 'y', 'þ' => 'b', 'ÿ' => 'y');
     }
 
@@ -24,6 +26,7 @@ class ProductsController extends Controller {
         $products = $this->porductModelFormat($products);
         $numberPages = count($products) / 8;
         $filters = $productController->getSectionsLevel3($categoryLevel1, $categoryLevel2);
+        $descriptionLevel2 = $productController->getDescriptionLevel2($categoryLevel1, $categoryLevel2);
         $textFilter = "";
         if($categoryLevel1 == "marcas" || $categoryLevel1 == "refacciones"){
             $textFilter = "equipos";
@@ -31,20 +34,99 @@ class ProductsController extends Controller {
             $textFilter = "marcas";
         }
 
-        return view('pages/products', compact('sidebar', 'categoryLevel1', 'categoryLevel2', 'products', 'numberPages', 'filters', 'textFilter'));
+        return view('pages/products', compact('sidebar', 'categoryLevel1', 'categoryLevel2', 'products', 'numberPages', 'filters', 'textFilter', 'descriptionLevel2'));
     }
 
-    function productsListFiltered(Request $request){
-        /*$productController = new \App\Http\Controllers\ProductController();
-        $products = $productController->getProductsList($categoryLevel1, $categoryLevel2);
+    public function getProductsListSearch($word){
+        $productRepository = new ProductRepository();
+        $menuController = new MenuController();
+        $sidebar = $menuController->getSidebar();
+        $categoryLevel1 = "Busqueda";
+        $categoryLevel2 = $word;
+        $numberPages = 0;
+        $descriptionLevel2 = new \stdClass();
+        $descriptionLevel2->metadescription = "Busca los productos que necesites Jardepot";
+        $descriptionLevel2->keywords = "Busca los productos que necesites Jardepot";
+        $descriptionLevel2->metatitle = "Jardepot, el lugar donde encuentras todo lo que necesitas";
+
+        $word = trim($word);
+        $cant = 0;
+        $productsListSearch = array();
+        if (!$word) {
+            return view('pages/products', compact('sidebar', 'categoryLevel1', 'categoryLevel2', 'productsListSearch', 'numberPages', 'descriptionLevel2'));
+        }
+
+        $matches= $productRepository->getProductsSearch2($word);
+        //$productsListSearch = $productRepository->getProductsSearch($word);
+        foreach ( $matches as $matchNivel) {
+            foreach ($matchNivel as $key => $match) {
+                array_push($productsListSearch, $match);
+            }
+        }
+        $productsListSearch = $this->porductModelFormat($productsListSearch);
+        $numberPages = count($productsListSearch) / 8;
+
+        return view('pages/products', compact('sidebar', 'categoryLevel1', 'categoryLevel2', 'productsListSearch', 'numberPages', 'descriptionLevel2'));
+    }
+
+    public function productsSearchOrdered(Request $request){
+        $productRepository = new ProductRepository();
+        $word = $request->get('word');
+        $orderBy = $request->get('order');
+
+        $productsListSearch = array();
+        $matches= $productRepository->getProductsSearch2($word);
+        //$productsListSearch = $productRepository->getProductsSearch($word);
+        foreach ( $matches as $matchNivel) {
+            foreach ($matchNivel as $key => $match) {
+                array_push($productsListSearch, $match);
+            }
+        }
+        $productsListSearch = $this->porductModelFormat($productsListSearch);
+
+        if($orderBy == 'DESC'){
+            usort($productsListSearch, function ($item1, $item2) {
+                return $item2['newPriceFloat'] <=> $item1['newPriceFloat'];
+            });
+        }elseif ($orderBy == 'ASC'){
+            usort($productsListSearch, function ($item1, $item2) {
+                return $item1['newPriceFloat'] <=> $item2['newPriceFloat'];
+            });
+        }
+        return json_encode($productsListSearch);
+    }
+
+    public function productsListFiltered(Request $request){
+        $productRepository = new ProductRepository();
+        $categoryLevel1 = $request->get('level1');
+        $categoryLevel2 = $request->get('level2');
+        $filters = $request->get('filters');
+        $orderBy = $request->get('order');
+        $idLevel2 = $productRepository->getIdNivel2($categoryLevel1,$categoryLevel2);
+        if($filters){
+            $products = $productRepository->getProductsFiltered($idLevel2, $filters);
+        }else{
+            $products = $productRepository->getProducts($idLevel2);
+        }
         $products = $this->porductModelFormat($products);
-        $numberPages = count($products) / 8;*/
+        if($orderBy == 'DESC'){
+            usort($products, function ($item1, $item2) {
+                return $item2['newPriceFloat'] <=> $item1['newPriceFloat'];
+            });
+        }elseif ($orderBy == 'ASC'){
+            usort($products, function ($item1, $item2) {
+                return $item1['newPriceFloat'] <=> $item2['newPriceFloat'];
+            });
+        }
+        return json_encode($products);
+    }
+
+    public function sendSearchFailed(Request $request){
     }
 
     function porductModelFormat($productosCategoria){
         $response = array();
         $iterator = 0;
-        $this->comprobarMoneyFormat();
         foreach ($productosCategoria as $keyProducto => $item) {
 
             $img = strtolower($item->productType . "-" . $item->brand . "-" . $item->mpn);
@@ -63,19 +145,22 @@ class ProductsController extends Controller {
                 if ($item->PrecioDeLista > $item->oferta) {
                     $response[$iterator]['oldPrice'] = money_format('%.2n',$item->PrecioDeLista);
                     $response[$iterator]['newPrice'] = money_format('%.2n',$item->oferta);
+                    $response[$iterator]['newPriceFloat'] = $item->oferta;
                 }
                 else {
                     $response[$iterator]['newPrice'] = money_format('%.2n',$item->oferta);
+                    $response[$iterator]['newPriceFloat'] = $item->oferta;
                 }
             }
             else {
                 if ($item->PrecioDeLista > $item->price) {
                     $response[$iterator]['oldPrice'] = money_format('%.2n',$item->PrecioDeLista);
                     $response[$iterator]['newPrice'] = money_format('%.2n',$item->price);
+                    $response[$iterator]['newPriceFloat'] = $item->price;
                 }
                 else {
                     $response[$iterator]['newPrice'] = money_format('%.2n',$item->price);
-
+                    $response[$iterator]['newPriceFloat'] = $item->price;
                 }
             }
             //termina seccion de precios

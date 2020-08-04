@@ -226,6 +226,30 @@ class ProductController extends Controller {
         return  $productosCategoria;
     }
 
+    public function getSectionsLevel3($nivel1, $nivel2) {
+        $idNivel2 = $this->productoRepository->getIdNivel2($nivel1, $nivel2);
+        $secciones = $this->productoRepository->getCategoriasNivel3($idNivel2);
+        $response = array();
+        foreach ($secciones as $key => $seccion) {
+
+            $response[$key]['name'] = $seccion->nombreCategoriaNivel3;
+            $response[$key]['id'] = $seccion->idCategoriasNivel3;
+        }
+
+        return $response;
+    }
+
+    public function getDescriptionLevel2($nivel1, $nivel2) {
+        if ($nivel1 != 'index' && $nivel2 != 'index') {
+            $idNivel2 = $this->productoRepository->getIdNivel2($nivel1, $nivel2);
+            $texto = $this->productoRepository->getDescriptionNivel2($idNivel2);
+        }
+        else {
+            $texto = $this->productoRepository->getDescriptionNivel2(0);
+        }
+        return $texto;
+    }
+
     public function getProduct(Request $request) {
         $product = $request->get('product');
 
@@ -254,19 +278,6 @@ class ProductController extends Controller {
         }
 
         return json_encode($response);
-    }
-
-    public function getSectionsLevel3($nivel1, $nivel2) {
-        $idNivel2 = $this->productoRepository->getIdNivel2($nivel1, $nivel2);
-        $secciones = $this->productoRepository->getCategoriasNivel3($idNivel2);
-        $response = array();
-        foreach ($secciones as $key => $seccion) {
-
-            $response[$key]['name'] = $seccion->nombreCategoriaNivel3;
-            $response[$key]['id'] = $seccion->idCategoriasNivel3;
-        }
-
-        return $response;
     }
 
     public function getFilters(Request $request) {

@@ -21,6 +21,9 @@
 
 @section('content')
     @component('components.breadcrumb')
+        @slot('level1', 'Marcas')
+        @slot('level2', $product['brand'])
+        @slot('level3', $product['name'])
     @endcomponent
     <div class="wrapper">
         <!-- Sidebar  -->

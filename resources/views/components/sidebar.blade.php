@@ -46,7 +46,7 @@
                             <div class="col-4 px-2">
                                 <a href="{{route('products', ['categoryLevel1'=> strtolower($itemLevel1->nombreCategoriaNivel1), 'categoryLevel2'=> strtolower($itemLevel2->name)])}}"
                                    class="btn btn-light p-0" style="width: 100%">
-                                    <img src="{{asset('assets/images/brands/'.strtolower($itemLevel2->name).'.jpg')}}" alt="shindaiwa" style="width: 100%">
+                                    <img src="{{asset('assets/images/brands/'.strtolower($itemLevel2->name).'.jpg')}}" alt="{{$itemLevel2->name}}" style="width: 100%">
                                 </a>
                             </div>
                         @endforeach
