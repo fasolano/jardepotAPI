@@ -92,11 +92,6 @@ $(document).ready(function() {  // <-- ensure form's HTML is ready
     });
 });
 
-$.ajaxSetup({
-    headers: {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-    }
-});
 
 function changeImg(medium,big,name){
     $('#drift-trigger').replaceWith(' <img style="max-width: 100%" id="drift-trigger" src="'+medium+'" data-zoom="'+big+'"  title="'+name+'" alt="'+name+'">');

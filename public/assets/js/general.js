@@ -1,3 +1,9 @@
+$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
+
 $('#search-form').on('keypress',function(e) {
     if(e.which == 13) {
         $('#search-form').submit();

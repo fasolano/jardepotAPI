@@ -88,9 +88,11 @@
         }
     });
 
-    $("#carouselExample").carousel({
-        interval: 2000
-    });
+    setTimeout(function(){
+        $("#carouselExample").carousel({
+            interval: 2000
+        });
+    }, 1000);
 
   /*  $(document).ready(function() {
         /!* show lightbox when clicking a thumbnail *!/

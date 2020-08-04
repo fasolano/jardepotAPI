@@ -26,3 +26,10 @@ Route::get('/{categoryLevel1}/{categoryLevel2}' , 'views\ProductsController@prod
 Route::get('/catalogo/{marca}/{productType}-{brand}-{mpn}' , 'views\ProductController@product')->name('product');
 
 Route::post('product/sendSearch', 'views\ProductController@sendSearch');
+
+Route::get('/cart', function () {
+    return view('pages/cart');
+});
+Route::get('/cart/products/get', 'views\CartController@getCartProducts')->name('productsCart');
+Route::post('cart/addProduct', 'views\CartController@addProduct');
+Route::delete('cart/removeProduct', 'views\CartController@removeProductCart');

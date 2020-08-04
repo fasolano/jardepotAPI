@@ -350,5 +350,20 @@
              hoverBoundingBox: true,
         });
     </script>
-
+    <script type="application/ld+json">
+        {
+            "@context": "http://schema.org",
+            "@type": "Product",
+            "name": "{{$product['name']}}",
+            "mpn": "{{$product['mpn']}}",
+            "brand": "{{$product['brand']}}",
+            "image": "{{asset($product['images'][0]['medium'])}}",
+            "description": "{{$product['description']}}",
+            "offers": {
+                "@type": "Offer",
+                "price": {{$product['name']}},
+                "priceCurrency": "MXN"
+            },
+        }
+    </script>
 @endsection
