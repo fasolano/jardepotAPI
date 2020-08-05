@@ -11,6 +11,7 @@
 </head>
 
 <body style="font-family: Roboto !important;">
+<div id="overlay-bussy"><div id="loading"></div></div>
 @include('layout.navbar')
 <div class="container-fluid" style="background: #fafafa;">
     <div class="row justify-content-md-center">

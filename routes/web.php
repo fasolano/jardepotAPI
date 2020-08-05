@@ -27,6 +27,8 @@ Route::get('/catalogo/{marca}/{productType}-{brand}-{mpn}' , 'views\ProductContr
 
 Route::post('product/sendSearch', 'views\ProductController@sendSearch');
 
+Route::post('products/searchFailed', 'views\ProductsController@sendSearchFailed');
+
 Route::get('/cart', function () {
     return view('pages/cart');
 });

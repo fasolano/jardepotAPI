@@ -18,10 +18,9 @@ $('#search-form').submit(function (e) {
 
 var bussy = false;
 
-
 function ajaxCall(parameters){
-
     if(! bussy){
+        $('#overlay-bussy').addClass('active');
         parameters["data"]._token = $('meta[name="csrf-token"]').attr('content');
         bussy = true;
         parameters["dataType"] = (typeof parameters["dataType"] == "undefined" || parameters["dataType"] == null)?"text":parameters["dataType"];
@@ -32,10 +31,12 @@ function ajaxCall(parameters){
             data: parameters["data"],
             success: parameters["success"],
             error: function (err) {
+                $('#overlay-bussy').removeClass('active');
                 console.log(err);
                 alert("Ocurrio un error "+parameters["url"], "Error");
             },
             complete: function(){
+                $('#overlay-bussy').removeClass('active');
                 if(!typeof parameters["complete"] === "undefined" && !parameters["complete"] == null){
                     parameters["complete"]();
                 }

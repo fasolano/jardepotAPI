@@ -122,6 +122,20 @@ class ProductsController extends Controller {
     }
 
     public function sendSearchFailed(Request $request){
+        $productRepository = new ProductRepository();
+        $name = $request->get('name');
+        $phone = $request->get('phone');
+        $coment = $request->get('coments');
+        $search = $request->get('search');
+        $form = new \stdClass();
+        $form->nombre = $name;
+        $form->telefono = $phone;
+        $form->comentario = $coment;
+        $form->busqueda = $search;
+
+
+        $res = $productRepository->sendBusqueda($form, $search);
+        return json_encode(['resultado' => $res]);
     }
 
     function porductModelFormat($productosCategoria){

@@ -85,7 +85,17 @@ $(document).ready(function () {
         reloadProducts();
     });
 
-    $("#formularioDudas").submit(function(e) {
+    $('#form-failed').on('keypress',function (e) {
+        if(e.which == 13) {
+            $('#search-form').submit();
+        }
+    });
+
+    $('#btn-form').click(function () {
+        $("#form-failed").submit();
+    });
+
+    $("#form-failed").submit(function(e) {
         e.preventDefault();
     }).validate({
         rules: {
@@ -101,7 +111,6 @@ $(document).ready(function () {
                 maxlength: 10
             },
             "comentario": {
-                minlength: 3,
                 maxlength: 100
             }
         },
@@ -118,39 +127,32 @@ $(document).ready(function () {
                 minlength: "Debe contener 10 dígitos."
             },
             "comentario": {
-                maxlength: "Debe contener máximo de 100.",
-                minlength: "Debe contener un mínimo de 3."
+                maxlength: "Debe contener máximo de 100."
             }
         },
         submitHandler : function() {
-            var formdata = $("#formularioDudas").serializeArray();
-            var data = {};
-            $(formdata).each(function(index, obj){
-                data[obj.name] = obj.value;
-            });
-            console.log(data);
-            $.ajax({
-                url: '../../product/sendSearch',
-                type: 'POST',
-                //    contentType: 'application/json; charset=utf-8',
-                dataType: 'json',
-                data: {
-                    'textoBuscado': '',
-                    'forms': JSON.stringify(data)
-                },
-                success: function (result) {
-                    console.log(result);
-                    if (result.resultado === true) {
-                        $('#div-formulario').hide();
-                        $('#div-send').show();
-                    }
-                    $("#formularioDudas").reset();
-                }, error: function () {
-                    console.log('error petición')
-                    $('#div-formulario').show();
-                    $('#div-send').hide();
+            var name = $('#name').val();
+            var phone = $('#phone').val();
+            var coments = $('#coments').val();
+            var search = $('#word-search').val();
+            var parameters = [];
+            parameters['url'] = "../products/searchFailed";
+            parameters['type'] = "POST";
+            parameters['dataType'] = "json";
+            parameters['data'] = {
+                name: name,
+                phone: phone,
+                search: search,
+                coments: coments
+            };
+            parameters['success'] = function (result) {
+                console.log(result);
+                if (result.resultado === true) {
+                    $('#container-form').removeClass('d-flex').addClass('d-none');
+                    $('#container-form-sent').removeClass('d-none').addClass('d-flex');
                 }
-            });
+            };
+            ajaxCall(parameters);
         }
     });
 
