@@ -15,9 +15,6 @@ function verifyCookie(){
             Cookies.set('session', result, { expires: 7 })
         };
         ajaxCall(parameters);
-        return false;
-    }else{
-        return true;
     }
 }
 
@@ -119,4 +116,17 @@ function setCookie(name, value, expireDays, path = '') {
         documento.cookie = `${name}=${value}; ${expires}${cpath}`;
     }
 
+}
+
+function addCartProduct(product){
+    verifyCookie();
+    var parameters = [];
+    parameters['url'] = "api/session";
+    parameters['type'] = "GET";
+    parameters['dataType'] = "json";
+    parameters['data'] = {};
+    parameters['success'] = function (result) {
+        Cookies.set('session', result, { expires: 7 })
+    };
+    ajaxCall(parameters);
 }
