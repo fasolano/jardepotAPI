@@ -15,6 +15,9 @@ function verifyCookie(){
             Cookies.set('session', result, { expires: 7 })
         };
         ajaxCall(parameters);
+        return false;
+    }else{
+        return true;
     }
 }
 
