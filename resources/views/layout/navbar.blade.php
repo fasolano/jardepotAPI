@@ -79,7 +79,7 @@
                     </button>
                     <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left" aria-labelledby="dropdownMenuButton" style="width: 300px">
                         <div class="dropdown-item">
-                            <span style="font-size: 15px">2 Productos</span>&nbsp;&nbsp;<a href="#" class="text-muted">Ver carrito</a>
+                            <span style="font-size: 15px">2 Productos</span>&nbsp;&nbsp;<a href="{{url('cart')}}" class="text-muted">Ver carrito</a>
                         </div>
                         <div class="dropdown-divider"></div>
                         <div class="dropdown-item">
@@ -114,7 +114,7 @@
                                 <button class="btn btn-secondary btn-lg btn-circle" title="Borrar todo">
                                     <i class="material-icons" >remove_shopping_cart</i>
                                 </button>
-                                <a class="btn btn-warning btn- btn-circle" href="/cart" title="Pagar">
+                                <a class="btn btn-warning btn- btn-circle" href="{{url('cart')}}" title="Pagar">
                                     <i class="material-icons">check</i>
                                 </a>
                             </div>
@@ -190,7 +190,7 @@
             </button>
             <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left" aria-labelledby="dropdownMenuButton" style="width: 300px">
                 <div class="dropdown-item">
-                    <span style="font-size: 15px">2 Productos</span>&nbsp;&nbsp;<a href="#" class="text-muted">Ver carrito</a>
+                    <span style="font-size: 15px">2 Productos</span>&nbsp;&nbsp;<a href="{{url('cart')}}" class="text-muted">Ver carrito</a>
                 </div>
                 <div class="dropdown-divider"></div>
                 <div class="dropdown-item">
@@ -225,7 +225,7 @@
                         <button class="btn btn-secondary btn-lg btn-circle" title="Borrar todo">
                             <i class="material-icons" >remove_shopping_cart</i>
                         </button>
-                        <a class="btn btn-warning btn- btn-circle" href="/cart" title="Pagar">
+                        <a class="btn btn-warning btn- btn-circle" href="{{url('cart')}}"  title="Pagar">
                             <i class="material-icons">check</i>
                         </a>
                     </div>
