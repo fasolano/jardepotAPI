@@ -35,3 +35,7 @@ Route::get('/cart', function () {
 Route::get('/cart/products/get', 'views\CartController@getCartProducts')->name('productsCart');
 Route::post('cart/addProduct', 'views\CartController@addProduct');
 Route::delete('cart/removeProduct', 'views\CartController@removeProductCart');
+
+Route::get('/checkout', function () {
+    return view('pages/checkout');
+});

@@ -96,7 +96,7 @@
                                    data-target="#modalMercadoPago">Pagar - Mercado Pago</a>
                             </div>
                             <div class="col-sm-3 text-left">
-                                <a class="btn btn-warning">Pagar - Deposito Bancario</a>
+                                <a href="{{url('/checkout')}}" class="btn btn-warning">Pagar - Deposito Bancario</a>
                             </div>
                         </div>
                     </div>
@@ -113,7 +113,7 @@
                                data-target="#modalMercadoPago">Pagar - Mercado Pago</a>
                         </div>
                         <div class="col-10 offset-2 text-right m-3" style="color: #FFFFFF">
-                            <a class="btn btn-warning btn-block">Pagar - Deposito Bancario</a>
+                            <a href="{{url('/checkout')}}" class="btn btn-warning btn-block" >Pagar - Deposito Bancario</a>
                         </div>
                     </div>
 
