@@ -85,7 +85,7 @@
                                         </a>
                                     </div>
                                     <!-- Card body -->
-                                    <div id="collapseOne{{$key}}" class="collapse {{$key ==2?'show':''}}" role="tabpanel"
+                                    <div id="collapseOne{{$key}}" class="collapse {{$key == 2?'show':''}}" role="tabpanel"
                                          aria-labelledby="headingOne{{$key}}" data-parent="#accordionEx">
                                         <div class="card-body p-0">
                                             <div class="col-sm-12">
