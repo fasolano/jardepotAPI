@@ -19,6 +19,8 @@ class ProductsController extends Controller {
     }
 
     public function productsList($categoryLevel1, $categoryLevel2){
+        $categoryLevel1 = str_replace("-", " ", ucfirst($categoryLevel1));
+        $categoryLevel2 = str_replace("-", " ", ucfirst($categoryLevel2));
         $menuController = new MenuController();
         $sidebar = $menuController->getSidebar();
         $productController = new \App\Http\Controllers\ProductController();
@@ -27,6 +29,7 @@ class ProductsController extends Controller {
         $numberPages = count($products) / 8;
         $filters = $productController->getSectionsLevel3($categoryLevel1, $categoryLevel2);
         $descriptionLevel2 = $productController->getDescriptionLevel2($categoryLevel1, $categoryLevel2);
+
         $textFilter = "";
         if($categoryLevel1 == "marcas" || $categoryLevel1 == "refacciones"){
             $textFilter = "equipos";

@@ -163,10 +163,10 @@ function reloadProducts() {
     search = search[search.length - 2] === 'busqueda';
     var parameters = [];
     if(!search){
-        parameters['url'] = "/jardepotAPI/public/products/getProductsFiltered";
+        parameters['url'] = "../products/getProductsFiltered";
         parameters['data'] = {'order':order, 'filters':filters, 'level1': $('#level1').val(), 'level2': $('#level2').val() };
     }else{
-        parameters['url'] = "/jardepotAPI/public/products/getProductsOrdered";
+        parameters['url'] = "../products/getProductsOrdered";
         parameters['data'] = {'order':order, 'word': $('#word-search').val() };
     }
     parameters['dataType'] = "json";
@@ -187,14 +187,14 @@ function reloadProducts() {
                 dNone = "d-none";
             }
             var item = '<div class="card shadow-sm product-item col-sm-6 col-md-4 col-lg-3 p-0 mt-2 '+dNone+'" style="border-radius: 5px;overflow: hidden;">' +
-                '                                <a href="/jardepotAPI/public/catalogo/'+e.brand.toLowerCase()+'/'+e.productType.toLowerCase()+'/">' +
+                '                                <a href="../catalogo/'+e.brand.toLowerCase()+'/'+e.productType.toLowerCase()+'/">' +
                 '                                    ' + discount +
                 '                                    <div class="product-image" style="height: 205px">' +
                 '                                        <img style="max-width: 80%; max-height: 100%;"' +
-                '                                             src="/jardepotAPI/public/'+e.images[0].medium+'"' +
+                '                                             src="../'+e.images[0].medium+'"' +
                 '                                             title="'+e.name+'" alt="'+e.name+'">' +
                 '                                    </div>' +
-                '                                    <img class="free-delivery-recom" src="/jardepotAPI/public/assets/images/otros/gratis.png"' +
+                '                                    <img class="free-delivery-recom" src="../assets/images/otros/gratis.png"' +
                 '                                         title="Envío gratis Jardepot" alt="Envío gratis Jardepot">' +
                 '                                </a>' +
                 '                                <div class="d-flex align-items-center flex-column" style="height: 245px;">' +
