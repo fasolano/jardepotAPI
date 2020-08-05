@@ -110,6 +110,13 @@ class MenuRepository{
         return $idCategorias;
     }
 
-
+    public function getAdditional2(){
+        $categorias = DB::table('categoriasNivel1')
+            ->select('idCategoriasNivel1 as id','nombreCategoriaNivel1 as name')
+            ->whereRaw("(ubicacion = 'ambos' OR ubicacion = 'sidebar')")
+            ->orderBy('prioridad','asc')
+            ->get();
+        return $categorias;
+    }
 
 }

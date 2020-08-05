@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\views;
 
-
-
+use App\Http\Controllers\ApiTokenController;
+use App\Http\Controllers\Controller;
 use App\Repositories\CartRepository;
 use App\Repositories\ProductRepository;
 use Illuminate\Http\Request;

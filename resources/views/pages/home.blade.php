@@ -1,5 +1,12 @@
 @extends('pages')
 
+@section('metaData')
+    <title>{{ $descriptionLevel2->metatitle}}</title>
+    <meta title="{{ $descriptionLevel2->metatitle}}"/>
+    <meta name="description" content="{{$descriptionLevel2->metadescription}}">
+    <meta name="keywords" content="{{$descriptionLevel2->keywords}}">
+@endsection
+
 @section('content')
     <div class="row div-banners">
         <div class="col-xl-5 pr-0">
@@ -43,124 +50,63 @@
     @include('components.infoCompra')
 
     <div class="row mt-4">
-        <div class="col-md-4">
-            <div class="border shadow p-3 bg-white rounded div-sublinks">
-                <h3>Equipos</h3>
-                <div class="col-sm-12">
-                    <div class="jd-sublinks-items">
-                        <a><i class="material-icons">keyboard_arrow_right</i>Aspersoras</a>
-                        <a><i class="material-icons">keyboard_arrow_right</i>Desbrozadoras</a>
-                        <a><i class="material-icons">keyboard_arrow_right</i>Desinfectantes</a>
-                        <a><i class="material-icons">keyboard_arrow_right</i>Cortasetos</a>
-                        <a><i class="material-icons">keyboard_arrow_right</i>Fertilizadoras</a>
-                        <a><i class="material-icons">keyboard_arrow_right</i>Generadores</a>
-                        <a><i class="material-icons">keyboard_arrow_right</i>Hidrolavadoras</a>
-                        <a><i class="material-icons">keyboard_arrow_right</i>Hoyadoras</a>
-                        <a><i class="material-icons">keyboard_arrow_right</i>Motobombas</a>
-                        <a><i class="material-icons">keyboard_arrow_right</i>Motocultores</a>
-                        <a><i class="material-icons">keyboard_arrow_right</i>Motores</a>
-                        <a><i class="material-icons">keyboard_arrow_right</i>Multifuncionales</a>
-                        <a><i class="material-icons">keyboard_arrow_right</i>Motosierras</a>
-                        <a><i class="material-icons">keyboard_arrow_right</i>Nebulizadoras</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4" >
-            <div class="border shadow p-3 bg-white rounded div-sublinks">
-                <h3>Marcas</h3>
-                <div class="col-sm-12">
-                    <div class="jd-sublinks-items">
-                        <a><i class="material-icons">keyboard_arrow_right</i>Aspersoras</a>
-                        <a><i class="material-icons">keyboard_arrow_right</i>Desbrozadoras</a>
-                        <a><i class="material-icons">keyboard_arrow_right</i>Desinfectantes</a>
-                        <a><i class="material-icons">keyboard_arrow_right</i>Cortasetos</a>
-                        <a><i class="material-icons">keyboard_arrow_right</i>Fertilizadoras</a>
-                        <a><i class="material-icons">keyboard_arrow_right</i>Generadores</a>
-                        <a><i class="material-icons">keyboard_arrow_right</i>Hidrolavadoras</a>
-                        <a><i class="material-icons">keyboard_arrow_right</i>Hoyadoras</a>
-                        <a><i class="material-icons">keyboard_arrow_right</i>Motobombas</a>
-                        <a><i class="material-icons">keyboard_arrow_right</i>Motocultores</a>
-                        <a><i class="material-icons">keyboard_arrow_right</i>Motores</a>
-                        <a><i class="material-icons">keyboard_arrow_right</i>Multifuncionales</a>
-                        <a><i class="material-icons">keyboard_arrow_right</i>Motosierras</a>
-                        <a><i class="material-icons">keyboard_arrow_right</i>Nebulizadoras</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4" >
-            <div class="border shadow p-3 bg-white rounded div-sublinks">
-                <h3>Otros</h3>
-                <div class=" md-accordion" id="accordionEx" role="tablist" aria-multiselectable="true">
-                    <!-- Accordion card -->
-                    <div class="card">
-                        <!-- Card header -->
-                        <div class="card-header title-card" role="tab" id="headingOne1" style="background-color: #fff;">
-                            <a data-toggle="collapse" data-parent="#accordionEx" href="#collapseOne1"
-                               aria-expanded="true" aria-controls="collapseOne1">
-                                <h5 class="mb-0 text-dark">
-                                    Accesorios y Consumibles <i class="material-icons">keyboard_arrow_down</i>
-                                </h5>
-                            </a>
+        @foreach($menuAdditional as $key => $cat1)
+            @if($key < 2)
+                <div class="col-md-4">
+                    <div class="border shadow p-3 bg-white rounded div-sublinks">
+                        <h3>{{$cat1['nivel1']}}</h3>
+                        <div class="col-sm-12">
+                            <div class="jd-sublinks-items">
+                                @foreach($cat1['nivel2'] as $categoria2)
+                                    <a href="{{url($categoria2['href'])}}"><i class="material-icons">keyboard_arrow_right</i>{{$categoria2['name']}}
+                                    </a>
+                                @endforeach
+                            </div>
                         </div>
-                        <!-- Card body -->
-                        <div id="collapseOne1" class="collapse show" role="tabpanel" aria-labelledby="headingOne1"
-                             data-parent="#accordionEx">
-                            <div class="card-body p-0">
-                                <div class="col-sm-12">
-                                    <div class="jd-sublinks-items">
-                                        <a><i class="material-icons">keyboard_arrow_right</i>Aspersoras</a>
-                                        <a><i class="material-icons">keyboard_arrow_right</i>Desbrozadoras</a>
-                                        <a><i class="material-icons">keyboard_arrow_right</i>Desinfectantes</a>
-                                        <a><i class="material-icons">keyboard_arrow_right</i>Cortasetos</a>
-                                        <a><i class="material-icons">keyboard_arrow_right</i>Fertilizadoras</a>
-                                        <a><i class="material-icons">keyboard_arrow_right</i>Generadores</a>
-                                        <a><i class="material-icons">keyboard_arrow_right</i>Hidrolavadoras</a>
-                                        <a><i class="material-icons">keyboard_arrow_right</i>Hoyadoras</a>
+                    </div>
+                </div>
+            @else
+                @if($key == 2)
+                    <div class="col-md-4">
+                        <div class="border shadow p-3 bg-white rounded div-sublinks">
+                            <h3>Otros</h3>
+                            <div class="md-accordion" id="accordionEx" role="tablist" aria-multiselectable="true">
+                @endif
+                            <!-- Accordion card -->
+                                <div class="card">
+                                    <!-- Card header -->
+                                    <div class="card-header title-card" role="tab" id="headingOne{{$key}}"
+                                         style="background-color: #fff;">
+                                        <a data-toggle="collapse" data-parent="#accordionEx" href="#collapseOne{{$key}}"
+                                           aria-expanded="true" aria-controls="collapseOne{{$key}}">
+                                            <h5 class="mb-0 text-dark">
+                                                {{$cat1['nivel1']}} <i class="material-icons">keyboard_arrow_down</i>
+                                            </h5>
+                                        </a>
+                                    </div>
+                                    <!-- Card body -->
+                                    <div id="collapseOne{{$key}}" class="collapse {{$key ==2?'show':''}}" role="tabpanel"
+                                         aria-labelledby="headingOne{{$key}}" data-parent="#accordionEx">
+                                        <div class="card-body p-0">
+                                            <div class="col-sm-12">
+                                                <div class="jd-sublinks-items">
+                                                    @foreach($cat1['nivel2'] as $key2 => $categoria2)
+                                                        <a href="{{url($categoria2['href'])}}">
+                                                            <i class="material-icons">keyboard_arrow_right</i>{{$categoria2['name']}}
+                                                        </a>
+                                                    @endforeach
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
+                @if($loop->last)
                             </div>
                         </div>
                     </div>
-                    <!-- Accordion card -->
-                    <div class="card">
-                        <div class="card-header title-card" role="tab" id="headingTwo2" style="background-color: #fff;">
-                            <a class="collapsed" data-toggle="collapse" data-parent="#accordionEx" href="#collapseTwo2"
-                               aria-expanded="false" aria-controls="collapseTwo2">
-                                <h5 class="mb-0 text-dark">
-                                    Herramientas Manuales<i class="material-icons">keyboard_arrow_down</i>
-                                </h5>
-                            </a>
-                        </div>
-                        <div id="collapseTwo2" class="collapse" role="tabpanel" aria-labelledby="headingTwo2"
-                             data-parent="#accordionEx">
-                            <div class="card-body p-0">
-                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad
-                                squid. 3
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-header" role="tab" id="headingThree3" style="background-color: #fff;">
-                            <a class="collapsed bg-dark title-card" data-toggle="collapse" data-parent="#accordionEx"
-                               href="#collapseThree3"aria-expanded="false" aria-controls="collapseThree3">
-                                <h5 class="mb-0 text-dark" style="">
-                                    Refacciones <i class="material-icons">keyboard_arrow_down</i>
-                                </h5>
-                            </a>
-                        </div>
-                        <div id="collapseThree3" class="collapse" role="tabpanel" aria-labelledby="headingThree3"
-                             data-parent="#accordionEx">
-                            <div class="card-body p-0">
-                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad
-                                squid. 3
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+                @endif
+            @endif
+        @endforeach
     </div>
 
     @include('components.caruselCanales')

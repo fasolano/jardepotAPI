@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('pages/home');
-})->name('home');
+Route::get('/' , 'views\HomeController@index')->name('home');
 
 Route::get('/products/getProductsFiltered' , 'views\ProductsController@productsListFiltered');
 
