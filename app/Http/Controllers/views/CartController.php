@@ -17,7 +17,6 @@ class CartController extends Controller {
     public function __construct(Request $request){
         $api = new ApiTokenController();
         $cookie = json_decode($request->get('sessionCookie'));
-        $cookie = $request->cookie('jardepotapi_session');;
         if($cookie == ""){
             $this->user = null;
         }else{
@@ -32,8 +31,7 @@ class CartController extends Controller {
         $user = Auth::guard()->user();
         $productRepository = new ProductRepository();
         $repository = new CartRepository();
-        // $cookie = json_decode($request->get('sessionCookie'));
-        $cookie = $request->cookie('jardepotapi_session');;
+        $cookie = json_decode($request->get('sessionCookie'));
         $product = json_decode($request->get('product'));
         $quantity = json_decode($request->get('quantity'));
         $cart = isset($cookie->carrito)? $cookie->carrito: false;
@@ -50,8 +48,7 @@ class CartController extends Controller {
     }
 
     public function getCartProducts(Request $request){
-        //$cookie = json_decode($request->get('_token'));
-        $cookie = $request->cookie('jardepotapi_session');;
+        $cookie = json_decode($request->get('_token'));
         if(!$this->user || $cookie == ""){
             return response()->json(null, 204);
         }

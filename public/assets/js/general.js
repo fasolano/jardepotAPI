@@ -4,6 +4,23 @@ $.ajaxSetup({
     }
 });
 
+$(document).ready(function (){
+    console.log(Cookie.get('name'));
+    if(Cookie.get('session') === undefined){
+        var parameters = [];
+        parameters['url'] = "api/session";
+        parameters['type'] = "GET";
+        parameters['dataType'] = "json";
+        parameters['data'] = {};
+        parameters['success'] = function (result) {
+            console.log(result);
+            Cookie.set('session', result, { expires: 7 })
+
+        };
+        ajaxCall(parameters);
+    }
+});
+
 $('#search-form').on('keypress',function(e) {
     if(e.which == 13) {
         $('#search-form').submit();
