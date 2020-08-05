@@ -68,3 +68,38 @@ function executeAfterAjaxRelease(functionToExecute){
         }, 500);
     }
 }
+
+function getCookie(name) {
+    let documento = (typeof document !== "undefined") ? document : null;
+    if(documento){
+        let ca = documento.cookie.split(';');
+        let caLen = ca.length;
+        let cookieName = `${name}=`;
+        let c;
+
+        for (let i = 0; i < caLen; i += 1) {
+            c = ca[i].replace(/^\s+/g, '');
+            if (c.indexOf(cookieName) == 0) {
+                return c.substring(cookieName.length, c.length);
+            }
+        }
+        return '';
+    }
+    return '';
+}
+
+function deleteCookie(name) {
+    this.setCookie(name, '', -1);
+}
+
+function setCookie(name, value, expireDays, path = '') {
+    let documento = (typeof document !== "undefined") ? document : null;
+    if(documento){
+        let d = new Date();
+        d.setTime(d.getTime() + expireDays * 24 * 60 * 60 * 1000);
+        let expires = `expires=${d.toUTCString()}`;
+        let cpath = path ? `; path=${path}` : '';
+        documento.cookie = `${name}=${value}; ${expires}${cpath}`;
+    }
+
+}
