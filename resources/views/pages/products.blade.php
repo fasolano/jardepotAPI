@@ -199,7 +199,7 @@
                 <div id="list-products-search">
                     <div class="row border shadow bg-white rounded">
                         <input type="hidden" value="{{$categoryLevel2}}" id="word-search">
-                        @if($categoryLevel2 == "")
+                        @if($categoryLevel2 == "productos")
                             <h1 class="m-2 text-muted" style="font-size: 28px;">Ofertas</h1>
                         @else
                             <h1 class="m-2 text-muted" style="font-size: 28px;">Buscaste: {{$categoryLevel2}}</h1>
