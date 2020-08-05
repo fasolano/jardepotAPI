@@ -143,7 +143,7 @@
                     </li>
                 @endforeach
             </ul>
-            <a class="mr-2 btn btn-danger btn-sm d-flex" href="{{url('ofertas')}}"><i class="material-icons iconMod">attach_money</i>Ofertas</a>
+            <a class="mr-2 btn btn-danger btn-sm d-flex" href="{{route('sales')}}"><i class="material-icons iconMod">attach_money</i>Ofertas</a>
             <a class="mr-2 btn-success btn-sm d-flex" href="https://wa.me/525551857805?text=Hola,%20me%20gustaría%20saber%20" style="text-decoration: none;">
                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true"
                      focusable="false" width="20px" height="20px" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);"

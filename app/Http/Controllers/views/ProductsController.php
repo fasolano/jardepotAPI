@@ -41,6 +41,31 @@ class ProductsController extends Controller {
         return view('pages/products', compact('sidebar', 'categoryLevel1', 'categoryLevel2', 'products', 'numberPages', 'filters', 'textFilter', 'descriptionLevel2'));
     }
 
+    public function productsSaleList(){
+        $productRepository = new ProductRepository();
+        $menuController = new MenuController();
+        $sidebar = $menuController->getSidebar();
+        $categoryLevel1 = "Ofertas";
+        $categoryLevel2 = "productos";
+        $numberPages = 0;
+        $descriptionLevel2 = new \stdClass();
+        $descriptionLevel2->metadescription = "Busca los productos que necesites Jardepot";
+        $descriptionLevel2->keywords = "Busca los productos que necesites Jardepot";
+        $descriptionLevel2->metatitle = "Jardepot, el lugar donde encuentras todo lo que necesitas";
+
+
+        $productsListSearch= $productRepository->getProductsOffer();
+        $productsListSearch = $this->porductModelFormat($productsListSearch);
+
+        if (count($productsListSearch) == 0) {
+            return view('pages/products', compact('sidebar', 'categoryLevel1', 'categoryLevel2', 'productsListSearch', 'numberPages', 'descriptionLevel2'));
+        }
+
+        $numberPages = count($productsListSearch) / 8;
+
+        return view('pages/products', compact('sidebar', 'categoryLevel1', 'categoryLevel2', 'productsListSearch', 'numberPages', 'descriptionLevel2'));
+    }
+
     public function getProductsListSearch($word){
         $productRepository = new ProductRepository();
         $menuController = new MenuController();
@@ -79,11 +104,15 @@ class ProductsController extends Controller {
         $orderBy = $request->get('order');
 
         $productsListSearch = array();
-        $matches= $productRepository->getProductsSearch2($word);
-        //$productsListSearch = $productRepository->getProductsSearch($word);
-        foreach ( $matches as $matchNivel) {
-            foreach ($matchNivel as $key => $match) {
-                array_push($productsListSearch, $match);
+        if ($word == "productos"){
+            $productsListSearch= $productRepository->getProductsOffer();
+        }else{
+            $matches= $productRepository->getProductsSearch2($word);
+            //$productsListSearch = $productRepository->getProductsSearch($word);
+            foreach ( $matches as $matchNivel) {
+                foreach ($matchNivel as $key => $match) {
+                    array_push($productsListSearch, $match);
+                }
             }
         }
         $productsListSearch = $this->porductModelFormat($productsListSearch);
@@ -97,6 +126,7 @@ class ProductsController extends Controller {
                 return $item1['newPriceFloat'] <=> $item2['newPriceFloat'];
             });
         }
+
         return json_encode($productsListSearch);
     }
 

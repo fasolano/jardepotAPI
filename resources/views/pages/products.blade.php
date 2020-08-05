@@ -97,7 +97,7 @@
                             <div class="card shadow-sm product-item col-sm-6 col-md-4 col-lg-3 p-0 mt-2 @if($loop->iteration > 8) d-none  @endif"
                                 style="border-radius: 5px;overflow: hidden;">
                                 <a href="{{route('product',
-                                ['marca'=> strtolower($item['brand']), 'productType'=> strtolower($item['productType']), 'brand'=> strtolower($item['brand']), 'mpn'=> strtolower($item['mpn'])])}}">
+                                ['marca'=> str_replace(" ", "-",strtolower($item['brand'])), 'productType'=> strtolower($item['productType']), 'brand'=> str_replace(" ", "-",strtolower($item['brand'])), 'mpn'=> strtolower($item['mpn'])])}}">
                                     @if(isset($item['discount']))
                                         <div class="ribbon ribbon-top-right" style="display: block"><span>Oferta</span>
                                         </div>
@@ -199,7 +199,11 @@
                 <div id="list-products-search">
                     <div class="row border shadow bg-white rounded">
                         <input type="hidden" value="{{$categoryLevel2}}" id="word-search">
-                        <h1 class="m-2 text-muted" style="font-size: 28px;">Buscaste: {{$categoryLevel2}}</h1>
+                        @if($categoryLevel2 == "")
+                            <h1 class="m-2 text-muted" style="font-size: 28px;">Ofertas</h1>
+                        @else
+                            <h1 class="m-2 text-muted" style="font-size: 28px;">Buscaste: {{$categoryLevel2}}</h1>
+                        @endif
                     </div>
                     <div class="row border shadow rounded bg-dark my-2 text-white px-2 d-flex justify-content-between align-items-center">
                         <div class="d-flex justify-content-center align-items-center">
@@ -236,7 +240,7 @@
                             <div class="card shadow-sm product-item col-sm-6 col-md-4 col-lg-3 p-0 mt-2 @if($loop->iteration > 8) d-none  @endif"
                                  style="border-radius: 5px;overflow: hidden;">
                                 <a href="{{route('product',
-                                ['marca'=> strtolower($item['brand']), 'productType'=> strtolower($item['productType']), 'brand'=> strtolower($item['brand']), 'mpn'=> strtolower($item['mpn'])])}}">
+                                ['marca'=> str_replace(" ", "-",strtolower($item['brand'])), 'productType'=> strtolower($item['productType']), 'brand'=> str_replace(" ", "-",strtolower($item['brand'])), 'mpn'=> strtolower($item['mpn'])])}}">
                                     @if(isset($item['discount']))
                                         <div class="ribbon ribbon-top-right" style="display: block"><span>Oferta</span>
                                         </div>

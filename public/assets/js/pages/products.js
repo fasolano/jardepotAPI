@@ -160,7 +160,7 @@ $(document).ready(function () {
 
 function reloadProducts() {
     var search = window.location.href.split('/');
-    search = search[search.length - 2] === 'busqueda';
+    search = search[search.length - 2] === 'busqueda' || search[search.length - 2] === 'ofertas';
     var parameters = [];
     if(!search){
         parameters['url'] = "../products/getProductsFiltered";
@@ -187,7 +187,7 @@ function reloadProducts() {
                 dNone = "d-none";
             }
             var item = '<div class="card shadow-sm product-item col-sm-6 col-md-4 col-lg-3 p-0 mt-2 '+dNone+'" style="border-radius: 5px;overflow: hidden;">' +
-                '                                <a href="../catalogo/'+e.brand.toLowerCase()+'/'+e.productType.toLowerCase()+'/">' +
+                '                                <a href="../catalogo/'+e.brand.toLowerCase().replace(" ", "-")+'/'+e.productType.toLowerCase()+'-'+e.brand.toLowerCase().replace(" ", "-")+'-'+e.mpn.toLowerCase()+'">' +
                 '                                    ' + discount +
                 '                                    <div class="product-image" style="height: 205px">' +
                 '                                        <img style="max-width: 80%; max-height: 100%;"' +
