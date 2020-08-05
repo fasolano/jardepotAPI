@@ -16,6 +16,7 @@ class ProductController extends Controller {
 
     //Todas las consultas tienen join con inventario, si se implementa openjardepot se deberan de quitar esos left join con  sus groupby
     public function __construct(){
+        setlocale(LC_MONETARY, 'en_US');
         $this->comprobarMoneyFormat();
         $this->productoRepository = new ProductRepository();
         $this-> unwanted_array = array(    'Š'=>'S', 'š'=>'s', 'Ž'=>'Z', 'ž'=>'z', 'À'=>'A', 'Á'=>'A', 'Â'=>'A', 'Ã'=>'A', 'Ä'=>'A', 'Å'=>'A', 'Æ'=>'A', 'Ç'=>'C', 'È'=>'E', 'É'=>'E',
