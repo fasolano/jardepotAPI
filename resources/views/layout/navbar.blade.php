@@ -1,5 +1,5 @@
 {{--Vista escritorio--}}
-<nav class="sticky-top navbar-dark bg-dark container-fluid d-none d-sm-none d-md-block">
+<nav class="sticky-top navbar-dark bg-dark container-fluid d-none  d-md-none  d-lg-block">
     <div class="row justify-content-md-center flex-column align-items-center">
         <div class="div-navbar col-12 col-xl-12 col-lg-12 col-md-12">
             <div class="row" style="color: white;">
@@ -116,7 +116,7 @@
     </div>
 </nav>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm d-none d-sm-none d-md-block">
+<nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm d-none d-md-none  d-lg-block">
     <div class="container-xl">
         {{--        <a class="navbar-brand" href="#">Container XL</a>--}}
         <div class="collapse navbar-collapse" id="navbarsDesktopL">
@@ -146,7 +146,7 @@
 </nav>
 
 {{--Vista Movil --}}
-<nav class="navbar navbar-dark sticky-top bg-dark  d-block d-sm-block d-md-none">
+<nav class="navbar navbar-dark sticky-top bg-dark  d-block d-sm-block d-lg-none">
     <div class="div-navbar-movil">
         <div class="row" style="width: 100%">
             <div class="col-10">
@@ -231,7 +231,7 @@
     </div>
 </nav>
 
-<nav class="navbar navbar-light bg-light  d-block d-sm-block d-md-none">
+<nav class="navbar navbar-light bg-light  d-block d-sm-block d-lg-none">
     <div class="row">
         <div class="col-6">
             <a class="mr-2 btn-success btn-sm d-flex" href="https://wa.me/525551857805?text=Hola,%20me%20gustaría%20saber%20" style="text-decoration: none;">
