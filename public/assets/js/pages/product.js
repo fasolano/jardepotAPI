@@ -99,3 +99,19 @@ function changeImg(medium,big,name){
     });
 }
 
+function addNumProduct(){
+    var cant = $('#cantidadProducto').val();
+    $('#cantidadProducto').val( parseInt(cant)+1);
+}
+function resNumProduct(){
+    var cant = $('#cantidadProducto').val();
+    if(cant > 1){
+        $('#cantidadProducto').val(parseInt(cant)-1);
+    }
+}
+function agregarProductoCarrito(productType,brand,mpn){
+    var cantidad = $('#cantidadProducto').val();
+    if(cantidad >= 1){
+        addCartProduct(productType,brand,mpn,cantidad);
+    }
+}

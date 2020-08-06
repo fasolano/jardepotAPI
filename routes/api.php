@@ -43,6 +43,7 @@ Route::get('session', 'ApiTokenController@getSession');
 Route::get('cart/products', 'CartController@getCartProducts');
 Route::post('cart/addProduct', 'CartController@addProduct');
 Route::delete('cart/removeProduct', 'CartController@removeProductCart');
+Route::delete('cart/removeAllProducts', 'CartController@removeAllProducts');
 
 
 Route::post('confirm/checkout', 'ConfirmController@index');

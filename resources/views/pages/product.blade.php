@@ -113,12 +113,12 @@
                                 <div class="col-md-6">
                                     <span>Cantidad:</span>
                                     <br>
-                                    <button class="btn" > <i class="material-icons">remove</i> </button>
-                                    <span><input type="number" style="width: auto" disabled id="quantity" name="quantity" value="1"></span>
-                                    <button class="btn"><i class="material-icons">add</i> </button>
+                                    <button onclick="resNumProduct()" class="btn"> <i class="material-icons">remove</i> </button>
+                                    <span><input type="number" style="width: 40px" disabled id="cantidadProducto" name="cantidadProducto" value="1"></span>
+                                    <button onclick="addNumProduct()" class="btn"><i class="material-icons">add</i> </button>
                                 </div>
                                 <div class="col-md-6 mt-2">
-                                    <button onclick="addCartProduct('{{$product['productType']}}','{{$product['brand']}}','{{$product['mpn']}}')" class="btn btn-danger">Agregar al carrito</button>
+                                    <button onclick="agregarProductoCarrito('{{$product['productType']}}','{{$product['brand']}}','{{$product['mpn']}}')" class="btn btn-danger">Agregar al carrito</button>
                                 </div>
                             </div>
                         @else

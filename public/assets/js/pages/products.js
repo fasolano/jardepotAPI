@@ -204,7 +204,8 @@ function reloadProducts() {
                 '                                        ' +(e.hasOwnProperty('oldPrice')?e.oldPrice:"")+
                 '                                    </p>' +
                 '                                    <p class="new-price">'+e.newPrice+'</p>' +
-                '                                    <button class="btn btn-buy d-flex justify-content-center align-items-center">' +
+                '                                    <button class="btn btn-buy d-flex justify-content-center align-items-center"' +
+                '                                       onclick="buyProduct(\''+ e.productType +'\',\''+e.brand+'\',\''+e.mpn+'\')">' +
                 '                                        <i class="material-icons" style="font-size: 16px;">shopping_cart</i> Comprar' +
                 '                                    </button>' +
                 '' +
@@ -246,4 +247,9 @@ function reloadProducts() {
         $('#eight-products').click();
     };
     ajaxCall(parameters);
+}
+
+function buyProduct(productType,brand,mpn){
+    addCartProduct(productType,brand,mpn,1);
+    window.location = ruta+'cart';
 }

@@ -19,7 +19,6 @@ function verifyCookie(){
         parameters['dataType'] = "json";
         parameters['data'] = {};
         parameters['success'] = function (result) {
-            console.log(result);
             Cookies.set('session', result, { expires: 7 })
         };
         ajaxCall(parameters);
@@ -301,4 +300,21 @@ function openSnackbar(status,message) {
     $('#snackbar').html('<p>'+message+'</p>')
     x.className = "show";
     setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+}
+
+function removeAllProducts(){
+    if(Cookies.get('session') !== undefined && Cookies.get('session') !== '' ) {
+        var parameters = [];
+        parameters['url'] = ruta + "api/cart/removeAllProducts";
+        parameters['type'] = "DELETE";
+        parameters['dataType'] = "json";
+        parameters['data'] = {'sessionCookie': Cookies.get('session')};
+        parameters['success'] = function (result) {
+            if (result.data === 'successful') {
+                getCartProducts();
+                openSnackbar('success', 'Se limpió el carrito');
+            }
+        };
+        ajaxCall(parameters);
+    }
 }

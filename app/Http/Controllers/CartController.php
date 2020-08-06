@@ -88,6 +88,29 @@ class CartController extends Controller {
         }
     }
 
+    public function removeAllProducts(Request $request){
+        if(!$this->user){
+            return response()->json(null, 204);
+        }
+        $user = Auth::guard()->user();
+        $repository = new CartRepository();
+        $cookie = json_decode($request->get('sessionCookie'));
+
+        $cart = isset($cookie->carrito)? $cookie->carrito: false;
+
+        if($cart && $repository->verifyCart($user, $cart)){
+            $products = $repository->getProductsFromCart($cart);
+            foreach ($products as $product){
+                $name = $product->productType.' '.$product->brand.' '.$product->mpn;
+                $repository->removeProduct($cart, $name);
+            }
+            $repository->updateCart($cart);
+            return response()->json(['data' => 'successful'], 201);
+        }else{
+            return response()->json(null, 204);
+        }
+    }
+
     //esta en unicamente para productos de carrito
     public function model_format_products($products) {
         $iterator = 0;
