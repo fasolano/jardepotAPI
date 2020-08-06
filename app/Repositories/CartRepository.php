@@ -148,7 +148,7 @@ class CartRepository{
                     'fk_carrito' => $cart,
                     'producto' => $product
                 ])
-                ->increment('cantidad', $quantity);
+                ->increment('cantidad', $quantity, ['estado' => 'Activo']);
             $productAdded = $productAdded->id_producto_carrito;
         }else{
             $date = date('Y-m-d H:i:s');
