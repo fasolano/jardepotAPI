@@ -227,18 +227,22 @@ function makeDropdownCart(products,total,quantityProducts){
             '<div class="dropdown-divider"></div>';
         $('#items-card-nav1').html(divs);
         $('#items-card-nav2').html(divs);
-    } /*else {
+    } else {
+        $('#option-dropdown-cart1').hide();
+        $('#option-dropdown-cart2').hide();
         $('#items-count-nav1').html('0');
         $('#products-coun-nav1').html('0 Productos');
         $('#items-count-nav2').html('0');
         $('#products-coun-nav2').html('0 Productos');
         var divs =
-                '<div class="dropdown-item">' +
-                '   <div class="text-muted mt-1"><b>No tienes ningún producto en tu carrito todavía</b></div>' +
-                '</div>' ;
+            '<div class="dropdown-item">' +
+            '   <div class="text-muted mt-1">' +
+            '       <span style="white-space: pre-line"><b>No tienes ningún producto en tu carrito.</b></span>' +
+            '   </div>' +
+            '</div>' ;
         $('#items-card-nav1').html(divs);
         $('#items-card-nav2').html(divs);
-    }*/
+    }
 }
 
 const formatterDolar = new Intl.NumberFormat('en-US', {
