@@ -143,7 +143,6 @@ class CartRepository{
             ])->first();
 
         if($productAdded){
-            $date = date('Y-m-d H:i:s');
             DB::table('producto_carrito')
                 ->where([
                     'fk_carrito' => $cart,
@@ -202,7 +201,7 @@ class CartRepository{
                 'fk_carrito' => $cart,
                 'producto' => $product
             ])
-            ->update(['estado' => 'Eliminado']);
+            ->update(['estado' => 'Eliminado', 'cantidad' => 0]);
     }
 
     public function getCart($cart){

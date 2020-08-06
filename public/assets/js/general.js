@@ -147,6 +147,28 @@ function addCartProduct(productType,brand,mpn,quantity){
     ajaxCall(parameters);
 }
 
+function decreaseCartProduct(productType,brand,mpn,quantity){
+    var product = {'productType':productType,'brand':brand,'mpn':mpn};
+    verifyCookie();
+    var parameters = [];
+    parameters['url'] = ruta+"api/cart/addProduct";
+    parameters['type'] = "POST";
+    parameters['dataType'] = "json";
+    parameters['data'] = {
+        'product': JSON.stringify(product),
+        'quantity':quantity,
+        'sessionCookie': Cookies.get('session')
+    };
+    parameters['success'] = function (result) {
+        if(result.data === 'successful'){
+            getCartProducts();
+            quantity = quantity * -1;
+            openSnackbar('danger','Quitaste '+quantity+' '+productType+' '+brand+' '+mpn);
+        }
+    };
+    ajaxCall(parameters);
+}
+
 function removeCartProduct(product){
     verifyCookie();
     var parameters = [];

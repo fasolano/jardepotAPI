@@ -2,24 +2,6 @@ $(document).ready(function (){
     getCartProductsView();
 });
 
-function addProductQuantity(product){
-    quantity = $('#quantity').val();
-    $.ajax({
-        url:'cart/addProduct',
-        type:'POST',
-        data:{
-            product:product,
-            quantity:quantity
-        },success:function (result){
-
-        },error:function (err){
-
-        }
-
-    });
-
-}
-
 function getCartProductsView(){
     var session = Cookies.get('session');
     if(session !== undefined && session !==''){
@@ -44,10 +26,11 @@ function getCartProductsView(){
                     '<td data-title="Cantidad">' +
                     '    <div class="product-controls">' +
                     '       <input type="hidden" class="inventory" value="'+e.inventory+'">' +
-                    '        <button class="btn remove-product"><i class="material-icons">remove</i></button>' +
+                    '        <button class="btn remove-product" ' +
+                    'onclick="decreaseCartProduct(\''+e.productType+'\', \''+e.brand+'\', \''+e.mpn+'\', -1)"><i class="material-icons">remove</i></button>' +
                     '        <span>'+e.cartCount+'</span>' +
                     '        <button class="btn add-product" ' +
-                    'onclick="addCartProduct(\''+e.productType+'\', \''+e.brand+'\', \''+e.mpn+'\')"><i class="material-icons">add</i></button>' +
+                    'onclick="addCartProduct(\''+e.productType+'\', \''+e.brand+'\', \''+e.mpn+'\', 1)"><i class="material-icons">add</i></button>' +
                     '    </div>' +
                     '</td>' +
                     '<td data-title="Total">'+formatterDolar.format((e.cartCount * e.newPrice))+'</td>' +
