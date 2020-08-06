@@ -11,116 +11,98 @@
 @section('specificCSS')
     <!-- Scrollbar Custom CSS -->
     <link rel="stylesheet" href="{{asset('assets/css/components/breadcrumb.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/pages/cart.css')}}">
     <script type="text/javascript" src="{{asset('assets/js/jquery.validate.min.js')}}"></script>
 @endsection
 
 @section('content')
     <div class="wrapper">
         <!-- Page Content  -->
-        <div id="content" class="row">
+        <div id="content" class="row my-3">
+
             <div class="col-lg-12 col-md-12">
                 @if(0 == 0)
-                    <div class="table-responsive shadow mb-3">
-                        <table class="table  mt-3" style="background-color: #ffffff !important;">
-                            <thead>
-                            <tr>
-                                <th scope="col">Producto</th>
-                                <th scope="col">Nombre</th>
-                                <th scope="col">Precio</th>
-                                <th scope="col">Cantidad</th>
-                                <th scope="col">Total</th>
-                                <th scope="col"  class="text-center">
-                                    <button class="btn btn-secondary">Borrar todo</button>
-                                </th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <th scope="row"><img style="width: 80px;height: 80px;"
-                                                     src="{{asset('assets/images/productos/aspersora-takashi-at26ec.jpg')}}">
-                                </th>
-                                <td><a style="font-weight: 500;color: #000000" href="{{url('')}}">Aspersora Takashi AT26EC</a></td>
-                                <td> $2,575.00</td>
-                                <td>
-                                    <div>
-                                        <button class="btn"><i class="material-icons">add</i></button>
-                                        <span>1</span>
-                                        <button class="btn"><i class="material-icons">remove</i></button>
-                                    </div>
-                                </td>
-                                <td>$2,575.00</td>
-                                <td class="text-center">
-                                    <button title="Borrar" class="btn btn-secondary btn-circle">X</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row"><img style="width: 80px;height: 80px;"
-                                                     src="{{asset('assets/images/productos/aspersora-takashi-at26ec.jpg')}}">
-                                </th>
-                                <td><a style="font-weight: 500;color: #000000" href="{{url('')}}">Aspersora Takashi AT26EC</a></td>
-                                <td> $2,575.00</td>
-                                <td>
-                                    <div>
-                                        <button class="btn"><i class="material-icons">add</i></button>
-                                        <span>1</span>
-                                        <button class="btn"><i class="material-icons">remove</i></button>
-                                    </div>
-                                </td>
-                                <td>$2,575.00</td>
-                                <td class="text-center">
-                                    <button title="Borrar" class="btn btn-secondary btn-circle">X</button>
-                                </td>
-                            </tr>
+                    <div class="border shadow bg-white rounded d-lg-block px-2">
+                        <h1 class="text-center my-2">Carrrito de compra</h1>
+                        <div id="no-more-tables">
+                            <table class="table col-sm-12 table-condensed cf">
+                                <thead class="cf">
+                                <tr>
+                                    <th>Producto</th>
+                                    <th>Nombre</th>
+                                    <th>Precio</th>
+                                    <th>Cantidad</th>
+                                    <th>Total</th>
+                                    <th class="text-center">
+                                        <button class="btn btn-secondary">Borrar todo</button>
+                                    </th>
+                                </tr>
+                                </thead>
+                                <tbody id="table-body">
+                                {{--<tr>
+                                    <td><img style="width: 80px;height: 80px;"
+                                                         src="{{asset('assets/images/productos/aspersora-takashi-at26ec.jpg')}}">
+                                    </td>
+                                    <td data-title="Nombre"><a style="font-weight: 500;color: #000000" href="{{url('')}}">Aspersora Takashi AT26EC</a></td>
+                                    <td data-title="Precio"> $2,575.00</td>
+                                    <td data-title="Cantidad">
+                                        <div>
+                                            <button class="btn"><i class="material-icons">add</i></button>
+                                            <span>1</span>
+                                            <button class="btn"><i class="material-icons">remove</i></button>
+                                        </div>
+                                    </td>
+                                    <td data-title="Total">$2,575.00</td>
+                                    <td data-title="          " class="text-center">
+                                        <button title="Borrar" class="btn btn-secondary btn-circle">X</button>
+                                    </td>
+                                </tr>--}}
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="row">
 
-                            <tr>
-                                <td colspan="5" class="text-right">
-                                    <span>Subtotal: </span>$2,575.00<br><span>Total: </span>$2,575.00
-                                </td>
-                                <td></td>
-                            </tr>
-
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="row d-none d-sm-none d-md-block m-3"  >
-                        <div class="row" style="color: #FFFFFF;">
-                            <div class="col-sm-3 text-center">
-                                <a class="btn btn-warning">Salir</a>
+                        </div>
+                        <div class="row d-none d-sm-none d-md-block m-3">
+                            <div class="row" style="color: #FFFFFF;">
+                                <div class="col-sm-3 text-center">
+                                    <a class="btn btn-warning">Salir</a>
+                                </div>
+                                <div class="col-sm-3 text-left">
+                                    <a class="btn btn-warning" href="javascript: void(0)" data-toggle="modal"
+                                       data-target="#modalPayPal">Pagar - PayPal</a>
+                                </div>
+                                <div class="col-sm-3 text-left">
+                                    <a class="btn btn-warning" href="javascript: void(0)" data-toggle="modal"
+                                       data-target="#modalMercadoPago">Pagar - Mercado Pago</a>
+                                </div>
+                                <div class="col-sm-3 text-left">
+                                    <a href="{{url('/checkout')}}" class="btn btn-warning">Pagar - Deposito Bancario</a>
+                                </div>
                             </div>
-                            <div class="col-sm-3 text-left">
-                                <a class="btn btn-warning" href="javascript: void(0)" data-toggle="modal"
+                        </div>
+                        <div class="row d-block d-sm-block d-md-none">
+                            <div class="col-10 offset-2 text-right m-3">
+                                <a class="btn btn-warning btn-block" style="color: #FFFFFF">Salir</a>
+                            </div>
+                            <div class="col-10 offset-2 text-right m-3" style="color: #FFFFFF">
+                                <a class="btn btn-warning btn-block" href="javascript: void(0)" data-toggle="modal"
                                    data-target="#modalPayPal">Pagar - PayPal</a>
                             </div>
-                            <div class="col-sm-3 text-left">
-                                <a class="btn btn-warning" href="javascript: void(0)" data-toggle="modal"
+                            <div class="col-10 offset-2 text-right m-3" style="color: #FFFFFF">
+                                <a class="btn btn-warning btn-block" href="javascript: void(0)" data-toggle="modal"
                                    data-target="#modalMercadoPago">Pagar - Mercado Pago</a>
                             </div>
-                            <div class="col-sm-3 text-left">
-                                <a href="{{url('/checkout')}}" class="btn btn-warning">Pagar - Deposito Bancario</a>
+                            <div class="col-10 offset-2 text-right m-3" style="color: #FFFFFF">
+                                <a href="{{url('/checkout')}}" class="btn btn-warning btn-block">Pagar - Deposito
+                                    Bancario</a>
                             </div>
-                        </div>
-                    </div>
-                    <div class="row d-block d-sm-block d-md-none">
-                        <div class="col-10 offset-2 text-right m-3">
-                            <a class="btn btn-warning btn-block" style="color: #FFFFFF">Salir</a>
-                        </div>
-                        <div class="col-10 offset-2 text-right m-3" style="color: #FFFFFF">
-                            <a class="btn btn-warning btn-block" href="javascript: void(0)" data-toggle="modal"
-                               data-target="#modalPayPal">Pagar - PayPal</a>
-                        </div>
-                        <div class="col-10 offset-2 text-right m-3" style="color: #FFFFFF">
-                            <a class="btn btn-warning btn-block" href="javascript: void(0)" data-toggle="modal"
-                               data-target="#modalMercadoPago">Pagar - Mercado Pago</a>
-                        </div>
-                        <div class="col-10 offset-2 text-right m-3" style="color: #FFFFFF">
-                            <a href="{{url('/checkout')}}" class="btn btn-warning btn-block" >Pagar - Deposito Bancario</a>
                         </div>
                     </div>
 
                 @else
                     <div style="height: 500px;">
-                        <div class="card"
-                             style="color: #000000; background-color: #e0e0e0;border-radius: 15px;width: 45%; margin: 22px 0 22px 0;">
+                        <div class="card" style="color: #000000; background-color: #e0e0e0;border-radius: 15px;width: 45%; margin: 22px 0 22px 0;">
                             <span style="padding: 5px">No tienes articulos en tu carrito</span>
                         </div>
                         <a class="btn btn-warning" href="{{url('/')}}">Continuar comprando</a>
@@ -273,6 +255,4 @@
     <script src="{{asset('assets/js/components/jquery.mCustomScrollbar.concat.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('assets/js/components/sidebar.js')}}"></script>
     <script type="text/javascript" src="{{asset('assets/js/pages/cart.js')}}"></script>
-
-
 @endsection

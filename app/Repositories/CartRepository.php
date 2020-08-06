@@ -135,13 +135,6 @@ class CartRepository{
     }
 
     public function addProductCart($cart, $product, $quantity){
-        $date = date('Y-m-d H:i:s');
-        DB::table('producto_carrito')
-            ->updateOrInsert(
-                ['fk_carrito' => $cart, 'producto' => $product],
-                ['alta' => $date, 'cantidad' => $quantity, 'estado' => 'Activo']
-            );
-
         $productAdded = DB::table('producto_carrito')
             ->select('id_producto_carrito')
             ->where([
@@ -149,7 +142,23 @@ class CartRepository{
                 'producto' => $product
             ])->first();
 
-        return $productAdded->id_producto_carrito;
+        if($productAdded){
+            $date = date('Y-m-d H:i:s');
+            DB::table('producto_carrito')
+                ->where([
+                    'fk_carrito' => $cart,
+                    'producto' => $product
+                ])
+                ->increment('cantidad', $quantity);
+            $productAdded = $productAdded->id_producto_carrito;
+        }else{
+            $date = date('Y-m-d H:i:s');
+            $productAdded = DB::table('producto_carrito')->insertGetId(
+                ['fk_carrito' => $cart, 'producto' => $product, 'alta' => $date, 'cantidad' => $quantity, 'estado' => 'Activo']
+            );
+        }
+
+        return $productAdded;
     }
 
     public function calculateTotalProducts($cart){
