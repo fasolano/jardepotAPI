@@ -113,12 +113,12 @@
                                 <div class="col-md-6">
                                     <span>Cantidad:</span>
                                     <br>
-                                    <button class="btn"> <i class="material-icons">remove</i> </button>
-                                    <span> 1 </span>
+                                    <button class="btn" > <i class="material-icons">remove</i> </button>
+                                    <span><input type="number" style="width: auto" disabled id="quantity" name="quantity" value="1"></span>
                                     <button class="btn"><i class="material-icons">add</i> </button>
                                 </div>
                                 <div class="col-md-6 mt-2">
-                                    <button class="btn btn-danger">Agregar al carrito</button>
+                                    <button onclick="addCartProduct('{{$product['productType']}}','{{$product['brand']}}','{{$product['mpn']}}')" class="btn btn-danger">Agregar al carrito</button>
                                 </div>
                             </div>
                         @else
@@ -253,7 +253,7 @@
                                             <img class="free-delivery-recom" src="{{asset('assets/images/otros/gratis.png')}}"
                                                  title="Envío gratis Jardepot" alt="Envío gratis Jardepot">
                                         </a>
-                                        <a class="title text-truncate" style="" title="{{$related['name']}}">{{$related['name']}}</a>
+                                        <a class="title text-truncate" data-toggle="tooltip" title="{{$related['name']}}">{{$related['name']}}</a>
                                         <div style="height: 18px">
                                             @if( ($related['oldPrice']) && $related['stock'])
                                                 <h3 class="old-price-recom text-muted">{{$related['oldPrice'] }}</h3>
@@ -263,7 +263,7 @@
                                             <h2 class="new-price-recom">{{$related['newPrice']}}</h2>
                                         @endif
                                         <div class="divider"></div>
-                                        <button type="button" class="btn">
+                                        <button type="button" class="btn" onclick="addCartProduct('{{$related['productType']}}','{{$related['brand']}}','{{$related['mpn']}}')">
                                             <span style="font-size: 14px"><i class="material-icons fn-color-jd">shopping_cart</i>Agregar al carrito</span>
                                         </button>
                                     </div>
@@ -307,14 +307,14 @@
             breakpoints: {
                 // when window width is >= 320px
                 300: {
-                    slidesPerView: 1,
+                    slidesPerView: 2,
                     spaceBetween: 20,
-                    slidesPerGroup: 1,
+                    slidesPerGroup: 2,
                 },
                 320: {
-                    slidesPerView: 1,
+                    slidesPerView: 2,
                     spaceBetween: 20,
-                    slidesPerGroup: 1,
+                    slidesPerGroup: 2,
                 },
                 // when window width is >= 480px
                 480: {

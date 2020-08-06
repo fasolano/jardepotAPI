@@ -50,11 +50,6 @@ class CartRepository{
             ->join('productos', function($join){
                 $join->on("pc.producto", DB::raw("binary CONCAT(productos.productType,' ',productos.brand,' ',productos.mpn)"));
             })
-            ->join("XML", function($join){
-                $join->on("productos.productType","=","XML.productType")
-                    ->on("productos.brand","=","XML.brand")
-                    ->on("productos.mpn","=","XML.mpn");
-            })
             ->leftJoin("inventario",function($join){
                 $join->on("productos.productType","=","inventario.productType")
                     ->on("productos.brand","=","inventario.brand")
@@ -73,13 +68,8 @@ class CartRepository{
                 'productos.PrecioDeLista',
                 'productos.offer',
                 'productos.iva',
-                'productos.video',
                 'productos.volada',
                 'productos.visible',
-                'XML.keywords',
-                'XML.metadesc',
-                'XML.descriptionweb',
-                'XML.resenia',
                 DB::raw('SUM(inventario.cantidad) as cantidadInventario')
             )
             ->where([

@@ -75,14 +75,15 @@
                     <button class="btn dropdown-toggle" style="color: #FFF" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <span style="color: #fff !important;cursor:pointer;font-size: 15px">
                         <i class="material-icons d-flex" style="color: #f68600;font-size: 24px !important;">shopping_cart</i>
-                            <span class="cart-items-count">0</span> Carrito de compras</span>
+                            <span class="cart-items-count" id="items-count-nav1">0</span> Carrito de compras</span>
                     </button>
                     <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left" aria-labelledby="dropdownMenuButton" style="width: 300px">
                         <div class="dropdown-item">
-                            <span style="font-size: 15px">2 Productos</span>&nbsp;&nbsp;<a href="{{url('cart')}}" class="text-muted">Ver carrito</a>
+                            <span style="font-size: 15px" id="products-coun-nav1"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="{{url('cart')}}" class="text-muted">Ver carrito</a>
                         </div>
                         <div class="dropdown-divider"></div>
-                        <div class="dropdown-item">
+                        <div id="items-card-nav1"></div>
+                    {{--    <div class="dropdown-item">
                             <div class="row">
                                 <div class="col-10">
                                     <p class="text-muted mat-line">Motocultor Ducati DTL7000 </p>
@@ -108,8 +109,8 @@
                         <div class="dropdown-item">
                             <div class="text-muted mt-1"><b>TOTAL: $15,687.00</b></div>
                         </div>
-                        <div class="dropdown-divider"></div>
-                        <div class="dropdown-item">
+                        <div class="dropdown-divider"></div>--}}
+                        <div class="dropdown-item" id="option-dropdown-cart1">
                             <div class="mt-1"style="flex-direction: row; box-sizing: border-box; display: flex; place-content: center space-between; align-items: center;">
                                 <button class="btn btn-secondary btn-lg btn-circle" title="Borrar todo">
                                     <i class="material-icons" >remove_shopping_cart</i>
@@ -185,15 +186,16 @@
             <button class="btn dropdown-toggle" style="color: #FFF" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span style="color: #fff !important;cursor:pointer;">
                     <i class="material-icons" style="color: #f68600;font-size: 30px !important;">shopping_cart</i>
-                    <span class="cart-items-count">0</span>
+                    <span class="cart-items-count" id="items-count-nav2"></span>
                 </span>
             </button>
             <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left" aria-labelledby="dropdownMenuButton" style="width: 300px">
                 <div class="dropdown-item">
-                    <span style="font-size: 15px">2 Productos</span>&nbsp;&nbsp;<a href="{{url('cart')}}" class="text-muted">Ver carrito</a>
+                    <span style="font-size: 15px" id="products-coun-nav2"></span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="{{url('cart')}}" class="text-muted">Ver carrito</a>
                 </div>
                 <div class="dropdown-divider"></div>
-                <div class="dropdown-item">
+                <div id="items-card-nav2"></div>
+     {{--           <div class="dropdown-item">
                     <div class="row">
                         <div class="col-10">
                             <p class="text-muted mat-line">Motocultor Ducati DTL7000 </p>
@@ -220,12 +222,13 @@
                     <div class="text-muted mt-1"><b>TOTAL: $15,687.00</b></div>
                 </div>
                 <div class="dropdown-divider"></div>
-                <div class="dropdown-item">
-                    <div class="mt-1"style="flex-direction: row; box-sizing: border-box; display: flex; place-content: center space-between; align-items: center;">
+                --}}
+                <div class="dropdown-item" id="option-dropdown-cart2">
+                    <div class="mt-1" style="flex-direction: row; box-sizing: border-box; display: flex; place-content: center space-between; align-items: center;">
                         <button class="btn btn-secondary btn-lg btn-circle" title="Borrar todo">
-                            <i class="material-icons" >remove_shopping_cart</i>
+                            <i class="material-icons">remove_shopping_cart</i>
                         </button>
-                        <a class="btn btn-warning btn- btn-circle" href="{{url('cart')}}"  title="Pagar">
+                        <a class="btn btn-warning btn- btn-circle" href="{{url('cart')}}" data-toggle="tooltip" title="Pagar">
                             <i class="material-icons">check</i>
                         </a>
                     </div>

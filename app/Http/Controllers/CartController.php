@@ -57,9 +57,13 @@ class CartController extends Controller {
         $cart = isset($cookie->carrito)? $cookie->carrito: false;
         if($cart && $repository->verifyCart($user, $cart)){
             $products = $repository->getProductsFromCart($cart);
-            $cart = $productController->model_format_products($products);
+            $cantidadProducts = $repository->calculateTotalProducts($cart);
+            $carrito = $repository->getCart($cart);
+//            $cart = $productController->model_format_products($products);
+            $cart = $this->model_format_products($products);
             $cart = count($cart)>0?$cart:array();
-            return response()->json([json_encode($cart)], 201);
+            $result = ['cart'=>$cart,'total'=>$carrito->total,'quantityProducts'=>$cantidadProducts];
+            return response()->json([json_encode($result)], 201);
         }else{
             return response()->json(null, 204);
         }
@@ -82,6 +86,58 @@ class CartController extends Controller {
         }else{
             return response()->json(null, 204);
         }
+    }
+
+    //esta en unicamente para productos de carrito
+    public function model_format_products($products) {
+        $iterator = 0;
+        $response = array();
+        foreach ($products as $item) {
+            $img = strtolower($item->productType . "-" . $item->brand . "-" . $item->mpn);
+            $response[$iterator]['id'] = $item->id;
+            $response[$iterator]['name'] = $item->productType . " " . $item->brand . " " . $item->mpn;
+            $response[$iterator]['images'][0]['small'] = 'assets/images/productos/' . $img . '.jpg';
+            $response[$iterator]['images'][0]['medium'] = 'assets/images/productos/' . $img . '.jpg';
+
+            //empieza la seccion de precios
+            if (isset($item->offer) && $item->offer == 'si') {
+                $response[$iterator]['discount'] = "Oferta";
+
+                if ($item->PrecioDeLista > $item->oferta) {
+                    $response[$iterator]['oldPrice'] = $item->PrecioDeLista;
+                    $response[$iterator]['newPrice'] = $item->oferta;
+                }
+                else {
+                    $response[$iterator]['newPrice'] = $item->oferta;
+                }
+            }
+            else {
+                if ($item->PrecioDeLista > $item->price) {
+                    $response[$iterator]['oldPrice'] = $item->PrecioDeLista;
+                    $response[$iterator]['newPrice'] = $item->price;
+                }
+                else {
+                    $response[$iterator]['newPrice'] = $item->price;
+
+                }
+            }
+            //termina seccion de precios
+            $response[$iterator]['availibilityCount'] = 100;
+            $response[$iterator]['stock'] = $item->availability == 'in stock' ? true : false;
+            if (isset($item->cantidad)) {
+                $response[$iterator]['cartCount'] = $item->cantidad;
+            }
+            else {
+                $response[$iterator]['cartCount'] = 0;
+            }
+            $response[$iterator]['brand'] = $item->brand;
+            $response[$iterator]['mpn'] = $item->mpn;
+            $response[$iterator]['productType'] = $item->productType;
+            $response[$iterator]['inventory'] = $item->cantidadInventario;
+
+            $iterator++;
+        }
+        return $response;
     }
 
 }
