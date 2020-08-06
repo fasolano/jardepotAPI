@@ -259,13 +259,19 @@
                                                 <h3 class="old-price-recom text-muted">{{$related['oldPrice'] }}</h3>
                                             @endif
                                         </div>
-                                        @if($related['stock'])
-                                            <h2 class="new-price-recom">{{$related['newPrice']}}</h2>
-                                        @endif
-                                        <div class="divider"></div>
-                                        <button type="button" class="btn" onclick="addCartProduct('{{$related['productType']}}','{{$related['brand']}}','{{$related['mpn']}}',1)">
-                                            <span style="font-size: 14px"><i class="material-icons fn-color-jd">shopping_cart</i>Agregar al carrito</span>
-                                        </button>
+                                        <div style="height: 19px">
+                                            @if($related['stock'])
+                                                <h2 class="new-price-recom">{{$related['newPrice']}}</h2>
+                                            @endif
+                                        </div>
+                                        <div style="height: 47px">
+                                            @if($related['stock'])
+                                            <div class="divider"></div>
+                                            <button type="button" class="btn" onclick="addCartProduct('{{$related['productType']}}','{{$related['brand']}}','{{$related['mpn']}}',1)">
+                                                <span style="font-size: 14px"><i class="material-icons fn-color-jd">shopping_cart</i>Agregar al carrito</span>
+                                            </button>
+                                            @endif
+                                        </div>
                                     </div>
                                 </div>
                             @endforeach
