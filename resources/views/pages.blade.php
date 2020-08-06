@@ -17,6 +17,7 @@
     <div class="row justify-content-md-center">
         <div class="col-xl-12 col-lg-12" style="max-width: 1400px;">
             {{--  Contenido de la página  --}}
+            <div id="snackbar"></div>
             @yield('content')
         </div>
     </div>

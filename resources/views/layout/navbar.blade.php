@@ -94,17 +94,6 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="dropdown-item">
-                            <div class="row">
-                                <div class="col-10">
-                                    <p class="text-muted mat-line">Motocultor Ducati DTL7000 </p>
-                                    <p class="text-muted mat-line">1 x $15,687.00</p>
-                                </div>
-                                <div class="col-2" >
-                                    <button class="btn"><i class="material-icons">close</i></button>
-                                </div>
-                            </div>
-                        </div>
                         <div class="dropdown-divider"></div>
                         <div class="dropdown-item">
                             <div class="text-muted mt-1"><b>TOTAL: $15,687.00</b></div>
@@ -112,10 +101,10 @@
                         <div class="dropdown-divider"></div>--}}
                         <div class="dropdown-item" id="option-dropdown-cart1">
                             <div class="mt-1"style="flex-direction: row; box-sizing: border-box; display: flex; place-content: center space-between; align-items: center;">
-                                <button class="btn btn-secondary btn-lg btn-circle" title="Borrar todo">
+                                <button class="btn btn-secondary btn-lg btn-circle" data-toggle="tooltip" title="Borrar todo">
                                     <i class="material-icons" >remove_shopping_cart</i>
                                 </button>
-                                <a class="btn btn-warning btn- btn-circle" href="{{url('cart')}}" title="Pagar">
+                                <a class="btn btn-warning btn- btn-circle" href="{{url('cart')}}" data-toggle="tooltip" title="Pagar">
                                     <i class="material-icons">check</i>
                                 </a>
                             </div>
@@ -195,37 +184,10 @@
                 </div>
                 <div class="dropdown-divider"></div>
                 <div id="items-card-nav2"></div>
-     {{--           <div class="dropdown-item">
-                    <div class="row">
-                        <div class="col-10">
-                            <p class="text-muted mat-line">Motocultor Ducati DTL7000 </p>
-                            <p class="text-muted mat-line">1 x $15,687.00</p>
-                        </div>
-                        <div class="col-2" >
-                            <button class="btn"><i class="material-icons">close</i></button>
-                        </div>
-                    </div>
-                </div>
-                <div class="dropdown-item">
-                    <div class="row">
-                        <div class="col-10">
-                            <p class="text-muted mat-line">Motocultor Ducati DTL7000 </p>
-                            <p class="text-muted mat-line">1 x $15,687.00</p>
-                        </div>
-                        <div class="col-2" >
-                            <button class="btn"><i class="material-icons">close</i></button>
-                        </div>
-                    </div>
-                </div>
-                <div class="dropdown-divider"></div>
-                <div class="dropdown-item">
-                    <div class="text-muted mt-1"><b>TOTAL: $15,687.00</b></div>
-                </div>
-                <div class="dropdown-divider"></div>
-                --}}
+
                 <div class="dropdown-item" id="option-dropdown-cart2">
                     <div class="mt-1" style="flex-direction: row; box-sizing: border-box; display: flex; place-content: center space-between; align-items: center;">
-                        <button class="btn btn-secondary btn-lg btn-circle" title="Borrar todo">
+                        <button class="btn btn-secondary btn-lg btn-circle" data-toggle="tooltip"  title="Borrar todo">
                             <i class="material-icons">remove_shopping_cart</i>
                         </button>
                         <a class="btn btn-warning btn- btn-circle" href="{{url('cart')}}" data-toggle="tooltip" title="Pagar">

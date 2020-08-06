@@ -3,8 +3,11 @@ $.ajaxSetup({
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
     }
 });
+const ruta = '/jardepotAPI/public/';
+// const ruta = '/';
 
 $(document).ready(function (){
+    $('[data-toggle="tooltip"]').tooltip();
     getCartProducts();
 });
 
@@ -123,22 +126,22 @@ function setCookie(name, value, expireDays, path = '') {
 
 }
 
-function addCartProduct(productType,brand,mpn){
+function addCartProduct(productType,brand,mpn,quantity){
     var product = {'productType':productType,'brand':brand,'mpn':mpn};
-    console.log(productType+' '+brand+' '+mpn)
     verifyCookie();
     var parameters = [];
-    parameters['url'] = "/jardepotAPI/public/api/cart/addProduct";
+    parameters['url'] = ruta+"api/cart/addProduct";
     parameters['type'] = "POST";
     parameters['dataType'] = "json";
     parameters['data'] = {
         'product': JSON.stringify(product),
-        'quantity':1,
+        'quantity':quantity,
         'sessionCookie': Cookies.get('session')
     };
     parameters['success'] = function (result) {
         if(result.data === 'successful'){
-            alert('se agreco correctamente');
+            getCartProducts();
+            openSnackbar('success','Agregaste '+quantity+' '+productType+' '+brand+' '+mpn);
         }
     };
     ajaxCall(parameters);
@@ -147,7 +150,7 @@ function addCartProduct(productType,brand,mpn){
 function removeCartProduct(product){
     verifyCookie();
     var parameters = [];
-    parameters['url'] = "/jardepotAPI/public/api/cart/removeProduct";
+    parameters['url'] = ruta+"api/cart/removeProduct";
     parameters['type'] = "DELETE";
     parameters['dataType'] = "json";
     parameters['data'] = {
@@ -157,6 +160,7 @@ function removeCartProduct(product){
     parameters['success'] = function (result) {
         if(result.data === 'successful'){
             getCartProducts();
+            openSnackbar('danger','Eliminaste '+product);
         }
     };
     ajaxCall(parameters);
@@ -166,10 +170,8 @@ function getCartProducts(){
     $('#option-dropdown-cart1').hide();
     $('#option-dropdown-cart2').hide();
     if(Cookies.get('session') !== undefined && Cookies.get('session') !== '' ) {
-        $('#option-dropdown-cart1').show();
-        $('#option-dropdown-cart2').show();
         var parameters = [];
-        parameters['url'] = "/jardepotAPI/public/api/cart/products";
+        parameters['url'] = ruta+"api/cart/products";
         parameters['type'] = "GET";
         parameters['dataType'] = "json";
         parameters['data'] = {
@@ -177,7 +179,6 @@ function getCartProducts(){
         };
         parameters['success'] = function (result) {
             resultJson = JSON.parse(result);
-            console.log(resultJson);
             makeDropdownCart(resultJson.cart, resultJson.total,resultJson.quantityProducts);
         };
         ajaxCall(parameters);
@@ -201,6 +202,8 @@ function getCartProducts(){
 
 function makeDropdownCart(products,total,quantityProducts){
     if (quantityProducts > 0) {
+        $('#option-dropdown-cart1').show();
+        $('#option-dropdown-cart2').show();
         $('#items-count-nav1').html(quantityProducts);
         $('#products-coun-nav1').html(quantityProducts + ' Productos');
         $('#items-count-nav2').html(quantityProducts);
@@ -210,11 +213,11 @@ function makeDropdownCart(products,total,quantityProducts){
             divs += ' <div class="dropdown-item">' +
                 '     <div class="row">' +
                 '         <div class="col-10">' +
-                '              <p class="text-muted mat-line">' + value.name + '</p>' +
+                '              <p class="text-muted mat-line" data-toggle="tooltip" title="' + value.name + '">' + value.name + '</p>' +
                 '              <p class="text-muted mat-line">' + value.cartCount + ' x ' + formatterDolar.format(value.newPrice) + '</p>' +
                 '         </div>' +
                 '         <div class="col-2">' +
-                '             <button class="btn" type="button"' +
+                '             <button class="btn" type="button" data-toggle="tooltip"  title="Eliminar"' +
                 '                   onclick="removeCartProduct(\'' + value.name + '\')"><i class="material-icons">close</i></button>' +
                 '         </div>' +
                 '     </div>' +
@@ -249,3 +252,31 @@ const formatterDolar = new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: 'USD'
 })
+
+function openSnackbar(status,message) {
+    var color;
+    switch (status) {
+        case 'success':
+            color = '#218838';
+            break;
+        case 'warning':
+            color='#f68600';
+            break;
+        case 'danger':
+            color='#dc3545';
+            break;
+        case 'info':
+            color='#17a2b8';
+            break;
+        case 'primary':
+            color='#0069d9';
+            break;
+        default:
+            color='#333';
+    }
+    var x = document.getElementById("snackbar");
+    $("#snackbar").css("background-color",color)
+    $('#snackbar').html('<p>'+message+'</p>')
+    x.className = "show";
+    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+}

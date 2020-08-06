@@ -65,29 +65,24 @@ $(document).ready(function() {  // <-- ensure form's HTML is ready
             $(formdata).each(function(index, obj){
                 data[obj.name] = obj.value;
             });
-            console.log(data);
-            $.ajax({
-                url: '../../product/sendSearch',
-                type: 'POST',
-            //    contentType: 'application/json; charset=utf-8',
-                dataType: 'json',
-                data: {
-                    'textoBuscado': '',
-                    'forms': JSON.stringify(data)
-                },
-                success: function (result) {
-                    console.log(result);
-                    if (result.resultado === true) {
-                        $('#div-formulario').hide();
-                        $('#div-send').show();
-                    }
-                    $("#formularioDudas").reset();
-                }, error: function () {
-                    console.log('error petición')
+            var parameters = [];
+            parameters['url'] = "../../product/sendSearch";
+            parameters['type'] = "POST";
+            parameters['dataType'] = "json";
+            parameters['data'] =  {
+                'textoBuscado': '',
+                'forms': JSON.stringify(data)
+            };
+            parameters['success'] = function (result) {
+                if (result.resultado === true) {
+                    $('#div-formulario').hide();
+                    $('#div-send').show();
+                }else{
                     $('#div-formulario').show();
                     $('#div-send').hide();
                 }
-            });
+            };
+            ajaxCall(parameters);
         }
     });
 });

@@ -604,8 +604,8 @@ class ProductRepository{
         $email = ['ventas1@jardepot.com','ventas2@jardepot.com','ventas4@jardepot.com'];
         $num = rand(0,2);
         //$destino = $email[$num];
-        $destino = "fasolanof@gmail.com";
-        //$destino = 'sistemas2@jardepot.com';
+        //$destino = "fasolanof@gmail.com";
+        $destino = 'sistemas2@jardepot.com';
         $asunto='';
         switch ($tipo){
             case 'duda':

@@ -263,7 +263,7 @@
                                             <h2 class="new-price-recom">{{$related['newPrice']}}</h2>
                                         @endif
                                         <div class="divider"></div>
-                                        <button type="button" class="btn" onclick="addCartProduct('{{$related['productType']}}','{{$related['brand']}}','{{$related['mpn']}}')">
+                                        <button type="button" class="btn" onclick="addCartProduct('{{$related['productType']}}','{{$related['brand']}}','{{$related['mpn']}}',1)">
                                             <span style="font-size: 14px"><i class="material-icons fn-color-jd">shopping_cart</i>Agregar al carrito</span>
                                         </button>
                                     </div>

@@ -1,6 +1,6 @@
 var show = 8, order = "default";
 $(document).ready(function () {
-    $('[data-toggle="tooltip"]').tooltip();
+    // $('[data-toggle="tooltip"]').tooltip();
 
     $('.number-items').click(function () {
         show = $(this).data('val');
@@ -223,7 +223,7 @@ function reloadProducts() {
                 '                                </div>' +
                 '                                <hr>' +
                 '                                <div class="d-flex align-items-center flex-column">' +
-                '                                    <button type="button"' +
+                '                                    <button type="button" onclick="addCartProduct(\''+ e.productType +'\',\''+e.brand+'\',\''+e.mpn+'\','+1+')"' +
                 '                                            class="btn-add-cart d-flex justify-content-center align-items-center"' +
                 '                                            style="font-size: 14px;">' +
                 '                                        <i class="material-icons fn-color-jd">shopping_cart</i>' +
@@ -234,7 +234,6 @@ function reloadProducts() {
                 '                                        aviso.</p>' +
                 '                                </div>' +
                 '                            </div>';
-
             if(!search){
                 $('#cards-sections').append(item);
             }else{
