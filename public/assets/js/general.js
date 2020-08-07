@@ -14,7 +14,7 @@ $(document).ready(function (){
 function verifyCookie(){
     if(Cookies.get('session') === undefined ||Cookies.get('session') === '' ){
         var parameters = [];
-        parameters['url'] = "api/session";
+        parameters['url'] = ruta+"api/session";
         parameters['type'] = "GET";
         parameters['dataType'] = "json";
         parameters['data'] = {};
@@ -199,8 +199,12 @@ function getCartProducts(){
             'sessionCookie': Cookies.get('session')
         };
         parameters['success'] = function (result) {
-            resultJson = JSON.parse(result);
-            makeDropdownCart(resultJson.cart, resultJson.total,resultJson.quantityProducts);
+            if(result){
+                resultJson = JSON.parse(result);
+                makeDropdownCart(resultJson.cart, resultJson.total,resultJson.quantityProducts);
+            }else{
+                Cookies.remove('session');
+            }
         };
         ajaxCall(parameters);
     }else{

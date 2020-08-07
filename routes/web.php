@@ -21,6 +21,8 @@ Route::get('/products/getProductsOrdered' , 'views\ProductsController@productsSe
 
 Route::get('/busqueda/{word}' , 'views\ProductsController@getProductsListSearch')->name('search');
 
+Route::get('/confirmacion/paypal/{orderID}' , 'views\ConfirmController@confirmPaypal');
+
 Route::get('/{categoryLevel1}/{categoryLevel2}' , 'views\ProductsController@productsList')->name('products');
 
 Route::get('/catalogo/{marca}/{productType}-{brand}-{mpn}' , 'views\ProductController@product')->name('product');
