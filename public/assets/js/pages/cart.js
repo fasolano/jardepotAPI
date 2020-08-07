@@ -66,79 +66,29 @@ $(document).ready(function (){
         checkFormPaypal();
     });
 
-    $("#form-paypal").submit(function(e) {
-        e.preventDefault();
-    }).validate({
-        rules: {
-            "firstName": {  // <-- this is the name attribute, NOT id
-                required: true,
-                minlength: 3,
-                maxlength: 60
-            },
-            "lastName": {  // <-- this is the name attribute, NOT id
-                required: true,
-                minlength: 3,
-                maxlength: 60
-            },
-            "email": {
-                required: true,
-                email: true
-            },
-            "phone": {
-                required: true,
-                digits: true,
-                minlength: 10,
-                maxlength: 10
-            },
-        },
-        messages: {
-            "firstName": {
-                required: "Introduce tu nombre.",
-                maxlength: "Debe contener máximo 60.",
-                minlength: "Debe contener mínimo 3 letras."
-            },
-            "lastName": {
-                required: "Introduce tu nombre.",
-                maxlength: "Debe contener máximo 60.",
-                minlength: "Debe contener mínimo 3 letras."
-            },
-            "phone": {
-                required: "Introduce tu teléfono.",
-                digits: "Introduce un número válido.",
-                maxlength: "Debe contener 10 dígitos.",
-                minlength: "Debe contener 10 dígitos."
-            },
-            "email":{
-                required: "Introduce tu correo.",
-                email: "Introduce un correo válido."
-            }
-        },
-        submitHandler : function() {
-            alert("Se va a enviar");
-            /*var formdata = $("#formularioDudas").serializeArray();
-            var data = {};
-            $(formdata).each(function(index, obj){
-                data[obj.name] = obj.value;
-            });
-            var parameters = [];
-            parameters['url'] = "../../product/sendSearch";
-            parameters['type'] = "POST";
-            parameters['dataType'] = "json";
-            parameters['data'] =  {
-                'textoBuscado': '',
-                'forms': JSON.stringify(data)
-            };
-            parameters['success'] = function (result) {
-                if (result.resultado === true) {
-                    $('#div-formulario').hide();
-                    $('#div-send').show();
-                }else{
-                    $('#div-formulario').show();
-                    $('#div-send').hide();
-                }
-            };
-            ajaxCall(parameters);*/
+    $('#terminosMP').change(function () {
+        checkMercado = $(this).is(':checked');
+        if (checkMercado){
+            $('#text-terms-mp').css('display', 'none');
+        }else{
+            $('#text-terms-mp').css('display', 'block');
         }
+        checkFormMercado();
+    });
+
+    $('#form-mp input').change(function () {
+        formMercado = true;
+        $('#form-mp input').each(function () {
+            if ($(this).val() == ""){
+                formMercado = false;
+            }
+        });
+        if(formMercado){
+            $('#text-input-mp').css('display', 'none');
+        }else{
+            $('#text-input-mp').css('display', 'block');
+        }
+        checkFormMercado();
     });
 
     $('.btn-modal-paypal').click(function () {
@@ -183,6 +133,38 @@ $(document).ready(function (){
         ajaxCall(parameters);
     });
 
+    $('#btn-mercado-pago').click(function () {
+        var session = Cookies.get('session');
+        var parameters = [];
+        var form = JSON.stringify({
+            firstName: $('#name-mp').val(),
+            lastName: $('#lastname-mp').val(),
+            email: $('#email-mp').val(),
+            phone: $('#phone-mp').val(),
+            state: $('#state-mp').val(),
+            city: $('#city-mp').val(),
+            zip: $('#zip-mp').val(),
+            suburb: $('#suburb-mp').val(),
+            address: $('#address-mp').val()
+        });
+        parameters['url'] = "api/checkout/mercadopago";
+        parameters['type'] = "post";
+        parameters['dataType'] = "json";
+        parameters['data'] = {
+            sessionCookie: session,
+            form: form
+        };
+        parameters['success'] = function (response) {
+            console.log(response);
+            if(response.state == "success"){
+                window.location = response.data;
+            }else{
+                alert("Ocurrio un error al generar el link de pago, comunicate con nostros para más información");
+            }
+        };
+        ajaxCall(parameters);
+    });
+
 });
 
 function checkFormPaypal() {
@@ -192,6 +174,16 @@ function checkFormPaypal() {
     }else{
         $('#form-incomplete').css('display','block');
         $('#form-complete').css('display','none');
+    }
+}
+
+function checkFormMercado() {
+    if(formMercado && checkMercado){
+        $('#form-incomplete-mp').css('display','none');
+        $('#form-complete-mp').css('display','block');
+    }else{
+        $('#form-incomplete-mp').css('display','block');
+        $('#form-complete-mp').css('display','none');
     }
 }
 
@@ -292,14 +284,6 @@ function createPaypalButton(products, total) {
                 });
                 const session = Cookies.get('session');
                 window.location = 'confirmacion/paypal/'+data.orderID+'?form='+clientForm+'&address='+address+'&name='+name+'&session='+session;
-                // const clientForm = JSON.stringify(form.value);
-                // const email = details.payer.email_address;
-                // modal.close();
-                /*router.navigate(
-                    ['/confirmation/button/PayPal', data.orderID],
-                    {queryParams: {'name': name, 'status':status, 'address': address, 'client':clientForm}}
-                );*/
-                // Call your server to save the transaction
                 return true;
             });
         }

@@ -23,6 +23,8 @@ Route::get('/busqueda/{word}' , 'views\ProductsController@getProductsListSearch'
 
 Route::get('/confirmacion/paypal/{orderID}' , 'views\ConfirmController@confirmPaypal');
 
+Route::get('/confirmacion/mercadopago/{state}' , 'views\ConfirmController@confirmMercadopago');
+
 Route::get('/{categoryLevel1}/{categoryLevel2}' , 'views\ProductsController@productsList')->name('products');
 
 Route::get('/catalogo/{marca}/{productType}-{brand}-{mpn}' , 'views\ProductController@product')->name('product');

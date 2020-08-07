@@ -234,8 +234,12 @@ function getCartProducts(){
             dataType: "json",
             data:{'sessionCookie': Cookies.get('session')},
             success: function (result) {
-                var resultJson = JSON.parse(result);
-                makeDropdownCart(resultJson.cart, resultJson.total,resultJson.quantityProducts);
+                if(result){
+                    var resultJson = JSON.parse(result);
+                    makeDropdownCart(resultJson.cart, resultJson.total,resultJson.quantityProducts);
+                }else{
+                    Cookies.remove('session');
+                }
             },
             error: function (err) {
             }

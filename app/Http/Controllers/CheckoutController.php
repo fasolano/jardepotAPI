@@ -52,13 +52,12 @@ class CheckoutController extends Controller {
 
         $form = json_decode($request->get('form'));
         $cookie = json_decode($request->get('sessionCookie'));
-        $form = json_decode($form);
         $clientForm = $this->dataClient($form);
 
         $client = $this->repository->insertClient($clientForm);
         $products = $cartRepository->getProductsFromCart($cookie->carrito);
         $mercado = new MercadoPago();
-        $url = $mercado->setupPaymentAndGetRedirectURL($products, $clientForm);
+        $url = $mercado->setupPaymentAndGetRedirectURL($products, $clientForm, $cookie->carrito);
         return response()->json(['data' => $url, 'state' => 'success'], 201);
     }
 

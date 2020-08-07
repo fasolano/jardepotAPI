@@ -151,9 +151,6 @@
                     </div>
                     </form>
                 </div>
-                {{--  <div class="modal-footer">
-                      <button type="button" class="btn  bg-color-jd" data-dismiss="modal">Cerrar</button>
-                  </div>--}}
             </div>
         </div>
     </div>
@@ -173,58 +170,58 @@
                         <div class="col-12">
                             <p>*Se agregará una comisión del 4% por método de pago MercadoPago</p>
                             <br>
-                            <label><input type="checkbox" name="terminosPayPal" id="terminosPayPal">
+                            <label><input type="checkbox" name="terminosPayPal" id="terminosMP">
                                 Acepto terminos y condiciones</label>
                             <a href="javascript: void(0)" data-toggle="modal" data-target="#modalCondicionEnvio"
                                style="color: rgba(0, 0, 0, 0.87);">*Consultalos aquí</a>
                             <br>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-6">
-                            <div class="form-group"><input class="form-control" id="" name="" placeholder="Nombre(s)*">
+                    <form id="form-mp">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group"><input class="form-control" id="name-mp" name="name" placeholder="Nombre(s)*">
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group"><input class="form-control" id="lastname-mp" name="lastName" placeholder="Apellidos*">
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group"><input class="form-control" id="email-mp" name="email" placeholder="Email*">
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group"><input class="form-control" id="phone-mp" name="phone" maxlength="10" placeholder="Teléfono (10 dígitos)*"></div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group"><input class="form-control" id="state-mp" name="state" placeholder="Estado*">
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group"><input class="form-control" id="city-mp" name="city" placeholder="Ciudad*">
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group"><input class="form-control" id="zip-mp" name="zipCode" placeholder="Código postal*"></div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group"><input class="form-control" id="suburb-mp" name="suburb" placeholder="Colonia*">
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group"><input class="form-control" id="address-mp" name="address" placeholder="Direccion*">
+                                </div>
                             </div>
                         </div>
-                        <div class="col-6">
-                            <div class="form-group"><input class="form-control" id="" name="" placeholder="Apellidos*">
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <div class="form-group"><input class="form-control" id="" name="" placeholder="Email*">
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <div class="form-group"><input class="form-control" id="" name=""
-                                                           placeholder="Teléfono (10 dígitos)*"></div>
-                        </div>
-                        <div class="col-6">
-                            <div class="form-group"><input class="form-control" id="" name="" placeholder="Estado*">
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <div class="form-group"><input class="form-control" id="" name="" placeholder="Ciudad*">
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <div class="form-group"><input class="form-control" id="" name=""
-                                                           placeholder="Código postal*"></div>
-                        </div>
-                        <div class="col-6">
-                            <div class="form-group"><input class="form-control" id="" name="" placeholder="Colonia*">
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <div class="form-group"><input class="form-control" id="" name="" placeholder="Direccion*">
-                            </div>
-                        </div>
-                    </div>
+                    </form>
                     <div class="row" style="font-size: 14px;">
-                        <div class="col-6">
-                            <p class="text-muted">Por favor rellena todos los campos</p>
-                            <p class="text-muted">Acepta los terminos y condiciones</p>
+                        <div id="form-incomplete-mp" class="col-12">
+                            <p id="text-input-mp" class="text-muted">Por favor rellena todos los campos</p>
+                            <p id="text-terms-mp" class="text-muted">Acepta los terminos y condiciones</p>
                         </div>
-                        <div class="col-6 text-right">
-                            <button class="btn btn-warning">Siguiente</button>
+                        <div id="form-complete-mp" class="col-12 text-right" style="display: none;">
+                            <button class="btn btn-warning" type="button" id="btn-mercado-pago">Siguiente</button>
                         </div>
                     </div>
                 </div>
