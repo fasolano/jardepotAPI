@@ -168,7 +168,6 @@ function addCartProduct(productType,brand,mpn,quantity){
         error: function (err) {
             $('#overlay-bussy').removeClass('active');
             console.log(err);
-            alert("Ocurrio un error "+parameters["url"], "Error");
         }
     });
 }
