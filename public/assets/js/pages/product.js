@@ -112,6 +112,6 @@ function resNumProduct(){
 function agregarProductoCarrito(productType,brand,mpn){
     var cantidad = $('#cantidadProducto').val();
     if(cantidad >= 1){
-        addCartProduct(productType,brand,mpn,cantidad);
+        verifyAddCartProduct(productType,brand,mpn,cantidad);
     }
 }

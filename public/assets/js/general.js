@@ -12,16 +12,18 @@ $(document).ready(function (){
 });
 
 function verifyCookie(){
-    if(Cookies.get('session') === undefined ||Cookies.get('session') === '' ){
-        var parameters = [];
-        parameters['url'] = "api/session";
-        parameters['type'] = "GET";
-        parameters['dataType'] = "json";
-        parameters['data'] = {};
-        parameters['success'] = function (result) {
-            Cookies.set('session', result, { expires: 7 })
-        };
-        ajaxCall(parameters);
+    if(Cookies.get('session') === undefined || Cookies.get('session') === ''){
+        $.ajax({
+            url: ruta+"api/session",
+            type: "GET",
+            dataType: "json",
+            success: function (result) {
+                Cookies.set('session', result, { expires: 7 })
+            },
+            error: function (err) {
+                console.log(err);
+            }
+        });
     }
 }
 
@@ -34,7 +36,7 @@ $('#search-form').on('keypress',function(e) {
 $('#search-form').submit(function (e) {
     e.preventDefault();
     var search = $('#inputSearch').val();
-    window.location = "/jardepotAPI/public/busqueda/"+search;
+    window.location = ruta+"busqueda/"+search;
 })
 
 var bussy = false;
@@ -125,25 +127,51 @@ function setCookie(name, value, expireDays, path = '') {
 
 }
 
+function verifyAddCartProduct(productType,brand,mpn,quantity){
+    if(Cookies.get('session') === undefined || Cookies.get('session') === ''){
+        $.ajax({
+            url: ruta+"api/session",
+            type: "GET",
+            dataType: "json",
+            success: function (result) {
+                Cookies.set('session', result, { expires: 7 })
+                // setTimeout(function(){
+                    addCartProduct(productType,brand,mpn,quantity)
+                // }, 500);
+            },
+            error: function (err) {
+                console.log(err);
+            }
+        });
+    }else{
+        addCartProduct(productType,brand,mpn,quantity)
+    }
+}
+
 function addCartProduct(productType,brand,mpn,quantity){
     var product = {'productType':productType,'brand':brand,'mpn':mpn};
-    verifyCookie();
-    var parameters = [];
-    parameters['url'] = ruta+"api/cart/addProduct";
-    parameters['type'] = "POST";
-    parameters['dataType'] = "json";
-    parameters['data'] = {
-        'product': JSON.stringify(product),
-        'quantity':quantity,
-        'sessionCookie': Cookies.get('session')
-    };
-    parameters['success'] = function (result) {
-        if(result.data === 'successful'){
-            getCartProducts();
-            openSnackbar('success','Agregaste '+quantity+' '+productType+' '+brand+' '+mpn);
+    $('#overlay-bussy').addClass('active');
+    $.ajax({
+        url: ruta+"api/cart/addProduct",
+        type: "POST",
+        dataType: "json",
+        data:{
+            'product': JSON.stringify(product),
+            'quantity':quantity,
+            'sessionCookie': Cookies.get('session')
+        },
+        success: function (result) {
+            if(result.data === 'successful'){
+                getCartProducts();
+                openSnackbar('success','Agregaste '+quantity+' '+productType+' '+brand+' '+mpn);
+            }
+        },
+        error: function (err) {
+            $('#overlay-bussy').removeClass('active');
+            console.log(err);
+            alert("Ocurrio un error "+parameters["url"], "Error");
         }
-    };
-    ajaxCall(parameters);
+    });
 }
 
 function decreaseCartProduct(productType,brand,mpn,quantity){
@@ -169,40 +197,48 @@ function decreaseCartProduct(productType,brand,mpn,quantity){
 }
 
 function removeCartProduct(product){
-    verifyCookie();
-    var parameters = [];
-    parameters['url'] = ruta+"api/cart/removeProduct";
-    parameters['type'] = "DELETE";
-    parameters['dataType'] = "json";
-    parameters['data'] = {
-        'product': product,
-        'sessionCookie': Cookies.get('session')
-    };
-    parameters['success'] = function (result) {
-        if(result.data === 'successful'){
-            getCartProducts();
-            openSnackbar('danger','Eliminaste '+product);
-        }
-    };
-    ajaxCall(parameters);
+    if(Cookies.get('session') !== undefined && Cookies.get('session') !== '' ) {
+        $('#overlay-bussy').addClass('active');
+        $.ajax({
+            url: ruta + "api/cart/removeProduct",
+            type: "DELETE",
+            dataType: "json",
+            data:{
+                'product': product,
+                'sessionCookie': Cookies.get('session')
+            },
+            success: function (result) {
+                if (result.data === 'successful') {
+                    getCartProducts();
+                    openSnackbar('danger', 'Eliminaste ' + product);
+                }
+                $('#overlay-bussy').removeClass('active');
+            },
+            error: function (err) {
+                $('#overlay-bussy').removeClass('active');
+            }
+        });
+    }
 }
 
 function getCartProducts(){
     $('#option-dropdown-cart1').hide();
     $('#option-dropdown-cart2').hide();
     if(Cookies.get('session') !== undefined && Cookies.get('session') !== '' ) {
-        var parameters = [];
-        parameters['url'] = ruta+"api/cart/products";
-        parameters['type'] = "GET";
-        parameters['dataType'] = "json";
-        parameters['data'] = {
-            'sessionCookie': Cookies.get('session')
-        };
-        parameters['success'] = function (result) {
-            resultJson = JSON.parse(result);
-            makeDropdownCart(resultJson.cart, resultJson.total,resultJson.quantityProducts);
-        };
-        ajaxCall(parameters);
+        $.ajax({
+            url: ruta+"api/cart/products",
+            type: "GET",
+            dataType: "json",
+            data:{'sessionCookie': Cookies.get('session')},
+            success: function (result) {
+                var resultJson = JSON.parse(result);
+                makeDropdownCart(resultJson.cart, resultJson.total,resultJson.quantityProducts);
+                $('#overlay-bussy').removeClass('active');
+            },
+            error: function (err) {
+                $('#overlay-bussy').removeClass('active');
+            }
+        });
     }else{
         $('#option-dropdown-cart1').hide();
         $('#option-dropdown-cart2').hide();
@@ -218,6 +254,8 @@ function getCartProducts(){
             '</div>' ;
         $('#items-card-nav1').html(divs);
         $('#items-card-nav2').html(divs);
+
+        $('#overlay-bussy').removeClass('active');
     }
 }
 
@@ -303,18 +341,22 @@ function openSnackbar(status,message) {
 }
 
 function removeAllProducts(){
-    if(Cookies.get('session') !== undefined && Cookies.get('session') !== '' ) {
-        var parameters = [];
-        parameters['url'] = ruta + "api/cart/removeAllProducts";
-        parameters['type'] = "DELETE";
-        parameters['dataType'] = "json";
-        parameters['data'] = {'sessionCookie': Cookies.get('session')};
-        parameters['success'] = function (result) {
-            if (result.data === 'successful') {
-                getCartProducts();
-                openSnackbar('success', 'Se limpió el carrito');
+    if(Cookies.get('session') !== undefined && Cookies.get('session') !== '' ||  Cookies.get('session') !== 'undefined' ) {
+        $.ajax({
+            url: ruta + "api/cart/removeAllProducts",
+            type: "DELETE",
+            dataType: "json",
+            data: {'sessionCookie': Cookies.get('session')},
+            success: function (result) {
+                if (result.data === 'successful') {
+                    getCartProducts();
+                    openSnackbar('success', 'Se limpió el carrito');
+                }
+                $('#overlay-bussy').removeClass('active');
+            },
+            error: function (err) {
+                $('#overlay-bussy').removeClass('active');
             }
-        };
-        ajaxCall(parameters);
+        });
     }
 }

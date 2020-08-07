@@ -267,7 +267,7 @@
                                         <div style="height: 47px">
                                             @if($related['stock'])
                                             <div class="divider"></div>
-                                            <button type="button" class="btn" onclick="addCartProduct('{{$related['productType']}}','{{$related['brand']}}','{{$related['mpn']}}',1)">
+                                            <button type="button" class="btn" onclick="verifyAddCartProduct('{{$related['productType']}}','{{$related['brand']}}','{{$related['mpn']}}',1)">
                                                 <span style="font-size: 14px"><i class="material-icons fn-color-jd">shopping_cart</i>Agregar al carrito</span>
                                             </button>
                                             @endif

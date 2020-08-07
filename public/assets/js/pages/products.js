@@ -224,7 +224,7 @@ function reloadProducts() {
                 '                                </div>' +
                 '                                <hr>' +
                 '                                <div class="d-flex align-items-center flex-column">' +
-                '                                    <button type="button" onclick="addCartProduct(\''+ e.productType +'\',\''+e.brand+'\',\''+e.mpn+'\','+1+')"' +
+                '                                    <button type="button" onclick="verifyAddCartProduct(\''+ e.productType +'\',\''+e.brand+'\',\''+e.mpn+'\','+1+')"' +
                 '                                            class="btn-add-cart d-flex justify-content-center align-items-center"' +
                 '                                            style="font-size: 14px;">' +
                 '                                        <i class="material-icons fn-color-jd">shopping_cart</i>' +
@@ -250,6 +250,8 @@ function reloadProducts() {
 }
 
 function buyProduct(productType,brand,mpn){
-    addCartProduct(productType,brand,mpn,1);
-    window.location = ruta+'cart';
+    verifyAddCartProduct(productType,brand,mpn,1);
+     setTimeout(function(){
+        window.location = ruta+'cart';
+     }, 2000);
 }

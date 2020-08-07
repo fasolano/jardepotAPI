@@ -15,7 +15,6 @@
     <style>
 
         nav > .nav.nav-tabs{
-
             border: none;
             color:#f68600;
             background:#fff;
@@ -64,7 +63,6 @@
 
 @section('content')
     <div class="wrapper">
-
         <!-- Page Content  -->
         <div id="content" class="row">
             <div class="col-lg-12 col-md-12">

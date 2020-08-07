@@ -155,7 +155,7 @@
                                 </div>
                                 <hr>
                                 <div class="d-flex align-items-center flex-column">
-                                    <button type="button" onclick="addCartProduct('{{$item['productType']}}','{{$item['brand']}}','{{$item['mpn']}}',1)"
+                                    <button type="button" onclick="verifyAddCartProduct('{{$item['productType']}}','{{$item['brand']}}','{{$item['mpn']}}',1)"
                                             class="btn-add-cart d-flex justify-content-center align-items-center"
                                             style="font-size: 14px;">
                                         <i class="material-icons fn-color-jd">shopping_cart</i>
@@ -286,7 +286,7 @@
                                 </div>
                                 <hr>
                                 <div class="d-flex align-items-center flex-column">
-                                    <button type="button" onclick="addCartProduct('{{$item['productType']}}','{{$item['brand']}}','{{$item['mpn']}}',1)"
+                                    <button type="button" onclick="verifyAddCartProduct('{{$item['productType']}}','{{$item['brand']}}','{{$item['mpn']}}',1)"
                                             class="btn-add-cart d-flex justify-content-center align-items-center"
                                             style="font-size: 14px;">
                                         <i class="material-icons fn-color-jd">shopping_cart</i>
