@@ -82,9 +82,9 @@ class MercadoPago{
         $item->title = 'Comisión por pago en MercadoPago'; //Articulo
         $item->quantity = 1;
         $item->currency_id = 'MXN';
-        $item->unit_price = $commission;*/
+        $item->unit_price = $commission;
 
-        array_push($items, $item);
+        array_push($items, $item);*/
 
         # Create a payer object
         $payer = new Payer();
