@@ -73,7 +73,7 @@
                                data-target="#modalPayPal">Pagar - PayPal</a>
                         </div>
                         <div class="col-md-3 text-center my-2">
-                            <a class="btn btn-warning" href="javascript: void(0)" data-toggle="modal"
+                            <a class="btn btn-warning btn-modal-mercado" href="javascript: void(0)" data-toggle="modal"
                                data-target="#modalMercadoPago">Pagar - Mercado Pago</a>
                         </div>
                         <div class="col-md-3 text-center my-2">

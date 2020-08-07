@@ -195,11 +195,24 @@ function checkRowsProducts() {
 }
 
 function calculateTotal() {
+    var showButtons = true;
     var total = 0;
-    $('.total-row-input').each(function () {
-        total = Number(total) + Number($(this).val());
+    $('#table-body').find('tr').each(function (i,e) {
+        var inventory = Number($(e).find('.inventory').val());
+        var current = Number($(e).find('.cart-count').text());
+        total = Number(total) + Number($(e).find('.total-row-input').val());
+        if(inventory < current){
+            showButtons = false;
+        }
     });
     $('#total-final').text(formatterDolar.format(total));
+    if (showButtons){
+        $('.btn-modal-mercado').css('display', 'block');
+        $('.btn-modal-paypal').css('display', 'block');
+    }else{
+        $('.btn-modal-mercado').css('display', 'none');
+        $('.btn-modal-paypal').css('display', 'none');
+    }
 }
 
 function getCartProductsView(){
