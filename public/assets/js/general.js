@@ -135,9 +135,7 @@ function verifyAddCartProduct(productType,brand,mpn,quantity){
             dataType: "json",
             success: function (result) {
                 Cookies.set('session', result, { expires: 7 })
-                // setTimeout(function(){
-                    addCartProduct(productType,brand,mpn,quantity)
-                // }, 500);
+                addCartProduct(productType,brand,mpn,quantity)
             },
             error: function (err) {
                 console.log(err);
@@ -162,6 +160,7 @@ function addCartProduct(productType,brand,mpn,quantity){
         },
         success: function (result) {
             if(result.data === 'successful'){
+                $('#overlay-bussy').removeClass('active');
                 getCartProducts();
                 openSnackbar('success','Agregaste '+quantity+' '+productType+' '+brand+' '+mpn);
             }
@@ -177,23 +176,28 @@ function addCartProduct(productType,brand,mpn,quantity){
 function decreaseCartProduct(productType,brand,mpn,quantity){
     var product = {'productType':productType,'brand':brand,'mpn':mpn};
     verifyCookie();
-    var parameters = [];
-    parameters['url'] = ruta+"api/cart/addProduct";
-    parameters['type'] = "POST";
-    parameters['dataType'] = "json";
-    parameters['data'] = {
-        'product': JSON.stringify(product),
-        'quantity':quantity,
-        'sessionCookie': Cookies.get('session')
-    };
-    parameters['success'] = function (result) {
-        if(result.data === 'successful'){
-            getCartProducts();
-            quantity = quantity * -1;
-            openSnackbar('danger','Quitaste '+quantity+' '+productType+' '+brand+' '+mpn);
+    $('#overlay-bussy').addClass('active');
+    $.ajax({
+        url: ruta+"api/cart/addProduct",
+        type: "POST",
+        dataType: "json",
+        data:{
+            'product': JSON.stringify(product),
+            'quantity':quantity,
+            'sessionCookie': Cookies.get('session')
+        },
+        success: function (result) {
+            if(result.data === 'successful'){
+                getCartProducts();
+                quantity = quantity * -1;
+                openSnackbar('danger','Quitaste '+quantity+' '+productType+' '+brand+' '+mpn);
+            }
+            $('#overlay-bussy').removeClass('active');
+        },
+        error: function (err) {
+            $('#overlay-bussy').removeClass('active');
         }
-    };
-    ajaxCall(parameters);
+    });
 }
 
 function removeCartProduct(product){
@@ -233,10 +237,8 @@ function getCartProducts(){
             success: function (result) {
                 var resultJson = JSON.parse(result);
                 makeDropdownCart(resultJson.cart, resultJson.total,resultJson.quantityProducts);
-                $('#overlay-bussy').removeClass('active');
             },
             error: function (err) {
-                $('#overlay-bussy').removeClass('active');
             }
         });
     }else{
@@ -254,8 +256,6 @@ function getCartProducts(){
             '</div>' ;
         $('#items-card-nav1').html(divs);
         $('#items-card-nav2').html(divs);
-
-        $('#overlay-bussy').removeClass('active');
     }
 }
 
