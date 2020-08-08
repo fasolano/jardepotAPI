@@ -392,7 +392,10 @@ class ProductRepository{
         $nivel2 = str_replace("-", " ", $nivel2);*/
 
         $categoriaNivel1 = str_replace("-", " ", $nivel1);
-        $categoriaNivel2 = str_replace("-", " ", $nivel2);
+        if (mb_strtolower($nivel2) != 'hilo-nylon'){
+            $categoriaNivel2 = str_replace("-", " ", $nivel2);
+        }
+
 
         $query = DB::table('categoriasNivel2')
             ->join('categoriasNivel1', 'categoriasNivel2.idCategoriasNivel1', '=', 'categoriasNivel1.idCategoriasNivel1')
