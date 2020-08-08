@@ -1,0 +1,53 @@
+nav > .nav.nav-tabs {
+    border: none;
+    color: #f68600;
+    background: #fff;
+    border-radius: 0;
+}
+
+nav > div a.nav-item.nav-link,
+nav > div a.nav-item.nav-link.active {
+    border: none;
+    padding: 18px 25px;
+    color: #f68600;
+    background: #fff;
+    border-radius: 0;
+}
+nav > div a.nav-item.nav-link.active:after {
+    content: "";
+    position: relative;
+    bottom: -60px;
+    left: -10%;
+    border: 15px solid transparent;
+    border-top-color: #333333;
+}
+.tab-content {
+    background: #fdfdfd;
+    line-height: 23px;
+    border: 1px solid #ddd;
+    border-top: 5px solid #333333;
+    /*border-bottom:5px solid #e74c3c;*/
+    padding: 30px 25px;
+}
+nav > div a.nav-item.nav-link:hover,
+nav > div a.nav-item.nav-link:focus {
+    border: none;
+    background: #333333;
+    color: #fff;
+    border-radius: 0;
+    transition: background 0.20s linear;
+}
+
+.text-direccion{
+    flex-direction: column;
+    box-sizing: border-box;
+    display: flex;
+    flex: 1 1 25%;
+    max-width: 25%;
+}
+
+.img-bank{
+    width: 100%;
+    max-width: 300px;
+    max-height: 125px;
+}

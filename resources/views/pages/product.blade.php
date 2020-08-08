@@ -13,7 +13,7 @@
     <!-- Scrollbar Custom CSS -->
     <link rel="stylesheet" href="{{asset('assets/css/components/jquery.mCustomScrollbar.min.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/components/breadcrumb.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/css/product.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/pages/product.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/components/swiper.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/components/drift-basic.min.css')}}">
     <script type="text/javascript" src="{{asset('assets/js/jquery.validate.min.js')}}"></script>
