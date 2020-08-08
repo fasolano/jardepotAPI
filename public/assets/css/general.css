@@ -182,7 +182,7 @@
     font-size: 18px;
 }
 .div-sublinks{
-    min-height: 474px;
+    min-height: 524px;
 }
 .div-banners{
     height: 530px !important;
@@ -443,7 +443,7 @@
         column-gap: 10px;
     }
     .div-sublinks{
-        min-height: 651px;
+        min-height: 751px;
     }
 }
 @media (min-width: 768px) and (max-width: 991px){
@@ -486,7 +486,7 @@
         min-height: 140px !important;
     }
     .div-sublinks{
-        min-height: 651px;
+        min-height: 751px;
     }
     .div-banners{
 
