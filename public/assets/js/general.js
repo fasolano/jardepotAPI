@@ -3,8 +3,8 @@ $.ajaxSetup({
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
     }
 });
-const ruta = '/jardepotAPI/public/';
-// const ruta = '/';
+// const ruta = '/jardepotAPI/public/';
+const ruta = '/';
 
 $(document).ready(function (){
     $('[data-toggle="tooltip"]').tooltip();
