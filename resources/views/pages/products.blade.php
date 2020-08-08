@@ -2,10 +2,10 @@
 
 
 @section('metaData')
-    <title>{{ substr($descriptionLevel2->metatitle, 0,70)}}</title>
-    <meta title="{{ substr($descriptionLevel2->metatitle, 0,70)}}"/>
-    <meta name="description" content="{{$descriptionLevel2->metadescription}}">
-    <meta name="keywords" content="{{$descriptionLevel2->keywords}}">
+    <title>{{ isset($descriptionLevel2->metatitle)?substr($descriptionLevel2->metatitle, 0,70):""}}</title>
+    <meta title="{{ isset($descriptionLevel2->metatitle)?substr($descriptionLevel2->metatitle, 0,70):""}}"/>
+    <meta name="description" content="{{isset($descriptionLevel2->metadescription)?$descriptionLevel2->metadescription:""}}">
+    <meta name="keywords" content="{{isset($descriptionLevel2->keywords)?$descriptionLevel2->keywords:""}}">
 @endsection
 
 @section('specificCSS')
