@@ -392,7 +392,7 @@ class ProductRepository{
         $nivel2 = str_replace("-", " ", $nivel2);*/
 
         $categoriaNivel1 = str_replace("-", " ", $nivel1);
-        if (strtolower($nivel2) != 'hilo-nylon'){
+        if (strtolower($nivel2) != 'hilo nylon'){
             $categoriaNivel2 = str_replace("-", " ", $nivel2);
         }else{
             $categoriaNivel2 = $nivel2;
