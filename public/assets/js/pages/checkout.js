@@ -1,19 +1,36 @@
+var dataFactura = {};
+var dataEnvio = {};
+var dataCliente = {};
+var costoEnvio = 300;
+var envioGratis = 3000;
+var needBilling = false;
+var total;
+
 $(document).ready(function () {
     $('#div-factura').hide();
+
+    $('#costo-entrega').html(formatterDolar.format(costoEnvio));
+    $('#minima-compra').html(formatterDolar.format(envioGratis));
      createFormCliente();
      createFormEnvio();
 
 });
-var dataOrden = {};
-var dataEnvio = {};
-var dataCliente = {};
-var costoEnvio = 300;
+
 function checkFactura(){
     if( $('#facturar').is(':checked') ) {
         createFormFactura();
+        needBilling = true;
         $('#div-factura').show();
+
+        $('#btn-pay-form').show();
+        $('#btn-pay-div').hide();
     }else{
         $('#div-factura').hide();
+
+        $('#btn-pay-form').hide();
+        $('#btn-pay-div').show();
+        needBilling = false;
+
     }
 }
 
@@ -125,14 +142,13 @@ function createFormCliente(){
             $(formCliente).each(function (index, obj) {
                 dataCliente[obj.name] = obj.value;
             });
-            console.log(dataCliente)
-            $('nav-envio-tab').click();
+            validTadEnvio();
         }
     });
 }
 
 function createFormEnvio() {
-    $("#form-create-orden").submit(function (e) {
+    $("#form-create-envio").submit(function (e) {
         e.preventDefault();
     }).validate({
         rules: {
@@ -146,21 +162,23 @@ function createFormEnvio() {
             },
         },
         submitHandler: function () {
-            var formEnvio = $("#form-create-orden").serializeArray();
+            var formEnvio = $("#form-create-envio").serializeArray();
 
             $(formEnvio).each(function (index, obj) {
                 dataEnvio[obj.name] = obj.value;
             });
-            console.log(dataEnvio)
-            datosVistaPrevia();
-            $('nav-envio-tab').click();
+
+            if ($("#form-create-cliente").valid() && $("#form-create-envio").valid()){
+                tabOrden();
+                datosVistaPrevia();
+            }
+
         }
     });
 }
 
 function createFormFactura(){
-
-    $("#form-create-orden").submit(function (e) {
+    $("#form-create-factura").submit(function (e) {
         e.preventDefault();
     }).validate({
         rules: {
@@ -256,11 +274,23 @@ function createFormFactura(){
             }
         },
         submitHandler: function () {
-            var formOrden = $("#form-create-orden").serializeArray();
+            var formOrden = $("#form-create-factura").serializeArray();
+            var dataConver={};
             $(formOrden).each(function (index, obj) {
-                dataOrden[obj.name] = obj.value;
+                dataConver[obj.name] = obj.value;
             });
-            console.log(dataOrden)
+            dataFactura = {
+                socialReason: dataConver.razonSocial,
+                typePerson: dataConver.tipoPersona,
+                rfc: dataConver.rfc,
+                address: dataConver.direccionFac,
+                city: dataConver.municipioFac,
+                state: dataConver.estadoFac,
+                email: dataConver.correoFac,
+                zip: dataConver.cpFac,
+                usoCFDI: dataConver.usoCFDI
+            };
+            createOrder();
         }
     });
 }
@@ -273,7 +303,7 @@ function datosVistaPrevia(){
         dataType: "json",
         data:{'sessionCookie': Cookies.get('session')},
         success: function (result) {
-            resultJson  = JSON.parse(result[0]);
+            resultJson  = JSON.parse(result);
             var tr='';
             $.each(resultJson.cart, function (key, value) {
                 console.log(value);
@@ -288,32 +318,98 @@ function datosVistaPrevia(){
                     '    <td>'+formatterDolar.format(value.newPrice * value.cartCount)+'</td>'+
                     '</tr>';
             });
-            $('#body-tr').html(tr);
-            var total=resultJson.total;
+
+            total=parseFloat(resultJson.total);
             var mensajeEnvio='';
-            if(dataEnvio.delivery ==='domicilio'){
-                total = total+costoEnvio;
+            if(dataEnvio.delivery === 'domicilio' ){
                 mensajeEnvio+='<p >Envio a domicilio <span class="text-muted">'+formatterDolar.format(costoEnvio)+' MXN / Entrega de 2 a 6 días hábiles *Compras mayores a $3,000.00 gratis y en área de cobertura</span> </p>';
+
+                if (total > envioGratis){
+                    costoEnvio = 0;
+                }
+                total = total + costoEnvio;
+                tr +=
+                    '<tr>'+
+                    '    <td scope="row">'+
+                    '    <img style="width: 60px;height: 60px;" alt="Paqueteria" src="assets/images/productos/--.png">'+
+                    '    </td>'+
+                    '    <td>Manejo de Mercancía Envío paquetería</td>'+
+                    '    <td class="text-center">'+formatterDolar.format(costoEnvio)+'</td>'+
+                    '    <td class="text-center"><span>1</span></td>'+
+                    '    <td>'+formatterDolar.format(costoEnvio)+'</td>'+
+                    '</tr>';
             }else{
-                mensajeEnvio+='<p style="font-size: 14px">Entrega en sucursal Cuernavaca <span class="text-muted"> GRATIS / Entrega de 1 a 2 días hábiles *En algunos casos la entrega puede extenderse hasta 7 días hábiles en cuyo caso se lo haremos saber de inmediato.</span></p>';
+                mensajeEnvio +='<p style="font-size: 14px">Entrega en sucursal Cuernavaca <span class="text-muted"> GRATIS / Entrega de 1 a 2 días hábiles *En algunos casos la entrega puede extenderse hasta 7 días hábiles en cuyo caso se lo haremos saber de inmediato.</span></p>';
             }
+            $('#body-tr').html(tr);
             $('#metodoEnvio').html(mensajeEnvio);
             $('#totalCheck').html(formatterDolar.format(total));
+            $('#nombreCheck').html(dataCliente.firstName+' '+dataCliente.lastName);
+            $('#correoCheck').html(dataCliente.email);
+            $('#telefonoCheck').html(dataCliente.phone);
+            $('#estadoCheck').html(dataCliente.state);
+            $('#ciudadCheck').html(dataCliente.city);
+            $('#cpCheck').html(dataCliente.zip);
+            $('#coloniaCheck').html(dataCliente.suburb);
+            $('#direccionCheck').html(dataCliente.address);
         },
         error: function (err) {
         }
     });
+}
+
+function createOrder(){
+    $('#overlay-bussy').addClass('active');
+    var json = {
+        'payment': JSON.stringify({ value:'Transferencia' }),
+        'billing' : JSON.stringify(dataCliente),
+        'billMandatory': JSON.stringify(dataFactura),
+        'needBilling': JSON.stringify(needBilling),
+        'delivery': JSON.stringify({ deliveryMethod : { value:dataEnvio.delivery, min: envioGratis, cost:costoEnvio}}),
+    }
+    $.ajax({
+        url: ruta + "api/checkout/createOrder",
+        type: "POST",
+        dataType: "json",
+        data:{
+            'forms': JSON.stringify(json),
+            'sessionCookie': Cookies.get('session')
+        },
+        success: function (result) {
+            if(result.data === 'success'){
+                Cookies.remove('session');
+                $('#totalConfirm').html(formatterDolar.format(total))
+                tabConfirmation();
+                getCartProducts();
+            }
+            $('#overlay-bussy').removeClass('active');
+        },
+        error: function (err) {
+            $('#overlay-bussy').removeClass('active');
+        }
+    });
+}
 
 
+function tabCliente(){
+    $('#nav-client-tab').click();
+}
 
-    $('#nombreCheck').html(dataCliente.firstName+' '+dataCliente.lastName);
-    $('#correoCheck').html(dataCliente.email);
-    $('#telefonoCheck').html(dataCliente.phone);
-    $('#estadoCheck').html(dataCliente.state);
-    $('#ciudadCheck').html(dataCliente.city);
-    $('#cpCheck').html(dataCliente.zip);
-    $('#colonia').html(dataCliente.suburb);
-    $('#direccionCheck').html(dataCliente.address);
+function tabEnvio(){
+    $('#nav-envio-tab').click();
+}
+function validTadEnvio(){
+    if($("#form-create-cliente").valid()){
+        tabEnvio();
+    }else{
+        openSnackbar('warning','Te falta validar un campo en Datos de envio')
+    }
+}
 
+function tabOrden(){
+    $('#nav-orden-tab').click();
+}
 
+function tabConfirmation(){
+    $('#nav-confirmation-tab').click();
 }

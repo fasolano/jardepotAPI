@@ -39,55 +39,55 @@
                                 <div class="col-md-3">
                                     <div class="form-group">
                                         <input type="text" class="form-control" id="firstName" name="firstName"
-                                               placeholder="Nombre(s)*">
+                                               placeholder="Nombre(s)*" required>
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group">
                                         <input type="text" class="form-control" id="lastName" name="lastName"
-                                               placeholder="Apellidos*">
+                                               placeholder="Apellidos*" required>
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group">
                                         <input type="text" class="form-control" id="email" name="email"
-                                               placeholder="Email*">
+                                               placeholder="Email*" required>
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group">
                                         <input type="text" class="form-control" id="phone" name="phone"
-                                               placeholder="Teléfono*">
+                                               placeholder="Teléfono*" required>
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group">
                                         <input type="text" class="form-control" id="state" name="state"
-                                               placeholder="Estado*">
+                                               placeholder="Estado*" required>
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group">
                                         <input type="text" class="form-control" id="city" name="city"
-                                               placeholder="Ciudad/Municipio*">
+                                               placeholder="Ciudad/Municipio*" required>
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group">
                                         <input type="text" class="form-control" id="zip" name="zip"
-                                               placeholder="Código postal*">
+                                               placeholder="Código postal*" required>
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group">
                                         <input type="text" class="form-control" id="suburb" name="suburb"
-                                               placeholder="Colonia*">
+                                               placeholder="Colonia*" required>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <input type="text" class="form-control" id="address" name="address"
-                                               placeholder="Dirección*">
+                                               placeholder="Dirección*" required>
                                     </div>
                                 </div>
                                 <div class="row justify-content-center ">
@@ -98,12 +98,12 @@
                         </form>
                     </div>
                     <div class="tab-pane fade" id="nav-envio" role="tabpanel" aria-labelledby="nav-envio-tab">
-                        <form id="form-create-orden" action="javascript:void(0)">
+                        <form id="form-create-envio" action="javascript:void(0)">
                             <div class="row justify-content-center m-2">
                                 <div class="col-md-12">
                                     <label><input type="radio" id="opcionEntrega1" name="delivery"
-                                                  value="domicilio"><span>&nbsp;</span><b>Envio a domicilio</b>
-                                        $300.00 MXN / Entrega de 2 a 6 días hábiles *Compras mayores a $3,000.00 gratis
+                                                  value="domicilio">&nbsp;<b>Envio a domicilio</b>
+                                        <span id="costo-entrega"></span> MXN / Entrega de 2 a 6 días hábiles *Compras mayores a <span id="minima-compra"></span> gratis
                                         y en área de cobertura</label>
                                     <label><input type="radio" id="opcionEntrega2" name="delivery"
                                                   value="cuernavaca"><span>&nbsp;</span><b>Entrega en sucursal
@@ -112,9 +112,8 @@
                                         de inmediato.</label>
                                     <label id="delivery-error" class="error" for="delivery"></label>
                                     <div class="row justify-content-center ">
-                                        <a class="btn btn-dark btn-sm" style="border-radius: 20px" data-toggle="tab"
-                                           href="#nav-client">
-                                            <i class="material-icons">navigate_before</i></a>&nbsp;
+                                        <button class="btn btn-dark btn-sm" style="border-radius: 20px" onclick="tabCliente()">
+                                            <i class="material-icons">navigate_before</i></button>&nbsp;
                                         <button type="submit" class="btn btn-dark btn-sm" style="border-radius: 20px"><i
                                                 class="material-icons">navigate_next</i></button>
                                     </div>
@@ -141,15 +140,17 @@
                                 </table>
                             </div>
                             <div class="row m-1">
-                                <h3 class="title-card">Método de envío</h3>
-                                <br>
-                                <div class="divider"></div>
-                                <br>
-                                <div id="metodoEnvio">
+                                <div class="col-md-12">
+                                    <h3 class="title-card">Método de envío</h3>
+                                    <div class="divider"></div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div id="metodoEnvio">
+                                    </div>
                                 </div>
                             </div>
                             <div class="row justify-content-center ">
-                                <h2><span class="text-muted">Precio Total: </span><span id="totalCheck">$13,000.00</span></h2>
+                                <h2><span class="text-muted">Precio Total: </span><span id="totalCheck"></span></h2>
                             </div>
                             <div class="row">
                                 <h3 class="text-muted mt-2">Datos de envio</h3>
@@ -192,7 +193,7 @@
                                 </div>
                             </div>
                             <div id="div-factura" class="row">
-                                <form id="form-create-orden" action="javascript:void(0)">
+                                <form id="form-create-factura" action="javascript:void(0)">
                                     <div class="row">
                                         <div class="col-md-3">
                                             <div class="form-group">
@@ -276,18 +277,19 @@
                                                        name="direccionFac">
                                             </div>
                                         </div>
-                                        <div class="row justify-content-center ">
-                                            <button class="btn btn-dark btn-sm" style="border-radius: 20px"><i
-                                                    class="material-icons">navigate_before</i></button> &nbsp;
-                                            <button class="btn btn-dark">Crear orden de compra</button>
-                                        </div>
                                     </div>
+                                        <div id="btn-pay-form" class="row justify-content-center ">
+                                            <button class="btn btn-dark btn-sm" style="border-radius: 20px" onclick="tabEnvio()"><i
+                                                    class="material-icons">navigate_before</i></button> &nbsp;
+                                            <button type="submit" class="btn btn-dark">Crear orden de compra</button>
+                                        </div>
+
                                 </form>
                             </div>
-                            <div class="row justify-content-center ">
-                                <button class="btn btn-dark btn-sm" style="border-radius: 20px"><i
+                            <div id="btn-pay-div" class="row justify-content-center ">
+                                <button class="btn btn-dark btn-sm" style="border-radius: 20px" onclick="tabEnvio()"><i
                                         class="material-icons">navigate_before</i></button> &nbsp;
-                                <button class="btn btn-dark">Crear orden de compra</button>
+                                <button class="btn btn-dark" onclick="createOrder()">Crear orden de compra</button>
                             </div>
                         </div>
                     </div>
