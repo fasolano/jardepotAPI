@@ -14,6 +14,12 @@ $(document).ready(function () {
      createFormCliente();
      createFormEnvio();
 
+     $('.no-passed').click(function (e) {
+         if($(this).hasClass('no-passed')){
+             e.stopPropagation();
+         }
+     });
+
 });
 
 function checkFactura(){
@@ -392,11 +398,17 @@ function createOrder(){
 
 
 function tabCliente(){
+    $('#nav-envio-tab').addClass('no-passed');
     $('#nav-client-tab').click();
 }
 
 function tabEnvio(){
-    $('#nav-envio-tab').click();
+    if($('#nav-envio-tab').hasClass('no-passed')){
+        $('#nav-envio-tab').removeClass('no-passed').click();
+    }else{
+        $('#nav-orden-tab').addClass('no-passed');
+        $('#nav-envio-tab').click();
+    }
 }
 function validTadEnvio(){
     if($("#form-create-cliente").valid()){
@@ -407,9 +419,9 @@ function validTadEnvio(){
 }
 
 function tabOrden(){
-    $('#nav-orden-tab').click();
+    $('#nav-orden-tab').removeClass('no-passed').click();
 }
 
 function tabConfirmation(){
-    $('#nav-confirmation-tab').click();
+    $('#nav-confirmation-tab').removeClass('no-passed').click();
 }

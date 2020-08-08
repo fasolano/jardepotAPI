@@ -22,11 +22,11 @@
                     <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
                         <a class="nav-item nav-link active" id="nav-client-tab" data-toggle="tab" href="#nav-client"
                            role="tab" aria-controls="nav-client" aria-selected="true">DATOS DE ENVIO</a>
-                        <a class="nav-item nav-link" id="nav-envio-tab" data-toggle="tab" href="#nav-envio"
+                        <a class="nav-item nav-link no-passed" id="nav-envio-tab" data-toggle="tab" href="#nav-envio"
                            role="tab" aria-controls="nav-envio" aria-selected="false">MÉTODO DE ENTREGA</a>
-                        <a class="nav-item nav-link" id="nav-orden-tab" data-toggle="tab" href="#nav-orden"
+                        <a class="nav-item nav-link no-passed" id="nav-orden-tab" data-toggle="tab" href="#nav-orden"
                            role="tab" aria-controls="nav-orden" aria-selected="false">VISTA PREVIA DE LA ORDEN</a>
-                        <a class="nav-item nav-link" id="nav-confirmation-tab" data-toggle="tab"
+                        <a class="nav-item nav-link no-passed" id="nav-confirmation-tab" data-toggle="tab"
                            href="#nav-confirmation" role="tab"
                            aria-controls="nav-confirmation" aria-selected="false">CONFIRMACIÓN</a>
                     </div>
@@ -112,7 +112,7 @@
                                         de inmediato.</label>
                                     <label id="delivery-error" class="error" for="delivery"></label>
                                     <div class="row justify-content-center ">
-                                        <button class="btn btn-dark btn-sm" style="border-radius: 20px" onclick="tabCliente()">
+                                        <button type="button" class="btn btn-dark btn-sm" style="border-radius: 20px" onclick="tabCliente()">
                                             <i class="material-icons">navigate_before</i></button>&nbsp;
                                         <button type="submit" class="btn btn-dark btn-sm" style="border-radius: 20px"><i
                                                 class="material-icons">navigate_next</i></button>

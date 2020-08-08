@@ -147,7 +147,8 @@ $(document).ready(function (){
             suburb: $('#suburb-mp').val(),
             address: $('#address-mp').val()
         });
-        parameters['url'] = "api/checkout/mercadopago";
+        // parameters['url'] = "api/checkout/mercadopago";
+        parameters['url'] = "https://fasolano.com/jardepotAPI/public/api/checkout/mercadopago";
         parameters['type'] = "post";
         parameters['dataType'] = "json";
         parameters['data'] = {

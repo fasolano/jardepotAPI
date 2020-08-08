@@ -14,25 +14,25 @@ use MercadoPago\Shipments;
 
 class MercadoPago{
 
-    protected $client_id = "5218597946840536";
+    /*protected $client_id = "5218597946840536";
     protected $client_secret = "jRqFu65og5OeqwhTIicRMROzVJWTM0jv";
     protected $public_key = "TEST-f69e04b9-b984-490f-ac0f-48bf0b6f48ca";
-    protected $access_token = "TEST-5218597946840536-011519-f0feee1d9aa73c866bf25d8975e45fa9-509669228";
+    protected $access_token = "TEST-5218597946840536-011519-f0feee1d9aa73c866bf25d8975e45fa9-509669228";*/
 
-    /*protected $client_id = "8224945122859735";
+    protected $client_id = "8224945122859735";
     protected $client_secret = "oezGzmodwi7mKkC7xOQ7wvi8niF6xKSd";
     protected $public_key = "APP_USR-63cd8043-c639-4031-84dd-648178659e68";
-    protected $access_token = "APP_USR-8224945122859735-122615-a76e6f063a67e18cdf0480846f99ba5e-191284474";*/
+    protected $access_token = "APP_USR-8224945122859735-122615-a76e6f063a67e18cdf0480846f99ba5e-191284474";
 
     public function __construct() {
-        SDK::setClientId("5218597946840536");
+        /*SDK::setClientId("5218597946840536");
         SDK::setClientSecret("jRqFu65og5OeqwhTIicRMROzVJWTM0jv");
         SDK::setPublicKey('TEST-f69e04b9-b984-490f-ac0f-48bf0b6f48ca');
-        SDK::setAccessToken('TEST-5218597946840536-011519-f0feee1d9aa73c866bf25d8975e45fa9-509669228');
-        /*SDK::setClientId("8224945122859735");
+        SDK::setAccessToken('TEST-5218597946840536-011519-f0feee1d9aa73c866bf25d8975e45fa9-509669228');*/
+        SDK::setClientId("8224945122859735");
         SDK::setClientSecret("oezGzmodwi7mKkC7xOQ7wvi8niF6xKSd");
         SDK::setPublicKey('APP_USR-63cd8043-c639-4031-84dd-648178659e68');
-        SDK::setAccessToken('APP_USR-8224945122859735-122615-a76e6f063a67e18cdf0480846f99ba5e-191284474');*/
+        SDK::setAccessToken('APP_USR-8224945122859735-122615-a76e6f063a67e18cdf0480846f99ba5e-191284474');
     }
 
     public function notification($id){
@@ -121,17 +121,17 @@ class MercadoPago{
         # Save External Reference
         //$preference->external_reference = $order->token;
 
-        $preference->back_urls = [
+        /*$preference->back_urls = [
             "success" => 'http://localhost/jardepotAPI/public/confirmacion/mercadopago/success',
             "pending" => 'http://localhost/jardepotAPI/public/confirmacion/mercadopago/pending',
             "failure" => 'http://localhost/jardepotAPI/public/confirmacion/mercadopago/failure',
-        ];
-
-        /*$preference->back_urls = [
-            "success" => 'https://www.jardepot.com/confirmation/success/MercadoPago',
-            "pending" => 'https://www.jardepot.com/confirmation/pending/MercadoPago',
-            "failure" => 'https://www.jardepot.com/confirmation/failure/MercadoPago',
         ];*/
+
+        $preference->back_urls = [
+            "success" => 'https://www.jardepot.com/confirmacion/mercadopago/success',
+            "pending" => 'https://www.jardepot.com/confirmacion/mercadopago/pending',
+            "failure" => 'https://www.jardepot.com/confirmacion/mercadopago/failure',
+        ];
 
         $preference->notification_url = 'https://www.jardepot.com/jardepotAPI/public/api/confirm/prueba/confirmation/notification/MercadoPago';
 
@@ -139,9 +139,9 @@ class MercadoPago{
         # Save and POST preference
         $preference->save();
 
-        if (config('payment-methods.use_sandbox')) {
+        /*if (config('payment-methods.use_sandbox')) {
             return $preference->sandbox_init_point;
-        }
+        }*/
 
         return $preference->init_point;
     }
