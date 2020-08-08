@@ -58,7 +58,7 @@
                         <div class="col-sm-12">
                             <div class="jd-sublinks-items">
                                 @foreach($cat1['nivel2'] as $categoria2)
-                                    <a href="{{url($categoria2['href'])}}" style="height: 28px;"><i class="material-icons">keyboard_arrow_right</i>{{$categoria2['name']}}
+                                    <a href="{{url($categoria2['href'])}}" class="my-1"><i class="material-icons">keyboard_arrow_right</i>{{$categoria2['name']}}
                                     </a>
                                 @endforeach
                             </div>
@@ -91,7 +91,7 @@
                                             <div class="col-sm-12">
                                                 <div class="jd-sublinks-items">
                                                     @foreach($cat1['nivel2'] as $key2 => $categoria2)
-                                                        <a href="{{url($categoria2['href'])}}" style="height: 28px;">
+                                                        <a href="{{url($categoria2['href'])}}" class="my-1">
                                                             <i class="material-icons">keyboard_arrow_right</i>{{$categoria2['name']}}
                                                         </a>
                                                     @endforeach
