@@ -116,18 +116,18 @@
 
 @section('js')
     <script type="application/ld+json">
-        {
-            "@context": "http://schema.org",
-            "@type": "Organization",
-            "name": "Jardepot",
-            "url": "http://jardepot.com",
-            "address": "Av. Emiliano Zapata 129, Tlaltenango, 62170 Cuernavaca, Mor., México",
-            "sameAs": [
-            "https://www.facebook.com/Jardepot",
-            "https://www.instagram.com/jardepotsade",
-            "https://twitter.com/jardepot",
-            "https://www.youtube.com/channel/UCym0cCHYeEDqs70RD7Zs2-g"
-
-        }
-    </script>
+    {
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "Jardepot",
+  "url": "http://jardepot.com",
+  "address": "Av. Emiliano Zapata 129, Tlaltenango, 62170 Cuernavaca, Mor., México",
+  "sameAs": [
+    "https://www.facebook.com/Jardepot",
+    "https://www.instagram.com/jardepotsade",
+    "https://twitter.com/jardepot",
+    "https://www.youtube.com/channel/UCym0cCHYeEDqs70RD7Zs2-g"
+  ]
+}
+</script>
     @endsection
