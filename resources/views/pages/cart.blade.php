@@ -26,18 +26,18 @@
                 <div id="cart-content" class="border shadow bg-white rounded d-lg-block px-2">
                     <div class="row m-3 d-block d-md-none" style="color: #FFFFFF;">
                         <div class="col-md-3 text-center my-2">
-                            <a class="btn btn-warning">Salir</a>
+                            <a class="btn btn-warning" href="{{url('/')}}">Seguir comprando</a>
                         </div>
                         <div class="col-md-3 text-center my-2">
                             <a class="btn btn-warning btn-modal-paypal" href="javascript: void(0)" data-toggle="modal"
-                               data-target="#modalPayPal">Pagar - PayPal</a>
+                               data-target="#modalPayPal">Pagar con tarjeta</a>
                         </div>
                         <div class="col-md-3 text-center my-2">
                             <a class="btn btn-warning" href="javascript: void(0)" data-toggle="modal"
-                               data-target="#modalMercadoPago">Pagar - Mercado Pago</a>
+                               data-target="#modalMercadoPago">Pagar con tarjeta en Mensualidades</a>
                         </div>
                         <div class="col-md-3 text-center my-2">
-                            <a href="{{url('/checkout')}}" class="btn btn-warning">Pagar - Deposito Bancario</a>
+                            <a href="{{url('/checkout')}}" class="btn btn-warning">Pagar con transferencia o depósito bancario</a>
                         </div>
                     </div>
                     <h1 class="text-center my-2">Carrrito de compra</h1>
@@ -66,18 +66,18 @@
                     </div>
                     <div class="row m-3" style="color: #FFFFFF;">
                         <div class="col-md-3 text-center my-2">
-                            <a class="btn btn-warning">Salir</a>
+                            <a class="btn btn-warning" href="{{url('/')}}">Seguir comprando</a>
                         </div>
                         <div class="col-md-3 text-center my-2">
                             <a class="btn btn-warning btn-modal-paypal" href="javascript: void(0)" data-toggle="modal"
-                               data-target="#modalPayPal">Pagar - PayPal</a>
+                               data-target="#modalPayPal">Pagar con tarjeta</a>
                         </div>
                         <div class="col-md-3 text-center my-2">
                             <a class="btn btn-warning btn-modal-mercado" href="javascript: void(0)" data-toggle="modal"
-                               data-target="#modalMercadoPago">Pagar - Mercado Pago</a>
+                               data-target="#modalMercadoPago">Pagar con tarjeta en Mensualidades</a>
                         </div>
                         <div class="col-md-3 text-center my-2">
-                            <a href="{{url('/checkout')}}" class="btn btn-warning">Pagar - Deposito Bancario</a>
+                            <a href="{{url('/checkout')}}" class="btn btn-warning">Pagar con transferencia o depósito bancario</a>
                         </div>
                     </div>
                 </div>
