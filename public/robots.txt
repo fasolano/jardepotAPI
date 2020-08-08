@@ -1,2 +1,6 @@
+Sitemap:https://www.jardepot.com/sitemap.xml
+
+
+robots
 User-agent: *
 Disallow:
