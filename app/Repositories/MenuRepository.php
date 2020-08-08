@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\DB;
 
 class MenuRepository{
 
-    public function getNivel1Sidebar():object{
+    public function getNivel1Sidebar() {
         $categoriasNivel1 = DB::table('categoriasNivel1')
             ->select(
                 'idCategoriasNivel1',
