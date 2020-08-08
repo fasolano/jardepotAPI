@@ -2,8 +2,10 @@
 
 
 @section('metaData')
-    <title>{{ substr($descriptionLevel2->metatitle, 0,70)}}</title>
-    <meta title="{{ substr($descriptionLevel2->metatitle, 0,70)}}"/>
+{{--    <title>{{ substr($descriptionLevel2->metatitle, 0,70)}}</title>--}}
+{{--    <meta title="{{ substr($descriptionLevel2->metatitle, 0,70)}}"/>--}}
+    <title>{{ $descriptionLevel2->metatitle }}</title>
+    <meta title="{{ $descriptionLevel2->metatitle }}"/>
     <meta name="description" content="{{$descriptionLevel2->metadescription}}">
     <meta name="keywords" content="{{$descriptionLevel2->keywords}}">
 @endsection
