@@ -28,7 +28,7 @@ class MenuController extends Controller{
         return json_encode($menuNavbar);
     }
 
-    public function getSidebar():object {
+    public function getSidebar(){
         $data = $this->menuRepository->getNivel1Sidebar();
         foreach ($data as $key => $datum) {
             $data[$key]->nivel2 = $this->menuRepository->getNivel2($datum->idCategoriasNivel1);
