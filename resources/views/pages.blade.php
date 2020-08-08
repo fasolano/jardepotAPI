@@ -11,6 +11,13 @@
 </head>
 
 <body style="font-family: Roboto !important;">
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T2GB24V"
+                  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-28826115-1"></script>
+
 <div id="overlay-bussy"><div id="loading"></div></div>
 @include('layout.navbar')
 <div class="container-fluid" style="background: #fafafa;">
@@ -25,7 +32,17 @@
 
 @include('layout.footer')
 @include('layout.cierre')
+<script>
+    window.dataLayer = window.dataLayer || [];
 
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'UA-28826115-1');
+</script>
 {{--  Js especifico de cada página  --}}
 @yield('specificJS')
 </body>
