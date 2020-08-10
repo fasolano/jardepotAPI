@@ -74,10 +74,10 @@ class ConfirmController extends Controller {
     }
 
     public function confirmMercadopago($state, Request $request){
+        $payment = "MercadoPago";
         if ($state == "failure"){
             return view("pages/confirm", compact('state', 'payment'));
         }
-        $payment = "MercadoPago";
         $cartID = json_decode($request->get('external_reference'));
         $preference_id = $request->get('preference_id');
         $state = $this->mercadopayment($preference_id, $cartID);
