@@ -263,6 +263,7 @@ function getCartProductsView(){
 }
 
 function createPaypalButton(products, total) {
+    $('#paypal-button-container').html("");
     paypal.Buttons({
         createOrder: function(data, actions) {
             return actions.order.create({
