@@ -7,11 +7,35 @@
     <meta name="keywords" content="{{$descriptionLevel2->keywords}}">
 @endsection
 
+@section('specificCSS')
+    <style>
+
+        .banner3{
+            background-image: url('assets/images/banner/aspersora.jpg');
+        }
+        .banner3-mob{
+            background-image: url('assets/images/banner/aspersora-mob.jpg');
+        }
+        .banner2{
+            background-image: url('assets/images/banner/motocultor.jpg');
+        }
+        .banner2-mob{
+            background-image: url('assets/images/banner/motocultor-mob.jpg');
+        }
+        .banner1{
+            background-image: url('assets/images/banner/podadora.jpg');
+        }
+        .banner1-mob{
+            background-image: url('assets/images/banner/podadora-mob.jpg');
+        }
+    </style>
+@endsection
+
 @section('content')
     <div class="row div-banners">
         <div class="col-xl-5 pr-0">
-            <div class="mb-2 banner divimg"
-                 style="background-position-y: inherit;background-image: url('assets/images/banner/podadora.jpg');box-sizing: border-box;max-height: 60%;">
+            <div class="mb-2 banner divimg" id="banner1"
+                 style="background-position-y: inherit;box-sizing: border-box;max-height: 60%;">
                 <a style="text-decoration: none; width: 100%;" href="{{url('Equipos/Podadoras')}}">
                     <div class="info" style="place-content: flex-start; align-items: flex-start; flex-direction: row;">
                         <div class="px-2" style="background: rgba(0,0,0,.4);flex-direction: column; box-sizing: border-box; display: flex; place-content: flex-start; align-items: flex-start;">
@@ -21,8 +45,8 @@
                     </div>
                 </a>
             </div>
-            <div class="mt-1 banner divimg"
-                 style="background-position-y: inherit; background-image: url('assets/images/banner/motocultor.jpg'); box-sizing: border-box;max-height: 40%;">
+            <div class="mt-1 banner divimg" id="banner2"
+                 style="background-position-y: inherit; box-sizing: border-box;max-height: 40%;">
                 <a style="text-decoration: none; width: 100%; flex-direction: row; box-sizing: border-box; display: flex;" href="{{url('Equipos/Motocultores')}}">
                     <div class="info" style="place-content: flex-end; align-items: flex-end; flex-direction: row;">
                         <div class="px-2" style="background: rgba(0,0,0,.4);flex-direction: column; box-sizing: border-box; display: flex; place-content: flex-end; align-items: flex-end;">
@@ -34,7 +58,7 @@
             </div>
         </div>
         <div class="mt-xl-0 col-xl-7 pl-xl-0">
-            <div class="banner divimg2" style="background-image: url('assets/images/banner/aspersora.jpg');max-height: 96%">
+            <div id="banner3" class="banner divimg2" style="max-height: 96%">
                 <a style="text-decoration: none; height: 100% !important;" href="{{url('Equipos/Aspersoras')}}">
                     <div class="info" style="place-content: flex-start center;align-items: flex-start;flex-direction: column;">
                         <div class="px-2" style="background: rgba(0,0,0,.4);flex-direction: column; box-sizing: border-box; display: flex; place-content: flex-start center; align-items: flex-start;">
@@ -115,6 +139,20 @@
 
 
 @section('specificJS')
+    <script type="text/javascript">
+        $( window ).on( "load", function() {
+            if(window.innerWidth < 960){
+                $('#banner1').addClass('banner1-mob');
+                $('#banner2').addClass('banner2-mob');
+                $('#banner3').addClass('banner3-mob');
+            }else{
+                $('#banner1').addClass('banner1');
+                $('#banner2').addClass('banner2');
+                $('#banner3').addClass('banner3');
+            }
+        });
+    </script>
+
     <script type="application/ld+json">
     {
   "@context": "http://schema.org",
