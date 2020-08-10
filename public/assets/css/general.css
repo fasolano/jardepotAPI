@@ -580,12 +580,14 @@
         margin: auto;
     }
     .jd-sublinks-items:nth-child(-n+1) {
-        -moz-column-count: 1;
+        -moz-column-count: 2;
         -moz-column-gap: 10px;
-        -webkit-column-count: 1;
+        -webkit-column-count: 2;
         -webkit-column-gap: 10px;
-        column-count: 1;
+        column-count: 2;
         column-gap: 10px;
+        margin-left: -11px;
+        margin-right: -11px;
     }
     .div-sublinks{
         min-height: 220px;

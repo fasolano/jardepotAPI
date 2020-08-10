@@ -1,3 +1,4 @@
+/*Nabvar*/
 .navbar-light .navbar-nav .nav-link {
     color: #f68600;
     font-weight: 500;
@@ -157,3 +158,31 @@
         font-weight: 600;
     }
 }
+/*Fin Navbar*/
+
+/*Footer*/
+.link-footer{
+    color: white !important;
+    text-decoration: underline;
+}
+
+.w-20-tel{
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.w-20-tel div{
+    width: 128px;
+}
+
+.w-20-tel a{
+    text-decoration: underline;
+}
+
+.social-icon{
+    cursor: pointer;
+    fill: #8f8f8f;
+}
+/*Fin Footer*/
