@@ -199,29 +199,44 @@ function reloadProducts() {
                 '                                </a>' +
                 '                                <div class="d-flex align-items-center flex-column" style="height: 245px;">' +
                 '                                    <p class="text-muted text-center"' +
-                '                                       style="font-weight: 500; font-size: 18px;">'+e.name+'</p>' +
-                '                                    <p class="old-price" style="height: 21px;">' +
-                '                                        ' +(e.hasOwnProperty('oldPrice')?e.oldPrice:"")+
-                '                                    </p>' +
-                '                                    <p class="new-price">'+e.newPrice+'</p>' +
-                '                                    <button class="btn btn-buy d-flex justify-content-center align-items-center"' +
-                '                                       onclick="buyProduct(\''+ e.productType +'\',\''+e.brand+'\',\''+e.mpn+'\')">' +
-                '                                        <i class="material-icons" style="font-size: 16px;">shopping_cart</i> Comprar' +
-                '                                    </button>' +
-                '' +
-                '                                    <p class="envio-volada d-flex justify-content-center align-items-center my-2"' +
-                '                                       style="height: 24px; max-height: 24px;">' +
-                '                                        '+ (e.inventory > 0?'<i class="material-icons" style="font-size: 16px;">flash_on</i>Envio de volada': '') +
-                '                                    </p>' +
-                '                                    <p class="little-letters">*Envio gratis a partir de $3,000 de compra</p>' +
-                '                                    <p class="little-letters">*Consulte condiciones.</p>' +
-                '                                    <p class="product-description p-2 text-center text-truncate" data-toggle="tooltip"' +
-                '                                       data-placement="bottom"' +
-                '                                       style="min-height: 74px; max-height: 74px; white-space: normal;"' +
-                '                                       title="'+e.description+'">' +
-                '                                        '+e.description +
-                '                                    </p>' +
-                '                                </div>' +
+                '                                       style="font-weight: 500; font-size: 18px;">'+e.name+'</p>';
+            if (e.stock){
+                item += '                                    <p class="old-price" style="height: 21px;">' +
+                    '                                        ' +(e.hasOwnProperty('oldPrice')?e.oldPrice:"")+
+                    '                                    </p>' +
+                    '                                    <p class="new-price">'+e.newPrice+'</p>' +
+                    '                                    <button class="btn btn-buy d-flex justify-content-center align-items-center"' +
+                    '                                       onclick="buyProduct(\''+ e.productType +'\',\''+e.brand+'\',\''+e.mpn+'\')">' +
+                    '                                        <i class="material-icons" style="font-size: 16px;">shopping_cart</i> Comprar' +
+                    '                                    </button>' +
+                    '' +
+                    '                                    <p class="envio-volada d-flex justify-content-center align-items-center my-2"' +
+                    '                                       style="height: 24px; max-height: 24px;">' +
+                    '                                        '+ (e.inventory > 0?'<i class="material-icons" style="font-size: 16px;">flash_on</i>Envio de volada': '') +
+                    '                                    </p>' +
+                    '                                    <p class="little-letters">*Envio gratis a partir de $3,000 de compra</p>' +
+                    '                                    <p class="little-letters">*Consulte condiciones.</p>' +
+                    '                                    <p class="product-description p-2 text-center text-truncate" data-toggle="tooltip"' +
+                    '                                       data-placement="bottom"' +
+                    '                                       style="min-height: 74px; max-height: 74px; white-space: normal;"' +
+                    '                                       title="'+e.description+'">' +
+                    '                                        '+e.description +
+                    '                                    </p>';
+
+            }else{
+                item += '<p class="little-letters">*Envio gratis a partir de $3,000 de compra</p>' +
+                    '       <p class="little-letters">*Consulte condiciones.</p>' +
+                    '       <p class="product-description p-2 text-center text-truncate" data-toggle="tooltip"' +
+                    '           data-placement="bottom"' +
+                    '           style="min-height: 74px; max-height: 74px; white-space: normal;"' +
+                    '           title="'+e.description+'">' +
+                    '               '+e.description.substring(0,70)+
+                    '       </p>' +
+                    '       <p class="text-center mt-3" style="color: rgba(0,0,0,.54)!important; font-weight: 900; font-size: 15px; ">Consulta precio y existencia Llámanos al teléfono</p>' +
+                    '       <p style="font-weight: 900; font-size: 18px; color: #de1f21;">800 212 9225</p>';
+            }
+
+            item += '                                </div>' +
                 '                                <hr>' +
                 '                                <div class="d-flex align-items-center flex-column">' +
                 '                                    <button type="button" onclick="verifyAddCartProduct(\''+ e.productType +'\',\''+e.brand+'\',\''+e.mpn+'\','+1+')"' +
@@ -235,6 +250,7 @@ function reloadProducts() {
                 '                                        aviso.</p>' +
                 '                                </div>' +
                 '                            </div>';
+
             if(!search){
                 $('#cards-sections').append(item);
             }else{
