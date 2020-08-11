@@ -257,32 +257,46 @@
                                 <div class="d-flex align-items-center flex-column" style="height: 245px;">
                                     <p class="text-muted text-center"
                                        style="font-weight: 500; font-size: 18px;">{{$item['name']}}</p>
-                                    <p class="old-price" style="height: 21px;">
-                                        @if(isset($item['oldPrice']))
-                                            {{$item['oldPrice']}}
-                                        @endif
-                                    </p>
-                                    <p class="new-price">{{$item['newPrice']}}</p>
-                                    <button class="btn btn-buy d-flex justify-content-center align-items-center"
-                                            onclick="buyProduct('{{$item['productType']}}','{{$item['brand']}}','{{$item['mpn']}}')">
-                                        <i class="material-icons" style="font-size: 16px;">shopping_cart</i> Comprar
-                                    </button>
 
-                                    <p class="envio-volada d-flex justify-content-center align-items-center my-2"
-                                       style="height: 24px; max-height: 24px;">
-                                        @if($item['inventory'] > 0)
-                                            <i class="material-icons" style="font-size: 16px;">flash_on</i>Envio de
-                                            volada
-                                        @endif
-                                    </p>
-                                    <p class="little-letters">*Envio gratis a partir de $3,000 de compra</p>
-                                    <p class="little-letters">*Consulte condiciones.</p>
-                                    <p class="product-description p-2 text-center text-truncate" data-toggle="tooltip"
-                                       data-placement="bottom"
-                                       style="min-height: 74px; max-height: 74px; white-space: normal;"
-                                       title="{{$item['description']}}">
-                                        {{$item['description']}}
-                                    </p>
+                                    @if($item['stock'])
+                                        <p class="old-price" style="height: 21px;">
+                                            @if(isset($item['oldPrice']))
+                                                {{$item['oldPrice']}}
+                                            @endif
+                                        </p>
+                                        <p class="new-price">{{$item['newPrice']}}</p>
+                                        <button class="btn btn-buy d-flex justify-content-center align-items-center"
+                                                onclick="buyProduct('{{$item['productType']}}','{{$item['brand']}}','{{$item['mpn']}}')">
+                                            <i class="material-icons" style="font-size: 16px;">shopping_cart</i> Comprar
+                                        </button>
+
+                                        <p class="envio-volada d-flex justify-content-center align-items-center my-2"
+                                           style="height: 24px; max-height: 24px;">
+                                            @if($item['inventory'] > 0)
+                                                <i class="material-icons" style="font-size: 16px;">flash_on</i>Envio de
+                                                volada
+                                            @endif
+                                        </p>
+                                        <p class="little-letters">*Envio gratis a partir de $3,000 de compra</p>
+                                        <p class="little-letters">*Consulte condiciones.</p>
+                                        <p class="product-description p-2 text-center text-truncate" data-toggle="tooltip"
+                                           data-placement="bottom"
+                                           style="min-height: 74px; max-height: 74px; white-space: normal;"
+                                           title="{{$item['description']}}">
+                                            {{$item['description']}}
+                                        </p>
+                                    @else
+                                        <p class="little-letters">*Envio gratis a partir de $3,000 de compra</p>
+                                        <p class="little-letters">*Consulte condiciones.</p>
+                                        <p class="product-description p-2 text-center text-truncate" data-toggle="tooltip"
+                                           data-placement="bottom"
+                                           style="min-height: 74px; max-height: 74px; white-space: normal;"
+                                           title="{{$item['description']}}">
+                                            {{$item['description']}}
+                                        </p>
+                                        <p class="text-center mt-3" style="color: rgba(0,0,0,.54)!important; font-weight: 900; font-size: 15px; ">Consulta precio y existencia Llámanos al teléfono</p>
+                                        <p style="font-weight: 900; font-size: 18px; color: #de1f21;">800 212 9225</p>
+                                    @endif
                                 </div>
                                 <hr>
                                 <div class="d-flex align-items-center flex-column">
