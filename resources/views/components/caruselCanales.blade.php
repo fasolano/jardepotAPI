@@ -56,11 +56,11 @@
                 </a>
             </div>
         </div>
-        <a class="carousel-control-prev" href="#carouselExample" role="button" data-slide="prev" style="font-size: 48px;">
+        <a class="carousel-control-prev" href="#carouselExample" role="button" data-slide="prev" style="min-width: 48px;">
             <i class="material-icons text-muted">arrow_back_ios</i>
             <span class="sr-only">Previous</span>
         </a>
-        <a class="carousel-control-next text-faded" href="#carouselExample" role="button" data-slide="next" style="font-size: 48px;">
+        <a class="carousel-control-next text-faded" href="#carouselExample" role="button" data-slide="next" style="min-width: 48px;">
             <i class="material-icons text-muted">arrow_forward_ios</i>
             <span class="sr-only">Next</span>
         </a>
