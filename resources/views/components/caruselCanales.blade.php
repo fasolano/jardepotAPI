@@ -46,7 +46,7 @@
                 </div>
             </div>
             <div class="carousel-item col-md-3">
-                <a style="text-decoration: none;" target="_blank" href="https://www.claroshop.com/Tienda/124005/JarDepot.com/" rel="noopener">>
+                <a style="text-decoration: none;" target="_blank" href="https://www.claroshop.com/Tienda/124005/JarDepot.com/" rel="noopener">
                     <img src="{{asset('img/canalesDist/claroshop.jpg')}}" class="img-fluid mx-auto d-block img-carousel" alt="Canal ClaroShop">
                 </a>
             </div>
@@ -56,11 +56,11 @@
                 </a>
             </div>
         </div>
-        <a class="carousel-control-prev" href="#carouselExample" role="button" data-slide="prev">
+        <a class="carousel-control-prev" href="#carouselExample" role="button" data-slide="prev" style="font-size: 48px;">
             <i class="material-icons text-muted">arrow_back_ios</i>
             <span class="sr-only">Previous</span>
         </a>
-        <a class="carousel-control-next text-faded" href="#carouselExample" role="button" data-slide="next">
+        <a class="carousel-control-next text-faded" href="#carouselExample" role="button" data-slide="next" style="font-size: 48px;">
             <i class="material-icons text-muted">arrow_forward_ios</i>
             <span class="sr-only">Next</span>
         </a>
