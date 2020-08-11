@@ -236,15 +236,21 @@ function reloadProducts() {
                     '       <p style="font-weight: 900; font-size: 18px; color: #de1f21;">800 212 9225</p>';
             }
 
-            item += '                                </div>' +
+            item += '                            </div>' +
                 '                                <hr>' +
                 '                                <div class="d-flex align-items-center flex-column">' +
-                '                                    <button type="button" onclick="verifyAddCartProduct(\''+ e.productType +'\',\''+e.brand+'\',\''+e.mpn+'\','+1+')"' +
-                '                                            class="btn-add-cart d-flex justify-content-center align-items-center"' +
-                '                                            style="font-size: 14px;">' +
-                '                                        <i class="material-icons fn-color-jd">shopping_cart</i>' +
-                '                                        <span class="text-muted" style="font-size: 14px; font-weight: 500;">Agregar al carrito</span>' +
-                '                                    </button>' +
+
+                '                                   <div style="height: 36px">';
+            if (e.stock) {
+                item += '                                <button type="button" onclick="verifyAddCartProduct(\'' + e.productType + '\',\'' + e.brand + '\',\'' + e.mpn + '\',' + 1 + ')"' +
+                    '                                            class="btn-add-cart d-flex justify-content-center align-items-center"' +
+                    '                                            style="font-size: 14px;">' +
+                    '                                        <i class="material-icons fn-color-jd">shopping_cart</i>' +
+                    '                                        <span class="text-muted" style="font-size: 14px; font-weight: 500;">Agregar al carrito</span>' +
+                    '                                    </button>';
+            }
+
+            item += '                               </div>'+
                 '                                    <p class="little-letters text-center">*Sujeto a existencias.</p>' +
                 '                                    <p class="little-letters text-center">*Precios sujetos a cambio sin previo' +
                 '                                        aviso.</p>' +

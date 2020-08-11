@@ -155,12 +155,16 @@
                                 </div>
                                 <hr>
                                 <div class="d-flex align-items-center flex-column">
-                                    <button type="button" onclick="verifyAddCartProduct('{{$item['productType']}}','{{$item['brand']}}','{{$item['mpn']}}',1)"
-                                            class="btn-add-cart d-flex justify-content-center align-items-center"
-                                            style="font-size: 14px;">
-                                        <i class="material-icons fn-color-jd">shopping_cart</i>
-                                        <span class="text-muted" style="font-size: 14px; font-weight: 500;">Agregar al carrito</span>
-                                    </button>
+                                    <div style="height: 36px">
+                                        @if($item['stock'])
+                                            <button type="button" onclick="verifyAddCartProduct('{{$item['productType']}}','{{$item['brand']}}','{{$item['mpn']}}',1)"
+                                                    class="btn-add-cart d-flex justify-content-center align-items-center"
+                                                    style="font-size: 14px;">
+                                                <i class="material-icons fn-color-jd">shopping_cart</i>
+                                                <span class="text-muted" style="font-size: 14px; font-weight: 500;">Agregar al carrito</span>
+                                            </button>
+                                        @endif
+                                    </div>
                                     <p class="little-letters text-center">*Sujeto a existencias.</p>
                                     <p class="little-letters text-center">*Precios sujetos a cambio sin previo
                                         aviso.</p>
@@ -300,12 +304,16 @@
                                 </div>
                                 <hr>
                                 <div class="d-flex align-items-center flex-column">
-                                    <button type="button" onclick="verifyAddCartProduct('{{$item['productType']}}','{{$item['brand']}}','{{$item['mpn']}}',1)"
-                                            class="btn-add-cart d-flex justify-content-center align-items-center"
-                                            style="font-size: 14px;">
-                                        <i class="material-icons fn-color-jd">shopping_cart</i>
-                                        <span class="text-muted" style="font-size: 14px; font-weight: 500;">Agregar al carrito</span>
-                                    </button>
+                                    <div style="height: 36px">
+                                        @if($item['stock'])
+                                            <button type="button" onclick="verifyAddCartProduct('{{$item['productType']}}','{{$item['brand']}}','{{$item['mpn']}}',1)"
+                                                    class="btn-add-cart d-flex justify-content-center align-items-center"
+                                                    style="font-size: 14px;">
+                                                <i class="material-icons fn-color-jd">shopping_cart</i>
+                                                <span class="text-muted" style="font-size: 14px; font-weight: 500;">Agregar al carrito</span>
+                                            </button>
+                                        @endif
+                                    </div>
                                     <p class="little-letters text-center">*Sujeto a existencias.</p>
                                     <p class="little-letters text-center">*Precios sujetos a cambio sin previo
                                         aviso.</p>
