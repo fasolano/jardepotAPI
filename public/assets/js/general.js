@@ -363,3 +363,15 @@ function removeAllProducts(){
         });
     }
 }
+
+$(window).on("load", function() {
+    if(window.innerWidth < 960){
+        $('#banner1').addClass('banner1-mob');
+        $('#banner2').addClass('banner2-mob');
+        $('#banner3').addClass('banner3-mob');
+    }else{
+        $('#banner1').addClass('banner1');
+        $('#banner2').addClass('banner2');
+        $('#banner3').addClass('banner3');
+    }
+});

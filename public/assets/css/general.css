@@ -736,3 +736,23 @@
 }
 
 /*snackbar*/
+/*Banners Home*/
+.banner3{
+    background-image: url('../../assets/images/banner/aspersora.jpg');
+}
+.banner3-mob{
+    background-image: url('../../assets/images/banner/aspersora-mob.jpg');
+}
+.banner2{
+    background-image: url('../../assets/images/banner/motocultor.jpg');
+}
+.banner2-mob{
+    background-image: url('../../assets/images/banner/motocultor-mob.jpg');
+}
+.banner1{
+    background-image: url('../../assets/images/banner/podadora.jpg');
+}
+.banner1-mob{
+    background-image: url('../../assets/images/banner/podadora-mob.jpg');
+}
+/*Fin Banners Home*/

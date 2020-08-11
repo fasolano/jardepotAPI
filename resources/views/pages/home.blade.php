@@ -7,30 +7,6 @@
     <meta name="keywords" content="{{$descriptionLevel2->keywords}}">
 @endsection
 
-@section('specificCSS')
-    <style>
-
-        .banner3{
-            background-image: url('assets/images/banner/aspersora.jpg');
-        }
-        .banner3-mob{
-            background-image: url('assets/images/banner/aspersora-mob.jpg');
-        }
-        .banner2{
-            background-image: url('assets/images/banner/motocultor.jpg');
-        }
-        .banner2-mob{
-            background-image: url('assets/images/banner/motocultor-mob.jpg');
-        }
-        .banner1{
-            background-image: url('assets/images/banner/podadora.jpg');
-        }
-        .banner1-mob{
-            background-image: url('assets/images/banner/podadora-mob.jpg');
-        }
-    </style>
-@endsection
-
 @section('content')
     <div class="row div-banners">
         <div class="col-xl-5 pr-0">
@@ -139,20 +115,6 @@
 
 
 @section('specificJS')
-    <script type="text/javascript">
-        $( window ).on( "load", function() {
-            if(window.innerWidth < 960){
-                $('#banner1').addClass('banner1-mob');
-                $('#banner2').addClass('banner2-mob');
-                $('#banner3').addClass('banner3-mob');
-            }else{
-                $('#banner1').addClass('banner1');
-                $('#banner2').addClass('banner2');
-                $('#banner3').addClass('banner3');
-            }
-        });
-    </script>
-
     <script type="application/ld+json">
     {
   "@context": "http://schema.org",
