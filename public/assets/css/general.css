@@ -729,21 +729,21 @@
 /*snackbar*/
 /*Banners Home*/
 .banner3{
-    background-image: url('../../assets/images/banner/aspersora.jpg');
+    background-image: url('../../assets/images/banner/aspersora.webp');
 }
 .banner3-mob{
-    background-image: url('../../assets/images/banner/aspersora-mob.jpg');
+    background-image: url('../../assets/images/banner/aspersora-mob.webp');
 }
 .banner2{
-    background-image: url('../../assets/images/banner/motocultor.jpg');
+    background-image: url('../../assets/images/banner/motocultor.webp');
 }
 .banner2-mob{
-    background-image: url('../../assets/images/banner/motocultor-mob.jpg');
+    background-image: url('../../assets/images/banner/motocultor-mob.webp');
 }
 .banner1{
-    background-image: url('../../assets/images/banner/podadora.jpg');
+    background-image: url('../../assets/images/banner/podadora.webp');
 }
 .banner1-mob{
-    background-image: url('../../assets/images/banner/podadora-mob.jpg');
+    background-image: url('../../assets/images/banner/podadora-mob.webp');
 }
 /*Fin Banners Home*/

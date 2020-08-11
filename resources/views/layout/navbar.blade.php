@@ -53,7 +53,7 @@
             <div class="row">
                 <div class="col-md-3">
                     <a class="navbar-brand" href="{{url('/')}}">
-                        <img class="logo-navbar" style="width: 80%" src="{{asset('img/logos/logoJardepot.png')}}"
+                        <img class="logo-navbar" style="width: 80%" src="{{asset('img/logos/logoJardepot.webp')}}"
                             alt="Logo Jardepot" title="Logo Jardepot">
                     </a>
                 </div>
@@ -167,7 +167,7 @@
     <div class="row">
         <div class="col-8">
             <a class="navbar-brand" href="{{url('/')}}">
-                <img class="logo-navbar" style="width: 150px" src="{{asset('img/logos/logoJardepot.png')}}"
+                <img class="logo-navbar" style="width: 150px" src="{{asset('img/logos/logoJardepot.webp')}}"
                 alt="Logo Jardepot" title="Logo Jardepot">
             </a>
         </div>

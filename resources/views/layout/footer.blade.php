@@ -27,7 +27,7 @@
                     </div>
                 </div>
                 <div class="col-md-5">
-                    <img src="{{asset('assets/images/otros/maps.png')}}" alt="Google Maps" style="width: 100%; height: 250px;">
+                    <img src="{{asset('assets/images/otros/maps.webp')}}" alt="Google Maps" style="width: 100%; height: 250px;">
                 </div>
             </div>
             <hr style="border-bottom: 1px solid rgba(250,250,250,.2);">
