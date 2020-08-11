@@ -53,8 +53,13 @@
             <div class="row">
                 <div class="col-md-3">
                     <a class="navbar-brand" href="{{url('/')}}">
-                        <img class="logo-navbar" style="width: 80%" src="{{asset('img/logos/logoJardepot.webp')}}"
-                            alt="Logo Jardepot" title="Logo Jardepot">
+                        <picture>
+                            <source srcset="{{asset('img/logos/logoJardepot.webp')}}" type="image/webp">
+                            <source srcset="{{asset('img/logos/logoJardepot.png')}}" type="image/png">
+                            <img class="logo-navbar" style="width: 80%" src="{{asset('img/logos/logoJardepot.png')}}"
+                                 alt="Logo Jardepot" title="Logo Jardepot">
+                        </picture>
+
                     </a>
                 </div>
                 <div class="col-md-7">
@@ -167,8 +172,12 @@
     <div class="row">
         <div class="col-8">
             <a class="navbar-brand" href="{{url('/')}}">
-                <img class="logo-navbar" style="width: 150px" src="{{asset('img/logos/logoJardepot.webp')}}"
-                alt="Logo Jardepot" title="Logo Jardepot">
+                <picture>
+                    <source srcset="{{asset('img/logos/logoJardepot.webp')}}" type="image/webp">
+                    <source srcset="{{asset('img/logos/logoJardepot.png')}}" type="image/png">
+                    <img class="logo-navbar" style="width: 80%" src="{{asset('img/logos/logoJardepot.png')}}"
+                         alt="Logo Jardepot" title="Logo Jardepot">
+                </picture>
             </a>
         </div>
         <div class="col-4" style="margin-top: 8px">
