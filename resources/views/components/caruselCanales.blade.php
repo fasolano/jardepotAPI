@@ -4,54 +4,54 @@
         <p style="font-size: 24px;font-weight: 500; margin-bottom: 0;"> Nuestros canales de distribución en México</p>
         <div class="carousel-inner row w-100 mx-auto"  role="listbox">
             <div class="carousel-item col-md-3 active">
-                <a style="text-decoration: none;" target="_blank" href="https://eshops.mercadolibre.com.mx/jardepot">
+                <a style="text-decoration: none;" target="_blank" href="https://eshops.mercadolibre.com.mx/jardepot" rel="noopener">
                     <img src="{{asset('img/canalesDist/mclibre.jpg')}}" class="img-fluid mx-auto d-block img-carousel" alt="Canal Mercado libre">
                 </a>
             </div>
             <div class="carousel-item col-md-3">
                 <div class="align-self-center text-center" style="margin-top: 10%">
-                    <a style="text-decoration: none;" target="_blank" href="https://goo.gl/maps/X217x5HGYWMCLJqSA">
+                    <a style="text-decoration: none;" target="_blank" href="https://goo.gl/maps/X217x5HGYWMCLJqSA" rel="noopener">
                         <span ><i class="material-icons fn-color-jd" style="font-size: 60px">location_on</i></span><br>
                         <span style="color: #000000"> Tienda Cuernavaca</span>
                     </a>
                 </div>
             </div>
             <div class="carousel-item col-md-3">
-                <a style="text-decoration: none;" target="_blank" href="https://www.claroshop.com/Tienda/124005/JarDepot.com/">
+                <a style="text-decoration: none;" target="_blank" href="https://www.claroshop.com/Tienda/124005/JarDepot.com/" rel="noopener">
                     <img src="{{asset('img/canalesDist/claroshop.jpg')}}" class="img-fluid mx-auto d-block img-carousel" alt="Canal ClaroShop">
                 </a>
             </div>
             <div class="carousel-item col-md-3">
-                <a style="text-decoration: none;" target="_blank" href="https://www.elektra.com.mx/husqvarna">
+                <a style="text-decoration: none;" target="_blank" href="https://www.elektra.com.mx/husqvarna" rel="noopener">
                     <img src="{{asset('img/canalesDist/elektra.jpg')}}" class="img-fluid mx-auto d-block img-carousel " alt="Canal Elektra">
                 </a>
             </div>
             <div class="carousel-item col-md-3">
-                <a style="text-decoration: none;" target="_blank" href="https://www.walmart.com.mx/productos?Ntt=husqvarna">
+                <a style="text-decoration: none;" target="_blank" href="https://www.walmart.com.mx/productos?Ntt=husqvarna" rel="noopener">
                     <img src="{{asset('img/canalesDist/walmart.jpg')}}" class="img-fluid mx-auto d-block img-carousel" alt="Canal Walmart">
                 </a>
             </div>
 
             <div class="carousel-item col-md-3">
-                <a style="text-decoration: none;" target="_blank" href="https://eshops.mercadolibre.com.mx/jardepot">
+                <a style="text-decoration: none;" target="_blank" href="https://eshops.mercadolibre.com.mx/jardepot" rel="noopener">
                     <img src="{{asset('img/canalesDist/mclibre.jpg')}}" class="img-fluid mx-auto d-block img-carousel" alt="Canal Mercado libre">
                 </a>
             </div>
             <div class="carousel-item col-md-3">
                 <div class="align-self-center text-center" style="margin-top: 10%">
-                    <a style="text-decoration: none;" target="_blank" href="https://goo.gl/maps/X217x5HGYWMCLJqSA">
+                    <a style="text-decoration: none;" target="_blank" href="https://goo.gl/maps/X217x5HGYWMCLJqSA" rel="noopener">
                         <span ><i class="material-icons fn-color-jd" style="font-size: 60px">location_on</i></span><br>
                         <span style="color: #000000"> Tienda Cuernavaca</span>
                     </a>
                 </div>
             </div>
             <div class="carousel-item col-md-3">
-                <a style="text-decoration: none;" target="_blank" href="https://www.claroshop.com/Tienda/124005/JarDepot.com/">
+                <a style="text-decoration: none;" target="_blank" href="https://www.claroshop.com/Tienda/124005/JarDepot.com/" rel="noopener">>
                     <img src="{{asset('img/canalesDist/claroshop.jpg')}}" class="img-fluid mx-auto d-block img-carousel" alt="Canal ClaroShop">
                 </a>
             </div>
             <div class="carousel-item col-md-3">
-                <a style="text-decoration: none;" target="_blank" href="https://www.walmart.com.mx/productos?Ntt=husqvarna">
+                <a style="text-decoration: none;" target="_blank" href="https://www.walmart.com.mx/productos?Ntt=husqvarna" rel="noopener">
                     <img src="{{asset('img/canalesDist/walmart.jpg')}}" class="img-fluid mx-auto d-block img-carousel" alt="Canal Walmart">
                 </a>
             </div>
