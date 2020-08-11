@@ -58,15 +58,6 @@
     padding-bottom: 15px;
 }
 
-.jd-sublinks-items:nth-child(-n+1) {
-    -moz-column-count: 2;
-    -moz-column-gap: 20px;
-    -webkit-column-count: 2;
-    -webkit-column-gap: 20px;
-    column-count: 2;
-    column-gap: 20px;
-}
-
 .jd-sublinks-items a i {
     color: #f78600;
 }
@@ -182,7 +173,7 @@
     font-size: 18px;
 }
 .div-sublinks{
-    min-height: 524px;
+    min-height: 798px;
 }
 .div-banners{
     height: 530px !important;

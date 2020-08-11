@@ -100,7 +100,7 @@
                         </div>
                         <div class="dropdown-divider"></div>--}}
                         <div class="dropdown-item" id="option-dropdown-cart1">
-                            <div class="mt-1"style="flex-direction: row; box-sizing: border-box; display: flex; place-content: center space-between; align-items: center;">
+                            <div class="mt-1" style="flex-direction: row; box-sizing: border-box; display: flex; place-content: center space-between; align-items: center;">
                                 <button class="btn btn-secondary btn-lg btn-circle" onclick="removeAllProducts()" data-toggle="tooltip" title="Borrar todo">
                                     <i class="material-icons" >remove_shopping_cart</i>
                                 </button>

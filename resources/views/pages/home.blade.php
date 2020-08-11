@@ -56,9 +56,9 @@
                     <div class="border shadow p-3 bg-white rounded div-sublinks">
                         <h3>{{$cat1['nivel1']}}</h3>
                         <div class="col-sm-12">
-                            <div class="jd-sublinks-items">
+                            <div class="jd-sublinks-items row">
                                 @foreach($cat1['nivel2'] as $categoria2)
-                                    <a href="{{url($categoria2['href'])}}" class="my-3 d-flex align-items-center"><i class="material-icons">keyboard_arrow_right</i>{{$categoria2['name']}}
+                                    <a href="{{url($categoria2['href'])}}" class="col-6 my-3 d-flex align-items-center"><i class="material-icons">keyboard_arrow_right</i>{{$categoria2['name']}}
                                     </a>
                                 @endforeach
                             </div>
@@ -89,9 +89,9 @@
                                          aria-labelledby="headingOne{{$key}}" data-parent="#accordionEx">
                                         <div class="card-body p-0">
                                             <div class="col-sm-12">
-                                                <div class="jd-sublinks-items">
+                                                <div class="jd-sublinks-items row">
                                                     @foreach($cat1['nivel2'] as $key2 => $categoria2)
-                                                        <a href="{{url($categoria2['href'])}}" class="my-3 d-flex align-items-center">
+                                                        <a href="{{url($categoria2['href'])}}" class="col-6 my-3 d-flex align-items-center">
                                                             <i class="material-icons">keyboard_arrow_right</i>{{$categoria2['name']}}
                                                         </a>
                                                     @endforeach
