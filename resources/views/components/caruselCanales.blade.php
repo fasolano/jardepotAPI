@@ -67,6 +67,7 @@
     </div>
 </div>
 <script>
+    document.addEventListener("DOMContentLoaded", function(){
     $('#carouselExample').on('slide.bs.carousel', function (e) {
 
         var $e = $(e.relatedTarget);
@@ -93,6 +94,7 @@
             interval: 2000
         });
     }, 1000);
+    });
 
   /*  $(document).ready(function() {
         /!* show lightbox when clicking a thumbnail *!/
