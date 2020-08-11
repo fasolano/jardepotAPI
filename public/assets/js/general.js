@@ -365,13 +365,29 @@ function removeAllProducts(){
 }
 
 $(window).on("load", function() {
-    if(window.innerWidth < 960){
-        $('#banner1').addClass('banner1-mob');
-        $('#banner2').addClass('banner2-mob');
-        $('#banner3').addClass('banner3-mob');
+    var isSafari = navigator.vendor && navigator.vendor.indexOf('Apple') > -1 &&
+        navigator.userAgent &&
+        navigator.userAgent.indexOf('CriOS') == -1 &&
+        navigator.userAgent.indexOf('FxiOS') == -1;
+    if(isSafari){
+        if(window.innerWidth < 960){
+            $('#banner1').addClass('banner1-mob-safari');
+            $('#banner2').addClass('banner2-mob-safari');
+            $('#banner3').addClass('banner3-mob-safari');
+        }else{
+            $('#banner1').addClass('banner1-safari');
+            $('#banner2').addClass('banner2-safari');
+            $('#banner3').addClass('banner3-safari');
+        }
     }else{
-        $('#banner1').addClass('banner1');
-        $('#banner2').addClass('banner2');
-        $('#banner3').addClass('banner3');
+        if(window.innerWidth < 960){
+            $('#banner1').addClass('banner1-mob');
+            $('#banner2').addClass('banner2-mob');
+            $('#banner3').addClass('banner3-mob');
+        }else{
+            $('#banner1').addClass('banner1');
+            $('#banner2').addClass('banner2');
+            $('#banner3').addClass('banner3');
+        }
     }
 });

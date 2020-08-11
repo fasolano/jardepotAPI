@@ -746,4 +746,23 @@
 .banner1-mob{
     background-image: url('../../assets/images/banner/podadora-mob.webp');
 }
+/*pare Safari */
+.banner3-safari{
+    background-image: url('../../assets/images/banner/aspersora.jpg');
+}
+.banner3-mob-safari{
+    background-image: url('../../assets/images/banner/aspersora-mob.jpg');
+}
+.banner2-safari{
+    background-image: url('../../assets/images/banner/motocultor.jpg');
+}
+.banner2-mob-safari{
+    background-image: url('../../assets/images/banner/motocultor-mob.jpg');
+}
+.banner1-safari{
+    background-image: url('../../assets/images/banner/podadora.jpg');
+}
+.banner1-mob-safari{
+    background-image: url('../../assets/images/banner/podadora-mob.jpg');
+}
 /*Fin Banners Home*/
