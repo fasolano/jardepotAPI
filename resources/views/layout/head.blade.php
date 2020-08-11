@@ -18,5 +18,5 @@
 {{--<link rel="stylesheet" href="{{asset('assets/css/bootstrap-reboot.min.css')}}">--}}
 <link rel="stylesheet" href="{{asset('assets/css/layouts/layouts.min.css')}}">
 <link rel="stylesheet" href="{{asset('assets/css/general.min.css')}}">
-<script type="text/javascript" async src="{{ asset('assets/js/jquery-3.5.1.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('assets/js/jquery-3.5.1.min.js') }}"></script>
 
