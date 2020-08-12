@@ -23,7 +23,7 @@ Route::get('/busqueda/{word}' , 'views\ProductsController@getProductsListSearch'
 
 Route::get('/c0nf1rm4c10n/p4yp4l/{state}' , 'views\ConfirmController@confirmPaypal');
 
-Route::get('/confirmacion/mercadopago/{state}' , 'views\ConfirmController@confirmMercadopago');
+Route::get('/c0nf1rm4c10n/m3rc4d0p4g0/{state}' , 'views\ConfirmController@confirmMercadopago');
 
 Route::get('/{categoryLevel1}/{categoryLevel2}' , 'views\ProductsController@productsList')->name('products');
 

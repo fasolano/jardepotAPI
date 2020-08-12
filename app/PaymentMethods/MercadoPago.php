@@ -128,9 +128,9 @@ class MercadoPago{
         ];*/
 
         $preference->back_urls = [
-            "success" => 'https://www.jardepot.com/confirmacion/mercadopago/success',
-            "pending" => 'https://www.jardepot.com/confirmacion/mercadopago/pending',
-            "failure" => 'https://www.jardepot.com/confirmacion/mercadopago/failure',
+            "success" => 'https://www.jardepot.com/c0nf1rm4c10n/m3rc4d0p4g0/success',
+            "pending" => 'https://www.jardepot.com/c0nf1rm4c10n/m3rc4d0p4g0/pending',
+            "failure" => 'https://www.jardepot.com/c0nf1rm4c10n/m3rc4d0p4g0/failure',
         ];
 
         $preference->notification_url = 'https://www.jardepot.com/jardepotAPI/public/api/confirm/prueba/confirmation/notification/MercadoPago';
