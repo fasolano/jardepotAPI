@@ -9,6 +9,13 @@ const ruta = '/';
 $(document).ready(function (){
     $('[data-toggle="tooltip"]').tooltip();
     getCartProducts();
+    $(window).on('scroll', function ($event) {
+        if ($event.target.documentElement.scrollTop > 300){
+            $('.btn-side-footer').css('display', 'block');
+        }else{
+            $('.btn-side-footer').css('display', 'none');
+        }
+    });
 });
 
 function verifyCookie(){
@@ -391,3 +398,15 @@ $(document).ready(function() {
         }
     }
 });
+
+function topPage() {
+    const scrollDuration = 200;
+    const scrollStep = -window.pageYOffset / (scrollDuration / 20);
+    const scrollInterval = setInterval(() => {
+        if (window.pageYOffset !== 0) {
+            this.window.scrollBy(0, scrollStep);
+        } else {
+            clearInterval(scrollInterval);
+        }
+    }, 10);
+}

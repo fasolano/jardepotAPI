@@ -15,8 +15,9 @@ use App\PaymentMethods\Paypal;
 
 class ConfirmController extends Controller {
 
-    public function confirmPaypal($orderID, Request $request){
+    public function confirmPaypal($state, Request $request){
         $repository = new ConfirmRepository();
+        $orderID = $request->get('orderid');
         $clientForm = json_decode($request->get('form'));
         $address = $request->get('address');
         $name = $request->get('name');

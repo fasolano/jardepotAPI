@@ -34,6 +34,7 @@
                         <h3 class="py-1 col-12 col-lg-8 text-center">Por favor intentalo de nuevo.</h3>
                         <h2 class="py-2 col-12 col-lg-8 text-center">Estamos aquí para ayudarte contáctanos 800 212 9225</h2>
                     @endif
+                    <a class="btn btn-warning" href="{{url('/')}}">Volver al inicio</a>
                 </div>
             </div>
         </div>
