@@ -115,8 +115,10 @@
                                              src="{{asset($item['images'][0]['medium'])}}"
                                              title="{{$item['name']}}" alt="{{$item['name']}}">
                                     </div>
-                                    <img class="free-delivery-recom" src="{{asset('assets/images/otros/gratis.png')}}"
+                                    @if($item['newPriceFloat'] > 3000)
+                                        <img class="free-delivery-recom" src="{{asset('assets/images/otros/gratis.png')}}"
                                          title="Envío gratis Jardepot" alt="Envío gratis Jardepot">
+                                    @endif
                                 </a>
                                 <div class="d-flex align-items-center flex-column" style="height: 245px;">
                                     <p class="text-muted text-center"
@@ -263,8 +265,10 @@
                                              src="{{asset($item['images'][0]['medium'])}}"
                                              title="{{$item['name']}}" alt="{{$item['name']}}">
                                     </div>
-                                    <img class="free-delivery-recom" src="{{asset('assets/images/otros/gratis.png')}}"
+                                        @if($item['newPriceFloat'] > 3000)
+                                        <img class="free-delivery-recom" src="{{asset('assets/images/otros/gratis.png')}}"
                                          title="Envío gratis Jardepot" alt="Envío gratis Jardepot">
+                                        @endif
                                 </a>
                                 <div class="d-flex align-items-center flex-column" style="height: 245px;">
                                     <p class="text-muted text-center"

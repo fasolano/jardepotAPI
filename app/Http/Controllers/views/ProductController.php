@@ -109,18 +109,22 @@ class ProductController extends Controller {
                 if ($item->PrecioDeLista > $item->oferta ) {
                     $response[$iterator]['oldPrice'] = money_format('%.2n', $item->PrecioDeLista);;
                     $response[$iterator]['newPrice'] = money_format('%.2n', $item->oferta);
+                    $response[$iterator]['newPriceFloat'] = $item->price;
                 } else {
                     $response[$iterator]['newPrice'] = money_format('%.2n', $item->oferta);
                     $response[$iterator]['oldPrice'] = false;
+                    $response[$iterator]['newPriceFloat'] = $item->price;
                 }
             } else {
                 $response[$iterator]['discount'] = "No Oferta";
                 if ($item->PrecioDeLista > $item->price ) {
                     $response[$iterator]['oldPrice'] =  money_format('%.2n', $item->PrecioDeLista);
                     $response[$iterator]['newPrice'] =  money_format('%.2n', $item->price);
+                    $response[$iterator]['newPriceFloat'] = $item->price;
                 } else {
                     $response[$iterator]['newPrice'] =  money_format('%.2n', $item->price);
                     $response[$iterator]['oldPrice'] = false;//se puse false por que daba error en vista
+                    $response[$iterator]['newPriceFloat'] = $item->price;
                 }
             }
             //termina seccion de precios

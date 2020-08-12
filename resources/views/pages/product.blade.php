@@ -66,8 +66,10 @@
                                      src="{{asset($product['images'][0]['medium'])}}" data-zoom="{{asset($product['images'][0]['big'])}}"
                                      title="{{$product['name']}}" alt="{{$product['name']}}">
                             </div>
-                            <img class="free-delivery" src="{{asset('assets/images/otros/gratis.png')}}"
+                            @if($product['newPriceFloat'] > 3000)
+                                 <img class="free-delivery" src="{{asset('assets/images/otros/gratis.png')}}"
                                  title="Envío gratis Jardepot" alt="Envío gratis Jardepot">
+                            @endif
                         </div>
                         <!-- Swiper -->
                         <div class="swiper-container p-1">
@@ -258,8 +260,10 @@
                                                      src="{{asset($related['images'][0]['small'])}}"
                                                      title="{{$related['name']}}" alt="{{$related['name']}}">
                                             </div>
-                                            <img class="free-delivery-recom" src="{{asset('assets/images/otros/gratis.png')}}"
+                                            @if($related['newPriceFloat'] > 3000)
+                                                <img class="free-delivery-recom" src="{{asset('assets/images/otros/gratis.png')}}"
                                                  title="Envío gratis Jardepot" alt="Envío gratis Jardepot">
+                                            @endif
                                         </a>
                                         <a class="title text-truncate" data-toggle="tooltip" title="{{$related['name']}}">{{$related['name']}}</a>
                                         <div style="height: 18px">
