@@ -298,7 +298,7 @@ function createPaypalButton(products, total) {
                     phone:$('#phone-paypal').val()
                 });
                 const session = Cookies.get('session');
-                window.location = 'c0nf1rm4c10n/paypal/success?orderid='+data.orderID+'&form='+clientForm+'&address='+address+'&name='+name+'&session='+session;
+                window.location = 'c0nf1rm4c10n/p4yp4l/success?orderid='+data.orderID+'&form='+clientForm+'&address='+address+'&name='+name+'&session='+session;
                 return true;
             });
         }

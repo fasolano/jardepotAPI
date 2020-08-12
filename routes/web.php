@@ -21,7 +21,7 @@ Route::get('/products/getProductsOrdered' , 'views\ProductsController@productsSe
 
 Route::get('/busqueda/{word}' , 'views\ProductsController@getProductsListSearch')->name('search');
 
-Route::get('/c0nf1rm4c10n/paypal/{state}' , 'views\ConfirmController@confirmPaypal');
+Route::get('/c0nf1rm4c10n/p4yp4l/{state}' , 'views\ConfirmController@confirmPaypal');
 
 Route::get('/confirmacion/mercadopago/{state}' , 'views\ConfirmController@confirmMercadopago');
 
