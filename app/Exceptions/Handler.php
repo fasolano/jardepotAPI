@@ -49,7 +49,7 @@ class Handler extends ExceptionHandler
     {
 
         if ( ! config('app.debug') && ! $this->isHttpException($e)) {
-            return response()->view('errors.404');
+            return response()->view('not-found');
         }
 
         return parent::render($request, $e);
