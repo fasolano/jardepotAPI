@@ -202,7 +202,7 @@ function calculateTotal() {
         var inventory = Number($(e).find('.inventory').val());
         var current = Number($(e).find('.cart-count').text());
         total = Number(total) + Number($(e).find('.total-row-input').val());
-        if(inventory < current && !inventory){
+        if(inventory < current || !inventory){
             showButtons = false;
         }
     });
