@@ -5,6 +5,14 @@
     <meta title="{{ $descriptionLevel2->metatitle}}"/>
     <meta name="description" content="{{$descriptionLevel2->metadescription}}">
     <meta name="keywords" content="{{$descriptionLevel2->keywords}}">
+
+    <meta property="og:title" content="{{ $descriptionLevel2->metatitle}}" />
+    <meta property="og:description" content="{{ $descriptionLevel2->metadescription}}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.jardepot.com/" />
+    <meta property="og:image" content="{{asset('assets/img/logoJardepot.png')}}" />
+    <meta property="og:image:url" content="{{asset('assets/img/logoJardepot.png')}}" />
+    <meta property="og:image:secure_url" content="{{asset('assets/img/logoJardepot.png')}}" />
 @endsection
 
 @section('content')

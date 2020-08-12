@@ -6,6 +6,14 @@
     <meta title="{{ ucfirst($product['metaTitle'])}}"/>
     <meta name="description" content="{{$product['metaDescription']}}">
     <meta name="keywords" content="{{$product['keywords']}}">
+
+    <meta property="og:title" content="{{ $product['metaTitle'] }}" />
+    <meta property="og:description" content="{{ $product['metaDescription'] }}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.jardepot.com/" />
+    <meta property="og:image" content="{{asset('assets/img/logoJardepot.png')}}" />
+    <meta property="og:image:url" content="{{asset('assets/img/logoJardepot.png')}}" />
+    <meta property="og:image:secure_url" content="{{asset('assets/img/logoJardepot.png')}}" />
 @endsection
 
 @section('specificCSS')
