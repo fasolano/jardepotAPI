@@ -364,7 +364,7 @@ function removeAllProducts(){
     }
 }
 
-$(window).on("load", function() {
+$(document).ready(function() {
     var isSafari = navigator.vendor && navigator.vendor.indexOf('Apple') > -1 &&
         navigator.userAgent &&
         navigator.userAgent.indexOf('CriOS') == -1 &&
