@@ -193,10 +193,12 @@ function reloadProducts() {
                 '                                        <img style="max-width: 80%; max-height: 100%;"' +
                 '                                             src="../'+e.images[0].medium+'"' +
                 '                                             title="'+e.name+'" alt="'+e.name+'">' +
-                '                                    </div>' +
-                '                                    <img class="free-delivery-recom" src="../assets/images/otros/gratis.png"' +
-                '                                         title="Envío gratis Jardepot" alt="Envío gratis Jardepot">' +
-                '                                </a>' +
+                '                                    </div>';
+            if (e.newPriceFloat > 3000) {
+                item += '                                    <img class="free-delivery-recom" src="../assets/images/otros/gratis.png"' +
+                '                                         title="Envío gratis Jardepot" alt="Envío gratis Jardepot">';
+            }
+            item += '                                </a>' +
                 '                                <div class="d-flex align-items-center flex-column" style="height: 245px;">' +
                 '                                    <p class="text-muted text-center"' +
                 '                                       style="font-weight: 500; font-size: 18px;">'+e.name+'</p>';
