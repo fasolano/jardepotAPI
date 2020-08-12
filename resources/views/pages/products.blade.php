@@ -11,9 +11,9 @@
     <meta property="og:description" content="{{ $descriptionLevel2->metadescription}}" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://www.jardepot.com/" />
-    <meta property="og:image" content="{{asset('img/logos/logoJardepot.png')}}" />
-    <meta property="og:image:url" content="{{asset('img/logos/logoJardepot.png')}}" />
-    <meta property="og:image:secure_url" content="{{asset('img/logos/logoJardepot.png')}}" />
+    <meta property="og:image" content="{{asset('img/logos/logoOG.jpg')}}" />
+    <meta property="og:image:url" content="{{asset('img/logos/logoOG.jpg')}}" />
+    <meta property="og:image:secure_url" content="{{asset('img/logos/logoOG.jpg')}}" />
 @endsection
 
 @section('specificCSS')
