@@ -7,11 +7,14 @@ $(document).ready(function () {
         var products = $('.product-item').length;
         var numberPages = products / show;
         $('.number-page').addClass('d-none');
-        $('.number-page').each(function (i,e) {
-            if(i < numberPages){
-                $(e).removeClass('d-none');
-            }
-        });
+        $('.pagination-container').each(function (index, element) {
+            $(element).find('.number-page').each(function (i,e) {
+                if(i < numberPages){
+                    $(e).removeClass('d-none');
+                }
+            });
+        })
+
         $('.current-number-items').text(show);
         $('.page-item').removeClass('active');
         $('.page-link[data-val="1"]').parent('.page-item').addClass('active');
@@ -55,7 +58,7 @@ $(document).ready(function () {
                     var max = currentValue * show;
                     var start = max - show;
                     $('.page-item').removeClass('active');
-                    $(this).addClass('active');
+                    $('.page-link[data-val="'+(currentValue)+'"]').parent('.page-item').addClass('active');
                     $('.product-item').each(function (i,e) {
                         if(i >= start && i < max){
                             $(e).removeClass('d-none');
