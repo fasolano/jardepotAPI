@@ -618,10 +618,10 @@ class ProductRepository{
                     'nombre' => $form->nombre,
                     'telefono' => $form->telefono,
                     'comentario' => $form->comentario,
-                    'whatsapp' => $form->whatsapp,
-                    'email' => $form->email,
+                    'whatsapp' => isset($form->whatsapp)?$form->whatsapp:'',
+                    'email' => isset($form->email)?$form->email:'',
                     'tipo'=>$tipo,
-                    'producto' => $form->producto,
+                    'producto' => isset($form->email)?$form->producto:'Página no encontrada',
                 ];
                 break;
             case 'busqueda':

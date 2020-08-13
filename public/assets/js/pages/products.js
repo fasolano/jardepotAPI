@@ -139,7 +139,7 @@ $(document).ready(function () {
             var coments = $('#coments').val();
             var search = $('#word-search').val();
             var parameters = [];
-            parameters['url'] = "../products/searchFailed";
+            parameters['url'] = ruta+"products/searchFailed";
             parameters['type'] = "POST";
             parameters['dataType'] = "json";
             parameters['data'] = {
@@ -149,7 +149,7 @@ $(document).ready(function () {
                 coments: coments
             };
             parameters['success'] = function (result) {
-                console.log(result);
+                // console.log(result);
                 if (result.resultado === true) {
                     $('#container-form').removeClass('d-flex').addClass('d-none');
                     $('#container-form-sent').removeClass('d-none').addClass('d-flex');
