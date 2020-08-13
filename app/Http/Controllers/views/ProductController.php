@@ -55,11 +55,16 @@ class ProductController extends Controller {
         $brand = str_replace("-", " ", $brand);
 
         $data = $this->productoRepository->getProduct($productType, $brand, $mpn);
-        $product= $this->model_format_products($data)[0];
 
-        $data2 = $this->productoRepository->getProductsRelated($productType, $brand, $mpn);
-        $productsRelated = $this->model_format_products($data2);
-        return view('pages/product',compact('sidebar','product','productsRelated'));
+        if(empty($data)){
+            $product= $this->model_format_products($data)[0];
+
+            $data2 = $this->productoRepository->getProductsRelated($productType, $brand, $mpn);
+            $productsRelated = $this->model_format_products($data2);
+            return view('pages/product',compact('sidebar','product','productsRelated'));
+        }else{
+            return view('errors/404');
+        }
     }
 
     public function sendSearch(Request $request) {
