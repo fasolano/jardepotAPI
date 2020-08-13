@@ -56,15 +56,15 @@ class ProductController extends Controller {
 
         $data = $this->productoRepository->getProduct($productType, $brand, $mpn);
 
-        if(empty($data)){
+//        if(empty($data)){
             $product= $this->model_format_products($data)[0];
 
             $data2 = $this->productoRepository->getProductsRelated($productType, $brand, $mpn);
             $productsRelated = $this->model_format_products($data2);
             return view('pages/product',compact('sidebar','product','productsRelated'));
-        }else{
-            return view('errors/404');
-        }
+//        }else{
+//            return view('errors/404');
+//        }
     }
 
     public function sendSearch(Request $request) {
