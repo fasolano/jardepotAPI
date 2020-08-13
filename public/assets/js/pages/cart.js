@@ -31,8 +31,8 @@ $(document).ready(function (){
 
     $(document).on('click','.btn-remove-product', function () {
         $(this).parents('tr').remove();
-        checkRowsProducts();
         calculateTotal();
+        checkRowsProducts();
     });
 
     $('#remove-all-products').click(function () {
@@ -192,6 +192,9 @@ function checkRowsProducts() {
     if(!$('#table-body').find('tr').length > 0){
         $('#cart-content').removeClass('d-lg-block').addClass('d-none');
         $('#no-cart-content').removeClass('d-none').addClass('d-block');
+    }else{
+        $('#cart-content').removeClass('d-none').addClass('d-lg-block');
+        $('#no-cart-content').removeClass('d-block').addClass('d-none');
     }
 }
 
@@ -199,13 +202,33 @@ function calculateTotal() {
     var showButtons = true;
     var total = 0;
     $('#table-body').find('tr').each(function (i,e) {
-        var inventory = Number($(e).find('.inventory').val());
-        var current = Number($(e).find('.cart-count').text());
-        total = Number(total) + Number($(e).find('.total-row-input').val());
-        if(inventory < current || !inventory){
-            showButtons = false;
+        if($(e).find('.inventory').val() !== undefined && $(e).find('.cart-count').text() !== ''){
+            var inventory = Number($(e).find('.inventory').val());
+            var current = Number($(e).find('.cart-count').text());
+            total = Number(total) + Number($(e).find('.total-row-input').val());
+            if(inventory < current || !inventory){
+                showButtons = false;
+            }
         }
     });
+    var nan = isNaN(total);
+    if(nan === false && total <= 3000 && total>0){
+        if($('#trEnvio').length === 0){
+            var item = '<tr id="trEnvio">' +
+                '<td><img style="width: 80px;height: 80px;" src="assets/images/productos/--.jpg"></td>' +
+                '<td><span style="font-weight: 500;color: #000000">Manejo de Mercancía Envío paquetería</span></td>' +
+                '<td>$300.00</td>' +
+                '<td class="text-center">1</td>' +
+                '<td><span>$300.00</span></td>' +
+                '<td></td>' +
+                '</tr>';
+            $('#table-body').append(item);
+        }
+        total+=300;
+    }else{
+        $('#trEnvio').remove();
+    }
+
     $('#total-final').text(formatterDolar.format(total));
     if (showButtons){
         $('.btn-modal-mercado').css('display', 'block');

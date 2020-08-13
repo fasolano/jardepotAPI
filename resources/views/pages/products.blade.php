@@ -82,6 +82,25 @@
                             <i class="material-icons mr-2">menu</i>
                             <span>Filtros y secciones</span>
                         </button>
+{{--                        <div id="pagination-container" class="row">--}}
+{{--                            <div class="col-12" style="border-radius: 5px;overflow: hidden;">--}}
+{{--                                <nav aria-label="Search results products">--}}
+{{--                                    <ul class="pagination d-flex justify-content-center align-items-center my-2">--}}
+{{--                                        <li class="page-item previous-page disabled">--}}
+{{--                                            <a class="page-link" data-val="--" href="#" tabindex="-1" aria-disabled="true">Anterior</a>--}}
+{{--                                        </li>--}}
+{{--                                        @for ($i = 0; $i < $numberPages; $i++)--}}
+{{--                                            <li class="page-item number-page @if($i == 0) active @endif">--}}
+{{--                                                <a class="page-link" data-val="{{ $i+1 }}" href="#">{{ $i+1 }}</a>--}}
+{{--                                            </li>--}}
+{{--                                        @endfor--}}
+{{--                                        <li class="page-item next-page @if($numberPages <= 1) disabled @endif">--}}
+{{--                                            <a class="page-link" data-val="++" href="#">Siguiente</a>--}}
+{{--                                        </li>--}}
+{{--                                    </ul>--}}
+{{--                                </nav>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
                         <div>
                             <div class="dropdown">
                                 <a class="btn btn-secondary dropdown-toggle" href="#" role="button"
@@ -234,6 +253,25 @@
                             <i class="material-icons mr-2">menu</i>
                             <span>Filtros y secciones</span>
                         </button>
+{{--                        <div id="pagination-container" class="row">--}}
+{{--                            <div class="col-12" style="border-radius: 5px;overflow: hidden;">--}}
+{{--                                <nav aria-label="Search results products">--}}
+{{--                                    <ul class="pagination d-flex justify-content-center align-items-center my-2">--}}
+{{--                                        <li class="page-item previous-page disabled">--}}
+{{--                                            <a class="page-link" data-val="--" href="#" tabindex="-1" aria-disabled="true">Anterior</a>--}}
+{{--                                        </li>--}}
+{{--                                        @for ($i = 0; $i < $numberPages; $i++)--}}
+{{--                                            <li class="page-item number-page @if($i == 0) active @endif">--}}
+{{--                                                <a class="page-link" data-val="{{ $i+1 }}" href="#">{{ $i+1 }}</a>--}}
+{{--                                            </li>--}}
+{{--                                        @endfor--}}
+{{--                                        <li class="page-item next-page @if($numberPages <= 1) disabled @endif">--}}
+{{--                                            <a class="page-link" data-val="++" href="#">Siguiente</a>--}}
+{{--                                        </li>--}}
+{{--                                    </ul>--}}
+{{--                                </nav>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
                         <div>
                             <div class="dropdown">
                                 <a class="btn btn-secondary dropdown-toggle" href="#" role="button"
