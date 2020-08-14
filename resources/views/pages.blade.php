@@ -8,6 +8,18 @@
             'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
         })(window,document,'script','dataLayer','GTM-T2GB24V');</script>
     <!-- End Google Tag Manager -->
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-28826115-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+        gtag('config', 'UA-28826115-1');
+    </script>
+
     {{--  Metatitle, metadescripcion, titulo de página, etc.  --}}
     @yield('metaData')
 <!-- Facebook Pixel Code -->
@@ -40,9 +52,6 @@
 </noscript>
 <!-- End Google Tag Manager (noscript) -->
 
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-28826115-1"></script>
-
 <div id="overlay-bussy"><div id="loading"></div></div>
 @include('layout.navbar')
 <div class="container-fluid" style="background: #fafafa;">
@@ -57,14 +66,6 @@
 
 @include('layout.footer')
 @include('layout.cierre')
-<script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() {
-        dataLayer.push(arguments);
-    }
-    gtag('js', new Date());
-    gtag('config', 'UA-28826115-1');
-</script>
 {{--  Js especifico de cada página  --}}
 @yield('specificJS')
 </body>
