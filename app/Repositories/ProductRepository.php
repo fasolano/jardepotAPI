@@ -44,6 +44,7 @@ class ProductRepository{
                     DB::raw('SUM(inventario.cantidad) as cantidadInventario')
                 )
                 ->distinct('productos.mpn')
+                ->orderBy('cantidadInventario', 'desc')
                 ->orderBy('c3.prioridad', 'asc')
                 ->where([
                     "productos.visible" => "si",
@@ -83,6 +84,7 @@ class ProductRepository{
                     DB::raw('SUM(inventario.cantidad) as cantidadInventario')
                 )
                 ->distinct('productos.mpn')
+                ->orderBy('cantidadInventario', 'desc')
                 ->orderBy('c3.prioridad', 'asc')
                 ->where([
                     "productos.visible" => "si",
@@ -141,6 +143,7 @@ class ProductRepository{
                 DB::raw('SUM(inventario.cantidad) as cantidadInventario')
             )
             ->distinct('productos.mpn')
+            ->orderBy('cantidadInventario', 'desc')
             ->orderBy('c3.prioridad', 'asc')
             ->where([
                 "productos.visible" => "si",
@@ -380,6 +383,7 @@ class ProductRepository{
                 "productos.price <= (select price * 1.5 as price from productos where productType = '".$productType."' AND brand = '".$brand."' AND mpn = '".$mpn."')"
             )
             ->groupBy('productos.productType','productos.brand','productos.mpn' )
+            ->orderBy('cantidadInventario', 'desc')
             ->limit(8)
             ->get();
 
