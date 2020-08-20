@@ -16,6 +16,7 @@
 @endsection
 
 @section('content')
+    <div class="d-none d-md-block d-lg-block">
     <div class="row div-banners">
         <div class="col-xl-5 pr-0">
             <div class="mb-2 banner divimg" id="banner1"
@@ -53,6 +54,7 @@
                 </a>
             </div>
         </div>
+    </div>
     </div>
 
     @include('components.infoCompra')
