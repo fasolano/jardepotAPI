@@ -358,13 +358,6 @@
     font-size: 16px;
 }
 
-#infoCompraDesktop{
-    display: inline;
-}
-#infoCompraMovil{
-    display: none;
-}
-
 @media (min-width: 1280px) and (max-width: 1680px){
     .divimg{
         height: 160px !important;
@@ -541,12 +534,6 @@
     .div-sublinks{
         min-height: 120px;
     }
-    #infoCompraDesktop{
-        display: none;
-    }
-    #infoCompraMovil{
-        display: inline;
-    }
 }
 @media (max-width: 576px) {
     .divimg{
@@ -604,12 +591,6 @@
     }
     .div-sublinks{
         min-height: 220px;
-    }
-    #infoCompraDesktop{
-        display: none;
-    }
-    #infoCompraMovil{
-        display: inline;
     }
 }
 

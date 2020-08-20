@@ -57,7 +57,7 @@
         </div>
     </div>
 
-    <div id="infoCompraDesktop">
+    <div class="d-none d-sm-none d-md-block">
         @include('components.infoCompra')
     </div>
 
@@ -121,7 +121,7 @@
         @endforeach
     </div>
 
-    <div id="infoCompraMovil" class="mt-5">
+    <div class="d-block d-sm-block d-md-none mt-5">
         @include('components.infoCompra')
     </div>
 
