@@ -56,6 +56,11 @@
             </div>
         </div>
     </div>
+
+    <div id="infoCompraDesktop">
+        @include('components.infoCompra')
+    </div>
+
     <div class="row mt-4">
         @foreach($menuAdditional as $key => $cat1)
             @if($key < 2)
@@ -115,9 +120,11 @@
             @endif
         @endforeach
     </div>
-    <div class="mt-4">
-     @include('components.infoCompra')
+
+    <div id="infoCompraMovil" class="mt-5">
+        @include('components.infoCompra')
     </div>
+
     @include('components.caruselCanales')
 
 @endsection
