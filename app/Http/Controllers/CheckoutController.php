@@ -75,12 +75,18 @@ class CheckoutController extends Controller {
         $client = $this->repository->insertClient($clientForm);
 
         $cart = $cartRepository->getCart($cart);
+        $check = $this->repository->checkQuotation($client, $cart->total,$cart->id_carrito, json_decode($forms->delivery));
 
-        $quotation = $this->repository->insertQuotation($client, $cart->total, json_decode($forms->delivery));
+        if($check['exist'] == 'true'){
+            $quotation =$check['quotation'];
+            $products = $cartRepository->getProductsFromCart($cart->id_carrito);
+        }else{
+            $quotation = $this->repository->insertQuotation($client, $cart->total, json_decode($forms->delivery));
 
-        $products = $cartRepository->getProductsFromCart($cart->id_carrito);
+            $products = $cartRepository->getProductsFromCart($cart->id_carrito);
 
-        $this->repository->insertProductsQuotation($products, $quotation, json_decode($forms->delivery));
+            $this->repository->insertProductsQuotation($products, $quotation, json_decode($forms->delivery));
+        }
 
         $mailSeller = $cartRepository->setSellerToCart($cart->id_carrito);
 

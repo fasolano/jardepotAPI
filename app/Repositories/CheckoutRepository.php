@@ -33,6 +33,7 @@ class CheckoutRepository {
                     'idUsuarios' => 2
                 ]);
         }else{
+//            echo 'entro a else object:'.$clientRegistered->idClientes;
             $clientRegistered = $clientRegistered->idClientes;
         }
         return $clientRegistered;
@@ -229,6 +230,46 @@ class CheckoutRepository {
                 ]);
         }
         return $rowInserted;
+    }
+    public function checkQuotation($client, $total,$id_carrito, $deliveryMethod){
+        if($total < $deliveryMethod->deliveryMethod->min){
+            $total = $total + $deliveryMethod->deliveryMethod->cost;
+        }
+        $quotationRegistered = DB::connection('digicom')
+        ->table('cotizaciones_jardepot') ->select('*')
+        ->where([
+            'idClientes' => $client,
+            'total'=>$total
+        ])->first();
+
+        if(!is_object($quotationRegistered)){
+            return array('exist'=>'false');
+        }else{
+            $cartRepository = new CartRepository();
+            $products = $cartRepository->getProductsFromCart($id_carrito);
+
+            $productsRegistered = DB::connection('digicom')
+                ->table('productosCotizados_jardepot')->select('*')
+                ->where('idCotizaciones', $quotationRegistered->idCotizaciones)
+                ->get();
+            $countRegistered=count($productsRegistered);
+            $count=0;
+            foreach ($products as $product){
+                foreach ($productsRegistered as $registered){
+                    if($registered->nombre =='Manejo de Mercancía Envío paquetería'){
+                        $count++;
+                    }
+                    if ($product->producto == $registered->nombre){
+                        $count++;
+                    }
+                }
+            }
+            if ($countRegistered == $count){
+                return array('exist'=>'true','quotation'=>$quotationRegistered);
+            }else{
+                return array('exist'=>'false');
+            }
+        }
     }
 
     public function insertDeliveryBilling($data){

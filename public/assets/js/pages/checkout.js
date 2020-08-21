@@ -366,12 +366,16 @@ function datosVistaPrevia(){
 
 function createOrder(){
     $('#overlay-bussy').addClass('active');
+    var precioEnvio = costoEnvio;
+    if(dataEnvio.delivery === 'cuernavaca'){
+        precioEnvio=0;
+    }
     var json = {
         'payment': JSON.stringify({ value:'Transferencia' }),
         'billing' : JSON.stringify(dataCliente),
         'billMandatory': JSON.stringify(dataFactura),
         'needBilling': JSON.stringify(needBilling),
-        'delivery': JSON.stringify({ deliveryMethod : { value:dataEnvio.delivery, min: envioGratis, cost:costoEnvio}}),
+        'delivery': JSON.stringify({ deliveryMethod : { value:dataEnvio.delivery, min: envioGratis, cost:precioEnvio}}),
     }
     $.ajax({
         url: ruta + "api/checkout/createOrder",
@@ -383,7 +387,7 @@ function createOrder(){
         },
         success: function (result) {
             if(result.data === 'success'){
-                Cookies.remove('session');
+                // Cookies.remove('session');
                 $('#totalConfirm').html(formatterDolar.format(total))
                 tabConfirmation();
                 getCartProducts();
@@ -391,6 +395,7 @@ function createOrder(){
             $('#overlay-bussy').removeClass('active');
         },
         error: function (err) {
+            openSnackbar('warning','Ocurrió un error ponte en contacto con nosotros.')
             $('#overlay-bussy').removeClass('active');
         }
     });
