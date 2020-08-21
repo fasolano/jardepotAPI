@@ -112,7 +112,7 @@
                                         @endif
                                     </span>
                                 </h1>
-                                    <span class="text-bold-tiny">Aplica en pagos mediante depósito o transferencia bancaria.</span>
+                                    <span class="text-bold-tiny">Precio aplica en pagos mediante depósito o transferencia bancaria.</span>
                             @endif
                             @if(($product['inventory'] > 0) && $product['stock'])
                                 <div class="py-1"><p class="fn-color-inStock">

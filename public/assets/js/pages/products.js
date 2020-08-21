@@ -210,7 +210,7 @@ function reloadProducts() {
                     '                                        ' +(e.hasOwnProperty('oldPrice')?e.oldPrice:"")+
                     '                                    </p>' +
                     '                                    <p class="new-price">'+e.newPrice+'</p>' +
-                    '                                    <p class="little-letters">Aplica en pagos mediante depósito o transferencia bancaria.</p>' +
+                    '                                    <p class="little-letters">Precio aplica en pagos mediante depósito o transferencia bancaria.</p>' +
                     '                                    <button class="btn btn-buy d-flex justify-content-center align-items-center"' +
                     '                                       onclick="buyProduct(\''+ e.productType +'\',\''+e.brand+'\',\''+e.mpn+'\')">' +
                     '                                        <i class="material-icons" style="font-size: 16px;">shopping_cart</i> Comprar' +

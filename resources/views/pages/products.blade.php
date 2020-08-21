@@ -149,7 +149,7 @@
                                         @endif
                                     </p>
                                     <p class="new-price">{{$item['newPrice']}}</p>
-                                    <p class="little-letters text-center">Aplica en pagos mediante depósito o transferencia bancaria.</p>
+                                    <p class="little-letters text-center">Precio aplica en pagos mediante depósito o transferencia bancaria.</p>
                                     <button class="btn btn-buy d-flex justify-content-center align-items-center"
                                             onclick="buyProduct('{{$item['productType']}}','{{$item['brand']}}','{{$item['mpn']}}')">
                                         <i class="material-icons" style="font-size: 16px;">shopping_cart</i> Comprar
@@ -320,7 +320,7 @@
                                             @endif
                                         </p>
                                         <p class="new-price">{{$item['newPrice']}}</p>
-                                        <p class="little-letters text-center">Aplica en pagos mediante depósito o transferencia bancaria.</p>
+                                        <p class="little-letters text-center">Precio aplica en pagos mediante depósito o transferencia bancaria.</p>
                                         <button class="btn btn-buy d-flex justify-content-center align-items-center"
                                                 onclick="buyProduct('{{$item['productType']}}','{{$item['brand']}}','{{$item['mpn']}}')">
                                             <i class="material-icons" style="font-size: 16px;">shopping_cart</i> Comprar
