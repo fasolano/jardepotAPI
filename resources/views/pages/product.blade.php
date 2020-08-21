@@ -97,28 +97,30 @@
                     <div class="col-md-7 mt-2 p-3">
                         <h2 class="py-1 description-product">{{$product['description']}}</h2>
                         @if($product['stock'])
-                            @if( ($product['oldPrice']) && $product['stock'])
-                                <h3 class="old-price text-muted">{{$product['oldPrice'] }}</h3>
-                            @endif
-                            @if($product['stock'])
-                                <h1 class="new-price">
-                                    <span class="precio" style="color: #de1f21;">{{$product['newPrice']}}</span><span
-                                    class="text-bold-tiny">&nbsp;
+                            <div class="row">
+                                <div class="col-4">
+                                    @if( ($product['oldPrice']) && $product['stock'])
+                                        <h3 class="old-price text-muted">{{$product['oldPrice'] }}</h3>
+                                    @endif
+                                    <h1 class="new-price">
+                                        <span class="precio" style="color: #de1f21;">{{$product['newPrice']}}</span>
+                                    </h1>
+                                </div>
+                                <div class="col-8">
+                                    <p class="text-bold-tiny">
                                         @if($product['productType'] =='Aspersora' || $product['productType'] =='Motosierra' || $product['productType'] ==' Motobomba'
                                             || $product['productType'] =='Parihuela' || $product['productType'] =='Termonebulizadora' || $product['productType'] =='Nebulizadora')
                                             Producto para uso agrícola precio con IVA tasa 0%
                                         @else
                                             IVA incluido
                                         @endif
-                                    </span>
-                                </h1>
-                                    <span class="text-bold-tiny">Precio aplica en pagos mediante depósito o transferencia bancaria.</span>
-                            @endif
-                            @if(($product['inventory'] > 0) && $product['stock'])
-                                <div class="py-1"><p class="fn-color-inStock">
-                                    <i class="material-icons">flash_on</i>&nbsp;Envío de volada </p>
+                                    </p>
+                                    <p class="text-bold-tiny">Precio aplica en pagos mediante depósito o transferencia bancaria.</p>
+                                    <p class="conditons">
+                                        *Sujeto a existencias. <br> *Precios sujetos a cambio sin previo aviso.
+                                    </p>
                                 </div>
-                            @endif
+                            </div>
                             <div class="row text-muted p-1"
                                  style="flex-flow: row wrap; box-sizing: border-box;place-content: flex-start; align-items: flex-start;">
                                 <div class="col-md-6">
@@ -132,6 +134,11 @@
                                     <button onclick="agregarProductoCarrito('{{$product['productType']}}','{{$product['brand']}}','{{$product['mpn']}}')" class="btn btn-danger">Agregar al carrito</button>
                                 </div>
                             </div>
+                            @if(($product['inventory'] > 0) && $product['stock'])
+                                <div class="py-1"><p class="fn-color-inStock">
+                                        <i class="material-icons">flash_on</i>&nbsp;Envío de volada </p>
+                                </div>
+                            @endif
                         @else
                             <div class="row text-muted p-4">
                                 <p class="text-muted" style="font-weight: 900; font-size: 15px;">
@@ -150,9 +157,6 @@
                                 Soporte y asesoria </p>
                             <p class="conditons">
                                 <i class="material-icons" style="color: #f68600;font-size: 18px">build</i> Garantía de Fabrica
-                            </p>
-                            <p class="conditons">
-                                *Sujeto a existencias. <br> *Precios sujetos a cambio sin previo aviso.
                             </p>
                         </div>
                         <br>
