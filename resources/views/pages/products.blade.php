@@ -139,7 +139,7 @@
                                          title="Envío gratis Jardepot" alt="Envío gratis Jardepot">
                                     @endif
                                 </a>
-                                <div class="d-flex align-items-center flex-column" style="height: 245px;">
+                                <div class="d-flex align-items-center flex-column" style="height: 277px;">
                                     <p class="text-muted text-center"
                                        style="font-weight: 500; font-size: 18px;">{{$item['name']}}</p>
                                     @if($item['stock'])
@@ -149,6 +149,7 @@
                                         @endif
                                     </p>
                                     <p class="new-price">{{$item['newPrice']}}</p>
+                                    <p class="little-letters text-center">Aplica en pagos mediante depósito o transferencia bancaria.</p>
                                     <button class="btn btn-buy d-flex justify-content-center align-items-center"
                                             onclick="buyProduct('{{$item['productType']}}','{{$item['brand']}}','{{$item['mpn']}}')">
                                         <i class="material-icons" style="font-size: 16px;">shopping_cart</i> Comprar
@@ -308,7 +309,7 @@
                                          title="Envío gratis Jardepot" alt="Envío gratis Jardepot">
                                         @endif
                                 </a>
-                                <div class="d-flex align-items-center flex-column" style="height: 245px;">
+                                <div class="d-flex align-items-center flex-column" style="height: 277px;">
                                     <p class="text-muted text-center"
                                        style="font-weight: 500; font-size: 18px;">{{$item['name']}}</p>
 
@@ -319,6 +320,7 @@
                                             @endif
                                         </p>
                                         <p class="new-price">{{$item['newPrice']}}</p>
+                                        <p class="little-letters text-center">Aplica en pagos mediante depósito o transferencia bancaria.</p>
                                         <button class="btn btn-buy d-flex justify-content-center align-items-center"
                                                 onclick="buyProduct('{{$item['productType']}}','{{$item['brand']}}','{{$item['mpn']}}')">
                                             <i class="material-icons" style="font-size: 16px;">shopping_cart</i> Comprar

@@ -202,7 +202,7 @@ function reloadProducts() {
                 '                                         title="Envío gratis Jardepot" alt="Envío gratis Jardepot">';
             }
             item += '                                </a>' +
-                '                                <div class="d-flex align-items-center flex-column" style="height: 245px;">' +
+                '                                <div class="d-flex align-items-center flex-column" style="height: 277px;">' +
                 '                                    <p class="text-muted text-center"' +
                 '                                       style="font-weight: 500; font-size: 18px;">'+e.name+'</p>';
             if (e.stock){
@@ -210,6 +210,7 @@ function reloadProducts() {
                     '                                        ' +(e.hasOwnProperty('oldPrice')?e.oldPrice:"")+
                     '                                    </p>' +
                     '                                    <p class="new-price">'+e.newPrice+'</p>' +
+                    '                                    <p class="little-letters">Aplica en pagos mediante depósito o transferencia bancaria.</p>' +
                     '                                    <button class="btn btn-buy d-flex justify-content-center align-items-center"' +
                     '                                       onclick="buyProduct(\''+ e.productType +'\',\''+e.brand+'\',\''+e.mpn+'\')">' +
                     '                                        <i class="material-icons" style="font-size: 16px;">shopping_cart</i> Comprar' +
