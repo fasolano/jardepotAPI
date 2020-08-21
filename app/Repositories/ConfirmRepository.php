@@ -81,7 +81,8 @@ class ConfirmRepository {
         if($total < 3000){
             $total = 300 + $total;
         }
-        // $total *= 1.04;
+        $total *= 1.04;
+        $total = round($total, 2, PHP_ROUND_HALF_DOWN);
         $order = DB::connection('digicom')
             ->table('pedidos_jardepot')
             ->insertGetId([
@@ -111,7 +112,7 @@ class ConfirmRepository {
                 $precio = $product->price;
             }
 //            $precio = $product->cantidad * $precio;
-//            $precio *= 1.04;
+            $precio *= 1.04;
             $orderProductInserted = DB::connection('digicom')
                 ->table('productosPedidos_jardepot')
                 ->insertGetId([
@@ -131,7 +132,7 @@ class ConfirmRepository {
                     'idPedidos' => $idPedidos,
                     'cantidad' => 1,
                     'nombre' => 'Manejo de Mercancía Envío paquetería',
-                    'precio' => 300
+                    'precio' => (300 * 1.04)
                 ]);
         }
     }

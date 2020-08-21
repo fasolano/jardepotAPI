@@ -76,7 +76,7 @@ class MercadoPago{
             array_push($items, $item);
         }
 
-        /*$commission = $total * 0.04;
+        $commission = $total * 0.04;
         $item = new Item();
         $item->id = 'COMI001'; // numero de pedio
         $item->title = 'Comisión por pago en MercadoPago'; //Articulo
@@ -84,7 +84,7 @@ class MercadoPago{
         $item->currency_id = 'MXN';
         $item->unit_price = $commission;
 
-        array_push($items, $item);*/
+        array_push($items, $item);
 
         # Create a payer object
         $payer = new Payer();

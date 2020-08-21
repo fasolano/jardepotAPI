@@ -128,6 +128,18 @@ $(document).ready(function (){
                     quantity: "1"
                 });
             }
+
+            let price = total * 0.04;
+            price = Number((price).toFixed(2));
+            products.push({
+                name: "Comisión por pago en PayPal",
+                unit_amount: {
+                    currency_code: "MXN",
+                    value: price
+                },
+                quantity: "1"
+            });
+            total = total + price;
             createPaypalButton(products, total);
         };
         ajaxCall(parameters);
