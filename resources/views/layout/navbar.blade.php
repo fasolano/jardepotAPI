@@ -70,7 +70,7 @@
                                        aria-label="Busca tu producto" aria-describedby="Busca tu producto.">
                                 <div class="input-group-append">
                                     <span class="input-group-addon">
-                                        <a class="btn btnSearch" type="submit" id=""><i style="color: gray" class="material-icons d-flex">search</i></a></span>
+                                        <button class="btn btnSearch" type="submit" id=""><i style="color: gray" class="material-icons d-flex">search</i></button></span>
                                 </div>
                             </div>
                         </form>
@@ -230,9 +230,9 @@
                        aria-label="Busca tu producto" aria-describedby="Busca tu producto..." style="margin-top: 0">
                 <div class="input-group-append">
                     <span class="input-group-addon">
-                        <a class="btn btnSearch" type="submit" id="" style="margin-top: 0">
+                        <button class="btn btnSearch" type="submit" id="" style="margin-top: 0">
                             <i style="color: gray" class="material-icons d-flex">search</i>
-                        </a>
+                        </button>
                     </span>
                 </div>
             </div>
