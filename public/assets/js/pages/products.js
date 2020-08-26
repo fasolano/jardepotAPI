@@ -13,8 +13,7 @@ $(document).ready(function () {
                     $(e).removeClass('d-none');
                 }
             });
-        })
-
+        });
         $('.current-number-items').text(show);
         $('.page-item').removeClass('active');
         $('.page-link[data-val="1"]').parent('.page-item').addClass('active');
@@ -163,7 +162,7 @@ $(document).ready(function () {
 
 function reloadProducts() {
     var search = window.location.href.split('/');
-    search = search[search.length - 2] === 'busqueda' || search[search.length - 2] === 'ofertas';
+    search = search[search.length - 2] === 'busqueda' || search[search.length - 1] === 'ofertas';
     var parameters = [];
     if(!search){
         parameters['url'] = "../products/getProductsFiltered";

@@ -373,7 +373,7 @@
                             </div>
                         @endforeach
                     </div>
-                    <div id="pagination-container" class="row border shadow bg-white rounded mt-2">
+                    <div class="row border shadow bg-white rounded mt-2 pagination-container">
                         <div class="col-12" style="border-radius: 5px;overflow: hidden;">
                             <nav aria-label="Search results products">
                                 <ul class="pagination d-flex justify-content-center align-items-center my-2">
