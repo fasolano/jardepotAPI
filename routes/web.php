@@ -13,7 +13,7 @@
 
 Route::get('/' , 'views\HomeController@index')->name('home');
 
-Route::get('/ofertas/productos' , 'views\ProductsController@productsSaleList')->name('sales');
+Route::get('/ofertas' , 'views\ProductsController@productsSaleList')->name('sales');
 
 Route::get('/products/getProductsFiltered' , 'views\ProductsController@productsListFiltered');
 

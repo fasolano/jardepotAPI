@@ -8,7 +8,7 @@
                         <div class="text-barra text-left">
                             Llámanos al:<br>
                             <a href="tel:8002129225">
-                                <i class="material-icons iconMod">local_phone</i>(800) 212 9225
+                                <i class="material-icons iconMod">local_phone</i>800 212 9225
                             </a>
                         </div>
                     </div>
@@ -17,25 +17,25 @@
                     <div class="row">
                         <div class="col-3">
                             <div class="text-barra text-left">
-                                CDMX <br><a href="tel:5549968849"><i class="material-icons iconMod">call</i>(55) 4996 8849</a>
+                                CDMX <br><a href="tel:5549968849"><i class="material-icons iconMod">call</i>55 4996 8849</a>
                             </div>
                         </div>
                         <div class="col-3">
                             <div class="text-barra text-left">
                                 GDL<br>
-                                <a href="tel:3317283353"><i class="material-icons iconMod">call</i>(33) 1728 3353</a>
+                                <a href="tel:3317283353"><i class="material-icons iconMod">call</i>33 1728 3353</a>
                             </div>
                         </div>
                         <div class="col-3">
                             <div class="text-barra text-left">
                                 EDOMX<br>
-                                <a href="tel:7226481040"><i class="material-icons iconMod">call</i>(722) 648 1040</a>
+                                <a href="tel:7226481040"><i class="material-icons iconMod">call</i>722 648 1040</a>
                             </div>
                         </div>
                         <div class="col-3">
                             <div class="text-barra text-left">
                                 Mayoreo<br>
-                                <a href="tel:5544598506"><i class="material-icons iconMod">call</i>(55) 4459 8506</a>
+                                <a href="tel:5544598506"><i class="material-icons iconMod">call</i>55 4459 8506</a>
                             </div>
                         </div>
                     </div>
@@ -272,65 +272,57 @@
                     <div class="row">
                         <div class="col-md-12 col-6">
                             Del Interior<br>
-                            <a class="telModal" href="tel:8002129225"><i class="material-icons">call</i>(800) 212 9225</a>
+                            <a class="telModal" href="tel:8002129225"><i class="material-icons">call</i>800 212 9225</a>
                         </div>
                         <div class="col-md-3 col-6">
                             CDMX<br>
                             <a class="telModal" class="telModal" href="tel:5549974360"><i
-                                    class="material-icons">call</i>(55) 4997 4360</a>
+                                    class="material-icons">call</i>55 4997 4360</a>
                         </div>
                         <div class="col-md-3 col-6">
                             CDMX<br>
                             <a class="telModal" class="telModal" href="tel:5549968849"><i
-                                    class="material-icons">call</i>(55) 4996 8849</a>
+                                    class="material-icons">call</i>55 4996 8849</a>
                         </div>
                         <div class="col-md-3 col-6">
                             Guadalajara<br>
-                            <a class="telModal" href="tel:3317283353"><i class="material-icons">call</i>(33) 1728
-                                3353</a>
+                            <a class="telModal" href="tel:3317283353"><i class="material-icons">call</i>33 1728 3353</a>
                         </div>
                         <div class="col-md-3 col-6">
                             Nuevo León<br>
-                            <a class="telModal" href="tel:8120635708"><i class="material-icons">call</i>8120635708</a>
+                            <a class="telModal" href="tel:8120635708"><i class="material-icons">call</i>81 2063 5708</a>
                         </div>
                         <div class="col-md-3 col-6">
                             Edo. Mex.<br>
-                            <a class="telModal" href="tel:7226481040"><i class="material-icons">call</i>(722) 648
-                                1040</a>
+                            <a class="telModal" href="tel:7226481040"><i class="material-icons">call</i>722 648 1040</a>
                         </div>
                         <div class="col-md-3 col-6">
                             Morelos<br>
-                            <a class="telModal" href="tel:7773179630"><i class="material-icons">call</i>(777) 317
-                                9630</a>
+                            <a class="telModal" href="tel:7773179630"><i class="material-icons">call</i>777 317 9630</a>
                         </div>
                         <div class="col-md-3 col-6">
                             Puebla<br>
-                            <a class="telModal" href="tel:2227051726"><i class="material-icons">call</i> (222) 705 1726</a>
+                            <a class="telModal" href="tel:2227051726"><i class="material-icons">call</i>222 705 1726</a>
                         </div>
                         <div class="col-md-3 col-6">
                             Q. Roo<br>
-                            <a class="telModal" href="tel:9982940670"><i class="material-icons">call</i>(998) 294
-                                0670</a>
+                            <a class="telModal" href="tel:9982940670"><i class="material-icons">call</i>998 294 0670</a>
                         </div>
                         <div class="col-md-3 col-6">
                             S.L.P.<br>
-                            <a class="telModal" href="tel:4443280420"><i class="material-icons">call</i>(444) 328
-                                0420</a>
+                            <a class="telModal" href="tel:4443280420"><i class="material-icons">call</i>444 328  0420</a>
                         </div>
                         <div class="col-md-3 col-6">
                             Michoacán<br>
-                            <a class="telModal" href="tel:4433560484"><i class="material-icons">call</i>(443) 356
-                                0484</a>
+                            <a class="telModal" href="tel:4433560484"><i class="material-icons">call</i>443 356 0484</a>
                         </div>
                         <div class="col-md-3 col-6">
                             Tabasco<br>
-                            <a class="telModal" href="tel:9933070286"><i class="material-icons">call</i>(993) 307
-                                0286</a>
+                            <a class="telModal" href="tel:9933070286"><i class="material-icons">call</i>993 307 0286</a>
                         </div>
                         <div class="col-md-3 col-6">
                             Veracruz<br>
-                            <a class="telModal" href="tel:2293300992"><i class="material-icons">call</i>(229) 330
-                                0992</a>
+                            <a class="telModal" href="tel:2293300992"><i class="material-icons">call</i>229 330 0992</a>
                         </div>
                     </div>
                 </div>
@@ -339,7 +331,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="container">
-                        <a class="telModal" href="tel:5587598891"><i class="material-icons">call</i>(55) 8759 8891</a>
+                        <a class="telModal" href="tel:5587598891"><i class="material-icons">call</i>55 8759 8891</a>
                     </div>
                 </div>
             </div>
