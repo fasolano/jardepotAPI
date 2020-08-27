@@ -44,7 +44,8 @@
                     <div class="row">
                         @foreach ($itemLevel1->nivel2 as $keyLevel2 => $itemLevel2)
                             <div class="col-4 px-2">
-                                <a href="{{route('products', ['categoryLevel1'=> strtolower($itemLevel1->nombreCategoriaNivel1), 'categoryLevel2'=> strtolower($itemLevel2->name)])}}"
+                                <a href="{{route('products', ['categoryLevel1'=> strtolower(str_replace(" ", "-", $itemLevel1->nombreCategoriaNivel1)),
+                                                                'categoryLevel2'=> strtolower(str_replace(" ", "-", $itemLevel2->name))])}}"
                                    class="btn btn-light p-0" style="width: 100%">
                                     <img src="{{asset('assets/images/brands/'.strtolower($itemLevel2->name).'.jpg')}}" alt="{{$itemLevel2->name}}" style="width: 100%">
                                 </a>
@@ -73,7 +74,8 @@
                     <div class="row">
                         @foreach ($itemLevel1->nivel2 as $keyLevel2 => $itemLevel2)
                             <div class="col-6 text-center my-1 p-0">
-                                <a href="{{route('products', ['categoryLevel1'=> strtolower($itemLevel1->nombreCategoriaNivel1), 'categoryLevel2'=> strtolower($itemLevel2->name)])}}"
+                                <a href="{{route('products', ['categoryLevel1'=> strtolower(str_replace(" ", "-", $itemLevel1->nombreCategoriaNivel1)),
+                                                                'categoryLevel2'=> strtolower(str_replace(" ", "-", $itemLevel2->name))])}}"
                                    class="btn bg-color-jd btn-no-border px-0" style="width: 80%; font-size: 15px; white-space: nowrap;">
                                     {{$itemLevel2->name}}
                                 </a>
