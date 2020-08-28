@@ -32,7 +32,30 @@ class ProductsController extends Controller {
         $descriptionLevel2 = $productController->getDescriptionLevel2($categoryLevel1, $categoryLevel2);
 
         $textFilter = "";
-        if($categoryLevel1 == "marcas" || $categoryLevel1 == "refacciones"){
+        if($categoryLevel1 == "Marcas" || $categoryLevel1 == "Refacciones"){
+            $textFilter = "equipos";
+        }else{
+            $textFilter = "marcas";
+        }
+
+        return view('pages/products', compact('sidebar', 'categoryLevel1', 'categoryLevel2', 'products', 'numberPages', 'filters', 'textFilter', 'descriptionLevel2'));
+    }
+
+    public function productsListLevel3($categoryLevel1, $categoryLevel2, $categoryLevel3){
+        $categoryLevel1 = str_replace("-", " ", ucfirst($categoryLevel1));
+        $categoryLevel2 = str_replace("-", " ", ucfirst($categoryLevel2));
+        $categoryLevel3 = str_replace("-", " ", ucfirst($categoryLevel3));
+        $menuController = new MenuController();
+        $sidebar = $menuController->getSidebar();
+        $productController = new \App\Http\Controllers\ProductController();
+        $products = $productController->getProductsListLevel3($categoryLevel1, $categoryLevel2, $categoryLevel3);
+        $products = $this->porductModelFormat($products);
+        $numberPages = count($products) / 8;
+        $filters = $productController->getSectionsLevel3($categoryLevel1, $categoryLevel2);
+        $descriptionLevel2 = $productController->getDescriptionLevel2($categoryLevel1, $categoryLevel2);
+
+        $textFilter = "";
+        if($categoryLevel1 == "Marcas" || $categoryLevel1 == "Refacciones"){
             $textFilter = "equipos";
         }else{
             $textFilter = "marcas";
@@ -86,7 +109,6 @@ class ProductsController extends Controller {
         }
 
         $matches= $productRepository->getProductsSearch2($word);
-        //$productsListSearch = $productRepository->getProductsSearch($word);
         foreach ( $matches as $matchNivel) {
             foreach ($matchNivel as $key => $match) {
                 array_push($productsListSearch, $match);
@@ -190,13 +212,13 @@ class ProductsController extends Controller {
             if (isset($item->offer) && $item->offer == 'si') {
                 $response[$iterator]['discount'] = "Oferta";
 
-                if ($item->PrecioDeLista > $item->oferta) {
+                if ($item->PrecioDeLista > $item->price) {
                     $response[$iterator]['oldPrice'] = money_format('%.2n',$item->PrecioDeLista);
-                    $response[$iterator]['newPrice'] = money_format('%.2n',$item->oferta);
+                    $response[$iterator]['newPrice'] = money_format('%.2n',$item->price);
                     $response[$iterator]['newPriceFloat'] = $item->oferta;
                 }
                 else {
-                    $response[$iterator]['newPrice'] = money_format('%.2n',$item->oferta);
+                    $response[$iterator]['newPrice'] = money_format('%.2n',$item->price);
                     $response[$iterator]['newPriceFloat'] = $item->oferta;
                 }
             }
@@ -311,6 +333,26 @@ class ProductsController extends Controller {
                 }
                 return $format;
             }
+        }
+    }
+
+    public function singular($pal) {
+        $palabraAr = explode(" ", $pal);
+        $palabra = strtolower($palabraAr[0]);
+        $lng = mb_strlen($palabra, 'UTF-8'); // Obtener la longitud de la palabra
+        $ultima = mb_substr($palabra, $lng - 1, 1, 'UTF-8');    // Extraer el último carácter
+        $penultima = mb_substr($palabra, $lng - 2, 1, 'UTF-8');    // Extraer el penúltimo carácter
+
+        if ($ultima == 's') {
+            if ($penultima != 'e' || $palabra == 'aceites') {
+                return substr($palabra, 0, -1);
+            }
+            else {
+                return substr($palabra, 0, -2);
+            }
+        }
+        else {
+            return $palabra;
         }
     }
 

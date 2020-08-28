@@ -110,12 +110,12 @@ class ProductController extends Controller {
             if (isset($item->offer) && $item->offer == 'si') {
                 $response[$iterator]['discount'] = "Oferta";
 
-                if ($item->PrecioDeLista > $item->oferta ) {
+                if ($item->PrecioDeLista > $item->price ) {
                     $response[$iterator]['oldPrice'] = money_format('%.2n', $item->PrecioDeLista);;
-                    $response[$iterator]['newPrice'] = money_format('%.2n', $item->oferta);
+                    $response[$iterator]['newPrice'] = money_format('%.2n', $item->price);
                     $response[$iterator]['newPriceFloat'] = $item->price;
                 } else {
-                    $response[$iterator]['newPrice'] = money_format('%.2n', $item->oferta);
+                    $response[$iterator]['newPrice'] = money_format('%.2n', $item->price);
                     $response[$iterator]['oldPrice'] = false;
                     $response[$iterator]['newPriceFloat'] = $item->price;
                 }

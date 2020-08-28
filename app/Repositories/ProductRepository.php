@@ -391,9 +391,6 @@ class ProductRepository{
     }
 
     public function getIdNivel2($nivel1, $nivel2){
-/*
-        $nivel1 = str_replace("-", " ", $nivel1);
-        $nivel2 = str_replace("-", " ", $nivel2);*/
 
         $categoriaNivel1 = str_replace("-", " ", $nivel1);
         if (strtolower($nivel2) != 'hilo nylon'){
@@ -414,6 +411,33 @@ class ProductRepository{
             ])
             ->first();
         $idReturn = is_object($query) ? $query->idCategoriasNivel2 : null;
+        return $idReturn;
+    }
+
+    public function getIdNivel3($nivel1, $nivel2, $nivel3){
+
+        $categoriaNivel1 = str_replace("-", " ", $nivel1);
+        $categoriaNivel3 = str_replace("-", " ", $nivel3);
+        if (strtolower($nivel2) != 'hilo nylon'){
+            $categoriaNivel2 = str_replace("-", " ", $nivel2);
+        }else{
+            $categoriaNivel2 = str_replace(" ", "-", $nivel2);
+        }
+
+
+        $query = DB::table('categoriasNivel2')
+            ->join('categoriasNivel1', 'categoriasNivel2.idCategoriasNivel1', '=', 'categoriasNivel1.idCategoriasNivel1')
+            ->join('categoriasNivel3', 'categoriasNivel2.idCategoriasNivel2', '=', 'categoriasNivel3.idCategoriasNivel2')
+            ->select(
+                'categoriasNivel3.idCategoriasNivel3'
+            )
+            ->where([
+                ['categoriasNivel3.nombreCategoriaNivel3', $categoriaNivel3],
+                ['categoriasNivel2.nombreCategoriaNivel2', $categoriaNivel2],
+                ['categoriasNivel1.nombreCategoriaNivel1', $categoriaNivel1]
+            ])
+            ->first();
+        $idReturn = is_object($query) ? $query->idCategoriasNivel3 : null;
         return $idReturn;
     }
 
@@ -857,71 +881,6 @@ class ProductRepository{
             }
         }
         return $matches;
-        /*$iterator=0;
-        $response = array();
-        //imprime los resultados de la búsqueda
-        foreach ($matches as $matchNivel) {
-
-            foreach ($matchNivel as $key => $match) {
-                //solo pone precios si tenemos producto en stock
-//                if ($match["availability"] == "in stock") {
-                    $img = strtolower( $match["productType"] . "-" . $match["brand"] . "-" . $match["mpn"]);
-
-                    $response[$iterator]['id'] = $match["id"];
-                    $response[$iterator]['name'] = $match["productType"] . " " . $match["brand"] . " " . $match["mpn"];
-                    $response[$iterator]['images'][0]['small'] = 'assets/images/productos/' . $img . '.jpg';
-                    $response[$iterator]['images'][0]['medium'] = 'assets/images/productos/' . $img . '.jpg';
-                    $response[$iterator]['images'][0]['big'] = 'assets/images/productos/zoom/' . $img . '.jpg';
-                    if ($match["offer"] == "si") {
-                        $response[$iterator]['discount'] = "Oferta";
-                        //solo pone precio de lista cuando es mayor!!
-                        if ( $match["PrecioDeLista"] > $match["oferta"]) {
-                            $response[$iterator]['oldPrice'] = $match["PrecioDeLista"];
-                           $response[$iterator]['newPrice'] = $match["oferta"];
-                        }else{
-                            $response[$iterator]['newPrice'] = $match["oferta"];
-                        }
-                        //no está de oferta :(
-                    }else{
-                        //solo pone precio de lista cuando es mayor!!
-                        if ($match["PrecioDeLista"] > $match["price"]) {
-                            $response[$iterator]['oldPrice'] = $match["PrecioDeLista"];
-                            $response[$iterator]['newPrice'] = $match["price"];
-                        }else{
-                            $response[$iterator]['newPrice'] = $match["price"];
-                        }
-                    }
-                    $response[$iterator]['description'] = $match["description"];
-                    $response[$iterator]['dataSheet'] = $match["resenia"];
-                    $response[$iterator]['availibilityCount'] = 100;
-                    $response[$iterator]['stock'] = $match['availability'] == 'in stock'  ?true:false ;
-                    if(isset($match['cantidad'])){
-                        $response[$iterator]['cartCount'] = $match["cantidad"];
-                    }else{
-                        $response[$iterator]['cartCount'] = 0;
-                    }
-                    $response[$iterator]['brand'] = $match["brand"];
-                    $response[$iterator]['mpn'] = $match["mpn"];
-                    $response[$iterator]['productType'] = $match["productType"];
-
-                    $response[$iterator]['keywords'] = $match["productType"] . ", " . $match["brand"] . ", " . $match["mpn"];
-                    if ($match["metadesc"] == ''){
-                        $response[$iterator]['metaDescription'] = $match["productType"] . " " . $match["brand"] . " " . $match["mpn"];
-                    }else{
-                        $response[$iterator]['metaDescription'] = $match["metadesc"];
-                    }
-                    if ($match["titleweb"] == ''){
-                        $response[$iterator]['metaTitle'] = $match["productType"] . " " . $match["brand"] . " " . $match["mpn"];
-                    }else{
-                        $response[$iterator]['metaTitle'] = $match["titleweb"];
-                    }
-
-                    $response[$iterator]['inventory'] = $match["cantidadInventario"];
-                    $iterator++;
-//                }
-            }//fin de foreach match
-        }
-        return $response;*/
     }
 
     public function getProductsSearch($busqueda){

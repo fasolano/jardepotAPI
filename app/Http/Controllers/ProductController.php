@@ -226,6 +226,22 @@ class ProductController extends Controller {
         return  $productosCategoria;
     }
 
+    public function getProductsListLevel3($nivel1, $nivel2, $nivel3) {
+        /*
+         * Se optienen las categorias que se van mostrar
+         */
+        $idNivel2 = $this->productoRepository->getIdNivel2($nivel1, $nivel2);
+        $idNivel3 = $this->productoRepository->getIdNivel3($nivel1, $nivel2, $nivel3);
+        if ($idNivel2 == null) {
+            return array();
+        }
+        $response = array();
+
+
+        $productosCategoria = $this->productoRepository->getProductsFiltered($idNivel2, [$idNivel3]);
+        return  $productosCategoria;
+    }
+
     public function getSectionsLevel3($nivel1, $nivel2) {
         $idNivel2 = $this->productoRepository->getIdNivel2($nivel1, $nivel2);
         $secciones = $this->productoRepository->getCategoriasNivel3($idNivel2);
