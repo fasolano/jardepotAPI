@@ -1,5 +1,10 @@
 var filters = [];
 $(document).ready(function () {
+
+    $('.active-filter').each(function (i,e) {
+        filters.push($(this).data('val'));
+    });
+
     $("#sidebar").mCustomScrollbar({
         theme: "minimal"
     });

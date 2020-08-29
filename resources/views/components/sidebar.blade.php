@@ -15,13 +15,26 @@
                 <div class="row">
                     <p class="text-center col-12 title-muted">Organizar por {{$textFilter}}:</p>
                     @foreach ($filters as $keyFilter => $itemFilter)
-                        <div class="text-center col-6 my-1">
-                            <div class="btn-group-toggle filter" data-toggle="buttons">
-                                <label class="btn btn-secondary btn-sm btn-filter btn-no-border" data-val="{{$itemFilter['id']}}">
-                                    <input type="checkbox"> {{$itemFilter['name']}}
-                                </label>
+                        @if(strtolower($level1) == "marcas")
+                            <div class="text-center col-6 my-1">
+                                <div class="btn-group-toggle filter" data-toggle="buttons">
+                                    <a data-val="{{$itemFilter['id']}}" class="btn btn-secondary btn-sm btn-filter-2 btn-no-border
+                                            {{$idFilter == $itemFilter['id']?"active-filter bg-color-jd active":""}}" onclick="function noclick(e) { e.stopPropagation();}"
+                                       href="{{route('products2', ['categoryLevel1'=> strtolower(str_replace(" ", "-", $level1)),
+                                        'categoryLevel2'=> strtolower(str_replace(" ", "-", $level2)), 'categoryLevel3'=> strtolower(str_replace(" ", "-", $itemFilter['name']))])}}">
+                                        {{$itemFilter['name']}}
+                                    </a>
+                                </div>
                             </div>
-                        </div>
+                        @else
+                            <div class="text-center col-6 my-1">
+                                <div class="btn-group-toggle filter" data-toggle="buttons">
+                                    <label class="btn btn-secondary btn-sm btn-filter btn-no-border" data-val="{{$itemFilter['id']}}">
+                                        <input type="checkbox"> {{$itemFilter['name']}}
+                                    </label>
+                                </div>
+                            </div>
+                        @endif
                     @endforeach
                 </div>
             </div>
@@ -81,9 +94,6 @@
                                 </a>
                             </div>
                         @endforeach
-                        {{--<div class="col-6 text-center my-1 p-0">
-                            <button type="button" class="btn bg-color-jd btn-no-border">Small button</button>
-                        </div>--}}
                     </div>
                 </div>
             </div>

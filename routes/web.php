@@ -11,23 +11,25 @@
 |
 */
 
-Route::get('/' , 'views\HomeController@index')->name('home');
+Route::get('/', 'views\HomeController@index')->name('home');
 
-Route::get('/ofertas' , 'views\ProductsController@productsSaleList')->name('sales');
+Route::get('/ofertas', 'views\ProductsController@productsSaleList')->name('sales');
 
-Route::get('/products/getProductsFiltered' , 'views\ProductsController@productsListFiltered');
+Route::get('/products/getProductsFiltered', 'views\ProductsController@productsListFiltered');
 
-Route::get('/products/getProductsOrdered' , 'views\ProductsController@productsSearchOrdered');
+Route::get('/products/getProductsOrdered', 'views\ProductsController@productsSearchOrdered');
 
-Route::get('/busqueda/{word}' , 'views\ProductsController@getProductsListSearch')->name('search');
+Route::get('/busqueda/{word}', 'views\ProductsController@getProductsListSearch')->name('search');
 
-Route::get('/c0nf1rm4c10n/p4yp4l/{state}' , 'views\ConfirmController@confirmPaypal');
+Route::get('/c0nf1rm4c10n/p4yp4l/{state}', 'views\ConfirmController@confirmPaypal');
 
-Route::get('/c0nf1rm4c10n/m3rc4d0p4g0/{state}' , 'views\ConfirmController@confirmMercadopago');
+Route::get('/c0nf1rm4c10n/m3rc4d0p4g0/{state}', 'views\ConfirmController@confirmMercadopago');
 
-Route::get('/{categoryLevel1}/{categoryLevel2}' , 'views\ProductsController@productsList')->name('products');
+Route::get('/{categoryLevel1}/{categoryLevel2}', 'views\ProductsController@productsList')->name('products');
 
 Route::get('/catalogo/{marca}/{productType}-{brand}-{mpn}' , 'views\ProductController@product')->name('product');
+
+Route::get('/{categoryLevel1}/{categoryLevel2}/{categoryLevel3}', 'views\ProductsController@productsListLevel3')->name('products2');
 
 Route::post('product/sendSearch', 'views\ProductController@sendSearch');
 

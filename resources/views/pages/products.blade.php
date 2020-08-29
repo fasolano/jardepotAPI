@@ -44,6 +44,10 @@
                     @slot('filters', $filters)
                     @slot('textFilter', $textFilter)
                 @endif
+                @if(isset($idFilter))
+                    @slot('idFilter', $idFilter)
+                @endif
+                @slot('level1', $categoryLevel1)
                 @slot('level2', $categoryLevel2)
             @endcomponent
         </nav>
@@ -58,6 +62,10 @@
                     @slot('filters', $filters)
                     @slot('textFilter', $textFilter)
                 @endif
+                @if(isset($idFilter))
+                    @slot('idFilter', $idFilter)
+                @endif
+                    @slot('level1', $categoryLevel1)
                     @slot('level2', $categoryLevel2)
                 @endcomponent
             </div>

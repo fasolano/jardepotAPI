@@ -242,6 +242,10 @@ class ProductController extends Controller {
         return  $productosCategoria;
     }
 
+    public function getIdLevel3($nivel1, $nivel2, $nivel3){
+        return $this->productoRepository->getIdNivel3($nivel1, $nivel2, $nivel3);
+    }
+
     public function getSectionsLevel3($nivel1, $nivel2) {
         $idNivel2 = $this->productoRepository->getIdNivel2($nivel1, $nivel2);
         $secciones = $this->productoRepository->getCategoriasNivel3($idNivel2);
