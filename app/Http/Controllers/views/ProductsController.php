@@ -37,8 +37,9 @@ class ProductsController extends Controller {
         }else{
             $textFilter = "marcas";
         }
+        $idFilter = 0;
 
-        return view('pages/products', compact('sidebar', 'categoryLevel1', 'categoryLevel2', 'products', 'numberPages', 'filters', 'textFilter', 'descriptionLevel2'));
+        return view('pages/products', compact('idFilter', 'sidebar', 'categoryLevel1', 'categoryLevel2', 'products', 'numberPages', 'filters', 'textFilter', 'descriptionLevel2'));
     }
 
     public function productsListLevel3($categoryLevel1, $categoryLevel2, $categoryLevel3){
