@@ -417,11 +417,15 @@ class ProductRepository{
     public function getIdNivel3($nivel1, $nivel2, $nivel3){
 
         $categoriaNivel1 = str_replace("-", " ", $nivel1);
-        $categoriaNivel3 = str_replace("-", " ", $nivel3);
         if (strtolower($nivel2) != 'hilo nylon'){
             $categoriaNivel2 = str_replace("-", " ", $nivel2);
         }else{
             $categoriaNivel2 = str_replace(" ", "-", $nivel2);
+        }
+        if (strtolower($nivel3) != 'hilo nylon'){
+            $categoriaNivel3 = str_replace("-", " ", $nivel3);
+        }else{
+            $categoriaNivel3 = str_replace(" ", "-", $nivel3);
         }
 
 
