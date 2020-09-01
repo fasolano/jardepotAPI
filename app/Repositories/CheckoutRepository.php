@@ -19,6 +19,7 @@ class CheckoutRepository {
             ->first();
 
         if(!is_object($clientRegistered)){
+            $date = date('Y-m-d H:i:s');
             $clientRegistered = DB::connection('digicom')
                 ->table('clientes_jardepot')
                 ->insertGetId([
@@ -30,7 +31,8 @@ class CheckoutRepository {
                     'tipo' => 1,
                     'comentarios' => "Se registro a través de un pedido en la página web",
                     'origen' => 2,
-                    'idUsuarios' => 2
+                    'idUsuarios' => 2,
+                    'fecha' => $date
                 ]);
         }else{
 //            echo 'entro a else object:'.$clientRegistered->idClientes;
