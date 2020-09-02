@@ -39,7 +39,7 @@
         <div class="col-xl-9 col-lg-11 my-4" style="display: flex; flex-wrap: wrap; max-width: 1300px;">
             <div class="w-20-tel">
                 <div>
-                    <p>Ciudad de México</p>
+                    <p>CDMX</p>
                     <a href="tel:5549974360" style="color: #fff;"><h2 style="font-size: 15px; font-weight: 300;">55 4997 4360</h2></a>
                     <a href="tel:5549968849" style="color: #fff;"><h2 class="my-4" style="font-size: 15px; font-weight: 300;">55 4996 8849</h2></a>
                 </div>
