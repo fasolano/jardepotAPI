@@ -64,7 +64,7 @@
                 </div>
                 <div class="col-md-7">
                     <div class="" id="navbarsExample06">
-                        <form id="search-form" class="form-inline my-2 my-md-0">
+                        <form id="search-form" class="form-inline my-2 my-md-0 search-form">
                             <div class="input-group mb-3" style="width: 100%">
                                 <input id="inputSearch" type="text" class="form-control inputSearch" placeholder="Busca tu producto..."
                                        aria-label="Busca tu producto" aria-describedby="Busca tu producto.">
@@ -88,22 +88,6 @@
                         </div>
                         <div class="dropdown-divider"></div>
                         <div id="items-card-nav1"></div>
-                    {{--    <div class="dropdown-item">
-                            <div class="row">
-                                <div class="col-10">
-                                    <p class="text-muted mat-line">Motocultor Ducati DTL7000 </p>
-                                    <p class="text-muted mat-line">1 x $15,687.00</p>
-                                </div>
-                                <div class="col-2" >
-                                    <button class="btn"><i class="material-icons">close</i></button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="dropdown-divider"></div>
-                        <div class="dropdown-item">
-                            <div class="text-muted mt-1"><b>TOTAL: $15,687.00</b></div>
-                        </div>
-                        <div class="dropdown-divider"></div>--}}
                         <div class="dropdown-item" id="option-dropdown-cart1">
                             <div class="mt-1" style="flex-direction: row; box-sizing: border-box; display: flex; place-content: center space-between; align-items: center;">
                                 <button class="btn btn-secondary btn-lg btn-circle" onclick="removeAllProducts()" data-toggle="tooltip" title="Borrar todo">
@@ -224,7 +208,7 @@
         </ul>
     </div>
     <div class="navbar-collapse">
-        <form class="form-inline my-2 my-md-0">
+        <form class="form-inline my-2 my-md-0 search-form">
             <div class="input-group" style="width: 95%;margin-top: 0">
                 <input type="text" class="form-control inputSearch" placeholder="Busca tu producto..."
                        aria-label="Busca tu producto" aria-describedby="Busca tu producto..." style="margin-top: 0">

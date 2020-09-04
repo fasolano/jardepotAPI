@@ -40,9 +40,9 @@ $('#search-form').on('keypress',function(e) {
     }
 });
 
-$('#search-form').submit(function (e) {
+$('.search-form').submit(function (e) {
     e.preventDefault();
-    var search = $('#inputSearch').val();
+    var search = $('.inputSearch').val();
     window.location = ruta+"busqueda/"+search;
 })
 
