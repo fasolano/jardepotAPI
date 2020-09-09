@@ -315,7 +315,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="container">
-                        <a class="telModal" href="tel:5587598891"><i class="material-icons">call</i>55 8759 8891</a>
+                        <a class="telModal" href="tel:5544598506"><i class="material-icons">call</i> 55 4459 8506</a>
                     </div>
                 </div>
             </div>
