@@ -16,6 +16,9 @@
 @endsection
 
 @section('content')
+    <div class="row shadow border border-light p-3 bg-white m-1 mt-3 rounded">
+       <h1 style="font-size: 23px !important;">JarDepot, !Tu equipo siempre contigo¡ Tienda de maquinaria accesorios y consumibles de Jardinería, Agrícolas y Forestales.</h1>
+    </div>
     <div class="d-none d-md-block d-lg-block">
         <div class="row div-banners">
             <div class="col-xl-5 pr-0">
