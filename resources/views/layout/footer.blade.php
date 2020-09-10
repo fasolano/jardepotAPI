@@ -27,7 +27,9 @@
                     </div>
                 </div>
                 <div class="col-md-5">
-                    <img src="{{asset('assets/images/otros/maps.webp')}}" alt="Google Maps" style="width: 100%; height: 250px;">
+                    <source srcset="{{asset('assets/images/otros/maps.webp')}}" type="image/webp">
+                    <source srcset="{{asset('assets/images/otros/maps.png')}}" type="image/png">
+                    <img src="{{asset('assets/images/otros/maps.png')}}" alt="Google Maps" title="google maps" style="width: 100%; height: 250px;">
                 </div>
             </div>
             <hr style="border-bottom: 1px solid rgba(250,250,250,.2);">
@@ -40,14 +42,14 @@
             <div class="w-20-tel">
                 <div>
                     <p>CDMX</p>
-                    <a href="tel:5549974360" style="color: #fff;"><span style="font-size: 15px; font-weight: 300;">55 4997 4360</span></a>
+                    <a href="tel:5549974360" style="color: #fff;"><span style="font-size: 15px; font-weight: 300;">55 4997 4360</span></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <a href="tel:5549968849" style="color: #fff;"><span class="my-4" style="font-size: 15px; font-weight: 300;">55 4996 8849</span></a>
                 </div>
             </div>
             <div class="w-20-tel">
                 <div>
                     <p>Morelos</p>
-                    <a href="tel:7773179630" style="color: #fff;"><span style="font-size: 15px; font-weight: 300;">777 317 9630</span></a>
+                    <a href="tel:7773179630" style="color: #fff;"><span style="font-size: 15px; font-weight: 300;">777 317 9630</span></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <a href="tel:7773179652" style="color: #fff;"><span class="my-4" style="font-size: 15px; font-weight: 300;">777 317 9652</span></a>
                 </div>
             </div>
