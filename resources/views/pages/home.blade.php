@@ -17,7 +17,7 @@
 
 @section('content')
     <div class="row shadow border border-light p-3 bg-white m-1 mt-3 rounded">
-       <h1 style="font-size: 23px !important;">Máquinas, accesorios y consumibles de Jardín, Agrícolas y Forestales.</h1>
+       <h1 style="font-size: 23px !important;">Máquinas, accesorios y consumibles de Jardín, Agrícola y Forestal.</h1>
     </div>
     <div class="d-none d-md-block d-lg-block">
         <div class="row div-banners">
