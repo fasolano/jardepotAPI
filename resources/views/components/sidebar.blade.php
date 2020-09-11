@@ -87,8 +87,7 @@
                     <div class="row">
                         @foreach ($itemLevel1->nivel2 as $keyLevel2 => $itemLevel2)
                             <div class="col-6 text-center my-1 p-0">
-                                <a href="{{route('products', ['categoryLevel1'=> strtolower(str_replace(" ", "-", $itemLevel1->nombreCategoriaNivel1)),
-                                                                'categoryLevel2'=> strtolower(str_replace(" ", "-", $itemLevel2->name))])}}"
+                                <a href="{{route('products', ['categoryLevel1'=>$itemLevel1->href, 'categoryLevel2'=> $itemLevel2->href])}}"
                                    class="btn bg-color-jd btn-no-border px-0" style="width: 80%; font-size: 15px; white-space: nowrap;">
                                     {{$itemLevel2->name}}
                                 </a>

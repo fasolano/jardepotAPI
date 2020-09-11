@@ -16,14 +16,33 @@ class ProductsController extends Controller {
     public function __construct() {
         setlocale(LC_MONETARY, 'en_US');
         $this->comprobarMoneyFormat();
-        $this->unwanted_array = array('Š' => 'S', 'š' => 's', 'Ž' => 'Z', 'ž' => 'z', 'À' => 'A', 'Á' => 'A', 'Â' => 'A', 'Ã' => 'A', 'Ä' => 'A', 'Å' => 'A', 'Æ' => 'A', 'Ç' => 'C', 'È' => 'E', 'É' => 'E', 'Ê' => 'E', 'Ë' => 'E', 'Ì' => 'I', 'Í' => 'I', 'Î' => 'I', 'Ï' => 'I', 'Ñ' => 'N', 'Ò' => 'O', 'Ó' => 'O', 'Ô' => 'O', 'Õ' => 'O', 'Ö' => 'O', 'Ø' => 'O', 'Ù' => 'U', 'Ú' => 'U', 'Û' => 'U', 'Ü' => 'U', 'Ý' => 'Y', 'Þ' => 'B', 'ß' => 'Ss', 'à' => 'a', 'á' => 'a', 'â' => 'a', 'ã' => 'a', 'ä' => 'a', 'å' => 'a', 'æ' => 'a', 'ç' => 'c', 'è' => 'e', 'é' => 'e', 'ê' => 'e', 'ë' => 'e', 'ì' => 'i', 'í' => 'i', 'î' => 'i', 'ï' => 'i', 'ð' => 'o', 'ñ' => 'n', 'ò' => 'o', 'ó' => 'o', 'ô' => 'o', 'õ' => 'o', 'ö' => 'o', 'ø' => 'o', 'ù' => 'u', 'ú' => 'u', 'û' => 'u', 'ý' => 'y', 'þ' => 'b', 'ÿ' => 'y');
+        $this->unwanted_array = array('Š' => 'S', 'š' => 's', 'Ž' => 'Z', 'ž' => 'z', 'À' => 'A', 'Á' => 'A',
+            'Â' => 'A', 'Ã' => 'A', 'Ä' => 'A', 'Å' => 'A', 'Æ' => 'A', 'Ç' => 'C', 'È' => 'E', 'É' => 'E', 'Ê' => 'E',
+            'Ë' => 'E', 'Ì' => 'I', 'Í' => 'I', 'Î' => 'I', 'Ï' => 'I', 'Ñ' => 'N', 'Ò' => 'O', 'Ó' => 'O', 'Ô' => 'O',
+            'Õ' => 'O', 'Ö' => 'O', 'Ø' => 'O', 'Ù' => 'U', 'Ú' => 'U', 'Û' => 'U', 'Ü' => 'U', 'Ý' => 'Y', 'Þ' => 'B',
+            'ß' => 'Ss', 'à' => 'a', 'á' => 'a', 'â' => 'a', 'ã' => 'a', 'ä' => 'a', 'å' => 'a', 'æ' => 'a', 'ç' => 'c',
+            'è' => 'e', 'é' => 'e', 'ê' => 'e', 'ë' => 'e', 'ì' => 'i', 'í' => 'i', 'î' => 'i', 'ï' => 'i', 'ð' => 'o',
+            'ñ' => 'n', 'ò' => 'o', 'ó' => 'o', 'ô' => 'o', 'õ' => 'o', 'ö' => 'o', 'ø' => 'o', 'ù' => 'u', 'ú' => 'u',
+            'û' => 'u', 'ý' => 'y', 'þ' => 'b', 'ÿ' => 'y');
     }
 
     public function productsList($categoryLevel1, $categoryLevel2){
         $categoryLevel1 = str_replace("-", " ", ucfirst($categoryLevel1));
         $categoryLevel2 = str_replace("-", " ", ucfirst($categoryLevel2));
         $menuController = new MenuController();
-        $sidebar = $menuController->getSidebar();
+        $categoriasNivel1 = $menuController->getSidebar();
+        foreach ($categoriasNivel1 as $key => $categoria1) {
+            $categoriasNivel1[$key]->nombreCategoriaNivel1 = $categoria1->nombreCategoriaNivel1;
+            $niv1 = str_replace(' ','-', $categoria1->nombreCategoriaNivel1);
+            $href1 = strtr($niv1, $this->unwanted_array);
+            $categoriasNivel1[$key]->href = strtolower($href1);
+            foreach ($categoria1->nivel2 as $key2 => $categoria2){
+                $niv2 = str_replace(' ','-',$categoria2->name);
+                $href = strtr($niv2, $this->unwanted_array);
+                $categoriasNivel1[$key]->nivel2[$key2]->href = strtolower($href);
+            }
+        }
+        $sidebar = $categoriasNivel1;
         $productController = new \App\Http\Controllers\ProductController();
         $products = $productController->getProductsList($categoryLevel1, $categoryLevel2);
         $products = $this->porductModelFormat($products);
