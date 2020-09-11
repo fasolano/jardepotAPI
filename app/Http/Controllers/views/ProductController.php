@@ -28,7 +28,19 @@ class ProductController extends Controller {
 
     public function product($marca, $productType, $brand, $mpn){
         $menu = new MenuController();
-        $sidebar = $menu->getSidebar();
+        $categoriasNivel1 = $menu->getSidebar();
+        foreach ($categoriasNivel1 as $key => $categoria1) {
+            $categoriasNivel1[$key]->nombreCategoriaNivel1 = $categoria1->nombreCategoriaNivel1;
+            $niv1 = str_replace(' ','-', $categoria1->nombreCategoriaNivel1);
+            $href1 = strtr($niv1, $this->unwanted_array);
+            $categoriasNivel1[$key]->href = strtolower($href1);
+            foreach ($categoria1->nivel2 as $key2 => $categoria2){
+                $niv2 = str_replace(' ','-',$categoria2->name);
+                $href = strtr($niv2, $this->unwanted_array);
+                $categoriasNivel1[$key]->nivel2[$key2]->href = strtolower($href);
+            }
+        }
+        $sidebar = $categoriasNivel1;
 
         if($productType.'-'.$brand == 'hilo-nylon'){
             $productType = $productType.'-'.$brand;
