@@ -3,9 +3,10 @@
 
 @section('metaData')
     <title>Tu carrito Jardepot</title>
-    <meta title=""/>
-    <meta name="description" content="">
-    <meta name="keywords" content="">
+    <meta title="Tu carrito Jardepot"/>
+    <meta name="description" content="Tu carrito Jardepot">
+    <meta name="keywords" content="Carrito, Jardepot">
+    <meta name="robots" content="noindex">
 @endsection
 
 @section('specificCSS')

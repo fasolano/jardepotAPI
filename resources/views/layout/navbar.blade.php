@@ -52,7 +52,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-3">
-                    <a class="navbar-brand" href="{{url('/')}}">
+                    <a class="navbar-brand" href="{{url('/')}}" rel="canonical">
                         <picture>
                             <source srcset="{{asset('img/logos/logoJardepot.webp')}}" type="image/webp">
                             <source srcset="{{asset('img/logos/logoJardepot.png')}}" type="image/png">
@@ -93,7 +93,7 @@
                                 <button class="btn btn-secondary btn-lg btn-circle" onclick="removeAllProducts()" data-toggle="tooltip" title="Borrar todo">
                                     <i class="material-icons" >remove_shopping_cart</i>
                                 </button>
-                                <a class="btn btn-warning btn- btn-circle" href="{{url('cart')}}" data-toggle="tooltip" title="Pagar">
+                                <a class="btn btn-warning btn- btn-circle" href="{{url('cart')}}" data-toggle="tooltip" title="Pagar" rel="canonical">
                                     <i class="material-icons">check</i>
                                 </a>
                             </div>
@@ -116,13 +116,13 @@
                                aria-expanded="false">{{$categoria1['nivel1']}}</a>
                         <div class="dropdown-menu" aria-labelledby="dropdown{{$key}}">
                             @foreach($categoria1['nivel2'] as $categoria2)
-                                <a class="dropdown-item" href="{{url($categoria2['href'])}}">{{$categoria2['name']}}</a>
+                                <a class="dropdown-item" href="{{url($categoria2['href'])}}" rel="canonical">{{$categoria2['name']}}</a>
                             @endforeach
                         </div>
                     </li>
                 @endforeach
             </ul>
-            <a class="mr-2 btn btn-danger btn-sm d-flex" href="{{route('sales')}}"><i class="material-icons iconMod">attach_money</i>Ofertas</a>
+            <a class="mr-2 btn btn-danger btn-sm d-flex" href="{{route('sales')}}" rel="canonical"><i class="material-icons iconMod">attach_money</i>Ofertas</a>
             <a class="mr-2 btn-success btn-sm d-flex" target="_blank" href="https://wa.me/525551857805?text=Hola,%20me%20gustaría%20saber%20" style="text-decoration: none;" rel="noopener">
                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true"
                      focusable="false" width="20px" height="20px" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);"
