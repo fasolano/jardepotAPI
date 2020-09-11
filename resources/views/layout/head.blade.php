@@ -19,4 +19,5 @@
 <link rel="stylesheet" href="{{asset('assets/css/layouts/layouts.min.css')}}">
 <link rel="stylesheet" href="{{asset('assets/css/general.min.css')}}">
 <script type="text/javascript" src="{{ asset('assets/js/jquery-3.5.1.min.js') }}"></script>
+<link rel="canonical" href="https://www.jardepot.com/">
 
