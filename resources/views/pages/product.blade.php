@@ -102,9 +102,9 @@
                                     @if( ($product['oldPrice']) && $product['stock'])
                                         <h3 class="old-price text-muted">{{$product['oldPrice'] }}</h3>
                                     @endif
-                                    <h1 class="new-price">
-                                        <span class="precio" style="color: #de1f21;">{{$product['newPrice']}}</span>
-                                    </h1>
+                                    <p class="new-price">
+                                        <span class="precio" style="color: #de1f21;font-weight:500;">{{$product['newPrice']}}</span>
+                                    </p>
                                 </div>
                                 <div class="col-8">
                                     <p class="text-bold-tiny">
