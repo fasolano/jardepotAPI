@@ -24,7 +24,7 @@
             <div class="col-xl-5 pr-0">
                 <div class="mb-2 banner divimg" id="banner1"
                      style="background-position-y: inherit;box-sizing: border-box;max-height: 60%;">
-                    <a style="text-decoration: none; width: 100%;" href="{{url('Equipos/Podadoras')}}">
+                    <a style="text-decoration: none; width: 100%;" href="{{url('equipos/podadoras')}}">
                         <div class="info" style="place-content: flex-start; align-items: flex-start; flex-direction: row;">
                             <div class="px-2" style="background: rgba(0,0,0,.4);flex-direction: column; box-sizing: border-box; display: flex; place-content: flex-start; align-items: flex-start;">
                                 <h2 class="title" style="text-align: left;">Jardinería</h2>
@@ -35,7 +35,7 @@
                 </div>
                 <div class="mt-1 banner divimg" id="banner2"
                      style="background-position-y: inherit; box-sizing: border-box;max-height: 40%;">
-                    <a style="text-decoration: none; width: 100%; flex-direction: row; box-sizing: border-box; display: flex;" href="{{url('Equipos/Motocultores')}}">
+                    <a style="text-decoration: none; width: 100%; flex-direction: row; box-sizing: border-box; display: flex;" href="{{url('equipos/motocultores')}}">
                         <div class="info" style="place-content: flex-end; align-items: flex-end; flex-direction: row;">
                             <div class="px-2" style="background: rgba(0,0,0,.4);flex-direction: column; box-sizing: border-box; display: flex; place-content: flex-end; align-items: flex-end;">
                                 <h2 class="title">Agricultura</h2>
@@ -47,7 +47,7 @@
             </div>
             <div class="mt-xl-0 col-xl-7 pl-xl-0">
                 <div id="banner3" class="banner divimg2" style="max-height: 96%">
-                    <a style="text-decoration: none; height: 100% !important;" href="{{url('Equipos/Aspersoras')}}">
+                    <a style="text-decoration: none; height: 100% !important;" href="{{url('equipos/aspersoras')}}">
                         <div class="info" style="place-content: flex-start center;align-items: flex-start;flex-direction: column;">
                             <div class="px-2" style="background: rgba(0,0,0,.4);flex-direction: column; box-sizing: border-box; display: flex; place-content: flex-start center; align-items: flex-start;">
                                 <h2 class="title">Aspersoras</h2>
@@ -132,21 +132,20 @@
 
 @endsection
 
-
 @section('specificJS')
     <script type="application/ld+json">
     {
-  "@context": "http://schema.org",
-  "@type": "Organization",
-  "name": "Jardepot",
-  "url": "http://jardepot.com",
-  "address": "Av. Emiliano Zapata 129, Tlaltenango, 62170 Cuernavaca, Mor., México",
-  "sameAs": [
-    "https://www.facebook.com/Jardepot",
-    "https://www.instagram.com/jardepotsade",
-    "https://twitter.com/jardepot",
-    "https://www.youtube.com/channel/UCym0cCHYeEDqs70RD7Zs2-g"
-  ]
-}
-</script>
-    @endsection
+      "@context": "http://schema.org",
+      "@type": "Organization",
+      "name": "Jardepot",
+      "url": "http://jardepot.com",
+      "address": "Av. Emiliano Zapata 129, Tlaltenango, 62170 Cuernavaca, Mor., México",
+      "sameAs": [
+        "https://www.facebook.com/Jardepot",
+        "https://www.instagram.com/jardepotsade",
+        "https://twitter.com/jardepot",
+        "https://www.youtube.com/channel/UCym0cCHYeEDqs70RD7Zs2-g"
+      ]
+    }
+    </script>
+@endsection

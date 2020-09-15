@@ -59,7 +59,7 @@
                     <div class="col-md-5 mt-2">
                         <div class="card shadow-sm" style="overflow: hidden;">
                             @if($product['discount'] == 'Oferta')
-                                <div class="ribbon ribbon-top-right" style="display: block"><span>Oferta</span></div>
+                                <div class="ribbon ribbon-top-right" style="display: block;z-index: 6"><span>Oferta</span></div>
                             @endif
                             <div class="product-image" id="div-img-product">
                                 <img style="max-width: 100%" id="drift-trigger"
@@ -77,7 +77,7 @@
                                 @foreach($product['images'] as $image )
                                     <div class="swiper-slide">
                                         <div class="card shadow-sm product-item" style="border-radius: 5px;overflow: hidden;">
-                                            <div class="product-image">
+                                            <div class="product-image2">
                                                 <img style="max-width: 80%" onclick="changeImg('{{asset($image['medium'])}}','{{asset($image['big'])}}','{{$product['name']}}')"
                                                      src="{{asset($image['small'])}}"
                                                      title="{{$product['name']}}" alt="{{$product['name']}}">
