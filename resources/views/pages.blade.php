@@ -68,5 +68,6 @@
 @include('layout.cierre')
 {{--  Js especifico de cada página  --}}
 @yield('specificJS')
+<script type="text/javascript" id="lzdefsc" src="//jardepot.com/l1v3z1ll4/script.php?id=lzdefsc" defer></script>
 </body>
 </html>
