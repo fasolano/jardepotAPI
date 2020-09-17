@@ -41,7 +41,6 @@ class ProductController extends Controller {
             }
         }
         $sidebar = $categoriasNivel1;
-
         if($productType.'-'.$brand == 'hilo-nylon'){
             $productType = $productType.'-'.$brand;
             $brand = explode("-", $mpn)[0];
@@ -66,13 +65,15 @@ class ProductController extends Controller {
         }
         $brand = str_replace("-", " ", $brand);
 
+        $ipl = $this->productoRepository->getIpls($productType, $brand, $mpn);
+        $ipl = count($ipl);
         $data = $this->productoRepository->getProduct($productType, $brand, $mpn);
 
         if(count($data)>0){
             $product= $this->model_format_products($data)[0];
             $data2 = $this->productoRepository->getProductsRelated($productType, $brand, $mpn);
             $productsRelated = $this->model_format_products($data2);
-            return view('pages/product',compact('sidebar','product','productsRelated'));
+            return view('pages/product',compact('sidebar','product','productsRelated', 'ipl'));
         }else{
             return view('errors/404');
         }

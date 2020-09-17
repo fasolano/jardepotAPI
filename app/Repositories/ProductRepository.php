@@ -1207,6 +1207,18 @@ class ProductRepository{
         return $productos;
     }
 
+    public function getIpls($productType, $brand, $mpn){
+        $ipl = DB::table('ipl')
+            ->select('*')
+            ->where([
+                'productType' => $productType,
+                'brand' => $brand,
+                'mpn' => $mpn
+            ])->get();
+
+        return $ipl;
+    }
+
     public function singular($pal) {
         $palabraAr = explode(" ", $pal);
         $palabra= strtolower($palabraAr[0]);
