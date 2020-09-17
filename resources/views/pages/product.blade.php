@@ -175,6 +175,13 @@
                                               fill="#fff"/><rect x="0" y="0" width="24" height="24" fill="rgba(0, 0, 0, 0)"/>
                                 </svg> Pregunta por refacciones
                             </a>
+                            @if($ipl > 0)
+                                <a class="btn btn-secondary my-2 justify-content-center" target="_blank"
+                                   href="#!">
+                                    <span class="material-icons" style="font-size: 19px"> settings </span>
+                                     Guía de refacciones
+                                </a>
+                            @endif
                         </div>
                         <div style="width: 400px !important;">
                             <div class="detail"></div>{{--Muestra el zoom--}}
