@@ -53,7 +53,7 @@
                 @endcomponent
             </div>
 
-            <div class="col-lg-9 col-md-12">
+            <div class="col-lg-7 col-md-12">
                 <h1 class="title-product">{{$product['name']}}</h1>
                 <div class="row">
                     <div class="col-md-5 mt-2">
@@ -134,6 +134,9 @@
                                     <button onclick="agregarProductoCarrito('{{$product['productType']}}','{{$product['brand']}}','{{$product['mpn']}}')" class="btn btn-danger">Agregar al carrito</button>
                                 </div>
                             </div>
+                            <div class="row text-muted p-1" style="flex-flow: row wrap; box-sizing: border-box;place-content: flex-start; align-items: flex-start;">
+{{--                                <button class="btn btn-primary">Meses</button>--}}
+                            </div>
                             @if(($product['inventory'] > 0) && $product['stock'])
                                 <div class="py-1"><p class="fn-color-inStock">
                                         <i class="material-icons">flash_on</i>&nbsp;Envío de volada </p>
@@ -184,9 +187,9 @@
                         <li class="nav-item">
                             <a class="nav-link text-muted active" data-toggle="tab" href="#fichTecnica">Ficha técnica</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-muted" data-toggle="tab" href="#formDudas">Dudas y comentarios</a>
-                        </li>
+{{--                        <li class="nav-item">--}}
+{{--                            <a class="nav-link text-muted" data-toggle="tab" href="#formDudas">Dudas y comentarios</a>--}}
+{{--                        </li>--}}
                     </ul>
                     <div class="tab-content">
                         <div id="fichTecnica" class="container tab-pane active">
@@ -194,7 +197,7 @@
                                 {!! $product['dataSheet'] !!}
                             </div>
                         </div>
-                        <div id="formDudas" class="container tab-pane fade"><br>
+                    {{--    <div id="formDudas" class="container tab-pane fade"><br>
                             <div id="div-formulario">
                             <h5>Dejanos tus datos para que un asesor te contacte.</h5>
                             <div class="divider mb-2"></div>
@@ -243,7 +246,7 @@
                                     Gracias por compartir con nosotros, en breve nos comunicamos contigo.
                                 </div>
                             </div>
-                        </div>
+                        </div>--}}
                     </div>
                 </div>
 
@@ -258,7 +261,7 @@
                                     <div class="card shadow-sm product-item" style="border-radius: 5px;overflow: hidden;">
                                         <a href="{{url($related['href'])}}">
                                             @if($related['discount'] == 'Oferta')
-                                                <div class="ribbon ribbon-top-right" style="display: block"><span>Oferta</span></div>
+                                                <div class="ribbon ribbon-top-right" style="display: block;position: relative;z-index: 6"><span>Oferta</span></div>
                                             @endif
                                             <div class="product-image img-container" style="height: 205px;">
                                                 <img style="max-width: 80%;max-height: 80%"
@@ -304,6 +307,42 @@
                 <br>
                 @include('components.infoCompra')
                 @include('components.caruselCanales')
+            </div>
+            <div class="card shadow-lg col-lg-2 col-md-12" style="height: 500px;">
+                <br>
+                <div class="pl-1">
+                <p class="h5">Dejanos tus datos para que un asesor te contacte.</p>
+                <div class="divider mb-2"></div>
+                <form id="formularioDudas" action="javascript:void(0)">
+                        {{ csrf_field() }}
+                        <div class="">
+                                <div class="form-group">
+                                    <label class="sr-only form-control-label" for="nombre">Nombre completo*:</label>
+                                    <input type="text" class="form-control" name="nombre" placeholder="Nombre completo*" id="nombre" >
+                                </div>
+                                <div class="form-group">
+                                    <label class="sr-only form-control-label" for="email">Email*:</label>
+                                    <input type="text" class="form-control" placeholder="Email*" id="email" name="email" >
+                                </div>
+                                <div class="form-group">
+                                    <label class="sr-only form-control-label" for="telefono">Teléfono (10 digitos)*:</label>
+                                    <input type="text" class="form-control" placeholder="Teléfono (10 digitos)*" id="telefono" name="telefono">
+                                </div>
+                                <div class="form-group">
+                                    <label class="sr-only form-control-label" for="whatsapp">Whatsapp:</label>
+                                    <input type="text" class="form-control" placeholder="Whatsapp" id="whatsapp"  name="whatsapp">
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="sr-only form-control-label" for="comentario">Comentarios</label>
+                                    <textarea class="form-control" id="comentario" name="comentario" placeholder="Comentario"  rows="3"></textarea>
+                                </div>
+
+                            <input type="hidden" id="producto" name="producto" value="{{$product['name']}}">
+                                <button id="btnSubmit" type="submit" class="btn btn-warning btn-block">Enviar</button>
+                        </div>
+                </form>
+            </div>
             </div>
         </div>
     </div>

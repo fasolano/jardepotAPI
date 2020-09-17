@@ -75,11 +75,14 @@ $(document).ready(function() {  // <-- ensure form's HTML is ready
             };
             parameters['success'] = function (result) {
                 if (result.resultado === true) {
-                    $('#div-formulario').hide();
-                    $('#div-send').show();
+                    clearFormComentario();
+                    openSnackbar('success','Gracias por compartir con nosotros, en breve nos comunicamos contigo.')
+                    // $('#div-formulario').hide();
+                    // $('#div-send').show();
                 }else{
-                    $('#div-formulario').show();
-                    $('#div-send').hide();
+                    openSnackbar('warning','Ocurrió un error al enviar.')
+                    // $('#div-formulario').show();
+                    // $('#div-send').hide();
                 }
             };
             ajaxCall(parameters);
@@ -114,4 +117,12 @@ function agregarProductoCarrito(productType,brand,mpn){
     if(cantidad >= 1){
         verifyAddCartProduct(productType,brand,mpn,cantidad);
     }
+}
+
+function clearFormComentario(){
+    $('#nombre').val('');
+    $('#email').val('');
+    $('#telefono').val('');
+    $('#whatsapp').val('');
+    $('#comentario').val('');
 }
