@@ -5,6 +5,7 @@ namespace App\Http\Controllers\views;
 use App\Http\Controllers\Controller;
 use App\Repositories\MenuRepository;
 use App\Repositories\ProductRepository;
+use App\Repositories\IpRepository;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -34,5 +35,9 @@ class HomeController extends Controller
         }
         $descriptionLevel2 = $productoRepository->getDescriptionNivel2(0);
         return view('pages/home',compact('menuAdditional','descriptionLevel2'));
+    }
+
+    public function getIpClient(Request $request){
+        return $request->ip();
     }
 }
