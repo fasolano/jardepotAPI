@@ -37,7 +37,5 @@ class HomeController extends Controller
         return view('pages/home',compact('menuAdditional','descriptionLevel2'));
     }
 
-    public function getIpClient(Request $request){
-        return $request->ip();
-    }
+/*    public function getIpClient(Request $request){return $request->ip().''.$request->url();}*/
 }
