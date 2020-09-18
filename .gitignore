@@ -12,3 +12,4 @@ npm-debug.log
 yarn-error.log
 /config/database.php
 /public/assets/images/productos/*
+/public/owa/*
