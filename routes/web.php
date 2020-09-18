@@ -46,4 +46,4 @@ Route::get('/checkout', function () {
     return view('pages/checkout');
 });
 
-Route::get('/ip/test/get', 'views\HomeController@getIpClient');
+Route::get('/ip/test/get/test2/test3', 'views\HomeController@getIpClient');
