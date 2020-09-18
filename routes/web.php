@@ -45,3 +45,5 @@ Route::delete('cart/removeProduct', 'views\CartController@removeProductCart');
 Route::get('/checkout', function () {
     return view('pages/checkout');
 });
+
+Route::get('/ip/test/get', 'views\HomeController@getIpClient');
