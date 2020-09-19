@@ -318,7 +318,7 @@
             <div class="card shadow-lg col-lg-2 col-md-12" style="height: 500px;">
                 <br>
                 <div class="pl-1">
-                <p class="h5">Dejanos tus datos para que un asesor te contacte.</p>
+                <p class="h6">Llene con su información para que un asesor le contacte.</p>
                 <div class="divider mb-2"></div>
                 <form id="formularioDudas" action="javascript:void(0)">
                         {{ csrf_field() }}
