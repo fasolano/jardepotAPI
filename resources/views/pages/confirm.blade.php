@@ -1,11 +1,17 @@
 @extends('pages')
 
-
 @section('metaData')
     <title>Tu carrito Jardepot</title>
     <meta title=""/>
     <meta name="description" content="">
     <meta name="keywords" content="">
+    <!-- Event snippet for Compra Paypal conversion page -->
+    <script>
+        gtag('event', 'conversion', {
+            'send_to': 'AW-786429434/VyDMCPuDyt8BEPrr__YC',
+            'transaction_id': ''
+        });
+    </script>
 @endsection
 
 @section('specificCSS')
