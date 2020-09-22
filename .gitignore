@@ -13,3 +13,4 @@ yarn-error.log
 /config/database.php
 /public/assets/images/productos/*
 /public/owa/*
+/public/assets/js/path.js

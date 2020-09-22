@@ -4,7 +4,7 @@ $.ajaxSetup({
     }
 });
 // const ruta = '/jardepotAPI/public/';
-const ruta = '/';
+// const ruta = '/';
 
 $(document).ready(function (){
     $('[data-toggle="tooltip"]').tooltip();
