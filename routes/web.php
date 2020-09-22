@@ -19,6 +19,10 @@ Route::get('/products/getProductsFiltered', 'views\ProductsController@productsLi
 
 Route::get('/products/getProductsOrdered', 'views\ProductsController@productsSearchOrdered');
 
+Route::get('/catalogo/refacciones/{productType}-{brand}-{mpn}', 'views\SpareController@index')->name('spare');
+
+Route::get('/catalogo/refacciones/marcadores', 'views\SpareController@getMarcadores');
+
 Route::get('/busqueda/{word}', 'views\ProductsController@getProductsListSearch')->name('search');
 
 Route::get('/c0nf1rm4c10n/p4yp4l/{state}', 'views\ConfirmController@confirmPaypal');

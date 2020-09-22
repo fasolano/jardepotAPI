@@ -27,6 +27,7 @@ class ProductController extends Controller {
     }
 
     public function product($marca, $productType, $brand, $mpn){
+        $linkSpare = ["productType"=>$productType, "brand"=>$brand, "mpn"=>$mpn];
         $menu = new MenuController();
         $categoriasNivel1 = $menu->getSidebar();
         foreach ($categoriasNivel1 as $key => $categoria1) {
@@ -68,12 +69,11 @@ class ProductController extends Controller {
         $ipl = $this->productoRepository->getIpls($productType, $brand, $mpn);
         $ipl = count($ipl);
         $data = $this->productoRepository->getProduct($productType, $brand, $mpn);
-
         if(count($data)>0){
             $product= $this->model_format_products($data)[0];
             $data2 = $this->productoRepository->getProductsRelated($productType, $brand, $mpn);
             $productsRelated = $this->model_format_products($data2);
-            return view('pages/product',compact('sidebar','product','productsRelated', 'ipl'));
+            return view('pages/product',compact('sidebar','product','productsRelated', 'ipl', 'linkSpare'));
         }else{
             return view('errors/404');
         }

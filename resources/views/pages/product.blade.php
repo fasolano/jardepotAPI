@@ -177,7 +177,7 @@
                             </a>
                             @if($ipl > 0)
                                 <a class="btn btn-secondary my-2 justify-content-center" target="_blank"
-                                   href="#!">
+                                   href="{{route('spare', $linkSpare)}}">
                                     <span class="material-icons" style="font-size: 19px"> settings </span>
                                      Guía de refacciones
                                 </a>
