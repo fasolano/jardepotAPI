@@ -19,7 +19,7 @@
         gtag('js', new Date());
         gtag('config', 'UA-28826115-1');
     </script>
-    <!-- Global site tag (gtag.js) - Google Ads: 786429434 -->
+    <!-- Global site tag (gtag.js) - Google Ads: 786429434 |  conversión paypal-->
     <script async src="https://www.googletagmanager.com/gtag/js?id=AW-786429434"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
