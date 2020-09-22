@@ -19,6 +19,15 @@
         gtag('js', new Date());
         gtag('config', 'UA-28826115-1');
     </script>
+    <!-- Global site tag (gtag.js) - Google Ads: 786429434 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-786429434"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'AW-786429434');
+    </script>
 
     {{--  Metatitle, metadescripcion, titulo de página, etc.  --}}
     @yield('metaData')
