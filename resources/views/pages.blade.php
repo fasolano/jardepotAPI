@@ -19,7 +19,7 @@
         gtag('js', new Date());
         gtag('config', 'UA-28826115-1');
     </script>
-    <!-- Global site tag (gtag.js) - Google Ads: 786429434 |  conversión paypal-->
+    <!-- Global site tag (gtag.js) - Google Ads: 786429434 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=AW-786429434"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -27,6 +27,17 @@
         gtag('js', new Date());
 
         gtag('config', 'AW-786429434');
+    </script>
+    <script>
+        gtag('event', 'page_view', {
+            'send_to': 'AW-786429434',
+            'user_id': 'replace with value',
+            'value': 'replace with value',
+            'items': [{
+                'id': 'replace with value',
+                'google_business_vertical': 'retail'
+            }]
+        });
     </script>
 
     {{--  Metatitle, metadescripcion, titulo de página, etc.  --}}
