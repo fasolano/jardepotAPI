@@ -20,7 +20,7 @@
         <div class="row my-3">
             <div class="col-lg-12 col-md-12">
                 <div class="border shadow bg-white rounded p-5 row">
-                    <div class="col-6 d-flex flex-column justify-content-center align-items-center">
+                    <div class="col-md-6 d-flex flex-column justify-content-center align-items-center">
                         <h3>¿No encontraste lo que buscabas?</h3>
                         <h5>Comunícate al:</h5>
                         <h4><i class="material-icons">phone</i> 800 212 9225</h4>
@@ -39,7 +39,7 @@
                         </h4>
                         <h4 class="my-5">Horario de atención: 9am a 6pm</h4>
                     </div>
-                    <div class="col-6">
+                    <div class="col-md-6">
                         <div class="row">
                             <form id="form-failed" class="d-flex flex-wrap px-2">
                                 <div class="col-12">
