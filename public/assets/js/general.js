@@ -170,6 +170,7 @@ function addCartProduct(productType,brand,mpn,quantity){
                 $('#overlay-bussy').removeClass('active');
                 getCartProducts();
                 openSnackbar('success','Agregaste '+quantity+' '+productType+' '+brand+' '+mpn);
+                window.location = ruta+"cart";
             }
         },
         error: function (err) {

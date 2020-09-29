@@ -98,7 +98,7 @@
                         <h2 class="py-1 description-product">{{$product['description']}}</h2>
                         @if($product['stock'])
                             <div class="row">
-                                <div class="col-4">
+                                <div class="col-md-4 col-sm-6">
                                     @if( ($product['oldPrice']) && $product['stock'])
                                         <h3 class="old-price text-muted">{{$product['oldPrice'] }}</h3>
                                     @endif
@@ -106,7 +106,7 @@
                                         <span class="precio" style="color: #de1f21;font-weight:500;">{{$product['newPrice']}}</span>
                                     </p>
                                 </div>
-                                <div class="col-8">
+                                <div class="col-md-8 col-sm-6">
                                     <p class="text-bold-tiny">
                                         @if($product['productType'] =='Aspersora' || $product['productType'] =='Motosierra' || $product['productType'] ==' Motobomba'
                                             || $product['productType'] =='Parihuela' || $product['productType'] =='Termonebulizadora' || $product['productType'] =='Nebulizadora')
@@ -131,7 +131,7 @@
                                     <button onclick="addNumProduct()" class="btn"><i class="material-icons">add</i> </button>
                                 </div>
                                 <div class="col-md-6 mt-2">
-                                    <button onclick="agregarProductoCarrito('{{$product['productType']}}','{{$product['brand']}}','{{$product['mpn']}}')" class="btn btn-danger">Agregar al carrito</button>
+                                    <button onclick="agregarProductoCarrito('{{$product['productType']}}','{{$product['brand']}}','{{$product['mpn']}}')" class="btn btn-danger">¡Compra Ahora!</button>
                                 </div>
                             </div>
                             <div class="row text-muted p-1" style="flex-flow: row wrap; box-sizing: border-box;place-content: flex-start; align-items: flex-start;">
