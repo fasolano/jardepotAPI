@@ -292,7 +292,12 @@ class ProductsController extends Controller {
             }
             //termina seccion de precios
             $response[$iterator]['description'] = $item->descriptionweb;
-            $response[$iterator]['stock'] = $item->availability == 'in stock';
+           // $response[$iterator]['stock'] = $item->availability == 'in stock';
+            if ($item->availability == 'in stock' && $item->priceVisible == 1){
+                $response[$iterator]['stock'] = true;
+            }else{
+                $response[$iterator]['stock'] = false;
+            }
             $response[$iterator]['brand'] = $item->brand;
             $response[$iterator]['mpn'] = $item->mpn;
             $response[$iterator]['productType'] = $item->productType;

@@ -40,7 +40,7 @@ class ProductRepository{
                     'productos.price', 'productos.oferta', 'productos.PrecioDeLista',
                     'productos.offer', 'productos.iva', 'productos.video',
                     'productos.volada', 'productos.visible',
-                    'XML.keywords', 'XML.metadesc', 'XML.descriptionweb', 'XML.titleweb', 'XML.resenia',
+                    'XML.keywords', 'XML.metadesc', 'XML.descriptionweb', 'XML.titleweb', 'XML.resenia', 'productosCategoriasNivel3.priceVisible',
                     DB::raw('SUM(inventario.cantidad) as cantidadInventario')
                 )
                 ->distinct('productos.mpn')
@@ -80,7 +80,7 @@ class ProductRepository{
                     'productos.price', 'productos.oferta', 'productos.PrecioDeLista',
                     'productos.offer', 'productos.iva', 'productos.video',
                     'productos.volada', 'productos.visible',
-                    'XML.keywords', 'XML.metadesc', 'XML.descriptionweb', 'XML.titleweb', 'XML.resenia',
+                    'XML.keywords', 'XML.metadesc', 'XML.descriptionweb', 'XML.titleweb', 'XML.resenia','productosCategoriasNivel3.priceVisible',
                     DB::raw('SUM(inventario.cantidad) as cantidadInventario')
                 )
                 ->distinct('productos.mpn')
@@ -140,6 +140,7 @@ class ProductRepository{
                 'XML.descriptionweb',
                 'XML.titleweb',
                 'XML.resenia',
+                'productosCategoriasNivel3.priceVisible',
                 DB::raw('SUM(inventario.cantidad) as cantidadInventario')
             )
             ->distinct('productos.mpn')
@@ -251,6 +252,7 @@ class ProductRepository{
                 'XML.descriptionweb',
                 'XML.titleweb',
                 'XML.resenia',
+                'productosCategoriasNivel3.priceVisible',
                 DB::raw('SUM(inventario.cantidad) as cantidadInventario')
             )
             ->distinct('productos.mpn')
@@ -318,6 +320,7 @@ class ProductRepository{
                 'XML.descriptionweb',
                 'XML.titleweb',
                 'XML.resenia',
+                'productosCategoriasNivel3.priceVisible',
                 DB::raw('SUM(inventario.cantidad) as cantidadInventario')
             )
             ->where([
@@ -370,6 +373,7 @@ class ProductRepository{
                 'XML.descriptionweb',
                 'XML.titleweb',
                 'XML.resenia',
+                'productosCategoriasNivel3.priceVisible',
                 DB::raw('SUM(inventario.cantidad) as cantidadInventario')
             )
             ->where([
@@ -546,7 +550,8 @@ class ProductRepository{
         $sql = "SELECT productos.id, productos.productType, productos.brand, productos.mpn, productos.description,
         productos.availability,productos.offer, productos.PrecioDeLista, productos.oferta, productos.price,
         productos.visible, productos.iva, productos.video,productos.volada,productos.visible,
-        XML.keywords,XML.metadesc,XML.descriptionweb,XML.resenia,XML.titleweb, SUM(inventario.cantidad) as cantidadInventario
+        XML.keywords,XML.metadesc,XML.descriptionweb,XML.resenia,XML.titleweb, SUM(inventario.cantidad) as cantidadInventario,
+        productosCategoriasNivel3.priceVisible
         FROM productos
         join  XML on productos.productType = XML.productType and productos.brand = XML.brand and  productos.mpn = XML.mpn
         left join  inventario on productos.productType = inventario.productType and productos.brand = inventario.brand and  productos.mpn = inventario.mpn
@@ -779,6 +784,7 @@ class ProductRepository{
                         'XML.descriptionweb',
                         'XML.titleweb',
                         'XML.resenia',
+                        'productosCategoriasNivel3.priceVisible',
                         DB::raw('SUM(inventario.cantidad) as cantidadInventario')
                     )
                     ->distinct('productos.mpn')
@@ -856,6 +862,7 @@ class ProductRepository{
                         'XML.descriptionweb',
                         'XML.titleweb',
                         'XML.resenia',
+                        'productosCategoriasNivel3.priceVisible',
                         DB::raw('SUM(inventario.cantidad) as cantidadInventario')
                     )
                     ->where([
@@ -970,6 +977,7 @@ class ProductRepository{
                         'XML.descriptionweb',
                         'XML.titleweb',
                         'XML.resenia',
+                        'productosCategoriasNivel3.priceVisible',
                         DB::raw('SUM(inventario.cantidad) as cantidadInventario')
                     )
                     ->distinct('productos.mpn')
@@ -1010,6 +1018,7 @@ class ProductRepository{
                         $matches[4][$producto -> id]["titleweb"] = $producto -> titleweb;
                         $matches[4][$producto -> id]["keywords"] = $producto -> keywords;
                         $matches[4][$producto -> id]["cantidadInventario"] = $producto -> cantidadInventario;
+                        $matches[4][$producto -> id]["priceVisible"] = $producto -> priceVisible;
                         $matchesCount ++;
 
                     }

@@ -148,7 +148,12 @@ class ProductController extends Controller {
             $response[$iterator]['description'] = $item->descriptionweb;
             $response[$iterator]['dataSheet'] = $item->resenia;
             $response[$iterator]['availibilityCount'] = 100;
-            $response[$iterator]['stock'] = $item->availability == 'in stock' ? true : false;
+           // $response[$iterator]['stock'] = $item->availability == 'in stock' ? true : false;
+            if ($item->availability == 'in stock' && $item->priceVisible == 1){
+                $response[$iterator]['stock'] = true;
+            }else{
+                $response[$iterator]['stock'] = false;
+            }
             if(isset($item->cantidad)){
                 $response[$iterator]['cartCount'] = $item->cantidad;
             }else{
