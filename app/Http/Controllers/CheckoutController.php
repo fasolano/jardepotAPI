@@ -88,8 +88,6 @@ class CheckoutController extends Controller {
             $this->repository->insertProductsQuotation($products, $quotation, json_decode($forms->delivery));
         }
 
-        $mailSeller = $cartRepository->setSellerToCart($cart->id_carrito);
-
         //Obtiene el carro completo
         $content = array();
         foreach ($products as $key => $product) {
@@ -115,21 +113,24 @@ class CheckoutController extends Controller {
             $send['mpn'] = '';
             array_push($content, $send);
         }
-
         $nombre = $clientForm['nombre']. " " .$clientForm['apellidos'];
+
+        $sellers = ["ventas1@jardepot.com", "ventas2@jardepot.com", "ventas4@jardepot.com", "ventas7@jardepot.com", "ventas8@jardepot.com", "ventas10@jardepot.com"];
+        $ind = rand(0,4);
+        $mailSeller = $sellers[$ind];
+        $cartRepository->setSellerToCart($cart->id_carrito, $ind);
+
         if($this->sendQuotationMail($clientForm['email'], $nombre, $quotation->idCotizaciones, $content, $mailSeller)){
             // return true;
-            return $this->sendAlertMail($clientForm, $billingDeleveryData, $quotation->idCotizaciones, $mailSeller);
+            return $this->sendAlertMail($clientForm, $billingDeleveryData, $quotation->idCotizaciones);
         }else{
             return false;
         }
 
     }
 
-    protected function sendAlertMail($clientForm, $billingDeleveryData, $quotation, $mailSeller){
+    protected function sendAlertMail($clientForm, $billingDeleveryData, $quotation){
 //        $destino = "fasolanof@gmail.com";
-        $sellers = ["ventas1@jardepot.com", "ventas2@jardepot.com", "ventas4@jardepot.com", "ventas7@jardepot.com", "ventas8@jardepot.com", "ventas10@jardepot.com"];
-        $destino = $sellers[rand(0,4)];
         //        $destino = $mailSeller;
         $dia = date('d-m-Y');
         $hora = date('H:i:s');
@@ -148,7 +149,7 @@ class CheckoutController extends Controller {
             ('Pedido en linea Jardepot');
             $message->from('sistemas1@jardepot.com', 'Sitemas Jardepot');
         });
-        return true;
+        return $mailSeller;
     }
 
     protected function sendQuotationMail($correo, $nombre, $quotation, $content, $mailSeller){

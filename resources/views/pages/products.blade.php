@@ -195,12 +195,14 @@
                                 <div class="d-flex align-items-center flex-column">
                                     <div style="height: 36px">
                                         @if($item['stock'])
-                                            <button type="button" onclick="verifyAddCartProduct('{{$item['productType']}}','{{$item['brand']}}','{{$item['mpn']}}',1)"
-                                                    class="btn-add-cart d-flex justify-content-center align-items-center"
-                                                    style="font-size: 14px;">
-                                                <i class="material-icons fn-color-jd">shopping_cart</i>
-                                                <span class="text-muted" style="font-size: 14px; font-weight: 500;">Agregar al carrito</span>
-                                            </button>
+                                            <strong>
+                                                <a href="#!" onclick="verifyAddCartProduct('{{$item['productType']}}','{{$item['brand']}}','{{$item['mpn']}}',1)"
+                                                   class="btn-add-cart d-flex justify-content-center align-items-center"
+                                                   style="font-size: 14px;">
+                                                    <i class="material-icons fn-color-jd">shopping_cart</i>
+                                                    <span class="text-muted" style="font-size: 14px; font-weight: 500;">Agregar al carrito</span>
+                                                </a>
+                                            </strong>
                                         @endif
                                     </div>
                                     <p class="little-letters text-center">*Sujeto a existencias.</p>
@@ -366,12 +368,14 @@
                                 <div class="d-flex align-items-center flex-column">
                                     <div style="height: 36px">
                                         @if($item['stock'])
-                                            <button type="button" onclick="verifyAddCartProduct('{{$item['productType']}}','{{$item['brand']}}','{{$item['mpn']}}',1)"
-                                                    class="btn-add-cart d-flex justify-content-center align-items-center"
-                                                    style="font-size: 14px;">
-                                                <i class="material-icons fn-color-jd">shopping_cart</i>
-                                                <span class="text-muted" style="font-size: 14px; font-weight: 500;">Agregar al carrito</span>
-                                            </button>
+                                            <strong>
+                                                <a href="#!" onclick="verifyAddCartProduct('{{$item['productType']}}','{{$item['brand']}}','{{$item['mpn']}}',1)"
+                                                   class="btn-add-cart d-flex justify-content-center align-items-center"
+                                                   style="font-size: 14px;">
+                                                    <i class="material-icons fn-color-jd">shopping_cart</i>
+                                                    <span class="text-muted" style="font-size: 14px; font-weight: 500;">Agregar al carrito</span>
+                                                </a>
+                                            </strong>
                                         @endif
                                     </div>
                                     <p class="little-letters text-center">*Sujeto a existencias.</p>
