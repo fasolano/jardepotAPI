@@ -151,11 +151,13 @@
                         @endif
                         <div class="divider"></div>
                         <div style="font-weight: bold !important;">
-                            <p class="conditons"><i class="material-icons" style="color: #f68600;font-size: 18px">local_shipping</i>
-                                Envio gratis a partir de $3,000 de compra.
-                                <a href="javascript: void(0)" data-toggle="modal" data-target="#modalCondicionEnvio"
-                                   style="color: rgba(0, 0, 0, 0.87);">*Condiciones</a>
-                            </p>
+                            @if( $product['stock'])
+                                <p class="conditons"><i class="material-icons" style="color: #f68600;font-size: 18px">local_shipping</i>
+                                    Envio gratis a partir de $3,000 de compra.
+                                    <a href="javascript: void(0)" data-toggle="modal" data-target="#modalCondicionEnvio"
+                                       style="color: rgba(0, 0, 0, 0.87);">*Condiciones</a>
+                                </p>
+                            @endif
                             <p class="conditons"><i class="material-icons" style="color: #f68600;font-size: 18px">perm_phone_msg</i>
                                 Soporte y asesoria </p>
                             <p class="conditons">
@@ -433,7 +435,7 @@
             "description": "{{$product['description']}}",
             "offers": {
                 "@type": "Offer",
-                "price": {{$product['name']}},
+                "price": {{isset($product['price'])?$product['price']:null}},
                 "priceCurrency": "MXN"
             },
         }
