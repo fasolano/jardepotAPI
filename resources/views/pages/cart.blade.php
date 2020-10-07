@@ -109,7 +109,7 @@
                     <form id="form-paypal">
                     <div class="row mb-2" style="font-size: 14px;">
                         <div class="col-12">
-                            <p>*Se agregará una comisión del 4% por forma de pago</p>
+{{--                            <p>*Se agregará una comisión del 4% por forma de pago</p>--}}
                             <p></p>
                             <br>
                             <label><input type="checkbox" name="terminosPayPal" id="terminosPayPal">
@@ -170,8 +170,8 @@
                 <div class="modal-body">
                     <div class="row mb-2" style="font-size: 14px;">
                         <div class="col-12">
-                            <p>*Se agregará una comisión del 4% por forma de pago</p>
-                            <p>*Se agregará una comisión diferente de acuerdo al plazo seleccionado para el pago</p>
+{{--                            <p>*Se agregará una comisión del 4% por forma de pago</p>--}}
+                            <p>*Se agregará al precio la comisión de MercadoPago correspondiente al plazo de mensualidades seleccionado.</p>
                             <br>
                             <label><input type="checkbox" name="terminosPayPal" id="terminosMP">
                                 Acepto terminos y condiciones</label>

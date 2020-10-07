@@ -91,10 +91,43 @@ $(document).ready(function (){
         checkFormMercado();
     });
 
+    $('#btn-mercado-pago').click(function () {
+        var session = Cookies.get('session');
+        var parameters = [];
+        var form = JSON.stringify({
+            firstName: $('#name-mp').val(),
+            lastName: $('#lastname-mp').val(),
+            email: $('#email-mp').val(),
+            phone: $('#phone-mp').val(),
+            state: $('#state-mp').val(),
+            city: $('#city-mp').val(),
+            zip: $('#zip-mp').val(),
+            suburb: $('#suburb-mp').val(),
+            address: $('#address-mp').val()
+        });
+        // parameters['url'] = ruta+"api/checkout/mercadopago";
+        parameters['url'] = "https://fasolano.com/jardepotAPI/public/api/checkout/mercadopago";
+        parameters['type'] = "post";
+        parameters['dataType'] = "json";
+        parameters['data'] = {
+            sessionCookie: session,
+            form: form
+        };
+        parameters['success'] = function (response) {
+            console.log(response);
+            if(response.state == "success"){
+                window.location = response.data;
+            }else{
+                alert("Ocurrio un error al generar el link de pago, comunicate con nostros para más información");
+            }
+        };
+        ajaxCall(parameters);
+    });
+
     $('.btn-modal-paypal').click(function () {
         var session = Cookies.get('session');
         var parameters = [];
-        parameters['url'] = "api/cart/products";
+        parameters['url'] = ruta+"api/cart/products";
         parameters['type'] = "get";
         parameters['dataType'] = "json";
         parameters['data'] = {
@@ -129,7 +162,7 @@ $(document).ready(function (){
                 });
             }
 
-            let price = total * 0.04;
+            /*let price = total * 0.04;
             price = Number((price).toFixed(2));
             products.push({
                 name: "Comisión por pago en PayPal",
@@ -139,41 +172,8 @@ $(document).ready(function (){
                 },
                 quantity: "1"
             });
-            total = total + price;
+            total = total + price;*/
             createPaypalButton(products, total);
-        };
-        ajaxCall(parameters);
-    });
-
-    $('#btn-mercado-pago').click(function () {
-        var session = Cookies.get('session');
-        var parameters = [];
-        var form = JSON.stringify({
-            firstName: $('#name-mp').val(),
-            lastName: $('#lastname-mp').val(),
-            email: $('#email-mp').val(),
-            phone: $('#phone-mp').val(),
-            state: $('#state-mp').val(),
-            city: $('#city-mp').val(),
-            zip: $('#zip-mp').val(),
-            suburb: $('#suburb-mp').val(),
-            address: $('#address-mp').val()
-        });
-        // parameters['url'] = "api/checkout/mercadopago";
-        parameters['url'] = "https://fasolano.com/jardepotAPI/public/api/checkout/mercadopago";
-        parameters['type'] = "post";
-        parameters['dataType'] = "json";
-        parameters['data'] = {
-            sessionCookie: session,
-            form: form
-        };
-        parameters['success'] = function (response) {
-            console.log(response);
-            if(response.state == "success"){
-                window.location = response.data;
-            }else{
-                alert("Ocurrio un error al generar el link de pago, comunicate con nostros para más información");
-            }
         };
         ajaxCall(parameters);
     });
@@ -255,7 +255,7 @@ function getCartProductsView(){
     var session = Cookies.get('session');
     if(session !== undefined && session !==''){
         var parameters = [];
-        parameters['url'] = "api/cart/products";
+        parameters['url'] = ruta+"api/cart/products";
         parameters['type'] = "get";
         parameters['dataType'] = "json";
         parameters['data'] = {
@@ -267,7 +267,7 @@ function getCartProductsView(){
             $.each(response.cart, function (i, e) {
                 var item = '<tr>' +
                     '<td><img style="width: 80px;height: 80px;"' +
-                    '                     src="'+e.images[0].medium+'">' +
+                    '                     src="'+ruta+e.images[0].medium+'">' +
                     '</td>' +
                     '<td data-title="Nombre"><a style="font-weight: 500;color: #000000" ' +
                     'href="catalogo/'+e.brand.toLowerCase()+'/'+e.productType.toLowerCase()+'-'+e.brand.toLowerCase()+'-'+e.mpn.toLowerCase()+'">'+e.name+'</a></td>' +
@@ -333,7 +333,7 @@ function createPaypalButton(products, total) {
                     phone:$('#phone-paypal').val()
                 });
                 const session = Cookies.get('session');
-                window.location = 'c0nf1rm4c10n/p4yp4l/success?orderid='+data.orderID+'&form='+clientForm+'&address='+address+'&name='+name+'&session='+session;
+                window.location = ruta+'c0nf1rm4c10n/p4yp4l/success?orderid='+data.orderID+'&form='+clientForm+'&address='+address+'&name='+name+'&session='+session;
                 return true;
             });
         }

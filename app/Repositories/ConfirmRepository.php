@@ -72,7 +72,7 @@ class ConfirmRepository {
             ->select('*')
             ->where(['correo' => $mail, 'telefono' => $phone])
             ->first();
-        return$client;
+        return $client;
     }
 
     public function insertOrder($client, $total){
@@ -112,7 +112,7 @@ class ConfirmRepository {
                 $precio = $product->price;
             }
 //            $precio = $product->cantidad * $precio;
-            $precio *= 1.04;
+//            $precio *= 1.04;
             $orderProductInserted = DB::connection('digicom')
                 ->table('productosPedidos_jardepot')
                 ->insertGetId([
@@ -125,7 +125,7 @@ class ConfirmRepository {
                 ]);
         }
         // Despues de haber insertado productos evalua si es necesario cobrar envio de ser así se agrega a la orden
-        if($order->total < 3000){
+        /*if($order->total < 3000){
             $orderProductInserted = DB::connection('digicom')
                 ->table('productosPedidos_jardepot')
                 ->insertGetId([
@@ -133,6 +133,16 @@ class ConfirmRepository {
                     'cantidad' => 1,
                     'nombre' => 'Manejo de Mercancía Envío paquetería',
                     'precio' => (300 * 1.04)
+                ]);
+        }*/
+        if($order->total < 3000){
+            $orderProductInserted = DB::connection('digicom')
+                ->table('productosPedidos_jardepot')
+                ->insertGetId([
+                    'idPedidos' => $idPedidos,
+                    'cantidad' => 1,
+                    'nombre' => 'Manejo de Mercancía Envío paquetería',
+                    'precio' => 300
                 ]);
         }
     }

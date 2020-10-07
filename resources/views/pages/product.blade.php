@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="{{asset('assets/css/pages/product.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/components/swiper.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/components/drift-basic.min.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/pages/cart.css')}}">
     <script type="text/javascript" src="{{asset('assets/js/jquery.validate.min.js')}}"></script>
 @endsection
 
@@ -67,8 +68,8 @@
                                      title="{{$product['name']}}" alt="{{$product['name']}}">
                             </div>
                             @if($product['newPriceFloat'] > 3000)
-                                 <img class="free-delivery" src="{{asset('assets/images/otros/gratis.png')}}"
-                                 title="Envío gratis Jardepot" alt="Envío gratis Jardepot">
+                                <img class="free-delivery" src="{{asset('assets/images/otros/gratis.png')}}"
+                                     title="Envío gratis Jardepot" alt="Envío gratis Jardepot">
                             @endif
                         </div>
                         <!-- Swiper -->
@@ -123,19 +124,23 @@
                             </div>
                             <div class="row text-muted p-1"
                                  style="flex-flow: row wrap; box-sizing: border-box;place-content: flex-start; align-items: flex-start;">
-                                <div class="col-md-6">
+                                {{--<div class="col-md-6">
                                     <span>Cantidad:</span>
                                     <br>
                                     <button onclick="resNumProduct()" class="btn"> <i class="material-icons">remove</i> </button>
                                     <span><input type="number" style="width: 40px" disabled id="cantidadProducto" name="cantidadProducto" value="1"></span>
                                     <button onclick="addNumProduct()" class="btn"><i class="material-icons">add</i> </button>
-                                </div>
-                                <div class="col-md-6 mt-2">
-                                    <button onclick="agregarProductoCarrito('{{$product['productType']}}','{{$product['brand']}}','{{$product['mpn']}}')" class="btn btn-danger">¡Compra Ahora!</button>
+                                </div>--}}
+                                <div class="col-md-12 mt-2">
+                                    <a onclick="verifyAddCartProduct('{{$product['productType']}}','{{$product['brand']}}','{{$product['mpn']}}', 1, 'cart')" class="btn btn-block btn-danger my-2 text-white">¡Compra Ahora!</a>
+                                    <a onclick="verifyAddCartProduct('{{$product['productType']}}','{{$product['brand']}}','{{$product['mpn']}}', 1, 'mercado')" class="btn btn-block btn-modal-mercado" href="javascript: void(0)"
+                                       style="background-color: #c7c7c7">¡Compra con Mensualidades!
+                                        <img src="{{asset("assets/images/bancos/mercadopago.png")}}" alt="">
+                                    </a>
                                 </div>
                             </div>
                             <div class="row text-muted p-1" style="flex-flow: row wrap; box-sizing: border-box;place-content: flex-start; align-items: flex-start;">
-{{--                                <button class="btn btn-primary">Meses</button>--}}
+                                {{--                                <button class="btn btn-primary">Meses</button>--}}
                             </div>
                             @if(($product['inventory'] > 0) && $product['stock'])
                                 <div class="py-1"><p class="fn-color-inStock">
@@ -170,18 +175,18 @@
                                href="https://wa.me/527226481040?text=Hola,%20me%20gustar&iacute;a%20saber%20sobre%20las%20refacciones%20del%20producto%20{{$product['name']}}"
                                tabindex="0" aria-disabled="false">
                                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                                           aria-hidden="true" focusable="false" width="20px" height="20px"
-                                           style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);"
-                                           preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path
-                                              d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91c0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23c-1.48 0-2.93-.39-4.19-1.15l-.3-.17l-3.12.82l.83-3.04l-.2-.32a8.188 8.188 0 0 1-1.26-4.38c.01-4.54 3.7-8.24 8.25-8.24M8.53 7.33c-.16 0-.43.06-.66.31c-.22.25-.87.86-.87 2.07c0 1.22.89 2.39 1 2.56c.14.17 1.76 2.67 4.25 3.73c.59.27 1.05.42 1.41.53c.59.19 1.13.16 1.56.1c.48-.07 1.46-.6 1.67-1.18c.21-.58.21-1.07.15-1.18c-.07-.1-.23-.16-.48-.27c-.25-.14-1.47-.74-1.69-.82c-.23-.08-.37-.12-.56.12c-.16.25-.64.81-.78.97c-.15.17-.29.19-.53.07c-.26-.13-1.06-.39-2-1.23c-.74-.66-1.23-1.47-1.38-1.72c-.12-.24-.01-.39.11-.5c.11-.11.27-.29.37-.44c.13-.14.17-.25.25-.41c.08-.17.04-.31-.02-.43c-.06-.11-.56-1.35-.77-1.84c-.2-.48-.4-.42-.56-.43c-.14 0-.3-.01-.47-.01z"
-                                              fill="#fff"/><rect x="0" y="0" width="24" height="24" fill="rgba(0, 0, 0, 0)"/>
+                                     aria-hidden="true" focusable="false" width="20px" height="20px"
+                                     style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);"
+                                     preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path
+                                        d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91c0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23c-1.48 0-2.93-.39-4.19-1.15l-.3-.17l-3.12.82l.83-3.04l-.2-.32a8.188 8.188 0 0 1-1.26-4.38c.01-4.54 3.7-8.24 8.25-8.24M8.53 7.33c-.16 0-.43.06-.66.31c-.22.25-.87.86-.87 2.07c0 1.22.89 2.39 1 2.56c.14.17 1.76 2.67 4.25 3.73c.59.27 1.05.42 1.41.53c.59.19 1.13.16 1.56.1c.48-.07 1.46-.6 1.67-1.18c.21-.58.21-1.07.15-1.18c-.07-.1-.23-.16-.48-.27c-.25-.14-1.47-.74-1.69-.82c-.23-.08-.37-.12-.56.12c-.16.25-.64.81-.78.97c-.15.17-.29.19-.53.07c-.26-.13-1.06-.39-2-1.23c-.74-.66-1.23-1.47-1.38-1.72c-.12-.24-.01-.39.11-.5c.11-.11.27-.29.37-.44c.13-.14.17-.25.25-.41c.08-.17.04-.31-.02-.43c-.06-.11-.56-1.35-.77-1.84c-.2-.48-.4-.42-.56-.43c-.14 0-.3-.01-.47-.01z"
+                                        fill="#fff"/><rect x="0" y="0" width="24" height="24" fill="rgba(0, 0, 0, 0)"/>
                                 </svg> Pregunta por refacciones
                             </a>
                             @if($ipl > 0)
                                 <a class="btn btn-secondary my-2 justify-content-center" target="_blank"
                                    href="{{route('spare', $linkSpare)}}">
                                     <span class="material-icons" style="font-size: 19px"> settings </span>
-                                     Guía de refacciones
+                                    Guía de refacciones
                                 </a>
                             @endif
                         </div>
@@ -196,9 +201,9 @@
                         <li class="nav-item">
                             <a class="nav-link text-muted active" data-toggle="tab" href="#fichTecnica">Ficha técnica</a>
                         </li>
-{{--                        <li class="nav-item">--}}
-{{--                            <a class="nav-link text-muted" data-toggle="tab" href="#formDudas">Dudas y comentarios</a>--}}
-{{--                        </li>--}}
+                        {{--                        <li class="nav-item">--}}
+                        {{--                            <a class="nav-link text-muted" data-toggle="tab" href="#formDudas">Dudas y comentarios</a>--}}
+                        {{--                        </li>--}}
                     </ul>
                     <div class="tab-content">
                         <div id="fichTecnica" class="container tab-pane active">
@@ -206,56 +211,56 @@
                                 {!! $product['dataSheet'] !!}
                             </div>
                         </div>
-                    {{--    <div id="formDudas" class="container tab-pane fade"><br>
-                            <div id="div-formulario">
-                            <h5>Dejanos tus datos para que un asesor te contacte.</h5>
-                            <div class="divider mb-2"></div>
-                            <form id="formularioDudas" action="javascript:void(0)">
-                                {{ csrf_field() }}
-                                <div class="row p-2">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label class="sr-only form-control-label" for="nombre">Nombre completo*:</label>
-                                            <input type="text" class="form-control" name="nombre" placeholder="Nombre completo*" id="nombre" >
+                        {{--    <div id="formDudas" class="container tab-pane fade"><br>
+                                <div id="div-formulario">
+                                <h5>Dejanos tus datos para que un asesor te contacte.</h5>
+                                <div class="divider mb-2"></div>
+                                <form id="formularioDudas" action="javascript:void(0)">
+                                    {{ csrf_field() }}
+                                    <div class="row p-2">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="sr-only form-control-label" for="nombre">Nombre completo*:</label>
+                                                <input type="text" class="form-control" name="nombre" placeholder="Nombre completo*" id="nombre" >
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="sr-only form-control-label" for="email">Email*:</label>
+                                                <input type="text" class="form-control" placeholder="Email*" id="email" name="email" >
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="sr-only form-control-label" for="telefono">Teléfono (10 digitos)*:</label>
+                                                <input type="text" class="form-control" placeholder="Teléfono (10 digitos)*" id="telefono" name="telefono">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="sr-only form-control-label" for="whatsapp">Whatsapp:</label>
+                                                <input type="text" class="form-control" placeholder="Whatsapp" id="whatsapp"  name="whatsapp">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="sr-only form-control-label" for="comentario">Comentarios</label>
+                                                <textarea class="form-control" id="comentario" name="comentario" placeholder="Comentario" cols="2" rows="3"></textarea>
+                                            </div>
+                                        </div>
+                                        <input type="hidden" id="producto" name="producto" value="{{$product['name']}}">
+                                        <div class="col-md-2 offset-md-5 ">
+                                            <button id="btnSubmit" type="submit" class="btn btn-warning btn-block">Enviar</button>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label class="sr-only form-control-label" for="email">Email*:</label>
-                                            <input type="text" class="form-control" placeholder="Email*" id="email" name="email" >
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label class="sr-only form-control-label" for="telefono">Teléfono (10 digitos)*:</label>
-                                            <input type="text" class="form-control" placeholder="Teléfono (10 digitos)*" id="telefono" name="telefono">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label class="sr-only form-control-label" for="whatsapp">Whatsapp:</label>
-                                            <input type="text" class="form-control" placeholder="Whatsapp" id="whatsapp"  name="whatsapp">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label class="sr-only form-control-label" for="comentario">Comentarios</label>
-                                            <textarea class="form-control" id="comentario" name="comentario" placeholder="Comentario" cols="2" rows="3"></textarea>
-                                        </div>
-                                    </div>
-                                    <input type="hidden" id="producto" name="producto" value="{{$product['name']}}">
-                                    <div class="col-md-2 offset-md-5 ">
-                                        <button id="btnSubmit" type="submit" class="btn btn-warning btn-block">Enviar</button>
+                                </form>
+                                </div>
+                                <div id="div-send">
+                                    <div class="alert alert-success" role="alert">
+                                        Gracias por compartir con nosotros, en breve nos comunicamos contigo.
                                     </div>
                                 </div>
-                            </form>
-                            </div>
-                            <div id="div-send">
-                                <div class="alert alert-success" role="alert">
-                                    Gracias por compartir con nosotros, en breve nos comunicamos contigo.
-                                </div>
-                            </div>
-                        </div>--}}
+                            </div>--}}
                     </div>
                 </div>
 
@@ -279,7 +284,7 @@
                                             </div>
                                             @if($related['newPriceFloat'] > 3000)
                                                 <img class="free-delivery-recom" src="{{asset('assets/images/otros/gratis.png')}}"
-                                                 title="Envío gratis Jardepot" alt="Envío gratis Jardepot">
+                                                     title="Envío gratis Jardepot" alt="Envío gratis Jardepot">
                                             @endif
                                         </a>
                                         <a class="title text-truncate" data-toggle="tooltip" title="{{$related['name']}}">{{$related['name']}}</a>
@@ -295,10 +300,10 @@
                                         </div>
                                         <div style="height: 47px">
                                             @if($related['stock'])
-                                            <div class="divider"></div>
-                                            <button type="button" class="btn" onclick="verifyAddCartProduct('{{$related['productType']}}','{{$related['brand']}}','{{$related['mpn']}}',1)">
-                                                <span style="font-size: 14px"><i class="material-icons fn-color-jd">shopping_cart</i>Agregar al carrito</span>
-                                            </button>
+                                                <div class="divider"></div>
+                                                <button type="button" class="btn" onclick="verifyAddCartProduct('{{$related['productType']}}','{{$related['brand']}}','{{$related['mpn']}}',1)">
+                                                    <span style="font-size: 14px"><i class="material-icons fn-color-jd">shopping_cart</i>Agregar al carrito</span>
+                                                </button>
                                             @endif
                                         </div>
                                     </div>
@@ -323,38 +328,133 @@
                     <a class="h4" href="tel:8002129225" style="color: #1b1e21">
                         <i class="material-icons iconMod">local_phone</i>800 212 9225
                     </a>
-                <p class="h6">Llene con su información para que un asesor le contacte.</p>
-                <div class="divider mb-2"></div>
-                <form id="formularioDudas" action="javascript:void(0)">
+                    <p class="h6">Llene con su información para que un asesor le contacte.</p>
+                    <div class="divider mb-2"></div>
+                    <form id="formularioDudas" action="javascript:void(0)">
                         {{ csrf_field() }}
                         <div class="">
-                                <div class="form-group">
-                                    <label class="sr-only form-control-label" for="nombre">Nombre completo*:</label>
-                                    <input type="text" class="form-control" name="nombre" placeholder="Nombre completo*" id="nombre" >
-                                </div>
-                                <div class="form-group">
-                                    <label class="sr-only form-control-label" for="email">Email*:</label>
-                                    <input type="text" class="form-control" placeholder="Email*" id="email" name="email" >
-                                </div>
-                                <div class="form-group">
-                                    <label class="sr-only form-control-label" for="telefono">Teléfono (10 digitos)*:</label>
-                                    <input type="text" class="form-control" placeholder="Teléfono (10 digitos)*" id="telefono" name="telefono">
-                                </div>
-                                <div class="form-group">
-                                    <label class="sr-only form-control-label" for="whatsapp">Whatsapp:</label>
-                                    <input type="text" class="form-control" placeholder="Whatsapp" id="whatsapp"  name="whatsapp">
-                                </div>
+                            <div class="form-group">
+                                <label class="sr-only form-control-label" for="nombre">Nombre completo*:</label>
+                                <input type="text" class="form-control" name="nombre" placeholder="Nombre completo*" id="nombre" >
+                            </div>
+                            <div class="form-group">
+                                <label class="sr-only form-control-label" for="email">Email*:</label>
+                                <input type="text" class="form-control" placeholder="Email*" id="email" name="email" >
+                            </div>
+                            <div class="form-group">
+                                <label class="sr-only form-control-label" for="telefono">Teléfono (10 digitos)*:</label>
+                                <input type="text" class="form-control" placeholder="Teléfono (10 digitos)*" id="telefono" name="telefono">
+                            </div>
+                            <div class="form-group">
+                                <label class="sr-only form-control-label" for="whatsapp">Whatsapp:</label>
+                                <input type="text" class="form-control" placeholder="Whatsapp" id="whatsapp"  name="whatsapp">
+                            </div>
 
-                                <div class="form-group">
-                                    <label class="sr-only form-control-label" for="comentario">Comentarios</label>
-                                    <textarea class="form-control" id="comentario" name="comentario" placeholder="Comentario"  rows="3"></textarea>
-                                </div>
+                            <div class="form-group">
+                                <label class="sr-only form-control-label" for="comentario">Comentarios</label>
+                                <textarea class="form-control" id="comentario" name="comentario" placeholder="Comentario"  rows="3"></textarea>
+                            </div>
 
                             <input type="hidden" id="producto" name="producto" value="{{$product['name']}}">
-                                <button id="btnSubmit" type="submit" class="btn btn-warning btn-block">Enviar</button>
+                            <button id="btnSubmit" type="submit" class="btn btn-warning btn-block">Enviar</button>
                         </div>
-                </form>
+                    </form>
+                </div>
             </div>
+        </div>
+    </div>
+    <!-- Modal MercadoPago-->
+    <div class="modal fade" id="modalMercadoPago" tabindex="-1" role="dialog" aria-labelledby="modalMercadoPago"
+         aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Pagar con MercadoPago</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div id="carrito" class="row mb-2" style="font-size: 14px;">
+                        <div id="no-more-tables" style="width: 100%;">
+                            <table class="table col-sm-12 table-condensed cf">
+                                <thead class="cf">
+                                <tr>
+                                    <th>Producto</th>
+                                    <th>Nombre</th>
+                                    <th>Precio</th>
+                                    <th>Cantidad</th>
+                                    <th>Total</th>
+                                    <th class="text-center">
+                                        <button class="btn btn-secondary" id="remove-all-products">Borrar todo</button>
+                                    </th>
+                                </tr>
+                                </thead>
+                                <tbody id="table-body">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="row mb-2" style="font-size: 14px;">
+                        <div class="col-12">
+                            {{--                            <p style="font-size: 18px;font-weight: 500;">*Se agregará una comisión del 4% por forma de pago</p>--}}
+                            <p style="font-size: 18px;font-weight: 500;">*Se agregará al precio la comisión de MercadoPago correspondiente al plazo de mensualidades seleccionado.</p>
+                            <br>
+                            <label style="font-size: 18px;font-weight: 500;"><input type="checkbox" name="terminosPayPal" id="terminosMP">
+                                Acepto terminos y condiciones</label>
+                            <a href="javascript: void(0)" data-toggle="modal" data-target="#modalCondicionEnvio"
+                               style="color: rgba(0, 0, 0, 0.87);">*Consultalos aquí</a>
+                            <br>
+                        </div>
+                    </div>
+                    <form id="form-mp">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group"><input class="form-control" id="name-mp" name="name" placeholder="Nombre(s)*">
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group"><input class="form-control" id="lastname-mp" name="lastName" placeholder="Apellidos*">
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group"><input class="form-control" id="email-mp" name="email" placeholder="Email*">
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group"><input class="form-control" id="phone-mp" name="phone" maxlength="10" placeholder="Teléfono (10 dígitos)*"></div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group"><input class="form-control" id="state-mp" name="state" placeholder="Estado*">
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group"><input class="form-control" id="city-mp" name="city" placeholder="Ciudad*">
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group"><input class="form-control" id="zip-mp" name="zipCode" placeholder="Código postal*"></div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group"><input class="form-control" id="suburb-mp" name="suburb" placeholder="Colonia*">
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group"><input class="form-control" id="address-mp" name="address" placeholder="Direccion*">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="row" style="font-size: 14px;">
+                        <div id="form-incomplete-mp" class="col-12">
+                            <p id="text-input-mp" class="text-muted">Por favor rellena todos los campos</p>
+                            <p id="text-terms-mp" class="text-muted">Acepta los terminos y condiciones</p>
+                        </div>
+                        <div id="form-complete-mp" class="col-12 text-right" style="display: none;">
+                            <button class="btn btn-warning" type="button" id="btn-mercado-pago">Siguiente</button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -368,6 +468,7 @@
     <script type="text/javascript" src="{{asset('assets/js/components/swiper.js')}}"></script>
     <script type="text/javascript" src="{{asset('assets/js/components/drift.js')}}"></script>
     <script type="text/javascript" src="{{asset('assets/js/pages/product.js')}}"></script>
+    <script type="text/javascript" src="{{asset('assets/js/pages/cart.js')}}"></script>
 
     <!-- Initialize Swiper -->
     <script>
@@ -421,7 +522,7 @@
             inlineOffsetY: -85,
             // inlineOffsetX: -85,
             containInline: true,
-             hoverBoundingBox: true,
+            hoverBoundingBox: true,
         });
     </script>
     <script type="application/ld+json">

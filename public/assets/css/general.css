@@ -601,7 +601,7 @@
     width: 100vw;
     height: 100vh;
     background: rgba(0, 0, 0, 0.7);
-    z-index: 1021;
+    z-index: 1121;
     opacity: 0;
     transition: all 0.5s ease-in-out;
     justify-content: center;

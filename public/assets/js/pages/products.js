@@ -275,10 +275,3 @@ function reloadProducts() {
     };
     ajaxCall(parameters);
 }
-
-function buyProduct(productType,brand,mpn){
-    verifyAddCartProduct(productType,brand,mpn,1);
-     setTimeout(function(){
-        window.location = ruta+'cart';
-     }, 2000);
-}

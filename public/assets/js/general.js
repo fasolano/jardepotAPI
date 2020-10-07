@@ -134,7 +134,7 @@ function setCookie(name, value, expireDays, path = '') {
 
 }
 
-function verifyAddCartProduct(productType,brand,mpn,quantity){
+function verifyAddCartProduct(productType,brand,mpn,quantity,goTo){
     if(Cookies.get('session') === undefined || Cookies.get('session') === ''){
         $.ajax({
             url: ruta+"api/session",
@@ -142,18 +142,18 @@ function verifyAddCartProduct(productType,brand,mpn,quantity){
             dataType: "json",
             success: function (result) {
                 Cookies.set('session', result, { expires: 7 })
-                addCartProduct(productType,brand,mpn,quantity)
+                addCartProduct(productType,brand,mpn,quantity,goTo)
             },
             error: function (err) {
                 console.log(err);
             }
         });
     }else{
-        addCartProduct(productType,brand,mpn,quantity)
+        addCartProduct(productType,brand,mpn,quantity,goTo)
     }
 }
 
-function addCartProduct(productType,brand,mpn,quantity){
+function addCartProduct(productType,brand,mpn,quantity,goTo){
     var product = {'productType':productType,'brand':brand,'mpn':mpn};
     $('#overlay-bussy').addClass('active');
     $.ajax({
@@ -170,7 +170,13 @@ function addCartProduct(productType,brand,mpn,quantity){
                 $('#overlay-bussy').removeClass('active');
                 getCartProducts();
                 openSnackbar('success','Agregaste '+quantity+' '+productType+' '+brand+' '+mpn);
-                window.location = ruta+"cart";
+                if (goTo === "cart"){
+                    window.location = ruta+"cart";
+                }else if( goTo === "mercado"){
+                    $('#table-body').html("");
+                    getCartProductsView();
+                    $('#modalMercadoPago').modal('show');
+                }
             }
         },
         error: function (err) {

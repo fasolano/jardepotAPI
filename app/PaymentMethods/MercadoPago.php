@@ -14,6 +14,8 @@ use MercadoPago\Shipments;
 
 class MercadoPago{
 
+    /*
+     * Llaves de pruebas */
     /*protected $client_id = "5218597946840536";
     protected $client_secret = "jRqFu65og5OeqwhTIicRMROzVJWTM0jv";
     protected $public_key = "TEST-f69e04b9-b984-490f-ac0f-48bf0b6f48ca";
@@ -25,14 +27,10 @@ class MercadoPago{
     protected $access_token = "APP_USR-8224945122859735-122615-a76e6f063a67e18cdf0480846f99ba5e-191284474";
 
     public function __construct() {
-        /*SDK::setClientId("5218597946840536");
-        SDK::setClientSecret("jRqFu65og5OeqwhTIicRMROzVJWTM0jv");
-        SDK::setPublicKey('TEST-f69e04b9-b984-490f-ac0f-48bf0b6f48ca');
-        SDK::setAccessToken('TEST-5218597946840536-011519-f0feee1d9aa73c866bf25d8975e45fa9-509669228');*/
-        SDK::setClientId("8224945122859735");
-        SDK::setClientSecret("oezGzmodwi7mKkC7xOQ7wvi8niF6xKSd");
-        SDK::setPublicKey('APP_USR-63cd8043-c639-4031-84dd-648178659e68');
-        SDK::setAccessToken('APP_USR-8224945122859735-122615-a76e6f063a67e18cdf0480846f99ba5e-191284474');
+        SDK::setClientId($this->client_id);
+        SDK::setClientSecret($this->client_secret);
+        SDK::setPublicKey($this->public_key);
+        SDK::setAccessToken($this->access_token);
     }
 
     public function notification($id){
@@ -76,7 +74,7 @@ class MercadoPago{
             array_push($items, $item);
         }
 
-        $commission = $total * 0.04;
+        /*$commission = $total * 0.04;
         $item = new Item();
         $item->id = 'COMI001'; // numero de pedio
         $item->title = 'Comisión por pago en MercadoPago'; //Articulo
@@ -84,7 +82,7 @@ class MercadoPago{
         $item->currency_id = 'MXN';
         $item->unit_price = $commission;
 
-        array_push($items, $item);
+        array_push($items, $item);*/
 
         # Create a payer object
         $payer = new Payer();

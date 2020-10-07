@@ -159,7 +159,7 @@
                                     <p class="new-price">{{$item['newPrice']}}</p>
                                     <p class="little-letters text-center">Precio aplica en pagos mediante depósito o transferencia bancaria.</p>
                                     <button class="btn btn-buy d-flex justify-content-center align-items-center"
-                                            onclick="buyProduct('{{$item['productType']}}','{{$item['brand']}}','{{$item['mpn']}}')">
+                                            onclick="verifyAddCartProduct('{{$item['productType']}}','{{$item['brand']}}','{{$item['mpn']}}',1,'')">
                                         <i class="material-icons" style="font-size: 16px;">shopping_cart</i> Comprar
                                     </button>
 
@@ -196,7 +196,7 @@
                                     <div style="height: 36px">
                                         @if($item['stock'])
                                             <strong>
-                                                <a href="#!" onclick="verifyAddCartProduct('{{$item['productType']}}','{{$item['brand']}}','{{$item['mpn']}}',1)"
+                                                <a href="#!" onclick="verifyAddCartProduct('{{$item['productType']}}','{{$item['brand']}}','{{$item['mpn']}}',1,'')"
                                                    class="btn-add-cart d-flex justify-content-center align-items-center"
                                                    style="font-size: 14px;">
                                                     <i class="material-icons fn-color-jd">shopping_cart</i>
@@ -332,7 +332,7 @@
                                         <p class="new-price">{{$item['newPrice']}}</p>
                                         <p class="little-letters text-center">Precio aplica en pagos mediante depósito o transferencia bancaria.</p>
                                         <button class="btn btn-buy d-flex justify-content-center align-items-center"
-                                                onclick="buyProduct('{{$item['productType']}}','{{$item['brand']}}','{{$item['mpn']}}')">
+                                                onclick="verifyAddCartProduct('{{$item['productType']}}','{{$item['brand']}}','{{$item['mpn']}}',1,'cart')">
                                             <i class="material-icons" style="font-size: 16px;">shopping_cart</i> Comprar
                                         </button>
 
@@ -369,7 +369,7 @@
                                     <div style="height: 36px">
                                         @if($item['stock'])
                                             <strong>
-                                                <a href="#!" onclick="verifyAddCartProduct('{{$item['productType']}}','{{$item['brand']}}','{{$item['mpn']}}',1)"
+                                                <a href="#!" onclick="verifyAddCartProduct('{{$item['productType']}}','{{$item['brand']}}','{{$item['mpn']}}',1,'')"
                                                    class="btn-add-cart d-flex justify-content-center align-items-center"
                                                    style="font-size: 14px;">
                                                     <i class="material-icons fn-color-jd">shopping_cart</i>
