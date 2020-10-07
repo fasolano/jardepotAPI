@@ -184,9 +184,10 @@ function checkFormPaypal() {
     if(formPaypal && checkPaypal){
         $('#form-incomplete').css('display','none');
         $('#form-complete').css('display','block');
+        $('#btn-mercado-pago').removeAttr("disabled");
     }else{
         $('#form-incomplete').css('display','block');
-        $('#form-complete').css('display','none');
+        $('#btn-mercado-pago').attr("disabled");
     }
 }
 
@@ -194,9 +195,10 @@ function checkFormMercado() {
     if(formMercado && checkMercado){
         $('#form-incomplete-mp').css('display','none');
         $('#form-complete-mp').css('display','block');
+        $('#btn-mercado-pago').removeAttr("disabled");
     }else{
         $('#form-incomplete-mp').css('display','block');
-        $('#form-complete-mp').css('display','none');
+        $('#btn-mercado-pago').attr("disabled");
     }
 }
 

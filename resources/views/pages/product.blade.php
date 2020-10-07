@@ -452,8 +452,8 @@
                             <p id="text-input-mp" class="text-muted">Por favor rellena todos los campos</p>
                             <p id="text-terms-mp" class="text-muted">Acepta los terminos y condiciones</p>
                         </div>
-                        <div id="form-complete-mp" class="col-12 text-right" style="display: none;">
-                            <button class="btn btn-warning" type="button" id="btn-mercado-pago">Siguiente</button>
+                        <div id="form-complete-mp" class="col-12 text-right">
+                            <button class="btn btn-warning" type="button" disabled="" id="btn-mercado-pago">Siguiente</button>
                         </div>
                     </div>
                 </div>
