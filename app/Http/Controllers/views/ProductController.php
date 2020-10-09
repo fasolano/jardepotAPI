@@ -149,7 +149,7 @@ class ProductController extends Controller {
             $response[$iterator]['dataSheet'] = $item->resenia;
             $response[$iterator]['availibilityCount'] = 100;
            // $response[$iterator]['stock'] = $item->availability == 'in stock' ? true : false;
-            if ($item->availability == 'in stock' && $item->priceVisible == 1){
+            if ($item->availability == 'in stock' && $item->priceVisible > 0){
                 $response[$iterator]['stock'] = true;
             }else{
                 $response[$iterator]['stock'] = false;
