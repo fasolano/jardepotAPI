@@ -3,7 +3,8 @@
     <div class="row justify-content-md-center flex-column align-items-center">
         <div class="div-navbar col-12 col-xl-12 col-lg-12 col-md-12">
             <div class="row" style="color: white;">
-                <div class="col-3 d-none d-sm-none d-md-block">
+{{--                <div class="col-3 d-none d-sm-none d-md-block">--}}
+                <div class="col-2 d-none d-sm-none d-md-block">
                     <div class="col-12">
                         <div class="text-barra text-left">
                             Llámanos al:<br>
@@ -13,7 +14,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-8 d-flex">
+{{--                <div class="col-8 d-flex">--}}
+                <div class="col-7 d-flex" style="padding-right: 0">
                     <div class="row">
                         <div class="col-3">
                             <div class="text-barra text-left">
@@ -28,8 +30,10 @@
                         </div>
                         <div class="col-3">
                             <div class="text-barra text-left">
-                                EDOMX<br>
-                                <a href="tel:7226481040"><i class="material-icons iconMod">call</i>722 648 1040</a>
+{{--                                EDOMX<br>--}}
+{{--                                <a href="tel:7226481040"><i class="material-icons iconMod">call</i>722 648 1040</a>    --}}
+                                Monterrey<br>
+                                <a href="tel:8120635708"><i class="material-icons iconMod">call</i>81 2063 5708</a>
                             </div>
                         </div>
                         <div class="col-3">
@@ -39,6 +43,9 @@
                             </div>
                         </div>
                     </div>
+                </div>
+                <div class="col-2" style="padding: 0"> {{--Esto se quita despues y las otras cols--}}
+                    <img src="{{ asset('assets/images/otros/9anios.png') }}" style="width: 130%;height: 100%;margin-left: -50px">
                 </div>
                 <div class="col-1" style="font-size: 35px;cursor:pointer;">
                     <a data-toggle="modal" data-target="#modalTelefonos">
