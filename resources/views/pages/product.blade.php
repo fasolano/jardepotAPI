@@ -330,7 +330,7 @@
                     <a class="h4" href="tel:8002129225" style="color: #1b1e21">
                         <i class="material-icons iconMod">local_phone</i>800 212 9225
                     </a>
-                    <p class="h6">Llene con su información para que un asesor le contacte.</p>
+                    <p class="h6">Llame ó llene con su información para que un asesor le contacte.</p>
                     <div class="divider mb-2"></div>
                     <form id="formularioDudas" action="javascript:void(0)">
                         {{ csrf_field() }}
