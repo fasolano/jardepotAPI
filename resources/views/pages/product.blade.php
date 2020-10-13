@@ -62,9 +62,9 @@
                        {{--     @if($product['discount'] == 'Oferta')
                                 <div class="ribbon ribbon-top-right" style="display: block;z-index: 6"><span>Oferta</span></div>
                             @endif--}}
-                     {{--       @if($product['discount'] == 'Oferta')
+                            @if($product['discount'] == 'Oferta')
                                 <img src="{{ asset('assets/images/otros/9aniospestania.png') }}" style="width:110px;position: absolute;top: 0;left: 0;z-index:1;">
-                            @endif--}}
+                            @endif
 
                             <div class="product-image" id="div-img-product">
                                 <img style="max-width: 100%" id="drift-trigger"
@@ -283,9 +283,9 @@
                                           {{--  @if($related['discount'] == 'Oferta')
                                                 <div class="ribbon ribbon-top-right" style="display: block;position: relative;z-index: 6"><span>Oferta</span></div>
                                             @endif--}}
-                             {{--               @if($related['discount'] == 'Oferta')
+                                            @if($related['discount'] == 'Oferta')
                                                 <img src="{{ asset('assets/images/otros/9aniospestania.png') }}" style="width: 80px;position: absolute;top: 0;left: 0;z-index:1;">
-                                            @endif--}}
+                                            @endif
                                             <div class="product-image img-container" style="height: 205px;">
                                                 <img style="max-width: 80%;max-height: 80%"
                                                      src="{{asset($related['images'][0]['small'])}}"
