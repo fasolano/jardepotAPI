@@ -139,7 +139,9 @@
                                         </div>
                                     @endif--}}
                                     @if($item['brand'] =='Honda' && $item['productType'] =='Motobomba')
-
+                                        @if(substr($item['mpn'],0,2) != 'WB' && substr($item['mpn'],0,2) != 'WL'  )
+                                            <img src="{{ asset('assets/images/otros/9aniospestania.png') }}" style="width: 80px;position: absolute;top: 0;left: 0;">
+                                        @endif
                                     @else
                                         <img src="{{ asset('assets/images/otros/9aniospestania.png') }}" style="width: 80px;position: absolute;top: 0;left: 0;">
                                     @endif
@@ -316,7 +318,9 @@
                                         </div>
                                     @endif--}}
                                     @if($item['brand'] =='Honda' && $item['productType'] =='Motobomba')
-
+                                        @if(substr($item['mpn'],0,2) != 'WB' && substr($item['mpn'],0,2) != 'WL'  )
+                                            <img src="{{ asset('assets/images/otros/9aniospestania.png') }}" style="width: 80px;position: absolute;top: 0;left: 0;">
+                                        @endif
                                     @else
                                         <img src="{{ asset('assets/images/otros/9aniospestania.png') }}" style="width: 80px;position: absolute;top: 0;left: 0;">
                                     @endif
