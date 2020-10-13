@@ -198,8 +198,11 @@ function reloadProducts() {
                 '                                    </div>';*/
             var item = '<div class="card shadow-sm product-item col-sm-6 col-md-4 col-lg-3 p-0 mt-2 '+dNone+'" style="border-radius: 5px;overflow: hidden;">' +
                 '                                <a href="'+ruta+'catalogo/'+e.brand.toLowerCase().replace(" ", "-")+'/'+e.productType.toLowerCase()+'-'+e.brand.toLowerCase().replace(" ", "-")+'-'+e.mpn.toLowerCase()+'">' ;
-               if(e.brand =='Honda' && e.productType =='Motobomba'){
-
+               if(e.brand =='Honda' && e.productType =='Motobomba') {
+                   var mpnsub =e.mpn.substring(0, 2);
+                   if (mpnsub != 'WB' && mpnsub != 'WL'){
+                       item +=  '<img src="'+ruta+'assets/images/otros/9aniospestania.png" style="width: 80px;position: absolute;top: 0;left: 0;">';
+                   }
                }else{
                    item +=  '<img src="'+ruta+'assets/images/otros/9aniospestania.png" style="width: 80px;position: absolute;top: 0;left: 0;">';
                }
