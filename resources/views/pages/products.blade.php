@@ -138,13 +138,9 @@
                                             <span>Oferta</span>
                                         </div>
                                     @endif--}}
-                                    @if($item['brand'] =='Honda' && $item['productType'] =='Motobomba')
-                                        @if(substr($item['mpn'],0,2) != 'WB' && substr($item['mpn'],0,2) != 'WL'  )
-                                            <img src="{{ asset('assets/images/otros/9aniospestania.png') }}" style="width: 80px;position: absolute;top: 0;left: 0;">
-                                        @endif
-                                    @else
+                          {{--          @if(isset($item['discount']))
                                         <img src="{{ asset('assets/images/otros/9aniospestania.png') }}" style="width: 80px;position: absolute;top: 0;left: 0;">
-                                    @endif
+                                    @endif--}}
                                     <div class="product-image" style="height: 205px">
                                         <img style="max-width: 80%; max-height: 100%"
                                              src="{{asset($item['images'][0]['medium'])}}"
@@ -317,13 +313,9 @@
                                         <div class="ribbon ribbon-top-right" style="display: block"><span>Oferta</span>
                                         </div>
                                     @endif--}}
-                                    @if($item['brand'] =='Honda' && $item['productType'] =='Motobomba')
-                                        @if(substr($item['mpn'],0,2) != 'WB' && substr($item['mpn'],0,2) != 'WL'  )
-                                            <img src="{{ asset('assets/images/otros/9aniospestania.png') }}" style="width: 80px;position: absolute;top: 0;left: 0;">
-                                        @endif
-                                    @else
+              {{--                      @if(isset($item['discount']))
                                         <img src="{{ asset('assets/images/otros/9aniospestania.png') }}" style="width: 80px;position: absolute;top: 0;left: 0;">
-                                    @endif
+                                    @endif--}}
                                     <div class="product-image" style="height: 205px">
                                         <img style="max-width: 80%; max-height: 100%"
                                              src="{{asset($item['images'][0]['medium'])}}"
