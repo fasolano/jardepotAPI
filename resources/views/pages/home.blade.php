@@ -63,7 +63,7 @@
         <div class="col-12">
         <div class="col-9 col-offset-2">
             <a href="{{url('ofertas')}}">
-            <img src="{{asset('assets/images/banner/banner3-mob.jpg')}}" style="width: 300px" alt="oferta" title="Banner Oferta Jardepot">
+            <img src="{{asset('assets/images/banner/banner3-mob.jpg')}}" style="width: 310px" alt="oferta" title="Banner Oferta Jardepot">
                 <div class="info" style="margin-top: -150px">
                     <div class="px-2" style="background: rgba(0,0,0,.4);flex-direction: column; box-sizing: border-box; display: flex; place-content: flex-end center; align-items: flex-start;">
                         <h2 class="title">Ofertas</h2>
