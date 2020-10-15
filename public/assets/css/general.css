@@ -545,7 +545,8 @@
         min-height: 117px !important;
     }
     .div-banners{
-        height: 460px !important;
+        /*height: 460px !important;*/
+        height: 230px !important;
     }
     .info{
         height: 100%;
@@ -738,40 +739,43 @@
 /*snackbar*/
 /*Banners Home*/
 .banner3{
-    background-image: url('../../assets/images/banner/aspersora.webp');
+    background-image: url('../../assets/images/banner/banner3.jpg');
 }
-.banner3-mob{
-    background-image: url('../../assets/images/banner/aspersora-mob.webp');
+.banner4-mob{
+    background-image: url('../../assets/images/banner/banner3.jpg');
+    /*background-image: url('../../assets/images/banner/aspersora-mob.webp');*/
 }
 .banner2{
-    background-image: url('../../assets/images/banner/motocultor.webp');
+    background-image: url('../images/banner/banner2.jpg');
 }
 .banner2-mob{
-    background-image: url('../../assets/images/banner/motocultor-mob.webp');
+    background-image: url('../images/banner/banner2.jpg');
+    /*background-image: url('../../assets/images/banner/motocultor-mob.webp');*/
 }
 .banner1{
-    background-image: url('../../assets/images/banner/podadora.webp');
+    background-image: url('../../assets/images/banner/banner1.jpg');
 }
 .banner1-mob{
-    background-image: url('../../assets/images/banner/podadora-mob.webp');
+    background-image: url('../../assets/images/banner/banner1.jpg');
+    /*background-image: url('../../assets/images/banner/banner1-mob.webp');*/
 }
 /*pare Safari */
 .banner3-safari{
-    background-image: url('../../assets/images/banner/aspersora.jpg');
+    background-image: url('../../assets/images/banner/banner3.jpg');
 }
 .banner3-mob-safari{
-    background-image: url('../../assets/images/banner/aspersora-mob.jpg');
+    background-image: url('../../assets/images/banner/banner3-mob.jpg');
 }
 .banner2-safari{
-    background-image: url('../../assets/images/banner/motocultor.jpg');
+    background-image: url('../images/banner/banner2.jpg');
 }
 .banner2-mob-safari{
     background-image: url('../../assets/images/banner/motocultor-mob.jpg');
 }
 .banner1-safari{
-    background-image: url('../../assets/images/banner/podadora.jpg');
+    background-image: url('../../assets/images/banner/banner1.jpg');
 }
 .banner1-mob-safari{
-    background-image: url('../../assets/images/banner/podadora-mob.jpg');
+    background-image: url('../../assets/images/banner/banner1.jpg');
 }
 /*Fin Banners Home*/
