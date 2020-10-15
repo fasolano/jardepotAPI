@@ -14,13 +14,13 @@ $(document).ready(function (){
 
     $('[data-toggle="tooltip"]').tooltip();
     getCartProducts();
-    $(window).on('scroll', function ($event) {
+    /*$(window).on('scroll', function ($event) {
         if ($event.target.documentElement.scrollTop > 300){
             $('.btn-side-footer').css('display', 'block');
         }else{
             $('.btn-side-footer').css('display', 'none');
         }
-    });
+    });*/
 });
 
 function verifyCookie(){
