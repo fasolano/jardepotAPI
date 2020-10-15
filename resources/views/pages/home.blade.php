@@ -59,46 +59,21 @@
             </div>
         </div>
     </div>
-{{--    <div class="">
-        <div class="row div-banners">
-            <div class="col-xl-5 pr-0">
-                <div class="mb-2 banner divimg" id="banner1"
-                     style="background-position-y: inherit;box-sizing: border-box;max-height: 60%;background-position:right">
-                    <a style="text-decoration: none; width: 100%;" href="{{url('equipos/podadoras')}}">
-                        <div class="info" style="place-content: flex-start; align-items: flex-start; flex-direction: row;">
-                            <div class="px-2" style="background: rgba(0,0,0,.4);flex-direction: column; box-sizing: border-box; display: flex; place-content: flex-start; align-items: flex-start;">
-                                --}}{{--                                <h2 class="title" style="text-align: left;">Jardinería</h2>--}}{{--
-                                --}}{{--                                <h3 class="subtitle" style="text-align: left;">Un pasto bien cuidado...<br>Comienza con el equipo adecuado.</h3>--}}{{--
-                            </div>
-                        </div>
-                    </a>
+    <div class="row justify-content-md-center mt-4">
+        <div class="col-12">
+        <div class="col-9 col-offset-2">
+            <a href="{{url('ofertas')}}">
+            <img src="{{asset('assets/images/banner/banner3-mob.jpg')}}" style="width: 300px" alt="oferta" title="Banner Oferta Jardepot">
+                <div class="info" style="margin-top: -150px">
+                    <div class="px-2" style="background: rgba(0,0,0,.4);flex-direction: column; box-sizing: border-box; display: flex; place-content: flex-end center; align-items: flex-start;">
+                        <h2 class="title">Ofertas</h2>
+                    </div>
                 </div>
-                <div class="mt-1 banner divimg" id="banner2"
-                     style="background-position-y: inherit; box-sizing: border-box;max-height: 40%;background-position:right">
-                    <a style="text-decoration: none; width: 100%; flex-direction: row; box-sizing: border-box; display: flex;" href="{{url('equipos/motocultores')}}">
-                        <div class="info" style="place-content: flex-end; align-items: flex-end; flex-direction: row;">
-                            <div class="px-2" style="background: rgba(0,0,0,.4);flex-direction: column; box-sizing: border-box; display: flex; place-content: flex-end; align-items: flex-end;">
-                                --}}{{--                                <h2 class="title">Agricultura</h2>--}}{{--
-                                --}}{{--                                <h3 class="subtitle">Tu proyecto merece el mejor respaldo.</h3>--}}{{--
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="mt-xl-0 col-xl-7 pl-xl-0">
-                <div id="banner3" class="banner divimg2" style="max-height: 96%">
-                    <a style="text-decoration: none; height: 100% !important;" href="{{url('ofertas')}}">
-                        <div class="info" style="place-content: flex-start center;align-items: flex-end;flex-direction: column;">
-                            <div class="px-2" style="background: rgba(0,0,0,.4);flex-direction: column; box-sizing: border-box; display: flex; place-content: flex-start center; align-items: flex-start;">
-                                <h2 class="title">Ofertas</h2>
-                                --}}{{--                                <h3 class="subtitle" style="text-align: left;">9% de descuento en toda la tienda<br>del 13 al 23 de octubre</h3>--}}{{--
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </div>
+            </a>
         </div>
-    </div>--}}
+        </div>
+        <div class="col-12"><br><br></div>
+    </div>
 
     <div class="d-none d-sm-none d-md-block">
         @include('components.infoCompra')
