@@ -14,8 +14,6 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 <link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}">
-{{--<link rel="stylesheet" href="{{asset('assets/css/bootstrap-grid.min.css')}}">--}}
-{{--<link rel="stylesheet" href="{{asset('assets/css/bootstrap-reboot.min.css')}}">--}}
 <link rel="stylesheet" href="{{asset('assets/css/layouts/layouts.min.css')}}">
 <link rel="stylesheet" href="{{asset('assets/css/general.min.css')}}">
 <script type="text/javascript" src="{{ asset('assets/js/jquery-3.5.1.min.js') }}"></script>
