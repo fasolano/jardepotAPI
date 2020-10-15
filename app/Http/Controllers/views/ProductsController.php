@@ -46,7 +46,7 @@ class ProductsController extends Controller {
         $productController = new \App\Http\Controllers\ProductController();
         $products = $productController->getProductsList($categoryLevel1, $categoryLevel2);
         $products = $this->porductModelFormat($products);
-        $numberPages = count($products) / 8;
+        $numberPages = count($products) / 16;
         $filters = $productController->getSectionsLevel3($categoryLevel1, $categoryLevel2);
         $descriptionLevel2 = $productController->getDescriptionLevel2($categoryLevel1, $categoryLevel2);
 
@@ -83,7 +83,7 @@ class ProductsController extends Controller {
         $products = $productController->getProductsListLevel3($categoryLevel1, $categoryLevel2, $categoryLevel3);
         $idFilter = $productController->getIdLevel3($categoryLevel1, $categoryLevel2, $categoryLevel3);
         $products = $this->porductModelFormat($products);
-        $numberPages = count($products) / 8;
+        $numberPages = count($products) / 16;
         $filters = $productController->getSectionsLevel3($categoryLevel1, $categoryLevel2);
         $descriptionLevel2 = $productController->getDescriptionLevel2($categoryLevel1, $categoryLevel2);
 
@@ -129,7 +129,7 @@ class ProductsController extends Controller {
             return view('pages/products', compact('sidebar', 'categoryLevel1', 'categoryLevel2', 'productsListSearch', 'numberPages', 'descriptionLevel2'));
         }
 
-        $numberPages = count($productsListSearch) / 8;
+        $numberPages = count($productsListSearch) / 16;
 
         return view('pages/products', compact('sidebar', 'categoryLevel1', 'categoryLevel2', 'productsListSearch', 'numberPages', 'descriptionLevel2'));
     }
@@ -172,7 +172,7 @@ class ProductsController extends Controller {
             }
         }
         $productsListSearch = $this->porductModelFormat($productsListSearch);
-        $numberPages = count($productsListSearch) / 8;
+        $numberPages = count($productsListSearch) / 16;
 
         return view('pages/products', compact('sidebar', 'categoryLevel1', 'categoryLevel2', 'productsListSearch', 'numberPages', 'descriptionLevel2'));
     }

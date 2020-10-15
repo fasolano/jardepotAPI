@@ -1,4 +1,4 @@
-var show = 8, order = "default";
+var show = 16, order = "default";
 $(document).ready(function () {
     // $('[data-toggle="tooltip"]').tooltip();
 

@@ -115,21 +115,21 @@
                                    id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
                                    aria-expanded="false">
 
-                                    Mostrar <span class="current-number-items">8</span>
+                                    Mostrar <span class="current-number-items">16</span>
 
                                 </a>
 
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                    <a class="dropdown-item number-items" data-val="8" href="#" id="eight-products">8</a>
-                                    <a class="dropdown-item number-items" data-val="12" href="#">12</a>
-                                    <a class="dropdown-item number-items" data-val="16" href="#">16</a>
+                                    <a class="dropdown-item number-items" data-val="16" href="#" id="eight-products">16</a>
+                                    <a class="dropdown-item number-items" data-val="20" href="#">20</a>
+                                    <a class="dropdown-item number-items" data-val="24" href="#">24</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div id="cards-sections" class="row">
                         @foreach($products as $key => $item)
-                            <div class="card shadow-sm product-item col-sm-6 col-md-4 col-lg-3 p-0 mt-2 @if($loop->iteration > 8) d-none  @endif"
+                            <div class="card shadow-sm product-item col-sm-6 col-md-4 col-lg-3 p-0 mt-2 @if($loop->iteration > 16) d-none  @endif"
                                 style="border-radius: 5px;overflow: hidden;">
                                 <a href="{{route('product',
                                 ['marca'=> str_replace(" ", "-",strtolower($item['brand'])), 'productType'=> strtolower($item['productType']), 'brand'=> str_replace(" ", "-",strtolower($item['brand'])), 'mpn'=> strtolower($item['mpn'])])}}">
@@ -292,20 +292,20 @@
                                 <a class="btn btn-secondary dropdown-toggle" href="#" role="button"
                                    id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
                                    aria-expanded="false">
-                                    Mostrar <span class="current-number-items">8</span>
+                                    Mostrar <span class="current-number-items">16</span>
                                 </a>
 
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                    <a class="dropdown-item number-items" data-val="8" href="#" id="eight-products">8</a>
-                                    <a class="dropdown-item number-items" data-val="12" href="#">12</a>
-                                    <a class="dropdown-item number-items" data-val="16" href="#">16</a>
+                                    <a class="dropdown-item number-items" data-val="16" href="#" id="eight-products">16</a>
+                                    <a class="dropdown-item number-items" data-val="20" href="#">20</a>
+                                    <a class="dropdown-item number-items" data-val="24" href="#">24</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div id="cards-sections-search" class="row">
                         @foreach($productsListSearch as $key => $item)
-                            <div class="card shadow-sm product-item col-sm-6 col-md-4 col-lg-3 p-0 mt-2 @if($loop->iteration > 8) d-none  @endif"
+                            <div class="card shadow-sm product-item col-sm-6 col-md-4 col-lg-3 p-0 mt-2 @if($loop->iteration > 16) d-none  @endif"
                                  style="border-radius: 5px;overflow: hidden;">
                                 <a href="{{route('product',
                                 ['marca'=> str_replace(" ", "-",strtolower($item['brand'])), 'productType'=> strtolower($item['productType']), 'brand'=> str_replace(" ", "-",strtolower($item['brand'])), 'mpn'=> strtolower($item['mpn'])])}}">
