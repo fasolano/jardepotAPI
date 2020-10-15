@@ -59,7 +59,7 @@
             </div>
         </div>
     </div>
-    <div class="row justify-content-md-center mt-4">
+    <div class="row justify-content-md-center mt-4 d-block d-sm-block d-md-none ">
         <div class="col-12">
         <div class="col-9 col-offset-2">
             <a href="{{url('ofertas')}}">
