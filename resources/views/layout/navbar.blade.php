@@ -67,7 +67,8 @@
                             <img class="logo-navbar" style="width: 80%" src="{{asset('img/logos/logoJardepot.png')}}"
                                  alt="Logo Jardepot" title="Logo Jardepot">
                         </picture>
-
+                        <img class="logo-navbar" style="width: 50px" src="{{asset('assets/images/otros/mono_rosa.png')}}"
+                             alt="Moño rosa" title="Moño rosa">
                     </a>
                 </div>
                 <div class="col-md-7">
@@ -170,6 +171,8 @@
                     <img class="logo-navbar" style="width: 80%" src="{{asset('img/logos/logoJardepot.png')}}"
                          alt="Logo Jardepot" title="Logo Jardepot">
                 </picture>
+                <img class="logo-navbar" style="width: 40px" src="{{asset('assets/images/otros/mono_rosa.png')}}"
+                     alt="Moño rosa" title="Moño rosa">
             </a>
         </div>
         <div class="col-4" style="margin-top: 8px">
