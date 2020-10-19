@@ -67,7 +67,9 @@
                     <div class="carousel-inner">
                         <div class="carousel-item active">
                             <a href="{{url('ofertas')}}">
-                                <img class="img-fluid mx-auto d-block" src="{{asset('assets/images/banner/banner1.jpg')}}" style="max-width: 95%">
+                                <img class="img-fluid mx-auto d-block" src="{{asset('assets/images/banner/banner1.jpg')}}"
+                                     alt="Oferta Jardepot" title="oferta Jardepot"
+                                     style="max-width: 95%">
                             </a>
                         </div>
                     </div>
