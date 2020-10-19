@@ -126,6 +126,9 @@
                                     </p>
                                 </div>
                             </div>
+                            @if($product['discount'] == 'Oferta')
+                                <p style="color: #de1f21;font-weight:500;">Precio por aniversario, válido hasta el 23 de octubre 2020</p>
+                            @endif
                             <div class="row text-muted p-1"
                                  style="flex-flow: row wrap; box-sizing: border-box;place-content: flex-start; align-items: flex-start;">
                                 {{--<div class="col-md-6">
