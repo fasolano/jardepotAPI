@@ -16,7 +16,7 @@
 
 @section('specificCSS')
     <!-- Scrollbar Custom CSS -->
-    <link rel="stylesheet" href="{{asset('assets/css/components/breadcrumb.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/components/breadcrumb.min.css')}}">
     <script type="text/javascript" src="{{asset('assets/js/jquery.validate.min.js')}}"></script>
 @endsection
 
