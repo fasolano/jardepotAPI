@@ -48,6 +48,13 @@
             </div>
             <div class="w-20-tel">
                 <div>
+                    <p>CDMX</p>
+                    <a href="tel:9933070286" style="color: #fff;"><span class="my-4" style="font-size: 15px; font-weight: 300;">55 5185 7805</span></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a href="tel:9933070286" style="color: #fff;"><span class="my-4" style="font-size: 15px; font-weight: 300;">55 4459 8506</span></a>
+                </div>
+            </div>
+            <div class="w-20-tel">
+                <div>
                     <p>Morelos</p>
                     <a href="tel:7773179630" style="color: #fff;"><span style="font-size: 15px; font-weight: 300;">777 317 9630</span></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <a href="tel:7773179652" style="color: #fff;"><span class="my-4" style="font-size: 15px; font-weight: 300;">777 317 9652</span></a>
@@ -93,12 +100,6 @@
                 <div>
                     <p>Guadalajara</p>
                     <a href="tel:3317283353" style="color: #fff;"><span class="my-4" style="font-size: 15px; font-weight: 300;">33 1728 3353</span></a>
-                </div>
-            </div>
-            <div class="w-20-tel">
-                <div>
-                    <p>Tabasco</p>
-                    <a href="tel:9933070286" style="color: #fff;"><span class="my-4" style="font-size: 15px; font-weight: 300;">993 307 0286</span></a>
                 </div>
             </div>
             <div class="w-20-tel">
