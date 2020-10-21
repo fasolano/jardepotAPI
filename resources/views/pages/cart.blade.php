@@ -11,8 +11,8 @@
 
 @section('specificCSS')
     <!-- Scrollbar Custom CSS -->
-    <link rel="stylesheet" href="{{asset('assets/css/components/breadcrumb.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/css/pages/cart.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/components/breadcrumb.min.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/pages/cart.min.css')}}">
     <script type="text/javascript" src="{{asset('assets/js/jquery.validate.min.js')}}"></script>
     <!--<script src="https://www.paypal.com/sdk/js?client-id=AXYsm9VJ1VvDrdy5xzQHHJBnnhuhEKcFWhhFPkXBZI9V-G4CmfiXDpNh2DaKT06EaWDFnqWG_1z5ztbi&currency=MXN"></script>-->
     <script src="https://www.paypal.com/sdk/js?client-id=AU1Jzf7ziTCncrNsNBjmk_tD03Iz_1o8J4FNGTh5Z2mYHRSV21eh6rQbPDiQgOzTFiVXFmLdtzT4XzI_&currency=MXN"></script>
@@ -240,6 +240,6 @@
     <div class="overlay"></div>
     <!-- jQuery Custom Scroller CDN -->
     <script src="{{asset('assets/js/components/jquery.mCustomScrollbar.concat.min.js')}}"></script>
-    <script type="text/javascript" src="{{asset('assets/js/components/sidebar.js')}}"></script>
-    <script type="text/javascript" src="{{asset('assets/js/pages/cart.js')}}"></script>
+    <script type="text/javascript" src="{{asset('assets/js/components/sidebar.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('assets/js/pages/cart.min.js')}}"></script>
 @endsection

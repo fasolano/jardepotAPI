@@ -8,10 +8,10 @@
 @endsection
 
 @section('specificCSS')
-    <link rel="stylesheet" href="{{asset('assets/css/components/sidebar.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/components/sidebar.min.css')}}">
     <!-- Scrollbar Custom CSS -->
     <link rel="stylesheet" href="{{asset('assets/css/components/jquery.mCustomScrollbar.min.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/css/components/breadcrumb.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/components/breadcrumb.min.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/components/slick.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/components/slick-theme.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/components/leaflet.css')}}">
@@ -117,7 +117,7 @@
     <div class="overlay"></div>
     <!-- jQuery Custom Scroller CDN -->
     <script src="{{asset('assets/js/components/jquery.mCustomScrollbar.concat.min.js')}}"></script>
-    <script type="text/javascript" src="{{asset('assets/js/components/sidebar.js')}}"></script>
+    <script type="text/javascript" src="{{asset('assets/js/components/sidebar.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('assets/js/components/slick.js')}}"></script>
     <script type="text/javascript" src="{{asset('assets/js/components/leaflet.js')}}"></script>
     <script type="text/javascript" src="{{asset('assets/js/components/leaflet-gesture-handling.min.js')}}"></script>

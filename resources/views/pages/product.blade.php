@@ -17,14 +17,14 @@
 @endsection
 
 @section('specificCSS')
-    <link rel="stylesheet" href="{{asset('assets/css/components/sidebar.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/components/sidebar.min.css')}}">
     <!-- Scrollbar Custom CSS -->
     <link rel="stylesheet" href="{{asset('assets/css/components/jquery.mCustomScrollbar.min.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/css/components/breadcrumb.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/css/pages/product.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/components/breadcrumb.min.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/pages/product.min.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/components/swiper.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/components/drift-basic.min.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/css/pages/cart.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/pages/cart.min.css')}}">
     <script type="text/javascript" src="{{asset('assets/js/jquery.validate.min.js')}}"></script>
 @endsection
 
@@ -63,7 +63,7 @@
                                 <div class="ribbon ribbon-top-right" style="display: block;z-index: 6"><span>Oferta</span></div>
                             @endif--}}
                             @if($product['discount'] == 'Oferta')
-                                <img src="{{ asset('assets/images/otros/9aniospestania.png') }}" style="width:110px;position: absolute;top: 0;left: 0;z-index:1;">
+                                <img src="{{ asset('assets/images/otros/9aniospestania.png') }}" style="width:110px;position: absolute;top: 0;left: 0;z-index:1;" title="9 aniversario" alt="9 aniversario">
                             @endif
 
                             <div class="product-image" id="div-img-product">
@@ -143,7 +143,7 @@
                                     @if(($product['inventory'] > 0) && $product['stock'])
                                     <a onclick="verifyAddCartProduct('{{$product['productType']}}','{{$product['brand']}}','{{$product['mpn']}}', 1, 'mercado')" class="btn btn-block btn-modal-mercado" href="javascript: void(0)"
                                        style="background-color: #c7c7c7">¡Compra con Mensualidades!
-                                        <img src="{{asset("assets/images/bancos/mercadopago.png")}}" alt="">
+                                        <img src="{{asset("assets/images/bancos/mercadopago.png")}}" title="Pagar MergadoPago" alt="Pagar MercadoPago">
                                     </a>
                                     @endif
                                 </div>
@@ -287,7 +287,7 @@
                                                 <div class="ribbon ribbon-top-right" style="display: block;position: relative;z-index: 6"><span>Oferta</span></div>
                                             @endif--}}
                                             @if($related['discount'] == 'Oferta')
-                                                <img src="{{ asset('assets/images/otros/9aniospestania.png') }}" style="width: 80px;position: absolute;top: 0;left: 0;z-index:1;">
+                                                <img src="{{ asset('assets/images/otros/9aniospestania.png') }}" style="width: 80px;position: absolute;top: 0;left: 0;z-index:1;" title="9 aniversario" alt="9 aniversario">
                                             @endif
                                             <div class="product-image img-container" style="height: 205px;">
                                                 <img style="max-width: 80%;max-height: 80%"
@@ -476,11 +476,11 @@
     <div class="overlay"></div>
     <!-- jQuery Custom Scroller CDN -->
     <script src="{{asset('assets/js/components/jquery.mCustomScrollbar.concat.min.js')}}"></script>
-    <script type="text/javascript" src="{{asset('assets/js/components/sidebar.js')}}"></script>
+    <script type="text/javascript" src="{{asset('assets/js/components/sidebar.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('assets/js/components/swiper.js')}}"></script>
     <script type="text/javascript" src="{{asset('assets/js/components/drift.js')}}"></script>
-    <script type="text/javascript" src="{{asset('assets/js/pages/product.js')}}"></script>
-    <script type="text/javascript" src="{{asset('assets/js/pages/cart.js')}}"></script>
+    <script type="text/javascript" src="{{asset('assets/js/pages/product.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('assets/js/pages/cart.min.js')}}"></script>
 
     <!-- Initialize Swiper -->
     <script>

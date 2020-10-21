@@ -10,7 +10,7 @@
 @section('specificCSS')
     <!-- Scrollbar Custom CSS -->
     <script type="text/javascript" src="{{asset('assets/js/jquery.validate.min.js')}}"></script>
-    <link rel="stylesheet" href="{{asset('assets/css/pages/checkout.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/pages/checkout.min.css')}}">
 @endsection
 
 @section('content')

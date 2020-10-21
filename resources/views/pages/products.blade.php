@@ -18,10 +18,10 @@
 
 @section('specificCSS')
     <!-- Page CSS -->
-    <link rel="stylesheet" href="{{asset('assets/css/pages/products.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/pages/products.min.css')}}">
     <!-- Components CSS -->
-    <link rel="stylesheet" href="{{asset('assets/css/components/sidebar.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/css/components/breadcrumb.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/components/sidebar.min.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/components/breadcrumb.min.css')}}">
     <!-- Scrollbar Custom CSS -->
     <link rel="stylesheet" href="{{asset('assets/css/components/jquery.mCustomScrollbar.min.css')}}">
 @endsection
@@ -139,7 +139,7 @@
                                         </div>
                                     @endif--}}
                                     @if(isset($item['discount']))
-                                        <img src="{{ asset('assets/images/otros/9aniospestania.png') }}" style="width: 85px;position: absolute;top: 0;left: 0;">
+                                        <img src="{{ asset('assets/images/otros/9aniospestania.png') }}" style="width: 85px;position: absolute;top: 0;left: 0;" title="9 aniversario" alt="9 aniversario">
                                     @endif
                                     <div class="product-image" style="height: 205px">
                                         <img style="max-width: 80%; max-height: 100%"
@@ -314,7 +314,7 @@
                                         </div>
                                     @endif--}}
                                     @if(isset($item['discount']))
-                                        <img src="{{ asset('assets/images/otros/9aniospestania.png') }}" style="width: 85px;position: absolute;top: 0;left: 0;">
+                                        <img src="{{ asset('assets/images/otros/9aniospestania.png') }}" style="width: 85px;position: absolute;top: 0;left: 0;" title="9 aniversario" alt="9 aniversario">
                                     @endif
                                     <div class="product-image" style="height: 205px">
                                         <img style="max-width: 80%; max-height: 100%"
@@ -497,6 +497,6 @@
     <div class="overlay"></div>
     <!-- jQuery Custom Scroller CDN -->
     <script src="{{asset('assets/js/components/jquery.mCustomScrollbar.concat.min.js')}}"></script>
-    <script type="text/javascript" src="{{asset('assets/js/pages/products.js')}}"></script>
-    <script type="text/javascript" src="{{asset('assets/js/components/sidebar.js')}}"></script>
+    <script type="text/javascript" src="{{asset('assets/js/pages/products.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('assets/js/components/sidebar.min.js')}}"></script>
 @endsection
