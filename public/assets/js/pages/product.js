@@ -91,7 +91,13 @@ $(document).ready(function() {  // <-- ensure form's HTML is ready
 });
 
 
-function changeImg(medium,big,name){
+function changeImg(medium,big,name,li){
+    $('#list-images li').each(function(indice, elemento) {
+        if(elemento === li){
+            indexImg=indice;
+        }else{
+        }
+    });
     $('#drift-trigger').replaceWith(' <img style="max-width: 100%" id="drift-trigger" src="'+medium+'" data-zoom="'+big+'"  title="'+name+'" alt="'+name+'">');
     new Drift(document.getElementById('drift-trigger'), {
         paneContainer: document.querySelector('.detail'),
@@ -125,4 +131,25 @@ function clearFormComentario(){
     $('#telefono').val('');
     $('#whatsapp').val('');
     $('#comentario').val('');
+}
+
+var indexImg=0;
+function nextImg(){
+    if($('#list-images li')[indexImg+1]){
+        indexImg++;
+        $('#list-images li')[indexImg].click();
+    }else{
+        indexImg=0;
+        $('#list-images li')[indexImg].click();
+    }
+}
+
+function beforeImg(){
+    if($('#list-images li')[indexImg-1]){
+        indexImg--;
+        $('#list-images li')[indexImg].click();
+    }else{
+        indexImg=0;
+        $('#list-images li')[indexImg].click();
+    }
 }

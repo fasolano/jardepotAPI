@@ -77,7 +77,7 @@
                             @endif
                         </div>
                         <!-- Swiper -->
-                        <div class="swiper-container p-1">
+            {{--            <div class="swiper-container p-1">
                             <div class="swiper-wrapper">
                                 @foreach($product['images'] as $image )
                                     <div class="swiper-slide">
@@ -97,7 +97,25 @@
                             <div class="swiper-button-next"></div>
                             <div class="swiper-button-prev"></div>
                         </div>
-
+--}}
+                        <div class="col-12" style="width: 100%;">
+                            <div onclick="beforeImg()">
+                                <i class="material-icons navigate-products" style="left:-10px;">navigate_before</i></div>
+                            <div>
+                                <ul class="swiper-product2" id="list-images">
+                                    @foreach($product['images'] as $image )
+                                        <li onclick="changeImg('{{asset($image['medium'])}}','{{asset($image['big'])}}','{{$product['name']}}',this)">
+                                            <div class="card shadow-sm product-item" style="border-radius: 5px;overflow: hidden;min-height: 100%;">
+                                                <img class="img-products" src="{{asset($image['small'])}}"
+                                                     title="{{$product['name']}}" alt="{{$product['name']}}">
+                                            </div>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                            <div onclick="nextImg()">
+                                <i class="material-icons navigate-products" style="left:auto;right:-15px;">navigate_next</i></div>
+                        </div>
                     </div>
                     <div class="col-md-7 mt-2 p-3">
                         <h2 class="py-1 description-product">{{$product['description']}}</h2>
