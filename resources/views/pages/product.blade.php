@@ -59,11 +59,8 @@
                 <div class="row">
                     <div class="col-md-5 mt-2">
                         <div class="card shadow-sm" style="overflow: hidden;">
-                       {{--     @if($product['discount'] == 'Oferta')
-                                <div class="ribbon ribbon-top-right" style="display: block;z-index: 6"><span>Oferta</span></div>
-                            @endif--}}
                             @if($product['discount'] == 'Oferta')
-                                <img src="{{ asset('assets/images/otros/9aniospestania.png') }}" style="width:110px;position: absolute;top: 0;left: 0;z-index:1;" title="9 aniversario" alt="9 aniversario">
+                                <div class="ribbon ribbon-top-right" style="display: block;z-index: 6"><span>Oferta</span></div>
                             @endif
 
                             <div class="product-image" id="div-img-product">
@@ -144,9 +141,9 @@
                                     </p>
                                 </div>
                             </div>
-                            @if($product['discount'] == 'Oferta')
-                                <p style="color: #de1f21;font-weight:500;">Precio por aniversario, válido hasta el 23 de octubre 2020</p>
-                            @endif
+{{--                            @if($product['discount'] == 'Oferta')--}}
+{{--                                <p style="color: #de1f21;font-weight:500;">Precio por aniversario, válido hasta el 23 de octubre 2020</p>--}}
+{{--                            @endif--}}
                             <div class="row text-muted p-1"
                                  style="flex-flow: row wrap; box-sizing: border-box;place-content: flex-start; align-items: flex-start;">
                                 {{--<div class="col-md-6">
@@ -301,11 +298,8 @@
                                 <div class="swiper-slide">
                                     <div class="card shadow-sm product-item" style="border-radius: 5px;overflow: hidden;">
                                         <a href="{{url($related['href'])}}">
-                                          {{--  @if($related['discount'] == 'Oferta')
-                                                <div class="ribbon ribbon-top-right" style="display: block;position: relative;z-index: 6"><span>Oferta</span></div>
-                                            @endif--}}
                                             @if($related['discount'] == 'Oferta')
-                                                <img src="{{ asset('assets/images/otros/9aniospestania.png') }}" style="width: 80px;position: absolute;top: 0;left: 0;z-index:1;" title="9 aniversario" alt="9 aniversario">
+                                                <div class="ribbon ribbon-top-right" style="display: block;position: relative;z-index: 6"><span>Oferta</span></div>
                                             @endif
                                             <div class="product-image img-container" style="height: 205px;">
                                                 <img style="max-width: 80%;max-height: 80%"
