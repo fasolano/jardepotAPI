@@ -45,8 +45,6 @@
                     </div>
                 </div>
                 <div class="col-2" style="padding: 0"> {{--Esto se quita despues y las otras cols--}}
-                    <img src="{{ asset('assets/images/otros/9anios.png') }}"
-                         style="width: 130%;height: 100%;margin-left: -50px" alt="9 aniversario" title="9 aniversario">
                 </div>
                 <div class="col-1" style="font-size: 35px;cursor:pointer;">
                     <a data-toggle="modal" data-target="#modalTelefonos">
