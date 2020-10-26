@@ -143,7 +143,7 @@ class CartRepository{
             ])->first();
 
         if($productAdded){
-            if($productAdded->cantidad > 1){
+            if($quantity > 0 || $productAdded->cantidad > 1){
                 DB::table('producto_carrito')
                     ->where([
                         'fk_carrito' => $cart,
