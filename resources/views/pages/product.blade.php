@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="{{asset('assets/css/components/swiper.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/components/drift-basic.min.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/pages/cart.min.css')}}">
-    <link rel="canonical" href="https://www.jardepot.com">
+    <link rel="canonical" href="https://jardepot.com">
     <script type="text/javascript" src="{{asset('assets/js/jquery.validate.min.js')}}"></script>
 @endsection
 
