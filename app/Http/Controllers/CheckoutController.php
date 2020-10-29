@@ -131,7 +131,7 @@ class CheckoutController extends Controller {
     }
 
     protected function sendAlertMail($clientForm, $billingDeleveryData, $quotation){
-//        $destino = "fasolanof@gmail.com";
+        $destino = "fasolanof@gmail.com";
         //        $destino = $mailSeller;
         $dia = date('d-m-Y');
         $hora = date('H:i:s');
