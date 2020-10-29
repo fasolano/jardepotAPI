@@ -131,8 +131,7 @@ class CheckoutController extends Controller {
     }
 
     protected function sendAlertMail($clientForm, $billingDeleveryData, $quotation){
-        $destino = "fasolanof@gmail.com";
-        //        $destino = $mailSeller;
+        $mailSeller = "fasolanof@gmail.com";
         $dia = date('d-m-Y');
         $hora = date('H:i:s');
 
@@ -145,8 +144,8 @@ class CheckoutController extends Controller {
             'datos' => $billingDeleveryData,
             'cotizacion' => $quotation
         ];
-        Mail::send('mails.webPucharse', $data, function ($message) use ($destino) {
-            $message->to($destino)->subject
+        Mail::send('mails.webPucharse', $data, function ($message) use ($mailSeller) {
+            $message->to($mailSeller)->subject
             ('Pedido en linea Jardepot');
             $message->from('sistemas1@jardepot.com', 'Sitemas Jardepot');
         });
