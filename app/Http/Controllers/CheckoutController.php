@@ -123,15 +123,14 @@ class CheckoutController extends Controller {
 
         if($this->sendQuotationMail($clientForm['email'], $nombre, $quotation->idCotizaciones, $content, $mailSeller)){
             // return true;
-            return $this->sendAlertMail($clientForm, $billingDeleveryData, $quotation->idCotizaciones);
+            return $this->sendAlertMail($clientForm, $billingDeleveryData, $quotation->idCotizaciones, $mailSeller);
         }else{
             return false;
         }
 
     }
 
-    protected function sendAlertMail($clientForm, $billingDeleveryData, $quotation){
-        $mailSeller = "fasolanof@gmail.com";
+    protected function sendAlertMail($clientForm, $billingDeleveryData, $quotation, $mailSeller){
         $dia = date('d-m-Y');
         $hora = date('H:i:s');
 
