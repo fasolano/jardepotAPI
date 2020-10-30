@@ -45,16 +45,37 @@ class ProductRepository{
                     DB::raw('SUM(inventario.cantidad) as cantidadInventario')
                 )
                 ->distinct('productos.mpn')
-                ->orderBy('cantidadInventario', 'desc')
-                ->orderBy('c3.prioridad', 'asc')
+                ->groupBy('productos.productType',
+                    'productos.brand','productos.mpn')
+//                ->orderBy('c3.prioridad', 'asc')
+//                ->orderBy('cantidadInventario', 'desc')
+//                ->orderByRaw('RAND()')
                 ->where([
                     "productos.visible" => "si",
                     "c3.idCategoriasNivel2" => $nivel2
                 ])
-                ->groupBy('productos.productType',
-                    'productos.brand','productos.mpn')
+                ->inRandomOrder()
                 ->get();
+            $datos = $this->firstInventarioProducts($datos);
         return $datos;
+    }
+
+    public function firstInventarioProducts($products){
+        $object =[];
+        $count=0;
+        foreach ($products as $prod){
+            if($prod->cantidadInventario > 0){
+                $object[$count]=$prod;
+                $count++;
+            }
+        }
+        foreach ($products as $prod){
+            if($prod->cantidadInventario == 0){
+                $object[$count]=$prod;
+                $count++;
+            }
+        }
+        return$object;
     }
 
     public function getProductsFiltered($nivel2, $filtersLevel3){

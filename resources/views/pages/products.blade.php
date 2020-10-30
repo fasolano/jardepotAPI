@@ -14,7 +14,7 @@
     <meta property="og:image" content="{{asset('img/logos/logoOG.jpg')}}" />
     <meta property="og:image:url" content="{{asset('img/logos/logoOG.jpg')}}" />
     <meta property="og:image:secure_url" content="{{asset('img/logos/logoOG.jpg')}}" />
-    <link rel="canonical" href="https://jardepot.com">
+    <link rel="canonical" href="https://www.jardepot.com">
 @endsection
 
 @section('specificCSS')
