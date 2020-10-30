@@ -133,10 +133,17 @@
     bottom: 0;
     right: 0;
 }
-.free-delivery-recom {
+.free-delivery-prods {
     width: 80px;
     position: absolute;
     top: 123px;
+    right: 0;
+}
+
+.free-delivery-recom {
+    width: 80px;
+    position: absolute;
+    top: 60px;
     right: 0;
 }
 

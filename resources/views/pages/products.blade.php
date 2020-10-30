@@ -148,7 +148,7 @@
                                              title="{{$item['name']}}" alt="{{$item['name']}}">
                                     </div>
                                     @if($item['newPriceFloat'] > 3000)
-                                        <img class="free-delivery-recom" src="{{asset('assets/images/otros/gratis.png')}}"
+                                        <img class="free-delivery-prods" src="{{asset('assets/images/otros/gratis.png')}}"
                                          title="Envío gratis Jardepot" alt="Envío gratis Jardepot">
                                     @endif
                                 </a>
@@ -323,7 +323,7 @@
                                              title="{{$item['name']}}" alt="{{$item['name']}}">
                                     </div>
                                         @if($item['newPriceFloat'] > 3000)
-                                        <img class="free-delivery-recom" src="{{asset('assets/images/otros/gratis.png')}}"
+                                        <img class="free-delivery-prods" src="{{asset('assets/images/otros/gratis.png')}}"
                                          title="Envío gratis Jardepot" alt="Envío gratis Jardepot">
                                         @endif
                                 </a>

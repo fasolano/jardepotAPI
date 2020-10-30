@@ -288,7 +288,7 @@
                             </div>--}}
                     </div>
                 </div>
-
+                @if(count($productsRelated))
                 <div class="row mt-4">
                     <h3>Productos recomendados</h3>
                     <div class="divider"></div>
@@ -302,7 +302,7 @@
                                             @if($related['discount'] == 'Oferta')
                                                 <div class="ribbon ribbon-top-right" style="display: block;position: relative;z-index: 6"><span>Oferta</span></div>
                                             @endif
-                                            <div class="product-image img-container" style="height: 205px;">
+                                            <div class="product-image img-container" style="height: 145px;">
                                                 <img style="max-width: 80%;max-height: 80%"
                                                      src="{{asset($related['images'][0]['small'])}}"
                                                      title="{{$related['name']}}" alt="{{$related['name']}}">
@@ -343,6 +343,7 @@
                         <div class="swiper-button-prev"></div>
                     </div>
                 </div>
+                @endif
                 <br>
                 @include('components.infoCompra')
                 @include('components.caruselCanales')
