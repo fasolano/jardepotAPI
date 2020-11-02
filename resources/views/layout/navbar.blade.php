@@ -170,7 +170,7 @@
                     <img class="logo-navbar" style="width: 80%" src="{{asset('img/logos/logoJardepot.png')}}"
                          alt="Logo Jardepot" title="Logo Jardepot">
                 </picture>
-                <img class="logo-navbar" style="width: 40px" src="{{asset('assets/images/otros/mono_rosa.png')}}"
+                <img class="logo-navbar" style="width: 40px" src="{{asset('assets/images/otros/calaberita.png')}}"
                      alt="Moño rosa" title="Moño rosa">
             </a>
         </div>
