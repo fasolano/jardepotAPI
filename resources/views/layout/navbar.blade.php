@@ -284,6 +284,11 @@
                                     class="material-icons">call</i>55 5185 7805</a>
                         </div>
                         <div class="col-md-3 col-6">
+                            CDMX<br>
+                            <a class="telModal" class="telModal" href="tel:5549968849"><i
+                                    class="material-icons">call</i>55 4996 8849</a>
+                        </div>
+                        <div class="col-md-3 col-6">
                             Guadalajara<br>
                             <a class="telModal" href="tel:3317283353"><i class="material-icons">call</i>33 1728 3353</a>
                         </div>
