@@ -40,19 +40,22 @@
     <div class="row justify-content-md-center d-none d-md-flex">
         <div class="col-xl-9 col-lg-11 my-4" style="display: flex; flex-wrap: wrap; max-width: 1300px;">
             <div class="w-30-tel">
-                <div>
-                    <p>Del Interior</p>
-                    <a href="tel:9933070286" style="color: #fff;"><span class="my-4" style="font-size: 25px; font-weight: 500;">800 212 9225</span></a>
+                <div style="margin-bottom: 20px;">
+                    <p style="margin-bottom: 0px;">Del Interior</p>
+                    <a href="tel:8002129225" style="color: #fff;"><span class="my-4" style="font-size: 25px; font-weight: 500;">800 212 9225</span></a>
+                </div>
+                <div style="margin-bottom: 20px;">
+                    <p style="margin-bottom: 0px; font-size: 20px">Mayoreo</p>
+                    <a href="tel:5544598506" style="color: #fff;"><span class="my-4" style="font-size: 25px; font-weight: 500;">55 4459 8506</span></a>
                 </div>
             </div>
             <div class="w-20-tel">
                 <div style="margin-bottom: 20px;">
                     <p>CDMX</p>
-                    <a href="tel:9933070286" style="color: #fff;"><span class="my-4" style="font-size: 15px; font-weight: 300;">55 5185 7805</span></a><br>
-                    <a href="tel:9933070286" style="color: #fff;"><span class="my-4" style="font-size: 15px; font-weight: 300;">55 4459 8506</span></a><br>
-                    <a href="tel:5549974360" style="color: #fff;"><span style="font-size: 15px; font-weight: 300;">55 4997 4360</span></a><br>
-                    <a href="tel:5549974360" style="color: #fff;"><span style="font-size: 15px; font-weight: 300;">55 7618 1056</span></a><br>
                     <a href="tel:5549968849" style="color: #fff;"><span class="my-4" style="font-size: 15px; font-weight: 300;">55 4996 8849</span></a><br>
+                    <a href="tel:5549974360" style="color: #fff;"><span class="my-4" style="font-size: 15px; font-weight: 300;">55 4997 4360</span></a><br>
+                    <a href="tel:5576181056" style="color: #fff;"><span style="font-size: 15px; font-weight: 300;">55 7618 1056</span></a><br>
+                    <a href="tel:5551857805" style="color: #fff;"><span class="my-4" style="font-size: 15px; font-weight: 300;">55 5185 7805</span></a><br>
                 </div>
             </div>
             <div class="w-20-tel">
