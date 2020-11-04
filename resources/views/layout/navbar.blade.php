@@ -45,6 +45,9 @@
                     </div>
                 </div>
                 <div class="col-2" style="padding: 0"> {{--Esto se quita despues y las otras cols--}}
+                    <div class="text-barra text-left">
+                        Refacciones <br><a href="tel:7226481040"><i class="material-icons iconMod">call</i>722 648 1040</a>
+                    </div>
                 </div>
                 <div class="col-1" style="font-size: 35px;cursor:pointer;">
                     <a data-toggle="modal" data-target="#modalTelefonos">
@@ -286,6 +289,11 @@
                                 <a href="tel:5576181056" class="telModal" ><span style="font-size: 15px; font-weight: 300;"><i class="material-icons">call</i>55 7618 1056</span></a><br>
                                 <a href="tel:5551857805" class="telModal" ><span class="my-4" style="font-size: 15px; font-weight: 300;"><i class="material-icons">call</i>55 5185 7805</span></a><br>
                             </div>
+                            <div style="margin-bottom: 20px;">
+                                <p style="margin-bottom: 0px;">Querétaro</p>
+                                <a href="tel:4423801818" class="telModal"><span class="my-4" style="font-size: 15px; font-weight: 300;"><i class="material-icons">call</i>442 380 1818</span></a><br>
+                                <a href="tel:4421239272" class="telModal"><span class="my-4" style="font-size: 15px; font-weight: 300;"><i class="material-icons">call</i>442 123 9272</span></a><br>
+                            </div>
                         </div>
                         <div style="padding: 0;" class="col-12 col-md-2">
                             <div style="margin-bottom: 20px;">
@@ -294,6 +302,10 @@
                                 <a href="tel:7773179652" class="telModal"><span class="my-4" style="font-size: 15px; font-weight: 300;"><i class="material-icons">call</i>777 317 9652</span></a><br>
                                 <a href="tel:7773645067" class="telModal"><span class="my-4" style="font-size: 15px; font-weight: 300;"><i class="material-icons">call</i>777 364 5067</span></a><br>
                                 <a href="tel:7773645635" class="telModal"><span class="my-4" style="font-size: 15px; font-weight: 300;"><i class="material-icons">call</i>777 364 5635</span></a><br>
+                            </div>
+                            <div style="margin-bottom: 20px;">
+                                <p style="margin-bottom: 0px;">Guadalajara</p>
+                                <a href="tel:3317283353" class="telModal" ><span class="my-4" style="font-size: 15px; font-weight: 300;"><i class="material-icons">call</i>33 1728 3353</span></a><br>
                             </div>
                         </div>
                         <div style="padding: 0;" class="col-12 col-md-2">
@@ -310,8 +322,8 @@
                                 <a href="tel:4433560484" class="telModal"><span class="my-4" style="font-size: 15px; font-weight: 300;"><i class="material-icons">call</i>443 356 0484</span></a><br>
                             </div>
                             <div style="margin-bottom: 20px;">
-                                <p style="margin-bottom: 0px;">Guadalajara</p>
-                                <a href="tel:3317283353" class="telModal" ><span class="my-4" style="font-size: 15px; font-weight: 300;"><i class="material-icons">call</i>33 1728 3353</span></a><br>
+                                <p style="margin-bottom: 0px;">Q. Roo</p>
+                                <a href="tel:9982940670" class="telModal"><span class="my-4" style="font-size: 15px; font-weight: 300;"><i class="material-icons">call</i>998 294 0670</span></a><br>
                             </div>
                         </div>
                         <div style="padding: 0;" class="col-12 col-md-2">
@@ -326,10 +338,6 @@
                             <div style="margin-bottom: 20px;">
                                 <p style="margin-bottom: 0px;">S.L.P.</p>
                                 <a href="tel:4443280420" class="telModal"><span class="my-4" style="font-size: 15px; font-weight: 300;"><i class="material-icons">call</i>444 328 0420</span></a><br>
-                            </div>
-                            <div style="margin-bottom: 20px;">
-                                <p style="margin-bottom: 0px;">Q. Roo</p>
-                                <a href="tel:9982940670" class="telModal"><span class="my-4" style="font-size: 15px; font-weight: 300;"><i class="material-icons">call</i>998 294 0670</span></a><br>
                             </div>
                         </div>
                     </div>

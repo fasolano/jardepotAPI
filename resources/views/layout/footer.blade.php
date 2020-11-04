@@ -38,6 +38,11 @@
 
     {{--  TELÉFONOS  --}}
     <div class="row justify-content-md-center d-none d-md-flex">
+        <div class="col-xl-9 col-lg-11 my-4" style="display: flex; flex-wrap: wrap; max-width: 1300px;margin-top:0;margin-bottom: 0">
+            <div class="w-30-tel">
+                <p style="font-size:40px;font-weight: 500">Llámanos</p>
+            </div>
+        </div>
         <div class="col-xl-9 col-lg-11 my-4" style="display: flex; flex-wrap: wrap; max-width: 1300px;">
             <div class="w-30-tel">
                 <div style="margin-bottom: 20px;">
@@ -56,6 +61,11 @@
                     <a href="tel:5549974360" style="color: #fff;"><span class="my-4" style="font-size: 15px; font-weight: 300;">55 4997 4360</span></a><br>
                     <a href="tel:5576181056" style="color: #fff;"><span style="font-size: 15px; font-weight: 300;">55 7618 1056</span></a><br>
                     <a href="tel:5551857805" style="color: #fff;"><span class="my-4" style="font-size: 15px; font-weight: 300;">55 5185 7805</span></a><br>
+                </div>
+                <div style="margin-bottom: 20px;">
+                    <p>Querétaro</p>
+                    <a href="tel:4423801818" style="color: #fff;"><span class="my-4" style="font-size: 15px; font-weight: 300;">442 380 1818</span></a><br>
+                    <a href="tel:4421239272" style="color: #fff;"><span class="my-4" style="font-size: 15px; font-weight: 300;">442 123 9272</span></a><br>
                 </div>
             </div>
             <div class="w-20-tel">
