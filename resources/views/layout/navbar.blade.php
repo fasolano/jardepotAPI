@@ -288,14 +288,6 @@
                             <a class="telModal" href="tel:3317283353"><i class="material-icons">call</i>33 1728 3353</a>
                         </div>
                         <div class="col-md-3 col-6">
-                            Nuevo León<br>
-                            <a class="telModal" href="tel:8120635708"><i class="material-icons">call</i>81 2063 5708</a>
-                        </div>
-                        <div class="col-md-3 col-6">
-                            Edo. Mex.<br>
-                            <a class="telModal" href="tel:7226481040"><i class="material-icons">call</i>722 648 1040</a>
-                        </div>
-                        <div class="col-md-3 col-6">
                             Morelos<br>
                             <a class="telModal" href="tel:7773179630"><i class="material-icons">call</i>777 317 9630</a>
                         </div>
@@ -310,6 +302,14 @@
                         <div class="col-md-3 col-6">
                             Morelos<br>
                             <a class="telModal" href="tel:7773645635"><i class="material-icons">call</i>777 364 5635</a>
+                        </div>
+                        <div class="col-md-3 col-6">
+                            Nuevo León<br>
+                            <a class="telModal" href="tel:8120635708"><i class="material-icons">call</i>81 2063 5708</a>
+                        </div>
+                        <div class="col-md-3 col-6">
+                            Edo. Mex.<br>
+                            <a class="telModal" href="tel:7226481040"><i class="material-icons">call</i>722 648 1040</a>
                         </div>
                         <div class="col-md-3 col-6">
                             Puebla<br>

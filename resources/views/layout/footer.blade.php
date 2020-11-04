@@ -39,52 +39,69 @@
     {{--  TELÉFONOS  --}}
     <div class="row justify-content-md-center d-none d-md-flex">
         <div class="col-xl-9 col-lg-11 my-4" style="display: flex; flex-wrap: wrap; max-width: 1300px;">
-            <div class="w-20-tel">
-                <div>
-                    <p>CDMX</p>
-                    <a href="tel:5549974360" style="color: #fff;"><span style="font-size: 15px; font-weight: 300;">55 4997 4360</span></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <a href="tel:5549968849" style="color: #fff;"><span class="my-4" style="font-size: 15px; font-weight: 300;">55 4996 8849</span></a>
+            <div class="w-30-tel">
+                <div style="margin-bottom: 20px;">
+                    <p style="margin-bottom: 0px;">Del Interior</p>
+                    <a href="tel:8002129225" style="color: #fff;"><span class="my-4" style="font-size: 25px; font-weight: 500;">800 212 9225</span></a>
+                </div>
+                <div style="margin-bottom: 20px;">
+                    <p style="margin-bottom: 0px; font-size: 20px">Mayoreo</p>
+                    <a href="tel:5544598506" style="color: #fff;"><span class="my-4" style="font-size: 25px; font-weight: 500;">55 4459 8506</span></a>
                 </div>
             </div>
             <div class="w-20-tel">
-                <div>
+                <div style="margin-bottom: 20px;">
                     <p>CDMX</p>
-                    <a href="tel:9933070286" style="color: #fff;"><span class="my-4" style="font-size: 15px; font-weight: 300;">55 5185 7805</span></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <a href="tel:9933070286" style="color: #fff;"><span class="my-4" style="font-size: 15px; font-weight: 300;">55 4459 8506</span></a>
+                    <a href="tel:5549968849" style="color: #fff;"><span class="my-4" style="font-size: 15px; font-weight: 300;">55 4996 8849</span></a><br>
+                    <a href="tel:5549974360" style="color: #fff;"><span class="my-4" style="font-size: 15px; font-weight: 300;">55 4997 4360</span></a><br>
+                    <a href="tel:5576181056" style="color: #fff;"><span style="font-size: 15px; font-weight: 300;">55 7618 1056</span></a><br>
+                    <a href="tel:5551857805" style="color: #fff;"><span class="my-4" style="font-size: 15px; font-weight: 300;">55 5185 7805</span></a><br>
                 </div>
             </div>
             <div class="w-20-tel">
-                <div class="mb-3">
-                    <p>Morelos</p>
-                    <a href="tel:7773179630" style="color: #fff;"><span style="font-size: 15px; font-weight: 300;">777 317 9630</span></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <div style="margin-bottom: 20px;">
+                    <p style="margin-bottom: 0px;">Guadalajara</p>
+                    <a href="tel:3317283353" style="color: #fff;"><span class="my-4" style="font-size: 15px; font-weight: 300;">33 1728 3353</span></a><br>
+                </div>
+                <div style="margin-bottom: 20px;">
+                    <p style="margin-bottom: 0px;">Morelos</p>
+                    <a href="tel:7773179630" style="color: #fff;"><span style="font-size: 15px; font-weight: 300;">777 317 9630</span></a><br>
                     <a href="tel:7773179652" style="color: #fff;"><span class="my-4" style="font-size: 15px; font-weight: 300;">777 317 9652</span></a><br>
                     <a href="tel:7773645067" style="color: #fff;"><span class="my-4" style="font-size: 15px; font-weight: 300;">777 364 5067</span></a><br>
                     <a href="tel:7773645635" style="color: #fff;"><span class="my-4" style="font-size: 15px; font-weight: 300;">777 364 5635</span></a><br>
                 </div>
+                {{--<div style="margin-bottom: 20px;">
+                    <p style="margin-bottom: 0px;">Queretaro</p>
+                    <a href="tel:3317283353" style="color: #fff;"><span class="my-4" style="font-size: 15px; font-weight: 300;">33 1728 3353</span></a><br>
+                </div>--}}
             </div>
             <div class="w-20-tel">
-                <div>
-                    <p>Estado de México</p>
-                    <a href="tel:7226481040" style="color: #fff;"><span class="my-4" style="font-size: 15px; font-weight: 300;">722 648 1040</span></a>
+                <div style="margin-bottom: 20px;">
+                    <p style="margin-bottom: 0px;">Nuevo León</p>
+                    <a href="tel:8120635708" style="color: #fff;"><span class="my-4" style="font-size: 15px; font-weight: 300;">81 2063 5708</span></a><br>
+                </div>
+                <div style="margin-bottom: 20px;">
+                    <p style="margin-bottom: 0px;">Estado de México</p>
+                    <a href="tel:7226481040" style="color: #fff;"><span class="my-4" style="font-size: 15px; font-weight: 300;">722 648 1040</span></a><br>
+                </div>
+                <div style="margin-bottom: 20px;">
+                    <p style="margin-bottom: 0px;">Michoacán</p>
+                    <a href="tel:4433560484" style="color: #fff;"><span class="my-4" style="font-size: 15px; font-weight: 300;">443 356 0484</span></a><br>
                 </div>
             </div>
             <div class="w-20-tel">
-                <div>
-                    <p>Puebla</p>
-                    <a href="tel:2227051726" style="color: #fff;"><span class="my-4" style="font-size: 15px; font-weight: 300;">222 705 1726</span></a>
+                <div style="margin-bottom: 20px;">
+                    <p style="margin-bottom: 0px;">Puebla</p>
+                    <a href="tel:2227051726" style="color: #fff;"><span class="my-4" style="font-size: 15px; font-weight: 300;">222 705 1726</span></a><br>
+                </div>
+                <div style="margin-bottom: 20px;">
+                    <p style="margin-bottom: 0px;">Veracruz</p>
+                    <a href="tel:2293300992" style="color: #fff;"><span class="my-4" style="font-size: 15px; font-weight: 300;">229 330 0992</span></a><br>
                 </div>
             </div>
-            <div class="w-20-tel">
-                <div>
-                    <p>Michoacán</p>
-                    <a href="tel:4433560484" style="color: #fff;"><span class="my-4" style="font-size: 15px; font-weight: 300;">443 356 0484</span></a>
-                </div>
+            {{--<div class="w-20-tel">
             </div>
             <div class="w-20-tel">
-                <div>
-                    <p>Nuevo León</p>
-                    <a href="tel:8120635708" style="color: #fff;"><span class="my-4" style="font-size: 15px; font-weight: 300;">81 2063 5708</span></a>
-                </div>
             </div>
             <div class="w-20-tel">
                 <div>
@@ -99,10 +116,6 @@
                 </div>
             </div>
             <div class="w-20-tel">
-                <div>
-                    <p>Guadalajara</p>
-                    <a href="tel:3317283353" style="color: #fff;"><span class="my-4" style="font-size: 15px; font-weight: 300;">33 1728 3353</span></a>
-                </div>
             </div>
             <div class="w-20-tel">
                 <div>
@@ -117,11 +130,7 @@
                 </div>
             </div>
             <div class="w-20-tel">
-                <div>
-                    <p>Veracruz</p>
-                    <a href="tel:2293300992" style="color: #fff;"><span class="my-4" style="font-size: 15px; font-weight: 300;">229 330 0992</span></a>
-                </div>
-            </div>
+            </div>--}}
         </div>
     </div>
 
