@@ -54,10 +54,12 @@
                 </div>
             </div>
             <div class="w-20-tel">
-                <div>
+                <div class="mb-3">
                     <p>Morelos</p>
                     <a href="tel:7773179630" style="color: #fff;"><span style="font-size: 15px; font-weight: 300;">777 317 9630</span></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <a href="tel:7773179652" style="color: #fff;"><span class="my-4" style="font-size: 15px; font-weight: 300;">777 317 9652</span></a>
+                    <a href="tel:7773179652" style="color: #fff;"><span class="my-4" style="font-size: 15px; font-weight: 300;">777 317 9652</span></a><br>
+                    <a href="tel:7773645067" style="color: #fff;"><span class="my-4" style="font-size: 15px; font-weight: 300;">777 364 5067</span></a><br>
+                    <a href="tel:7773645635" style="color: #fff;"><span class="my-4" style="font-size: 15px; font-weight: 300;">777 364 5635</span></a><br>
                 </div>
             </div>
             <div class="w-20-tel">
