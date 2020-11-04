@@ -273,6 +273,10 @@
                                 <p style="margin-bottom: 0px; font-size: 20px">Mayoreo</p>
                                 <a href="tel:5544598506" class="telModal"><span class="my-4" style="font-size: 20px; font-weight: 500;"><i class="material-icons">call</i>55 4459 8506</span></a>
                             </div>
+                            <div style="margin-bottom: 20px;">
+                                <p style="margin-bottom: 0px; font-size: 20px">Refacciones</p>
+                                <a href="tel:7226481040" class="telModal"><span class="my-4" style="font-size: 20px; font-weight: 500;"><i class="material-icons">call</i>722 648 1040</span></a>
+                            </div>
                         </div>
                         <div style="padding: 0;" class="col-12 col-md-2">
                             <div style="margin-bottom: 20px;">
@@ -298,7 +302,7 @@
                                 <a href="tel:8120635708" class="telModal"><span class="my-4" style="font-size: 15px; font-weight: 300;"><i class="material-icons">call</i>81 2063 5708</span></a><br>
                             </div>
                             <div style="margin-bottom: 20px;">
-                                <p style="margin-bottom: 0px;">Estado de México</p>
+                                <p style="margin-bottom: 0px;">Edo. Mex.</p>
                                 <a href="tel:7226481040" class="telModal"><span class="my-4" style="font-size: 15px; font-weight: 300;"><i class="material-icons">call</i>722 648 1040</span></a><br>
                             </div>
                             <div style="margin-bottom: 20px;">
