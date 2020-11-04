@@ -266,7 +266,7 @@
                     <div class="row">
                         <div style="padding: 0;" class="col-12 col-md-3">
                             <div style="margin-bottom: 20px;">
-                                <p style="margin-bottom: 0px;">Del Interior</p>
+                                <p style="margin-bottom: 0px;font-size: 20px">Del Interior</p>
                                 <a href="tel:8002129225" class="telModal" ><span class="my-4" style="font-size: 20px; font-weight: 500;"><i class="material-icons">call</i>800 212 9225</span></a>
                             </div>
                             <div style="margin-bottom: 20px;">
