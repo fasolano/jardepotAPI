@@ -262,74 +262,71 @@
                 </button>
             </div>
             <div class="modal-body">
-                <div class="container row">
+                <div class="container">
                     <div class="row">
-                        <div class="col-md-12 col-6">
-                            Del Interior<br>
-                            <a class="telModal" href="tel:8002129225"><i class="material-icons">call</i>800 212 9225</a>
+                        <div style="padding: 0;" class="col-12 col-md-3">
+                            <div style="margin-bottom: 20px;">
+                                <p style="margin-bottom: 0px;">Del Interior</p>
+                                <a href="tel:8002129225" class="telModal" ><span class="my-4" style="font-size: 20px; font-weight: 500;"><i class="material-icons">call</i>800 212 9225</span></a>
+                            </div>
+                            <div style="margin-bottom: 20px;">
+                                <p style="margin-bottom: 0px; font-size: 20px">Mayoreo</p>
+                                <a href="tel:5544598506" class="telModal"><span class="my-4" style="font-size: 20px; font-weight: 500;"><i class="material-icons">call</i>55 4459 8506</span></a>
+                            </div>
                         </div>
-                        <div class="col-md-3 col-6">
-                            CDMX<br>
-                            <a class="telModal" class="telModal" href="tel:5549974360"><i
-                                    class="material-icons">call</i>55 4997 4360</a>
+                        <div style="padding: 0;" class="col-12 col-md-2">
+                            <div style="margin-bottom: 20px;">
+                                <p>CDMX</p>
+                                <a href="tel:5549968849" class="telModal" ><span class="my-4" style="font-size: 15px; font-weight: 300;"><i class="material-icons">call</i>55 4996 8849</span></a><br>
+                                <a href="tel:5549974360" class="telModal" ><span class="my-4" style="font-size: 15px; font-weight: 300;"><i class="material-icons">call</i>55 4997 4360</span></a><br>
+                                <a href="tel:5576181056" class="telModal" ><span style="font-size: 15px; font-weight: 300;"><i class="material-icons">call</i>55 7618 1056</span></a><br>
+                                <a href="tel:5551857805" class="telModal" ><span class="my-4" style="font-size: 15px; font-weight: 300;"><i class="material-icons">call</i>55 5185 7805</span></a><br>
+                            </div>
                         </div>
-                        <div class="col-md-3 col-6">
-                            CDMX<br>
-                            <a class="telModal" class="telModal" href="tel:5549968849"><i
-                                    class="material-icons">call</i>55 4996 8849</a>
+                        <div style="padding: 0;" class="col-12 col-md-2">
+                            <div style="margin-bottom: 20px;">
+                                <p>Morelos</p>
+                                <a href="tel:7773179630" class="telModal"><span style="font-size: 15px; font-weight: 300;"><i class="material-icons">call</i>777 317 9630</span></a><br>
+                                <a href="tel:7773179652" class="telModal"><span class="my-4" style="font-size: 15px; font-weight: 300;"><i class="material-icons">call</i>777 317 9652</span></a><br>
+                                <a href="tel:7773645067" class="telModal"><span class="my-4" style="font-size: 15px; font-weight: 300;"><i class="material-icons">call</i>777 364 5067</span></a><br>
+                                <a href="tel:7773645635" class="telModal"><span class="my-4" style="font-size: 15px; font-weight: 300;"><i class="material-icons">call</i>777 364 5635</span></a><br>
+                            </div>
                         </div>
-                        <div class="col-md-3 col-6">
-                            CDMX<br>
-                            <a class="telModal" class="telModal" href="tel:5549968849"><i
-                                    class="material-icons">call</i>55 5185 7805</a>
+                        <div style="padding: 0;" class="col-12 col-md-2">
+                            <div style="margin-bottom: 20px;">
+                                <p style="margin-bottom: 0px;">Nuevo León</p>
+                                <a href="tel:8120635708" class="telModal"><span class="my-4" style="font-size: 15px; font-weight: 300;"><i class="material-icons">call</i>81 2063 5708</span></a><br>
+                            </div>
+                            <div style="margin-bottom: 20px;">
+                                <p style="margin-bottom: 0px;">Estado de México</p>
+                                <a href="tel:7226481040" class="telModal"><span class="my-4" style="font-size: 15px; font-weight: 300;"><i class="material-icons">call</i>722 648 1040</span></a><br>
+                            </div>
+                            <div style="margin-bottom: 20px;">
+                                <p style="margin-bottom: 0px;">Michoacán</p>
+                                <a href="tel:4433560484" class="telModal"><span class="my-4" style="font-size: 15px; font-weight: 300;"><i class="material-icons">call</i>443 356 0484</span></a><br>
+                            </div>
+                            <div style="margin-bottom: 20px;">
+                                <p style="margin-bottom: 0px;">Guadalajara</p>
+                                <a href="tel:3317283353" class="telModal" ><span class="my-4" style="font-size: 15px; font-weight: 300;"><i class="material-icons">call</i>33 1728 3353</span></a><br>
+                            </div>
                         </div>
-                        <div class="col-md-3 col-6">
-                            Guadalajara<br>
-                            <a class="telModal" href="tel:3317283353"><i class="material-icons">call</i>33 1728 3353</a>
-                        </div>
-                        <div class="col-md-3 col-6">
-                            Morelos<br>
-                            <a class="telModal" href="tel:7773179630"><i class="material-icons">call</i>777 317 9630</a>
-                        </div>
-                        <div class="col-md-3 col-6">
-                            Morelos<br>
-                            <a class="telModal" href="tel:7773179630"><i class="material-icons">call</i>777 317 9652</a>
-                        </div>
-                        <div class="col-md-3 col-6">
-                            Morelos<br>
-                            <a class="telModal" href="tel:7773645067"><i class="material-icons">call</i>777 364 5067</a>
-                        </div>
-                        <div class="col-md-3 col-6">
-                            Morelos<br>
-                            <a class="telModal" href="tel:7773645635"><i class="material-icons">call</i>777 364 5635</a>
-                        </div>
-                        <div class="col-md-3 col-6">
-                            Nuevo León<br>
-                            <a class="telModal" href="tel:8120635708"><i class="material-icons">call</i>81 2063 5708</a>
-                        </div>
-                        <div class="col-md-3 col-6">
-                            Edo. Mex.<br>
-                            <a class="telModal" href="tel:7226481040"><i class="material-icons">call</i>722 648 1040</a>
-                        </div>
-                        <div class="col-md-3 col-6">
-                            Puebla<br>
-                            <a class="telModal" href="tel:2227051726"><i class="material-icons">call</i>222 705 1726</a>
-                        </div>
-                        <div class="col-md-3 col-6">
-                            Q. Roo<br>
-                            <a class="telModal" href="tel:9982940670"><i class="material-icons">call</i>998 294 0670</a>
-                        </div>
-                        <div class="col-md-3 col-6">
-                            S.L.P.<br>
-                            <a class="telModal" href="tel:4443280420"><i class="material-icons">call</i>444 328  0420</a>
-                        </div>
-                        <div class="col-md-3 col-6">
-                            Michoacán<br>
-                            <a class="telModal" href="tel:4433560484"><i class="material-icons">call</i>443 356 0484</a>
-                        </div>
-                        <div class="col-md-3 col-6">
-                            Veracruz<br>
-                            <a class="telModal" href="tel:2293300992"><i class="material-icons">call</i>229 330 0992</a>
+                        <div style="padding: 0;" class="col-12 col-md-2">
+                            <div style="margin-bottom: 20px;">
+                                <p style="margin-bottom: 0px;">Puebla</p>
+                                <a href="tel:2227051726" class="telModal"><span class="my-4" style="font-size: 15px; font-weight: 300;"><i class="material-icons">call</i>222 705 1726</span></a><br>
+                            </div>
+                            <div style="margin-bottom: 20px;">
+                                <p style="margin-bottom: 0px;">Veracruz</p>
+                                <a href="tel:2293300992" class="telModal"><span class="my-4" style="font-size: 15px; font-weight: 300;"><i class="material-icons">call</i>229 330 0992</span></a><br>
+                            </div>
+                            <div style="margin-bottom: 20px;">
+                                <p style="margin-bottom: 0px;">S.L.P.</p>
+                                <a href="tel:4443280420" class="telModal"><span class="my-4" style="font-size: 15px; font-weight: 300;"><i class="material-icons">call</i>444 328 0420</span></a><br>
+                            </div>
+                            <div style="margin-bottom: 20px;">
+                                <p style="margin-bottom: 0px;">Q. Roo</p>
+                                <a href="tel:9982940670" class="telModal"><span class="my-4" style="font-size: 15px; font-weight: 300;"><i class="material-icons">call</i>998 294 0670</span></a><br>
+                            </div>
                         </div>
                     </div>
                 </div>
