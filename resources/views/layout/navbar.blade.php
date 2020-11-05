@@ -69,8 +69,8 @@
                                  alt="Logo Jardepot" title="Logo Jardepot">
                         </picture>
 
-                        <img class="logo-navbar" style="width: 58px;margin-left: 20px" src="{{asset('assets/images/otros/calaberita.png')}}"
-                             alt="Moño rosa" title="Moño rosa">
+                     {{--   <img class="logo-navbar" style="width: 58px;margin-left: 20px" src="{{asset('assets/images/otros/calaberita.png')}}"
+                             alt="Imagen Temporada" title="Imagen Temporada">--}}
                     </a>
                 </div>
                 <div class="col-md-7">
@@ -173,8 +173,8 @@
                     <img class="logo-navbar" style="width: 80%" src="{{asset('img/logos/logoJardepot.png')}}"
                          alt="Logo Jardepot" title="Logo Jardepot">
                 </picture>
-                <img class="logo-navbar" style="width: 40px" src="{{asset('assets/images/otros/calaberita.png')}}"
-                     alt="Moño rosa" title="Moño rosa">
+                {{--<img class="logo-navbar" style="width: 40px" src="{{asset('assets/images/otros/calaberita.png')}}"
+                     alt="Imagen Temporada title="Imagen Temporada">--}}
             </a>
         </div>
         <div class="col-4" style="margin-top: 8px">
