@@ -53,7 +53,7 @@
                         </div>
                     </h2>
                 </div>
-                <div id="collapse{{ $id.$loop->iteration }}" class="collapse show px-2">
+            {{--    <div id="collapse{{ $id.$loop->iteration }}" class="collapse show px-2">
                     <div class="row">
                         @foreach ($itemLevel1->nivel2 as $keyLevel2 => $itemLevel2)
                             <div class="col-4 px-2">
@@ -61,6 +61,18 @@
                                                                 'categoryLevel2'=> strtolower(str_replace(" ", "-", $itemLevel2->name))])}}"
                                    class="btn btn-light p-0" style="width: 100%">
                                     <img src="{{asset('assets/images/brands/'.strtolower($itemLevel2->name).'.jpg')}}" alt="{{$itemLevel2->name}}" style="width: 100%">
+                                </a>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>--}}
+                <div id="collapse{{ $id.$loop->iteration }}" class="collapse show px-2">
+                    <div class="row">
+                        @foreach ($itemLevel1->nivel2 as $keyLevel2 => $itemLevel2)
+                            <div class="col-6 text-center my-1 p-0">
+                                <a href="{{route('products', ['categoryLevel1'=>$itemLevel1->href, 'categoryLevel2'=> $itemLevel2->href])}}"
+                                   class="btn bg-color-jd btn-no-border px-0" style="width: 80%; font-size: 14px; white-space: nowrap;">
+                                    {{$itemLevel2->name}}
                                 </a>
                             </div>
                         @endforeach
@@ -88,7 +100,7 @@
                         @foreach ($itemLevel1->nivel2 as $keyLevel2 => $itemLevel2)
                             <div class="col-6 text-center my-1 p-0">
                                 <a href="{{route('products', ['categoryLevel1'=>$itemLevel1->href, 'categoryLevel2'=> $itemLevel2->href])}}"
-                                   class="btn bg-color-jd btn-no-border px-0" style="width: 80%; font-size: 15px; white-space: nowrap;">
+                                   class="btn bg-color-jd btn-no-border px-0" style="width: 80%; font-size: 14px; white-space: nowrap;">
                                     {{$itemLevel2->name}}
                                 </a>
                             </div>

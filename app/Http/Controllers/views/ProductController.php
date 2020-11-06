@@ -73,7 +73,9 @@ class ProductController extends Controller {
             $product= $this->model_format_products($data)[0];
             $data2 = $this->productoRepository->getProductsRelated($productType, $brand, $mpn);
             $productsRelated = $this->model_format_products($data2);
-            return view('pages/product',compact('sidebar','product','productsRelated', 'ipl', 'linkSpare'));
+            $canonical = url()->current();;
+
+            return view('pages/product',compact('sidebar','product','productsRelated', 'ipl', 'linkSpare','canonical'));
         }else{
             return view('errors/404');
         }
@@ -179,6 +181,11 @@ class ProductController extends Controller {
             $response[$iterator]['inventory'] = $item->cantidadInventario;
 
             $response[$iterator]['video'] = isset($item->video)?$item->video:"";
+            if(file_exists(strtr(base_path().'/public/assets/images/brands/'.strtolower($brand).'.jpg', $this-> unwanted_array))){
+                $response[$iterator]['imgBrand']= 'assets/images/brands' . $img . '.jpg';
+            }else{
+                $response[$iterator]['imgBrand'] = 'assets/images/brands/nobrand.png';
+            }
 
             $iterator++;
         }

@@ -1,5 +1,5 @@
 {{--Vista escritorio--}}
-<nav class="sticky-top navbar-dark bg-dark container-fluid d-none  d-md-none  d-lg-block">
+<nav class="sticky-top navbar-dark bg-dark container-fluid d-none d-md-none d-lg-block">
     <div class="row justify-content-md-center flex-column align-items-center">
         <div class="div-navbar col-12 col-xl-12 col-lg-12 col-md-12">
             <div class="row" style="color: white;">

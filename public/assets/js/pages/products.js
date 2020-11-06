@@ -198,7 +198,7 @@ function reloadProducts() {
                 '                                             title="'+e.name+'" alt="'+e.name+'">' +
                 '                                    </div>';
             if (e.newPriceFloat > 3000) {
-                item += '                                    <img class="free-delivery-recom" src="'+ruta+'assets/images/otros/gratis.png"' +
+                item += '                                    <img class="free-delivery-prods" src="'+ruta+'assets/images/otros/gratis.png"' +
                 '                                         title="Envío gratis Jardepot" alt="Envío gratis Jardepot">';
             }
             item += '                                </a>' +

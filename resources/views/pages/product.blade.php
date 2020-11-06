@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="{{asset('assets/css/components/swiper.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/components/drift-basic.min.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/pages/cart.min.css')}}">
-    <link rel="canonical" href="https://www.jardepot.com">
+    <link rel="canonical" href="{{$canonical}}">
     <script type="text/javascript" src="{{asset('assets/js/jquery.validate.min.js')}}"></script>
 @endsection
 
@@ -55,16 +55,16 @@
                 @endcomponent
             </div>
 
-            <div class="col-lg-7 col-md-12">
+            <div class="col-lg-6 col-md-12">
                 <h1 class="title-product">{{$product['name']}}</h1>
                 <div class="row">
-                    <div class="col-md-5 mt-2">
+                    <div class="col-md-10 mt-2" style="padding-right: 0">
                         <div class="card shadow-sm" style="overflow: hidden;">
                             @if($product['discount'] == 'Oferta')
                                 <div class="ribbon ribbon-top-right" style="display: block;z-index: 6"><span>Oferta</span></div>
                             @endif
 
-                            <div class="product-image" id="div-img-product">
+                            <div class="product-image" id="div-img-product" style="width: 500px;height: 500px">
                                 <img style="max-width: 100%" id="drift-trigger"
                                      src="{{asset($product['images'][0]['medium'])}}" data-zoom="{{asset($product['images'][0]['big'])}}"
                                      title="{{$product['name']}}" alt="{{$product['name']}}">
@@ -89,18 +89,54 @@
                                     </div>
                                 @endforeach
                             </div>
-                            <!-- Add Pagination -->
                             <div class="mt-3"></div>
-                            <!-- Add Arrows -->
                             <div class="swiper-button-next"></div>
                             <div class="swiper-button-prev"></div>
                         </div>
 --}}
-                        <div class="col-12" style="width: 100%;">
+                        <div class="col-row d-block d-sm-block d-lg-none" style="width: 100%;">
+                            <div class="col-2">
+                                @if($product['video'])
+                                    <a target="_blank" href="https://www.youtube.com/watch?v={{$product['video']}}" rel="noopener">
+                                        <img src="{{asset('assets/images/icons/youtube_icon.png')}}" title="video producto" alt="video Producto">
+                                    </a>
+                                @endif
+                            </div>
+                            <div class="col-8">
+                                <div onclick="beforeImg()">
+                                    <i class="material-icons navigate-products" style="left:-10px;">navigate_before</i>
+                                </div>
+                                <div>
+                                    <ul class="swiper-product2" id="list-images">
+                                        @foreach($product['images'] as $image )
+                                            <li onclick="changeImg('{{asset($image['medium'])}}','{{asset($image['big'])}}','{{$product['name']}}',this)">
+                                                <div class="card shadow-sm product-item" style="border-radius: 5px;overflow: hidden;min-height: 100%;">
+                                                    <img class="img-products" src="{{asset($image['small'])}}"
+                                                         title="{{$product['name']}}" alt="{{$product['name']}}">
+                                                </div>
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                                <div onclick="nextImg()">
+                                    <i class="material-icons navigate-products" style="left:auto;right:-15px;">navigate_next</i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-1 d-none d-md-none d-lg-block">
+                        <div class="col-12 text-center" style="width: 100%;">
+                            @if($product['video'])
+                                <a target="_blank" href="https://www.youtube.com/watch?v={{$product['video']}}" rel="noopener">
+                                    <img src="{{asset('assets/images/icons/youtube_icon.png')}}" title="video producto" alt="video Producto">
+                                </a>
+                            @endif
+                            <br>
                             <div onclick="beforeImg()">
-                                <i class="material-icons navigate-products" style="left:-10px;">navigate_before</i></div>
+                                <i class="material-icons" style="font-size:35px;color:#f68600;cursor: pointer;">keyboard_arrow_up</i>
+                            </div>
                             <div>
-                                <ul class="swiper-product2" id="list-images">
+                                <ul class="swiper-product3" id="list-images">
                                     @foreach($product['images'] as $image )
                                         <li onclick="changeImg('{{asset($image['medium'])}}','{{asset($image['big'])}}','{{$product['name']}}',this)">
                                             <div class="card shadow-sm product-item" style="border-radius: 5px;overflow: hidden;min-height: 100%;">
@@ -112,10 +148,12 @@
                                 </ul>
                             </div>
                             <div onclick="nextImg()">
-                                <i class="material-icons navigate-products" style="left:auto;right:-15px;">navigate_next</i></div>
+                                <i class="material-icons" style="font-size:35px;color:#f68600;cursor: pointer;">keyboard_arrow_down</i>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-md-7 mt-2 p-3">
+                    <div class="col-md-12 mt-2 p-3 d-block d-sm-block d-lg-none">
+                        <div class="">
                         <h2 class="py-1 description-product">{{$product['description']}}</h2>
                         @if($product['stock'])
                             <div class="row">
@@ -215,13 +253,10 @@
                                 </a>
                             @endif
                         </div>
-                        <div style="width: 400px !important;">
-                            <div class="detail"></div>{{--Muestra el zoom--}}
-                        </div>
                     </div>
                 </div>
-
-                <div class="row card shadow">
+                </div>
+                <div class="row card shadow mt-3">
                     <ul class="nav nav-tabs">
                         <li class="nav-item">
                             <a class="nav-link text-muted active" data-toggle="tab" href="#fichTecnica">Ficha técnica</a>
@@ -348,9 +383,118 @@
                 @include('components.infoCompra')
                 @include('components.caruselCanales')
             </div>
-            <div class="card shadow-lg col-lg-2 col-md-12" style="height: 500px;">
+            <div class="col-lg-3 col-md-12" style="height: 500px;">
+                <div class="d-none d-md-none d-lg-block">
+                    @if($product['imgBrand'])
+                    <div class="text-center">
+                        <img src="{{asset($product['imgBrand'])}}" style="width: 160px" alt="{{'Logo '.$product['brand']}}" >
+                    </div>
+                    @endif
+                    <h2 class="py-1 description-product">{{$product['description']}}</h2>
+                    <br>
+                    @if($product['stock'])
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12">
+                                @if( ($product['oldPrice']) && $product['stock'])
+                                    <h3 class="old-price text-muted">{{$product['oldPrice'] }}</h3>
+                                @endif
+                                <p class="new-price">
+                                    <span class="precio" style="color: #de1f21;font-weight:500;">{{$product['newPrice']}}</span>
+                                </p>
+                            </div>
+                            <div class="col-md-12 col-sm-12">
+                                <p class="text-bold-tiny">
+                                    @if($product['productType'] =='Aspersora' || $product['productType'] =='Motosierra' || $product['productType'] ==' Motobomba'
+                                        || $product['productType'] =='Parihuela' || $product['productType'] =='Termonebulizadora' || $product['productType'] =='Nebulizadora')
+                                        Producto para uso agrícola precio con IVA tasa 0%
+                                    @else
+                                        IVA incluido
+                                    @endif
+                                </p>
+                                <p class="text-bold-tiny">Precio aplica en pagos mediante depósito o transferencia bancaria.</p>
+                                <p class="conditons">
+                                    *Sujeto a existencias. <br> *Precios sujetos a cambio sin previo aviso.
+                                </p>
+                            </div>
+                        </div>
+                        {{--                            @if($product['discount'] == 'Oferta')--}}
+                        {{--                                <p style="color: #de1f21;font-weight:500;">Precio por aniversario, válido hasta el 23 de octubre 2020</p>--}}
+                        {{--                            @endif--}}
+                        <div class="row text-muted p-1"
+                             style="flex-flow: row wrap; box-sizing: border-box;place-content: flex-start; align-items: flex-start;">
+                            {{--<div class="col-md-6">
+                                <span>Cantidad:</span>
+                                <br>
+                                <button onclick="resNumProduct()" class="btn"> <i class="material-icons">remove</i> </button>
+                                <span><input type="number" style="width: 40px" disabled id="cantidadProducto" name="cantidadProducto" value="1"></span>
+                                <button onclick="addNumProduct()" class="btn"><i class="material-icons">add</i> </button>
+                            </div>--}}
+                            <div class="col-md-12 mt-2">
+                                <a onclick="verifyAddCartProduct('{{$product['productType']}}','{{$product['brand']}}','{{$product['mpn']}}', 1, 'cart')" class="btn btn-block btn-danger my-2 text-white">¡Compra Ahora!</a>
+                                @if(($product['inventory'] > 0) && $product['stock'])
+                                    <a onclick="verifyAddCartProduct('{{$product['productType']}}','{{$product['brand']}}','{{$product['mpn']}}', 1, 'mercado')" class="btn btn-block btn-modal-mercado" href="javascript: void(0)"
+                                       style="background-color: #c7c7c7">¡Compra con Mensualidades!
+                                        <img src="{{asset("assets/images/bancos/mercadopago.png")}}" title="Pagar MergadoPago" alt="Pagar MercadoPago">
+                                    </a>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="row text-muted p-1" style="flex-flow: row wrap; box-sizing: border-box;place-content: flex-start; align-items: flex-start;">
+                            {{--                                <button class="btn btn-primary">Meses</button>--}}
+                        </div>
+                        @if(($product['inventory'] > 0) && $product['stock'])
+                            <div class="py-1"><p class="fn-color-inStock">
+                                    <i class="material-icons">flash_on</i>&nbsp;Envío de volada </p>
+                            </div>
+                        @endif
+                    @else
+                        <div class="row text-muted p-4">
+                            <p class="text-muted" style="font-weight: 900; font-size: 15px;">
+                                Consulta precio y existencia. Llámanos a nuestros teléfonos
+                            </p>
+                        </div>
+                    @endif
+                    <div class="divider"></div>
+                    <div style="font-weight: bold !important;">
+                        @if( $product['stock'])
+                            <p class="conditons"><i class="material-icons" style="color: #f68600;font-size: 18px">local_shipping</i>
+                                Envio gratis a partir de $3,000 de compra.
+                                <a href="javascript: void(0)" data-toggle="modal" data-target="#modalCondicionEnvio"
+                                   style="color: rgba(0, 0, 0, 0.87);">*Condiciones</a>
+                            </p>
+                        @endif
+                        <p class="conditons"><i class="material-icons" style="color: #f68600;font-size: 18px">perm_phone_msg</i>
+                            Soporte y asesoria </p>
+                        <p class="conditons">
+                            <i class="material-icons" style="color: #f68600;font-size: 18px">build</i> Garantía de Fabrica
+                        </p>
+                    </div>
+                    <br>
+                    <a class="btn btn-success" style="background: #35B73A;color: #fff" target="_blank"
+                       href="https://wa.me/527226481040?text=Hola,%20me%20gustar&iacute;a%20saber%20sobre%20las%20refacciones%20del%20producto%20{{$product['name']}}"
+                       tabindex="0" aria-disabled="false">
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                             aria-hidden="true" focusable="false" width="20px" height="20px"
+                             style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);"
+                             preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path
+                                d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91c0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23c-1.48 0-2.93-.39-4.19-1.15l-.3-.17l-3.12.82l.83-3.04l-.2-.32a8.188 8.188 0 0 1-1.26-4.38c.01-4.54 3.7-8.24 8.25-8.24M8.53 7.33c-.16 0-.43.06-.66.31c-.22.25-.87.86-.87 2.07c0 1.22.89 2.39 1 2.56c.14.17 1.76 2.67 4.25 3.73c.59.27 1.05.42 1.41.53c.59.19 1.13.16 1.56.1c.48-.07 1.46-.6 1.67-1.18c.21-.58.21-1.07.15-1.18c-.07-.1-.23-.16-.48-.27c-.25-.14-1.47-.74-1.69-.82c-.23-.08-.37-.12-.56.12c-.16.25-.64.81-.78.97c-.15.17-.29.19-.53.07c-.26-.13-1.06-.39-2-1.23c-.74-.66-1.23-1.47-1.38-1.72c-.12-.24-.01-.39.11-.5c.11-.11.27-.29.37-.44c.13-.14.17-.25.25-.41c.08-.17.04-.31-.02-.43c-.06-.11-.56-1.35-.77-1.84c-.2-.48-.4-.42-.56-.43c-.14 0-.3-.01-.47-.01z"
+                                fill="#fff"/><rect x="0" y="0" width="24" height="24" fill="rgba(0, 0, 0, 0)"/>
+                        </svg> Pregunta por refacciones
+                    </a>
+                    @if($ipl > 0)
+                        <a class="btn btn-secondary my-2 justify-content-center" target="_blank"
+                           href="{{route('spare', $linkSpare)}}">
+                            <span class="material-icons" style="font-size: 19px"> settings </span>
+                            Guía de refacciones
+                        </a>
+                    @endif
+                    <div style="width: 400px !important;z-index: 999">
+                        <div class="detail"></div>{{--Muestra el zoom--}}
+                    </div>
+                </div>
                 <br>
-                <div class="pl-1">
+                <div class="card shadow-lg pl-1 mt-2">
+                    <div style="margin: 5px">
                     <a class="h4" href="tel:8002129225" style="color: #1b1e21">
                         <i class="material-icons iconMod">local_phone</i>800 212 9225
                     </a>
@@ -385,6 +529,7 @@
                             <button id="btnSubmit" type="submit" class="btn btn-warning btn-block">Enviar</button>
                         </div>
                     </form>
+                    </div>
                 </div>
             </div>
         </div>
