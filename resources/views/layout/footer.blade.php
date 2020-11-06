@@ -5,17 +5,23 @@
         <div class="col-xl-9 col-lg-11 my-4" style="max-width: 1300px;">
             <div class="row">
                 <div class="col-md-7">
-                    <p class="font-weight-bold my-2">INFORMACIÓN DE CONTACTO</p>
-                    <div style="font-size: 14px; line-height: 1.5;">
-                        <p class="d-flex align-items-center my-2">
-                            <i class="material-icons fn-color-jd mr-2">location_on</i>
-                            <a class="link-footer" href="https://goo.gl/maps/X217x5HGYWMCLJqSA" target="_blank" rel="noopener">Av. Emiliano Zapata No. 129, Tlaltenango 62170, Cuernavaca Morelos.</a>
-                        </p>
+                    <p class="font-weight-bold my-2">Centros de Servicio y Distribución</p>
+                    <div style="line-height: 1.5;">
+                        <a class="link-footer" href="https://goo.gl/maps/X217x5HGYWMCLJqSA" target="_blank" rel="noopener">
+                            <p class="d-flex align-items-center my-2">
+                                <span style="font-size: 20px"><i class="material-icons fn-color-jd mr-2">location_on</i>Morelos</span>
+                            </p>
+                            <p style="font-size: 14px" class="d-flex align-items-center my-2 ml-4">
+                            Av. Emiliano Zapata No. 129 Local 4<br> Colonia Tlaltenango, Cuernavaca Morelos.
+                            </p>
+                        </a>
+                    </div>
+                    <div class="mt-3" style="font-size: 14px; line-height: 1.5;">
                         <p class="d-flex align-items-center my-2"><i class="material-icons fn-color-jd mr-2">access_time</i> Lunes - Viernes / 9:00AM - 6:00PM</p>
                         <p class="d-flex align-items-center my-2"><i class="material-icons fn-color-jd mr-2">access_time</i> Sabado / 9:00AM - 2:00PM</p>
                     </div>
-                    <p class="font-weight-bold my-2">Atención a Comercializadoras y Mayoristas:</p>
-                    <div style="font-size: 14px; line-height: 1.5;">
+                    <p class="font-weight-bold my-2 mt-3">Atención a Comercializadoras y Mayoristas:</p>
+                    <div class="mt-3"  style="font-size: 14px; line-height: 1.5;">
                         <p class="d-flex align-items-center my-2">
                             <i class="material-icons fn-color-jd mr-2">location_on</i>
                             <a href="tel:5544598506" class="font-weight-bold link-footer">55 4459 8506.</a>
