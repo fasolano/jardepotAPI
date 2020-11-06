@@ -40,16 +40,6 @@
         });
     </script>
 
-    <!--  Clickcease.com tracking-->
-    <script type='text/javascript'>var script = document.createElement('script');
-        script.async = true; script.type = 'text/javascript';
-        var target = 'https://www.clickcease.com/monitor/stat.js';
-        script.src = target;var elem = document.head;elem.appendChild(script);
-    </script>
-    <noscript>
-        <a href='https://www.clickcease.com' rel='nofollow'><img src='https://monitor.clickcease.com/stats/stats.aspx' alt='ClickCease'/></a>
-    </noscript>
-    <!--  Clickcease.com tracking-->
     {{--  Metatitle, metadescripcion, titulo de página, etc.  --}}
     @yield('metaData')
 <!-- Facebook Pixel Code -->
@@ -76,27 +66,38 @@
 </head>
 
 <body style="font-family: Roboto !important;">
-{{--<!-- Google Tag Manager (noscript) -->
-<noscript>
-    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T2GB24V" height="0" width="0" style="display:none;visibility:hidden"></iframe>
-</noscript>
-<!-- End Google Tag Manager (noscript) -->--}}
+    {{--<!-- Google Tag Manager (noscript) -->
+    <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T2GB24V" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->--}}
 
-<div id="overlay-bussy"><div id="loading"></div></div>
-@include('layout.navbar')
-<div class="container-fluid" style="background: #fafafa;">
-    <div class="row justify-content-md-center">
-        <div class="col-xl-12 col-lg-12" style="max-width: 1400px;">
-            {{--  Contenido de la página  --}}
-            <div id="snackbar"></div>
-            @yield('content')
+    <!--  Clickcease.com tracking-->
+    <script type='text/javascript'>var script = document.createElement('script');
+        script.async = true; script.type = 'text/javascript';
+        var target = 'https://www.clickcease.com/monitor/stat.js';
+        script.src = target;var elem = document.head;elem.appendChild(script);
+    </script>
+    <noscript>
+        <a href='https://www.clickcease.com' rel='nofollow'><img src='https://monitor.clickcease.com/stats/stats.aspx' alt='ClickCease'/></a>
+    </noscript>
+    <!--  Clickcease.com tracking-->
+
+    <div id="overlay-bussy"><div id="loading"></div></div>
+    @include('layout.navbar')
+    <div class="container-fluid" style="background: #fafafa;">
+        <div class="row justify-content-md-center">
+            <div class="col-xl-12 col-lg-12" style="max-width: 1400px;">
+                {{--  Contenido de la página  --}}
+                <div id="snackbar"></div>
+                @yield('content')
+            </div>
         </div>
     </div>
-</div>
 
-@include('layout.footer')
-@include('layout.cierre')
-{{--  Js especifico de cada página  --}}
-@yield('specificJS')
+    @include('layout.footer')
+    @include('layout.cierre')
+    {{--  Js especifico de cada página  --}}
+    @yield('specificJS')
 </body>
 </html>
