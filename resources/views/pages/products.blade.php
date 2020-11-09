@@ -134,14 +134,14 @@
                                 style="border-radius: 5px;overflow: hidden;">
                                 <a href="{{route('product',
                                 ['marca'=> str_replace(" ", "-",strtolower($item['brand'])), 'productType'=> strtolower($item['productType']), 'brand'=> str_replace(" ", "-",strtolower($item['brand'])), 'mpn'=> strtolower($item['mpn'])])}}">
+{{--                                    @if(isset($item['discount']))--}}
+{{--                                        <div class="ribbon ribbon-top-right" style="display: block">--}}
+{{--                                            <span>Oferta</span>--}}
+{{--                                        </div>--}}
+{{--                                    @endif--}}
                                     @if(isset($item['discount']))
-                                        <div class="ribbon ribbon-top-right" style="display: block">
-                                            <span>Oferta</span>
-                                        </div>
+                                        <img src="{{ asset('assets/images/otros/15pestania.png') }}" style="width: 85px;position: absolute;top: 0;left: 0;" title="Pestaña Izquierda" alt="Pestaña Izquierda">
                                     @endif
-                                  {{--  @if(isset($item['discount']))
-                                        <img src="{{ asset('assets/images/otros/9aniospestania.png') }}" style="width: 85px;position: absolute;top: 0;left: 0;" title="9 aniversario" alt="9 aniversario">
-                                    @endif--}}
                                     <div class="product-image" style="height: 205px">
                                         <img style="max-width: 80%; max-height: 100%"
                                              src="{{asset($item['images'][0]['medium'])}}"
@@ -310,9 +310,11 @@
                                  style="border-radius: 5px;overflow: hidden;">
                                 <a href="{{route('product',
                                 ['marca'=> str_replace(" ", "-",strtolower($item['brand'])), 'productType'=> strtolower($item['productType']), 'brand'=> str_replace(" ", "-",strtolower($item['brand'])), 'mpn'=> strtolower($item['mpn'])])}}">
+{{--                                    @if(isset($item['discount']))--}}
+{{--                                        <div class="ribbon ribbon-top-right" style="display: block"><span>Oferta</span></div>--}}
+{{--                                    @endif--}}
                                     @if(isset($item['discount']))
-                                        <div class="ribbon ribbon-top-right" style="display: block"><span>Oferta</span>
-                                        </div>
+                                        <img src="{{ asset('assets/images/otros/15pestania.png') }}" style="width: 85px;position: absolute;top: 0;left: 0;" title="Pestaña Izquierda" alt="Pestaña Izquierda">
                                     @endif
                                {{--     @if(isset($item['discount']))
                                         <img src="{{ asset('assets/images/otros/9aniospestania.png') }}" style="width: 85px;position: absolute;top: 0;left: 0;" title="9 aniversario" alt="9 aniversario">

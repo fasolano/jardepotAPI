@@ -181,11 +181,12 @@ class ProductController extends Controller {
             $response[$iterator]['inventory'] = $item->cantidadInventario;
 
             $response[$iterator]['video'] = isset($item->video)?$item->video:"";
-            if(file_exists(strtr(base_path().'/public/assets/images/brands/'.strtolower($brand).'.jpg', $this-> unwanted_array))){
-                $response[$iterator]['imgBrand']= 'assets/images/brands' . $img . '.jpg';
-            }else{
-                $response[$iterator]['imgBrand'] = 'assets/images/brands/nobrand.png';
+            if(file_exists(strtr(base_path().'/public/assets/images/brands/'.strtolower($brand).'.png', $this-> unwanted_array))){
+                $response[$iterator]['imgBrand']= 'assets/images/brands/' . $brand . '.png';
             }
+      /*      else{
+                $response[$iterator]['imgBrand'] = 'assets/images/brands/nobrand.png';
+            }*/
 
             $iterator++;
         }

@@ -10,7 +10,7 @@
     <meta property="og:title" content="{{ $product['metaTitle'] }}" />
     <meta property="og:description" content="{{ $product['metaDescription'] }}" />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://www.jardepot.com/" />
+    <meta property="og:url" content="{{$canonical}}" />
     <meta property="og:image" content="{{asset('img/logos/logoOG.jpg')}}" />
     <meta property="og:image:url" content="{{asset('img/logos/logoOG.jpg')}}" />
     <meta property="og:image:secure_url" content="{{asset('img/logos/logoOG.jpg')}}" />
@@ -60,12 +60,15 @@
                 <div class="row">
                     <div class="col-md-10 mt-2" style="padding-right: 0">
                         <div class="card shadow-sm" style="overflow: hidden;">
+{{--                            @if($product['discount'] == 'Oferta')--}}
+{{--                                <div class="ribbon ribbon-top-right" style="display: block;z-index: 6"><span>Oferta</span></div>--}}
+{{--                            @endif--}}
                             @if($product['discount'] == 'Oferta')
-                                <div class="ribbon ribbon-top-right" style="display: block;z-index: 6"><span>Oferta</span></div>
+                                <img src="{{ asset('assets/images/otros/15pestania.png') }}" style="width: 100px;position: absolute;top: 0;left: 0;z-index: 3" title="Pestaña Izquierda" alt="Pestaña Izquierda">
                             @endif
 
-                            <div class="product-image" id="div-img-product" style="width: 500px;height: 500px">
-                                <img style="max-width: 100%" id="drift-trigger"
+                            <div class="product-image" id="div-img-product" style="width: 100%;height: 500px">
+                                <img style="width: 85%" id="drift-trigger"
                                      src="{{asset($product['images'][0]['medium'])}}" data-zoom="{{asset($product['images'][0]['big'])}}"
                                      title="{{$product['name']}}" alt="{{$product['name']}}">
                             </div>
@@ -334,8 +337,11 @@
                                 <div class="swiper-slide">
                                     <div class="card shadow-sm product-item" style="border-radius: 5px;overflow: hidden;">
                                         <a href="{{url($related['href'])}}">
-                                            @if($related['discount'] == 'Oferta')
+                                       {{--     @if($related['discount'] == 'Oferta')
                                                 <div class="ribbon ribbon-top-right" style="display: block;position: relative;z-index: 6"><span>Oferta</span></div>
+                                            @endif--}}
+                                            @if($related['discount'] == 'Oferta')
+                                                <img src="{{ asset('assets/images/otros/15pestania.png') }}" style="width: 75px;position: absolute;top: 0;left: 0;z-index: 3" title="Pestaña Izquierda" alt="Pestaña Izquierda">
                                             @endif
                                             <div class="product-image img-container" style="height: 145px;">
                                                 <img style="max-width: 80%;max-height: 80%"
@@ -385,10 +391,10 @@
             </div>
             <div class="col-lg-3 col-md-12" style="height: 500px;">
                 <div class="d-none d-md-none d-lg-block">
-                    @if($product['imgBrand'])
-                    <div class="text-center">
-                        <img src="{{asset($product['imgBrand'])}}" style="width: 160px" alt="{{'Logo '.$product['brand']}}" >
-                    </div>
+                    @if(isset($product['imgBrand']))
+                        <div class="text-center">
+                            <img src="{{asset($product['imgBrand'])}}" style="width: 160px" alt="{{'Logo '.$product['brand']}}" >
+                        </div>
                     @endif
                     <h2 class="py-1 description-product">{{$product['description']}}</h2>
                     <br>
