@@ -98,7 +98,7 @@ function changeImg(medium,big,name,li){
         }else{
         }
     });
-    $('#drift-trigger').replaceWith(' <img style="max-width: 100%" id="drift-trigger" src="'+medium+'" data-zoom="'+big+'"  title="'+name+'" alt="'+name+'">');
+    $('#drift-trigger').replaceWith(' <img style="width: 85%" id="drift-trigger" src="'+medium+'" data-zoom="'+big+'"  title="'+name+'" alt="'+name+'">');
     new Drift(document.getElementById('drift-trigger'), {
         paneContainer: document.querySelector('.detail'),
         inlinePane: 900,
