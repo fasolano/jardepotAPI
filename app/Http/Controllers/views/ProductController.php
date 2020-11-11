@@ -147,7 +147,11 @@ class ProductController extends Controller {
                 }
             }
             //termina seccion de precios
-            $response[$iterator]['description'] = $item->descriptionweb;
+            if(strlen($item->descriptionweb ) > 200){//esto esta mientras se reducen todas las descripciones
+                $response[$iterator]['description'] = substr($item->descriptionweb,0,200).'...';
+            }else{
+                $response[$iterator]['description'] = $item->descriptionweb;
+            }
             $response[$iterator]['dataSheet'] = $item->resenia;
             $response[$iterator]['availibilityCount'] = 100;
            // $response[$iterator]['stock'] = $item->availability == 'in stock' ? true : false;
