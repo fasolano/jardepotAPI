@@ -140,7 +140,7 @@
 {{--                                        </div>--}}
 {{--                                    @endif--}}
                                     @if(isset($item['discount']))
-                                        <img src="{{ asset('assets/images/otros/15pestania.png') }}" style="width: 85px;position: absolute;top: 0;left: 0;" title="Pestaña Izquierda" alt="Pestaña Izquierda">
+                                        <img src="{{ asset('assets/images/ofertas/oferta-15.png') }}" style="width: 85px;position: absolute;top: 0;left: 0;" title="Pestaña Izquierda" alt="Pestaña Izquierda">
                                     @endif
                                     <div class="product-image" style="height: 205px">
                                         <img style="max-width: 80%; max-height: 100%"
@@ -314,10 +314,10 @@
 {{--                                        <div class="ribbon ribbon-top-right" style="display: block"><span>Oferta</span></div>--}}
 {{--                                    @endif--}}
                                     @if(isset($item['discount']))
-                                        <img src="{{ asset('assets/images/otros/15pestania.png') }}" style="width: 85px;position: absolute;top: 0;left: 0;" title="Pestaña Izquierda" alt="Pestaña Izquierda">
+                                        <img src="{{ asset('assets/images/ofertas/oferta-15.png') }}" style="width: 85px;position: absolute;top: 0;left: 0;" title="Pestaña Izquierda" alt="Pestaña Izquierda">
                                     @endif
                                {{--     @if(isset($item['discount']))
-                                        <img src="{{ asset('assets/images/otros/9aniospestania.png') }}" style="width: 85px;position: absolute;top: 0;left: 0;" title="9 aniversario" alt="9 aniversario">
+                                        <img src="{{ asset('assets/images/otros/oferta-9.png') }}" style="width: 85px;position: absolute;top: 0;left: 0;" title="9 aniversario" alt="9 aniversario">
                                     @endif--}}
                                     <div class="product-image" style="height: 205px">
                                         <img style="max-width: 80%; max-height: 100%"

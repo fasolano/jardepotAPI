@@ -1,7 +1,5 @@
 /.idea/*
 /node_modules
-/public/hot
-/public/storage
 /storage/*.key
 .env
 .env.backup
@@ -12,5 +10,6 @@ npm-debug.log
 yarn-error.log
 /config/database.php
 /public/assets/images/productos/*
+/public/assets/images/ofertas/*
 /public/owa/*
 /public/assets/js/path.js

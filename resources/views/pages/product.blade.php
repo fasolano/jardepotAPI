@@ -64,7 +64,7 @@
 {{--                                <div class="ribbon ribbon-top-right" style="display: block;z-index: 6"><span>Oferta</span></div>--}}
 {{--                            @endif--}}
                             @if($product['discount'] == 'Oferta')
-                                <img src="{{ asset('assets/images/otros/15pestania.png') }}" style="width: 100px;position: absolute;top: 0;left: 0;z-index: 3" title="Pestaña Izquierda" alt="Pestaña Izquierda">
+                                <img src="{{ asset('assets/images/ofertas/oferta-15.png') }}" style="width: 100px;position: absolute;top: 0;left: 0;z-index: 3" title="Pestaña Izquierda" alt="Pestaña Izquierda">
                             @endif
 
                             <div class="product-image" id="div-img-product" style="width: 100%;height: 500px">
@@ -341,7 +341,7 @@
                                                 <div class="ribbon ribbon-top-right" style="display: block;position: relative;z-index: 6"><span>Oferta</span></div>
                                             @endif--}}
                                             @if($related['discount'] == 'Oferta')
-                                                <img src="{{ asset('assets/images/otros/15pestania.png') }}" style="width: 75px;position: absolute;top: 0;left: 0;z-index: 3" title="Pestaña Izquierda" alt="Pestaña Izquierda">
+                                                <img src="{{ asset('assets/images/ofertas/oferta-15.png') }}" style="width: 75px;position: absolute;top: 0;left: 0;z-index: 3" title="Pestaña Izquierda" alt="Pestaña Izquierda">
                                             @endif
                                             <div class="product-image img-container" style="height: 145px;">
                                                 <img style="max-width: 80%;max-height: 80%"
@@ -676,9 +676,9 @@
                 },
                 // when window width is >= 640px
                 640: {
-                    slidesPerView: 5,
+                    slidesPerView: 4,
                     spaceBetween: 20,
-                    slidesPerGroup: 5,
+                    slidesPerGroup: 4,
                 }
             },
             pagination: {
