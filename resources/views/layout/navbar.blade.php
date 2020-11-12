@@ -287,7 +287,6 @@
                                 <p>CDMX</p>
                                 <a href="tel:5549968849" class="telModal" ><span class="my-4" style="font-size: 15px; font-weight: 300;"><i class="material-icons">call</i>55 4996 8849</span></a><br>
                                 <a href="tel:5549974360" class="telModal" ><span class="my-4" style="font-size: 15px; font-weight: 300;"><i class="material-icons">call</i>55 4997 4360</span></a><br>
-                                <a href="tel:5576181056" class="telModal" ><span style="font-size: 15px; font-weight: 300;"><i class="material-icons">call</i>55 7618 1056</span></a><br>
                                 <a href="tel:5551857805" class="telModal" ><span class="my-4" style="font-size: 15px; font-weight: 300;"><i class="material-icons">call</i>55 5185 7805</span></a><br>
                             </div>
                             <div style="margin-bottom: 20px;">

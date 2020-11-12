@@ -65,7 +65,6 @@
                     <p>CDMX</p>
                     <a href="tel:5549968849" style="color: #fff;"><span class="my-4" style="font-size: 15px; font-weight: 300;">55 4996 8849</span></a><br>
                     <a href="tel:5549974360" style="color: #fff;"><span class="my-4" style="font-size: 15px; font-weight: 300;">55 4997 4360</span></a><br>
-                    <a href="tel:5576181056" style="color: #fff;"><span style="font-size: 15px; font-weight: 300;">55 7618 1056</span></a><br>
                     <a href="tel:5551857805" style="color: #fff;"><span class="my-4" style="font-size: 15px; font-weight: 300;">55 5185 7805</span></a><br>
                 </div>
                 <div style="margin-bottom: 20px;">
