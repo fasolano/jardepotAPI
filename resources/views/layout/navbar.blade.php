@@ -89,9 +89,15 @@
                         </div>
                     </div>
                     <div class="col-md-2 d-flex justify-content-between align-items-center">
-                        <img src="{{asset("assets/images/icons/facebook_40x40.png")}}" alt="" style="width: 40px;">
-                        <img src="{{asset("assets/images/icons/instragram_40x40.png")}}" alt="" style="width: 40px;">
-                        <img src="{{asset("assets/images/icons/youtube_40x40.png")}}" alt="" style="width: 40px;">
+                        <a target="_blank" href="https://www.facebook.com/Jardepot">
+                            <img src="{{asset("assets/images/icons/facebook_40x40.png")}}" alt="" style="width: 40px;">
+                        </a>
+                        <a target="_blank" href="https://www.instagram.com/jardepot_mexico/">
+                            <img src="{{asset("assets/images/icons/instragram_40x40.png")}}" alt="" style="width: 40px;">
+                        </a>
+                        <a href="https://www.youtube.com/channel/UCym0cCHYeEDqs70RD7Zs2-g" target="_blank">
+                            <img src="{{asset("assets/images/icons/youtube_40x40.png")}}" alt="" style="width: 40px;">
+                        </a>
                     </div>
                     {{--<div class="col-md-1" style="margin-top: 5px">
                         <button class="btn dropdown-toggle" style="color: #FFF" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
