@@ -49,4 +49,10 @@ Route::delete('cart/removeProduct', 'views\CartController@removeProductCart');
 Route::get('/checkout', function () {
     return view('pages/checkout');
 });
+Route::get('tracking', function () {
+    return view('pages/tracking');
+});
+
+Route::post('tracking/getGuia', 'views\TrackingController@getGuia')->name('getguia');
+
 
