@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\views;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\fedex\TrackService\Track;
 use App\Repositories\MenuRepository;
 use App\Repositories\ProductRepository;
 use App\Repositories\IpRepository;
@@ -35,6 +36,73 @@ class HomeController extends Controller
         }
         $descriptionLevel2 = $productoRepository->getDescriptionNivel2(0);
         return view('pages/home',compact('menuAdditional','descriptionLevel2'));
+    }
+
+    /*public function prueba(){
+        $track = new Track('JoQrF0bbDKa4dj4p', 'YqI0f9C9bjXVluyL7uc7Hm9F0', '510087860', '119177249');
+        $req = $track->getByTrackingId('772128949168');
+        print_r($req);
+        return 1;
+
+    }*/
+
+
+    public function prueba(){
+        $key = "JoQrF0bbDKa4dj4p";
+        $password = "YqI0f9C9bjXVluyL7uc7Hm9F0";
+        $accountNo = "510087860";
+        $meterNo = "119177249";
+        $id = "772128949168";
+        // Build Authentication
+        $request['WebAuthenticationDetail'] = array(
+            'UserCredential' => array(
+                'Key'=> $key, //Replace it with FedEx Key,
+                'Password' => $password //Replace it with FedEx API Password
+            )
+        );
+
+
+        //Build Client Detail
+        $request['ClientDetail'] = array(
+            'AccountNumber' => $accountNo, //Replace it with Account Number,
+            'MeterNumber'   => $meterNo //Replace it with Meter Number
+        );
+
+
+        // Build Customer Transaction Id
+        $request['TransactionDetail'] = array(
+            'CustomerTransactionId' => "API request by using PHP"
+        );
+
+
+        // Build API Version info
+        $request['Version'] = array(
+            'ServiceId'    => "trck",
+            'Major'        => 19, // You can change it based on you using api version
+            'Intermediate' => 0, // You can change it based on you using api version
+            'Minor'        => 0 // You can change it based on you using api version
+        );
+
+
+        // Build Tracking Number info
+        $request['SelectionDetails'] = array(
+            'PackageIdentifier' => array(
+                'Type'  => 'TRACKING_NUMBER_OR_DOORTAG',
+                'Value' => $id //Replace it with FedEx tracking number
+            )
+        );
+
+        $wsdlPath = asset("TrackService_v19.wsdl");
+        $endPoint = "https://wsbeta.fedex.com:443/web-services"; //You will get it when requesting to FedEx key. It might change based on the API Environments
+
+        $client = new \SoapClient($wsdlPath, array('trace' => true));
+        $client->__setLocation($endPoint);
+
+        $apiResponse = $client->track($request);
+
+        print_r($apiResponse);
+        return 1;
+
     }
 
 /*    public function getIpClient(Request $request){return $request->ip().''.$request->url();}*/
