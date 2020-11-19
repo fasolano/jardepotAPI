@@ -57,6 +57,7 @@ $(document).ready(function() {  // <-- ensure form's HTML is ready
                 if (result.status === 'success') {
                     $('#prueba').html('');
                     $.each(result.data,function (index,value){
+                        // url=document.location.origin+'/jardepotAPI/public';
                         url=document.location.origin+'/jardepotAPI/public';
                         switch(value.nombre){
                             case ('ODM Express'):
@@ -72,7 +73,7 @@ $(document).ready(function() {  // <-- ensure form's HTML is ready
                                     ' <div class="p-2">                               ' +
                                     '   <img src="'+url+'/assets/images/otros/tracking/logo_fedex.png" style="width: 150px" title="paquetería envío" alt="paquetería envío">' +
                                     '   <p class="mt-3" style="font-size: 18px">Guía: <strong>'+value.guia+'</strong></p>' +
-                                    '   <a class="btn btn-primary" target="_blank" href="https://odmexpress.com.mx/rastreo-2/?rastreo_fall='+value.guia+'"> Ir a la página </a>' +
+                                    '   <a class="btn btn-primary" target="_blank" href="https://www.fedex.com/es-mx/tracking.html"> Ir a la página </a>' +
                                     '</div>');
                                 break;
                             case('Paquete Express'):
