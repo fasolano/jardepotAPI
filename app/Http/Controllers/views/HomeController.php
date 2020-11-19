@@ -100,9 +100,43 @@ class HomeController extends Controller
 
         $apiResponse = $client->track($request);
 
-        print_r($apiResponse);
+        echo $this->printp($apiResponse);
         return 1;
 
+    }
+
+    public function printp($arr){
+        $retStr = '<ul>';
+        if (is_object($arr)){
+            foreach ($arr as $key=>$val){
+                if (is_object($val)){
+                    $retStr .= '<li>' . $key . ' => ' . $this->printp($val) . '</li>';
+                }else if (is_array($val)){
+                    $retStr .= '<li>' . $key . ' => ' . $this->pp($val) . '</li>';
+                }else{
+                    $retStr .= '<li>' . $key . ' => ' . $val . '</li>';
+                }
+            }
+        }
+        $retStr .= '</ul>';
+        return $retStr;
+    }
+
+    function pp($arr){
+        $retStr = '<ul>';
+        if (is_array($arr)){
+            foreach ($arr as $key=>$val){
+                if (is_array($val)){
+                    $retStr .= '<li>' . $key . ' => ' . $this->pp($val) . '</li>';
+                }else if (is_object($val)){
+                    $retStr .= '<li>' . $key . ' => ' . $this->printp($val) . '</li>';
+                }else{
+                    $retStr .= '<li>' . $key . ' => ' . $val . '</li>';
+                }
+            }
+        }
+        $retStr .= '</ul>';
+        return $retStr;
     }
 
 /*    public function getIpClient(Request $request){return $request->ip().''.$request->url();}*/
