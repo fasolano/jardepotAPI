@@ -101,7 +101,7 @@
                             <div class="col-2">
                                 @if($product['video'])
                                     <a target="_blank" href="https://www.youtube.com/watch?v={{$product['video']}}" rel="noopener">
-                                        <img src="{{asset('assets/images/icons/youtube_icon.png')}}" title="video producto" alt="video Producto">
+                                        <img src="{{asset('assets/images/icons/youtube_icon.png')}}" title="{{$product['name']}}" alt="{{$product['name']}}">
                                     </a>
                                 @endif
                             </div>
@@ -131,7 +131,7 @@
                         <div class="col-12 text-center" style="width: 100%;">
                             @if($product['video'])
                                 <a target="_blank" href="https://www.youtube.com/watch?v={{$product['video']}}" rel="noopener">
-                                    <img src="{{asset('assets/images/icons/youtube_icon.png')}}" title="video producto" alt="video Producto">
+                                    <img src="{{asset('assets/images/icons/youtube_icon.png')}}" title="{{$product['name']}}" alt="{{$product['name']}}">
                                 </a>
                             @endif
                             <br>
