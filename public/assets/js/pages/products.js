@@ -182,8 +182,8 @@ function reloadProducts() {
         $.each(response, function (i,e) {
             var discount = "";
             if(e.hasOwnProperty('discount')){
-                 // discount = '<div class="ribbon ribbon-top-right" style="display: block"><span>Oferta</span></div>';
-                discount=  '<img src="'+ruta+'assets/images/ofertas/oferta-15.png" style="width: 80px;position: absolute;top: 0;left: 0;">';
+                 discount = '<div class="ribbon ribbon-top-right" style="display: block"><span>Oferta</span></div>';
+                // discount=  '<img src="'+ruta+'assets/images/ofertas/oferta-15.png" style="width: 80px;position: absolute;top: 0;left: 0;">';
             }
             var dNone = "";
             if(i>7){
