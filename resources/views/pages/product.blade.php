@@ -59,7 +59,7 @@
                 <h1 class="title-product">{{$product['name']}}</h1>
                 <div class="row">
                     <div class="col-md-10 mt-2" style="padding-right: 0">
-                        <div class="card shadow-sm" style="overflow: hidden;">
+                        <div class="card shadow-sm" style="overflow: hidden;" id="image-product">
                             @if($product['discount'] == 'Oferta')
                                 <div class="ribbon ribbon-top-right" style="display: block;z-index: 6"><span>Oferta</span></div>
                             @endif
@@ -76,6 +76,8 @@
                                 <img class="free-delivery" src="{{asset('assets/images/otros/gratis.png')}}"
                                      title="Envío gratis Jardepot" alt="Envío gratis Jardepot">
                             @endif
+                        </div>
+                        <div id="video-product">
                         </div>
                         <!-- Swiper -->
             {{--            <div class="swiper-container p-1">
@@ -100,7 +102,7 @@
                         <div class="col-row d-block d-sm-block d-lg-none" style="width: 100%;">
                             <div class="col-2">
                                 @if($product['video'])
-                                    <a target="_blank" href="https://www.youtube.com/watch?v={{$product['video']}}" rel="noopener">
+                                    <a onclick="showVideo('{{$product['video']}}')">
                                         <img width="60" height="60" src="https://img.youtube.com/vi/{{$product['video']}}/hqdefault.jpg" class="ui-pdp-image" srcset="https://img.youtube.com/vi/{{$product['video']}}/hqdefault.jpg 2x">
                                         <img width="40" height="40" src="{{asset('assets/images/icons/youtube_icon.png')}}" title="YT"
                                              alt="YT" style="position:absolute;top:10px;left:25px;border:none;">
@@ -132,7 +134,7 @@
                     <div class="col-md-1 d-none d-md-none d-lg-block">
                         <div class="col-12 text-center" style="width: 100%;">
                             @if($product['video'])
-                                <a target="_blank" href="https://www.youtube.com/watch?v={{$product['video']}}" rel="noopener">
+                                <a onclick="showVideo('{{$product['video']}}')">
                                     <img width="60" height="60" src="https://img.youtube.com/vi/{{$product['video']}}/hqdefault.jpg" class="ui-pdp-image" srcset="https://img.youtube.com/vi/{{$product['video']}}/hqdefault.jpg 2x">
                                     <img width="40" height="40" src="{{asset('assets/images/icons/youtube_icon.png')}}" title="YT"
                                          alt="YT" style="position:absolute;top:10px;left:25px;border:none;">

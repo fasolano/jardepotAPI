@@ -88,10 +88,12 @@ $(document).ready(function() {  // <-- ensure form's HTML is ready
             ajaxCall(parameters);
         }
     });
+    $('#video-product').hide();
 });
 
 
 function changeImg(medium,big,name,li){
+    showImages();
     $('#list-images li').each(function(indice, elemento) {
         if(elemento === li){
             indexImg=indice;
@@ -135,6 +137,7 @@ function clearFormComentario(){
 
 var indexImg=0;
 function nextImg(){
+    showImages();
     if($('#list-images li')[indexImg+1]){
         indexImg++;
         $('#list-images li')[indexImg].click();
@@ -145,11 +148,28 @@ function nextImg(){
 }
 
 function beforeImg(){
+    showImages();
     if($('#list-images li')[indexImg-1]){
         indexImg--;
         $('#list-images li')[indexImg].click();
     }else{
         indexImg=0;
         $('#list-images li')[indexImg].click();
+    }
+}
+
+function showVideo(link){
+    $('#video-product').html('<iframe id="frame-video" width="550" height="500" src="https://www.youtube.com/embed/'+link+'?rel=0" frameborder="0" allowfullscreen></iframe>');
+    $('#image-product').hide();
+    $('#video-product').show();
+}
+
+function showImages(){
+    var test = $('#image-product').is(":visible");
+    if (test === false){
+        $('#image-product').show();
+        $('#frame-video').click();
+        $('#video-product').hide();
+        $('#video-product').html('');
     }
 }
