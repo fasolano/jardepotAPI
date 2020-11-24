@@ -159,7 +159,7 @@ function beforeImg(){
 }
 
 function showVideo(link){
-    $('#video-product').html('<iframe id="frame-video" width="550" height="500" src="https://www.youtube.com/embed/'+link+'?rel=0" frameborder="0" allowfullscreen></iframe>');
+    $('#video-product').html('<iframe id="frame-video" width="95%" height="500" src="https://www.youtube.com/embed/'+link+'?rel=0" frameborder="0" allowfullscreen></iframe>');
     $('#image-product').hide();
     $('#video-product').show();
 }
