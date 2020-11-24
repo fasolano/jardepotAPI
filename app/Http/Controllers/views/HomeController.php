@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\views;
 
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\fedex\TrackService\Track;
 use App\Repositories\MenuRepository;
 use App\Repositories\ProductRepository;
 use App\Repositories\IpRepository;
@@ -52,7 +51,7 @@ class HomeController extends Controller
         $password = "YqI0f9C9bjXVluyL7uc7Hm9F0";
         $accountNo = "510087860";
         $meterNo = "119177249";
-        $id = "772128949168";
+        $id = "772105697892";
         // Build Authentication
         $request['WebAuthenticationDetail'] = array(
             'UserCredential' => array(
@@ -71,7 +70,8 @@ class HomeController extends Controller
 
         // Build Customer Transaction Id
         $request['TransactionDetail'] = array(
-            'CustomerTransactionId' => "API request by using PHP"
+//            'CustomerTransactionId' => "API request by using PHP"
+            'CustomerTransactionId' => "https://wsbeta.fedex.com:443/web-services"
         );
 
 
@@ -100,7 +100,8 @@ class HomeController extends Controller
 
         $apiResponse = $client->track($request);
 
-        echo $this->printp($apiResponse);
+        echo $this->printTable($apiResponse,$client);
+//        echo $this->printp($apiResponse);
         return 1;
 
     }
@@ -139,5 +140,44 @@ class HomeController extends Controller
         return $retStr;
     }
 
-/*    public function getIpClient(Request $request){return $request->ip().''.$request->url();}*/
+    function printTable($response,$client){
+        if ($response -> HighestSeverity != 'FAILURE' && $response -> HighestSeverity != 'ERROR'){
+            if($response->HighestSeverity != 'SUCCESS'){
+                echo '<table border="1">';
+                echo '<tr><th>Track Reply</th><th>&nbsp;</th></tr>';
+                $this->trackDetails($response->Notifications, '');
+                echo '</table>';
+            }else{
+                if ($response->CompletedTrackDetails->HighestSeverity != 'SUCCESS'){
+                    echo '<table border="1">';
+                    echo '<tr><th>Shipment Level Tracking Details</th><th>&nbsp;</th></tr>';
+                    $this->trackDetails($response->CompletedTrackDetails, '');
+                    echo '</table>';
+                }else{
+                    echo '<table border="1">';
+                    echo '<tr><th>Package Level Tracking Details</th><th>&nbsp;</th></tr>';
+                    $this->trackDetails($response->CompletedTrackDetails->TrackDetails, '');
+                    echo '</table>';
+                }
+            }
+//            printSuccess($client, $response);
+        }else{
+//            printError($client, $response);
+        }
+    }
+
+    function trackDetails($details, $spacer){
+        foreach($details as $key => $value){
+            if(is_array($value) || is_object($value)){
+                $newSpacer = $spacer. '&nbsp;&nbsp;&nbsp;&nbsp;';
+                echo '<tr><td>'. $spacer . $key.'</td><td>&nbsp;</td></tr>';
+                $this->trackDetails($value, $newSpacer);
+            }elseif(empty($value)){
+                echo '<tr><td>'.$spacer. $key .'</td><td>'.$value.'</td></tr>';
+            }else{
+                echo '<tr><td>'.$spacer. $key .'</td><td>'.$value.'</td></tr>';
+            }
+        }
+    }
+    /*    public function getIpClient(Request $request){return $request->ip().''.$request->url();}*/
 }

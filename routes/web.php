@@ -13,7 +13,7 @@
 
 Route::get('/', 'views\HomeController@index')->name('home');
 
-Route::get('/prueba', 'views\HomeController@prueba');
+Route::get('/prueba', 'views\TrackingController@prueba');
 
 Route::get('/ofertas', 'views\ProductsController@productsSaleList')->name('sales');
 
