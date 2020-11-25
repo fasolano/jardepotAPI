@@ -96,7 +96,7 @@ var mapWidth, imageBounds, imageHeight, imageWidth, mapHeight, minZoom, map, nom
                 map.zoomOut();
 
                 $.ajax({
-                    url:'./marcadores',
+                    url:'../refacciones/marcadores',
                     dataType:'json',
                     type:'get',
                     data:{

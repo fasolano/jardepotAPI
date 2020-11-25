@@ -7,6 +7,7 @@ namespace App\Http\Controllers\views;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\MenuController;
 use App\Repositories\ProductRepository;
+use App\Repositories\SpareRepository;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller {
@@ -70,12 +71,16 @@ class ProductController extends Controller {
         $ipl = count($ipl);
         $data = $this->productoRepository->getProduct($productType, $brand, $mpn);
         if(count($data)>0){
+            $spareRepository = new SpareRepository();
             $product= $this->model_format_products($data)[0];
             $data2 = $this->productoRepository->getProductsRelated($productType, $brand, $mpn);
             $productsRelated = $this->model_format_products($data2);
             $canonical = url()->current();;
 
-            return view('pages/product',compact('sidebar','product','productsRelated', 'ipl', 'linkSpare','canonical'));
+            $ipls = $spareRepository->getIpls($productType, $brand, $mpn);
+            $producto = ucfirst($productType)."-".ucfirst($brand)."-".ucfirst($mpn);
+
+            return view('pages/product',compact('sidebar','product','productsRelated', 'ipl', 'linkSpare','canonical', 'ipls','producto'));
         }else{
             return view('errors/404');
         }
