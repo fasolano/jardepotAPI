@@ -112,8 +112,7 @@
                                         {{--                            @if($product['discount'] == 'Oferta')--}}
                                         {{--                                <img src="{{ asset('assets/images/ofertas/oferta-15.png') }}" style="width: 100px;position: absolute;top: 0;left: 0;z-index: 3" title="Pestaña Izquierda" alt="Pestaña Izquierda">--}}
                                         {{--                            @endif--}}
-
-                                        <div class="product-image" id="div-img-product" style="width: 100%;height: 500px">
+                                        <div class="product-image" id="div-img-product" style="width: 100%;">
                                             <img style="width: 85%" id="drift-trigger"
                                                  src="{{asset($product['images'][0]['medium'])}}" data-zoom="{{asset($product['images'][0]['big'])}}"
                                                  title="{{$product['name']}}" alt="{{$product['name']}}">
@@ -123,29 +122,8 @@
                                                  title="Envío gratis Jardepot" alt="Envío gratis Jardepot">
                                         @endif
                                     </div>
-                                    <div id="video-product">
-                                    </div>
-                                    <!-- Swiper -->
-                                    {{--            <div class="swiper-container p-1">
-                                                    <div class="swiper-wrapper">
-                                                        @foreach($product['images'] as $image )
-                                                            <div class="swiper-slide">
-                                                                <div class="card shadow-sm product-item" style="border-radius: 5px;overflow: hidden;">
-                                                                    <div class="product-image2">
-                                                                        <img style="max-width: 80%" onclick="changeImg('{{asset($image['medium'])}}','{{asset($image['big'])}}','{{$product['name']}}')"
-                                                                             src="{{asset($image['small'])}}"
-                                                                             title="{{$product['name']}}" alt="{{$product['name']}}">
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        @endforeach
-                                                    </div>
-                                                    <div class="mt-3"></div>
-                                                    <div class="swiper-button-next"></div>
-                                                    <div class="swiper-button-prev"></div>
-                                                </div>
-                        --}}
-                                    <div class="col-row d-block d-sm-block d-lg-none" style="width: 100%;">
+                                    <div id="video-product"> </div>
+                                    <div class="col-row d-block d-sm-block d-lg-none" style="width: 100%;">{{--movil--}}
                                         <div class="col-2">
                                             @if($product['video'])
                                                 <a onclick="showVideo('{{$product['video']}}')">
@@ -154,6 +132,7 @@
                                                          alt="YT" style="position:absolute;top:10px;left:25px;border:none;">
                                                 </a>
                                             @endif
+                                            <br>
                                         </div>
                                         <div class="col-8">
                                             <div onclick="beforeImg()">
@@ -177,7 +156,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-1 d-none d-md-none d-lg-block">
+                                <div class="col-md-1 d-none d-md-none d-lg-block"> {{--Escritorio--}}
                                     <div class="col-12 text-center" style="width: 100%;">
                                         @if($product['video'])
                                             <a onclick="showVideo('{{$product['video']}}')">
@@ -207,9 +186,9 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-12 mt-2 p-3 d-block d-sm-block d-lg-none">
+
+                                <div class="col-md-12 mt-2 p-3 d-block d-sm-block d-lg-none">{{--               VISTA DE MOVIL                 --}}
                                     <div class="">
-                                        <h2 class="py-1 description-product">{{$product['description']}}</h2>
                                         @if($product['stock'])
                                             <div class="row">
                                                 <div class="col-md-4 col-sm-6">
@@ -265,6 +244,7 @@
                                                         <i class="material-icons">flash_on</i>&nbsp;Envío de volada </p>
                                                 </div>
                                             @endif
+                                            <h2 class="py-1 description-product">{{$product['description']}}</h2>
                                         @else
                                             <div class="row text-muted p-4">
                                                 <p class="text-muted" style="font-weight: 900; font-size: 15px;">
@@ -316,9 +296,6 @@
                                     <li class="nav-item">
                                         <a class="nav-link text-muted active" data-toggle="tab" href="#fichTecnica">Ficha técnica</a>
                                     </li>
-                                    {{--                        <li class="nav-item">--}}
-                                    {{--                            <a class="nav-link text-muted" data-toggle="tab" href="#formDudas">Dudas y comentarios</a>--}}
-                                    {{--                        </li>--}}
                                 </ul>
                                 <div class="tab-content">
                                     <div id="fichTecnica" class="container tab-pane active">
@@ -442,7 +419,7 @@
                             @include('components.caruselCanales')
                         </div>
                         <div class="col-lg-4 col-md-12" style="height: 500px;">
-                            <div class="d-none d-md-none d-lg-block">
+                           <div class="d-none d-md-none d-lg-block">{{--  VISTA DE ESCRITORIO--}}
                                 @if(isset($product['imgBrand']))
                                     <div class="text-center">
                                         <img src="{{asset($product['imgBrand'])}}" style="width: 160px" alt="{{'Logo '.$product['brand']}}" >
