@@ -8,10 +8,7 @@
                     <div class="col-2 d-none d-sm-none d-md-block">
                         <div class="col-12">
                             <div class="text-barra text-left">
-                                Llámanos al:<br>
-                                <a href="tel:8002129225">
-                                    <i class="material-icons iconMod">local_phone</i>800 212 9225
-                                </a>
+                                Refacciones <br><a href="tel:7226481040"><i class="material-icons iconMod">call</i>722 648 1040</a>
                             </div>
                         </div>
                     </div>
@@ -47,7 +44,10 @@
                     </div>
                     <div class="col-2" style="padding: 0"> {{--Esto se quita despues y las otras cols--}}
                         <div class="text-barra text-left">
-                            Refacciones <br><a href="tel:7226481040"><i class="material-icons iconMod">call</i>722 648 1040</a>
+                            Llámanos al:<br>
+                            <a href="tel:8002129225" style="font-size: 25px;">
+                                <i class="material-icons iconMod">local_phone</i>800 212 9225
+                            </a>
                         </div>
                     </div>
                     <div class="col-1" style="font-size: 35px;cursor:pointer;">
