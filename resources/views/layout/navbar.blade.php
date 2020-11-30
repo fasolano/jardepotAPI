@@ -88,7 +88,7 @@
                             </form>
                         </div>
                     </div>
-                    <div class="col-md-2 d-flex justify-content-between align-items-center">
+                    {{--<div class="col-md-2 d-flex justify-content-between align-items-center">
                         <a target="_blank" href="https://www.facebook.com/Jardepot">
                             <img src="{{asset("assets/images/icons/facebook_40x40.png")}}" alt="" style="width: 40px;">
                         </a>
@@ -98,8 +98,8 @@
                         <a href="https://www.youtube.com/channel/UCym0cCHYeEDqs70RD7Zs2-g" target="_blank">
                             <img src="{{asset("assets/images/icons/youtube_40x40.png")}}" alt="" style="width: 40px;">
                         </a>
-                    </div>
-                    {{--<div class="col-md-1" style="margin-top: 5px">
+                    </div>--}}
+                    <div class="col-md-2" style="margin-top: 5px">
                         <button class="btn dropdown-toggle" style="color: #FFF" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span style="color: #fff !important;cursor:pointer;font-size: 15px">
                             <i class="material-icons d-flex" style="color: #f68600;font-size: 24px !important;">shopping_cart</i>
@@ -122,7 +122,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>--}}
+                    </div>
                 </div>
             </div>
         </div>
@@ -157,7 +157,7 @@
                        style="text-decoration: none;" rel="noopener"><i class="material-icons iconMod">settings</i>Refacciones</a>
 
                     {{--            BOTON DE NAVBAR--}}
-                    <div class="mr-2 bg-dark btn-sm d-flex position-relative" style="text-decoration: none;" rel="noopener">
+                    {{--<div class="mr-2 bg-dark btn-sm d-flex position-relative" style="text-decoration: none;" rel="noopener">
                         <button class="btn dropdown-toggle py-0 position-relative" style="color: #FFF" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <span class="d-flex justify-content-center align-items-center position-relative" style="color: #fff !important;cursor:pointer;font-size: 15px">
                             <i class="material-icons d-flex" style="color: #f68600;font-size: 22px !important;">shopping_cart</i>
@@ -181,7 +181,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div>--}}
                 </div>
 
 
