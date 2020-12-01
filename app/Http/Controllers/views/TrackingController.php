@@ -85,7 +85,7 @@ class TrackingController extends Controller
         $request['ProcessingOptions']= 'INCLUDE_DETAILED_SCANS' ;
 
         $wsdlPath = asset("TrackService_v19.wsdl");
-        $endPoint = "https://wsbeta.fedex.com:443/web-services"; //You will get it when requesting to FedEx key. It might change based on the API Environments
+        $endPoint = "https://ws.fedex.com:443/web-services"; //You will get it when requesting to FedEx key. It might change based on the API Environments
 
         $client = new \SoapClient($wsdlPath, array('trace' => true));
         $client->__setLocation($endPoint);
