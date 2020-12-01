@@ -15,8 +15,16 @@ class TrackingController extends Controller
     public function getGuia(){
         if (isset($_POST['form'])){
             $guias = $this->trackingRepository->getGuia(json_decode($_POST['form']));
-            if(isset($guia)){
-                return ['status'=>'success','data'=>$guias];
+            if(count($guias) > 0){
+                $arr=[];
+                foreach ($guias as $key=>$guia){
+                    $arr[$key]['guia']=$guia->guia;
+                    $arr[$key]['nombre']=$guia->nombre;
+                    if($guia->nombre == 'Fedex'){
+                        $arr[$key]['table'] = $this->getTracking($guia->guia);
+                    }
+                }
+                return ['status'=>'success','data'=>$arr];
             }else{
                 return ['status'=>'notfound','data'=>$guias];
             }
@@ -24,12 +32,20 @@ class TrackingController extends Controller
             return ['status'=>'error'];
         }
     }
-    public function prueba(){
-        $key = "JoQrF0bbDKa4dj4p";
-        $password = "YqI0f9C9bjXVluyL7uc7Hm9F0";
+//    public function getTracking(){
+    public function getTracking($id){
+       // Test
+//        $key = "JoQrF0bbDKa4dj4p";
+//        $password = "YqI0f9C9bjXVluyL7uc7Hm9F0";
+//        $accountNo = "510087860";
+//        $meterNo = "119177249";
+//        $id = "770626226008";
+        // Producton
+        $key = "pBoaTCrFmGJiKE8T";
+        $password = "nIeSnZs88z6vVbhjUQq1FsFZe";
         $accountNo = "510087860";
-        $meterNo = "119177249";
-        $id = "772105697892";
+        $meterNo = "252633061";
+
         // Build Authentication
         $request['WebAuthenticationDetail'] = array(
             'UserCredential' => array(
@@ -38,19 +54,18 @@ class TrackingController extends Controller
             )
         );
 
-
         //Build Client Detail
         $request['ClientDetail'] = array(
             'AccountNumber' => $accountNo, //Replace it with Account Number,
             'MeterNumber'   => $meterNo //Replace it with Meter Number
         );
 
-
         // Build Customer Transaction Id
         $request['TransactionDetail'] = array(
-            'CustomerTransactionId' => "https://wsbeta.fedex.com:443/web-services"
+            'CustomerTransactionId' => "https://ws.fedex.com:443/web-services",
+//            'CustomerTransactionId' => "https://wsbeta.fedex.com:443/web-services",
+            'Localization' => ['LanguageCode'=>'ES','LocaleCode'=>'ES']
         );
-
 
         // Build API Version info
         $request['Version'] = array(
@@ -60,12 +75,10 @@ class TrackingController extends Controller
             'Minor'        => 0 // You can change it based on you using api version
         );
 
-
         // Build Tracking Number info
         $request['SelectionDetails'] = array(
             'PackageIdentifier' => array(
                 'Type'  => 'TRACKING_NUMBER_OR_DOORTAG',
-//                'Type'  => 'INCLUDE_DETAILED_SCANS',
                 'Value' => $id //Replace it with FedEx tracking number
             ),
         );
@@ -78,12 +91,9 @@ class TrackingController extends Controller
         $client->__setLocation($endPoint);
 
         $apiResponse = $client->track($request);
-//        $apiResponse = $client->fedExLocator($request);
 
-        echo $this->printTable($apiResponse,$client);
-//        echo $this->table2($apiResponse);
-        return 1;
-
+        $td=json_encode($apiResponse->CompletedTrackDetails->TrackDetails);
+        return ($td);
     }
 
     public function printp($arr){
@@ -146,35 +156,6 @@ class TrackingController extends Controller
         }
     }
 
-    function table2 ($response){
-        if ($response -> HighestSeverity != 'FAILURE' && $response -> HighestSeverity != 'ERROR')
-        {
-            echo 'Dropoff Locations<br>';
-            echo '<table border="1"><tr><td>Streetline</td><td>City</td><td>State</td><td>Postal Code</td><td>Distance</td></tr>';
-            foreach ($response->DropoffLocations as $location)
-            {
-                if(is_array($response -> DropoffLocations))
-                {
-                    echo '<tr>';
-                    echo '<td>'.$location -> BusinessAddress -> StreetLines. '</td>';
-                    echo '<td>'.$location -> BusinessAddress -> City. '</td>';
-                    echo '<td>'.$location -> BusinessAddress -> StateOrProvinceCode. '</td>';
-                    echo '<td>'.$location -> BusinessAddress -> PostalCode. '</td>';
-                    echo '<td>('.$location -> Distance -> Value . ' ';
-                    echo $location -> Distance -> Units . ')'. '</td>';
-                    echo '</tr>';
-                }
-                else
-                {
-                    //echo $location . Newline;
-                }
-            }
-            echo '</table>';
-//            printSuccess($client, $response);
-        }else{
-//            printError($client, $response);
-        }
-    }
     function trackDetails($details, $spacer){
         foreach($details as $key => $value){
             if(is_array($value) || is_object($value)){

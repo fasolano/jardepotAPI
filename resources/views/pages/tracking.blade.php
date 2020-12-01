@@ -21,7 +21,8 @@
     <link rel="stylesheet" href="{{asset('assets/css/components/sidebar.min.css')}}">
     <!-- Scrollbar Custom CSS -->
     <link rel="stylesheet" href="{{asset('assets/css/components/jquery.mCustomScrollbar.min.css')}}">
-{{--    <link rel="stylesheet" href="{{asset('assets/css/components/breadcrumb.min.css')}}">--}}
+    {{--    <link rel="stylesheet" href="{{asset('assets/css/components/breadcrumb.min.css')}}">--}}
+    <link rel="stylesheet" href="{{asset('assets/css/pages/tracking.css')}}">
 
 {{--    <link rel="stylesheet" href="{{asset('assets/css/pages/cart.min.css')}}">--}}
     <link rel="canonical" href="{{'https://www.jardepot.com/tracking'}}">
@@ -33,15 +34,13 @@
 {{--        @slot('level1', 'Rastreo')--}}
 {{--    @endcomponent--}}
     <div class="wrapper">
-
         <!-- Page Content  -->
-        <div id="content" class="row">
+        <div id="content" class="container">
 {{--            <div class="card d-none d-lg-block col-lg-3 mr-3" style="max-width: 23%">--}}
 {{--         --}}
 {{--            </div>--}}
             <div class="col-lg-12 col-md-12">
                 <h1 class="title-product">Rastea tu pedido</h1>
-                <p>20290</p>
                 <div class="row">
                     <div class="col-md-4" style="padding-right: 0">
                         <div class="card shadow-sm" style="overflow: hidden;">
@@ -49,11 +48,11 @@
                                 <form id="formTracking" action="javascript:void(0)">
                                     <div class="form-group">
                                         <label class="sr-only form-control-label" for="email">Correo electrónico</label>
-                                        <input type="text" class="form-control" placeholder="Correo electrónico" id="email" name="email" value="joseoroz1@gmail.com">
+                                        <input type="text" class="form-control" placeholder="Correo electrónico" id="email" name="email">
                                     </div>
                                     <div class="form-group">
                                         <label class="sr-only form-control-label" for="telefono">Teléfono</label>
-                                        <input type="text" class="form-control" placeholder="Teléfono (10 digitos)*" id="telefono" name="telefono" value="7774200866">
+                                        <input type="text" class="form-control" placeholder="Teléfono (10 digitos)*" id="telefono" name="telefono">
                                     </div>
                                     <div class="form-group">
                                         <label class="sr-only form-control-label" for="pedido">Número de pedido</label>
@@ -68,24 +67,41 @@
                         </div>
                     </div>
                     <div class="col-md-8 d-none d-md-none d-lg-block">
-                        <div class="card shadow-sm" style="display: inherit" id="prueba"></div>
-
-                     {{--   <div class="card shadow-sm" style="display: inherit">
-                            <div class="p-2">
-                                <img src="{{asset('assets/images/otros/tracking/logo_odm.png')}}" style="width: 150px">
-                                <p class="mt-3" style="font-size: 18px">Guía: <strong>45564564564</strong></p>
-                                <a class="btn btn-primary" target="_blank" href="https://odmexpress.com.mx/rastreo-2/?rastreo_fall=5646"> Ir a la página </a>
-                            </div>
-                        </div>--}}
+                        <div class="card shadow-sm" style="display: inherit" id="track-information"></div>
                     </div>
                 </div>
-                <div class="divider"></div>
-                <div class="row">
-
                 </div>
+                <div class="divider"></div>
+{{--                <button onclick="calltracking()">get</button>--}}
+                <div class="col-lg-12 col-md-12 m-3 card shadow-lg" id="seg-fedex">
+                    <div id="data-seguimiento">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p class="title-ubication">Estado</p>
+                                <p class="text-ubication" id="status"></p>
+                            </div>
+                            <div class="col-md-6">
+                                <p class="title-ubication">Fecha estimada de llegada</p>
+                                <p class="text-ubication" id="estimado"></p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p class="title-ubication">Origen</p>
+                                <p class="text-ubication" id="origen"></p>
+                            </div>
+                            <div class="col-md-6">
+                                <p class="title-ubication">Destino</p>
+                                <p class="text-ubication" id="destino"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="div-fedex">
+                    </div>
+                </div>
+
                 @include('components.infoCompra')
                 @include('components.caruselCanales')
-            </div>
         </div>
     </div>
 
