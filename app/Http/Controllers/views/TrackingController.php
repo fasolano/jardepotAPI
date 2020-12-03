@@ -13,8 +13,6 @@ class TrackingController extends Controller
     }
 
     public function getGuia(){
-//        return $this->getTracking(772137131206);
-        return $this->getTracking(771840259266);
         if (isset($_POST['form'])){
             $guias = $this->trackingRepository->getGuia(json_decode($_POST['form']));
             if(count($guias) > 0){
