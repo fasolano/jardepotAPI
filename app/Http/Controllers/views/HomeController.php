@@ -7,6 +7,7 @@ use App\Repositories\MenuRepository;
 use App\Repositories\ProductRepository;
 use App\Repositories\IpRepository;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class HomeController extends Controller
 {
@@ -34,7 +35,22 @@ class HomeController extends Controller
             }
         }
         $descriptionLevel2 = $productoRepository->getDescriptionNivel2(0);
-        return view('pages/home',compact('menuAdditional','descriptionLevel2'));
+//        Obtenemos las imagenes del banner
+        $path = public_path() . '/assets/images/banner';
+        $dir = opendir($path);
+        $images = [];
+        $cont=0;
+        // Leo todos los ficheros de la carpeta
+        while ($elemento = readdir($dir)) {
+            if ($elemento != "." && $elemento != "..") {
+                // Si es una carpeta
+                if (!is_dir($path . $elemento)) {
+                    $images[$cont] = $elemento;
+                    $cont++;
+                }
+            }
+        }
+        return view('pages/home',compact('menuAdditional','descriptionLevel2','images'));
     }
 
     /*public function prueba(){
@@ -46,138 +62,5 @@ class HomeController extends Controller
     }*/
 
 
-    public function prueba(){
-        $key = "JoQrF0bbDKa4dj4p";
-        $password = "YqI0f9C9bjXVluyL7uc7Hm9F0";
-        $accountNo = "510087860";
-        $meterNo = "119177249";
-        $id = "772105697892";
-        // Build Authentication
-        $request['WebAuthenticationDetail'] = array(
-            'UserCredential' => array(
-                'Key'=> $key, //Replace it with FedEx Key,
-                'Password' => $password //Replace it with FedEx API Password
-            )
-        );
-
-
-        //Build Client Detail
-        $request['ClientDetail'] = array(
-            'AccountNumber' => $accountNo, //Replace it with Account Number,
-            'MeterNumber'   => $meterNo //Replace it with Meter Number
-        );
-
-
-        // Build Customer Transaction Id
-        $request['TransactionDetail'] = array(
-//            'CustomerTransactionId' => "API request by using PHP"
-            'CustomerTransactionId' => "https://wsbeta.fedex.com:443/web-services"
-        );
-
-
-        // Build API Version info
-        $request['Version'] = array(
-            'ServiceId'    => "trck",
-            'Major'        => 19, // You can change it based on you using api version
-            'Intermediate' => 0, // You can change it based on you using api version
-            'Minor'        => 0 // You can change it based on you using api version
-        );
-
-
-        // Build Tracking Number info
-        $request['SelectionDetails'] = array(
-            'PackageIdentifier' => array(
-                'Type'  => 'TRACKING_NUMBER_OR_DOORTAG',
-                'Value' => $id //Replace it with FedEx tracking number
-            )
-        );
-
-        $wsdlPath = asset("TrackService_v19.wsdl");
-        $endPoint = "https://wsbeta.fedex.com:443/web-services"; //You will get it when requesting to FedEx key. It might change based on the API Environments
-
-        $client = new \SoapClient($wsdlPath, array('trace' => true));
-        $client->__setLocation($endPoint);
-
-        $apiResponse = $client->track($request);
-
-        echo $this->printTable($apiResponse,$client);
-//        echo $this->printp($apiResponse);
-        return 1;
-
-    }
-
-    public function printp($arr){
-        $retStr = '<ul>';
-        if (is_object($arr)){
-            foreach ($arr as $key=>$val){
-                if (is_object($val)){
-                    $retStr .= '<li>' . $key . ' => ' . $this->printp($val) . '</li>';
-                }else if (is_array($val)){
-                    $retStr .= '<li>' . $key . ' => ' . $this->pp($val) . '</li>';
-                }else{
-                    $retStr .= '<li>' . $key . ' => ' . $val . '</li>';
-                }
-            }
-        }
-        $retStr .= '</ul>';
-        return $retStr;
-    }
-
-    function pp($arr){
-        $retStr = '<ul>';
-        if (is_array($arr)){
-            foreach ($arr as $key=>$val){
-                if (is_array($val)){
-                    $retStr .= '<li>' . $key . ' => ' . $this->pp($val) . '</li>';
-                }else if (is_object($val)){
-                    $retStr .= '<li>' . $key . ' => ' . $this->printp($val) . '</li>';
-                }else{
-                    $retStr .= '<li>' . $key . ' => ' . $val . '</li>';
-                }
-            }
-        }
-        $retStr .= '</ul>';
-        return $retStr;
-    }
-
-    function printTable($response,$client){
-        if ($response -> HighestSeverity != 'FAILURE' && $response -> HighestSeverity != 'ERROR'){
-            if($response->HighestSeverity != 'SUCCESS'){
-                echo '<table border="1">';
-                echo '<tr><th>Track Reply</th><th>&nbsp;</th></tr>';
-                $this->trackDetails($response->Notifications, '');
-                echo '</table>';
-            }else{
-                if ($response->CompletedTrackDetails->HighestSeverity != 'SUCCESS'){
-                    echo '<table border="1">';
-                    echo '<tr><th>Shipment Level Tracking Details</th><th>&nbsp;</th></tr>';
-                    $this->trackDetails($response->CompletedTrackDetails, '');
-                    echo '</table>';
-                }else{
-                    echo '<table border="1">';
-                    echo '<tr><th>Package Level Tracking Details</th><th>&nbsp;</th></tr>';
-                    $this->trackDetails($response->CompletedTrackDetails->TrackDetails, '');
-                    echo '</table>';
-                }
-            }
-//            printSuccess($client, $response);
-        }else{
-//            printError($client, $response);
-        }
-    }
-
-    function trackDetails($details, $spacer){
-        foreach($details as $key => $value){
-            if(is_array($value) || is_object($value)){
-                $newSpacer = $spacer. '&nbsp;&nbsp;&nbsp;&nbsp;';
-                echo '<tr><td>'. $spacer . $key.'</td><td>&nbsp;</td></tr>';
-                $this->trackDetails($value, $newSpacer);
-            }elseif(empty($value)){
-                echo '<tr><td>'.$spacer. $key .'</td><td>'.$value.'</td></tr>';
-            }else{
-                echo '<tr><td>'.$spacer. $key .'</td><td>'.$value.'</td></tr>';
-            }
-        }
-    }
     /*    public function getIpClient(Request $request){return $request->ip().''.$request->url();}*/
 }

@@ -20,6 +20,39 @@
     <div class="row shadow border border-light p-3 bg-white m-1 mt-3 rounded">
        <h1 style="font-size: 23px !important;">Máquinas, accesorios y consumibles de Jardín, Agrícola y Forestal.</h1>
     </div>
+
+    <div id="carouselBanners" class="carousel slide mt-2" data-ride="carousel">
+{{--        <ol class="carousel-indicators">
+            <li data-target="#carouselBanners" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselBanners" data-slide-to="1"></li>
+            <li data-target="#carouselBanners" data-slide-to="2"></li>
+        </ol>--}}
+        <div class="carousel-inner">
+            @foreach($images as $key=>$imagen)
+                @if($key==0)
+                    <div class="carousel-item active">
+                        <a href="{{url('ofertas')}}">
+                            <img class="d-block w-100" src="{{asset('assets/images/banner/'.$imagen)}}"  alt="Oferta Jardepot" title="oferta Jardepot">
+                        </a>
+                    </div>
+               @else
+                    <div class="carousel-item">
+                        <a href="{{url('ofertas')}}">
+                            <img class="d-block w-100" src="{{asset('assets/images/banner/'.$imagen)}}" alt="Oferta Jardepot" title="oferta Jardepot">
+                        </a>
+                    </div>
+                @endif
+            @endforeach
+        </div>
+        <a class="carousel-control-prev" href="#carouselBanners" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselBanners" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
     {{--    <div class="d-none d-md-block d-lg-block">
             <div class="row div-banners">
                 <div class="col-xl-5 pr-0">
@@ -56,54 +89,13 @@
             </div>
         </div>--}}
     {{--    <div class="d-none d-md-block d-lg-block">--}}
-    <div class="row justify-content-md-center mt-2">
-        <div class="col-md-12">
-            <div class="justify-content-md-center div-banners">
-                <div id="demo" class="carousel slide" data-ride="carousel">
-                    <!-- Indicators -->
-    {{--                <ul class="carousel-indicators">
-                        <li data-target="#demo" data-slide-to="0" class="active"></li>
-                    </ul>--}}
-                    <!-- The slideshow -->
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <a href="{{url('ofertas')}}">
-                                <img class="img-fluid mx-auto d-block" src="{{asset('assets/images/banner/banner2.jpg')}}"
-                                     alt="Oferta Jardepot" title="oferta Jardepot"
-                                     style="max-width: 95%">
-                            </a>
-                        </div>
-                    </div>
 
-                    <!-- Left and right controls -->
-{{--
-                    <a class="carousel-control-prev" href="#demo" data-slide="prev">
-                        <span class="carousel-control-prev-icon"></span>
-                    </a>
-                    <a class="carousel-control-next" href="#demo" data-slide="next">
-                        <span class="carousel-control-next-icon"></span>
-                    </a>
---}}
+    {{--   <a href="{{url('ofertas')}}">
+          <img class="img-fluid mx-auto d-block" src="{{asset('assets/images/banner/banner2.jpg')}}"
+           alt="Oferta Jardepot" title="oferta Jardepot"  style="max-width: 95%">
+    </a>--}}
 
-                </div>
-            </div>
-        </div>
-    </div>
-    {{--    <div class="row justify-content-md-center mt-4 d-block d-sm-block d-md-none ">
-            <div class="col-12">
-            <div class="col-9 col-offset-2">
-                <a href="{{url('ofertas')}}">
-                <img src="{{asset('assets/images/banner/banner3-mob.jpg')}}" style="width: 310px" alt="oferta" title="Banner Oferta Jardepot">
-                    <div class="info" style="margin-top: -150px">
-                        <div class="px-2" style="background: rgba(0,0,0,.4);flex-direction: column; box-sizing: border-box; display: flex; place-content: flex-end center; align-items: flex-start;">
-                            <h2 class="title">Ofertas</h2>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            </div>
-            <div class="col-12"><br><br></div>
-        </div>--}}
+    {{-- <div class="row justify-content-md-center mt-4 d-block d-sm-block d-md-none"></div>--}}
 
     <div class="d-none d-sm-none d-md-block">
         @include('components.infoCompra')

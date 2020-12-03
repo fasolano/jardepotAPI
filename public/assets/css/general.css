@@ -1,46 +1,49 @@
-.align-cont{
+.align-cont {
     margin: 0 auto;
     position: relative;
 }
 
-.bg-color-jd{
+.bg-color-jd {
     background-color: #f68600 !important;
     color: white !important;
 }
 
-.fn-color-jd{
+.fn-color-jd {
     color: #f68600 !important;
 }
-.error{
+
+.error {
     color: #de1f21;
 }
-.title-muted{
-    color: #616161!important;
+
+.title-muted {
+    color: #616161 !important;
     display: block;
     text-decoration: none;
     font-weight: 500;
     font-size: 18px;
 }
 
-.text-muted{
-    color: #616161!important;
+.text-muted {
+    color: #616161 !important;
     font-weight: 500;
 }
 
-.bg-color-oferta{
+.bg-color-oferta {
     background-color: #de1f21 !important;
     color: #fff !important;
 }
 
-.iconMod{
+.iconMod {
     font-size: 20px;
 }
 
 .divider {
     height: 2px !important;
-    border-top: 1px solid rgba(204,204,204,.6);
+    border-top: 1px solid rgba(204, 204, 204, .6);
 }
-@media (min-width: 1200px){
+
+@media (min-width: 1200px) {
     .container, .container-lg, .container-md, .container-sm, .container-xl {
         max-width: 1300px !important;
     }
@@ -52,13 +55,16 @@
     display: table;
     margin: auto;
 }
+
 .jd-sublinks-items {
     padding: 0px;
     padding-bottom: 15px;
 }
+
 .jd-sublinks-items a i {
     color: #f78600;
 }
+
 .jd-sublinks-items a {
     display: block;
     color: #4a4a4a;
@@ -74,7 +80,8 @@
     column-count: 2;
     column-gap: 10px;
 }
-.div-sublinks{
+
+.div-sublinks {
     min-height: 558px;
 }
 
@@ -82,11 +89,12 @@
     color: #f68600;
 }
 
-.fn-color-inStock{
+.fn-color-inStock {
     color: #15a225 !important;
     font-weight: 700;
     font-size: 20px;
 }
+
 .cart-items-count {
     position: absolute;
     top: -3px;
@@ -117,6 +125,7 @@
     font-size: 12px;
     line-height: 1.42857;
 }
+
 .btn-circle-xl {
     width: 70px;
     height: 70px;
@@ -127,12 +136,13 @@
 }
 
 
-.free-delivery{
+.free-delivery {
     width: 90px;
     position: absolute;
     bottom: 0;
     right: 0;
 }
+
 .free-delivery-prods {
     width: 80px;
     position: absolute;
@@ -147,193 +157,74 @@
     right: 0;
 }
 
-.ribbon span{
+.ribbon span {
     position: absolute;
     display: block;
     width: 225px;
     padding: 0;
-    moz-box-shadow: 0 0 4px rgba(0,0,0,.6);
-    -khtml-box-shadow: 0 0 4px rgba(0,0,0,.6);
-    -webkit-box-shadow: 0 0 4px rgba(0,0,0,.6);
-    -o-box-shadow: 0 0 4px rgba(0,0,0,.6);
+    moz-box-shadow: 0 0 4px rgba(0, 0, 0, .6);
+    -khtml-box-shadow: 0 0 4px rgba(0, 0, 0, .6);
+    -webkit-box-shadow: 0 0 4px rgba(0, 0, 0, .6);
+    -o-box-shadow: 0 0 4px rgba(0, 0, 0, .6);
     color: #fff;
     font-size: 15px;
     text-align: center;
-    background-color: #de1f21!important;
+    background-color: #de1f21 !important;
     font-weight: 700;
 }
-.ribbon-top-right span{
+
+.ribbon-top-right span {
     left: -70px;
     top: 32px;
     transform: rotate(-45deg);
 }
 
-.product-image{
+.product-image {
     padding: 6px;
     text-align: center;
 }
 
 
-.img-banner1{
-     width: 100%; height: 100%;
- }
-
-.img-banner2{
-    width: 99%; height: 100%;
+.img-banner1 {
+    width: 100%;
+    height: 100%;
 }
 
-.title-card{
+.img-banner2 {
+    width: 99%;
+    height: 100%;
+}
+
+.title-card {
     text-decoration: none !important;
     font-size: 18px;
 }
-.title-card h5{
+
+.title-card h5 {
     text-decoration: none !important;
     font-size: 18px;
 }
 
-.div-banners{
+.div-banners {
     height: 530px !important;
 }
-.divimg{
+
+.divimg {
     height: 160px !important;
     min-height: 246px !important;
 }
-.divimg2{
+
+.divimg2 {
     height: 500px !important;
     min-height: 117px !important;
 }
 
-@media (min-width: 768px) and (max-width: 991px) {
-    /* Show 4th slide on md if col-md-4*/
-    .carousel-inner .active.col-md-4.carousel-item + .carousel-item + .carousel-item + .carousel-item {
-        position: absolute;
-        top: 0;
-        right: -33.3333%;  /*change this with javascript in the future*/
-        z-index: -1;
-        display: block;
-        visibility: visible;
-    }
-}
-@media (min-width: 576px) and (max-width: 768px) {
-    /* Show 3rd slide on sm if col-sm-6*/
-    .carousel-inner .active.col-sm-6.carousel-item + .carousel-item + .carousel-item {
-        position: absolute;
-        top: 0;
-        right: -50%;  /*change this with javascript in the future*/
-        z-index: -1;
-        display: block;
-        visibility: visible;
-    }
-}
-@media (min-width: 576px) {
-    .carousel-item {
-        margin-right: 0;
-    }
-    /* show 2 items */
-    .carousel-inner .active + .carousel-item {
-        display: block;
-    }
-    .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left),
-    .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item {
-        transition: none;
-    }
-    .carousel-inner .carousel-item-next {
-        position: relative;
-        transform: translate3d(0, 0, 0);
-    }
-    /* left or forward direction */
-    .active.carousel-item-left + .carousel-item-next.carousel-item-left,
-    .carousel-item-next.carousel-item-left + .carousel-item,
-    .carousel-item-next.carousel-item-left + .carousel-item + .carousel-item {
-        position: relative;
-        transform: translate3d(-100%, 0, 0);
-        visibility: visible;
-    }
-    /* farthest right hidden item must be also positioned for animations */
-    .carousel-inner .carousel-item-prev.carousel-item-right {
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: -1;
-        display: block;
-        visibility: visible;
-    }
-    /* right or prev direction */
-    .active.carousel-item-right + .carousel-item-prev.carousel-item-right,
-    .carousel-item-prev.carousel-item-right + .carousel-item,
-    .carousel-item-prev.carousel-item-right + .carousel-item + .carousel-item {
-        position: relative;
-        transform: translate3d(100%, 0, 0);
-        visibility: visible;
-        display: block;
-    }
-}
-/* MD */
-@media (min-width: 768px) {
-    /* show 3rd of 3 item slide */
-    .carousel-inner .active + .carousel-item + .carousel-item {
-        display: block;
-    }
-    .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item + .carousel-item {
-        transition: none;
-    }
-    .carousel-inner .carousel-item-next {
-        position: relative;
-        transform: translate3d(0, 0, 0);
-    }
-    /* left or forward direction */
-    .carousel-item-next.carousel-item-left + .carousel-item + .carousel-item + .carousel-item {
-        position: relative;
-        transform: translate3d(-100%, 0, 0);
-        visibility: visible;
-    }
-    /* right or prev direction */
-    .carousel-item-prev.carousel-item-right + .carousel-item + .carousel-item + .carousel-item {
-        position: relative;
-        transform: translate3d(100%, 0, 0);
-        visibility: visible;
-        display: block;
-    }
-}
-/* LG */
-@media (min-width: 991px) {
-    /* show 4th item */
-    .carousel-inner .active + .carousel-item + .carousel-item + .carousel-item {
-        display: block;
-    }
-    .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item + .carousel-item + .carousel-item {
-        transition: none;
-    }
-    /* Show 5th slide on lg if col-lg-3 */
-    .carousel-inner .active.col-lg-3.carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item {
-        position: absolute;
-        top: 0;
-        right: -25%;  /*change this with javascript in the future*/
-        z-index: -1;
-        display: block;
-        visibility: visible;
-    }
-    /* left or forward direction */
-    .carousel-item-next.carousel-item-left + .carousel-item + .carousel-item + .carousel-item + .carousel-item {
-        position: relative;
-        transform: translate3d(-100%, 0, 0);
-        visibility: visible;
-    }
-    /* right or prev direction //t - previous slide direction last item animation fix */
-    .carousel-item-prev.carousel-item-right + .carousel-item + .carousel-item + .carousel-item + .carousel-item {
-        position: relative;
-        transform: translate3d(100%, 0, 0);
-        visibility: visible;
-        display: block;
-    }
-}
-
-.img-carousel{
+.img-carousel {
     width: 150px;
     height: 120px;
 }
 
-.info{
+.info {
     height: 100%;
     width: 100%;
     color: #fff;
@@ -342,7 +233,8 @@
     box-sizing: border-box;
     display: flex;
 }
-.banner{
+
+.banner {
     position: relative;
     margin: 8px;
     padding: 0;
@@ -353,28 +245,32 @@
     transition: .15s ease-in;
     min-height: 100%;
 }
-.title{
+
+.title {
     text-align: left;
     font-size: 36px;
     font-weight: 500;
 }
-.subtitle{
+
+.subtitle {
     font-weight: 400;
     font-style: italic;
     text-align: center;
     font-size: 16px;
 }
 
-@media (min-width: 1280px) and (max-width: 1680px){
-    .divimg{
+@media (min-width: 1280px) and (max-width: 1680px) {
+    .divimg {
         height: 160px !important;
         min-height: 117px !important;
     }
-    .divimg2{
+
+    .divimg2 {
         height: 316px !important;
         min-height: 117px !important;
     }
-    .info{
+
+    .info {
         height: 100%;
         width: 100%;
         color: #fff;
@@ -383,15 +279,18 @@
         box-sizing: border-box;
         display: flex;
     }
+
     .jd-sublinks-items {
         padding: 0;
     }
+
     .jd-sublinks-items a {
         display: block;
         color: #4a4a4a;
         font-size: 17px;
         font-weight: 600;
     }
+
     .jd-sublinks-items a i {
         color: #f78600;
         font-size: 14px;
@@ -405,20 +304,24 @@
         column-count: 2;
         column-gap: 10px;
     }
-    .div-banners{
+
+    .div-banners {
         height: 530px !important;
     }
 }
-@media (min-width: 991px) and (max-width: 1280px){
-    .divimg{
+
+@media (min-width: 991px) and (max-width: 1280px) {
+    .divimg {
         height: 160px !important;
         min-height: 117px !important;
     }
-    .divimg2{
+
+    .divimg2 {
         height: 160px !important;
         min-height: 117px !important;
     }
-    .info{
+
+    .info {
         height: 100%;
         width: 100%;
         color: #fff;
@@ -427,15 +330,18 @@
         box-sizing: border-box;
         display: flex;
     }
+
     .jd-sublinks-items {
         padding: 0;
     }
+
     .jd-sublinks-items a {
         display: block;
         color: #4a4a4a;
         font-size: 16px;
         font-weight: 600;
     }
+
     .jd-sublinks-items a i {
         color: #f78600;
         font-size: 15px;
@@ -449,27 +355,33 @@
         column-count: 1;
         column-gap: 10px;
     }
-    .div-sublinks{
+
+    .div-sublinks {
         min-height: 751px;
     }
-    .div-banners{
+
+    .div-banners {
         height: 470px !important;
     }
 }
-@media (min-width: 768px) and (max-width: 991px){
+
+@media (min-width: 768px) and (max-width: 991px) {
     .jd-sublinks-items {
         padding: 0;
     }
+
     .jd-sublinks-items a {
         display: block;
         color: #4a4a4a;
         font-size: 16px;
         font-weight: 600;
     }
+
     .jd-sublinks-items a i {
         color: #f78600;
         font-size: 14px;
     }
+
     .jd-sublinks-items:nth-child(-n+1) {
         -moz-column-count: 2;
         -moz-column-gap: 10px;
@@ -478,7 +390,8 @@
         column-count: 1;
         column-gap: 10px;
     }
-    .info{
+
+    .info {
         height: 100%;
         width: 100%;
         color: #fff;
@@ -487,32 +400,39 @@
         box-sizing: border-box;
         display: flex;
     }
-    .divimg{
+
+    .divimg {
         height: 140px !important;
         min-height: 140px !important;
     }
-    .divimg2{
+
+    .divimg2 {
         height: 140px !important;
         min-height: 140px !important;
     }
-    .div-sublinks{
+
+    .div-sublinks {
         min-height: 751px;
     }
-    .div-banners{
+
+    .div-banners {
         height: 360px !important;
     }
 }
-@media (min-width: 576px) and (max-width: 768px){
+
+@media (min-width: 576px) and (max-width: 768px) {
     .jd-sublinks-items a {
         display: block;
         color: #4a4a4a;
         font-size: 17px;
         font-weight: 600;
     }
+
     .jd-sublinks-items a i {
         color: #f78600;
         font-size: 15px;
     }
+
     .jd-sublinks-items:nth-child(-n+1) {
         -moz-column-count: 2;
         -moz-column-gap: 20px;
@@ -521,7 +441,8 @@
         column-count: 2;
         column-gap: 10px;
     }
-    .info{
+
+    .info {
         height: 100%;
         width: 100%;
         color: #fff;
@@ -530,38 +451,47 @@
         box-sizing: border-box;
         display: flex;
     }
-    .div-sublinks{
+
+    .div-sublinks {
         min-height: 420px;
     }
-    .divimg{
+
+    .divimg {
         height: 140px !important;
         min-height: 140px !important;
     }
-    .divimg2{
+
+    .divimg2 {
         height: 140px !important;
         min-height: 140px !important;
     }
-    .div-sublinks{
+
+    .div-sublinks {
         min-height: 120px;
     }
-    .div-banners{
+
+    .div-banners {
         height: 260px !important;
     }
 }
+
 @media (max-width: 576px) {
-    .divimg{
+    .divimg {
         height: 140px !important;
         min-height: 117px !important;
     }
-    .divimg2{
+
+    .divimg2 {
         height: 140px !important;
         min-height: 117px !important;
     }
-    .div-banners{
+
+    .div-banners {
         /*height: 460px !important;*/
         height: 180px !important;
     }
-    .info{
+
+    .info {
         height: 100%;
         width: 100%;
         color: #fff;
@@ -570,29 +500,35 @@
         box-sizing: border-box;
         display: flex;
     }
-    .title{
+
+    .title {
         text-align: left;
         font-size: 20px;
         font-weight: 500;
     }
-    .subtitle{
+
+    .subtitle {
         font-weight: 400;
         font-style: italic;
         text-align: center;
         font-size: 11px;
     }
-    .jd-sublinks-items a{
+
+    .jd-sublinks-items a {
         font-size: 15px;
         font-weight: 500;
     }
-    .jd-sublinks-items  i {
+
+    .jd-sublinks-items i {
         font-size: 12px;
     }
+
     .jd-sublinks {
         padding: 2px;
         display: table;
         margin: auto;
     }
+
     .jd-sublinks-items:nth-child(-n+1) {
         -moz-column-count: 2;
         -moz-column-gap: 10px;
@@ -603,12 +539,13 @@
         margin-left: -11px;
         margin-right: -11px;
     }
-    .div-sublinks{
+
+    .div-sublinks {
         min-height: 220px;
     }
 }
 
-#overlay-bussy{
+#overlay-bussy {
     top: 0;
     display: none;
     position: fixed;
@@ -627,7 +564,7 @@
     opacity: 1;
 }
 
-#loading{
+#loading {
     color: rgb(255, 255, 255);
     display: inline-block;
     float: none;
@@ -640,6 +577,7 @@
     -webkit-animation: .75s linear infinite ball-clip-rotate;
     animation: .75s linear infinite ball-clip-rotate;
 }
+
 /*
  * Animation
  */
@@ -657,6 +595,7 @@
         transform: rotate(360deg);
     }
 }
+
 @-moz-keyframes ball-clip-rotate {
     0% {
         -moz-transform: rotate(0deg);
@@ -671,6 +610,7 @@
         transform: rotate(360deg);
     }
 }
+
 @-o-keyframes ball-clip-rotate {
     0% {
         -o-transform: rotate(0deg);
@@ -685,6 +625,7 @@
         transform: rotate(360deg);
     }
 }
+
 @keyframes ball-clip-rotate {
     0% {
         -webkit-transform: rotate(0deg);
@@ -705,23 +646,24 @@
         transform: rotate(360deg);
     }
 }
+
 /*snackbar*/
 
- #snackbar {
-     visibility: hidden;
-     min-width: 250px;
-     margin-left: -125px;
-     background-color: #333;
-     color: #fff;
-     text-align: center;
-     border-radius: 5px;
-     padding: 16px;
-     position: fixed;
-     z-index: 99;
-     left: 50%;
-     bottom: 30px;
-     font-size: 17px;
- }
+#snackbar {
+    visibility: hidden;
+    min-width: 250px;
+    margin-left: -125px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 5px;
+    padding: 16px;
+    position: fixed;
+    z-index: 99;
+    left: 50%;
+    bottom: 30px;
+    font-size: 17px;
+}
 
 #snackbar.show {
     visibility: visible;
@@ -730,65 +672,51 @@
 }
 
 @-webkit-keyframes fadein {
-    from {bottom: 0; opacity: 0;}
-    to {bottom: 30px; opacity: 1;}
+    from {
+        bottom: 0;
+        opacity: 0;
+    }
+    to {
+        bottom: 30px;
+        opacity: 1;
+    }
 }
 
 @keyframes fadein {
-    from {bottom: 0; opacity: 0;}
-    to {bottom: 30px; opacity: 1;}
+    from {
+        bottom: 0;
+        opacity: 0;
+    }
+    to {
+        bottom: 30px;
+        opacity: 1;
+    }
 }
 
 @-webkit-keyframes fadeout {
-    from {bottom: 30px; opacity: 1;}
-    to {bottom: 0; opacity: 0;}
+    from {
+        bottom: 30px;
+        opacity: 1;
+    }
+    to {
+        bottom: 0;
+        opacity: 0;
+    }
 }
 
 @keyframes fadeout {
-    from {bottom: 30px; opacity: 1;}
-    to {bottom: 0; opacity: 0;}
+    from {
+        bottom: 30px;
+        opacity: 1;
+    }
+    to {
+        bottom: 0;
+        opacity: 0;
+    }
 }
 
 /*snackbar*/
 /*Banners Home*/
-.banner3{
+/*.banner3{
     background-image: url('../../assets/images/banner/banner3.jpg');
-}
-.banner3-mob{
-    background-image: url('../../assets/images/banner/banner3.jpg');
-    /*background-image: url('../../assets/images/banner/aspersora-mob.webp');*/
-}
-.banner2{
-    background-image: url('../images/banner/banner2.jpg');
-}
-.banner2-mob{
-    background-image: url('../images/banner/banner2.jpg');
-    /*background-image: url('../../assets/images/banner/motocultor-mob.webp');*/
-}
-.banner1{
-    background-image: url('../../assets/images/banner/banner1.jpg');
-}
-.banner1-mob{
-    background-image: url('../../assets/images/banner/banner1.jpg');
-    /*background-image: url('../../assets/images/banner/banner1-mob.webp');*/
-}
-/*pare Safari */
-.banner3-safari{
-    background-image: url('../../assets/images/banner/banner3.jpg');
-}
-.banner3-mob-safari{
-    background-image: url('../../assets/images/banner/banner3-mob.jpg');
-}
-.banner2-safari{
-    background-image: url('../images/banner/banner2.jpg');
-}
-.banner2-mob-safari{
-    background-image: url('../../assets/images/banner/motocultor-mob.jpg');
-}
-.banner1-safari{
-    background-image: url('../../assets/images/banner/banner1.jpg');
-}
-.banner1-mob-safari{
-    background-image: url('../../assets/images/banner/banner1.jpg');
-}
-/*Fin Banners Home*/
+}*/
