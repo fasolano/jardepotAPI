@@ -13,6 +13,8 @@ class TrackingController extends Controller
     }
 
     public function getGuia(){
+//        return $this->getTracking(772137131206);
+        return $this->getTracking(771840259266);
         if (isset($_POST['form'])){
             $guias = $this->trackingRepository->getGuia(json_decode($_POST['form']));
             if(count($guias) > 0){
@@ -43,7 +45,7 @@ class TrackingController extends Controller
         // Producton
         $key = "pBoaTCrFmGJiKE8T";
         $password = "nIeSnZs88z6vVbhjUQq1FsFZe";
-        $accountNo = "510087860";
+        $accountNo = "375208199";
         $meterNo = "252633061";
 
         // Build Authentication
@@ -91,12 +93,15 @@ class TrackingController extends Controller
         $client->__setLocation($endPoint);
 
         $apiResponse = $client->track($request);
-
-        $td=json_encode($apiResponse->CompletedTrackDetails->TrackDetails);
+        if($apiResponse->HighestSeverity == 'SUCCESS'){
+            $td=json_encode($apiResponse->CompletedTrackDetails->TrackDetails);
+        }else{
+            $td=json_encode($apiResponse);
+        }
         return ($td);
     }
 
-    public function printp($arr){
+/*    public function printp($arr){
         $retStr = '<ul>';
         if (is_object($arr)){
             foreach ($arr as $key=>$val){
@@ -168,5 +173,5 @@ class TrackingController extends Controller
                 echo '<tr><td>'.$spacer. $key .'</td><td>'.$value.'</td></tr>';
             }
         }
-    }
+    }*/
 }
