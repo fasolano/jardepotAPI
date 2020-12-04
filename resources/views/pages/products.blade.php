@@ -237,7 +237,7 @@
                         </div>
                     </div>
                     @if(isset($descriptionLevel2->texto))
-                        <div class="row border shadow bg-white rounded mt-2">
+                        <div class="row border shadow bg-white rounded mt-4 mb-4">
                             <div class="col-12" style="border-radius: 5px;overflow: hidden;">
                                 {!! $descriptionLevel2->texto !!}
                             </div>
