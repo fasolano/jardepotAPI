@@ -116,9 +116,8 @@ class CheckoutController extends Controller {
         $nombre = $clientForm['nombre']. " " .$clientForm['apellidos'];
 
         $sellers = ["ventas1@jardepot.com", "ventas2@jardepot.com", "ventas4@jardepot.com", "ventas7@jardepot.com", "ventas8@jardepot.com", "ventas10@jardepot.com"];
-        $ind = rand(0,4);
+        $ind = rand(0,5);
         $mailSeller = $sellers[$ind];
-        $mailSeller = "svartpilen2020@gmail.com";
         $cartRepository->setSellerToCart($cart->id_carrito, $ind);
 
         if($this->sendQuotationMail($clientForm['email'], $nombre, $quotation->idCotizaciones, $content, $mailSeller)){
@@ -133,7 +132,7 @@ class CheckoutController extends Controller {
     protected function sendAlertMail($clientForm, $billingDeleveryData, $quotation, $mailSeller){
         $dia = date('d-m-Y');
         $hora = date('H:i:s');
-
+        $mailSeller = "svartpilen2020@gmail.com";//se puso para que solo se le envíe a Isra al personal
         $data = [
             'nombre' => $clientForm['nombre']. " ". $clientForm['apellidos'],
             'telefono' => $clientForm['telefono'],
