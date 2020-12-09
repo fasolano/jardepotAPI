@@ -81,7 +81,7 @@
         <div class="col-xl-9 col-lg-11 my-4" style="max-width: 1300px;">
             <div class="row">
                 <div class="col-md-7">
-                    <p class="font-weight-bold my-2" style="font-size: 18px;">Centros de Servicio y Distribución</p>
+                    <h4 class="font-weight-bold my-2" style="font-size: 18px;">Centros de Servicio y Distribución</h4>
                     <div class="row">
                         <div class="col-md-6" style="line-height: 1.5;">
                             <a class="link-footer" href="https://goo.gl/maps/X217x5HGYWMCLJqSA" target="_blank" rel="noopener">
@@ -98,7 +98,8 @@
                         <p class="d-flex align-items-center my-2"><i class="material-icons fn-color-jd mr-2">access_time</i> Lunes - Viernes / 9:00AM - 6:00PM</p>
                         <p class="d-flex align-items-center my-2"><i class="material-icons fn-color-jd mr-2">access_time</i> Sabado / 9:00AM - 2:00PM</p>
                     </div>
-                    <p class="font-weight-bold my-2 mt-3" style="font-size: 18px;">Atención a Comercializadoras y Mayoristas:</p>
+                    <br>
+                    <h4 class="font-weight-bold my-2 mt-4" style="font-size: 18px;">Atención a Comercializadoras y Mayoristas:</h4>
                     <div class="mt-3"  style="font-size: 16px; line-height: 1.5;">
                         <p class="d-flex align-items-center my-2">
                             <i class="material-icons fn-color-jd mr-2">call</i>
