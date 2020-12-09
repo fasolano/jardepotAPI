@@ -3,10 +3,13 @@ $.ajaxSetup({
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
     }
 });
-// const ruta = '/jardepotAPI/public/';
-// const ruta = '/';
 
 $(document).ready(function (){
+    //se pusieron porque no quieren que se regrese y evitar un rebote de google
+    window.location.hash="no-back-button";
+    window.location.hash="Again-No-back-button";//esta linea es necesaria para chrome
+    window.onhashchange=function(){window.location.hash="no-back-button";}
+
     //Disable cut copy paste
    // $('body').bind('cut copy paste', function (e) { e.preventDefault(); });
     //Disable mouse right click
