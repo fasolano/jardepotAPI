@@ -40,7 +40,7 @@
 {{--         --}}
 {{--            </div>--}}
             <div class="col-lg-12 col-md-12">
-                <h1 class="title-product">Rastea tu pedido</h1>
+                <h1 class="title-product">Rastrea tu pedido</h1>
                 <div class="row">
                     <div class="col-md-4" style="padding-right: 0">
                         <div class="card shadow-sm" style="overflow: hidden;">

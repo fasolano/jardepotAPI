@@ -570,7 +570,7 @@
                     <div class="flip-card-back">
                         @if($ipl > 0)
                         <div class="col-lg-12 col-md-12 card shadow" >
-                            <h1 class="title-product">{{ucwords($product['productType'])}} {{ucwords($product['brand'])}} - <span style="text-transform: uppercase;">{{$product['mpn']}}</h1>
+                            <h2 class="title-product">{{ucwords($product['productType'])}} {{ucwords($product['brand'])}} - <span style="text-transform: uppercase;">{{$product['mpn']}}</h2>
                             <h3 style="color: #000; text-align: center;">Comunícate al <br> <i class="fa fa-phone"></i> <strong> 800 212 9225</strong> ó <strong>722 648 1040</strong></h3>
                             <div class="row">
                                 <div class="col-md-12 mt-2">
