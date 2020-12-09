@@ -193,7 +193,7 @@
                                             <div class="row">
                                                 <div class="col-md-4 col-sm-6">
                                                     @if( ($product['oldPrice']) && $product['stock'])
-                                                        <h3 class="old-price text-muted">{{$product['oldPrice'] }}</h3>
+                                                        <p class="old-price text-muted">{{$product['oldPrice'] }}</p>
                                                     @endif
                                                     <p class="new-price">
                                                         <span class="precio" style="color: #de1f21;font-weight:500;">{{$product['newPrice']}}</span>
@@ -357,7 +357,7 @@
                             </div>
                             @if(count($productsRelated))
                                 <div class="row mt-4">
-                                    <h3>Productos recomendados</h3>
+                                    <h5>Productos recomendados</h5>
                                     <div class="divider"></div>
                                     <!-- Swiper -->
                                     <div class="swiper-container p-1">
@@ -385,12 +385,12 @@
                                                         <a class="title text-truncate" data-toggle="tooltip" title="{{$related['name']}}">{{$related['name']}}</a>
                                                         <div style="height: 18px">
                                                             @if( ($related['oldPrice']) && $related['stock'])
-                                                                <h3 class="old-price-recom text-muted">{{$related['oldPrice'] }}</h3>
+                                                                <p class="old-price-recom text-muted">{{$related['oldPrice'] }}</p>
                                                             @endif
                                                         </div>
                                                         <div style="height: 19px">
                                                             @if($related['stock'])
-                                                                <h2 class="new-price-recom">{{$related['newPrice']}}</h2>
+                                                                <p class="new-price-recom">{{$related['newPrice']}}</p>
                                                             @endif
                                                         </div>
                                                         <div style="height: 47px">
@@ -431,7 +431,7 @@
                                     <div class="row">
                                         <div class="col-md-12 col-sm-12">
                                             @if( ($product['oldPrice']) && $product['stock'])
-                                                <h3 class="old-price text-muted">{{$product['oldPrice'] }}</h3>
+                                                <p class="old-price text-muted">{{$product['oldPrice'] }}</p>
                                             @endif
                                             <p class="new-price">
                                                 <span class="precio" style="color: #de1f21;font-weight:500;">{{$product['newPrice']}}</span>
@@ -570,8 +570,8 @@
                     <div class="flip-card-back">
                         @if($ipl > 0)
                         <div class="col-lg-12 col-md-12 card shadow" >
-                            <h2 class="title-product">{{ucwords($product['productType'])}} {{ucwords($product['brand'])}} - <span style="text-transform: uppercase;">{{$product['mpn']}}</h2>
-                            <h3 style="color: #000; text-align: center;">Comunícate al <br> <i class="fa fa-phone"></i> <strong> 800 212 9225</strong> ó <strong>722 648 1040</strong></h3>
+                            <h4 class="title-product">{{ucwords($product['productType'])}} {{ucwords($product['brand'])}} - <span style="text-transform: uppercase;">{{$product['mpn']}}</h4>
+                            <h4 style="color: #000; text-align: center;">Comunícate al <br> <i class="fa fa-phone"></i> <strong> 800 212 9225</strong> ó <strong>722 648 1040</strong></h4>
                             <div class="row">
                                 <div class="col-md-12 mt-2">
                                     <div class="mt-element-list">
@@ -601,7 +601,7 @@
                                                 <div class="mt-list-head list-news ext-1 font-white bg-green-sharp"
                                                      style="background-color: #424242; padding-top: 1px; border-radius: 10px 10px 0px 0px; color: #fff; padding-bottom: 1px;">
                                                     <div class="list-head-title-container">
-                                                        <h3 class="list-title text-center">Lista de refacciones</h3>
+                                                        <h4 class="list-title text-center">Lista de refacciones</h4>
                                                     </div>
                                                 </div>
                                                 <div class="mt-list-container list-news ext-1"
@@ -615,7 +615,7 @@
                                             <div class="mt-list-head list-news ext-1 font-white bg-green-sharp"
                                                  style="background-color: #424242; padding-top: 1px; border-radius: 10px 10px 0px 0px; color: #fff; padding-bottom: 1px; width: 100%; align-items: center">
                                                 <div class="list-head-title-container">
-                                                    <h3 class="list-title text-center" id="nombreParte"> nombre de la parte</h3>
+                                                    <h4 class="list-title text-center" id="nombreParte"> nombre de la parte</h4>
                                                 </div>
                                             </div>
                                             <div id="mapid"
