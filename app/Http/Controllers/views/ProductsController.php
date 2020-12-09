@@ -57,8 +57,8 @@ class ProductsController extends Controller {
             $textFilter = "marcas";
         }
         $idFilter = 0;
-
-        return view('pages/products', compact('idFilter', 'sidebar', 'categoryLevel1', 'categoryLevel2', 'products', 'numberPages', 'filters', 'textFilter', 'descriptionLevel2'));
+        $canonical = url()->current();;
+        return view('pages/products', compact('idFilter', 'sidebar', 'categoryLevel1', 'categoryLevel2', 'products', 'numberPages', 'filters', 'textFilter', 'descriptionLevel2','canonical'));
     }
 
     public function productsListLevel3($categoryLevel1, $categoryLevel2, $categoryLevel3){
@@ -93,8 +93,8 @@ class ProductsController extends Controller {
         }else{
             $textFilter = "marcas";
         }
-
-        return view('pages/products', compact('sidebar', 'categoryLevel1', 'categoryLevel2', 'products', 'numberPages', 'filters', 'textFilter', 'descriptionLevel2', 'idFilter'));
+        $canonical = url()->current();;
+        return view('pages/products', compact('sidebar', 'categoryLevel1', 'categoryLevel2', 'products', 'numberPages', 'filters', 'textFilter', 'descriptionLevel2', 'idFilter','canonical'));
     }
 
     public function productsSaleList(){
@@ -125,13 +125,13 @@ class ProductsController extends Controller {
         $productsListSearch= $productRepository->getProductsOffer();
         $productsListSearch = $this->porductModelFormat($productsListSearch);
 
+        $canonical = url()->current();;
         if (count($productsListSearch) == 0) {
-            return view('pages/products', compact('sidebar', 'categoryLevel1', 'categoryLevel2', 'productsListSearch', 'numberPages', 'descriptionLevel2'));
+            return view('pages/products', compact('sidebar', 'categoryLevel1', 'categoryLevel2', 'productsListSearch', 'numberPages', 'descriptionLevel2','canonical'));
         }
 
         $numberPages = count($productsListSearch) / 16;
-
-        return view('pages/products', compact('sidebar', 'categoryLevel1', 'categoryLevel2', 'productsListSearch', 'numberPages', 'descriptionLevel2'));
+        return view('pages/products', compact('sidebar', 'categoryLevel1', 'categoryLevel2', 'productsListSearch', 'numberPages', 'descriptionLevel2','canonical'));
     }
 
     public function getProductsListSearch($word){
@@ -162,7 +162,8 @@ class ProductsController extends Controller {
         $cant = 0;
         $productsListSearch = array();
         if (!$word) {
-            return view('pages/products', compact('sidebar', 'categoryLevel1', 'categoryLevel2', 'productsListSearch', 'numberPages', 'descriptionLevel2'));
+            $canonical = url()->current();;
+            return view('pages/products', compact('sidebar', 'categoryLevel1', 'categoryLevel2', 'productsListSearch', 'numberPages', 'descriptionLevel2','canonical'));
         }
 
         $matches= $productRepository->getProductsSearch2($word);
@@ -173,8 +174,8 @@ class ProductsController extends Controller {
         }
         $productsListSearch = $this->porductModelFormat($productsListSearch);
         $numberPages = count($productsListSearch) / 16;
-
-        return view('pages/products', compact('sidebar', 'categoryLevel1', 'categoryLevel2', 'productsListSearch', 'numberPages', 'descriptionLevel2'));
+        $canonical = url()->current();;
+        return view('pages/products', compact('sidebar', 'categoryLevel1', 'categoryLevel2', 'productsListSearch', 'numberPages', 'descriptionLevel2','canonical'));
     }
 
     public function productsSearchOrdered(Request $request){

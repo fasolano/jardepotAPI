@@ -106,7 +106,7 @@
             @if($key < 2)
                 <div class="col-md-4">
                     <div class="border shadow p-3 bg-white rounded div-sublinks">
-                        <h3>{{$cat1['nivel1']}}</h3>
+                        <h2>{{$cat1['nivel1']}}</h2>
                         <div class="col-sm-12">
                             <div class="jd-sublinks-items">
                                 @foreach($cat1['nivel2'] as $categoria2)
@@ -121,7 +121,7 @@
                 @if($key == 2)
                     <div class="col-md-4">
                         <div class="border shadow p-3 bg-white rounded div-sublinks">
-                            <h3>Otros</h3>
+                            <h2>Otros</h2>
                             <div class="md-accordion" id="accordionEx" role="tablist" aria-multiselectable="true">
                 @endif
                             <!-- Accordion card -->
@@ -131,9 +131,9 @@
                                          style="background-color: #fff;">
                                         <a data-toggle="collapse" data-parent="#accordionEx" href="#collapseOne{{$key}}"
                                            aria-expanded="true" aria-controls="collapseOne{{$key}}">
-                                            <h5 class="mb-0 text-dark">
+                                            <h4 class="mb-0 text-dark">
                                                 {{$cat1['nivel1']}} <i class="material-icons">keyboard_arrow_down</i>
-                                            </h5>
+                                            </h4>
                                         </a>
                                     </div>
                                     <!-- Card body -->

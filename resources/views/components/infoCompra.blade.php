@@ -5,7 +5,7 @@
                 <i class="fn-color-jd material-icons" style="font-size: 40px;">build</i>
             </div>
             <div class="col-md-9" style="padding: 10px;font-size: 14px">
-                <p style="color: rgba(0, 0, 0, 0.87) !important;"><strong>Garantía y Refacciones</strong></p>
+                <h3 style="color: rgba(0, 0, 0, 0.87) !important;font-size: 14px;"><strong>Garantía y Refacciones</strong></h3>
                 <span class="text-muted" style="font-weight: 400;">Todos nuestros equipos cuentan con garantía, contra defectos de fábrica y contamos con las refacciones originales de los mismos.</span>
             </div>
         </div>
@@ -16,7 +16,7 @@
                 <i class="fn-color-jd material-icons" style="font-size: 40px;">local_shipping</i>
             </div>
             <div class="col-md-9" style="padding: 10px;font-size: 14px">
-                <p style="color: rgba(0, 0, 0, 0.87) !important;"><strong>Envío Gratis</strong></p>
+                <h3 style="color: rgba(0, 0, 0, 0.87) !important;font-size: 14px;"><strong>Envío Gratis</strong></h3>
                 <span class="text-muted m-0" style="font-weight: 400;">En compras superiores a $3,000 pesos.</span>
                 <p><a href="javascript: void(0)" data-toggle="modal" data-target="#modalCondicionEnvio"  style="color: rgba(0, 0, 0, 0.54) !important; font-weight: bold;">*Condiciones</a></p>
             </div>
@@ -28,7 +28,7 @@
                 <i class="fn-color-jd material-icons" style="font-size: 40px;">monetization_on</i>
             </div>
             <div class="col-md-9" style="padding: 10px;font-size: 14px">
-                <p style="color: rgba(0, 0, 0, 0.87) !important;"><strong>Paga Seguro</strong></p>
+                <h3 style="color: rgba(0, 0, 0, 0.87) !important;font-size: 14px;"><strong>Paga Seguro</strong></h3>
                 <span class="text-muted m-0" style="font-weight: 400;">Aceptamos pagos mediante PayPal, transferencia y Deposito Bancario.</span>
             </div>
         </div>
@@ -39,7 +39,7 @@
                 <i class="fn-color-jd material-icons" style="font-size: 40px;">perm_phone_msg </i>
             </div>
             <div class="col-md-9" style="padding: 10px;font-size: 14px">
-                <p style="color: rgba(0, 0, 0, 0.87) !important;"><strong>Soporte y Asesoría</strong></p>
+                <h3 style="color: rgba(0, 0, 0, 0.87) !important;font-size: 14px;"><strong>Soporte y Asesoría</strong></h3>
                 <span class="text-muted m-0" style="font-weight: 400;">¿Dudas sobre tu equipo?, nuestros ingenieros te pueden apoyar por teléfono, Whatsapp o en nuestras tiendas.</span>
             </div>
         </div>

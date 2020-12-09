@@ -10,11 +10,11 @@
     <meta property="og:title" content="{{ $descriptionLevel2->metatitle}}" />
     <meta property="og:description" content="{{ $descriptionLevel2->metadescription}}" />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://www.jardepot.com/" />
+    <meta property="og:url" content="{{isset($canonical)?$canonical:'https://www.jardepot.com/'}}" />
     <meta property="og:image" content="{{asset('img/logos/logoOG.jpg')}}" />
     <meta property="og:image:url" content="{{asset('img/logos/logoOG.jpg')}}" />
     <meta property="og:image:secure_url" content="{{asset('img/logos/logoOG.jpg')}}" />
-    <link rel="canonical" href="https://www.jardepot.com">
+    <link rel="canonical" href="{{isset($canonical)?$canonical:'https://www.jardepot.com/'}}">
 @endsection
 
 @section('specificCSS')
