@@ -300,7 +300,7 @@
                                 <div class="tab-content">
                                     <div id="fichTecnica" class="container tab-pane active">
                                         <div class="m-2">
-                                            <h3> {!! $product['dataSheet'] !!}</h3>
+                                             {!! $product['dataSheet'] !!}
                                         </div>
                                     </div>
                                     {{--    <div id="formDudas" class="container tab-pane fade"><br>
