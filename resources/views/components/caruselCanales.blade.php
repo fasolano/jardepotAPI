@@ -1,5 +1,5 @@
 
-<div class="row shadow border border-light p-3 bg-white m-1 mt-3 rounded">
+<div class="row shadow border border-light p-3 bg-white m-1 mt-3 rounded d-none d-sm-none d-md-block">
     <div id="gallery" class="carousel slide"  style="width: 100%" data-ride="carousel"  data-interval="9000" >
         <p style="font-size: 24px;font-weight: 500; margin-bottom: 0;"> Nuestros canales de distribución en México</p>
         <div class="carousel-inner row w-100 mx-auto">

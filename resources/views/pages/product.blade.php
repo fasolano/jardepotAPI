@@ -414,12 +414,51 @@
                                     </div>
                                 </div>
                             @endif
+{{--                            mustra formulario mobil--}}
+                            <div class="card shadow-lg pl-1 mt-2 d-block d-sm-block d-lg-none">
+                                <div style="margin: 5px">
+                                    <a class="h4" href="tel:8002129225" style="color: #1b1e21">
+                                        <i class="material-icons iconMod">local_phone</i>800 212 9225
+                                    </a>
+                                    <p class="h6">Llame ó llene con su información para que un asesor le contacte.</p>
+                                    <div class="divider mb-2"></div>
+                                    <form id="formularioDudas" action="javascript:void(0)">
+                                        {{ csrf_field() }}
+                                        <div class="">
+                                            <div class="form-group">
+                                                <label class="sr-only form-control-label" for="nombre">Nombre completo*:</label>
+                                                <input type="text" class="form-control" name="nombre" placeholder="Nombre completo*" id="nombre" >
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="sr-only form-control-label" for="email">Email*:</label>
+                                                <input type="text" class="form-control" placeholder="Email*" id="email" name="email" >
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="sr-only form-control-label" for="telefono">Teléfono (10 digitos)*:</label>
+                                                <input type="text" class="form-control" placeholder="Teléfono (10 digitos)*" id="telefono" name="telefono">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="sr-only form-control-label" for="whatsapp">Whatsapp:</label>
+                                                <input type="text" class="form-control" placeholder="Whatsapp" id="whatsapp"  name="whatsapp">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="sr-only form-control-label" for="comentario">Comentarios</label>
+                                                <textarea class="form-control" id="comentario" name="comentario" placeholder="Comentario"  rows="3"></textarea>
+                                            </div>
+
+                                            <input type="hidden" id="producto" name="producto" value="{{$product['name']}}">
+                                            <button id="btnSubmit" type="submit" class="btn btn-warning btn-block">Enviar</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
                             <br>
                             @include('components.infoCompra')
                             @include('components.caruselCanales')
                         </div>
                         <div class="col-lg-4 col-md-12" style="height: 500px;">
-                           <div class="d-none d-md-none d-lg-block">{{--  VISTA DE ESCRITORIO--}}
+                            <div class="d-none d-md-none d-lg-block">{{--  VISTA DE ESCRITORIO--}}
                                 @if(isset($product['imgBrand']))
                                     <div class="text-center">
                                         <img src="{{asset($product['imgBrand'])}}" style="width: 160px" alt="{{'Logo '.$product['brand']}}" >
@@ -527,7 +566,8 @@
                                 </div>
                             </div>
                             <br>
-                            <div class="card shadow-lg pl-1 mt-2">
+{{--                            muestra formulario escritorio--}}
+                            <div class="card shadow-lg pl-1 mt-2  d-none d-sm-none d-md-block">
                                 <div style="margin: 5px">
                                     <a class="h4" href="tel:8002129225" style="color: #1b1e21">
                                         <i class="material-icons iconMod">local_phone</i>800 212 9225
@@ -567,6 +607,8 @@
                             </div>
                         </div>
                     </div>
+
+{{--                    Crep parte IPL--}}
                     <div class="flip-card-back">
                         @if($ipl > 0)
                         <div class="col-lg-12 col-md-12 card shadow" >
