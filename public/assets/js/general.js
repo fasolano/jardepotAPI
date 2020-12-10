@@ -6,9 +6,12 @@ $.ajaxSetup({
 
 $(document).ready(function (){
     //se pusieron porque no quieren que se regrese y evitar un rebote de google
-    window.location.hash="no-back-button";
+    if(history.forward(1)){
+        history.replace(history.forward(1));
+    }
+    window.location.hash="no-back";
     window.location.hash="Again-No-back-button";//esta linea es necesaria para chrome
-    window.onhashchange=function(){window.location.hash="no-back-button";}
+    window.onhashchange=function(){window.location.hash="no-back";}
 
     //Disable cut copy paste
    // $('body').bind('cut copy paste', function (e) { e.preventDefault(); });
