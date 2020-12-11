@@ -23,13 +23,6 @@ $(document).ready(function (){
     });*/
 });
 
-function initControls(){
-    window.location.hash="red";
-    window.location.hash="Red" //chrome
-    window.onhashchange=function(){window.location.hash="red";}
-}
-
-
 function verifyCookie(){
     if(Cookies.get('session') === undefined || Cookies.get('session') === ''){
         $.ajax({
