@@ -162,7 +162,9 @@
                                         @endif
                                     </p>
                                     <p class="new-price">{{$item['newPrice']}}</p>
-                                    <p class="little-letters text-center">Precio aplica en pagos mediante depósito o transferencia bancaria.</p>
+                                    <div class="d-none d-md-none d-lg-block">
+                                        <p class="little-letters text-center">Precio aplica en pagos mediante depósito o transferencia bancaria.</p>
+                                    </div>
                                     <button class="btn btn-buy d-flex justify-content-center align-items-center"
                                             onclick="verifyAddCartProduct('{{$item['productType']}}','{{$item['brand']}}','{{$item['mpn']}}',1,'cart')">
                                         <i class="material-icons" style="font-size: 16px;">shopping_cart</i> Comprar
@@ -175,8 +177,10 @@
                                             volada
                                         @endif
                                     </p>
-                                    <p class="little-letters">*Envio gratis a partir de $3,000 de compra</p>
-                                    <p class="little-letters">*Consulte condiciones.</p>
+                                    <div class="d-none d-md-none d-lg-block">
+                                        <p class="little-letters">*Envio gratis a partir de $3,000 de compra</p>
+                                        <p class="little-letters">*Consulte condiciones.</p>
+                                    </div>
                                     <p class="product-description p-2 text-center text-truncate" data-toggle="tooltip"
                                        data-placement="bottom"
                                        style="min-height: 74px; max-height: 74px; white-space: normal;"
@@ -184,8 +188,10 @@
                                         {{$item['description']}}
                                     </p>
                                     @else
-                                        <p class="little-letters">*Envio gratis a partir de $3,000 de compra</p>
-                                        <p class="little-letters">*Consulte condiciones.</p>
+                                        <div class="d-none d-md-none d-lg-block">
+                                            <p class="little-letters">*Envio gratis a partir de $3,000 de compra</p>
+                                            <p class="little-letters">*Consulte condiciones.</p>
+                                        </div>
                                         <p class="product-description p-2 text-center text-truncate" data-toggle="tooltip"
                                            data-placement="bottom"
                                            style="min-height: 74px; max-height: 74px; white-space: normal;"
@@ -196,23 +202,25 @@
                                         <p style="font-weight: 900; font-size: 18px; color: #de1f21;">800 212 9225</p>
                                     @endif
                                 </div>
-                                <hr>
-                                <div class="d-flex align-items-center flex-column">
-                                    <div style="height: 36px">
-                                        @if($item['stock'])
-                                            <strong>
-                                                <a href="#!" onclick="verifyAddCartProduct('{{$item['productType']}}','{{$item['brand']}}','{{$item['mpn']}}',1,'')"
-                                                   class="btn-add-cart d-flex justify-content-center align-items-center"
-                                                   style="font-size: 14px;">
-                                                    <i class="material-icons fn-color-jd">shopping_cart</i>
-                                                    <span class="text-muted" style="font-size: 14px; font-weight: 500;">Agregar al carrito</span>
-                                                </a>
-                                            </strong>
-                                        @endif
+                                <div class="d-none d-md-none d-lg-block">
+                                    <hr>
+                                    <div class="d-flex align-items-center flex-column">
+                                        <div style="height: 36px">
+                                            @if($item['stock'])
+                                                <strong>
+                                                    <a href="#!" onclick="verifyAddCartProduct('{{$item['productType']}}','{{$item['brand']}}','{{$item['mpn']}}',1,'')"
+                                                       class="btn-add-cart d-flex justify-content-center align-items-center"
+                                                       style="font-size: 14px;">
+                                                        <i class="material-icons fn-color-jd">shopping_cart</i>
+                                                        <span class="text-muted" style="font-size: 14px; font-weight: 500;">Agregar al carrito</span>
+                                                    </a>
+                                                </strong>
+                                            @endif
+                                        </div>
+                                        <p class="little-letters text-center">*Sujeto a existencias.</p>
+                                        <p class="little-letters text-center">*Precios sujetos a cambio sin previo
+                                            aviso.</p>
                                     </div>
-                                    <p class="little-letters text-center">*Sujeto a existencias.</p>
-                                    <p class="little-letters text-center">*Precios sujetos a cambio sin previo
-                                        aviso.</p>
                                 </div>
                             </div>
                         @endforeach
@@ -337,7 +345,9 @@
                                             @endif
                                         </p>
                                         <p class="new-price">{{$item['newPrice']}}</p>
-                                        <p class="little-letters text-center">Precio aplica en pagos mediante depósito o transferencia bancaria.</p>
+                                        <div class="d-none d-md-none d-lg-block">
+                                            <p class="little-letters text-center">Precio aplica en pagos mediante depósito o transferencia bancaria.</p>
+                                        </div>
                                         <button class="btn btn-buy d-flex justify-content-center align-items-center"
                                                 onclick="verifyAddCartProduct('{{$item['productType']}}','{{$item['brand']}}','{{$item['mpn']}}',1,'cart')">
                                             <i class="material-icons" style="font-size: 16px;">shopping_cart</i> Comprar
@@ -350,17 +360,20 @@
                                                 volada
                                             @endif
                                         </p>
-                                        <p class="little-letters">*Envio gratis a partir de $3,000 de compra</p>
-                                        <p class="little-letters">*Consulte condiciones.</p>
+                                        <div class="d-none d-md-none d-lg-block">
+                                            <p class="little-letters">*Envio gratis a partir de $3,000 de compra</p>
+                                            <p class="little-letters">*Consulte condiciones.</p>
+                                        </div>
                                         <p class="product-description p-2 text-center text-truncate" data-toggle="tooltip"
                                            data-placement="bottom"
                                            style="min-height: 74px; max-height: 74px; white-space: normal;"
-                                           title="{{$item['description']}}">
-                                            {{$item['description']}}
+                                           title="{{$item['description']}}"> {{$item['description']}}
                                         </p>
                                     @else
-                                        <p class="little-letters">*Envio gratis a partir de $3,000 de compra</p>
-                                        <p class="little-letters">*Consulte condiciones.</p>
+                                        <div class="d-none d-md-none d-lg-block">
+                                            <p class="little-letters">*Envio gratis a partir de $3,000 de compra</p>
+                                            <p class="little-letters">*Consulte condiciones.</p>
+                                        </div>
                                         <p class="product-description p-2 text-center text-truncate" data-toggle="tooltip"
                                            data-placement="bottom"
                                            style="min-height: 74px; max-height: 74px; white-space: normal;"
@@ -371,23 +384,25 @@
                                         <p style="font-weight: 900; font-size: 18px; color: #de1f21;">800 212 9225</p>
                                     @endif
                                 </div>
-                                <hr>
-                                <div class="d-flex align-items-center flex-column">
-                                    <div style="height: 36px">
-                                        @if($item['stock'])
-                                            <strong>
-                                                <a href="#!" onclick="verifyAddCartProduct('{{$item['productType']}}','{{$item['brand']}}','{{$item['mpn']}}',1,'')"
-                                                   class="btn-add-cart d-flex justify-content-center align-items-center"
-                                                   style="font-size: 14px;">
-                                                    <i class="material-icons fn-color-jd">shopping_cart</i>
-                                                    <span class="text-muted" style="font-size: 14px; font-weight: 500;">Agregar al carrito</span>
-                                                </a>
-                                            </strong>
-                                        @endif
+                                <div class="d-none d-md-none d-lg-block">
+                                    <hr>
+                                    <div class="d-flex align-items-center flex-column">
+                                        <div style="height: 36px">
+                                            @if($item['stock'])
+                                                <strong>
+                                                    <a href="#!" onclick="verifyAddCartProduct('{{$item['productType']}}','{{$item['brand']}}','{{$item['mpn']}}',1,'')"
+                                                       class="btn-add-cart d-flex justify-content-center align-items-center"
+                                                       style="font-size: 14px;">
+                                                        <i class="material-icons fn-color-jd">shopping_cart</i>
+                                                        <span class="text-muted" style="font-size: 14px; font-weight: 500;">Agregar al carrito</span>
+                                                    </a>
+                                                </strong>
+                                            @endif
+                                        </div>
+                                        <p class="little-letters text-center">*Sujeto a existencias.</p>
+                                        <p class="little-letters text-center">*Precios sujetos a cambio sin previo
+                                            aviso.</p>
                                     </div>
-                                    <p class="little-letters text-center">*Sujeto a existencias.</p>
-                                    <p class="little-letters text-center">*Precios sujetos a cambio sin previo
-                                        aviso.</p>
                                 </div>
                             </div>
                         @endforeach
