@@ -30,15 +30,15 @@
         <div class="carousel-inner">
             @foreach($images as $key=>$imagen)
                 @if($key==0)
-                    <div class="carousel-item active">
+                    <div class="carousel-item active {{strpos($imagen, "movil")!==false?"movil":"desktop"}}">
                         <a href="{{url('ofertas')}}">
-                            <img class="d-block w-100" src="{{asset('assets/images/banner/'.$imagen)}}"  alt="Oferta Jardepot" title="oferta Jardepot">
+                            <img class="d-block w-100" data-src="{{asset('assets/images/banner/'.$imagen)}}"  alt="Oferta Jardepot" title="oferta Jardepot">
                         </a>
                     </div>
                @else
-                    <div class="carousel-item">
+                    <div class="carousel-item {{strpos($imagen,"movil")!==false?"movil":"desktop"}}">
                         <a href="{{url('ofertas')}}">
-                            <img class="d-block w-100" src="{{asset('assets/images/banner/'.$imagen)}}" alt="Oferta Jardepot" title="oferta Jardepot">
+                            <img class="d-block w-100" data-src="{{asset('assets/images/banner/'.$imagen)}}" alt="Oferta Jardepot" title="oferta Jardepot">
                         </a>
                     </div>
                 @endif

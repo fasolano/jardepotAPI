@@ -384,7 +384,24 @@ function removeAllProducts(){
 }
 
 $(document).ready(function() {
-    var isSafari = navigator.vendor && navigator.vendor.indexOf('Apple') > -1 &&
+    if(window.innerWidth < 960){
+        $('.movil').each(function (i,e) {
+            if(i == 0)
+                $(this).addClass("active");
+            $(this).find('img').attr("src",$(this).find('img').data("src"));
+        });
+        $('.desktop').remove();
+    }else{
+        $('.desktop').each(function (i,e) {
+            if(i == 0)
+                $(this).addClass("active");
+
+            $(this).find('img').attr("src",$(this).find('img').data("src"));
+        });
+        $('.movil').remove();
+    }
+    $('#carouselBanners').carousel();
+    /*var isSafari = navigator.vendor && navigator.vendor.indexOf('Apple') > -1 &&
         navigator.userAgent &&
         navigator.userAgent.indexOf('CriOS') == -1 &&
         navigator.userAgent.indexOf('FxiOS') == -1;
@@ -408,7 +425,7 @@ $(document).ready(function() {
             $('#banner2').addClass('banner2');
             $('#banner3').addClass('banner3');
         }
-    }
+    }*/
 });
 
 function topPage() {
