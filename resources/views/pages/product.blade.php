@@ -457,7 +457,7 @@
                             @include('components.infoCompra')
                             @include('components.caruselCanales')
                         </div>
-                        <div class="col-lg-4 col-md-12" style="height: 500px;">
+                        <div class="col-lg-4 col-md-12">
                             <div class="d-none d-md-none d-lg-block">{{--  VISTA DE ESCRITORIO--}}
                                 @if(isset($product['imgBrand']))
                                     <div class="text-center">
