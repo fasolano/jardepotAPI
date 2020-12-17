@@ -106,12 +106,12 @@
                             <div class="row">
                                 <div class="col-md-10 mt-2" style="padding-right: 0">
                                     <div class="card shadow-sm" style="overflow: hidden;" id="image-product">
+{{--                                        @if($product['discount'] == 'Oferta')--}}
+{{--                                            <div class="ribbon ribbon-top-right" style="display: block;z-index: 6"><span>Oferta</span></div>--}}
+{{--                                        @endif--}}
                                         @if($product['discount'] == 'Oferta')
-                                            <div class="ribbon ribbon-top-right" style="display: block;z-index: 6"><span>Oferta</span></div>
+                                            <img src="{{ asset('assets/images/ofertas/oferta-0.png') }}" style="width: 100px;position: absolute;top: 0;left: 0;z-index: 3" title="Pestaña Izquierda" alt="Pestaña Izquierda">
                                         @endif
-                                        {{--                            @if($product['discount'] == 'Oferta')--}}
-                                        {{--                                <img src="{{ asset('assets/images/ofertas/oferta-15.png') }}" style="width: 100px;position: absolute;top: 0;left: 0;z-index: 3" title="Pestaña Izquierda" alt="Pestaña Izquierda">--}}
-                                        {{--                            @endif--}}
                                         <div class="product-image" id="div-img-product" style="width: 100%;">
                                             <img style="width: 85%" id="drift-trigger"
                                                  src="{{asset($product['images'][0]['medium'])}}" data-zoom="{{asset($product['images'][0]['big'])}}"
@@ -366,12 +366,12 @@
                                                 <div class="swiper-slide">
                                                     <div class="card shadow-sm product-item" style="border-radius: 5px;overflow: hidden;">
                                                         <a href="{{url($related['href'])}}">
+{{--                                                            @if($related['discount'] == 'Oferta')--}}
+{{--                                                                <div class="ribbon ribbon-top-right" style="display: block;position: relative;z-index: 6"><span>Oferta</span></div>--}}
+{{--                                                            @endif--}}
                                                             @if($related['discount'] == 'Oferta')
-                                                                <div class="ribbon ribbon-top-right" style="display: block;position: relative;z-index: 6"><span>Oferta</span></div>
+                                                                <img src="{{ asset('assets/images/ofertas/oferta-0.png') }}" style="width: 75px;position: absolute;top: 0;left: 0;z-index: 3" title="Pestaña Izquierda" alt="Pestaña Izquierda">
                                                             @endif
-                                                            {{--                                            @if($related['discount'] == 'Oferta')--}}
-                                                            {{--                                                <img src="{{ asset('assets/images/ofertas/oferta-15.png') }}" style="width: 75px;position: absolute;top: 0;left: 0;z-index: 3" title="Pestaña Izquierda" alt="Pestaña Izquierda">--}}
-                                                            {{--                                            @endif--}}
                                                             <div class="product-image img-container" style="height: 145px;">
                                                                 <img style="max-width: 80%;max-height: 80%"
                                                                      src="{{asset($related['images'][0]['small'])}}"
