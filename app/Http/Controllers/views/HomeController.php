@@ -43,7 +43,7 @@ class HomeController extends Controller
         // Leo todos los ficheros de la carpeta
         while ($elemento = readdir($dir)) {
             if ($elemento != "." && $elemento != "..") {
-                // Si es una carpeta
+                // Si no es una carpeta
                 if (!is_dir($path . $elemento)) {
                     $images[$cont] = $elemento;
                     $cont++;
