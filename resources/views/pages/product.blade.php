@@ -458,13 +458,13 @@
                             @include('components.caruselCanales')
                         </div>
                         <div class="col-lg-4 col-md-12">
-                   {{--         <div class="position-absolute" style="max-width: 97%">
-                                <div style="height: 500px; z-index: 9999;" class="position-relative">
-                                    <div style="width: 400px !important;z-index: 999">
-                                        <div class="detail"></div>--}}{{--Muestra el zoom--}}{{--
+                            <div class="position-absolute"  style="max-width: 97%;z-index: 999;pointer-events: none; ">
+                                <div style="height: 500px;" class="position-relative">
+                                    <div style="width: 400px !important;">
+                                        <div class="detail"></div> {{--Muestra el zoom--}}
                                     </div>
                                 </div>
-                            </div>--}}
+                            </div>
                             <div class="d-none d-md-none d-lg-block">{{--  VISTA DE ESCRITORIO--}}
                                 @if(isset($product['imgBrand']))
                                     <div class="text-center">
@@ -801,6 +801,9 @@
             $('.flip-card-inner').addClass('fliped-card-inner');
             $('.flip-card-front').css('display','none');
             $('.flip-card-back').css('display','block');
+        });
+        $(document).on('change', '.detail', function () {
+            alert("a");
         });
     </script>
 
