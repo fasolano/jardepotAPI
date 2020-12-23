@@ -31,15 +31,10 @@ src="https://www.paypal.com/sdk/js?client-id=AU1Jzf7ziTCncrNsNBjmk_tD03Iz_1o8J4F
                             <a class="btn btn-warning" href="{{url('/')}}">Seguir comprando</a>
                         </div>
                         <div class="col-md-3 text-center my-2">
-                            <a class="btn btn-warning btn-modal-paypal" href="javascript: void(0)" data-toggle="modal"
-                               data-target="#modalPayPal">Pagar con tarjeta</a>
-                        </div>
-                        <div class="col-md-3 text-center my-2">
-                            <a class="btn btn-warning" href="javascript: void(0)" data-toggle="modal"
-                               data-target="#modalMercadoPago">Pagar con tarjeta en Mensualidades</a>
-                        </div>
-                        <div class="col-md-3 text-center my-2">
-                            <a href="{{url('/checkout')}}" class="btn btn-warning">Pagar con transferencia o depósito bancario</a>
+                            <a class="btn btn-warning btn-modal-paypal" href="javascript: void(0)" id="btn-paypal-modal" data-toggle="modal"
+                               data-target="#modalPayPal">¡Pagar con tarjeta!
+                                <img src="{{asset("assets/images/bancos/boton-paypal.png")}}" style="width: 150px;" title="Pagar Paypal" alt="Pagar Paypal">
+                            </a>
                         </div>
                     </div>
                     <h1 class="text-center my-2">Carrito de compra</h1>
@@ -66,7 +61,7 @@ src="https://www.paypal.com/sdk/js?client-id=AU1Jzf7ziTCncrNsNBjmk_tD03Iz_1o8J4F
                             <h3>Total: <span id="total-final"></span></h3>
                         </div>
                     </div>
-                    <div class="row m-3" style="color: #FFFFFF;">
+                    <div class="row m-3 d-md-flex d-none" style="color: #FFFFFF;">
                         <div class="col-md-3 text-center my-2">
                             <a class="btn btn-warning" href="{{url('/')}}">Seguir comprando</a>
                         </div>

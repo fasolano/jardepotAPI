@@ -66,11 +66,6 @@ $(document).ready(function (){
         checkFormPaypal();
     });
 
-    $('#btn-paypal-modal').click(function () {
-        $('#form-paypal input').change();
-        $('#terminosPayPal').change();
-    });
-
     $('#terminosMP').change(function () {
         checkMercado = $(this).is(':checked');
         if (checkMercado){
@@ -130,6 +125,8 @@ $(document).ready(function (){
     });
 
     $('.btn-modal-paypal').click(function () {
+        $('#form-paypal input').change();
+        $('#terminosPayPal').change();
         var session = Cookies.get('session');
         var parameters = [];
         parameters['url'] = ruta+"api/cart/products";
