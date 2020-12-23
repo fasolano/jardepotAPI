@@ -66,6 +66,11 @@ $(document).ready(function (){
         checkFormPaypal();
     });
 
+    $('#btn-paypal-modal').click(function () {
+        $('#form-paypal input').change();
+        $('#terminosPayPal').change();
+    });
+
     $('#terminosMP').change(function () {
         checkMercado = $(this).is(':checked');
         if (checkMercado){
@@ -178,16 +183,17 @@ $(document).ready(function (){
         ajaxCall(parameters);
     });
 
+    $('#form-incomplete').click(function () {
+        alert("Completa todos los campos y acepta terminos y condiciones, por favor");
+    });
+
 });
 
 function checkFormPaypal() {
     if(formPaypal && checkPaypal){
         $('#form-incomplete').css('display','none');
-        $('#form-complete').css('display','block');
-        $('#btn-mercado-pago').removeAttr("disabled");
     }else{
         $('#form-incomplete').css('display','block');
-        $('#btn-mercado-pago').attr("disabled");
     }
 }
 

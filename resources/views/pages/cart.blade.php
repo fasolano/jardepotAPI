@@ -15,7 +15,8 @@
     <link rel="stylesheet" href="{{asset('assets/css/pages/cart.min.css')}}">
     <script type="text/javascript" src="{{asset('assets/js/jquery.validate.min.js')}}"></script>
     <!--<script src="https://www.paypal.com/sdk/js?client-id=AXYsm9VJ1VvDrdy5xzQHHJBnnhuhEKcFWhhFPkXBZI9V-G4CmfiXDpNh2DaKT06EaWDFnqWG_1z5ztbi&currency=MXN"></script>-->
-    <script src="https://www.paypal.com/sdk/js?client-id=AU1Jzf7ziTCncrNsNBjmk_tD03Iz_1o8J4FNGTh5Z2mYHRSV21eh6rQbPDiQgOzTFiVXFmLdtzT4XzI_&currency=MXN"></script>
+    <script
+src="https://www.paypal.com/sdk/js?client-id=AU1Jzf7ziTCncrNsNBjmk_tD03Iz_1o8J4FNGTh5Z2mYHRSV21eh6rQbPDiQgOzTFiVXFmLdtzT4XzI_&currency=MXN"></script>
 @endsection
 
 @section('content')
@@ -41,7 +42,7 @@
                             <a href="{{url('/checkout')}}" class="btn btn-warning">Pagar con transferencia o depósito bancario</a>
                         </div>
                     </div>
-                    <h1 class="text-center my-2">Carrrito de compra</h1>
+                    <h1 class="text-center my-2">Carrito de compra</h1>
                     <div id="no-more-tables">
                         <table class="table col-sm-12 table-condensed cf">
                             <thead class="cf">
@@ -70,12 +71,15 @@
                             <a class="btn btn-warning" href="{{url('/')}}">Seguir comprando</a>
                         </div>
                         <div class="col-md-3 text-center my-2">
-                            <a class="btn btn-warning btn-modal-paypal" href="javascript: void(0)" data-toggle="modal"
-                               data-target="#modalPayPal">Pagar con tarjeta</a>
+                            <a class="btn btn-warning btn-modal-paypal" href="javascript: void(0)" id="btn-paypal-modal" data-toggle="modal"
+                               data-target="#modalPayPal">¡Pagar con tarjeta!
+                                <img src="{{asset("assets/images/bancos/boton-paypal.png")}}" style="width: 150px;" title="Pagar Paypal" alt="Pagar Paypal">
+                            </a>
                         </div>
                         <div class="col-md-3 text-center my-2">
                             <a class="btn btn-warning btn-modal-mercado" href="javascript: void(0)" data-toggle="modal"
-                               data-target="#modalMercadoPago">Pagar con tarjeta en Mensualidades</a>
+                               data-target="#modalMercadoPago" style="background-color: #c7c7c7; border: none;">¡Compra con Mensualidades!
+                                <img src="{{asset("assets/images/bancos/mercadopago.png")}}" title="Pagar MergadoPago" alt="Pagar MercadoPago"></a>
                         </div>
                         <div class="col-md-3 text-center my-2">
                             <a href="{{url('/checkout')}}" class="btn btn-warning">Pagar con transferencia o depósito bancario</a>
@@ -141,14 +145,12 @@
                                 </div>
                             </div>
                         </div>
-                    <div class="row" style="font-size: 14px;">
-                        <div id="form-complete" class="col-12" style="display: none;">
+                    <div class="row" style="font-size: 14px; position: relative">
+                        <div id="form-complete" class="col-12">
                             <div id="paypal-button-container"></div>
-                            {{--<button type="submit" class="btn bg-color-jd">Siguiente</button>--}}
                         </div>
-                        <div id="form-incomplete" class="col-12">
-                            <p id="text-input-paypal" class="text-muted">Por favor rellena todos los campos</p>
-                            <p id="text-terms-paypal" class="text-muted">Acepta los terminos y condiciones</p>
+                        <div id="form-incomplete" class="col-12" style="position: absolute; height: 100%; width: 100%; z-index: 999;">
+
                         </div>
                     </div>
                     </form>
@@ -241,5 +243,5 @@
     <!-- jQuery Custom Scroller CDN -->
     <script src="{{asset('assets/js/components/jquery.mCustomScrollbar.concat.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('assets/js/components/sidebar.min.js')}}"></script>
-    <script type="text/javascript" src="{{asset('assets/js/pages/cart.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('assets/js/pages/cart.js')}}"></script>
 @endsection
