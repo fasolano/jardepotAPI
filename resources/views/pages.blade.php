@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es-MX">
 <head>
 {{--    <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -8,6 +8,39 @@
             'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
         })(window,document,'script','dataLayer','GTM-T2GB24V');</script>
     <!-- End Google Tag Manager -->--}}
+
+    <style>
+        #menu>li>*{
+            margin: 0;
+            padding: 0;
+            color: #f68600;
+            font-weight: 500;
+        }
+        #menu,#menu>li>ul{
+            list-style: none;
+        }
+        #menu li>a{
+            display: flex;
+            text-decoration: none;
+            min-width: 100px;
+            margin: 0;
+            padding: 0;
+        }
+        #menu>li{
+            position: relative;
+            float: left;
+        }
+        #menu>li>ul{
+            position: absolute;
+            display: none;
+        }
+        #menu>li:hover>ul {
+            display:block;
+        }
+        #menu>li:hover {
+            color: #c16c05;
+        }
+    </style>
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-28826115-1"></script>

@@ -133,7 +133,7 @@
             {{--        <a class="navbar-brand" href="#">Container XL</a>--}}
             <div class="collapse navbar-collapse row" id="navbarsDesktopL">
                 <div class="col-md-12 d-flex justify-content-between align-items-center">
-                    <ul class="navbar-nav mr-auto col-md-8 d-flex flex-wrap">
+                    {{--<ul class="navbar-nav mr-auto col-md-8 d-flex flex-wrap">
                         @foreach ($navbar as $key => $categoria1)
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="dropdown{{$key}}" data-toggle="dropdown"
@@ -145,8 +145,20 @@
                                 </div>
                             </li>
                         @endforeach
+                    </ul>--}}
+
+                    <ul class="navbar-nav mr-auto col-md-8 d-flex flex-wrap justify-content-center align-items-center" id="menu">
+                        @foreach ($navbar as $key => $categoria1)
+                            <li class="nav-item dropdown mx-2"><a class="d-flex flex-wrap justify-content-center align-items-center" href="#!">{{$categoria1['nivel1']}} <i class="material-icons iconMod">keyboard_arrow_down</i></a>
+                                <ul class="dropdown-menu">
+                                    @foreach($categoria1['nivel2'] as $categoria2)
+                                    <li class="dropdown-item"><a class="text-left text-muted" href="{{url($categoria2['href'])}}">{{$categoria2['name']}}</a></li>
+                                    @endforeach
+                                </ul>
+                            </li>
+                        @endforeach
                     </ul>
-                    {{--            <a class="mr-2 btn btn-danger btn-sm d-flex" href="{{route('sales')}}"><i class="material-icons iconMod">attach_money</i>Ofertas</a>--}}
+
                     <a class="mr-2 btn-sm d-flex" href="{{route('sales')}}"><img style="width: 100px;position: absolute;margin-left: -100px;margin-top: -15px" src="{{asset('assets/images/ofertas/promocion.png')}}" title="Ofertas Jardepot" alt="Ofertas Jardepot"></a>
                     <a class="mr-2 btn-success btn-sm d-flex" target="_blank" href="https://wa.me/525551857805?text=Hola,%20me%20gustaría%20saber%20" style="text-decoration: none;" rel="noopener">
                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true"
