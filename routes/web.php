@@ -10,18 +10,19 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+use App\Http\Middleware\urlVerify;
 
 Route::get('/', 'views\HomeController@index')->name('home');
 
 Route::get('/prueba', 'views\TrackingController@getTracking');
 
-Route::get('/ofertas', 'views\ProductsController@productsSaleList')->name('sales');
+Route::get('/ofertas', 'views\ProductsController@productsSaleList')->name('sales')->middleware(urlVerify::class);
 
 Route::get('/products/getProductsFiltered', 'views\ProductsController@productsListFiltered');
 
 Route::get('/products/getProductsOrdered', 'views\ProductsController@productsSearchOrdered');
 
-Route::get('/catalogo/refacciones/{productType}-{brand}-{mpn}', 'views\SpareController@index')->name('spare');
+Route::get('/catalogo/refacciones/{productType}-{brand}-{mpn}', 'views\SpareController@index')->name('spare')->middleware(urlVerify::class);
 
 Route::get('/catalogo/refacciones/marcadores', 'views\SpareController@getMarcadores');
 
@@ -31,9 +32,9 @@ Route::get('/c0nf1rm4c10n/p4yp4l/{state}', 'views\ConfirmController@confirmPaypa
 
 Route::get('/c0nf1rm4c10n/m3rc4d0p4g0/{state}', 'views\ConfirmController@confirmMercadopago');
 
-Route::get('/{categoryLevel1}/{categoryLevel2}', 'views\ProductsController@productsList')->name('products');
+Route::get('/{categoryLevel1}/{categoryLevel2}', 'views\ProductsController@productsList')->name('products')->middleware(urlVerify::class);
 
-Route::get('/catalogo/{marca}/{productType}-{brand}-{mpn}' , 'views\ProductController@product')->name('product');
+Route::get('/catalogo/{marca}/{productType}-{brand}-{mpn}' , 'views\ProductController@product')->name('product')->middleware(urlVerify::class);
 
 Route::get('/{categoryLevel1}/{categoryLevel2}/{categoryLevel3}', 'views\ProductsController@productsListLevel3')->name('products2');
 
