@@ -4,7 +4,7 @@
     <title>{{ $descriptionLevel2->metatitle}}</title>
     <meta title="{{ $descriptionLevel2->metatitle}}"/>
     <meta name="description" content="{{$descriptionLevel2->metadescription}}">
-    <meta name="keywords" content="{{$descriptionLevel2->keywords}}">
+{{--    <meta name="keywords" content="{{$descriptionLevel2->keywords}}">--}}
 
     <meta property="og:title" content="{{ $descriptionLevel2->metatitle}}"/>
     <meta property="og:description" content="{{ $descriptionLevel2->metadescription}}"/>

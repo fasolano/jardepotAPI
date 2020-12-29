@@ -5,7 +5,7 @@
     <title>Tu carrito Jardepot</title>
     <meta title="Tu carrito Jardepot"/>
     <meta name="description" content="Tu carrito Jardepot">
-    <meta name="keywords" content="Carrito, Jardepot">
+{{--    <meta name="keywords" content="Carrito, Jardepot">--}}
     <meta name="robots" content="noindex">
 @endsection
 

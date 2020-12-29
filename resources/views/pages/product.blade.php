@@ -5,7 +5,7 @@
     <title>{{ ucfirst($product['metaTitle'])}}</title>
     <meta title="{{ ucfirst($product['metaTitle'])}}"/>
     <meta name="description" content="{{$product['metaDescription']}}">
-    <meta name="keywords" content="{{$product['keywords']}}">
+{{--    <meta name="keywords" content="{{$product['keywords']}}">--}}
 
     <meta property="og:title" content="{{ $product['metaTitle'] }}" />
     <meta property="og:description" content="{{ $product['metaDescription'] }}" />
@@ -65,8 +65,8 @@
     <link rel="stylesheet" href="{{asset('assets/css/pages/cart.min.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/components/slick.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/components/slick-theme.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/css/components/leaflet.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/css/components/leaflet-gesture-handling.min.css')}}">
+    {{--<link rel="stylesheet" href="{{asset('assets/css/components/leaflet.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/components/leaflet-gesture-handling.min.css')}}">--}}
     <link rel="stylesheet" href="{{asset('assets/css/pages/spare.css')}}">
     <link rel="canonical" href="{{$canonical}}">
     <script type="text/javascript" src="{{asset('assets/js/jquery.validate.min.js')}}"></script>
@@ -793,17 +793,14 @@
     <script type="text/javascript" src="{{asset('assets/js/pages/product.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('assets/js/pages/cart.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('assets/js/components/slick.js')}}"></script>
-    <script type="text/javascript" src="{{asset('assets/js/components/leaflet.js')}}"></script>
-    <script type="text/javascript" src="{{asset('assets/js/components/leaflet-gesture-handling.min.js')}}"></script>
+    {{--<script type="text/javascript" src="{{asset('assets/js/components/leaflet.js')}}"></script>
+    <script type="text/javascript" src="{{asset('assets/js/components/leaflet-gesture-handling.min.js')}}"></script>--}}
     <script type="text/javascript" src="{{asset('assets/js/pages/spare.js')}}"></script>
     <script>
         $('.buttonFlip').click(function () {
             $('.flip-card-inner').addClass('fliped-card-inner');
             $('.flip-card-front').css('display','none');
             $('.flip-card-back').css('display','block');
-        });
-        $(document).on('change', '.detail', function () {
-            alert("a");
         });
     </script>
 
