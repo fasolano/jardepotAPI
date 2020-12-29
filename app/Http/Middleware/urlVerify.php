@@ -29,7 +29,6 @@ public function handle($request, Closure $next) {
     $cleanUrl = strtolower($cleanUrl);
     $url = $request->url();
     if ($url !== $cleanUrl) {
-        echo $cleanUrl;
         return Redirect::to($cleanUrl);
     }
 
