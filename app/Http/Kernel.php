@@ -31,7 +31,6 @@ class Kernel extends HttpKernel
         'web' => [
             \Barryvdh\Cors\HandleCors::class,
             \App\Http\Middleware\EncryptCookies::class,
-            \App\Http\Middleware\urlVerify::class,
             \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
             \Illuminate\Session\Middleware\StartSession::class,
             // \Illuminate\Session\Middleware\AuthenticateSession::class,
