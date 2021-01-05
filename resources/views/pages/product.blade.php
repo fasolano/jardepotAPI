@@ -18,6 +18,9 @@
 
 @section('specificCSS')
     <style>
+        .btn-side-cart{
+            display: block;
+        }
         /* The flip card container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
         .flip-card {
             background-color: transparent;
@@ -73,6 +76,7 @@
 @endsection
 
 @section('content')
+    <input type="hidden" id="current-product" data-producttype="{{$product['productType']}}" data-brand="{{$product['brand']}}" data-mpn="{{$product['mpn']}}">
     @component('components.breadcrumb')
         @slot('level1', 'Marcas')
         @slot('level2', $product['brand'])
@@ -228,12 +232,12 @@
                                                 </div>--}}
                                                 <div class="col-md-12 mt-2">
                                                     <a onclick="verifyAddCartProduct('{{$product['productType']}}','{{$product['brand']}}','{{$product['mpn']}}', 1, 'cart')" class="btn btn-block btn-danger my-2 text-white">¡Compra Ahora!</a>
-                                                    @if(($product['inventory'] > 0) && $product['stock'])
+                                                    {{--@if(($product['inventory'] > 0) && $product['stock'])
                                                         <a onclick="verifyAddCartProduct('{{$product['productType']}}','{{$product['brand']}}','{{$product['mpn']}}', 1, 'mercado')" class="btn btn-block btn-modal-mercado" href="javascript: void(0)"
                                                            style="background-color: #c7c7c7">¡Compra con Mensualidades!
                                                             <img src="{{asset("assets/images/bancos/mercadopago.png")}}" title="Pagar MergadoPago" alt="Pagar MercadoPago">
                                                         </a>
-                                                    @endif
+                                                    @endif--}}
                                                 </div>
                                             </div>
                                             <div class="row text-muted p-1" style="flex-flow: row wrap; box-sizing: border-box;place-content: flex-start; align-items: flex-start;">

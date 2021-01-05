@@ -26,14 +26,28 @@ src="https://www.paypal.com/sdk/js?client-id=AU1Jzf7ziTCncrNsNBjmk_tD03Iz_1o8J4F
 
             <div class="col-lg-12 col-md-12">
                 <div id="cart-content" class="border shadow bg-white rounded d-lg-block px-2">
-                    <div class="row m-3 d-block d-md-none" style="color: #FFFFFF;">
-                        <div class="col-md-3 text-center my-2">
-                            <a class="btn btn-warning" href="{{url('/')}}">Seguir comprando</a>
+                    <div class="row m-3 d-block d-md-none">
+                        <div class="text-center my-2">
+                            <p style="font-size: 25px; font-weight: 500;">Elige una forma de pago</p>
                         </div>
                         <div class="col-md-3 text-center my-2">
                             <a class="btn btn-warning btn-modal-paypal" href="javascript: void(0)" id="btn-paypal-modal" data-toggle="modal"
-                               data-target="#modalPayPal">¡Pagar con tarjeta!
-                                <img src="{{asset("assets/images/bancos/boton-paypal.png")}}" style="width: 150px;" title="Pagar Paypal" alt="Pagar Paypal">
+                               data-target="#modalPayPal">
+                                ¡Pagar con tarjeta!
+                                <div class="d-flex">
+                                    <img src="{{asset("assets/images/bancos/tarjetas-de-credito.png")}}" style="width: 80px;" title="Pagar Paypal" alt="Pagar Paypal">
+                                    <img src="{{asset("assets/images/bancos/boton-paypal.png")}}" style="width: 150px;" title="Pagar Paypal" alt="Pagar Paypal">
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-md-3 text-center my-2">
+                            <a class="btn btn-warning btn-modal-mercado" href="javascript: void(0)" data-toggle="modal"
+                               data-target="#modalMercadoPago" style="background-color: #c7c7c7; border: none;">¡Compra con Mensualidades!
+                                <div class="d-flex">
+                                    <img src="{{asset("assets/images/bancos/tarjetas-de-credito.png")}}" style="width: 80px;" title="Pagar Paypal" alt="Pagar Paypal">
+                                    <img src="{{asset("assets/images/bancos/mercadopago.png")}}" title="Pagar MergadoPago" alt="Pagar MercadoPago">
+                                </div>
+
                             </a>
                         </div>
                     </div>

@@ -163,6 +163,12 @@
     </div>
 
     <!-- Iconos flotantes -->
+    <div class="btn-side-footer btn-side-cart d-md-none">
+        <a href="#!">
+            <span id="cart-count-side"></span>
+            <i class="material-icons">shopping_cart</i>
+        </a>
+    </div>
     <div class="btn-side-footer btn-side-phone">
         <a target="_blank" href="tel:8002129225">
             <i class="material-icons">phone</i>
