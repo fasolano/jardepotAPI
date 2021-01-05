@@ -29,7 +29,8 @@
                         @else
                             <div class="text-center col-6 my-1">
                                 <div class="btn-group-toggle filter" data-toggle="buttons">
-                                    <label class="btn btn-secondary btn-sm btn-filter btn-no-border" data-val="{{$itemFilter['id']}}">
+                                    <label class="btn btn-secondary btn-sm btn-filter btn-no-border"
+                                           style="height: {{strlen($itemFilter['name'])>15?"40":"20"}}px" data-val="{{$itemFilter['id']}}">
                                         <input type="checkbox"> {{$itemFilter['name']}}
                                     </label>
                                 </div>

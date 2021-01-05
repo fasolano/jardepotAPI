@@ -35,8 +35,8 @@ src="https://www.paypal.com/sdk/js?client-id=AU1Jzf7ziTCncrNsNBjmk_tD03Iz_1o8J4F
                                data-target="#modalPayPal">
                                 ¡Pagar con tarjeta!
                                 <div class="d-flex">
-                                    <img src="{{asset("assets/images/bancos/tarjetas-de-credito.png")}}" style="width: 80px;" title="Pagar Paypal" alt="Pagar Paypal">
-                                    <img src="{{asset("assets/images/bancos/boton-paypal.png")}}" style="width: 150px;" title="Pagar Paypal" alt="Pagar Paypal">
+                                    <img src="{{asset("assets/images/bancos/tarjetas-de-credito.png")}}" style="max-width: 80px; max-height: 50px;" title="Pagar Paypal" alt="Pagar Paypal">
+                                    <img src="{{asset("assets/images/bancos/boton-paypal.png")}}" style="width: 150px; max-height: 50px;" title="Pagar Paypal" alt="Pagar Paypal">
                                 </div>
                             </a>
                         </div>
@@ -44,8 +44,8 @@ src="https://www.paypal.com/sdk/js?client-id=AU1Jzf7ziTCncrNsNBjmk_tD03Iz_1o8J4F
                             <a class="btn btn-warning btn-modal-mercado" href="javascript: void(0)" data-toggle="modal"
                                data-target="#modalMercadoPago" style="background-color: #c7c7c7; border: none;">¡Compra con Mensualidades!
                                 <div class="d-flex">
-                                    <img src="{{asset("assets/images/bancos/tarjetas-de-credito.png")}}" style="width: 80px;" title="Pagar Paypal" alt="Pagar Paypal">
-                                    <img src="{{asset("assets/images/bancos/mercadopago.png")}}" title="Pagar MergadoPago" alt="Pagar MercadoPago">
+                                    <img src="{{asset("assets/images/bancos/tarjetas-de-credito.png")}}" style="width: 80px; max-height: 50px;" title="Pagar Paypal" alt="Pagar Paypal">
+                                    <img src="{{asset("assets/images/bancos/mercadopago.png")}}" style="max-height: 50px;" title="Pagar MergadoPago" alt="Pagar MercadoPago">
                                 </div>
 
                             </a>
