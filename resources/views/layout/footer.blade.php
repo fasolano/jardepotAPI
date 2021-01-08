@@ -164,7 +164,7 @@
 
     <!-- Iconos flotantes -->
     <div class="btn-side-footer btn-side-cart d-md-none">
-        <a href="#!">
+        <a href="javascript:;">
             <span id="cart-count-side"></span>
             <i class="material-icons">shopping_cart</i>
         </a>

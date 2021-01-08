@@ -208,7 +208,7 @@
                                         <div style="height: 36px">
                                             @if($item['stock'])
                                                 <strong>
-                                                    <a href="#!" onclick="verifyAddCartProduct('{{$item['productType']}}','{{$item['brand']}}','{{$item['mpn']}}',1,'')"
+                                                    <a href="javascript:;" onclick="verifyAddCartProduct('{{$item['productType']}}','{{$item['brand']}}','{{$item['mpn']}}',1,'')"
                                                        class="btn-add-cart d-flex justify-content-center align-items-center"
                                                        style="font-size: 14px;">
                                                         <i class="material-icons fn-color-jd">shopping_cart</i>
@@ -390,7 +390,7 @@
                                         <div style="height: 36px">
                                             @if($item['stock'])
                                                 <strong>
-                                                    <a href="#!" onclick="verifyAddCartProduct('{{$item['productType']}}','{{$item['brand']}}','{{$item['mpn']}}',1,'')"
+                                                    <a href="javascript:;" onclick="verifyAddCartProduct('{{$item['productType']}}','{{$item['brand']}}','{{$item['mpn']}}',1,'')"
                                                        class="btn-add-cart d-flex justify-content-center align-items-center"
                                                        style="font-size: 14px;">
                                                         <i class="material-icons fn-color-jd">shopping_cart</i>

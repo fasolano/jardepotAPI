@@ -149,7 +149,7 @@
 
                     <ul class="navbar-nav mr-auto col-md-8 d-flex flex-wrap justify-content-center align-items-center" id="menu">
                         @foreach ($navbar as $key => $categoria1)
-                            <li class="nav-item dropdown mx-2"><a class="d-flex flex-wrap justify-content-center align-items-center" href="#!">{{$categoria1['nivel1']}} <i class="material-icons iconMod">keyboard_arrow_down</i></a>
+                            <li class="nav-item dropdown mx-2"><a class="d-flex flex-wrap justify-content-center align-items-center" href="javascript:;">{{$categoria1['nivel1']}} <i class="material-icons iconMod">keyboard_arrow_down</i></a>
                                 <ul class="dropdown-menu">
                                     @foreach($categoria1['nivel2'] as $categoria2)
                                     <li class="dropdown-item"><a class="text-left text-muted" href="{{url($categoria2['href'])}}">{{$categoria2['name']}}</a></li>

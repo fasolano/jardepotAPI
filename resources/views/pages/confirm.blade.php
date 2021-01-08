@@ -5,6 +5,7 @@
     <meta title=""/>
     <meta name="description" content="">
     <meta name="keywords" content="">
+    <meta name="robots" content="noindex">
     <!-- Event snippet for Compra Paypal conversion page -->
     <script>
         gtag('event', 'conversion', {

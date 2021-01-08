@@ -286,7 +286,7 @@
                                             </a>
                                             @if($ipl > 0)
 {{--                                                <a class="btn btn-secondary my-2 justify-content-center" target="_blank" href="{{route('spare', $linkSpare)}}">--}}
-                                                <a class="buttonFlip btn btn-secondary my-2 justify-content-center" href="#!">
+                                                <a class="buttonFlip btn btn-secondary my-2 justify-content-center" href="javascript:;">
                                                     <span class="material-icons" style="font-size: 19px"> settings </span>
                                                     Guía de refacciones
                                                 </a>
@@ -567,7 +567,7 @@
                                     </svg> Pregunta por refacciones
                                 </a>
                                 @if($ipl > 0)
-                                    <a class="buttonFlip btn btn-secondary my-2 justify-content-center" href="#!">
+                                    <a class="buttonFlip btn btn-secondary my-2 justify-content-center" href="javascript:;">
                                         <span class="material-icons" style="font-size: 19px"> settings </span>
                                         Guía de refacciones
                                     </a>
@@ -874,7 +874,7 @@
             "description": "{{$product['description']}}",
             "offers": {
                 "@type": "Offer",
-                "price": {{isset($product['newPriceFloat'])?$product['newPriceFloat']:null}},
+                "price": {{isset($product['newPriceFloat'])?str_replace(",","",$product['newPriceFloat']):null}},
                 "priceCurrency": "MXN"
             },
         }
