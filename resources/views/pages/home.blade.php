@@ -175,7 +175,7 @@
       "@context": "http://schema.org",
       "@type": "Organization",
       "name": "Jardepot",
-      "url": "http://jardepot.com",
+      "url": "https://www.jardepot.com",
       "address": "Av. Emiliano Zapata 129, Tlaltenango, 62170 Cuernavaca, Mor., México",
       "sameAs": [
         "https://www.facebook.com/Jardepot",

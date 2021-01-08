@@ -874,7 +874,7 @@
             "description": "{{$product['description']}}",
             "offers": {
                 "@type": "Offer",
-                "price": {{isset($product['price'])?$product['price']:null}},
+                "price": {{isset($product['newPriceFloat'])?$product['newPriceFloat']:null}},
                 "priceCurrency": "MXN"
             },
         }
