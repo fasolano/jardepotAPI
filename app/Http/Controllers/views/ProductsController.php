@@ -135,6 +135,8 @@ class ProductsController extends Controller {
     }
 
     public function getProductsListSearch($word){
+        $word = explode("[",$word)[1];
+        $word = str_replace("]","",$word);
         $productRepository = new ProductRepository();
         $menuController = new MenuController();
         $categoriasNivel1 = $menuController->getSidebar();

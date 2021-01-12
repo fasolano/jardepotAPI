@@ -85,6 +85,9 @@ $('#search-form').on('keypress',function(e) {
 $('.search-form').submit(function (e) {
     e.preventDefault();
     var search = $(this).find('.inputSearch').val();
+    var realSearch = "["+search+"]";
+    search = search.split(" ").join("-");
+    search = search+realSearch;
     window.location = ruta+"busqueda/"+search;
 })
 
