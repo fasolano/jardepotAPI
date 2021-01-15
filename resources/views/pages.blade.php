@@ -62,6 +62,66 @@
         gtag('config', 'AW-786429434');
     </script>
     <script>
+        gtag('config', 'AW-786429434/XEObCMjLhfEBEPrr__YC', {
+            'phone_conversion_number': '800 212 9225'
+        });
+    </script>
+    <script>
+        gtag('config', 'AW-786429434/3_elCIv6hfEBEPrr__YC', {
+            'phone_conversion_number': '554 996 8849'
+        });
+    </script>
+    <script>
+        gtag('config', 'AW-786429434/Vfb_CLWmk_EBEPrr__YC', {
+            'phone_conversion_number': '331 728 3353'
+        });
+    </script>
+    <script>
+        gtag('config', 'AW-786429434/6wYcCLm-8_ABEPrr__YC', {
+            'phone_conversion_number': '812 063 5708'
+        });
+    </script>
+    <script>
+        gtag('config', 'AW-786429434/VjSqCNfH8_ABEPrr__YC', {
+            'phone_conversion_number': '554 459 8506'
+        });
+    </script>
+    <script>
+        gtag('config', 'AW-786429434/umL2CNa-k_EBEPrr__YC', {
+            'phone_conversion_number': '222 705 1726'
+        });
+    </script>
+    <script>
+        gtag('config', 'AW-786429434/q1zvCOSdhvEBEPrr__YC', {
+            'phone_conversion_number': '229 330 0992'
+        });
+    </script>
+    <script>
+        gtag('config', 'AW-786429434/zTAsCPbO8_ABEPrr__YC', {
+            'phone_conversion_number': '443 356 0484'
+        });
+    </script>
+    <script>
+        gtag('config', 'AW-786429434/J9g2CNyhhvEBEPrr__YC', {
+            'phone_conversion_number': '777 317 9630'
+        });
+    </script>
+    <script>
+        gtag('config', 'AW-786429434/m1HsCJHKk_EBEPrr__YC', {
+            'phone_conversion_number': '442 380 1818'
+        });
+    </script>
+    <script>
+        gtag('config', 'AW-786429434/i-LKCPuohvEBEPrr__YC', {
+            'phone_conversion_number': '444 328 0420'
+        });
+    </script>
+    <script>
+        gtag('config', 'AW-786429434/IHe9CIv28_ABEPrr__YC', {
+            'phone_conversion_number': '722 648 1040'
+        });
+    </script>
+    <script>
         gtag('event', 'page_view', {
             'send_to': 'AW-786429434',
             'user_id': 'replace with value',
