@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Storage;
 
 class HomeController extends Controller
 {
+    private $unwanted_array;
     public function __construct(){
         $this -> unwanted_array = array(    'Š'=>'S', 'š'=>'s', 'Ž'=>'Z', 'ž'=>'z', 'À'=>'A', 'Á'=>'A', 'Â'=>'A', 'Ã'=>'A', 'Ä'=>'A', 'Å'=>'A', 'Æ'=>'A', 'Ç'=>'C', 'È'=>'E', 'É'=>'E',
             'Ê'=>'E', 'Ë'=>'E', 'Ì'=>'I', 'Í'=>'I', 'Î'=>'I', 'Ï'=>'I', 'Ñ'=>'N', 'Ò'=>'O', 'Ó'=>'O', 'Ô'=>'O', 'Õ'=>'O', 'Ö'=>'O', 'Ø'=>'O', 'Ù'=>'U',
@@ -53,14 +54,79 @@ class HomeController extends Controller
         return view('pages/home',compact('menuAdditional','descriptionLevel2','images'));
     }
 
-    /*public function prueba(){
-        $track = new Track('JoQrF0bbDKa4dj4p', 'YqI0f9C9bjXVluyL7uc7Hm9F0', '510087860', '119177249');
-        $req = $track->getByTrackingId('772128949168');
-        print_r($req);
-        return 1;
+    public function moveImages(){
+        $productRepository = new ProductRepository();
+        $products = $productRepository->prueba();
+        $response = array();
+        $iterator = 0;
+        $html='<table class="default">
+                  <tr>
+                    <td>#</td>
+                    <td>Producto</td>
+                    <td>Normal</td>
+                    <td>Zoom</td>
+                  </tr>';
+        foreach ($products as $item){
+            $img = strtolower($item->productType . "-" . $item->brand . "-" . $item->mpn);
+            $nombre = strtolower($item->productType . " " . $item->brand . " " . $item->mpn);
+            if(file_exists(strtr(base_path().'/public/assets/images/productos/'.$img.'.jpg', $this-> unwanted_array))){
+                if(file_exists(strtr(base_path().'/public/assets/images/productos/zoom/'.$img.'.jpg', $this-> unwanted_array))){
+                }else{
+                    $response[$iterator]['zoom']= $img ;
+                   $html.=' <tr>
+                        <td>'.$iterator.'</td>
+                        <td>'.$nombre.'</td>
+                        <td>Tiene</td>
+                        <td>Falta</td>
+                      </tr>';
+                    $iterator++;
 
-    }*/
+                }
+            }else{
+                $response[$iterator]['normal']= $img;
+                if(file_exists(strtr(base_path().'/public/assets/images/productos/zoom/'.$img.'.jpg', $this-> unwanted_array))){
+                }else{
+                    $response[$iterator]['zoom']= $img;
 
+                    $html.=' <tr>
+                        <td>'.$iterator.'</td>
+                        <td>'.$nombre.'</td>
+                        <td>Falta</td>
+                        <td>Falta</td>
+                      </tr>';
+                    $iterator++;
+                }
+            }
+        }
+        $html.='<table class="default">';
+        return $html;
+        return $response;
+    }
+
+    public function moveImages2(){
+        $productRepository = new ProductRepository();
+        $products = $productRepository->prueba2();
+//        return $products;
+        $response = array();
+        $iterator = 0;
+        foreach ($products as $item){
+            $img = strtolower($item->productType . "-" . $item->brand . "-" . $item->mpn);
+            if(file_exists(strtr(base_path().'/public/assets/images/productos/'.$img.'.jpg', $this-> unwanted_array))){
+                $response[$iterator][0]['medium'] = 'assets/images/productos/' . $img . '.jpg';
+//                $response[$iterator]['images'][0]['big'] = 'assets/images/productos/zoom/' . $img . '.jpg';
+            }
+
+            $contadorCarrusel = 1;
+            while (file_exists(strtr(base_path().'/public/assets/images/productos/'.$img.'-'.$contadorCarrusel.'.jpg', $this-> unwanted_array )) && $contadorCarrusel < 4) {
+                $response[$iterator][$contadorCarrusel]['medium'] = 'assets/images/productos/' . $img . '-'.$contadorCarrusel.'.jpg';
+//                $response[$iterator][$contadorCarrusel]['big'] = 'assets/images/productos/zoom/' . $img . '-'.$contadorCarrusel.'.jpg';
+                $contadorCarrusel++;
+            }
+            $iterator++;
+//            Storage::copy('old/file.jpg', 'medium/file.jpg');
+        }
+        return $response;
+    }
 
     /*    public function getIpClient(Request $request){return $request->ip().''.$request->url();}*/
 }

@@ -17,46 +17,46 @@ class ProductRepository{
     }
 
     public function getProducts($nivel2){
-            $datos = DB::table('productos')
-                ->join("XML", function($join){
-                    $join->on("productos.productType","=","XML.productType")
-                        ->on("productos.brand","=","XML.brand")
-                        ->on("productos.mpn","=","XML.mpn");
-                })
-                ->join("productosCategoriasNivel3", function ($join){
-                    $join->on("productos.productType", '=' ,"productosCategoriasNivel3.productType")
-                        ->on("productos.brand",'=' , "productosCategoriasNivel3.brand")
-                        ->on("productos.mpn", '=' , "productosCategoriasNivel3.mpn");
-                })
-                ->join('categoriasNivel3 as c3', 'c3.idCategoriasNivel3', '=', 'productosCategoriasNivel3.idCategoriasNivel3')
-                ->leftJoin("inventario",function($join){
-                    $join->on("productos.productType","=","inventario.productType")
-                        ->on("productos.brand","=","inventario.brand")
-                        ->on("productos.mpn","=","inventario.mpn");
-                })
-                ->select(
-                    'productos.id','productos.productType', 'productos.brand',
-                    'productos.mpn', 'productos.description', 'productos.availability',
-                    'productos.price', 'productos.oferta', 'productos.PrecioDeLista',
-                    'productos.offer', 'productos.iva', 'productos.video',
-                    'productos.volada', 'productos.visible',
-                    'XML.keywords', 'XML.metadesc', 'XML.descriptionweb', 'XML.titleweb', 'XML.resenia',
-                    DB::raw('SUM(productosCategoriasNivel3.priceVisible) as priceVisible'),
-                    DB::raw('SUM(inventario.cantidad) as cantidadInventario')
-                )
-                ->distinct('productos.mpn')
-                ->groupBy('productos.productType',
-                    'productos.brand','productos.mpn')
+        $datos = DB::table('productos')
+            ->join("XML", function($join){
+                $join->on("productos.productType","=","XML.productType")
+                    ->on("productos.brand","=","XML.brand")
+                    ->on("productos.mpn","=","XML.mpn");
+            })
+            ->join("productosCategoriasNivel3", function ($join){
+                $join->on("productos.productType", '=' ,"productosCategoriasNivel3.productType")
+                    ->on("productos.brand",'=' , "productosCategoriasNivel3.brand")
+                    ->on("productos.mpn", '=' , "productosCategoriasNivel3.mpn");
+            })
+            ->join('categoriasNivel3 as c3', 'c3.idCategoriasNivel3', '=', 'productosCategoriasNivel3.idCategoriasNivel3')
+            ->leftJoin("inventario",function($join){
+                $join->on("productos.productType","=","inventario.productType")
+                    ->on("productos.brand","=","inventario.brand")
+                    ->on("productos.mpn","=","inventario.mpn");
+            })
+            ->select(
+                'productos.id','productos.productType', 'productos.brand',
+                'productos.mpn', 'productos.description', 'productos.availability',
+                'productos.price', 'productos.oferta', 'productos.PrecioDeLista',
+                'productos.offer', 'productos.iva', 'productos.video',
+                'productos.volada', 'productos.visible',
+                'XML.keywords', 'XML.metadesc', 'XML.descriptionweb', 'XML.titleweb', 'XML.resenia',
+                DB::raw('SUM(productosCategoriasNivel3.priceVisible) as priceVisible'),
+                DB::raw('SUM(inventario.cantidad) as cantidadInventario')
+            )
+            ->distinct('productos.mpn')
+            ->groupBy('productos.productType',
+                'productos.brand','productos.mpn')
 //                ->orderBy('c3.prioridad', 'asc')
 //                ->orderBy('cantidadInventario', 'desc')
 //                ->orderByRaw('RAND()')
-                ->where([
-                    "productos.visible" => "si",
-                    "c3.idCategoriasNivel2" => $nivel2
-                ])
-                ->inRandomOrder()
-                ->get();
-            $datos = $this->firstInventarioProducts($datos);
+            ->where([
+                "productos.visible" => "si",
+                "c3.idCategoriasNivel2" => $nivel2
+            ])
+            ->inRandomOrder()
+            ->get();
+        $datos = $this->firstInventarioProducts($datos);
         return $datos;
     }
 
@@ -79,44 +79,44 @@ class ProductRepository{
     }
 
     public function getProductsFiltered($nivel2, $filtersLevel3){
-            $datos = DB::table('productos')
-                ->join("XML", function($join){
-                    $join->on("productos.productType","=","XML.productType")
-                        ->on("productos.brand","=","XML.brand")
-                        ->on("productos.mpn","=","XML.mpn");
-                })
-                ->join("productosCategoriasNivel3", function ($join){
-                    $join->on("productos.productType", '=' ,"productosCategoriasNivel3.productType")
-                        ->on("productos.brand",'=' , "productosCategoriasNivel3.brand")
-                        ->on("productos.mpn", '=' , "productosCategoriasNivel3.mpn");
-                })
-                ->join('categoriasNivel3 as c3', 'c3.idCategoriasNivel3', '=', 'productosCategoriasNivel3.idCategoriasNivel3')
-                ->leftJoin("inventario",function($join){
-                    $join->on("productos.productType","=","inventario.productType")
-                        ->on("productos.brand","=","inventario.brand")
-                        ->on("productos.mpn","=","inventario.mpn");
-                })
-                ->select(
-                    'productos.id','productos.productType', 'productos.brand',
-                    'productos.mpn', 'productos.description', 'productos.availability',
-                    'productos.price', 'productos.oferta', 'productos.PrecioDeLista',
-                    'productos.offer', 'productos.iva', 'productos.video',
-                    'productos.volada', 'productos.visible',
-                    'XML.keywords', 'XML.metadesc', 'XML.descriptionweb', 'XML.titleweb', 'XML.resenia',
-                    DB::raw('SUM(productosCategoriasNivel3.priceVisible) as priceVisible'),
-                    DB::raw('SUM(inventario.cantidad) as cantidadInventario')
-                )
-                ->distinct('productos.mpn')
-                ->orderBy('cantidadInventario', 'desc')
-                ->orderBy('c3.prioridad', 'asc')
-                ->where([
-                    "productos.visible" => "si",
-                    "c3.idCategoriasNivel2" => $nivel2
-                ])
-                ->whereIn('c3.idCategoriasNivel3', $filtersLevel3)
-                ->groupBy('productos.productType',
-                    'productos.brand','productos.mpn')
-                ->get();
+        $datos = DB::table('productos')
+            ->join("XML", function($join){
+                $join->on("productos.productType","=","XML.productType")
+                    ->on("productos.brand","=","XML.brand")
+                    ->on("productos.mpn","=","XML.mpn");
+            })
+            ->join("productosCategoriasNivel3", function ($join){
+                $join->on("productos.productType", '=' ,"productosCategoriasNivel3.productType")
+                    ->on("productos.brand",'=' , "productosCategoriasNivel3.brand")
+                    ->on("productos.mpn", '=' , "productosCategoriasNivel3.mpn");
+            })
+            ->join('categoriasNivel3 as c3', 'c3.idCategoriasNivel3', '=', 'productosCategoriasNivel3.idCategoriasNivel3')
+            ->leftJoin("inventario",function($join){
+                $join->on("productos.productType","=","inventario.productType")
+                    ->on("productos.brand","=","inventario.brand")
+                    ->on("productos.mpn","=","inventario.mpn");
+            })
+            ->select(
+                'productos.id','productos.productType', 'productos.brand',
+                'productos.mpn', 'productos.description', 'productos.availability',
+                'productos.price', 'productos.oferta', 'productos.PrecioDeLista',
+                'productos.offer', 'productos.iva', 'productos.video',
+                'productos.volada', 'productos.visible',
+                'XML.keywords', 'XML.metadesc', 'XML.descriptionweb', 'XML.titleweb', 'XML.resenia',
+                DB::raw('SUM(productosCategoriasNivel3.priceVisible) as priceVisible'),
+                DB::raw('SUM(inventario.cantidad) as cantidadInventario')
+            )
+            ->distinct('productos.mpn')
+            ->orderBy('cantidadInventario', 'desc')
+            ->orderBy('c3.prioridad', 'asc')
+            ->where([
+                "productos.visible" => "si",
+                "c3.idCategoriasNivel2" => $nivel2
+            ])
+            ->whereIn('c3.idCategoriasNivel3', $filtersLevel3)
+            ->groupBy('productos.productType',
+                'productos.brand','productos.mpn')
+            ->get();
 
         return $datos;
     }
@@ -186,57 +186,57 @@ class ProductRepository{
         array_push($valores, ["productos.visible", '=', "si"]);
         array_push($valores, ["c3.idCategoriasNivel2", '=', $nivel2]);
 
-      /*  $datos = DB::table('productos')
-            ->join("XML", function($join){
-                $join->on("productos.productType","=","XML.productType")
-                    ->on("productos.brand","=","XML.brand")
-                    ->on("productos.mpn","=","XML.mpn");
-            })
-            ->join("productosCategoriasNivel3", function ($join){
-                $join->on("productos.productType", DB::raw("REPLACE(productosCategoriasNivel3.productType,'_',' ')"))
-                    ->on("productos.brand", DB::raw("REPLACE(productosCategoriasNivel3.brand,'_',' ')"))
-                    ->on("productos.mpn", DB::raw("REPLACE(productosCategoriasNivel3.mpn,'_',' ')"));
-            })
-            ->join('categoriasNivel3 as c3', 'c3.idCategoriasNivel3', '=', 'productosCategoriasNivel3.idCategoriasNivel3')
-            ->leftJoin('producto_caracteristica as pc', function ($join){
-                $join->on("pc.producto",
-                    DB::raw("binary CONCAT(productos.productType,' ',productos.brand,' ',productos.mpn)"));
-            })
-            ->leftJoin('caracteristica as c', 'c.id_caracterisca', '=', 'pc.fk_caracteristica')
-            ->leftJoin('opcion_caracteristica as opc', 'c.id_caracterisca', '=', 'opc.fk_caracteristica')
-            ->leftJoin("inventario",function($join){
-                $join->on("productos.productType","=","inventario.productType")
-                    ->on("productos.brand","=","inventario.brand")
-                    ->on("productos.mpn","=","inventario.mpn");
-            })
-            ->select(
-                'productos.id',
-                'productos.productType',
-                'productos.brand',
-                'productos.mpn',
-                'productos.description',
-                'productos.availability',
-                'productos.price',
-                'productos.oferta',
-                'productos.PrecioDeLista',
-                'productos.offer',
-                'productos.iva',
-                'productos.video',
-                'productos.volada',
-                'productos.visible',
-                'XML.keywords',
-                'XML.metadesc',
-                'XML.descriptionweb',
-                'XML.titleweb',
-                'XML.resenia',
-                DB::raw('SUM(inventario.cantidad) as cantidadInventario')
-            )
-            ->distinct('productos.mpn')
-            ->orderBy('pc.producto', 'asc')
-            ->where($valores)
-            ->whereRaw($filtros)
-            ->groupBy('productos.productType','productos.brand','productos.mpn')
-            ->get();*/
+        /*  $datos = DB::table('productos')
+              ->join("XML", function($join){
+                  $join->on("productos.productType","=","XML.productType")
+                      ->on("productos.brand","=","XML.brand")
+                      ->on("productos.mpn","=","XML.mpn");
+              })
+              ->join("productosCategoriasNivel3", function ($join){
+                  $join->on("productos.productType", DB::raw("REPLACE(productosCategoriasNivel3.productType,'_',' ')"))
+                      ->on("productos.brand", DB::raw("REPLACE(productosCategoriasNivel3.brand,'_',' ')"))
+                      ->on("productos.mpn", DB::raw("REPLACE(productosCategoriasNivel3.mpn,'_',' ')"));
+              })
+              ->join('categoriasNivel3 as c3', 'c3.idCategoriasNivel3', '=', 'productosCategoriasNivel3.idCategoriasNivel3')
+              ->leftJoin('producto_caracteristica as pc', function ($join){
+                  $join->on("pc.producto",
+                      DB::raw("binary CONCAT(productos.productType,' ',productos.brand,' ',productos.mpn)"));
+              })
+              ->leftJoin('caracteristica as c', 'c.id_caracterisca', '=', 'pc.fk_caracteristica')
+              ->leftJoin('opcion_caracteristica as opc', 'c.id_caracterisca', '=', 'opc.fk_caracteristica')
+              ->leftJoin("inventario",function($join){
+                  $join->on("productos.productType","=","inventario.productType")
+                      ->on("productos.brand","=","inventario.brand")
+                      ->on("productos.mpn","=","inventario.mpn");
+              })
+              ->select(
+                  'productos.id',
+                  'productos.productType',
+                  'productos.brand',
+                  'productos.mpn',
+                  'productos.description',
+                  'productos.availability',
+                  'productos.price',
+                  'productos.oferta',
+                  'productos.PrecioDeLista',
+                  'productos.offer',
+                  'productos.iva',
+                  'productos.video',
+                  'productos.volada',
+                  'productos.visible',
+                  'XML.keywords',
+                  'XML.metadesc',
+                  'XML.descriptionweb',
+                  'XML.titleweb',
+                  'XML.resenia',
+                  DB::raw('SUM(inventario.cantidad) as cantidadInventario')
+              )
+              ->distinct('productos.mpn')
+              ->orderBy('pc.producto', 'asc')
+              ->where($valores)
+              ->whereRaw($filtros)
+              ->groupBy('productos.productType','productos.brand','productos.mpn')
+              ->get();*/
 
         $datos = DB::table('productos')
             ->join("XML", function($join){
@@ -705,7 +705,7 @@ class ProductRepository{
         });
 
         if( count( Mail::failures() ) > 0 ) {
-          return false;
+            return false;
         }
         return true;
     }
@@ -1146,59 +1146,59 @@ class ProductRepository{
             foreach ($matchNivel as $key => $match) {
                 //solo pone precios si tenemos producto en stock
 //                if ($match["availability"] == "in stock") {
-                    $img = strtolower( $match["productType"] . "-" . $match["brand"] . "-" . $match["mpn"]);
+                $img = strtolower( $match["productType"] . "-" . $match["brand"] . "-" . $match["mpn"]);
 
-                    $response[$iterator]['id'] = $match["id"];
-                    $response[$iterator]['name'] = $match["productType"] . " " . $match["brand"] . " " . $match["mpn"];
-                    $response[$iterator]['images'][0]['small'] = 'assets/images/productos/' . $img . '.jpg';
-                    $response[$iterator]['images'][0]['medium'] = 'assets/images/productos/' . $img . '.jpg';
-                    $response[$iterator]['images'][0]['big'] = 'assets/images/productos/zoom/' . $img . '.jpg';
-                    if ($match["offer"] == "si") {
-                        $response[$iterator]['discount'] = "Oferta";
-                        //solo pone precio de lista cuando es mayor!!
-                        if ( $match["PrecioDeLista"] > $match["oferta"]) {
-                            $response[$iterator]['oldPrice'] = $match["PrecioDeLista"];
-                           $response[$iterator]['newPrice'] = $match["oferta"];
-                        }else{
-                            $response[$iterator]['newPrice'] = $match["oferta"];
-                        }
-                        //no está de oferta :(
+                $response[$iterator]['id'] = $match["id"];
+                $response[$iterator]['name'] = $match["productType"] . " " . $match["brand"] . " " . $match["mpn"];
+                $response[$iterator]['images'][0]['small'] = 'assets/images/productos/' . $img . '.jpg';
+                $response[$iterator]['images'][0]['medium'] = 'assets/images/productos/' . $img . '.jpg';
+                $response[$iterator]['images'][0]['big'] = 'assets/images/productos/zoom/' . $img . '.jpg';
+                if ($match["offer"] == "si") {
+                    $response[$iterator]['discount'] = "Oferta";
+                    //solo pone precio de lista cuando es mayor!!
+                    if ( $match["PrecioDeLista"] > $match["oferta"]) {
+                        $response[$iterator]['oldPrice'] = $match["PrecioDeLista"];
+                        $response[$iterator]['newPrice'] = $match["oferta"];
                     }else{
-                        //solo pone precio de lista cuando es mayor!!
-                        if ($match["PrecioDeLista"] > $match["price"]) {
-                            $response[$iterator]['oldPrice'] = $match["PrecioDeLista"];
-                            $response[$iterator]['newPrice'] = $match["price"];
-                        }else{
-                            $response[$iterator]['newPrice'] = $match["price"];
-                        }
+                        $response[$iterator]['newPrice'] = $match["oferta"];
                     }
-                    $response[$iterator]['description'] = $match["description"];
-                    $response[$iterator]['dataSheet'] = $match["resenia"];
-                    $response[$iterator]['availibilityCount'] = 100;
-                    $response[$iterator]['stock'] = $match['availability'] == 'in stock'  ?true:false ;
-                    if(isset($match['cantidad'])){
-                        $response[$iterator]['cartCount'] = $match["cantidad"];
+                    //no está de oferta :(
+                }else{
+                    //solo pone precio de lista cuando es mayor!!
+                    if ($match["PrecioDeLista"] > $match["price"]) {
+                        $response[$iterator]['oldPrice'] = $match["PrecioDeLista"];
+                        $response[$iterator]['newPrice'] = $match["price"];
                     }else{
-                        $response[$iterator]['cartCount'] = 0;
+                        $response[$iterator]['newPrice'] = $match["price"];
                     }
-                    $response[$iterator]['brand'] = $match["brand"];
-                    $response[$iterator]['mpn'] = $match["mpn"];
-                    $response[$iterator]['productType'] = $match["productType"];
+                }
+                $response[$iterator]['description'] = $match["description"];
+                $response[$iterator]['dataSheet'] = $match["resenia"];
+                $response[$iterator]['availibilityCount'] = 100;
+                $response[$iterator]['stock'] = $match['availability'] == 'in stock'  ?true:false ;
+                if(isset($match['cantidad'])){
+                    $response[$iterator]['cartCount'] = $match["cantidad"];
+                }else{
+                    $response[$iterator]['cartCount'] = 0;
+                }
+                $response[$iterator]['brand'] = $match["brand"];
+                $response[$iterator]['mpn'] = $match["mpn"];
+                $response[$iterator]['productType'] = $match["productType"];
 
-                    $response[$iterator]['keywords'] = $match["productType"] . ", " . $match["brand"] . ", " . $match["mpn"];
-                    if ($match["metadesc"] == ''){
-                        $response[$iterator]['metaDescription'] = $match["productType"] . " " . $match["brand"] . " " . $match["mpn"];
-                    }else{
-                        $response[$iterator]['metaDescription'] = $match["metadesc"];
-                    }
-                    if ($match["titleweb"] == ''){
-                        $response[$iterator]['metaTitle'] = $match["productType"] . " " . $match["brand"] . " " . $match["mpn"];
-                    }else{
-                        $response[$iterator]['metaTitle'] = $match["titleweb"];
-                    }
+                $response[$iterator]['keywords'] = $match["productType"] . ", " . $match["brand"] . ", " . $match["mpn"];
+                if ($match["metadesc"] == ''){
+                    $response[$iterator]['metaDescription'] = $match["productType"] . " " . $match["brand"] . " " . $match["mpn"];
+                }else{
+                    $response[$iterator]['metaDescription'] = $match["metadesc"];
+                }
+                if ($match["titleweb"] == ''){
+                    $response[$iterator]['metaTitle'] = $match["productType"] . " " . $match["brand"] . " " . $match["mpn"];
+                }else{
+                    $response[$iterator]['metaTitle'] = $match["titleweb"];
+                }
 
-                    $response[$iterator]['inventory'] = $match["cantidadInventario"];
-                    $iterator++;
+                $response[$iterator]['inventory'] = $match["cantidadInventario"];
+                $iterator++;
 //                }
             }//fin de foreach match
         }
@@ -1286,6 +1286,31 @@ class ProductRepository{
         }
     }
 
-
+    function prueba(){
+        $ids = DB::table('productos')
+            ->join("XML", function($join){
+                $join->on("productos.productType","=","XML.productType")
+                    ->on("productos.brand","=","XML.brand")
+                    ->on("productos.mpn","=","XML.mpn");
+            })
+            ->join("productosCategoriasNivel3", function ($join){
+                $join->on("productos.productType",'=' , "productosCategoriasNivel3.productType")
+                    ->on("productos.brand",'=' , "productosCategoriasNivel3.brand")
+                    ->on("productos.mpn",'=' , "productosCategoriasNivel3.mpn");
+            })
+            ->select(
+                'productos.productType','productos.brand','productos.mpn'
+            )
+            ->get();
+        return $ids;
+    }
+    function prueba2(){
+        $ids = DB::table('productos')
+            ->select(
+                'productType','brand','mpn'
+            )
+            ->get();
+        return $ids;
+    }
 
 }

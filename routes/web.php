@@ -14,7 +14,7 @@ use App\Http\Middleware\urlVerify;
 
 Route::get('/', 'views\HomeController@index')->name('home');
 
-Route::get('/prueba', 'views\TrackingController@getTracking');
+Route::get('/prueba', 'views\HomeController@moveImages');
 
 Route::get('/ofertas', 'views\ProductsController@productsSaleList')->name('sales')->middleware(urlVerify::class);
 
