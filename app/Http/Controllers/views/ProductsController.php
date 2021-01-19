@@ -57,7 +57,7 @@ class ProductsController extends Controller {
             $textFilter = "marcas";
         }
         $idFilter = 0;
-        $canonical = url()->current();;
+        $canonical = url()->current();
         return view('pages/products', compact('idFilter', 'sidebar', 'categoryLevel1', 'categoryLevel2', 'products', 'numberPages', 'filters', 'textFilter', 'descriptionLevel2','canonical'));
     }
 
@@ -263,10 +263,10 @@ class ProductsController extends Controller {
             //Si hay filtros aplicados va a verificar
             $response[$iterator]['id'] = $item->id;
             $response[$iterator]['name'] = $item->productType . " " . $item->brand . " " . $item->mpn;
-            if(file_exists(strtr(base_path() . '/public/assets/images/productos/' . $img . '.jpg', $this->unwanted_array))){
-                $response[$iterator]['images'][0]['medium'] = 'assets/images/productos/' . $img . '.jpg';
+            if(file_exists(strtr(base_path() . '/public/assets/images/productos/medium/' . $img . '.jpg', $this->unwanted_array))){
+                $response[$iterator]['images'][0]['medium'] = 'assets/images/productos/medium/' . $img . '.jpg';
             }else{
-                $response[$iterator]['images'][0]['medium'] = 'assets/images/productos/generico2.jpg';
+                $response[$iterator]['images'][0]['medium'] = 'assets/images/productos/medium/generico2.jpg';
             }
             //empieza la seccion de precios
             if (isset($item->offer) && $item->offer == 'si') {

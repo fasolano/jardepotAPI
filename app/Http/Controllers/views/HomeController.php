@@ -54,7 +54,7 @@ class HomeController extends Controller
         return view('pages/home',compact('menuAdditional','descriptionLevel2','images'));
     }
 
-    public function moveImages(){
+    public function moveImages2(){
         $productRepository = new ProductRepository();
         $products = $productRepository->prueba();
         $response = array();
@@ -103,29 +103,26 @@ class HomeController extends Controller
         return $response;
     }
 
-    public function moveImages2(){
+    public function moveImages(){
+//        $directories = Storage::disk('local')->allDirectories('/');
+//        return $directories;
         $productRepository = new ProductRepository();
         $products = $productRepository->prueba2();
 //        return $products;
-        $response = array();
-        $iterator = 0;
         foreach ($products as $item){
-            $img = strtolower($item->productType . "-" . $item->brand . "-" . $item->mpn);
-            if(file_exists(strtr(base_path().'/public/assets/images/productos/'.$img.'.jpg', $this-> unwanted_array))){
-                $response[$iterator][0]['medium'] = 'assets/images/productos/' . $img . '.jpg';
-//                $response[$iterator]['images'][0]['big'] = 'assets/images/productos/zoom/' . $img . '.jpg';
+            $img = strtr(strtolower($item->productType . "-" . $item->brand . "-" . $item->mpn),$this-> unwanted_array);
+            if(file_exists(base_path().'/public/assets/images/productos/'.$img.'.jpg')){
+                Storage::disk('local')->move('/assets/images/productos/'.$img.'.jpg', '/assets/images/productos/medium/'.$img.'.jpg');
             }
 
             $contadorCarrusel = 1;
-            while (file_exists(strtr(base_path().'/public/assets/images/productos/'.$img.'-'.$contadorCarrusel.'.jpg', $this-> unwanted_array )) && $contadorCarrusel < 4) {
-                $response[$iterator][$contadorCarrusel]['medium'] = 'assets/images/productos/' . $img . '-'.$contadorCarrusel.'.jpg';
-//                $response[$iterator][$contadorCarrusel]['big'] = 'assets/images/productos/zoom/' . $img . '-'.$contadorCarrusel.'.jpg';
+            while (file_exists(base_path().'/public/assets/images/productos/'.$img.'-'.$contadorCarrusel.'.jpg') && $contadorCarrusel < 4) {
+                Storage::disk('local')->move('/assets/images/productos/' . $img . '-'.$contadorCarrusel.'.jpg', '/assets/images/productos/medium/' . $img . '-'.$contadorCarrusel.'.jpg');
+//                $response[$iterator][$contadorCarrusel]['medium'] = 'assets/images/productos/' . $img . '-'.$contadorCarrusel.'.jpg';
                 $contadorCarrusel++;
             }
-            $iterator++;
-//            Storage::copy('old/file.jpg', 'medium/file.jpg');
         }
-        return $response;
+        return 'exito';
     }
 
     /*    public function getIpClient(Request $request){return $request->ip().''.$request->url();}*/
