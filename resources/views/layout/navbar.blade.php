@@ -74,7 +74,7 @@
                                     alt="Imagen Temporada" title="Imagen Temporada">--}}
                         </a>
                     </div>
-                    <div class="col-md-7">
+                    <div class="col-md-6">
                         <div class="" id="navbarsExample06">
                             <form id="search-form" class="form-inline my-2 my-md-0 search-form">
                                 <div class="input-group mb-3" style="width: 100%">
@@ -99,7 +99,7 @@
                             <img src="{{asset("assets/images/icons/youtube_40x40.png")}}" alt="" style="width: 40px;">
                         </a>
                     </div>--}}
-                    <div class="col-md-2" style="margin-top: 5px">
+                    <div class="col-md-1" style="margin-top: 5px">
                         <button class="btn dropdown-toggle" style="color: #FFF" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span style="color: #fff !important;cursor:pointer;font-size: 15px">
                             <i class="material-icons d-flex" style="color: #f68600;font-size: 24px !important;">shopping_cart</i>
@@ -122,6 +122,9 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    <div class="col-md-2" style="margin-top: 10px">
+                        <a class="btn-sm d-flex" href="{{route('sales')}}" style="background-color: #f44336; color: white;width: 70%"><i class="material-icons iconMod">attach_money</i>¡OFERTAS!</a>
                     </div>
                 </div>
             </div>
@@ -147,12 +150,13 @@
                         @endforeach
                     </ul>--}}
 
-                    <ul class="navbar-nav mr-auto col-md-8 d-flex flex-wrap justify-content-center align-items-center" id="menu">
+{{--                    <ul class="navbar-nav mr-auto col-md-8 d-flex flex-wrap justify-content-center align-items-center" id="menu">--}}
+                    <ul class="navbar-nav mr-auto col-md-9 d-flex flex-wrap justify-content-center align-items-center" id="menu">
                         @foreach ($navbar as $key => $categoria1)
-                            <li class="nav-item dropdown mx-2"><a class="d-flex flex-wrap justify-content-center align-items-center" href="javascript:;">{{$categoria1['nivel1']}} <i class="material-icons iconMod">keyboard_arrow_down</i></a>
+                            <li class="nav-item dropdown mx-2"><a class="d-flex flex-wrap justify-content-center align-items-center" title="{{$categoria1['nivel1']}}"  href="javascript:;">{{$categoria1['nivel1']}} <i class="material-icons iconMod">keyboard_arrow_down</i></a>
                                 <ul class="dropdown-menu">
                                     @foreach($categoria1['nivel2'] as $categoria2)
-                                    <li class="dropdown-item"><a class="text-left text-muted" href="{{url($categoria2['href'])}}">{{$categoria2['name']}}</a></li>
+                                    <li class="dropdown-item"><a class="text-left text-muted" title="{{$categoria2['name']}}" href="{{url($categoria2['href'])}}">{{$categoria2['name']}}</a></li>
                                     @endforeach
                                 </ul>
                             </li>
@@ -160,7 +164,7 @@
                     </ul>
 
 {{--                    <a class="mr-2 btn-sm d-flex" href="{{route('sales')}}"><img style="width: 100px;position: absolute;margin-left: -100px;margin-top: -15px" src="{{asset('assets/images/ofertas/promocion.png')}}" title="Ofertas Jardepot" alt="Ofertas Jardepot"></a>--}}
-                    <a class="mr-2 btn-sm d-flex" href="{{route('sales')}}" style="background-color: #f44336; color: white;"><i class="material-icons iconMod">attach_money</i>¡OFERTAS!</a>
+{{--                    <a class="mr-2 btn-sm d-flex" href="{{route('sales')}}" style="background-color: #f44336; color: white;"><i class="material-icons iconMod">attach_money</i>¡OFERTAS!</a>--}}
                     <a class="mr-2 btn-success btn-sm d-flex" target="_blank" href="https://wa.me/525551857805?text=Hola,%20me%20gustaría%20saber%20" style="text-decoration: none;" rel="noopener">
                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true"
                              focusable="false" width="20px" height="20px" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);"

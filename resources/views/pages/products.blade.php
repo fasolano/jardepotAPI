@@ -140,16 +140,17 @@
                                         </div>
                                     @endif--}}
                                     @if(isset($item['discount']))
-                                        <img src="{{ asset('assets/images/ofertas/oferta-0.png') }}" style="width: 85px;position: absolute;top: 0;left: 0;" title="Pestaña Izquierda" alt="Pestaña Izquierda">
+                                        <img src="{{ asset('assets/images/ofertas/oferta-0.png') }}" style="width: 85px;position: absolute;top: 0;left: 0;" title="Pestaña-Oferta" alt="Pestaña Oferta">
                                     @endif
                                     <div class="product-image" style="height: 205px">
                                         <img style="max-width: 80%; max-height: 100%"
                                              src="{{asset($item['images'][0]['medium'])}}"
-                                             title="{{$item['name']}}" alt="{{$item['name']}}">
+                                             title="{{$item['productType'].'-'.str_replace(" ", "-",$item['brand']).'-'.$item['mpn']}}"
+                                             alt="{{$item['productType'].' '.$item['brand'].' '.$item['mpn']}}">
                                     </div>
                                     @if($item['newPriceFloat'] > 3000)
                                         <img class="free-delivery-prods" src="{{asset('assets/images/otros/gratis.png')}}"
-                                         title="Envío gratis Jardepot" alt="Envío gratis Jardepot">
+                                         title="Envío-gratis-Jardepot" alt="Envío gratis Jardepot">
                                     @endif
                                 </a>
                                 <div class="d-flex align-items-center flex-column" style="height: 277px;">
@@ -322,16 +323,17 @@
 {{--                                        <div class="ribbon ribbon-top-right" style="display: block"><span>Oferta</span></div>--}}
 {{--                                    @endif--}}
                                     @if(isset($item['discount']))
-                                        <img src="{{ asset('assets/images/ofertas/oferta-0.png') }}" style="width: 85px;position: absolute;top: 0;left: 0;" title="Pestaña Izquierda" alt="Pestaña Izquierda">
+                                        <img src="{{ asset('assets/images/ofertas/oferta-0.png') }}" style="width: 85px;position: absolute;top: 0;left: 0;" title="Pestaña-Oferta" alt="Pestaña Oferta">
                                     @endif
                                     <div class="product-image" style="height: 205px">
                                         <img style="max-width: 80%; max-height: 100%"
                                              src="{{asset($item['images'][0]['medium'])}}"
-                                             title="{{$item['name']}}" alt="{{$item['name']}}">
+                                             title="{{$item['productType'].'-'.str_replace(" ", "-",$item['brand']).'-'.$item['mpn']}}"
+                                             alt="{{$item['productType'].' '.$item['brand'].' '.$item['mpn']}}">
                                     </div>
                                     @if($item['newPriceFloat'] > 3000)
                                         <img class="free-delivery-prods" src="{{asset('assets/images/otros/gratis.png')}}"
-                                         title="Envío gratis Jardepot" alt="Envío gratis Jardepot">
+                                         title="Envío-gratis-Jardepot" alt="Envío gratis Jardepot">
                                     @endif
                                 </a>
                                 <div class="d-flex align-items-center flex-column" style="height: 277px;">

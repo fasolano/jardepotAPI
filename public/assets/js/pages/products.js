@@ -183,23 +183,24 @@ function reloadProducts() {
             var discount = "";
             if(e.hasOwnProperty('discount')){
                  // discount = '<div class="ribbon ribbon-top-right" style="display: block"><span>Oferta</span></div>';
-                discount=  '<img src="'+ruta+'assets/images/ofertas/oferta-0.png" style="width: 80px;position: absolute;top: 0;left: 0;">';
+                discount=  '<img src="'+ruta+'assets/images/ofertas/oferta-0.png" title="Pestaña-Oferta" alt="Pestaña-Oferta" style="width: 80px;position: absolute;top: 0;left: 0;">';
             }
             var dNone = "";
             if(i>7){
                 dNone = "d-none";
             }
+            var title = e.productType.replace(" ", "-")+'-'+e.brand.replace(" ", "-")+'-'+e.mpn;
             var item = '<div class="card shadow-sm product-item col-sm-6 col-md-4 col-lg-3 p-0 mt-2 '+dNone+'" style="border-radius: 5px;overflow: hidden;">' +
                 '                                <a href="'+ruta+'catalogo/'+e.brand.toLowerCase().replace(" ", "-")+'/'+e.productType.toLowerCase()+'-'+e.brand.toLowerCase().replace(" ", "-")+'-'+e.mpn.toLowerCase()+'">' +
                 '                                    ' + discount +
                 '                                    <div class="product-image" style="height: 205px">' +
                 '                                        <img style="max-width: 80%; max-height: 100%;"' +
                 '                                             src="'+ruta+e.images[0].medium+'"' +
-                '                                             title="'+e.name+'" alt="'+e.name+'">' +
+                '                                             title="'+title+'" alt="'+e.name+'">' +
                 '                                    </div>';
             if (e.newPriceFloat > 3000) {
                 item += '                                    <img class="free-delivery-prods" src="'+ruta+'assets/images/otros/gratis.png"' +
-                '                                         title="Envío gratis Jardepot" alt="Envío gratis Jardepot">';
+                '                                         title="Envío-gratis-Jardepot" alt="Envío gratis Jardepot">';
             }
             item += '                                </a>' +
                 '                                <div class="d-flex align-items-center flex-column" style="height: 277px;">' +

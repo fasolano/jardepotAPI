@@ -10,7 +10,7 @@
                             <picture>
                                 <source srcset="{{asset('img/canalesDist/mclibre.webp')}}" type="image/webp">
                                 <source srcset="{{asset('img/canalesDist/mclibre.jpg')}}" type="image/jpg">
-                                <img src="{{asset('img/canalesDist/mclibre.jpg')}}" class="img-fluid mx-auto d-block img-carousel" title="Canal Mercado libre" alt="Canal Mercado libre">
+                                <img src="{{asset('img/canalesDist/mclibre.jpg')}}" class="img-fluid mx-auto d-block img-carousel" title="Canal-Mercado-libre" alt="Canal Mercado libre">
                             </picture>
                         </a>
                     </div>
@@ -29,14 +29,14 @@
                             <picture>
                                 <source srcset="{{asset('img/canalesDist/claroshop.webp')}}" type="image/webp">
                                 <source srcset="{{asset('img/canalesDist/claroshop.jpg')}}" type="image/jpg">
-                                <img src="{{asset('img/canalesDist/claroshop.jpg')}}" class="img-fluid mx-auto d-block img-carousel" title="Canal ClaroShop" alt="Canal ClaroShop">
+                                <img src="{{asset('img/canalesDist/claroshop.jpg')}}" class="img-fluid mx-auto d-block img-carousel" title="Canal-ClaroShop" alt="Canal ClaroShop">
                             </picture>
                         </a>
                     </div>
 
                     <div class="col">
                         <a style="text-decoration: none;" target="_blank" href="https://www.elektra.com.mx/husqvarna" rel="noopener">
-                            <img src="{{asset('img/canalesDist/elektra.webp')}}" class="img-fluid mx-auto d-block img-carousel" title="Canal Elektra" alt="Canal Elektra">
+                            <img src="{{asset('img/canalesDist/elektra.webp')}}" class="img-fluid mx-auto d-block img-carousel" title="Canal-Elektra" alt="Canal Elektra">
                         </a>
                     </div>
 
@@ -45,7 +45,7 @@
                             <picture>
                                 <source srcset="{{asset('img/canalesDist/walmart.webp')}}" type="image/webp">
                                 <source srcset="{{asset('img/canalesDist/walmart.jpg')}}" type="image/jpg">
-                                <img src="{{asset('img/canalesDist/walmart.jpg')}}" class="img-fluid mx-auto d-block img-carousel" title="Canal Walmart" alt="Canal Walmart">
+                                <img src="{{asset('img/canalesDist/walmart.jpg')}}" class="img-fluid mx-auto d-block img-carousel" title="Canal-Walmart" alt="Canal Walmart">
                             </picture>
                         </a>
                     </div>
@@ -58,7 +58,7 @@
                             <picture>
                                 <source srcset="{{asset('img/canalesDist/mclibre.webp')}}" type="image/webp">
                                 <source srcset="{{asset('img/canalesDist/mclibre.jpg')}}" type="image/jpg">
-                                <img src="{{asset('img/canalesDist/mclibre.jpg')}}" class="img-fluid mx-auto d-block img-carousel" title="Canal Mercado libre" alt="Canal Mercado libre">
+                                <img src="{{asset('img/canalesDist/mclibre.jpg')}}" class="img-fluid mx-auto d-block img-carousel" title="Canal-Mercado-libre" alt="Canal Mercado libre">
                             </picture>
                         </a>
                     </div>
@@ -77,14 +77,14 @@
                             <picture>
                                 <source srcset="{{asset('img/canalesDist/claroshop.webp')}}" type="image/webp">
                                 <source srcset="{{asset('img/canalesDist/claroshop.jpg')}}" type="image/jpg">
-                                <img src="{{asset('img/canalesDist/claroshop.jpg')}}" class="img-fluid mx-auto d-block img-carousel" title="Canal ClaroShop" alt="Canal ClaroShop">
+                                <img src="{{asset('img/canalesDist/claroshop.jpg')}}" class="img-fluid mx-auto d-block img-carousel" title="Canal-ClaroShop" alt="Canal ClaroShop">
                             </picture>
                         </a>
                     </div>
 
                     <div class="col">
                         <a style="text-decoration: none;" target="_blank" href="https://www.elektra.com.mx/husqvarna" rel="noopener">
-                            <img src="{{asset('img/canalesDist/elektra.webp')}}" class="img-fluid mx-auto d-block img-carousel" title="Canal Elektra" alt="Canal Elektra">
+                            <img src="{{asset('img/canalesDist/elektra.webp')}}" class="img-fluid mx-auto d-block img-carousel" title="Canal-Elektra" alt="Canal Elektra">
                         </a>
                     </div>
 
@@ -93,7 +93,7 @@
                             <picture>
                                 <source srcset="{{asset('img/canalesDist/walmart.webp')}}" type="image/webp">
                                 <source srcset="{{asset('img/canalesDist/walmart.jpg')}}" type="image/jpg">
-                                <img src="{{asset('img/canalesDist/walmart.jpg')}}" class="img-fluid mx-auto d-block img-carousel" title="Canal Walmart" alt="Canal Walmart">
+                                <img src="{{asset('img/canalesDist/walmart.jpg')}}" class="img-fluid mx-auto d-block img-carousel" title="Canal-Walmart" alt="Canal Walmart">
                             </picture>
                         </a>
                     </div>

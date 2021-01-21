@@ -18,10 +18,10 @@
                         @if(strtolower($level1) == "marcas")
                             <div class="text-center col-6 my-1">
                                 <div class="btn-group-toggle filter" data-toggle="buttons">
-                                    <a data-val="{{$itemFilter['id']}}" class="btn btn-secondary btn-sm btn-filter-2 btn-no-border
+                                    <a data-val="{{$itemFilter['id']}}" title="{{$itemFilter['name']}}" class="btn btn-secondary btn-sm btn-filter-2 btn-no-border
                                             {{$idFilter == $itemFilter['id']?"active-filter bg-color-jd active":""}}" onclick="function noclick(e) { e.stopPropagation();}"
                                        href="{{route('products2', ['categoryLevel1'=> strtolower(str_replace(" ", "-", $level1)),
-                                        'categoryLevel2'=> strtolower(str_replace(" ", "-", $level2)), 'categoryLevel3'=> strtolower(str_replace(" ", "-", $itemFilter['name']))])}}">
+                                        'categoryLevel2'=> strtolower(str_replace(" ", "-", $level2)), 'categoryLevel3'=> strtolower(str_replace(" ", "-", $itemFilter['name']))])}}" >
                                         {{$itemFilter['name']}}
                                     </a>
                                 </div>
@@ -29,7 +29,7 @@
                         @else
                             <div class="text-center col-6 my-1">
                                 <div class="btn-group-toggle filter" data-toggle="buttons">
-                                    <label class="btn btn-secondary btn-sm btn-filter btn-no-border"
+                                    <label class="btn btn-secondary btn-sm btn-filter btn-no-border" title="{{$itemFilter['name']}}"
                                            style="height: {{strlen($itemFilter['name'])>15?"40":"20"}}px" data-val="{{$itemFilter['id']}}">
                                         <input type="checkbox"> {{$itemFilter['name']}}
                                     </label>
@@ -72,7 +72,7 @@
                         @foreach ($itemLevel1->nivel2 as $keyLevel2 => $itemLevel2)
                             <div class="col-6 text-center my-1 p-0">
                                 <a href="{{route('products', ['categoryLevel1'=>$itemLevel1->href, 'categoryLevel2'=> $itemLevel2->href])}}"
-                                   class="btn bg-color-jd btn-no-border px-0" style="width: 80%; font-size: 14px; white-space: nowrap;">
+                                   class="btn bg-color-jd btn-no-border px-0" style="width: 80%; font-size: 14px; white-space: nowrap;" title="{{$itemLevel2->name}}">
                                     {{$itemLevel2->name}}
                                 </a>
                             </div>
@@ -101,7 +101,7 @@
                         @foreach ($itemLevel1->nivel2 as $keyLevel2 => $itemLevel2)
                             <div class="col-6 text-center my-1 p-0">
                                 <a href="{{route('products', ['categoryLevel1'=>$itemLevel1->href, 'categoryLevel2'=> $itemLevel2->href])}}"
-                                   class="btn bg-color-jd btn-no-border px-0" style="width: 80%; font-size: 14px; white-space: nowrap;">
+                                   class="btn bg-color-jd btn-no-border px-0" style="width: 80%; font-size: 14px; white-space: nowrap;" title="{{$itemLevel2->name}}">
                                     {{$itemLevel2->name}}
                                 </a>
                             </div>
