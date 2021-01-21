@@ -2,10 +2,11 @@
 
 
 @section('metaData')
-    <title>Tu carrito Jardepot</title>
+    <title>Jardepot</title>
     <meta title=""/>
     <meta name="description" content="">
     <meta name="keywords" content="">
+    <meta name="robots" content="noindex">
 @endsection
 
 @section('specificCSS')
