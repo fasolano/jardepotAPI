@@ -89,6 +89,16 @@
     color: #f68600;
 }
 
+.column-navbar {
+    list-style-type: none;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+.column-navbar li:before {
+    content: "";
+}
+
 .fn-color-inStock {
     color: #15a225 !important;
     font-weight: 700;
