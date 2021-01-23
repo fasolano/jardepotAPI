@@ -110,19 +110,19 @@ class ProductController extends Controller {
             $href = strtolower($productType . "-" . $brand . "-" . $mpn);
             $response[$iterator]['href'] = strtr('catalogo/'.strtolower($brand).'/'.$href, $this-> unwanted_array);
 
-            if(file_exists(strtr(base_path().'/public/assets/images/productos/medium/'.$img.'.jpg', $this-> unwanted_array))){
-                $response[$iterator]['images'][0]['small'] = 'assets/images/productos/medium/' . $img . '.jpg';
-                $response[$iterator]['images'][0]['medium'] = 'assets/images/productos/medium/' . $img . '.jpg';
+            if(file_exists(strtr(base_path().'/public/assets/images/productos/'.$img.'.jpg', $this-> unwanted_array))){
+                $response[$iterator]['images'][0]['small'] = 'assets/images/productos/' . $img . '.jpg';
+                $response[$iterator]['images'][0]['medium'] = 'assets/images/productos/' . $img . '.jpg';
                 $response[$iterator]['images'][0]['big'] = 'assets/images/productos/zoom/' . $img . '.jpg';
             }else{
-                $response[$iterator]['images'][0]['small'] = 'assets/images/productos/medium/generico2.jpg';
-                $response[$iterator]['images'][0]['medium'] = 'assets/images/productos/medium/generico2.jpg';
+                $response[$iterator]['images'][0]['small'] = 'assets/images/productos/generico2.jpg';
+                $response[$iterator]['images'][0]['medium'] = 'assets/images/productos/generico2.jpg';
                 $response[$iterator]['images'][0]['big'] = 'assets/images/productos/zoom/generico2.jpg';
             }
             $contadorCarrusel = 1;
-            while (file_exists(strtr(base_path().'/public/assets/images/productos/medium/'.$img.'-'.$contadorCarrusel.'.jpg', $this-> unwanted_array )) && $contadorCarrusel < 4) {
-                $response[$iterator]['images'][$contadorCarrusel]['small'] = 'assets/images/productos/medium/' . $img . '-'.$contadorCarrusel.'.jpg';
-                $response[$iterator]['images'][$contadorCarrusel]['medium'] = 'assets/images/productos/medium/' . $img . '-'.$contadorCarrusel.'.jpg';
+            while (file_exists(strtr(base_path().'/public/assets/images/productos/'.$img.'-'.$contadorCarrusel.'.jpg', $this-> unwanted_array )) && $contadorCarrusel < 4) {
+                $response[$iterator]['images'][$contadorCarrusel]['small'] = 'assets/images/productos/' . $img . '-'.$contadorCarrusel.'.jpg';
+                $response[$iterator]['images'][$contadorCarrusel]['medium'] = 'assets/images/productos/' . $img . '-'.$contadorCarrusel.'.jpg';
                 $response[$iterator]['images'][$contadorCarrusel]['big'] = 'assets/images/productos/zoom/' . $img . '-'.$contadorCarrusel.'.jpg';
                 $contadorCarrusel ++;
             }

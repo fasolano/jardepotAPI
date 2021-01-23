@@ -95,7 +95,12 @@
     -webkit-columns: 2;
     -moz-columns: 2;
 }
+/*Version escritorio*/
 .column-navbar li:before {
+    content: "";
+}
+/*Version movil*/
+.column-navbar a:before {
     content: "";
 }
 
