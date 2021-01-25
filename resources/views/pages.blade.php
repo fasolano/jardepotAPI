@@ -62,6 +62,22 @@
         gtag('config', 'AW-786429434');
     </script>
     <script>
+        function gtag_report_conversion(url) {
+            var callback = function () {
+                if (typeof(url) != 'undefined') {
+                    // Abrir en nueva tab
+                    var win = window.open(url, '_blank');
+                 //   window.location = url;
+                }
+            };
+            gtag('event', 'conversion', {
+                'send_to': 'AW-786429434/VZaaCLH-lvIBEPrr__YC',
+                'event_callback': callback
+            });
+            return false;
+        }
+    </script>
+    <script>
         gtag('config', 'AW-786429434/XEObCMjLhfEBEPrr__YC', {
             'phone_conversion_number': '800 212 9225'
         });
@@ -135,6 +151,9 @@
 
     {{--  Metatitle, metadescripcion, titulo de página, etc.  --}}
     @yield('metaData')
+    <style>
+
+    </style>
 <!-- Facebook Pixel Code -->
     <script>
         !function(f,b,e,v,n,t,s)
