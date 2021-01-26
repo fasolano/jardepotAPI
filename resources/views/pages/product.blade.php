@@ -5,6 +5,8 @@
     <title>{{ ucfirst($product['metaTitle'])}}</title>
     <meta title="{{ ucfirst($product['metaTitle'])}}"/>
     <meta name="description" content="{{isset( $product['metaDescription'])? $product['metaDescription']:'Jardepot'}}" >
+    <meta name="googlebot" content="index,follow" />
+    <meta name="robots" content="index,follow">
 {{--    <meta name="keywords" content="{{$product['keywords']}}">--}}
 
     <meta property="og:title" content="{{isset( $product['metaTitle'])? $product['metaTitle']:'Jardepot'}}" />

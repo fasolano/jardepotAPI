@@ -5,6 +5,8 @@
     <title>{{ ucfirst($productType." ".$brand." ".$mpn)}}</title>
     <meta title="{{ ucfirst($productType." ".$brand." ".$mpn)}}"/>
     <meta name="description" content="{{$productType." ".$brand." ".$mpn}}">
+    <meta name="googlebot" content="index,follow" />
+    <meta name="robots" content="index,follow">
 @endsection
 
 @section('specificCSS')

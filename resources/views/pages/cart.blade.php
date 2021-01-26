@@ -6,6 +6,7 @@
     <meta title="Tu carrito Jardepot"/>
     <meta name="description" content="Tu carrito Jardepot">
 {{--    <meta name="keywords" content="Carrito, Jardepot">--}}
+    <meta name="googlebot" content="noindex" />
     <meta name="robots" content="noindex">
 @endsection
 

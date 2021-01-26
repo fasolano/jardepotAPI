@@ -4,6 +4,8 @@
 @section('metaData')
     <title>{{ ucfirst('Rastrea tu envío')}}</title>
     <meta title="{{ ucfirst('Rastrea tu envío')}}"/>
+    <meta name="googlebot" content="noindex" />
+    <meta name="robots" content="noindex">
 {{--    <meta name="description" content="{{$product['metaDescription']}}">--}}
 {{--    <meta name="keywords" content="{{$product['keywords']}}">--}}
 

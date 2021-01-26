@@ -151,9 +151,7 @@
 
     {{--  Metatitle, metadescripcion, titulo de página, etc.  --}}
     @yield('metaData')
-    <style>
 
-    </style>
 <!-- Facebook Pixel Code -->
     <script>
         !function(f,b,e,v,n,t,s)

@@ -6,7 +6,8 @@
     <meta title="{{ isset($descriptionLevel2->metatitle)?substr($descriptionLevel2->metatitle, 0,70):""}}"/>
     <meta name="description" content="{{isset($descriptionLevel2->metadescription)?$descriptionLevel2->metadescription:""}}">
 {{--    <meta name="keywords" content="{{isset($descriptionLevel2->keywords)?$descriptionLevel2->keywords:""}}">--}}
-
+    <meta name="googlebot" content="index,follow" />
+    <meta name="robots" content="index,follow">
     <meta property="og:title" content="{{ isset($descriptionLevel2->metatitle)?substr($descriptionLevel2->metatitle, 0,70):""}}" />
     <meta property="og:description" content="{{ isset($descriptionLevel2->metatitle)?substr($descriptionLevel2->metatitle, 0,70):""}}" />
     <meta property="og:type" content="website" />

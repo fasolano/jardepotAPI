@@ -7,8 +7,6 @@
 <meta name="author" content="JarDepot">
 <meta name="generator" content="JarDepot v3">
 
-<meta name="googlebot" content="index,follow" />
-<Meta name="robots" content="index,follow">
 <meta name="csrf-token" content="{{ csrf_token() }}" />
 
 <meta http-equiv="Expires" content="0" />
