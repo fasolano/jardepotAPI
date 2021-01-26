@@ -12,10 +12,11 @@ use Illuminate\Http\Request;
 class ProductsController extends Controller {
 
     private $unwanted_array;
-
+    private $productoRepository;
     public function __construct() {
         setlocale(LC_MONETARY, 'en_US');
         $this->comprobarMoneyFormat();
+        $this->productoRepository = new ProductRepository();
         $this->unwanted_array = array('Š' => 'S', 'š' => 's', 'Ž' => 'Z', 'ž' => 'z', 'À' => 'A', 'Á' => 'A',
             'Â' => 'A', 'Ã' => 'A', 'Ä' => 'A', 'Å' => 'A', 'Æ' => 'A', 'Ç' => 'C', 'È' => 'E', 'É' => 'E', 'Ê' => 'E',
             'Ë' => 'E', 'Ì' => 'I', 'Í' => 'I', 'Î' => 'I', 'Ï' => 'I', 'Ñ' => 'N', 'Ò' => 'O', 'Ó' => 'O', 'Ô' => 'O',
@@ -43,22 +44,30 @@ class ProductsController extends Controller {
             }
         }
         $sidebar = $categoriasNivel1;
-        $productController = new \App\Http\Controllers\ProductController();
-        $products = $productController->getProductsList($categoryLevel1, $categoryLevel2);
-        $products = $this->porductModelFormat($products);
-        $numberPages = count($products) / 16;
-        $filters = $productController->getSectionsLevel3($categoryLevel1, $categoryLevel2);
-        $descriptionLevel2 = $productController->getDescriptionLevel2($categoryLevel1, $categoryLevel2);
+        $idNivel2 = $this->productoRepository->getIdNivel2($categoryLevel1, $categoryLevel2);
+        if ($idNivel2 != null) {
 
-        $textFilter = "";
-        if($categoryLevel1 == "Marcas" || $categoryLevel1 == "Refacciones"){
-            $textFilter = "equipos";
+            $productController = new \App\Http\Controllers\ProductController();
+            $products = $productController->getProductsList($idNivel2);
+
+            $products = $this->porductModelFormat($products);
+            $numberPages = count($products) / 16;
+            $filters = $productController->getSectionsLevel3($categoryLevel1, $categoryLevel2);
+            $descriptionLevel2 = $productController->getDescriptionLevel2($categoryLevel1, $categoryLevel2);
+
+            $textFilter = "";
+            if($categoryLevel1 == "Marcas" || $categoryLevel1 == "Refacciones"){
+                $textFilter = "equipos";
+            }else{
+                $textFilter = "marcas";
+            }
+            $idFilter = 0;
+            $canonical = url()->current();
+            return view('pages/products', compact('idFilter', 'sidebar', 'categoryLevel1', 'categoryLevel2', 'products', 'numberPages', 'filters', 'textFilter', 'descriptionLevel2','canonical'));
         }else{
-            $textFilter = "marcas";
+            return view('errors/404');
         }
-        $idFilter = 0;
-        $canonical = url()->current();
-        return view('pages/products', compact('idFilter', 'sidebar', 'categoryLevel1', 'categoryLevel2', 'products', 'numberPages', 'filters', 'textFilter', 'descriptionLevel2','canonical'));
+
     }
 
     public function productsListLevel3($categoryLevel1, $categoryLevel2, $categoryLevel3){
@@ -420,5 +429,6 @@ class ProductsController extends Controller {
             return $palabra;
         }
     }
+
 
 }

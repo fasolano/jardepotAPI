@@ -1285,7 +1285,7 @@ class ProductRepository{
             return false;
         }
     }
-
+//Las pruebas pueden elimianrse, solo se hicieron para obtener las imagenes que existen
     function prueba(){
         $ids = DB::table('productos')
             ->join("XML", function($join){
@@ -1311,6 +1311,9 @@ class ProductRepository{
             )
             ->get();
         return $ids;
+    }
+    public function existeURL($categoria1,$categoria2){
+
     }
 
 }

@@ -211,17 +211,14 @@ class ProductController extends Controller {
         return json_encode($response);
     }
 
-    public function getProductsList($nivel1, $nivel2) {
-        /*
-         * Se optienen las categorias que se van mostrar
-         */
-        $idNivel2 = $this->productoRepository->getIdNivel2($nivel1, $nivel2);
+    public function getProductsList($idNivel2) {
+//    public function getProductsList($nivel1, $nivel2) {
+        /* Se optienen las categorias que se van mostrar */
+/*        $idNivel2 = $this->productoRepository->getIdNivel2($nivel1, $nivel2);
         if ($idNivel2 == null) {
             return array();
         }
-        $response = array();
-
-
+        */
         $productosCategoria = $this->productoRepository->getProducts($idNivel2);
         return  $productosCategoria;
     }
