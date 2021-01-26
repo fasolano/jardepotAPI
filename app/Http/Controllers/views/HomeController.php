@@ -24,6 +24,7 @@ class HomeController extends Controller
         $menuRepository = new MenuRepository();
         $productoRepository = new ProductRepository();
         $categoriasNivel1 = $menuRepository->getAdditional2();
+        $menuAdditional=[];
         foreach ($categoriasNivel1 as $key => $categoria1) {
             $menuAdditional[$key]['nivel1'] = $categoria1->name;
             $categoriasNivel2 = $menuRepository->getNivel2($categoria1->id);
