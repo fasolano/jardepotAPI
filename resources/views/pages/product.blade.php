@@ -97,14 +97,17 @@
         </nav>
         <!-- Page Content  -->
         <div id="content" class="row">
-            <div class="card d-none d-lg-block col-lg-3 mr-3" style="max-width: 23%">
+{{--            <div class="card d-none d-lg-block col-lg-3 mr-3" style="max-width: 23%">--}}
+            <div class="d-none d-lg-block col-lg-2 p-0" >
+                <div class="border shadow bg-white rounded d-none d-lg-block p-0"  style="max-width: 90%;height: 100%;">
                 @component('components.sidebar')
                     @slot('id', 'Desktop')
                     @slot('sections', $sidebar)
                 @endcomponent
+                </div>
             </div>
 
-            <div class="flip-card col-lg-9 col-md-12">
+            <div class="flip-card col-lg-9 col-md-12" style="min-width: 82.333333%">
                 <div class="flip-card-inner">
                     <div class="flip-card-front row">
                         <div class="col-lg-8 col-md-12">

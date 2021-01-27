@@ -56,23 +56,26 @@
 
         <!-- Page Content  -->
         <div id="content" class="row">
-            <div class="border shadow bg-white rounded d-none d-lg-block col-lg-3 p-0" style="max-width: 21%">
-                @component('components.sidebar')
-                    @slot('id', 'Desktop')
-                    @slot('sections', $sidebar)
-                @if(isset($filters))
-                    @slot('filters', $filters)
-                    @slot('textFilter', $textFilter)
-                @endif
-                @if(isset($idFilter))
-                    @slot('idFilter', $idFilter)
-                @endif
-                    @slot('level1', $categoryLevel1)
-                    @slot('level2', $categoryLevel2)
-                @endcomponent
+{{--            <div class="border shadow bg-white rounded d-none d-lg-block col-lg-3 p-0" style="max-width: 21%">--}}
+            <div class="d-none d-lg-block col-lg-2 p-0" >
+                <div class="border shadow bg-white rounded d-none d-lg-block p-0"  style="max-width: 90%;height: 100%;">
+                    @component('components.sidebar')
+                        @slot('id', 'Desktop')
+                        @slot('sections', $sidebar)
+                    @if(isset($filters))
+                        @slot('filters', $filters)
+                        @slot('textFilter', $textFilter)
+                    @endif
+                    @if(isset($idFilter))
+                        @slot('idFilter', $idFilter)
+                    @endif
+                        @slot('level1', $categoryLevel1)
+                        @slot('level2', $categoryLevel2)
+                    @endcomponent
+                </div>
             </div>
 
-            <div id="content-products-principal" class="col-lg-10 col-md-12" style="">
+            <div id="content-products-principal" class="col-lg-10 col-md-12" style="min-width: 82.333333%">
                 @if(isset($products))
                 <div id="list-products-sections">
                     <div class="row border shadow bg-white rounded">
