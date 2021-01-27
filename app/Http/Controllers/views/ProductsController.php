@@ -89,7 +89,7 @@ class ProductsController extends Controller {
         $urlsArray['equipos/motobombas']='';
         $urlsArray['equipos/motocultores']='';
         $urlsArray['equipos/motores']='repuestos-y-consumibles/motores';
-        $urlsArray['equipos/motosierras']='';
+        $urlsArray['equipos/motosierras']='forestal/motosierras';
         $urlsArray['equipos/multifuncionales']='jardineria/multifuncionales';
         $urlsArray['equipos/nebulizadoras']='';
         $urlsArray['equipos/parihuelas']='';
