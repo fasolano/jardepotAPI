@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\MenuController;
 use App\Repositories\ProductRepository;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class ProductsController extends Controller {
 
@@ -65,9 +66,54 @@ class ProductsController extends Controller {
             $canonical = url()->current();
             return view('pages/products', compact('idFilter', 'sidebar', 'categoryLevel1', 'categoryLevel2', 'products', 'numberPages', 'filters', 'textFilter', 'descriptionLevel2','canonical'));
         }else{
-            return view('errors/404');
+            $redir = $this->redirurls($categoryLevel1, $categoryLevel2);
+            if($redir != ''){
+                return Redirect::to($redir, 301);
+            }else{
+                return view('errors/404');
+            }
         }
 
+    }
+    public function redirurls($categoryLevel1, $categoryLevel2){
+        $url=strtolower($categoryLevel1.'/'.$categoryLevel2);
+        $urlsArray=[];
+        $urlsArray['equipos/aspersora']='';
+        $urlsArray['equipos/desbrozadoras']='';
+        $urlsArray['equipos/cortasetos']='jardineria/cortasetos';
+        $urlsArray['equipos/generadores']='';
+        $urlsArray['equipos/hidrolavadoras']='';
+        $urlsArray['equipos/hoyadoras']='';
+        $urlsArray['equipos/motobombas']='';
+        $urlsArray['equipos/motocultores']='';
+        $urlsArray['equipos/motores']='repuestos-y-consumibles/motores';
+        $urlsArray['equipos/motosierras']='';
+        $urlsArray['equipos/multifuncionales']='jardineria/multifuncionales';
+        $urlsArray['equipos/nebulizadoras']='';
+        $urlsArray['equipos/parihuelas']='';
+        $urlsArray['equipos/podadoras']='';
+        $urlsArray['equipos/sopladoras']='';
+        $urlsArray['equipos/tractopodadoras']='';
+        $urlsArray['equipos/trituradoras']='';
+        $urlsArray['accesorios-y-consumibles/aceites']='repuestos-y-consumibles/aceites';
+        $urlsArray['accesorios-y-consumibles/arneses']='';
+        $urlsArray['accesorios-y-consumibles/barrenos']='';
+        $urlsArray['accesorios-y-consumibles/bidones']='';
+        $urlsArray['accesorios-y-consumibles/cabezales']='';
+        $urlsArray['accesorios-y-consumibles/cascos-y-caretas']='';
+        $urlsArray['accesorios-y-consumibles/cuchillas']='';
+        $urlsArray['accesorios-y-consumibles/hilo-nylon']='';
+        $urlsArray['accesorios-y-consumibles/mangueras']='';
+        $urlsArray['accesorios-y-consumibles/pantalones']='';
+        $urlsArray['refacciones/refacciones']='';
+        $urlsArray['herramientas-manuales/hachas']='';
+        $urlsArray['herramientas-manuales/tijeras']='';
+        $urlsArray['herramientas-manuales/serruchos']='';
+        if(array_key_exists($url,$urlsArray)){
+            return $urlsArray[$url];
+        }else{
+            return '';
+        }
     }
 
     public function productsListLevel3($categoryLevel1, $categoryLevel2, $categoryLevel3){
