@@ -92,11 +92,11 @@ class ProductsController extends Controller {
         $urlsArray['equipos/motosierras']='forestal/motosierras';
         $urlsArray['equipos/multifuncionales']='jardineria/multifuncionales';
         $urlsArray['equipos/nebulizadoras']='';
-        $urlsArray['equipos/parihuelas']='';
-        $urlsArray['equipos/podadoras']='';
+        $urlsArray['equipos/parihuelas']='agricultura/parihuelas';
+        $urlsArray['equipos/podadoras']='jardineria/podadoras';
         $urlsArray['equipos/sopladoras']='';
-        $urlsArray['equipos/tractopodadoras']='';
-        $urlsArray['equipos/trituradoras']='';
+        $urlsArray['equipos/tractopodadoras']='jardineria/tractopodadoras';
+        $urlsArray['equipos/trituradoras']='agricultura/trituradores';
         $urlsArray['accesorios-y-consumibles/aceites']='repuestos-y-consumibles/aceites';
         $urlsArray['accesorios-y-consumibles/arneses']='';
         $urlsArray['accesorios-y-consumibles/barrenos']='';
