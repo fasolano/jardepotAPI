@@ -57,7 +57,7 @@
                             </div>
                             <div class="col-md-6">
                                 <div style="position: fixed;margin-left: 28px;margin-top: 20px !important;">
-                                    <a onclick="return gtag_report_conversion('https://wa.me/525551857805?text=Hola,%20me%20gustaría%20saber%20')" rel="noopener">
+                                    <a style="width: 60px;height: 60px;" onclick="return gtag_report_conversion('https://wa.me/525551857805?text=Hola,%20me%20gustaría%20saber%20')" rel="noopener">
                                         <img style="width: 60px;height: 60px;" src="{{asset('assets/images/icons/whatsapp.png')}}">
                                     </a>
                                 </div>
