@@ -115,6 +115,8 @@ class ProductsController extends Controller {
         $urlsArray['sanitizacion-y-fumigacion/parihuelas']='agricultura/parihuelas';
         $urlsArray['sanitizacion-y-fumigacion/desinfectantes']='sanitizacion/desinfectantes';
         $urlsArray['sanitizacion-y-fumigacion/termonebulizadoras']='sanitizacion/termonebulizadoras';
+        $urlsArray['construccion/revolvedoras']='construccion/revolvedoras-de-concreto';
+
         if(array_key_exists($url,$urlsArray)){
             return $urlsArray[$url];
         }else{
