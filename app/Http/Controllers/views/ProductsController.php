@@ -82,6 +82,7 @@ class ProductsController extends Controller {
         $urlsArray=[];
         $urlsArray['equipos/aspersora']='';
         $urlsArray['equipos/desbrozadoras']='jardineria/desbrozadoras';
+        $urlsArray['equipos/desinfectantes']='sanitizacion/desinfectantes';
         $urlsArray['equipos/cortasetos']='jardineria/cortasetos';
         $urlsArray['equipos/generadores']='';
         $urlsArray['equipos/hidrolavadoras']='';
@@ -91,7 +92,7 @@ class ProductsController extends Controller {
         $urlsArray['equipos/motores']='repuestos-y-consumibles/motores';
         $urlsArray['equipos/motosierras']='forestal/motosierras';
         $urlsArray['equipos/multifuncionales']='jardineria/multifuncionales';
-        $urlsArray['equipos/nebulizadoras']='';
+        $urlsArray['equipos/nebulizadoras']='sanitizacion/nebulizadoras';
         $urlsArray['equipos/parihuelas']='agricultura/parihuelas';
         $urlsArray['equipos/podadoras']='jardineria/podadoras';
         $urlsArray['equipos/sopladoras']='jardineria/sopladoras';
@@ -112,6 +113,8 @@ class ProductsController extends Controller {
         $urlsArray['herramientas-manuales/tijeras']='';
         $urlsArray['herramientas-manuales/serruchos']='';
         $urlsArray['sanitizacion-y-fumigacion/parihuelas']='agricultura/parihuelas';
+        $urlsArray['sanitizacion-y-fumigacion/desinfectantes']='sanitizacion/desinfectantes';
+        $urlsArray['sanitizacion-y-fumigacion/termonebulizadoras']='sanitizacion/termonebulizadoras';
         if(array_key_exists($url,$urlsArray)){
             return $urlsArray[$url];
         }else{
