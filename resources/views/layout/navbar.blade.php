@@ -49,9 +49,9 @@
                     <div class="col-md-2">
                         <div class="row">
                             <div class="col-md-6">
-                                <div style="margin-top: 12px;color: #fff;">
-                                    <a style="margin-top: 12px;cursor: pointer;" data-toggle="modal" data-target="#modalTelefonos">
-                                        <i class="material-icons" style="font-size: 30px">keyboard_arrow_right<i class="material-icons" style="font-size: 36px">add_ic_call</i></i>
+                                <div style="margin-top: 9px;color: #fff;">
+                                    <a style="cursor: pointer;" data-toggle="modal" data-target="#modalTelefonos">
+                                        <i class="material-icons" style="font-size: 30px">keyboard_arrow_right<i class="material-icons" style="font-size: 40px">add_ic_call</i></i>
                                     </a>
                                 </div>
                             </div>
@@ -132,7 +132,7 @@
                         </div>
                     </div>
                     <div class="col-md-2" style="margin-top: 10px">
-                        <a class="d-flex" href="{{route('sales')}}"><img style="width: 150px;position: absolute;margin-left: 10px;margin-top: 1px" src="{{asset('assets/images/ofertas/promocion.png')}}" title="Ofertas Jardepot" alt="Ofertas Jardepot"></a>
+                        <a class="d-flex" href="{{route('sales')}}"><img style="width: 140px;height:50px;position: absolute;margin-left: -12px;margin-top: 5px" src="{{asset('assets/images/ofertas/promocion.png')}}" title="Ofertas Jardepot" alt="Ofertas Jardepot"></a>
                     </div>
                 </div>
             </div>

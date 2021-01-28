@@ -46,7 +46,7 @@
 }
 
 .text-barra{
-    font-size: 19px;
+    font-size: 16px;
     color: white !important;
     font-weight: 600;
     text-decoration: none;
@@ -54,10 +54,11 @@
 .text-barra a{
     color: #ffffff !important;
     text-decoration: none;
-    font-weight: 600
+    font-weight: 600;
+    font-size: 19px;
 }
 .text-barra-2{
-    font-size: 20px;
+    font-size: 18px;
     color: white !important;
     font-weight: 600;
     text-decoration: none;
@@ -65,7 +66,8 @@
 .text-barra-2 a{
     color: #ffffff !important;
     text-decoration: none;
-    font-weight: 600
+    font-weight: 600;
+    font-size: 20px;
 }
 
 .telModal{
@@ -98,7 +100,7 @@
     }
 
     .text-barra{
-        font-size: 17px;
+        font-size: 15px;
         color: white !important;
         font-weight: 600;
         text-decoration: none;
@@ -107,10 +109,10 @@
         color: #ffffff !important;
         text-decoration: none;
         font-weight: 600;
-        font-size: 18px;
+        font-size: 17px;
     }
     .text-barra-2{
-        font-size: 18px;
+        font-size: 15px;
         color: white !important;
         font-weight: 600;
         text-decoration: none;
@@ -128,30 +130,6 @@
         height: 100%;
     }
 
-    .text-barra{
-        font-size: 16px;
-        color: white !important;
-        font-weight: 600;
-        text-decoration: none;
-    }
-    .text-barra a{
-        color: #ffffff !important;
-        text-decoration: none;
-        font-weight: 600;
-        font-size: 16px;
-    }
-    .text-barra{
-        font-size: 18px;
-        color: white !important;
-        font-weight: 600;
-        text-decoration: none;
-    }
-    .text-barra a{
-        color: #ffffff !important;
-        text-decoration: none;
-        font-weight: 600;
-        font-size: 18px;
-    }
     .div-navbar-movil{
         border-radius: 0 0 10px 10px;
         background-color: #f68600 !important;
