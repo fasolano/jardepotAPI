@@ -94,7 +94,7 @@ class ProductsController extends Controller {
         $urlsArray['equipos/nebulizadoras']='';
         $urlsArray['equipos/parihuelas']='agricultura/parihuelas';
         $urlsArray['equipos/podadoras']='jardineria/podadoras';
-        $urlsArray['equipos/sopladoras']='';
+        $urlsArray['equipos/sopladoras']='jardineria/sopladoras';
         $urlsArray['equipos/tractopodadoras']='jardineria/tractopodadoras';
         $urlsArray['equipos/trituradoras']='agricultura/trituradores';
         $urlsArray['accesorios-y-consumibles/aceites']='repuestos-y-consumibles/aceites';
