@@ -46,12 +46,23 @@
 }
 
 .text-barra{
-    font-size: 21px;
+    font-size: 19px;
     color: white !important;
     font-weight: 600;
     text-decoration: none;
 }
 .text-barra a{
+    color: #ffffff !important;
+    text-decoration: none;
+    font-weight: 600
+}
+.text-barra-2{
+    font-size: 20px;
+    color: white !important;
+    font-weight: 600;
+    text-decoration: none;
+}
+.text-barra-2 a{
     color: #ffffff !important;
     text-decoration: none;
     font-weight: 600
@@ -74,7 +85,7 @@
     margin-top: 10px;
 }
 .iconMod{
-    font-size: 20px;
+    font-size: 18px;
 }
 
 
@@ -87,12 +98,24 @@
     }
 
     .text-barra{
-        font-size: 19px;
+        font-size: 17px;
         color: white !important;
         font-weight: 600;
         text-decoration: none;
     }
     .text-barra a{
+        color: #ffffff !important;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 18px;
+    }
+    .text-barra-2{
+        font-size: 18px;
+        color: white !important;
+        font-weight: 600;
+        text-decoration: none;
+    }
+    .text-barra-2 a{
         color: #ffffff !important;
         text-decoration: none;
         font-weight: 600;
@@ -106,7 +129,7 @@
     }
 
     .text-barra{
-        font-size: 18px;
+        font-size: 16px;
         color: white !important;
         font-weight: 600;
         text-decoration: none;
@@ -116,6 +139,18 @@
         text-decoration: none;
         font-weight: 600;
         font-size: 16px;
+    }
+    .text-barra{
+        font-size: 18px;
+        color: white !important;
+        font-weight: 600;
+        text-decoration: none;
+    }
+    .text-barra a{
+        color: #ffffff !important;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 18px;
     }
     .div-navbar-movil{
         border-radius: 0 0 10px 10px;

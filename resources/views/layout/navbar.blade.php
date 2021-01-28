@@ -2,60 +2,68 @@
 <div class="sticky-top">
     <nav class="navbar-dark bg-dark container-fluid d-none d-md-none d-lg-block">
         <div class="row justify-content-md-center flex-column align-items-center">
-            <div class="div-navbar col-12 col-xl-12 col-lg-12 col-md-12">
-                <div class="row" style="color: white;">
-                    {{--                <div class="col-3 d-none d-sm-none d-md-block">--}}
-                    <div class="col-2 d-none d-sm-none d-md-block">
-                        <div class="col-12">
-                            <div class="text-barra text-left">
-                                Refacciones <br><a href="tel:7226481040"><i class="material-icons iconMod">call</i>722 648 1040</a>
-                            </div>
-                        </div>
-                    </div>
-                    {{--                <div class="col-8 d-flex">--}}
-                    <div class="col-7 d-flex" style="padding-right: 0">
+            <div class="div-navbar row">
+{{--                    <div class="col-2 d-none d-sm-none d-md-block">--}}
+                    <div class="col-md-10">
                         <div class="row">
-                            <div class="col-3">
+                            <div class="col-md-2" style="padding-right: 0;padding-left: 5px">
+                                <div class="text-barra text-left">
+                                    EDOMX <br><a href="tel:7226481040"><i class="material-icons iconMod">call</i>722 648 1040</a>
+                                </div>
+                            </div>
+    {{--                    <div class="col-7 d-flex" style="padding-right: 0">--}}
+                            <div class="col-md-2" style="padding: 0">
                                 <div class="text-barra text-left">
                                     CDMX <br><a href="tel:5549968849"><i class="material-icons iconMod">call</i>55 4996 8849</a>
                                 </div>
                             </div>
-                            <div class="col-3">
+                            <div class="col-md-2" style="padding: 0">
                                 <div class="text-barra text-left">
                                     GDL<br>
                                     <a href="tel:3317283353"><i class="material-icons iconMod">call</i>33 1728 3353</a>
                                 </div>
                             </div>
-                            <div class="col-3">
+                            <div class="col-md-2" style="padding: 0">
                                 <div class="text-barra text-left">
-                                    {{--                                EDOMX<br>--}}
-                                    {{--                                <a href="tel:7226481040"><i class="material-icons iconMod">call</i>722 648 1040</a>    --}}
                                     Monterrey<br>
                                     <a href="tel:8120635708"><i class="material-icons iconMod">call</i>81 2063 5708</a>
                                 </div>
                             </div>
-                            <div class="col-3">
+                            <div class="col-md-2" style="padding: 0">
                                 <div class="text-barra text-left">
                                     Mayoreo<br>
                                     <a href="tel:5544598506"><i class="material-icons iconMod">call</i>55 4459 8506</a>
                                 </div>
                             </div>
+
+                            <div class="col-md-2" style="padding: 0">
+                                <div class="text-barra-2 text-left">
+                                    Llámanos al:<br>
+                                    <a href="tel:8002129225">
+                                        <i class="material-icons iconMod">local_phone</i>800 212 9225
+                                    </a>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-2" style="padding: 0"> {{--Esto se quita despues y las otras cols--}}
-                        <div class="text-barra text-left">
-                            Llámanos al:<br>
-                            <a href="tel:8002129225" style="font-size: 25px;">
-                                <i class="material-icons iconMod">local_phone</i>800 212 9225
-                            </a>
+                    <div class="col-md-2" style="cursor:pointer;">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div style="margin-top: 12px;color: #fff;">
+                                    <a style="margin-top: 12px" data-toggle="modal" data-target="#modalTelefonos">
+                                        <i class="material-icons" style="font-size: 30px">keyboard_arrow_right<i class="material-icons" style="font-size: 36px">add_ic_call</i></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div style="position: fixed;margin-left: 28px;margin-top: 20px !important;">
+                                    <a onclick="return gtag_report_conversion('https://wa.me/525551857805?text=Hola,%20me%20gustaría%20saber%20')" rel="noopener">
+                                        <img style="width: 60px;height: 60px;" src="{{asset('assets/images/icons/whatsapp.png')}}">
+                                    </a>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-1" style="font-size: 35px;cursor:pointer;">
-                        <a data-toggle="modal" data-target="#modalTelefonos">
-                            <i class="material-icons">add_ic_call <i class="material-icons iconMod">keyboard_arrow_down</i></i>
-                        </a>
-                    </div>
-                </div>
             </div>
         </div>
         <div class="container-xl">
@@ -124,7 +132,7 @@
                         </div>
                     </div>
                     <div class="col-md-2" style="margin-top: 10px">
-                        <a class="btn-sm d-flex" href="{{route('sales')}}" style="background-color: #f44336; color: white;width: 70%"><i class="material-icons iconMod">attach_money</i>¡OFERTAS!</a>
+                        <a class="d-flex" href="{{route('sales')}}"><img style="width: 150px;position: absolute;margin-left: 10px;margin-top: 1px" src="{{asset('assets/images/ofertas/promocion.png')}}" title="Ofertas Jardepot" alt="Ofertas Jardepot"></a>
                     </div>
                 </div>
             </div>
@@ -151,7 +159,7 @@
                     </ul>--}}
 
 {{--                    <ul class="navbar-nav mr-auto col-md-8 d-flex flex-wrap justify-content-center align-items-center" id="menu">--}}
-                    <ul class="navbar-nav mr-auto col-md-9 d-flex flex-wrap justify-content-center align-items-center" id="menu">
+                    <ul class="navbar-nav mr-auto col-md-11 d-flex flex-wrap justify-content-center align-items-center" id="menu">
                         @foreach ($navbar as $key => $categoria1)
                             <li class="nav-item dropdown mx-2 column-items" id="prueba1"><a class="d-flex flex-wrap justify-content-center align-items-center" title="{{$categoria1['nivel1']}}"  href="javascript:;">{{$categoria1['nivel1']}} <i class="material-icons iconMod">keyboard_arrow_down</i></a>
                                 <ul class="{{count($categoria1['nivel2']) > 10 ? 'column-navbar':''}} dropdown-menu">
@@ -165,13 +173,13 @@
 
 {{--                    <a class="mr-2 btn-sm d-flex" href="{{route('sales')}}"><img style="width: 100px;position: absolute;margin-left: -100px;margin-top: -15px" src="{{asset('assets/images/ofertas/promocion.png')}}" title="Ofertas Jardepot" alt="Ofertas Jardepot"></a>--}}
 {{--                    <a class="mr-2 btn-sm d-flex" href="{{route('sales')}}" style="background-color: #f44336; color: white;"><i class="material-icons iconMod">attach_money</i>¡OFERTAS!</a>--}}
-                    <a onclick="return gtag_report_conversion('https://wa.me/525551857805?text=Hola,%20me%20gustaría%20saber%20')" style="color:#fff;" class="mr-2 btn-success btn-sm d-flex" rel="noopener">
+              {{--      <a onclick="return gtag_report_conversion('https://wa.me/525551857805?text=Hola,%20me%20gustaría%20saber%20')" style="color:#fff;" class="mr-2 btn-success btn-sm d-flex" rel="noopener">
                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true"
                              focusable="false" width="20px" height="20px" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);"
                              preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91c0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23c-1.48 0-2.93-.39-4.19-1.15l-.3-.17l-3.12.82l.83-3.04l-.2-.32a8.188 8.188 0 0 1-1.26-4.38c.01-4.54 3.7-8.24 8.25-8.24M8.53 7.33c-.16 0-.43.06-.66.31c-.22.25-.87.86-.87 2.07c0 1.22.89 2.39 1 2.56c.14.17 1.76 2.67 4.25 3.73c.59.27 1.05.42 1.41.53c.59.19 1.13.16 1.56.1c.48-.07 1.46-.6 1.67-1.18c.21-.58.21-1.07.15-1.18c-.07-.1-.23-.16-.48-.27c-.25-.14-1.47-.74-1.69-.82c-.23-.08-.37-.12-.56.12c-.16.25-.64.81-.78.97c-.15.17-.29.19-.53.07c-.26-.13-1.06-.39-2-1.23c-.74-.66-1.23-1.47-1.38-1.72c-.12-.24-.01-.39.11-.5c.11-.11.27-.29.37-.44c.13-.14.17-.25.25-.41c.08-.17.04-.31-.02-.43c-.06-.11-.56-1.35-.77-1.84c-.2-.48-.4-.42-.56-.43c-.14 0-.3-.01-.47-.01z" fill="#fff"/><rect x="0" y="0" width="24" height="24" fill="rgba(0, 0, 0, 0)" />
                         </svg>Whatsapp</a>
                     <a class="mr-2 btn-warning btn-sm d-flex" target="_blank" href="https://wa.me/527226481040?text=Hola,%20me%20gustaría%20saber%20sobre%20sus%20refacciones"
-                       style="text-decoration: none;" rel="noopener"><i class="material-icons iconMod">settings</i>Refacciones</a>
+                       style="text-decoration: none;" rel="noopener"><i class="material-icons iconMod">settings</i>Refacciones</a>--}}
 
                     {{--            BOTON DE NAVBAR--}}
                     {{--<div class="mr-2 bg-dark btn-sm d-flex position-relative" style="text-decoration: none;" rel="noopener">
