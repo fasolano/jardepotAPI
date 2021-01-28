@@ -85,9 +85,9 @@ class ProductsController extends Controller {
         $urlsArray['equipos/cortasetos']='jardineria/cortasetos';
         $urlsArray['equipos/generadores']='';
         $urlsArray['equipos/hidrolavadoras']='';
-        $urlsArray['equipos/hoyadoras']='';
+        $urlsArray['equipos/hoyadoras']='agricultura/hoyadoras';
         $urlsArray['equipos/motobombas']='';
-        $urlsArray['equipos/motocultores']='';
+        $urlsArray['equipos/motocultores']='agricultura/motocultores';
         $urlsArray['equipos/motores']='repuestos-y-consumibles/motores';
         $urlsArray['equipos/motosierras']='forestal/motosierras';
         $urlsArray['equipos/multifuncionales']='jardineria/multifuncionales';
@@ -111,6 +111,7 @@ class ProductsController extends Controller {
         $urlsArray['herramientas-manuales/hachas']='';
         $urlsArray['herramientas-manuales/tijeras']='';
         $urlsArray['herramientas-manuales/serruchos']='';
+        $urlsArray['sanitizacion-y-fumigacion/parihuelas']='agricultura/parihuelas';
         if(array_key_exists($url,$urlsArray)){
             return $urlsArray[$url];
         }else{
