@@ -159,7 +159,7 @@
                     </ul>--}}
 
 {{--                    <ul class="navbar-nav mr-auto col-md-8 d-flex flex-wrap justify-content-center align-items-center" id="menu">--}}
-                    <ul class="navbar-nav mr-auto col-md-11 d-flex flex-wrap justify-content-center align-items-center" id="menu">
+                    <ul class="navbar-nav mr-auto col-md-12 d-flex flex-wrap justify-content-center align-items-center" id="menu">
                         @foreach ($navbar as $key => $categoria1)
                             <li class="nav-item dropdown mx-2 column-items" id="prueba1"><a class="d-flex flex-wrap justify-content-center align-items-center" title="{{$categoria1['nivel1']}}"  href="javascript:;">{{$categoria1['nivel1']}} <i class="material-icons iconMod">keyboard_arrow_down</i></a>
                                 <ul class="{{count($categoria1['nivel2']) > 10 ? 'column-navbar':''}} dropdown-menu">
