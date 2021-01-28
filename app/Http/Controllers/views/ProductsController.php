@@ -81,7 +81,7 @@ class ProductsController extends Controller {
         $url=strtolower($category1.'/'.$category2);
         $urlsArray=[];
         $urlsArray['equipos/aspersora']='';
-        $urlsArray['equipos/desbrozadoras']='';
+        $urlsArray['equipos/desbrozadoras']='jardineria/desbrozadoras';
         $urlsArray['equipos/cortasetos']='jardineria/cortasetos';
         $urlsArray['equipos/generadores']='';
         $urlsArray['equipos/hidrolavadoras']='';
