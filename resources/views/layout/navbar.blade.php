@@ -46,18 +46,18 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-2" style="cursor:pointer;">
+                    <div class="col-md-2">
                         <div class="row">
                             <div class="col-md-6">
                                 <div style="margin-top: 12px;color: #fff;">
-                                    <a style="margin-top: 12px" data-toggle="modal" data-target="#modalTelefonos">
+                                    <a style="margin-top: 12px;cursor: pointer;" data-toggle="modal" data-target="#modalTelefonos">
                                         <i class="material-icons" style="font-size: 30px">keyboard_arrow_right<i class="material-icons" style="font-size: 36px">add_ic_call</i></i>
                                     </a>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div style="position: fixed;margin-left: 28px;margin-top: 20px !important;">
-                                    <a style="width: 60px;height: 60px;" onclick="return gtag_report_conversion('https://wa.me/525551857805?text=Hola,%20me%20gustaría%20saber%20')" rel="noopener">
+                                    <a style="width: 60px;height: 100px; cursor: pointer;" onclick="return gtag_report_conversion('https://wa.me/525551857805?text=Hola,%20me%20gustaría%20saber%20')" rel="noopener">
                                         <img style="width: 60px;height: 60px;" src="{{asset('assets/images/icons/whatsapp.png')}}">
                                     </a>
                                 </div>
