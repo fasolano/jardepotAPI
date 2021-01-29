@@ -57,8 +57,8 @@
         <!-- Page Content  -->
         <div id="content" class="row">
 {{--            <div class="border shadow bg-white rounded d-none d-lg-block col-lg-3 p-0" style="max-width: 21%">--}}
-            <div class="d-none d-lg-block col-lg-2 p-0" >
-                <div class="border shadow bg-white rounded d-none d-lg-block p-0"  style="max-width: 90%;height: 100%;">
+            <div class="d-none d-lg-block col-lg-3 p-0" >
+                <div class="border shadow bg-white rounded d-none d-lg-block p-0"  style="width: 90%;height: 100%;">
                     @component('components.sidebar')
                         @slot('id', 'Desktop')
                         @slot('sections', $sidebar)
@@ -75,7 +75,7 @@
                 </div>
             </div>
 
-            <div id="content-products-principal" class="col-lg-10 col-md-12" style="min-width: 82.333333%">
+            <div id="content-products-principal" class="col-lg-9 col-md-12">
                 @if(isset($products))
                 <div id="list-products-sections">
                     <div class="row border shadow bg-white rounded">
