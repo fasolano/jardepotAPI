@@ -20,7 +20,7 @@
 
 @section('specificCSS')
     <!-- Page CSS -->
-    <link rel="stylesheet" href="{{asset('assets/css/pages/products.min.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/pages/productsV1.min.css')}}">
     <!-- Components CSS -->
     <link rel="stylesheet" href="{{asset('assets/css/components/sidebar.min.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/components/breadcrumb.min.css')}}">
