@@ -16,7 +16,7 @@
                     <p class="text-center col-12 title-muted">Organizar por {{$textFilter}}:</p>
                     @foreach ($filters as $keyFilter => $itemFilter)
                         @if(strtolower($level1) == "marcas")
-                            <div class="text-center col-12 my-1">
+                            <div class="text-center col-6 my-1">
                                 <div class="btn-group-toggle filter" data-toggle="buttons">
                                     <a data-val="{{$itemFilter['id']}}" title="{{$itemFilter['name']}}" class="btn btn-secondary btn-sm btn-filter-2 btn-no-border
                                             {{$idFilter == $itemFilter['id']?"active-filter bg-color-jd active":""}}" onclick="function noclick(e) { e.stopPropagation();}"
@@ -27,7 +27,7 @@
                                 </div>
                             </div>
                         @else
-                            <div class="text-center col-12 my-1">
+                            <div class="text-center col-6 my-1">
                                 <div class="btn-group-toggle filter" data-toggle="buttons">
                                     <label class="btn btn-secondary btn-sm btn-filter btn-no-border" title="{{$itemFilter['name']}}"
                                            style="height: {{strlen($itemFilter['name'])>15?"40":"20"}}px" data-val="{{$itemFilter['id']}}">
