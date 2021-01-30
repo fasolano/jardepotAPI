@@ -119,8 +119,8 @@ class CartController extends Controller {
             $img = strtolower($item->productType . "-" . $item->brand . "-" . $item->mpn);
             $response[$iterator]['id'] = $item->id;
             $response[$iterator]['name'] = $item->productType . " " . $item->brand . " " . $item->mpn;
-            $response[$iterator]['images'][0]['small'] = 'assets/images/productos/medium/' . $img . '.jpg';
-            $response[$iterator]['images'][0]['medium'] = 'assets/images/productos/medium/' . $img . '.jpg';
+            $response[$iterator]['images'][0]['small'] = 'assets/images/productos/' . $img . '.jpg';
+            $response[$iterator]['images'][0]['medium'] = 'assets/images/productos/' . $img . '.jpg';
 
             //empieza la seccion de precios
             if (isset($item->offer) && $item->offer == 'si') {
