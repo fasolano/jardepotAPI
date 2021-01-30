@@ -106,7 +106,7 @@ $(document).ready(function (){
             address: $('#address-mp').val()
         });
         // parameters['url'] = ruta+"api/checkout/mercadopago";
-        parameters['url'] = "https://fasolano.com/jardepotAPI/public/api/checkout/mercadopago";
+        parameters['url'] = "https://jardepot.co/public/api/checkout/mercadopago";
         parameters['type'] = "post";
         parameters['dataType'] = "json";
         parameters['data'] = {
