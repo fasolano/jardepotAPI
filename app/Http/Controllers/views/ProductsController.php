@@ -29,8 +29,8 @@ class ProductsController extends Controller {
     }
 
     public function productsList($categoryLevel1, $categoryLevel2){
-        $categoria1=$categoryLevel1;
-        $categoria2=$categoryLevel2;
+        $categoriasUrl=$categoryLevel1.'/'.$categoryLevel2;
+
         $categoryLevel1 = str_replace("-", " ", ucfirst($categoryLevel1));
         $categoryLevel2 = str_replace("-", " ", ucfirst($categoryLevel2));
         $menuController = new MenuController();
@@ -68,7 +68,7 @@ class ProductsController extends Controller {
             $canonical = url()->current();
             return view('pages/products', compact('idFilter', 'sidebar', 'categoryLevel1', 'categoryLevel2', 'products', 'numberPages', 'filters', 'textFilter', 'descriptionLevel2','canonical'));
         }else{
-            $redir = $this->redirurls($categoria1, $categoria2);
+            $redir = $this->redirurls($categoriasUrl);
             if($redir != ''){
                 return Redirect::to($redir, 301);
             }else{
@@ -77,8 +77,9 @@ class ProductsController extends Controller {
         }
     }
 
-    public function redirurls($category1, $category2){
-        $url=strtolower($category1.'/'.$category2);
+    public function redirurls($categorys){
+        $url=strtr($categorys, $this->unwanted_array);
+        $url=strtolower($url);
         $urlsArray=[];
         $urlsArray['equipos/aspersora']='';
         $urlsArray['equipos/desbrozadoras']='jardineria/desbrozadoras';
