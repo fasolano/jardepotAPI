@@ -48,6 +48,12 @@ $(document).ready(function (){
             $('.btn-side-footer').css('display', 'none');
         }
     });*/
+    //Se pusó para que removiera los (#!) de la url
+    if(window.location.hash !== ''){
+        var routeData = window.location.origin + window.location.pathname;
+        history.pushState(null, "", routeData);
+    }
+
 });
 
 function verifyCookie(){
