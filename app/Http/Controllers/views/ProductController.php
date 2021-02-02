@@ -75,7 +75,7 @@ class ProductController extends Controller {
             $product= $this->model_format_products($data)[0];
             $data2 = $this->productoRepository->getProductsRelated($productType, $brand, $mpn);
             $productsRelated = $this->model_format_products($data2);
-            $canonical = url()->current();;
+            $canonical = url()->current();
 
             $ipls = $spareRepository->getIpls($productType, $brand, $mpn);
             $producto = ucfirst($productType)."-".ucfirst($brand)."-".ucfirst($mpn);

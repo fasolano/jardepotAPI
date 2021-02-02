@@ -68,12 +68,13 @@ class ProductsController extends Controller {
             $canonical = url()->current();
             return view('pages/products', compact('idFilter', 'sidebar', 'categoryLevel1', 'categoryLevel2', 'products', 'numberPages', 'filters', 'textFilter', 'descriptionLevel2','canonical'));
         }else{
-            $redir = $this->redirurls($categoriasUrl);
+            return view('errors/404');
+           /* $redir = $this->redirurls($categoriasUrl);
             if($redir != ''){
                 return Redirect::to($redir, 301);
             }else{
                 return view('errors/404');
-            }
+            }*/
         }
     }
 
