@@ -103,7 +103,65 @@
         @include('components.infoCompra')
     </div>
 
-{{----}}
+{{--    <div class="row mt-4">
+        @foreach($menuAdditional as $key => $cat1)
+            @if($key < 2)
+                <div class="col-md-4">
+                    <div class="border shadow p-3 bg-white rounded div-sublinks">
+                        <h2>{{$cat1['nivel1']}}</h2>
+                        <div class="col-sm-12">
+                            <div class="jd-sublinks-items">
+                                @foreach($cat1['nivel2'] as $categoria2)
+                                    <a href="{{url($categoria2['href'])}}" class="my-1"><i class="material-icons">keyboard_arrow_right</i>{{$categoria2['name']}}
+                                    </a>
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @else
+                @if($key == 2)
+                    <div class="col-md-4">
+                        <div class="border shadow p-3 bg-white rounded div-sublinks">
+                            <h2>Otros</h2>
+                            <div class="md-accordion" id="accordionEx" role="tablist" aria-multiselectable="true">
+                @endif
+                            <!-- Accordion card -->
+                                <div class="card">
+                                    <!-- Card header -->
+                                    <div class="card-header title-card" role="tab" id="headingOne{{$key}}"
+                                         style="background-color: #fff;">
+                                        <a data-toggle="collapse" data-parent="#accordionEx" href="#collapseOne{{$key}}"
+                                           aria-expanded="true" aria-controls="collapseOne{{$key}}">
+                                            <h4 class="mb-0 text-dark">
+                                                {{$cat1['nivel1']}} <i class="material-icons">keyboard_arrow_down</i>
+                                            </h4>
+                                        </a>
+                                    </div>
+                                    <!-- Card body -->
+                                    <div id="collapseOne{{$key}}" class="collapse show" role="tabpanel"
+                                         aria-labelledby="headingOne{{$key}}" data-parent="#accordionEx">
+                                        <div class="card-body p-0">
+                                            <div class="col-sm-12">
+                                                <div class="jd-sublinks-items">
+                                                    @foreach($cat1['nivel2'] as $key2 => $categoria2)
+                                                        <a href="{{url($categoria2['href'])}}" class="my-1">
+                                                            <i class="material-icons">keyboard_arrow_right</i>{{$categoria2['name']}}
+                                                        </a>
+                                                    @endforeach
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                @if($loop->last)
+                            </div>
+                        </div>
+                    </div>
+                @endif
+            @endif
+        @endforeach
+    </div>--}}
 
     <div class="d-block d-sm-block d-md-none mt-5">
         @include('components.infoCompra')
