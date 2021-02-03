@@ -50,8 +50,12 @@ $(document).ready(function (){
     });*/
     //Se pusó para que removiera los (#!) de la url
     if(window.location.hash !== ''){
-        var routeData = window.location.origin + window.location.pathname;
-        history.pushState(null, "", routeData);
+        var robotB = document.getElementById('robotB');
+        var robotG = document.getElementById('robotG');
+        robotB.setAttribute("content",'noindex');
+        robotG.setAttribute("content",'noindex');
+        //var routeData = window.location.origin + window.location.pathname;
+        //history.pushState(null, "", routeData);
     }
 
 });

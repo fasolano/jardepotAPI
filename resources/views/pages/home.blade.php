@@ -5,8 +5,8 @@
     <meta title="{{ $descriptionLevel2->metatitle}}"/>
     <meta name="description" content="{{$descriptionLevel2->metadescription}}">
 {{--    <meta name="keywords" content="{{$descriptionLevel2->keywords}}">--}}
-    <meta name="googlebot" content="index,follow" />
-    <meta name="robots" content="index,follow">
+    <meta id="robotG" name="googlebot" content="index,follow" />
+    <meta id="robotB" name="robots" content="index,follow">
 
     <meta property="og:title" content="{{ $descriptionLevel2->metatitle}}"/>
     <meta property="og:description" content="{{ $descriptionLevel2->metadescription}}"/>
