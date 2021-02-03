@@ -476,7 +476,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                Los envíos gratuitos que ofrece JarDepot son a la cobertura terrestre normal de las paqueterías con las que tenemos convenio (ODM).<br>
+                Los envíos gratuitos que ofrece JarDepot son a la cobertura terrestre normal de las paqueterías con las que tenemos convenio (ODM), aplica solo para un domicilio por pedido.<br>
                 NO aplica a zonas extendidas (En extra coberturas se le indicará la diferencia a pagar para su consideración).<br>
                 NO aplica con otras paqueterías.<br>
                 El tiempo de entrega estimado y sujeto a existencias es de 2 a 6 días hábiles, (Mínimo/Máximo) contados a partir de las siguientes
