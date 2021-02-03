@@ -103,7 +103,7 @@
         @include('components.infoCompra')
     </div>
 
-{{--    <div class="row mt-4">
+    <div class="row mt-4">
         @foreach($menuAdditional as $key => $cat1)
             @if($key < 2)
                 <div class="col-md-4">
@@ -111,10 +111,12 @@
                         <h2>{{$cat1['nivel1']}}</h2>
                         <div class="col-sm-12">
                             <div class="jd-sublinks-items">
+                                @if(isset($cat1['nivel2']))
                                 @foreach($cat1['nivel2'] as $categoria2)
                                     <a href="{{url($categoria2['href'])}}" class="my-1"><i class="material-icons">keyboard_arrow_right</i>{{$categoria2['name']}}
                                     </a>
                                 @endforeach
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -144,11 +146,13 @@
                                         <div class="card-body p-0">
                                             <div class="col-sm-12">
                                                 <div class="jd-sublinks-items">
+                                                    @if(isset($cat1['nivel2']))
                                                     @foreach($cat1['nivel2'] as $key2 => $categoria2)
                                                         <a href="{{url($categoria2['href'])}}" class="my-1">
                                                             <i class="material-icons">keyboard_arrow_right</i>{{$categoria2['name']}}
                                                         </a>
                                                     @endforeach
+                                                    @endif
                                                 </div>
                                             </div>
                                         </div>
@@ -161,7 +165,7 @@
                 @endif
             @endif
         @endforeach
-    </div>--}}
+    </div>
 
     <div class="d-block d-sm-block d-md-none mt-5">
         @include('components.infoCompra')
