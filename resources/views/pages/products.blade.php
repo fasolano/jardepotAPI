@@ -6,8 +6,13 @@
     <meta title="{{ isset($descriptionLevel2->metatitle)?substr($descriptionLevel2->metatitle, 0,70):""}}"/>
     <meta name="description" content="{{isset($descriptionLevel2->metadescription)?$descriptionLevel2->metadescription:""}}">
 {{--    <meta name="keywords" content="{{isset($descriptionLevel2->keywords)?$descriptionLevel2->keywords:""}}">--}}
-    <meta id="robotG" name="googlebot" content="index,follow" />
-    <meta id="robotB" name="robots" content="index,follow">
+    @if( $categoryLevel1 == 'Equipos' )
+        <meta id="robotG" name="googlebot" content="noindex" />
+        <meta id="robotB" name="robots" content="noindex">
+    @else
+        <meta id="robotG" name="googlebot" content="index,follow" />
+        <meta id="robotB" name="robots" content="index,follow">
+    @endif
     <meta property="og:title" content="{{ isset($descriptionLevel2->metatitle)?substr($descriptionLevel2->metatitle, 0,70):""}}" />
     <meta property="og:description" content="{{ isset($descriptionLevel2->metatitle)?substr($descriptionLevel2->metatitle, 0,70):""}}" />
     <meta property="og:type" content="website" />
