@@ -284,11 +284,13 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="dropdown{{$key}}" data-toggle="dropdown"
                        aria-expanded="false">{{$categoria1['nivel1']}}</a>
+                    @if(isset($categoria1['nivel2']))
                     <div class="dropdown-menu {{count($categoria1['nivel2']) > 10 ? 'column-navbar':''}} " aria-labelledby="dropdown{{$key}}">
                         @foreach($categoria1['nivel2'] as $categoria2)
                             <a class="dropdown-item" href="{{url($categoria2['href'])}}">{{$categoria2['name']}}</a>
                         @endforeach
                     </div>
+                    @endif
                 </li>
             @endforeach
         </ul>
