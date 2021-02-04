@@ -29,7 +29,7 @@ public function handle($request, Closure $next) {
     $cleanUrl = strtolower($cleanUrl);
     $url = $request->url();
     if ($url !== $cleanUrl) {
-        return Redirect::to($cleanUrl);
+        return  Redirect::to($cleanUrl, 301);
     }
 
     return $next($request);
