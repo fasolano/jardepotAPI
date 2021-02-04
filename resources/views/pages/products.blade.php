@@ -7,8 +7,8 @@
     <meta name="description" content="{{isset($descriptionLevel2->metadescription)?$descriptionLevel2->metadescription:""}}">
 {{--    <meta name="keywords" content="{{isset($descriptionLevel2->keywords)?$descriptionLevel2->keywords:""}}">--}}
     @if( $categoryLevel1 == 'Equipos' )
-        <meta id="robotG" name="googlebot" content="noindex" />
-        <meta id="robotB" name="robots" content="noindex">
+        <meta id="robotG" name="googlebot" content="noindex,nofollow" />
+        <meta id="robotB" name="robots" content="noindex,nofollow">
     @else
         <meta id="robotG" name="googlebot" content="index,follow" />
         <meta id="robotB" name="robots" content="index,follow">
