@@ -84,7 +84,9 @@
                 @if(isset($products))
                 <div id="list-products-sections">
                     <div class="row border shadow bg-white rounded">
-                        <h1 class="m-2 text-muted" style="font-size: 28px;">{{$categoryLevel2}}</h1>
+                        <h1 class="m-2 text-muted" style="font-size: 28px;">
+                            {{ isset($descriptionLevel2->textH1) ? $descriptionLevel2->textH1 : $descriptionLevel2->nombreCategoriaNivel2 }}
+                        </h1>
                     </div>
                     <div class="row border shadow rounded bg-dark my-2 text-white px-2 d-flex justify-content-between align-items-center">
                         <div class="d-flex justify-content-center align-items-center">

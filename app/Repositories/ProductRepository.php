@@ -714,7 +714,10 @@ class ProductRepository{
         if ($idNivel2 != 0){
             $texto = DB::table('categoriasNivel2')
                 ->leftjoin('datosCategoriasNivel2', 'datosCategoriasNivel2.idCategoriasNivel2', '=', 'categoriasNivel2.idCategoriasNivel2')
-                ->select('datosCategoriasNivel2.texto','datosCategoriasNivel2.metadescription','datosCategoriasNivel2.metatitle',
+                ->select('datosCategoriasNivel2.texto',
+                    'datosCategoriasNivel2.metadescription',
+                    'datosCategoriasNivel2.metatitle',
+                    'datosCategoriasNivel2.textH1',
                     'categoriasNivel2.nombreCategoriaNivel2')
                 ->where(
                     "categoriasNivel2.idCategoriasNivel2" ,"=",$idNivel2
