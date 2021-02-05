@@ -51,6 +51,9 @@ src="https://www.paypal.com/sdk/js?client-id=AU1Jzf7ziTCncrNsNBjmk_tD03Iz_1o8J4F
 
                             </a>
                         </div>
+                        <div class="col-md-3 text-center my-2">
+                            <a href="{{url('/checkout')}}" class="btn btn-warning">Pagar con transferencia o depósito bancario</a>
+                        </div>
                     </div>
                     <h1 class="text-center my-2">Carrito de compra</h1>
                     <div id="no-more-tables">
