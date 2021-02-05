@@ -5,8 +5,19 @@ $.ajaxSetup({
 });
 
 $(document).ready(function (){
-    //se pusieron porque no quieren que se regrese y evitar un rebote de google
 
+    if(window.location.hash !== ''){
+        //Se puso esta configuracion por ti tiene (#!) se coloque no index
+        var robotB = document.getElementById('robotB');
+        var robotG = document.getElementById('robotG');
+        robotB.setAttribute("content",'noindex');
+        robotG.setAttribute("content",'noindex');
+        //Se pusó para que removiera los (#!) de la url
+      //var routeData = window.location.origin + window.location.pathname;
+      //history.pushState(null, "", routeData);
+    }
+
+    //se pusieron porque no quieren que se regrese y evitar un rebote de google
     //Disable cut copy paste
    // $('body').bind('cut copy paste', function (e) { e.preventDefault(); });
     //Disable mouse right click
@@ -48,16 +59,6 @@ $(document).ready(function (){
             $('.btn-side-footer').css('display', 'none');
         }
     });*/
-    //Se pusó para que removiera los (#!) de la url
-    if(window.location.hash !== ''){
-        var robotB = document.getElementById('robotB');
-        var robotG = document.getElementById('robotG');
-        robotB.setAttribute("content",'noindex');
-        robotG.setAttribute("content",'noindex');
-        //var routeData = window.location.origin + window.location.pathname;
-        //history.pushState(null, "", routeData);
-    }
-
 });
 
 function verifyCookie(){
