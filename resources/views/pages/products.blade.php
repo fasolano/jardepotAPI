@@ -2,8 +2,8 @@
 
 
 @section('metaData')
-    <title>{{ isset($descriptionLevel2->metatitle)?substr($descriptionLevel2->metatitle, 0,70):""}}</title>
-    <meta title="{{ isset($descriptionLevel2->metatitle)?substr($descriptionLevel2->metatitle, 0,70):""}}"/>
+    <title>{{ isset($descriptionLevel2->metatitle)?substr($descriptionLevel2->metatitle, 0,65):""}}</title>
+    <meta title="{{ isset($descriptionLevel2->metatitle)?substr($descriptionLevel2->metatitle, 0,65):""}}"/>
     <meta name="description" content="{{isset($descriptionLevel2->metadescription)?$descriptionLevel2->metadescription:""}}">
 {{--    <meta name="keywords" content="{{isset($descriptionLevel2->keywords)?$descriptionLevel2->keywords:""}}">--}}
 {{--    @if( $categoryLevel1 == 'Equipos' )
@@ -13,8 +13,8 @@
     <meta id="robotG" name="googlebot" content="index,follow" />
     <meta id="robotB" name="robots" content="index,follow">
 {{--    @endif--}}
-    <meta property="og:title" content="{{ isset($descriptionLevel2->metatitle)?substr($descriptionLevel2->metatitle, 0,70):""}}" />
-    <meta property="og:description" content="{{ isset($descriptionLevel2->metatitle)?substr($descriptionLevel2->metatitle, 0,70):""}}" />
+    <meta property="og:title" content="{{ isset($descriptionLevel2->metatitle)?substr($descriptionLevel2->metatitle, 0,65):""}}" />
+    <meta property="og:description" content="{{ isset($descriptionLevel2->metadescription)?substr($descriptionLevel2->metadescription, 0,320):""}}" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="{{isset($canonical)?$canonical:'https://www.jardepot.com/'}}" />
     <meta property="og:image" content="{{asset('img/logos/logoOG.jpg')}}" />

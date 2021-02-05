@@ -720,10 +720,10 @@ class ProductRepository{
                     "categoriasNivel2.idCategoriasNivel2" ,"=",$idNivel2
                 )->first();
             if($texto->metadescription == ''){
-                $texto->metadescription = $texto->nombreCategoriaNivel2.' - Catálogo de equipos y precios en Jardepot';
+                $texto->metadescription = $texto->nombreCategoriaNivel2.' - Catálogo de equipos y precios';
             }
             if($texto->metatitle == ''){
-                $texto->metatitle = 'Encuentra los equipos '.$texto->nombreCategoriaNivel2.' de venta en Jardepot, tu tienda en linea.';
+                $texto->metatitle = 'Encuentra '.$texto->nombreCategoriaNivel2.' de venta en tienda en linea.';
             }
             if($texto->texto == ''){
                 $texto->texto = $texto->nombreCategoriaNivel2;
