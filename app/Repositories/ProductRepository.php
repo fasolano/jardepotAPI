@@ -719,12 +719,15 @@ class ProductRepository{
                 ->where(
                     "categoriasNivel2.idCategoriasNivel2" ,"=",$idNivel2
                 )->first();
-            if($texto->metadescription == ''){
-                $texto->metadescription = $texto->nombreCategoriaNivel2.' - Catálogo de equipos y precios';
-            }
+
             if($texto->metatitle == ''){
-                $texto->metatitle = 'Encuentra '.$texto->nombreCategoriaNivel2.' de venta en tienda en linea.';
+                $texto->metatitle = 'Encuentra '.$texto->nombreCategoriaNivel2.' de venta en tu tienda en linea.';
             }
+
+            if($texto->metadescription == ''){
+                $texto->metadescription = $texto->nombreCategoriaNivel2.' - Catálogo y precios';
+            }
+
             if($texto->texto == ''){
                 $texto->texto = $texto->nombreCategoriaNivel2;
             }
