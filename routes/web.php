@@ -14,6 +14,10 @@ use App\Http\Middleware\urlVerify;
 
 Route::get('/', 'views\HomeController@index')->name('home');
 
+Route::get('/index.php', function(){
+    return Redirect::to('/', 301);
+});
+
 Route::get('/prueba', 'views\HomeController@moveImages');
 
 Route::get('/ofertas', 'views\ProductsController@productsSaleList')->name('sales')->middleware(urlVerify::class);
