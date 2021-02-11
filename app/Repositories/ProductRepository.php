@@ -40,7 +40,8 @@ class ProductRepository{
                 'productos.price', 'productos.oferta', 'productos.PrecioDeLista',
                 'productos.offer', 'productos.iva', 'productos.video',
                 'productos.volada', 'productos.visible',
-                'XML.keywords', 'XML.metadesc', 'XML.descriptionweb', 'XML.titleweb', 'XML.resenia',
+//                'XML.keywords', 'XML.metadesc', 'XML.descriptionweb', 'XML.titleweb', 'XML.resenia',
+                'XML.descriptionweb',
                 DB::raw('SUM(productosCategoriasNivel3.priceVisible) as priceVisible'),
                 DB::raw('SUM(inventario.cantidad) as cantidadInventario')
             )
@@ -102,7 +103,8 @@ class ProductRepository{
                 'productos.price', 'productos.oferta', 'productos.PrecioDeLista',
                 'productos.offer', 'productos.iva', 'productos.video',
                 'productos.volada', 'productos.visible',
-                'XML.keywords', 'XML.metadesc', 'XML.descriptionweb', 'XML.titleweb', 'XML.resenia',
+//                'XML.keywords', 'XML.metadesc', 'XML.descriptionweb', 'XML.titleweb', 'XML.resenia',
+                'XML.descriptionweb',
                 DB::raw('SUM(productosCategoriasNivel3.priceVisible) as priceVisible'),
                 DB::raw('SUM(inventario.cantidad) as cantidadInventario')
             )
@@ -158,11 +160,11 @@ class ProductRepository{
                 'productos.video',
                 'productos.volada',
                 'productos.visible',
-                'XML.keywords',
-                'XML.metadesc',
+//                'XML.keywords',
+//                'XML.metadesc',
                 'XML.descriptionweb',
-                'XML.titleweb',
-                'XML.resenia',
+//                'XML.titleweb',
+//                'XML.resenia',
                 DB::raw('SUM(productosCategoriasNivel3.priceVisible) as priceVisible'),
                 DB::raw('SUM(inventario.cantidad) as cantidadInventario')
             )
@@ -185,58 +187,6 @@ class ProductRepository{
         $valores = array();
         array_push($valores, ["productos.visible", '=', "si"]);
         array_push($valores, ["c3.idCategoriasNivel2", '=', $nivel2]);
-
-        /*  $datos = DB::table('productos')
-              ->join("XML", function($join){
-                  $join->on("productos.productType","=","XML.productType")
-                      ->on("productos.brand","=","XML.brand")
-                      ->on("productos.mpn","=","XML.mpn");
-              })
-              ->join("productosCategoriasNivel3", function ($join){
-                  $join->on("productos.productType", DB::raw("REPLACE(productosCategoriasNivel3.productType,'_',' ')"))
-                      ->on("productos.brand", DB::raw("REPLACE(productosCategoriasNivel3.brand,'_',' ')"))
-                      ->on("productos.mpn", DB::raw("REPLACE(productosCategoriasNivel3.mpn,'_',' ')"));
-              })
-              ->join('categoriasNivel3 as c3', 'c3.idCategoriasNivel3', '=', 'productosCategoriasNivel3.idCategoriasNivel3')
-              ->leftJoin('producto_caracteristica as pc', function ($join){
-                  $join->on("pc.producto",
-                      DB::raw("binary CONCAT(productos.productType,' ',productos.brand,' ',productos.mpn)"));
-              })
-              ->leftJoin('caracteristica as c', 'c.id_caracterisca', '=', 'pc.fk_caracteristica')
-              ->leftJoin('opcion_caracteristica as opc', 'c.id_caracterisca', '=', 'opc.fk_caracteristica')
-              ->leftJoin("inventario",function($join){
-                  $join->on("productos.productType","=","inventario.productType")
-                      ->on("productos.brand","=","inventario.brand")
-                      ->on("productos.mpn","=","inventario.mpn");
-              })
-              ->select(
-                  'productos.id',
-                  'productos.productType',
-                  'productos.brand',
-                  'productos.mpn',
-                  'productos.description',
-                  'productos.availability',
-                  'productos.price',
-                  'productos.oferta',
-                  'productos.PrecioDeLista',
-                  'productos.offer',
-                  'productos.iva',
-                  'productos.video',
-                  'productos.volada',
-                  'productos.visible',
-                  'XML.keywords',
-                  'XML.metadesc',
-                  'XML.descriptionweb',
-                  'XML.titleweb',
-                  'XML.resenia',
-                  DB::raw('SUM(inventario.cantidad) as cantidadInventario')
-              )
-              ->distinct('productos.mpn')
-              ->orderBy('pc.producto', 'asc')
-              ->where($valores)
-              ->whereRaw($filtros)
-              ->groupBy('productos.productType','productos.brand','productos.mpn')
-              ->get();*/
 
         $datos = DB::table('productos')
             ->join("XML", function($join){
@@ -270,11 +220,11 @@ class ProductRepository{
                 'productos.video',
                 'productos.volada',
                 'productos.visible',
-                'XML.keywords',
-                'XML.metadesc',
+//                'XML.keywords',
+//                'XML.metadesc',
                 'XML.descriptionweb',
-                'XML.titleweb',
-                'XML.resenia',
+//                'XML.titleweb',
+//                'XML.resenia',
                 DB::raw('SUM(productosCategoriasNivel3.priceVisible) as priceVisible'),
                 DB::raw('SUM(inventario.cantidad) as cantidadInventario')
             )
@@ -360,11 +310,11 @@ class ProductRepository{
 
     public function getProductsRelated($productType, $brand, $mpn){
         $datos = DB::table('productos')
-            ->join("XML",function($join){
-                $join->on("productos.productType","=","XML.productType")
-                    ->on("productos.brand","=","XML.brand")
-                    ->on("productos.mpn","=","XML.mpn");
-            })
+//            ->join("XML",function($join){
+//                $join->on("productos.productType","=","XML.productType")
+//                    ->on("productos.brand","=","XML.brand")
+//                    ->on("productos.mpn","=","XML.mpn");
+//            })
             ->join("productosCategoriasNivel3", function ($join){
                 $join->on("productos.productType",'=' , "productosCategoriasNivel3.productType")
                     ->on("productos.brand",'=' , "productosCategoriasNivel3.brand")
@@ -391,11 +341,11 @@ class ProductRepository{
                 'productos.video',
                 'productos.volada',
                 'productos.visible',
-                'XML.keywords',
-                'XML.metadesc',
-                'XML.descriptionweb',
-                'XML.titleweb',
-                'XML.resenia',
+//                'XML.keywords',
+//                'XML.metadesc',
+//                'XML.descriptionweb',
+//                'XML.titleweb',
+//                'XML.resenia',
                 DB::raw('SUM(productosCategoriasNivel3.priceVisible) as priceVisible'),
                 DB::raw('SUM(inventario.cantidad) as cantidadInventario')
             )

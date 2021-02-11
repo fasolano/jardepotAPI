@@ -72,9 +72,10 @@ class ProductController extends Controller {
         $data = $this->productoRepository->getProduct($productType, $brand, $mpn);
         if(count($data)>0){
             $spareRepository = new SpareRepository();
-            $product= $this->model_format_products($data)[0];
+            $product= $this->model_format_products($data,'product')[0];
+
             $data2 = $this->productoRepository->getProductsRelated($productType, $brand, $mpn);
-            $productsRelated = $this->model_format_products($data2);
+            $productsRelated = $this->model_format_products($data2,'related');
             $canonical = url()->current();
 
             $ipls = $spareRepository->getIpls($productType, $brand, $mpn);
@@ -96,7 +97,7 @@ class ProductController extends Controller {
     }
 
     //esta externamente en otras dos funciones y en el repository
-    public function model_format_products($products){
+    public function model_format_products($products,$type){
         $iterator = 0;
         $response = array();
         foreach ($products as $item) {
@@ -152,12 +153,8 @@ class ProductController extends Controller {
                 }
             }
             //termina seccion de precios
-            if(strlen($item->descriptionweb ) > 200){//esto esta mientras se reducen todas las descripciones
-                $response[$iterator]['description'] = substr($item->descriptionweb,0,200).'...';
-            }else{
-                $response[$iterator]['description'] = $item->descriptionweb;
-            }
-            $response[$iterator]['dataSheet'] = $item->resenia;
+
+
             $response[$iterator]['availibilityCount'] = 100;
            // $response[$iterator]['stock'] = $item->availability == 'in stock' ? true : false;
             if ($item->availability == 'in stock' && $item->priceVisible > 0){
@@ -174,17 +171,26 @@ class ProductController extends Controller {
             $response[$iterator]['mpn'] = $item->mpn;
             $response[$iterator]['productType'] = $item->productType;
 
+            if($type == 'product'){
+
+                if(strlen($item->descriptionweb ) > 200){//esto esta mientras se reducen todas las descripciones
+                    $response[$iterator]['description'] = substr($item->descriptionweb,0,200).'...';
+                }else{
+                    $response[$iterator]['description'] = $item->descriptionweb;
+                }
+                $response[$iterator]['dataSheet'] = $item->resenia;
 //                Metas
-            $response[$iterator]['keywords'] = $item->productType;
-            if ($item->metadesc == ''){
-                $response[$iterator]['metaDescription'] = $item->productType.' '.$item->brand.' '.$item->mpn;
-            }else{
-                $response[$iterator]['metaDescription'] = $item->metadesc;
-            }
-            if (!isset($item->titleweb) || $item->titleweb == ''){
-                $response[$iterator]['metaTitle'] = $item->productType.' '.$item->brand.' '.$item->mpn;
-            }else{
-                $response[$iterator]['metaTitle'] = $item->titleweb;
+                $response[$iterator]['keywords'] = $item->productType;
+                if ($item->metadesc == ''){
+                    $response[$iterator]['metaDescription'] = $item->productType.' '.$item->brand.' '.$item->mpn;
+                }else{
+                    $response[$iterator]['metaDescription'] = $item->metadesc;
+                }
+                if (!isset($item->titleweb) || $item->titleweb == ''){
+                    $response[$iterator]['metaTitle'] = $item->productType.' '.$item->brand.' '.$item->mpn;
+                }else{
+                    $response[$iterator]['metaTitle'] = $item->titleweb;
+                }
             }
 
             $response[$iterator]['inventory'] = $item->cantidadInventario;
