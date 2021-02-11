@@ -101,7 +101,7 @@ class ProductController extends Controller {
         $iterator = 0;
         $response = array();
         foreach ($products as $item) {
-            $img = strtolower($item->productType . "-" . $item->brand . "-" . $item->mpn);
+            $img = strtolower( str_replace(' ','-',$item->productType) . "-" . str_replace(' ','-',$item->brand) . "-" . $item->mpn);
             $response[$iterator]['id'] = $item->id;
             $response[$iterator]['name'] = $item->productType . " " . $item->brand . " " . $item->mpn;
 

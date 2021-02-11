@@ -326,7 +326,7 @@ class ProductsController extends Controller {
         $iterator = 0;
         foreach ($productosCategoria as $keyProducto => $item) {
 
-            $img = strtolower($item->productType . "-" . $item->brand . "-" . $item->mpn);
+            $img = strtolower( str_replace(' ','-',$item->productType) . "-" . str_replace(' ','-',$item->brand) . "-" . $item->mpn);
             //Si hay filtros aplicados va a verificar
             $response[$iterator]['id'] = $item->id;
             $response[$iterator]['name'] = $item->productType . " " . $item->brand . " " . $item->mpn;
