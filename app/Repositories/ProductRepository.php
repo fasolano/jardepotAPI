@@ -136,10 +136,10 @@ class ProductRepository{
                     ->on("productos.mpn",'=' , "productosCategoriasNivel3.mpn");
             })
             ->join('categoriasNivel3 as c3', 'c3.idCategoriasNivel3', '=', 'productosCategoriasNivel3.idCategoriasNivel3')
-            ->leftJoin('producto_caracteristica as pc', function ($join){
-                $join->on("pc.producto",'=' ,
-                    DB::raw("CONCAT(productos.productType,' ',productos.brand,' ',productos.mpn)"));
-            })
+//            ->leftJoin('producto_caracteristica as pc', function ($join){
+//                $join->on("pc.producto",'=' ,
+//                    DB::raw("CONCAT(productos.productType,' ',productos.brand,' ',productos.mpn)"));
+//            })
             ->leftJoin("inventario",function($join){
                 $join->on("productos.productType","=","inventario.productType")
                     ->on("productos.brand","=","inventario.brand")
@@ -160,17 +160,13 @@ class ProductRepository{
                 'productos.video',
                 'productos.volada',
                 'productos.visible',
-//                'XML.keywords',
-//                'XML.metadesc',
                 'XML.descriptionweb',
-//                'XML.titleweb',
-//                'XML.resenia',
                 DB::raw('SUM(productosCategoriasNivel3.priceVisible) as priceVisible'),
                 DB::raw('SUM(inventario.cantidad) as cantidadInventario')
             )
             ->distinct('productos.mpn')
-            ->orderBy('cantidadInventario', 'desc')
-            ->orderBy('c3.prioridad', 'asc')
+//            ->orderBy('cantidadInventario', 'desc')
+//            ->orderBy('c3.prioridad', 'asc')
             ->where([
                 "productos.visible" => "si",
                 "productos.availability" => "in stock",
@@ -178,9 +174,29 @@ class ProductRepository{
             ])
             ->groupBy('productos.productType',
                 'productos.brand','productos.mpn')
+            ->inRandomOrder()
             ->get();
-
+        //descomentar si se quiere quitar el filtro de primero generador y nebulizadora
+        $datos = $this->firstProductsOffer($datos);
         return $datos;
+    }
+
+    public function firstProductsOffer($products){
+        $object =[];
+        $count=0;
+        foreach ($products as $prod){
+            if(trim($prod->productType) == 'Generador' || trim($prod->productType) == 'Nebulizadora' ){
+                $object[$count]=$prod;
+                $count++;
+            }
+        }
+        foreach ($products as $prod){
+            if(trim($prod->productType) != 'Generador' && trim($prod->productType) != 'Nebulizadora' ){
+                $object[$count]=$prod;
+                $count++;
+            }
+        }
+        return $object;
     }
 
     public function getProductsFilters($nivel2, $filtros, $cant){
@@ -1267,9 +1283,6 @@ class ProductRepository{
             )
             ->get();
         return $ids;
-    }
-    public function existeURL($categoria1,$categoria2){
-
     }
 
 }

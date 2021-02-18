@@ -188,11 +188,11 @@ class ProductsController extends Controller {
         $descriptionLevel2->keywords = "Busca los productos que necesites Jardepot";
         $descriptionLevel2->metatitle = "Jardepot, el lugar donde encuentras todo lo que necesitas";
 
-
         $productsListSearch= $productRepository->getProductsOffer();
+
         $productsListSearch = $this->porductModelFormat($productsListSearch);
 
-        $canonical = url()->current();;
+        $canonical = url()->current();
         if (count($productsListSearch) == 0) {
             return view('pages/products', compact('sidebar', 'categoryLevel1', 'categoryLevel2', 'productsListSearch', 'numberPages', 'descriptionLevel2','canonical'));
         }
@@ -487,6 +487,5 @@ class ProductsController extends Controller {
             return $palabra;
         }
     }
-
 
 }
