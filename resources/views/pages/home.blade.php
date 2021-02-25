@@ -20,7 +20,7 @@
 
 @section('content')
     <div class="row shadow border border-light p-3 bg-white m-1 mt-3 rounded">
-       <h1 style="font-size: 23px !important;">Máquinas, accesorios y consumibles de Jardín, Agrícola y Forestal.</h1>
+       <h1 style="font-size: 23px !important;">Maquinaria ligera y accesorios  para jardín, agrícola, forestal y construcción.</h1>
     </div>
 
     <div id="carouselBanners" class="carousel slide mt-2" data-ride="carousel">
