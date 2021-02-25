@@ -679,7 +679,7 @@ class ProductRepository{
     public function getDescriptionNivel2($idNivel2){
         if ($idNivel2 != 0){
             $texto = DB::table('categoriasNivel2')
-                ->leftjoin('datosCategoriasNivel2', 'datosCategoriasNivel2.idCategoriasNivel2', '=', 'categoriasNivel2.idCategoriasNivel2')
+                ->leftJoin('datosCategoriasNivel2', 'datosCategoriasNivel2.idCategoriasNivel2', '=', 'categoriasNivel2.idCategoriasNivel2')
                 ->select('datosCategoriasNivel2.texto',
                     'datosCategoriasNivel2.metadescription',
                     'datosCategoriasNivel2.metatitle',
@@ -703,7 +703,7 @@ class ProductRepository{
             $texto->keywords = $this->singular($texto->nombreCategoriaNivel2);
         }else{
             $texto = DB::table('datosCategoriasNivel2')
-                ->select('metadescription','metatitle','metawords as keywords')
+                ->select('metadescription','metatitle','metawords as keywords','textH1')
                 ->where(
                     ".idCategoriasNivel2" ,"=",$idNivel2
                 )->first();
