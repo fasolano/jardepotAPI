@@ -254,6 +254,7 @@ function calculateTotal() {
         $('.btn-modal-mercado').css('display', 'none');
         $('.btn-modal-paypal').css('display', 'none');
     }
+    checkRowsProducts();
 }
 
 function getCartProductsView(){
