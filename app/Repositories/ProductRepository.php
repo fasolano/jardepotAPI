@@ -711,6 +711,35 @@ class ProductRepository{
         return $texto;
     }
 
+    public function getDescriptionLevel3($categoryLevel1, $categoryLevel2, $categoryLevel3){
+        $id3= $this->getIdNivel3($categoryLevel1, $categoryLevel2, $categoryLevel3);
+        $texto = DB::table('categoriasNivel3')
+            ->leftJoin('datosCategoriasNivel3', 'datosCategoriasNivel3.idCategoriasNivel3', '=', 'categoriasNivel3.idCategoriasNivel3')
+            ->select('datosCategoriasNivel3.texto',
+                'datosCategoriasNivel3.metadescription',
+                'datosCategoriasNivel3.metatitle',
+                'datosCategoriasNivel3.textH1',
+                'categoriasNivel3.nombreCategoriaNivel3 as nombreCategoriaNivel2')
+            ->where(
+                "categoriasNivel3.idCategoriasNivel3" ,"=",$id3
+            )->first();
+
+        if($texto->metatitle == ''){
+            $texto->metatitle = 'Encuentra '.$texto->nombreCategoriaNivel2.' de venta en tu tienda en linea.';
+        }
+
+        if($texto->metadescription == ''){
+            $texto->metadescription = $texto->nombreCategoriaNivel2.' - Catálogo y precios';
+        }
+
+        if($texto->texto == ''){
+            $texto->texto = $texto->nombreCategoriaNivel2;
+        }
+        $texto->keywords = $this->singular($texto->nombreCategoriaNivel2);
+
+        return $texto;
+    }
+
     public function getProductsSearch2($busqueda){
         $encontrados = "";
         $matches = array();

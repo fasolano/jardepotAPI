@@ -152,7 +152,7 @@ class ProductsController extends Controller {
         $products = $this->porductModelFormat($products);
         $numberPages = count($products) / 16;
         $filters = $productController->getSectionsLevel3($categoryLevel1, $categoryLevel2);
-        $descriptionLevel2 = $productController->getDescriptionLevel2($categoryLevel1, $categoryLevel2);
+        $descriptionLevel2 =$this->productoRepository->getDescriptionLevel3($categoryLevel1, $categoryLevel2, $categoryLevel3);
 
         $textFilter = "";
         if($categoryLevel1 == "Marcas" || $categoryLevel1 == "Refacciones"){
