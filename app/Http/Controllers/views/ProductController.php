@@ -173,11 +173,12 @@ class ProductController extends Controller {
 
             if($type == 'product'){
 
-                if(strlen($item->descriptionweb ) > 200){//esto esta mientras se reducen todas las descripciones
-                    $response[$iterator]['description'] = substr($item->descriptionweb,0,200).'...';
-                }else{
-                    $response[$iterator]['description'] = $item->descriptionweb;
-                }
+                // if(strlen($item->descriptionweb ) > 200){//esto esta mientras se reducen todas las descripciones
+                //     $response[$iterator]['description'] = substr($item->descriptionweb,0,200).'...';
+                // }else{
+                //     $response[$iterator]['description'] = $item->descriptionweb;
+                // }
+                $response[$iterator]['description'] = $item->descriptionweb;
                 $response[$iterator]['dataSheet'] = $item->resenia;
 //                Metas
                 $response[$iterator]['keywords'] = $item->productType;
