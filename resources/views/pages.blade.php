@@ -77,7 +77,7 @@
             return false;
         }
     </script>
-    <script>
+{{--    <script>
         gtag('config', 'AW-786429434/XEObCMjLhfEBEPrr__YC', {
             'phone_conversion_number': '800 212 9225'
         });
@@ -136,7 +136,7 @@
         gtag('config', 'AW-786429434/IHe9CIv28_ABEPrr__YC', {
             'phone_conversion_number': '722 648 1040'
         });
-    </script>
+    </script>--}}
     <script>
         gtag('event', 'page_view', {
             'send_to': 'AW-786429434',
