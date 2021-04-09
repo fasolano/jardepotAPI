@@ -711,7 +711,7 @@ class ProductRepository{
                     'categoriasNivel2.nombreCategoriaNivel2'
                 )
                 ->where(
-                    ".idCategoriasNivel2" ,"=",$idNivel2
+                    "datosCategoriasNivel2.idCategoriasNivel2" ,"=",$idNivel2
                 )->first();
         }
         return $texto;
