@@ -729,17 +729,17 @@ class ProductRepository{
         }
         if(!isset($texto->metatitle) || $texto->metatitle == ''){
             var_dump($catLvl2);
-            $texto->metatitle = 'Encuentra '.$catLvl2->nombreCategoriaNivel1.' de venta en tu tienda en linea.';
+            $texto->metatitle = 'Encuentra '. $catLvl2->nombreCategoriaNivel2 .' de venta en tu tienda en linea.';
         }
 
         if(!isset($texto->metadescription) || $texto->metadescription == ''){
-            $texto->metadescription = $catLvl2->nombreCategoriaNivel1.' - Catálogo y precios';
+            $texto->metadescription = $catLvl2->nombreCategoriaNivel2 .' - Catálogo y precios';
         }
 
         if(!isset($texto->texto) || $texto->texto == ''){
-            $texto->texto = $catLvl2->nombreCategoriaNivel1;
+            $texto->texto = $catLvl2->nombreCategoriaNivel2;
         }
-        $texto->keywords = $this->singular($catLvl2->nombreCategoriaNivel1);
+        $texto->keywords = $this->singular($catLvl2->nombreCategoriaNivel2);
 
         return $texto;
     }
