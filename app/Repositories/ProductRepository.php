@@ -728,6 +728,7 @@ class ProductRepository{
             $texto = new stdClass();
         }
         if(!isset($texto->metatitle) || $texto->metatitle == ''){
+            var_dump($catLvl2);
             $texto->metatitle = 'Encuentra '.$catLvl2->nombreCategoriaNivel1.' de venta en tu tienda en linea.';
         }
 
