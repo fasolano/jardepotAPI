@@ -4,7 +4,7 @@
 namespace App\Repositories;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
-use stdClass;
+
 
 class ProductRepository{
 
@@ -703,15 +703,9 @@ class ProductRepository{
             $texto->keywords = $this->singular($texto->nombreCategoriaNivel2);
         }else{
             $texto = DB::table('datosCategoriasNivel2')
-                ->leftJoin('categoriasNivel2', 'categoriasNivel2.idCategoriasNivel2', '=', 'categoriasNivel2.idCategoriasNivel2')
-                ->select('datosCategoriasNivel2.metadescription',
-                    'datosCategoriasNivel2.metatitle',
-                    'datosCategoriasNivel2.metawords as keywords',
-                    'datosCategoriasNivel2.textH1',
-                    'categoriasNivel2.nombreCategoriaNivel2'
-                )
+                ->select('metadescription','metatitle','metawords as keywords','textH1')
                 ->where(
-                    "datosCategoriasNivel2.idCategoriasNivel2" ,"=",$idNivel2
+                    ".idCategoriasNivel2" ,"=",$idNivel2
                 )->first();
         }
         return $texto;
@@ -719,7 +713,6 @@ class ProductRepository{
 
     public function getDescriptionLevel3($categoryLevel1, $categoryLevel2, $categoryLevel3){
         $id3= $this->getIdNivel3($categoryLevel1, $categoryLevel2, $categoryLevel3);
-        $catLvl2 = $this->getDescriptionNivel2($categoryLevel1, $categoryLevel2);
         $texto = DB::table('categoriasNivel3')
             ->leftJoin('datosCategoriasNivel3', 'datosCategoriasNivel3.idCategoriasNivel3', '=', 'categoriasNivel3.idCategoriasNivel3')
             ->select('datosCategoriasNivel3.texto',
@@ -730,21 +723,19 @@ class ProductRepository{
             ->where(
                 "categoriasNivel3.idCategoriasNivel3" ,"=",$id3
             )->first();
-        if(!isset($texto->metatitle)){
-            $texto = new stdClass();
-        }
-        if(!isset($texto->metatitle) || $texto->metatitle == ''){
-            $texto->metatitle = 'Encuentra '. $catLvl2->nombreCategoriaNivel2 .' de venta en tu tienda en linea.';
+
+        if($texto->metatitle == ''){
+            $texto->metatitle = 'Encuentra '.$texto->nombreCategoriaNivel2.' de venta en tu tienda en linea.';
         }
 
-        if(!isset($texto->metadescription) || $texto->metadescription == ''){
-            $texto->metadescription = $catLvl2->nombreCategoriaNivel2 .' - Catálogo y precios';
+        if($texto->metadescription == ''){
+            $texto->metadescription = $texto->nombreCategoriaNivel2.' - Catálogo y precios';
         }
 
-        if(!isset($texto->texto) || $texto->texto == ''){
-            $texto->texto = $catLvl2->nombreCategoriaNivel2;
+        if($texto->texto == ''){
+            $texto->texto = $texto->nombreCategoriaNivel2;
         }
-        $texto->keywords = $this->singular($catLvl2->nombreCategoriaNivel2);
+        $texto->keywords = $this->singular($texto->nombreCategoriaNivel2);
 
         return $texto;
     }
