@@ -4,7 +4,7 @@
 namespace App\Repositories;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
-
+use stdClass;
 
 class ProductRepository{
 
@@ -723,7 +723,9 @@ class ProductRepository{
             ->where(
                 "categoriasNivel3.idCategoriasNivel3" ,"=",$id3
             )->first();
-
+        if(!isset($texto->metatitle)){
+            $texto = new stdClass();
+        }
         if(!isset($texto->metatitle) || $texto->metatitle == ''){
             $texto->metatitle = 'Encuentra '.$texto->nombreCategoriaNivel2.' de venta en tu tienda en linea.';
         }
