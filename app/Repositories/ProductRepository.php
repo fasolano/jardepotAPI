@@ -724,15 +724,15 @@ class ProductRepository{
                 "categoriasNivel3.idCategoriasNivel3" ,"=",$id3
             )->first();
 
-        if($texto->metatitle == ''){
+        if(isset($texto->metatitle) || $texto->metatitle == ''){
             $texto->metatitle = 'Encuentra '.$texto->nombreCategoriaNivel2.' de venta en tu tienda en linea.';
         }
 
-        if($texto->metadescription == ''){
+        if(isset($texto->metadescription) || $texto->metadescription == ''){
             $texto->metadescription = $texto->nombreCategoriaNivel2.' - Catálogo y precios';
         }
 
-        if($texto->texto == ''){
+        if(isset($texto->texto) || $texto->texto == ''){
             $texto->texto = $texto->nombreCategoriaNivel2;
         }
         $texto->keywords = $this->singular($texto->nombreCategoriaNivel2);
