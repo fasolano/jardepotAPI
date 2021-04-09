@@ -713,6 +713,7 @@ class ProductRepository{
 
     public function getDescriptionLevel3($categoryLevel1, $categoryLevel2, $categoryLevel3){
         $id3= $this->getIdNivel3($categoryLevel1, $categoryLevel2, $categoryLevel3);
+        $catLvl2 = $this->getDescriptionNivel2($categoryLevel1, $categoryLevel2);
         $texto = DB::table('categoriasNivel3')
             ->leftJoin('datosCategoriasNivel3', 'datosCategoriasNivel3.idCategoriasNivel3', '=', 'categoriasNivel3.idCategoriasNivel3')
             ->select('datosCategoriasNivel3.texto',
@@ -727,17 +728,17 @@ class ProductRepository{
             $texto = new stdClass();
         }
         if(!isset($texto->metatitle) || $texto->metatitle == ''){
-            $texto->metatitle = 'Encuentra '.$texto->nombreCategoriaNivel2.' de venta en tu tienda en linea.';
+            $texto->metatitle = 'Encuentra '.$catLvl2->nombreCategoriaNivel1.' de venta en tu tienda en linea.';
         }
 
         if(!isset($texto->metadescription) || $texto->metadescription == ''){
-            $texto->metadescription = $texto->nombreCategoriaNivel2.' - Catálogo y precios';
+            $texto->metadescription = $catLvl2->nombreCategoriaNivel1.' - Catálogo y precios';
         }
 
         if(!isset($texto->texto) || $texto->texto == ''){
-            $texto->texto = $texto->nombreCategoriaNivel2;
+            $texto->texto = $catLvl2->nombreCategoriaNivel1;
         }
-        $texto->keywords = $this->singular($texto->nombreCategoriaNivel2);
+        $texto->keywords = $this->singular($catLvl2->nombreCategoriaNivel1);
 
         return $texto;
     }
