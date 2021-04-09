@@ -703,7 +703,13 @@ class ProductRepository{
             $texto->keywords = $this->singular($texto->nombreCategoriaNivel2);
         }else{
             $texto = DB::table('datosCategoriasNivel2')
-                ->select('metadescription','metatitle','metawords as keywords','textH1')
+                ->leftJoin('categoriasNivel2', 'categoriasNivel2.idCategoriasNivel2', '=', 'categoriasNivel2.idCategoriasNivel2')
+                ->select('datosCategoriasNivel2.metadescription',
+                    'datosCategoriasNivel2.metatitle',
+                    'datosCategoriasNivel2.metawords as keywords',
+                    'datosCategoriasNivel2.textH1',
+                    'categoriasNivel2.nombreCategoriaNivel2'
+                )
                 ->where(
                     ".idCategoriasNivel2" ,"=",$idNivel2
                 )->first();
@@ -728,7 +734,6 @@ class ProductRepository{
             $texto = new stdClass();
         }
         if(!isset($texto->metatitle) || $texto->metatitle == ''){
-            var_dump($catLvl2);
             $texto->metatitle = 'Encuentra '. $catLvl2->nombreCategoriaNivel2 .' de venta en tu tienda en linea.';
         }
 
