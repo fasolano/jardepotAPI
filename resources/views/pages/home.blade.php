@@ -171,7 +171,7 @@
         @include('components.infoCompra')
     </div>
 
-    @include('components.caruselCanales')
+    {{-- @include('components.caruselCanales') --}}
 
 @endsection
 

@@ -109,7 +109,7 @@
                 </div>
                 <br>
                 @include('components.infoCompra')
-                @include('components.caruselCanales')
+                {{-- @include('components.caruselCanales') --}}
             </div>
         </div>
     </div>

@@ -469,7 +469,7 @@
                             </div>
                             <br>
                             @include('components.infoCompra')
-                            @include('components.caruselCanales')
+                            {{-- @include('components.caruselCanales') --}}
                         </div>
                         <div class="col-lg-4 col-md-12">
                             <div class="position-absolute"  style="max-width: 97%;z-index: 999;pointer-events: none; ">
@@ -690,7 +690,7 @@
                             </div>
                             <br>
                             @include('components.infoCompra')
-                            @include('components.caruselCanales')
+                            {{-- @include('components.caruselCanales') --}}
                         </div>
                         @endif
                     </div>

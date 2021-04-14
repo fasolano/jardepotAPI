@@ -514,7 +514,7 @@
                         </div>
                 @endif
 
-                @include('components.caruselCanales')
+                {{-- @include('components.caruselCanales') --}}
                 @include('components.infoCompra')
             </div>
         </div>
