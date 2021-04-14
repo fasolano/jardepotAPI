@@ -14,3 +14,4 @@ yarn-error.log
 /public/assets/images/banner/*
 /public/owa/*
 /public/assets/js/path.js
+/public/rfcs/*
