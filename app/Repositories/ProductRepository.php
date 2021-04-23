@@ -684,6 +684,7 @@ class ProductRepository{
                     'datosCategoriasNivel2.metadescription',
                     'datosCategoriasNivel2.metatitle',
                     'datosCategoriasNivel2.textH1',
+                    'datosCategoriasNivel2.descripcionSitio',
                     'categoriasNivel2.nombreCategoriaNivel2')
                 ->where(
                     "categoriasNivel2.idCategoriasNivel2" ,"=",$idNivel2
@@ -703,7 +704,7 @@ class ProductRepository{
             $texto->keywords = $this->singular($texto->nombreCategoriaNivel2);
         }else{
             $texto = DB::table('datosCategoriasNivel2')
-                ->select('metadescription','metatitle','metawords as keywords','textH1')
+                ->select('metadescription','metatitle','metawords as keywords','textH1', 'descripcionSitio')
                 ->where(
                     ".idCategoriasNivel2" ,"=",$idNivel2
                 )->first();
