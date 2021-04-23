@@ -56,7 +56,7 @@
         </a>
     </div>
     <div class="row shadow border border-light p-3 bg-white m-1 mt-3 rounded">
-       <h3 style="font-size: 23px !important;">{{ $descriptionLevel2->descripcionSitio }}</h3>
+       <h4 style="font-size: 23px !important;">{!! $descriptionLevel2->descripcionSitio !!}</h4>
     </div>
     {{--    <div class="d-none d-md-block d-lg-block">
             <div class="row div-banners">
