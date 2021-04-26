@@ -17,6 +17,25 @@ Route::get('/', 'views\HomeController@index')->name('home');
 Route::get('/index.php', function(){
     return Redirect::to('/', 301);
 });
+Route::get('/cuenta/login', function (){
+    return view('pages.login');
+});
+Route::get('/cuenta/registro', function (){
+    return view('pages.registro');
+});
+
+Route::get('/business', function (){
+    return view('pages.business.index');
+});
+
+Route::get('/business/login', function (){
+    return view('pages.business.login');
+});
+Route::get('/business/registro', function (){
+    return view('pages.business.registro');
+});
+Route::post('/business/registro', 'views\BusinessController@registro');
+
 
 Route::get('/prueba', 'views\HomeController@moveImages');
 
@@ -61,5 +80,4 @@ Route::get('tracking', function () {
 });
 
 Route::post('tracking/getGuia', 'views\TrackingController@getGuia')->name('getguia');
-
 
