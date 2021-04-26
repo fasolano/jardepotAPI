@@ -139,7 +139,7 @@
                         <a data-toggle="modal" data-target="#modalAvisoLegal" style="color: #fff; text-decoration: underline;" href="javascript: void(0)" onclick="openAvisoLegalDialog()">Aviso Legal</a>
                 </div>
                 <div class="col-lg-4 col-xl-6 text-center">
-                    JarDepot es una marca registrada. Todos los derechos reservados 2020.
+                    JarDepot es una marca registrada. Todos los derechos reservados {{ date('Y') }}.
                 </div>
                 <div class="col-lg-4 col-xl-3 d-none d-md-block text-center">
                     <a href="https://www.facebook.com/Jardepot" target="_blank" style="margin-right: 25px;" rel="noopener">
