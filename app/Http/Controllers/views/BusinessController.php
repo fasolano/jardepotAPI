@@ -55,7 +55,7 @@ class BusinessController extends Controller {
                 if(!$cliente->save()){
                     array_push($errors, 'No se ha podido asociar o crear su cliente');
                 }
-                return redirect('http://localhost:8500/business/login');
+                return redirect('https://digicom.mx/business/login');
             } else {
                 array_push($errors, 'No se ha podido subir el archivo');
             }
