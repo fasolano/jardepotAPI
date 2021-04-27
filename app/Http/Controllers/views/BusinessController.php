@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use App\BusinessUser;
 use App\ClienteJardepot;
 use Illuminate\Support\Facades\Hash;
+use PHPMailer\PHPMailer\PHPMailer;
 
 class BusinessController extends Controller {
 
@@ -26,6 +27,22 @@ class BusinessController extends Controller {
             array_push($errors, 'El correo electrónico ya se encuentra registrado');
             return view('pages.registro')->with(compact('errors'));
         }
+        $mail = new PHPMailer\PHPMailer\PHPMailer(true);
+        $mail->isSMTP();
+        $mail->SMTPAuth = true;
+        $mail->Host = 'jardepot.com';
+        $mail->Username = 'business@jardepot.com';
+        $mail->Password = 'B3m4sr5#';
+        $mail->Port = 587;
+        $mail->SMTPOptions = array(
+            'ssl' => array(
+                'verify_peer' => false,
+                'verify_peer_name' => false,
+                'allow_self_signed' => true
+            )
+		);
+        $mail->isHTML(true);
+        $mail->CharSet = 'UTF-8';
 
         $user_business = new BusinessUser;
         $user_business->name = $datos_usuario['name'];
@@ -56,6 +73,11 @@ class BusinessController extends Controller {
                 if(!$cliente->save()){
                     array_push($errors, 'No se ha podido asociar o crear su cliente');
                 }
+                $contenido = file_get_contents(base_path('/resources/templates/welcome/index.html'));
+                $contenido = str_replace('[[nombre_comprador]]', $cliente->nombre, $contenido);
+                $mail->AddEmbeddedImage(public_path('/templates/generarPedido/header.png'), 'header');
+                $mail->AddEmbeddedImage(public_path('/templates/generarPedido/footer.png'), 'footer');
+                $mail->send();
                 return redirect('https://digicom.mx/business/login');
             } else {
                 array_push($errors, 'No se ha podido subir el archivo');

@@ -80,6 +80,7 @@ class ComposerStaticInit6c7e1737d738ab8d54b525760f5e74ce
             'Psr\\Container\\' => 14,
             'Prophecy\\' => 9,
             'PhpParser\\' => 10,
+            'PHPMailer\\PHPMailer\\' => 20,
         ),
         'O' => 
         array (
@@ -287,6 +288,10 @@ class ComposerStaticInit6c7e1737d738ab8d54b525760f5e74ce
         array (
             0 => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser',
         ),
+        'PHPMailer\\PHPMailer\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/phpmailer/phpmailer/src',
+        ),
         'Opis\\Closure\\' => 
         array (
             0 => __DIR__ . '/..' . '/opis/closure/src',
@@ -449,6 +454,8 @@ class ComposerStaticInit6c7e1737d738ab8d54b525760f5e74ce
     );
 
     public static $classMap = array (
+        'App\\BusinessUser' => __DIR__ . '/../..' . '/app/BusinessUser.php',
+        'App\\ClienteJardepot' => __DIR__ . '/../..' . '/app/ClienteJardepot.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\ApiTokenController' => __DIR__ . '/../..' . '/app/Http/Controllers/ApiTokenController.php',
@@ -463,6 +470,7 @@ class ComposerStaticInit6c7e1737d738ab8d54b525760f5e74ce
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\MenuController' => __DIR__ . '/../..' . '/app/Http/Controllers/MenuController.php',
         'App\\Http\\Controllers\\ProductController' => __DIR__ . '/../..' . '/app/Http/Controllers/ProductController.php',
+        'App\\Http\\Controllers\\views\\BusinessController' => __DIR__ . '/../..' . '/app/Http/Controllers/views/AccountController.php',
         'App\\Http\\Controllers\\views\\CartController' => __DIR__ . '/../..' . '/app/Http/Controllers/views/CartController.php',
         'App\\Http\\Controllers\\views\\ConfirmController' => __DIR__ . '/../..' . '/app/Http/Controllers/views/ConfirmController.php',
         'App\\Http\\Controllers\\views\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/views/HomeController.php',
@@ -2581,6 +2589,11 @@ class ComposerStaticInit6c7e1737d738ab8d54b525760f5e74ce
         'Opis\\Closure\\SecurityProvider' => __DIR__ . '/..' . '/opis/closure/src/SecurityProvider.php',
         'Opis\\Closure\\SelfReference' => __DIR__ . '/..' . '/opis/closure/src/SelfReference.php',
         'Opis\\Closure\\SerializableClosure' => __DIR__ . '/..' . '/opis/closure/src/SerializableClosure.php',
+        'PHPMailer\\PHPMailer\\Exception' => __DIR__ . '/..' . '/phpmailer/phpmailer/src/Exception.php',
+        'PHPMailer\\PHPMailer\\OAuth' => __DIR__ . '/..' . '/phpmailer/phpmailer/src/OAuth.php',
+        'PHPMailer\\PHPMailer\\PHPMailer' => __DIR__ . '/..' . '/phpmailer/phpmailer/src/PHPMailer.php',
+        'PHPMailer\\PHPMailer\\POP3' => __DIR__ . '/..' . '/phpmailer/phpmailer/src/POP3.php',
+        'PHPMailer\\PHPMailer\\SMTP' => __DIR__ . '/..' . '/phpmailer/phpmailer/src/SMTP.php',
         'PHPUnit\\Exception' => __DIR__ . '/..' . '/phpunit/phpunit/src/Exception.php',
         'PHPUnit\\Framework\\Assert' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Assert.php',
         'PHPUnit\\Framework\\AssertionFailedError' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Exception/AssertionFailedError.php',
