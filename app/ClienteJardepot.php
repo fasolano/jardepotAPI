@@ -12,5 +12,6 @@ class ClienteJardepot extends Model
         'nombre', 'telefono', 'correo',
         'idBusiness', 'fecha',
     ];
+    public $primaryKey = 'idClientes';
     public $timestamps = false;
 }
