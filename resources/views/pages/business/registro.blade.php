@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="{{asset('assets/css/pages/cart.min.css')}}">
     <script type="text/javascript" src="{{asset('assets/js/jquery.validate.min.js')}}"></script>
     <script src="https://www.paypal.com/sdk/js?client-id=AU1Jzf7ziTCncrNsNBjmk_tD03Iz_1o8J4FNGTh5Z2mYHRSV21eh6rQbPDiQgOzTFiVXFmLdtzT4XzI_&currency=MXN"></script>
-    <script src="https://kit.fontawesome.com/e50f7c9171.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/c1b6c8a9c6.js" crossorigin="anonymous"></script>
     {{--<script src="https://www.paypal.com/sdk/js?client-id=AXYsm9VJ1VvDrdy5xzQHHJBnnhuhEKcFWhhFPkXBZI9V-G4CmfiXDpNh2DaKT06EaWDFnqWG_1z5ztbi&currency=MXN"></script>--}}
     {{-- test   alcocer-buyer@jardepot.com
     27a0a110dd046--}}
