@@ -34,7 +34,7 @@ Route::get('/business/login', function (){
 Route::get('/business/registro', function (){
     return view('pages.business.registro');
 });
-Route::post('/business/registro', 'iews\BusinessController@registro');
+Route::post('/business/registro', 'views\BusinessController@registro');
 
 
 Route::get('/prueba', 'views\HomeController@moveImages');
