@@ -27,7 +27,7 @@ class BusinessController extends Controller {
             array_push($errors, 'El correo electrónico ya se encuentra registrado');
             return view('pages.registro')->with(compact('errors'));
         }
-        $mail = new PHPMailer\PHPMailer\PHPMailer(true);
+        $mail = new \PHPMailer\PHPMailer\PHPMailer(true);
         $mail->isSMTP();
         $mail->SMTPAuth = true;
         $mail->Host = 'jardepot.com';
