@@ -42,6 +42,7 @@ class BusinessController extends Controller {
 		);
         $mail->isHTML(true);
         $mail->CharSet = 'UTF-8';
+        $mail->setFrom('business@jardepot.com', 'Jardepot Fidelity');
 
         $user_business = new BusinessUser;
         $user_business->name = $datos_usuario['name'];
@@ -53,12 +54,13 @@ class BusinessController extends Controller {
         $user_business->phone = $datos_usuario['phone'];
         $user_business->nivel = 'basic';
 
+
         if($user_business->save()){
             $ruta = $request->file('rfc')->store('rfcs');
             if($ruta){
                 $user_business->ruta_rfc = $ruta;
                 $user_business->save();
-
+                $mail->addAddress($user_business->email, $user_business->name);
                 // Creamos un nuevo cliente en Jardepot
                 $cliente = ClienteJardepot::where('correo', $datos_usuario['email'])->first();
                 if(!$cliente){
