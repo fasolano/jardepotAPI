@@ -35,6 +35,7 @@ class BusinessController extends Controller {
         $user_business->password = Hash::make($request->input('password'));
         $user_business->email = $datos_usuario['email'];
         $user_business->phone = $datos_usuario['phone'];
+        $user_business->nivel = 'basic';
 
         if($user_business->save()){
             $ruta = $request->file('rfc')->store('rfcs');
