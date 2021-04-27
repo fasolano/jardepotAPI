@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\Auth;
 use App\BusinessUser;
 use App\ClienteJardepot;
 use Illuminate\Support\Facades\Hash;
-use PHPMailer\PHPMailer\PHPMailer;
 
 class BusinessController extends Controller {
 
