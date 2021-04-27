@@ -78,6 +78,7 @@ class BusinessController extends Controller {
                 $contenido = str_replace('[[nombre_comprador]]', $cliente->nombre, $contenido);
                 $mail->AddEmbeddedImage(base_path('/resources/templates/welcome/header.png'), 'header');
                 $mail->AddEmbeddedImage(base_path('/resources/templates/welcome/footer.png'), 'footer');
+                $mail->Body = $contenido;
                 $mail->send();
                 return redirect('https://digicom.mx/business/login');
             } else {
