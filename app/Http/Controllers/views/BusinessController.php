@@ -79,6 +79,7 @@ class BusinessController extends Controller {
                 $mail->AddEmbeddedImage(base_path('/resources/templates/welcome/header.png'), 'header');
                 $mail->AddEmbeddedImage(base_path('/resources/templates/welcome/footer.png'), 'footer');
                 $mail->Body = $contenido;
+                $mail->Subject = '¡Bienvenido a la familia Jardepot!';
                 $mail->send();
                 return redirect('https://digicom.mx/business/login');
             } else {
