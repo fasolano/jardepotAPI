@@ -10,6 +10,9 @@
     <!-- End Google Tag Manager -->--}}
 
     <style>
+        html, body{
+            height: 100% !important;
+        }
         #menu>li>*{
             margin: 0;
             padding: 0;
@@ -201,10 +204,8 @@
         </div>
     </div>
     <div id="overlay-bussy"><div id="loading"></div></div>
-    <div class="container-fluid" style="max-width:98%;">
-        <div class="row justify-content-md-center">
-            @yield('content')
-        </div>
+    <div class="container-fluid h-100 w-100">
+        @yield('content')
     </div>
 
 
