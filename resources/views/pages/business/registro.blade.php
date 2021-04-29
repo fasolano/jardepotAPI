@@ -27,9 +27,9 @@
 </div>
 <div class="row align-items-center h-100">
     <div class="col-md-7 col-sm-12 mx-auto my-auto">
-        <div class="btn btn-sm" style="float: right;height:35px; border-radius: 20px; background-color: rgb(62,65,65); color:white; font-weight:bold;">
-            <span>Jardepot Business</span>
-            <img src="/assets/images/otros/business/corona.png" style="height: 30px;" class="my-auto" />
+        <div class="mx-5 " style="float: right;margin-top:-25px;">
+            <img src="/assets/images/otros/business/business.png" style="height: 70px;" class="my-auto" style="float: right;"/>
+
         </div>
         <br/><br/>
         <div style="background-color: #f1f1f1; padding-bottom:1px; border-radius:20px;" class="mx-5 has-feedback">

@@ -41,23 +41,27 @@
                     <img src="/assets/images/otros/business/slide-1.png" class="w-100" alt="...">
                     <div class="carousel-caption" style="color:#333333; font-weight:bold;">
                         <h4>Únete a nuestra familia Jardepot</h4>
-                        <a href="/business/registro" class="btn btn-md btn-primary " style="background-color: rgb(62,65,65); border-color: rgb(62,65,65); font-weight:bold;">Jardepot Business</a>
+                        <a href="/business/registro" >
+                            <img src="/assets/images/otros/business/business.png" height="80" class="" alt="...">
+                        </a>
                     </div>
-
                 </div>
                 <div class="carousel-item">
                     <img src="/assets/images/otros/business/slide-2.png" class="w-100" alt="...">
                     <div class="carousel-caption" style="color:#333333; font-weight:bold;">
                         <h4>Únete a nuestra familia Jardepot</h4>
-                        <a href="/business/registro" class="btn btn-md btn-primary" style="background-color: rgb(62,65,65); border-color: rgb(62,65,65); font-weight:bold;">Jardepot Business</a>
-
+                        <a href="/business/registro" >
+                            <img src="/assets/images/otros/business/business.png" height="80" class="" alt="...">
+                        </a>
                     </div>
                 </div>
                 <div class="carousel-item">
                     <img src="/assets/images/otros/business/slide-3.png" class="w-100" alt="...">
                     <div class="carousel-caption" style="color:#333333; font-weight:bold;">
                         <h4>Únete a nuestra familia Jardepot</h4>
-                        <a href="/business/registro" class="btn btn-md btn-primary" style="background-color: rgb(62,65,65); border-color: rgb(62,65,65); font-weight:bold;">Jardepot Business</a>
+                        <a href="/business/registro" >
+                            <img src="/assets/images/otros/business/business.png" height="80" class="" alt="...">
+                        </a>
 
                     </div>
                 </div>
