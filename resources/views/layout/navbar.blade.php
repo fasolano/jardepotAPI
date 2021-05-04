@@ -131,7 +131,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-1" style="margin-top: 5px">
+                    {{-- <div class="col-md-1" style="margin-top: 5px">
                         <button class="btn dropdown-toggle" style="text-align:center;color: #FFF" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span style="color: #fff !important;cursor:pointer;font-size: 15px">
                                 <i class="material-icons d-flex" style="color: #f68600;font-size: 24px !important;">perm_identity</i>
@@ -143,7 +143,7 @@
                                 <span style="font-size: 15px" ></span><a href="{{url('cuenta/login')}}" class="text-muted">Iniciar sesión</a>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                     <div class="col-md-1" style="margin-top: 10px">
                         <a class="d-flex" href="{{route('sales')}}"><img style="width: 140px;height:50px;position: absolute;margin-left: -12px;margin-top: 5px" src="{{asset('assets/images/ofertas/promocion.png')}}" title="Ofertas Jardepot" alt="Ofertas Jardepot"></a>
                     </div>
