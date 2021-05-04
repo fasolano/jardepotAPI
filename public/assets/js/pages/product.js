@@ -4,90 +4,73 @@ $(document).ready(function() {  // <-- ensure form's HTML is ready
     $('#div-formulario').show();
     $('#div-send').hide();
 
-    $("#formularioDudas").submit(function(e) {
+    $(document).on('submit', '.formularioDudas', async function(e) {
         e.preventDefault();
-    }).validate({
-        rules: {
-            "nombre": {  // <-- this is the name attribute, NOT id
-                required: true,
-                minlength: 3,
-                maxlength: 60
-            },
-            "email": {
-                required: true,
-                email: true
-            },
-            "telefono": {
-                required: true,
-                digits: true,
-                minlength: 10,
-                maxlength: 10
-            },
-            "whatsapp": {
-                digits: true,
-                minlength: 10,
-                maxlength: 10
-            },
-            "comentario": {
-                minlength: 3,
-                maxlength: 100
+        const emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/
+        const numberReg = /^[0-9]+$/
+        const nombre = $.trim($(this).find("input[name='nombre']")[0].value)
+        const email = $.trim($(this).find("input[name='email']")[0].value)
+        const telefono = $.trim($(this).find("input[name='telefono']")[0].value)
+        const whatsapp = $.trim($(this).find("input[name='whatsapp']")[0].value)
+        const comentario = $.trim($(this).find("textarea[name='comentario']").val())
+        const token = $(this).find("input[name='_token']")[0].value
+        const producto = $(this).find("input[name='producto']")[0].value
+        if(nombre.length == 0 || nombre.length < 3 || nombre.length > 60){
+            openSnackbar('error','El campo Nombre no es correcto')
+            return false
+        }
+        if(email.length == 0 || !emailReg.test(email)){
+            openSnackbar('error','El campo Correo no es correcto')
+            return false
+        }
+        if((telefono.length != 0 && telefono.length != 10) || !numberReg.test(telefono)){
+            openSnackbar('error','El campo Telefono no es correcto y debe ser de 10 digitos')
+            return false
+        }
+        if((whatsapp.length != 0 && whatsapp.length != 10) || !numberReg.test(whatsapp)){
+            openSnackbar('error','El campo Whatsapp no es correcto y debe ser de 10 digitos')
+            return false
+        }
+        if(comentario.length != 0 ){
+            if(comentario.length < 3 || comentario.length > 60){
+                openSnackbar('error','El campo Comentario no es correcto')
+                return false
             }
-        },
-        messages: {
-            "nombre": {
-                required: "Introduce tu nombre.",
-                maxlength: "Debe contener máximo 60.",
-                minlength: "Debe contener mínimo 3 letras."
+        }
+        const data = {
+            forms:{
+                nombre,
+                email,
+                telefono,
+                whatsapp,
+                comentario,
+                producto
             },
-            "telefono": {
-                required: "Introduce tu teléfono.",
-                digits: "Introduce un número válido.",
-                maxlength: "Debe contener 10 dígitos.",
-                minlength: "Debe contener 10 dígitos."
+            textoBuscado: ''
+        }
+        let request = await fetch("../../product/sendSearch", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': token
             },
-            "whatsapp": {
-                digits: "Introduce un número válido.",
-                maxlength: "Debe contener 10 dígitos.",
-                minlength: "Debe contener 10 dígitos."
-            },
-            "email":{
-                required: "Introduce tu correo.",
-                email: "Introduce un correo válido."
-            },
-            "comentario": {
-                maxlength: "Debe contener máximo de 100.",
-                minlength: "Debe contener un mínimo de 3."
-            }
-        },
-        submitHandler : function() {
-            var formdata = $("#formularioDudas").serializeArray();
-            var data = {};
-            $(formdata).each(function(index, obj){
-                data[obj.name] = obj.value;
-            });
-            var parameters = [];
-            parameters['url'] = "../../product/sendSearch";
-            parameters['type'] = "POST";
-            parameters['dataType'] = "json";
-            parameters['data'] =  {
-                'textoBuscado': '',
-                'forms': JSON.stringify(data)
-            };
-            parameters['success'] = function (result) {
-                if (result.resultado === true) {
+            body: JSON.stringify(data)
+        }).then((response) => {
+            response.json().then((respuesta) => {
+                if (respuesta.resultado === true) {
                     clearFormComentario();
                     openSnackbar('success','Gracias por compartir con nosotros, en breve nos comunicamos contigo.')
-                    // $('#div-formulario').hide();
-                    // $('#div-send').show();
-                }else{
+                    $('#div-formulario').hide();
+                    $('#div-send').show();
+                } else{
                     openSnackbar('warning','Ocurrió un error al enviar.')
-                    // $('#div-formulario').show();
-                    // $('#div-send').hide();
+                    $('#div-formulario').show();
+                    $('#div-send').hide();
                 }
-            };
-            ajaxCall(parameters);
-        }
-    });
+            })
+        })
+
+    })
     $('#video-product').hide();
 });
 

@@ -89,9 +89,9 @@ class ProductController extends Controller {
 
     public function sendSearch(Request $request) {
 //        $form =json_encode($request->get('forms'));
-        $forms =  $request->input('forms');
-        $forms = json_decode($forms);
-        $busqueda = $request->get('textoBuscado');
+        $forms =  (object) $request->json('forms');
+        // $forms = json_decode($forms);
+        $busqueda = $request->json('textoBuscado');
         $res = $this->productoRepository->sendBusqueda($forms, $busqueda);
         return json_encode(['resultado' => $res]);
     }

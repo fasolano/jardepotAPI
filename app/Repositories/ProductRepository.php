@@ -636,7 +636,7 @@ class ProductRepository{
         // $num = rand(0,4);
         // $destino = $email[$num];
         $destino = 'ventas10@jardepot.com';
-//        $destino = 'sistemas2@jardepot.com';
+        // $destino = 'sistemas3@jardepot.com';
         $asunto='';
         switch ($tipo){
             case 'duda':

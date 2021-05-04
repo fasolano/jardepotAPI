@@ -436,7 +436,7 @@
                                     </a>
                                     <p class="h6">Llame ó llene con su información para que un asesor le contacte.</p>
                                     <div class="divider mb-2"></div>
-                                    <form id="formularioDudas" action="javascript:void(0)">
+                                    <form class="formularioDudas">
                                         {{ csrf_field() }}
                                         <div class="">
                                             <div class="form-group">
@@ -592,7 +592,7 @@
                                     </a>
                                     <p class="h6">Llame ó llene con su información para que un asesor le contacte.</p>
                                     <div class="divider mb-2"></div>
-                                    <form id="formularioDudas" action="javascript:void(0)">
+                                    <form class="formularioDudas">
                                         {{ csrf_field() }}
                                         <div class="">
                                             <div class="form-group">
@@ -804,7 +804,7 @@
     <script type="text/javascript" src="{{asset('assets/js/components/sidebar.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('assets/js/components/swiper.js')}}"></script>
     <script type="text/javascript" src="{{asset('assets/js/components/drift.js')}}"></script>
-    <script type="text/javascript" src="{{asset('assets/js/pages/product.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('assets/js/pages/product.js')}}?v={{ time() }}"></script>
     <script type="text/javascript" src="{{asset('assets/js/pages/cart.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('assets/js/components/slick.js')}}"></script>
     {{--<script type="text/javascript" src="{{asset('assets/js/components/leaflet.js')}}"></script>
