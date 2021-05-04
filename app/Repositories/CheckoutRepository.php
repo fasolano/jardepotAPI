@@ -90,7 +90,8 @@ class CheckoutRepository {
     }
 
     public function setSellerToOrder($order){
-        $mails = array("ventas@jardepot.com","ventas1@jardepot.com", "ventas2@jardepot.com", "ventas4@jardepot.com");
+        // $mails = array("ventas10@jardepot.com","ventas@jardepot.com","ventas1@jardepot.com", "ventas2@jardepot.com", "ventas4@jardepot.com");
+        $mails = ["ventas10@jardepot.com"];
         $mailsSent = DB::connection('digicom')
             ->table('pedidos_web')
             ->select(DB::raw('count(fk_vendedor) as cant'), 'fk_vendedor')

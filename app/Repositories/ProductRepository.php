@@ -632,9 +632,10 @@ class ProductRepository{
     public function sendBusqueda($form, $busqueda){
         $tipo= $busqueda != '' ? 'busqueda':'duda';
 
-        $email = ['ventas1@jardepot.com','ventas2@jardepot.com','ventas4@jardepot.com','ventas7@jardepot.com','ventas8@jardepot.com'];
-        $num = rand(0,4);
-        $destino = $email[$num];
+        // $email = ['ventas1@jardepot.com','ventas2@jardepot.com','ventas4@jardepot.com','ventas7@jardepot.com','ventas8@jardepot.com'];
+        // $num = rand(0,4);
+        // $destino = $email[$num];
+        $destino = 'ventas10@jardepot.com';
 //        $destino = 'sistemas2@jardepot.com';
         $asunto='';
         switch ($tipo){
