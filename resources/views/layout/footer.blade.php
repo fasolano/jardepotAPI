@@ -70,6 +70,20 @@
                     <p style="margin-bottom: 0px;">Veracruz</p>
                     <a href="tel:2293300992" style="color: #fff;"><span class="my-4" style="font-size: 15px; font-weight: 300;">229 330 0992</span></a><br>
                 </div>
+                <div style="margin-bottom: 20px;">
+                    <p style="margin-bottom: 0px;">Tabasco</p>
+                    <a href="tel:2293300992" style="color: #fff;"><span class="my-4" style="font-size: 15px; font-weight: 300;">993 307 0286</span></a><br>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div style="margin-bottom: 20px;">
+                    <p style="margin-bottom: 0px;">San Luis Potosí</p>
+                    <a href="tel:2227051726" style="color: #fff;"><span class="my-4" style="font-size: 15px; font-weight: 300;">444 328 0420</span></a><br>
+                </div>
+                <div style="margin-bottom: 20px;">
+                    <p style="margin-bottom: 0px;">Quintana Roo</p>
+                    <a href="tel:2293300992" style="color: #fff;"><span class="my-4" style="font-size: 15px; font-weight: 300;">998 294 0670</span></a><br>
+                </div>
             </div>
             {{--<div class="w-20-tel">
             </div>--}}
