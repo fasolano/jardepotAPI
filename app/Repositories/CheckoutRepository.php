@@ -14,7 +14,7 @@ class CheckoutRepository {
             ->select('*')
             ->where([
                 'correo' => $cliente['email'],
-                'telefono' => $cliente['telefono']
+                // 'telefono' => $cliente['telefono']
             ])
             ->first();
 
