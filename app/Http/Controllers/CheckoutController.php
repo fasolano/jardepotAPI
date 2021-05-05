@@ -134,6 +134,7 @@ class CheckoutController extends Controller {
         $dia = date('d-m-Y');
         $hora = date('H:i:s');
         $mailSeller = "svartpilen2020@gmail.com";//se puso para que solo se le envíe a Isra al personal
+        $mailSeller = "ventas10@jardepot.com";
         $data = [
             'nombre' => $clientForm['nombre']. " ". $clientForm['apellidos'],
             'telefono' => $clientForm['telefono'],

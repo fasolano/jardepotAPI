@@ -163,8 +163,8 @@ class SpareRepository {
             array_push($carrito, $refaccion);
         }
 
-        $destino = "fasolanof@gmail.com";
-        //        $destino = "ventas4@jardepot.com";
+        // $destino = "fasolanof@gmail.com";
+        $destino = "ventas10@jardepot.com";
 
         $data = [
             'nombre' => $nombre,
