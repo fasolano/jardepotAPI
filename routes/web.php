@@ -29,7 +29,7 @@ Route::get('/business', function (){
 });
 
 Route::get('/business/login', function (){
-    return view('pages.business.login');
+    return redirect('https://digicom.mx/business/login');
 });
 Route::get('/business/registro', function (){
     return view('pages.business.registro');
