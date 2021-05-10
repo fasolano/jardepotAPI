@@ -71,7 +71,7 @@ class ProductController extends Controller {
         $ipl = count($ipl);
         $data = $this->productoRepository->getProduct($productType, $brand, $mpn);
         $producto = $productType . " " . $brand . " " . $mpn;
-        $comentarios = ComentarioProducto::where('producto', $producto)->orderBy('fecha', 'DESC')->get();
+        $comentarios = ComentarioProducto::where('producto', $producto)->where('estado', 1)->orderBy('fecha', 'DESC')->get();
         if(count($data)>0){
             $spareRepository = new SpareRepository();
             $product= $this->model_format_products($data,'product')[0];

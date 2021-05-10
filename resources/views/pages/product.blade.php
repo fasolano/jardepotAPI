@@ -394,40 +394,39 @@
                                                 </div>
                                             </div>
                                         </div>
-                                            @foreach ($comentarios as $comentario)
-                                                <hr />
-                                                <div class="nombreComentario">
-                                                    <strong>{{ $comentario->nombre }}</strong><br/>
-                                                </div>
-                                                {{-- <div class="puntuacion">
-                                                    @foreach (range(1,5) as $estrella)
-                                                        <div class="user-star" style="display: inline-block;">
-                                                            @if($estrella <= $comentario->calificacion)
-                                                                <span class="material-icons" style="color:#FFD700;">
-                                                            @else
-                                                                <span class="material-icons" style="color:#dddddd;">
-                                                            @endif
-                                                                star_rate
-                                                            </span>
-                                                        </div>
-                                                    @endforeach
-                                                </div> --}}
-                                                <div class="mensajeComentario" style="text-align: justify;">
-                                                    {!! $comentario->mensaje !!}
-                                                    @if($comentario->respuesta != "")
-                                                        <div class="mx-5 my-2">
-                                                            <hr/>
-                                                            <strong>Respuesta de Administración:</strong><br/>
-                                                            {{ $comentario->respuesta }}
-                                                        </div>
-                                                    @endif
-                                                </div>
-                                                <div class="fechaComentario" style="float: right; font-size:small;">
-                                                    {{ date('d/m/Y h:i A', strtotime($comentario->fecha)) }}
-                                                </div>
-                                                <br/>
-                                            @endforeach
-                                        </div>
+                                        @foreach ($comentarios as $comentario)
+                                            <hr />
+                                            <div class="nombreComentario">
+                                                <strong>{{ $comentario->nombre }}</strong><br/>
+                                            </div>
+                                            {{-- <div class="puntuacion">
+                                                @foreach (range(1,5) as $estrella)
+                                                    <div class="user-star" style="display: inline-block;">
+                                                        @if($estrella <= $comentario->calificacion)
+                                                            <span class="material-icons" style="color:#FFD700;">
+                                                        @else
+                                                            <span class="material-icons" style="color:#dddddd;">
+                                                        @endif
+                                                            star_rate
+                                                        </span>
+                                                    </div>
+                                                @endforeach
+                                            </div> --}}
+                                            <div class="mensajeComentario" style="text-align: justify;">
+                                                {!! $comentario->mensaje !!}
+                                                @if($comentario->respuesta != "")
+                                                    <div class="mx-5 my-2">
+                                                        <hr/>
+                                                        <strong>Respuesta de Administración:</strong><br/>
+                                                        {{ $comentario->respuesta }}
+                                                    </div>
+                                                @endif
+                                            </div>
+                                            <div class="fechaComentario" style="float: right; font-size:small;">
+                                                {{ date('d/m/Y h:i A', strtotime($comentario->fecha)) }}
+                                            </div>
+                                            <br/>
+                                        @endforeach
                                     </div>
                                 </div>
                             </div>
