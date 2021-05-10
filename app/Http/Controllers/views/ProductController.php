@@ -3,7 +3,7 @@
 
 namespace App\Http\Controllers\views;
 
-
+use App\ComentarioProducto;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\MenuController;
 use App\Repositories\ProductRepository;
@@ -70,6 +70,8 @@ class ProductController extends Controller {
         $ipl = $this->productoRepository->getIpls($productType, $brand, $mpn);
         $ipl = count($ipl);
         $data = $this->productoRepository->getProduct($productType, $brand, $mpn);
+        $producto = $productType . " " . $brand . " " . $mpn;
+        $comentarios = ComentarioProducto::where('producto', $producto)->orderBy('fecha', 'DESC')->get();
         if(count($data)>0){
             $spareRepository = new SpareRepository();
             $product= $this->model_format_products($data,'product')[0];
@@ -81,7 +83,7 @@ class ProductController extends Controller {
             $ipls = $spareRepository->getIpls($productType, $brand, $mpn);
             $producto = ucfirst($productType)."-".ucfirst($brand)."-".ucfirst($mpn);
 
-            return view('pages/product',compact('sidebar','product','productsRelated', 'ipl', 'linkSpare','canonical', 'ipls','producto'));
+            return view('pages/product',compact('sidebar','product','productsRelated', 'ipl', 'linkSpare','canonical', 'ipls','producto', 'comentarios'));
         }else{
             return view('errors/404');
         }
@@ -296,5 +298,29 @@ class ProductController extends Controller {
                 return $format;
             }
         }
+    }
+
+    public function rateProduct() {
+        $nombrePersona = request()->json('nombrePersona', '');
+        $correoPersona = request()->json('correoPersona', '');
+        $producto = request()->json('producto', '');
+        $rate = request()->json('rate', 0);
+        $telefonoPersona = request()->json('telefonoPersona', '');
+        $comentario = request()->json('comentarioProducto', '');
+        $comentarioProducto = new ComentarioProducto;
+        $comentarioProducto->producto = $producto;
+        $comentarioProducto->mensaje = $comentario;
+        $comentarioProducto->calificacion = $rate;
+        $comentarioProducto->correo = $correoPersona;
+        $comentarioProducto->telefono = $telefonoPersona;
+        $comentarioProducto->nombre = $nombrePersona;
+        $comentarioProducto->fecha = date('Y-m-d h:i:s');
+        $comentarioProducto->estado = 0;
+        if($comentarioProducto->save()){
+            return response()->json(['status' => 'success', 'message' => 'Se ha enviado su comentario con éxito']);
+        } else {
+            return response()->json(['status' => 'error', 'message' => 'No se ha poddo enviar el mensaje, intente de nuevo más tarde']);
+        }
+
     }
 }

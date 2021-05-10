@@ -36,6 +36,7 @@ Route::get('/business/registro', function (){
 });
 Route::post('/business/registro', 'views\BusinessController@registro');
 
+Route::post('/product/rate', 'views\ProductController@rateProduct');
 
 Route::get('/prueba', 'views\HomeController@moveImages');
 

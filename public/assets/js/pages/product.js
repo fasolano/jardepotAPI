@@ -156,3 +156,113 @@ function showImages(){
         $('#video-product').html('');
     }
 }
+
+$("#enviarComentario").on('click', async function(evento){
+    evento.preventDefault();
+    const nombrePersona = document.querySelector("#nombrePersona").value
+    const comentarioProducto = document.querySelector("#comentarioProducto").value
+    const correoPersona = document.querySelector("#correoPersona").value
+    const rate = document.querySelector("#customer_rate").value
+    const telefonoPersona = document.querySelector("#telefonoPersona").value
+    const producto = document.querySelector("#producto").value
+    const token = document.querySelector("#commentToken").value
+    const testUrl = /(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/
+    const testEmail = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/
+    const testNumbers = /[0-9]+$/
+    if(testUrl.test(nombrePersona)){
+        openSnackbar('error','El campo Nombre no debe de contener links')
+        return false
+    } else {
+        if(testEmail.test(nombrePersona) && $.trim(nombrePersona).length != 0){
+            openSnackbar('error','EL campo Nombre no puede contener esos caracteres. Tiene que ser un nombre')
+            return false
+        } else {
+            if($.trim(nombrePersona).length == 0){
+                openSnackbar('error','EL campo Nombre no puede estar vacío')
+                return false
+            }
+        }
+    }
+    if(testUrl.test(comentarioProducto)){
+        openSnackbar('error','El campo Comentario no debe de contener links')
+        return false
+    } else {
+        if(testEmail.test(comentarioProducto) && $.trim(comentarioProducto).length != 0){
+            openSnackbar('error','EL campo Comentario no puede contener esos caracteres. Tiene que ser un nombre')
+            return false
+        } else {
+            if($.trim(comentarioProducto).length == 0){
+                openSnackbar('error','EL campo Comentario no puede estar vacío')
+                return false
+            }
+        }
+    }
+    if(rate == 0){
+        openSnackbar('error','Tiene que proporcionar una calificación')
+        return false
+    }
+
+    if(!testEmail.test(correoPersona) && $.trim(nombrePersona).length != 0){
+        openSnackbar('error','EL campo Correo tiene que ser un correo electrónico')
+        return false
+    } else {
+        if($.trim(correoPersona).length == 0){
+            openSnackbar('error','EL campo Correo no puede estar vacío')
+            return false
+        }
+    }
+
+    if(!testNumbers.test(telefonoPersona) && $.trim(telefonoPersona).length != 0){
+        openSnackbar('error','EL campo Teléfono tiene tener solo números')
+        return false
+    } else {
+        if($.trim(telefonoPersona).length != 10){
+            openSnackbar('error','El campo Teléfono debe tener 10 números')
+            return false
+        }
+    }
+    const rateData = {
+        correoPersona,
+        nombrePersona,
+        telefonoPersona,
+        rate,
+        comentarioProducto,
+        producto
+    }
+    let rate_request = await fetch('/product/rate', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': token
+        },
+        body: JSON.stringify(rateData)
+    }).then((response) => {
+        response.json().then((data) =>{
+            if(data.status == 'success'){
+                document.querySelector("#nombrePersona").value = ""
+                document.querySelector("#comentarioProducto").value = ""
+                document.querySelector("#correoPersona").value = ""
+                document.querySelector("#customer_rate").value = 0
+                document.querySelector("#telefonoPersona").value = ""
+                openSnackbar('success', '¡Gracias por su comentario!, pronto nos pondrmeos en contacto con usted')
+            } else {
+                openSnackbar('error', 'Ha ocurrido un error al enviar el comentario, intente de nuevo más tarde')
+            }
+
+        }).catch(() => openSnackbar('Error en el servidor, intente de nuevo más tarde'))
+    })
+})
+
+$(document).on('click', '.star', function(ev){
+    const rate = this.dataset.rate
+    $.each($(".star"), function(index, star){
+        const star_rate = star.dataset.rate
+        const current_star = $(star).find('span')[0]
+        if(star_rate <= rate){
+            $(current_star).css('color', "#FFD700")
+        } else {
+            $(current_star).css('color', "#dddddd")
+        }
+    })
+    $("#customer_rate").val(rate)
+})

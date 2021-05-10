@@ -16,6 +16,8 @@
     <meta property="og:image" content="{{asset('img/logos/logoOG.jpg')}}" />
     <meta property="og:image:url" content="{{asset('img/logos/logoOG.jpg')}}" />
     <meta property="og:image:secure_url" content="{{asset('img/logos/logoOG.jpg')}}" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
 @endsection
 
 @section('specificCSS')
@@ -313,59 +315,103 @@
                                 <div class="tab-content">
                                     <div id="fichTecnica" class="container tab-pane active">
                                         <div class="m-2">
-                                             {!! $product['dataSheet'] !!}
+                                            {!! $product['dataSheet'] !!}
                                         </div>
                                     </div>
-                                    {{--    <div id="formDudas" class="container tab-pane fade"><br>
-                                            <div id="div-formulario">
-                                            <h5>Dejanos tus datos para que un asesor te contacte.</h5>
-                                            <div class="divider mb-2"></div>
-                                            <form id="formularioDudas" action="javascript:void(0)">
-                                                {{ csrf_field() }}
-                                                <div class="row p-2">
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <label class="sr-only form-control-label" for="nombre">Nombre completo*:</label>
-                                                            <input type="text" class="form-control" name="nombre" placeholder="Nombre completo*" id="nombre" >
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <label class="sr-only form-control-label" for="email">Email*:</label>
-                                                            <input type="text" class="form-control" placeholder="Email*" id="email" name="email" >
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <label class="sr-only form-control-label" for="telefono">Teléfono (10 digitos)*:</label>
-                                                            <input type="text" class="form-control" placeholder="Teléfono (10 digitos)*" id="telefono" name="telefono">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <label class="sr-only form-control-label" for="whatsapp">Whatsapp:</label>
-                                                            <input type="text" class="form-control" placeholder="Whatsapp" id="whatsapp"  name="whatsapp">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-12">
-                                                        <div class="form-group">
-                                                            <label class="sr-only form-control-label" for="comentario">Comentarios</label>
-                                                            <textarea class="form-control" id="comentario" name="comentario" placeholder="Comentario" cols="2" rows="3"></textarea>
-                                                        </div>
-                                                    </div>
-                                                    <input type="hidden" id="producto" name="producto" value="{{$product['name']}}">
-                                                    <div class="col-md-2 offset-md-5 ">
-                                                        <button id="btnSubmit" type="submit" class="btn btn-warning btn-block">Enviar</button>
+                                </div>
+                            </div>
+                            <div class="row card shadow mt-3">
+                                <ul class="nav nav-tabs">
+                                    <li class="nav-item">
+                                        <a class="nav-link text-muted active" data-toggle="tab" href="#comentariosProducto">Comentarios del producto</a>
+                                    </li>
+                                </ul>
+                                <div class="tab-content mt-3">
+                                    <div id="comentariosProducto" class="container tab-pane active">
+                                        <div class="m-2">
+                                            <div class="row">
+                                                <div class="col-md-6 col-sm-12">
+                                                    <div class="form-group">
+                                                        <input type="text" class="form-control" placeholder="Su nombre completo" id="nombrePersona" name="nomre_cliente" />
                                                     </div>
                                                 </div>
-                                            </form>
-                                            </div>
-                                            <div id="div-send">
-                                                <div class="alert alert-success" role="alert">
-                                                    Gracias por compartir con nosotros, en breve nos comunicamos contigo.
+                                                <div class="col-md-6 col-sm-12">
+                                                    <div class="form-group">
+                                                        <input type="text" class="form-control" placeholder="Su Correo Electrónico" id="correoPersona" name="correo_persona" />
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>--}}
+                                            <div class="row">
+                                                <div class="col-md-6 col-sm-12">
+                                                    <div class="form-group">
+                                                        <input type="text" class="form-control" placeholder="Su Número de teléfono (10 dígitos)" id="telefonoPersona" name="telefono_persona" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <span>Su calificación</span>
+                                                    <input type="hidden" id="customer_rate" value="0" />
+                                                    <input type="hidden" id="commentToken" value="{{ csrf_token() }}"/>
+                                                    <div class="stars">
+                                                        @for ($i = 1; $i <= 5; $i++)
+                                                        <div class="star" data-rate="{{ $i }}" style="display: inline-block; cursor:pointer;">
+                                                            <span class="material-icons" style="color:#dddddd;">
+                                                                star_rate
+                                                            </span>
+                                                        </div>
+                                                        @endfor
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <textarea class="form-control" placeholder="" rows="3" id="comentarioProducto" name="comentario"></textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <button class="btn btn-primary" id="enviarComentario">Enviar Comentario</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                            @foreach ($comentarios as $comentario)
+                                                <hr />
+                                                <div class="nombreComentario">
+                                                    <strong>{{ $comentario->nombre }}</strong><br/>
+                                                </div>
+                                                <div class="puntuacion">
+                                                    @foreach (range(1,5) as $estrella)
+                                                        <div class="user-star" style="display: inline-block;">
+                                                            @if($estrella <= $comentario->calificacion)
+                                                                <span class="material-icons" style="color:#FFD700;">
+                                                            @else
+                                                                <span class="material-icons" style="color:#dddddd;">
+                                                            @endif
+                                                                star_rate
+                                                            </span>
+                                                        </div>
+                                                    @endforeach
+                                                </div>
+                                                <div class="mensajeComentario" style="text-align: justify;">
+                                                    {!! $comentario->mensaje !!}
+                                                    @if($comentario->respuesta != "")
+                                                        <div class="mx-5 my-2">
+                                                            <hr/>
+                                                            <strong>Respuesta de Administración:</strong><br/>
+                                                            {{ $comentario->respuesta }}
+                                                        </div>
+                                                    @endif
+                                                </div>
+                                                <div class="fechaComentario" style="float: right; font-size:small;">
+                                                    {{ date('d/m/Y h:i A', strtotime($comentario->fecha)) }}
+                                                </div>
+                                                <br/>
+                                            @endforeach
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             @if(count($productsRelated))
