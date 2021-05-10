@@ -323,7 +323,7 @@
                             <div class="row card shadow mt-3">
                                 <ul class="nav nav-tabs">
                                     <li class="nav-item">
-                                        <a class="nav-link text-muted active" data-toggle="tab" href="#comentariosProducto">Comentarios del producto</a>
+                                        <a class="nav-link text-muted active" data-toggle="tab" href="#comentariosProducto">Preguntas y respuestas</a>
                                     </li>
                                 </ul>
                                 <div class="tab-content mt-3">
@@ -348,10 +348,10 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <span>Su calificación</span>
+                                                    {{-- <span>Su calificación</span> --}}
                                                     <input type="hidden" id="customer_rate" value="0" />
                                                     <input type="hidden" id="commentToken" value="{{ csrf_token() }}"/>
-                                                    <div class="stars">
+                                                    {{-- <div class="stars">
                                                         @for ($i = 1; $i <= 5; $i++)
                                                         <div class="star" data-rate="{{ $i }}" style="display: inline-block; cursor:pointer;">
                                                             <span class="material-icons" style="color:#dddddd;">
@@ -359,7 +359,7 @@
                                                             </span>
                                                         </div>
                                                         @endfor
-                                                    </div>
+                                                    </div> --}}
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -369,10 +369,27 @@
                                                     </div>
                                                 </div>
                                             </div>
+
+                                            <h5>Comprobemos que eres humano</h5>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label>¿Cuánto es ?</label>
+                                                        <input class="form-control" type="text" readonly id="captchaQuestion" />
+                                                        <input type="hidden" id="b"/>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label>Su respuesta</label>
+                                                        <input type="text" class="form-control" id="captchaAnswere" />
+                                                    </div>
+                                                </div>
+                                            </div>
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     <div class="form-group">
-                                                        <button class="btn btn-primary" id="enviarComentario">Enviar Comentario</button>
+                                                        <button class="btn btn-primary" id="enviarComentario">Enviar Pregunta</button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -382,7 +399,7 @@
                                                 <div class="nombreComentario">
                                                     <strong>{{ $comentario->nombre }}</strong><br/>
                                                 </div>
-                                                <div class="puntuacion">
+                                                {{-- <div class="puntuacion">
                                                     @foreach (range(1,5) as $estrella)
                                                         <div class="user-star" style="display: inline-block;">
                                                             @if($estrella <= $comentario->calificacion)
@@ -394,7 +411,7 @@
                                                             </span>
                                                         </div>
                                                     @endforeach
-                                                </div>
+                                                </div> --}}
                                                 <div class="mensajeComentario" style="text-align: justify;">
                                                     {!! $comentario->mensaje !!}
                                                     @if($comentario->respuesta != "")

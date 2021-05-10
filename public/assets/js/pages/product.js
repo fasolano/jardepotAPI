@@ -1,5 +1,9 @@
 // JavaScript Validación
 $(document).ready(function() {  // <-- ensure form's HTML is ready
+    var n1 = Math.round(Math.random() * 10 + 1);
+    var n2 = Math.round(Math.random() * 10 + 1);
+    $("#captchaQuestion").val(n1 + " + " + n2);
+    $("#b").val(n1+n2)
 
     $('#div-formulario').show();
     $('#div-send').hide();
@@ -197,10 +201,10 @@ $("#enviarComentario").on('click', async function(evento){
             }
         }
     }
-    if(rate == 0){
-        openSnackbar('error','Tiene que proporcionar una calificación')
-        return false
-    }
+    // if(rate == 0){
+    //     openSnackbar('error','Tiene que proporcionar una calificación')
+    //     return false
+    // }
 
     if(!testEmail.test(correoPersona) && $.trim(nombrePersona).length != 0){
         openSnackbar('error','EL campo Correo tiene que ser un correo electrónico')
@@ -220,6 +224,10 @@ $("#enviarComentario").on('click', async function(evento){
             openSnackbar('error','El campo Teléfono debe tener 10 números')
             return false
         }
+    }
+    if($("#captchaAnswere").val() != $("#b").val()){
+        openSnackbar('error', 'La respuesta al test no es correcta')
+        return false
     }
     const rateData = {
         correoPersona,
@@ -244,9 +252,10 @@ $("#enviarComentario").on('click', async function(evento){
                 document.querySelector("#correoPersona").value = ""
                 document.querySelector("#customer_rate").value = 0
                 document.querySelector("#telefonoPersona").value = ""
+                document.querySelector("#captchaAnswere").value = ""
                 openSnackbar('success', '¡Gracias por su comentario!, pronto nos pondrmeos en contacto con usted')
             } else {
-                openSnackbar('error', 'Ha ocurrido un error al enviar el comentario, intente de nuevo más tarde')
+                openSnackbar('danger', 'Ha ocurrido un error al enviar el comentario, intente de nuevo más tarde')
             }
 
         }).catch(() => openSnackbar('Error en el servidor, intente de nuevo más tarde'))
