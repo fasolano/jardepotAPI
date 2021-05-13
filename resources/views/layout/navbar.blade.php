@@ -57,7 +57,11 @@
                             </div>
                             <div class="col-md-6">
                                 <div style="position: fixed;margin-left: 28px;margin-top: 20px !important;">
+                                    @if(isset($product['name']))
+                                    <img style="width: 60px;height: 60px; cursor: pointer;" onclick="return gtag_report_conversion('https://wa.me/525551857805?text=Hola,%20me%20gustaría%20saber%20sobre%20{{ urlencode($product['name']) }}')"
+                                    @else
                                     <img style="width: 60px;height: 60px; cursor: pointer;" onclick="return gtag_report_conversion('https://wa.me/525551857805?text=Hola,%20me%20gustaría%20saber%20')"
+                                    @endif
                                          src="{{asset('assets/images/icons/whatsapp.png')}}"
                                     title="WhatsApp"alt="WhatsApp">
                                 </div>
@@ -325,7 +329,11 @@
     </div>
     <div class="row">
         <div class="col-12">
+            @if(isset($product['name']))
+            <a class="mr-2 btn-success btn-sm d-flex" onclick="return gtag_report_conversion('https://wa.me/525551857805?text=Hola,%20me%20gustaría%20saber%20sobre%20{{ urlencode($product['name']) }}')"
+            @else
             <a class="mr-2 btn-success btn-sm d-flex" onclick="return gtag_report_conversion('https://wa.me/525551857805?text=Hola,%20me%20gustaría%20saber%20')"
+            @endif
                style="text-decoration: none; color: #fff;" rel="noopener">
                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true"
                      focusable="false" width="20px" height="20px" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);"
