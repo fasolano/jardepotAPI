@@ -259,8 +259,9 @@ class ConfirmController extends Controller {
 
     public function sendAlertMailOrder($clientForm, $order, $payment, $mailSeller){
         // $destino = "fasolanof@gmail.com";
-        $destino = "alcocer@jardepot.com";
+        // $destino = "alcocer@jardepot.com";
         //$destino = $mailSeller;
+        $destino = "ventas10@jardepot.com";
 
         $dia = date('d-m-Y');
         $hora = date('H:i:s');
