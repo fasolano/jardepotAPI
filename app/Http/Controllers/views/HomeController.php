@@ -12,12 +12,30 @@ use Illuminate\Support\Facades\Storage;
 class HomeController extends Controller
 {
     private $unwanted_array;
+    private $redirectors;
     public function __construct(){
         $this -> unwanted_array = array(    'Š'=>'S', 'š'=>'s', 'Ž'=>'Z', 'ž'=>'z', 'À'=>'A', 'Á'=>'A', 'Â'=>'A', 'Ã'=>'A', 'Ä'=>'A', 'Å'=>'A', 'Æ'=>'A', 'Ç'=>'C', 'È'=>'E', 'É'=>'E',
             'Ê'=>'E', 'Ë'=>'E', 'Ì'=>'I', 'Í'=>'I', 'Î'=>'I', 'Ï'=>'I', 'Ñ'=>'N', 'Ò'=>'O', 'Ó'=>'O', 'Ô'=>'O', 'Õ'=>'O', 'Ö'=>'O', 'Ø'=>'O', 'Ù'=>'U',
             'Ú'=>'U', 'Û'=>'U', 'Ü'=>'U', 'Ý'=>'Y', 'Þ'=>'B', 'ß'=>'Ss', 'à'=>'a', 'á'=>'a', 'â'=>'a', 'ã'=>'a', 'ä'=>'a', 'å'=>'a', 'æ'=>'a', 'ç'=>'c',
             'è'=>'e', 'é'=>'e', 'ê'=>'e', 'ë'=>'e', 'ì'=>'i', 'í'=>'i', 'î'=>'i', 'ï'=>'i', 'ð'=>'o', 'ñ'=>'n', 'ò'=>'o', 'ó'=>'o', 'ô'=>'o', 'õ'=>'o',
             'ö'=>'o', 'ø'=>'o', 'ù'=>'u', 'ú'=>'u', 'û'=>'u', 'ý'=>'y', 'þ'=>'b', 'ÿ'=>'y' );
+        $this->redirectors = [
+            route('products', ['equipos', 'motores']) => route('products', ['repuestos-y-consumibles', 'motores']),
+            route('products', ['equipos', 'multifuncionales']) => route('products', ['jardineria', 'multifuncionales']),
+            route('products', ['equipos', 'tractopodadoras']) => route('products', ['jardineria', 'tractopodadoras']),
+            route('products', ['equipos', 'motocultores']) => route('products', ['agricultura', 'motocultores']),
+            route('products', ['equipos', 'parihuelas']) => route('products', ['agricultura', 'parihuelas']),
+            route('products', ['equipos', 'termonebulizadoras']) => route('products', ['sanitizacion', 'termonebulizadoras']),
+            route('products', ['equipos', 'trituradoras']) => route('products', ['agricultura', 'trituradores']),
+            route('products', ['equipos', 'nebulizadoras']) => route('products', ['sanitizacion', 'nebulizadoras']),
+            route('products', ['equipos', 'hoyadoras']) => route('products', ['agricultura', 'hoyadoras']),
+            route('products', ['equipos', 'sopladoras']) => route('products', ['jardineria', 'sopladoras']),
+            route('products', ['equipos', 'desbrozadoras']) => route('products', ['jardineria', 'desbrozadoras']),
+            route('products', ['equipos', 'podadoras']) => route('products', ['jardineria', 'podadoras']),
+            route('products', ['equipos', 'cortasetos']) => route('products', ['jardineria', 'cortasetos']),
+            route('products2', ['marcas', 'shindaiwa', 'cortasetos']) => route('products', ['jardineria', 'cortasetos']),
+            route('products2', ['marcas', 'kawashima', 'trituradoras']) => route('products', ['agricultura', 'trituradores']),
+        ];
     }
 
     public function index(){
@@ -33,7 +51,9 @@ class HomeController extends Controller
                 $niv1 = str_replace(' ','-', $categoria1->name);
                 $niv2 = str_replace(' ','-',$categoria2->name);
                 $href = strtr($niv1.'/'.$niv2, $this->unwanted_array);
-                $menuAdditional[$key]['nivel2'][$key2]['href'] = strtolower($href);
+                $url = strtolower(url($href));
+                $url = isset($this->redirectors[$url]) ? $this->redirectors[$url] : $url;
+                $menuAdditional[$key]['nivel2'][$key2]['href'] = $url;
             }
         }
         $descriptionLevel2 = $productoRepository->getDescriptionNivel2(0);

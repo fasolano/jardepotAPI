@@ -113,7 +113,7 @@
                             <div class="jd-sublinks-items">
                                 @if(isset($cat1['nivel2']))
                                 @foreach($cat1['nivel2'] as $categoria2)
-                                    <a href="{{url($categoria2['href'])}}" class="my-1"><i class="material-icons">keyboard_arrow_right</i>{{$categoria2['name']}}
+                                    <a href="{{ $categoria2['href'] }}" class="my-1"><i class="material-icons">keyboard_arrow_right</i>{{$categoria2['name']}}
                                     </a>
                                 @endforeach
                                 @endif
