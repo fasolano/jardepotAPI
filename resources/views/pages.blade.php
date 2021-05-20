@@ -189,7 +189,7 @@
         script.src = target;var elem = document.head;elem.appendChild(script);
     </script>
     <noscript>
-        <a href='https://www.clickcease.com' rel='nofollow'><img src='https://monitor.clickcease.com/stats/stats.aspx' alt='ClickCease'/></a>
+        <a href='https://www.clickcease.com' rel='nofollow'><img src='https://monitor.clickcease.com/stats/stats' alt='ClickCease'/></a>
     </noscript>
     <!--  Clickcease.com tracking-->
 
