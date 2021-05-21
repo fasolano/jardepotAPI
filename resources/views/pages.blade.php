@@ -46,7 +46,7 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-28826115-1"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
-        function gtag() {
+        async function gtag() {
             dataLayer.push(arguments);
         }
         gtag('js', new Date());
@@ -56,14 +56,14 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=AW-786429434"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
+        async function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
 
         gtag('config', 'AW-786429434');
     </script>
     <script>
-        function gtag_report_conversion(url) {
-            var callback = function () {
+        async function gtag_report_conversion(url) {
+            var callback = await function () {
                 if (typeof(url) != 'undefined') {
                     // Abrir en nueva tab
                     var win = window.open(url, '_blank');
