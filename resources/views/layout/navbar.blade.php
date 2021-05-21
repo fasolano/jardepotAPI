@@ -169,7 +169,7 @@
                             <img src="{{asset("assets/images/icons/youtube_40x40.png")}}" alt="" style="width: 40px;">
                         </a>
                     </div>--}}
-                    <div class="col-md-3 mt-2 ml-n2">
+                    <div class="col-md-3 mt-2 ml-md-n2 ml-lg-n4">
                         <button class="btn btn ml-4" role="button" style="padding: 0 0 0 0 !important; color: #FFF" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <div class="icon_carrito" style="margin-bottom:-6px; margin-top:1px;" alt="Mostrar mi carrito" title="Mostrar mi carrito"></div>
                             {{-- <i class="material-icons d-flex" style="color: #f68600;font-size: 24px !important;">shopping_cart</i> --}}
@@ -253,7 +253,7 @@
 {{--                    <ul class="navbar-nav mr-auto col-md-8 d-flex flex-wrap justify-content-center align-items-center" id="menu">--}}
                     <ul class="navbar-nav mr-auto col-md-12 d-flex flex-wrap justify-content-center align-items-center" id="menu">
                         @foreach ($navbar as $key => $categoria1)
-                            <li class="nav-item dropdown mr-lg-4 ml-md-1 ml-lg-2 column-items" id="prueba1" style="@if($key == 0){{ 'margin-left:-1.7rem !important;' }}@else{{ 'margin-left: 0.7rem !important;' }}@endif">
+                            <li class="nav-item dropdown mr-lg-4 ml-md-1 ml-lg-2 column-items" id="prueba1" style="@if($key == 0){{ 'margin-left:-1.7rem;' }}@else{{ 'margin-left: 0.7rem !important;' }}@endif">
                                 <a class="d-flex flex-wrap justify-content-center align-items-center" title="{{$categoria1['nivel1']}}"  href="javascript:;">
                                     {{$categoria1['nivel1']}}
                                 </a>
