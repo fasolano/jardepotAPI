@@ -248,10 +248,10 @@ function calculateTotal() {
 
     $('#total-final').text(formatterDolar.format(total));
     if (showButtons){
-        $('.btn-modal-mercado').css('display', 'block');
+        // $('.btn-modal-mercado').css('display', 'block');
         // $('.btn-modal-paypal').css('display', 'block');
     }else{
-        $('.btn-modal-mercado').css('display', 'none');
+        // $('.btn-modal-mercado').css('display', 'none');
         // $('.btn-modal-paypal').css('display', 'none');
     }
     checkRowsProducts();
