@@ -1,5 +1,5 @@
-<script async type="text/javascript" src="{{ asset('assets/js/js.cookie.min.js') }}"></script>
-<script async type="text/javascript" src="{{ asset('assets/js/path.js') }}"></script>
+<script type="text/javascript" src="{{ asset('assets/js/js.cookie.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('assets/js/path.js') }}"></script>
 
 <script async src="{{asset('assets/js/bootstrap.bundle.min.js')}}"></script>
 <script async src="{{asset('assets/js/popper.min.js')}}"></script>
