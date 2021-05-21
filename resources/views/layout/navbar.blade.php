@@ -133,7 +133,7 @@
         <div class="container-xl" style="height: 82px !important">
             <div class="container ">
                 <div class="row">
-                    <div class="col-md-1 my-3 ml-xxl-1 mr-lg-n4 ml-md-n3 pr-md-n3">
+                    <div class="col-md-1 my-3 ml-xl-1 mr-lg-n4 ml-md-n3 pr-md-n3">
                         <i style="color: #ffffff; font-size: 50px; cursor:pointer;" id="toggle-navbar" class="material-icons d-flex">menu</i>
                     </div>
                     <div class="col-md-2 my-3 mr-n3 ml-n3">
