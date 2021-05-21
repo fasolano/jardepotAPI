@@ -1,100 +1,158 @@
 {{--Vista escritorio--}}
+<style>
+    .icon_ofertas{
+        background-image: url('/assets/images/icons/header_ofertas.png');
+        background-size: cover;
+        width: 40px !important;
+        height: 40px !important;
+        transition: all 0.3s ease-in-out;
+    }
+    .icon_ofertas:hover{
+        background-image: url('/assets/images/icons/header_ofertas_alt.png');
+        background-size: cover;
+        width: 40px !important;
+        height: 40px !important;
+    }
+    .icon_whatsapp{
+        background-image: url('/assets/images/icons/header_whatsapp.png');
+        background-size: cover;
+        width: 40px !important;
+        height: 40px !important;
+        transition: all 0.3s ease-in-out;
+    }
+    .icon_whatsapp:hover{
+        background-image: url('/assets/images/icons/header_whatsapp_alt.png');
+        background-size: cover;
+        width: 40px !important;
+        height: 40px !important;
+    }
+    .icon_refacciones{
+        background-image: url('/assets/images/icons/header_refacciones.png');
+        background-size: cover;
+        width: 40px !important;
+        height: 40px !important;
+        transition: all 0.3s ease-in-out;
+    }
+    .icon_refacciones:hover{
+        background-image: url('/assets/images/icons/header_refacciones_alt.png');
+        background-size: cover;
+        width: 40px !important;
+        height: 40px !important;
+    }
+    .icon_carrito{
+        background-image: url('/assets/images/icons/header_carrito.png');
+        background-size: cover;
+        width: 40px !important;
+        height: 46px !important;
+        transition: all 0.3s ease-in-out;
+    }
+    .icon_carrito:hover{
+        background-image: url('/assets/images/icons/header_carrito_alt.png');
+        background-size: cover;
+        width: 40px !important;
+        height: 46px !important;
+    }
+</style>
 <div class="sticky-top">
     <nav class="navbar-dark bg-dark container-fluid d-none d-md-none d-lg-block">
         <div class="row justify-content-md-center flex-column align-items-center">
-            <div class="div-navbar row">
-{{--                    <div class="col-2 d-none d-sm-none d-md-block">--}}
-                    <div class="col-md-10">
-                        <div class="row">
-                            <div class="col-md-2" style="padding-right: 0;padding-left: 5px">
-                                <div class="text-barra text-left">
-                                    EDOMX <br><a href="tel:7226481040"><i class="material-icons iconMod">call</i>722 648 1040</a>
-                                </div>
+            <div class="div-navbar row" style="height: 82px;">
+                <div class="col-md-1 col-sm-12 mr-3">
+                    <div style="color: #fff;background-color: #e76a27;" class="h-100 w-100 mx-auto px-lg-n2">
+                        <a style="cursor: pointer;" data-toggle="modal" data-target="#modalTelefonos" class="mx-lg-3">
+                            <i class="material-icons my-3" style="font-size: 45px">add_ic_call</i>
+                        </a>
+                    </div>
+                        {{-- <div class="col-md-6">
+                            <div style="position: fixed;margin-left: 28px;margin-top: 20px !important;">
+                                @if(isset($product['name']))
+                                <img style="width: 60px;height: 60px; cursor: pointer;" onclick="return gtag_report_conversion('https://wa.me/525551857805?text=Hola,%20me%20gustaría%20saber%20sobre%20{{ urlencode($product['name']) }}')"
+                                @else
+                                <img style="width: 60px;height: 60px; cursor: pointer;" onclick="return gtag_report_conversion('https://wa.me/525551857805?text=Hola,%20me%20gustaría%20saber%20')"
+                                @endif
+                                    src="{{asset('assets/images/icons/whatsapp.png')}}"
+                                title="WhatsApp"alt="WhatsApp">
                             </div>
-    {{--                    <div class="col-7 d-flex" style="padding-right: 0">--}}
-                            <div class="col-md-2" style="padding: 0">
-                                <div class="text-barra text-left">
-                                    CDMX <br><a href="tel:5549968849"><i class="material-icons iconMod">call</i>55 4996 8849</a>
-                                </div>
+                        </div> </div>--}}
+                </div>
+                <div class="col-md-11 ml-lg-n5">
+                    <div class="row my-2">
+                        <div class="col-md-2 mt-2" style="padding: 0; line-height:25px;">
+                            <div class="text-barra-2 text-center" style="font-size: 22px;">
+                                Llámanos al<br/>
+                                <a href="tel:8002129225" style="font-size: 22px !important;">
+                                    800 212 9225
+                                </a>
                             </div>
-                            <div class="col-md-2" style="padding: 0">
-                                <div class="text-barra text-left">
-                                    GDL<br>
-                                    <a href="tel:3317283353"><i class="material-icons iconMod">call</i>33 1728 3353</a>
-                                </div>
+                        </div>
+                        <div class="col-md-2 mt-2 ml-md-n1" style="padding-right: 0;padding-left: 5px; line-height:25px;">
+                            <div class="text-barra text-center" style="font-size: 20px;">
+                                EDOMX <br><a href="tel:7226481040" style="font-size: 22px !important;">
+                                    722 648 1040
+                                </a>
                             </div>
-                            <div class="col-md-2" style="padding: 0">
-                                <div class="text-barra text-left">
-                                    Monterrey<br>
-                                    <a href="tel:8120635708"><i class="material-icons iconMod">call</i>81 2063 5708</a>
-                                </div>
+                        </div>
+                        <div class="col-md-2 mt-2 ml-md-n1" style="padding: 0; line-height:25px;">
+                            <div class="text-barra text-center" style="font-size: 20px;">
+                                CDMX <br><a href="tel:5549968849" style="font-size: 22px !important;">
+                                    55 4996 8849
+                                </a>
                             </div>
-                            <div class="col-md-2" style="padding: 0">
-                                <div class="text-barra text-left">
-                                    Mayoreo<br>
-                                    <a href="tel:5544598506"><i class="material-icons iconMod">call</i>55 4459 8506</a>
-                                </div>
+                        </div>
+                        <div class="col-md-2 mt-2 ml-md-n1" style="padding: 0; line-height:25px;">
+                            <div class="text-barra text-center" style="font-size: 20px;">
+                                GDL<br>
+                                <a href="tel:3317283353" style="font-size: 22px !important;">
+                                    33 1728 3353
+                                </a>
                             </div>
-
-                            <div class="col-md-2" style="padding: 0">
-                                <div class="text-barra-2 text-left">
-                                    Llámanos al:<br>
-                                    <a href="tel:8002129225">
-                                        <i class="material-icons iconMod">local_phone</i>800 212 9225
-                                    </a>
-                                </div>
+                        </div>
+                        <div class="col-md-2 mt-2 ml-md-n1" style="padding: 0; line-height:25px;">
+                            <div class="text-barra text-center" style="font-size: 20px;">
+                                MTY<br> <a href="tel:8120635708" style="font-size: 22px !important;">
+                                    81 2063 5708
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-2 mt-2 ml-md-n1" style="padding: 0; line-height:25px;">
+                            <div class="text-barra text-center" style="font-size: 20px;">
+                                Mayoreo<br> <a href="tel:5544598506" style="font-size: 22px !important;">
+                                    55 4459 8506
+                                </a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-2">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div style="margin-top: 9px;color: #fff;">
-                                    <a style="cursor: pointer;" data-toggle="modal" data-target="#modalTelefonos">
-                                        <i class="material-icons" style="font-size: 30px">keyboard_arrow_right<i class="material-icons" style="font-size: 40px">add_ic_call</i></i>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div style="position: fixed;margin-left: 28px;margin-top: 20px !important;">
-                                    @if(isset($product['name']))
-                                    <img style="width: 60px;height: 60px; cursor: pointer;" onclick="return gtag_report_conversion('https://wa.me/525551857805?text=Hola,%20me%20gustaría%20saber%20sobre%20{{ urlencode($product['name']) }}')"
-                                    @else
-                                    <img style="width: 60px;height: 60px; cursor: pointer;" onclick="return gtag_report_conversion('https://wa.me/525551857805?text=Hola,%20me%20gustaría%20saber%20')"
-                                    @endif
-                                         src="{{asset('assets/images/icons/whatsapp.png')}}"
-                                    title="WhatsApp"alt="WhatsApp">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                </div>
             </div>
         </div>
-        <div class="container-xl">
-            <div class="container">
+        <div class="container-xl" style="height: 82px !important">
+            <div class="container ">
                 <div class="row">
-                    <div class="col-md-3">
-                        <a class="navbar-brand" href="{{url('/')}}">
-                            <picture>
+                    <div class="col-md-1 my-3 mr-lg-n4 ml-md-n3">
+                        <i style="color: #ffffff; font-size: 50px; cursor:pointer;" id="toggle-navbar" class="material-icons d-flex">menu</i>
+                    </div>
+                    <div class="col-md-2 my-3 mr-n3 ml-n3">
+                        <a class="navbar-brand" href="{{url('/')}}" style="height: 50px">
+                            <picture >
                                 <source srcset="{{asset('img/logos/logoJardepot.webp')}}" type="image/webp">
                                 <source srcset="{{asset('img/logos/logoJardepot.png')}}" type="image/png">
-                                <img class="logo-navbar" style="width: 80%" src="{{asset('img/logos/logoJardepot.png')}}"
-                                     alt="Logo Jardepot" title="Logo Jardepot">
+                                <img class="logo-navbar" style="height:100%;" src="{{asset('img/logos/logoJardepot.png')}}"
+                                    alt="¡Tu equipo siempre contigo!" title="¡Tu equipo siempre contigo!">
                             </picture>
 
                             {{--   <img class="logo-navbar" style="width: 58px;margin-left: 20px" src="{{asset('assets/images/otros/calaberita.png')}}"
                                     alt="Imagen Temporada" title="Imagen Temporada">--}}
                         </a>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-7 my-2 mr-n5">
                         <div class="" id="navbarsExample06">
                             <form id="search-form" class="form-inline my-2 my-md-0 search-form">
-                                <div class="input-group mb-3" style="width: 100%">
+                                <div class="input-group mb-3 mt-1" style="width: 95%">
                                     <input id="inputSearch" type="text" class="form-control inputSearch" placeholder="Busca tu producto..."
-                                           aria-label="Busca tu producto" aria-describedby="Busca tu producto.">
+                                        aria-label="Busca tu producto" aria-describedby="Busca tu producto." style="height: 40px !important; margin-bottom:-10px !important;">
                                     <div class="input-group-append">
                                     <span class="input-group-addon">
-                                        <button class="btn btnSearch" type="submit" id=""><i style="color: gray" class="material-icons d-flex">search</i></button></span>
+                                        <button class="btn btnSearch" type="submit" id="" style="height: 40px !important"><i style="color: gray" class="material-icons d-flex">search</i></button></span>
                                     </div>
                                 </div>
                             </form>
@@ -111,11 +169,12 @@
                             <img src="{{asset("assets/images/icons/youtube_40x40.png")}}" alt="" style="width: 40px;">
                         </a>
                     </div>--}}
-                    <div class="col-md-1" style="margin-top: 5px">
-                        <button class="btn dropdown-toggle" style="color: #FFF" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span style="color: #fff !important;cursor:pointer;font-size: 15px">
-                            <i class="material-icons d-flex" style="color: #f68600;font-size: 24px !important;">shopping_cart</i>
-                                <span class="cart-items-count" id="items-count-nav1">0</span> Carrito</span>
+                    <div class="col-md-3 mt-2 ml-n2">
+                        <button class="btn btn ml-4" role="button" style="padding: 0 0 0 0 !important; color: #FFF" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <div class="icon_carrito" style="margin-bottom:-6px; margin-top:1px;" alt="Mostrar mi carrito" title="Mostrar mi carrito"></div>
+                            {{-- <i class="material-icons d-flex" style="color: #f68600;font-size: 24px !important;">shopping_cart</i> --}}
+                            <span class="cart-items-count" id="items-count-nav1">0</span>
+                            <div style="font-size: 11px;" class="mt-2">Carrito</div>
                         </button>
                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left" aria-labelledby="dropdownMenuButton" style="width: 300px">
                             <div class="dropdown-item">
@@ -134,7 +193,26 @@
                                 </div>
                             </div>
                         </div>
+                        @php
+                            $producto = "";
+                            if(isset($product['name'])){
+                                $producto = urlencode(" " . $product['name']);
+                            }
+                        @endphp
+                        <button class="btn ml-2" role="button" style="color: #FFF;padding: 0 0 0 0 !important; margin-top:5px;" type="button" onclick="location.href='{{route('sales')}}'">
+                            <div class="icon_ofertas mx-1" alt="¡Ver ofertas!" title="¡Ver ofertas!"></div>
+                            <div style="font-size: 11px;" class="mt-1">¡Ofertas!</a></div>
+                        </button>
+                        <button class="btn ml-2" role="button" style="color: #FFF;padding: 0 0 0 0 !important; margin-top:5px;" type="button" onclick="return gtag_report_conversion('https://wa.me/525551857805?text=Hola,%20me%20gustaría%20saber%20sobre%20{{ $producto }}')">
+                            <div class="icon_whatsapp mx-1" alt="Asesoría" title="Asesoría"></div>
+                            <div style="font-size: 11px;" class="mt-1">Asesoría</div>
+                        </button>
+                        <button class="btn ml-2" role="button" style="color: #FFF;padding: 0 0 0 0 !important; margin-top:5px;" type="button" onclick="window.open('https://wa.me/527226481040?text=Hola,%20me%20gustaría%20saber%20sobre%20las%20refacciones%20de%20{{ $producto }}')">
+                            <div class="icon_refacciones mx-2" alt="Refacciones" title="Refacciones"></div>
+                            <div style="font-size: 11px;" class="mt-1">Refacciones</div>
+                        </button>
                     </div>
+
                     {{-- <div class="col-md-1" style="margin-top: 5px">
                         <button class="btn dropdown-toggle" style="text-align:center;color: #FFF" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span style="color: #fff !important;cursor:pointer;font-size: 15px">
@@ -148,15 +226,12 @@
                             </div>
                         </div>
                     </div> --}}
-                    <div class="col-md-1" style="margin-top: 10px">
-                        <a class="d-flex" href="{{route('sales')}}"><img style="width: 140px;height:50px;position: absolute;margin-left: -12px;margin-top: 5px" src="{{asset('assets/images/ofertas/promocion.png')}}" title="Ofertas Jardepot" alt="Ofertas Jardepot"></a>
-                    </div>
                 </div>
             </div>
         </div>
     </nav>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm d-none d-md-none  d-lg-block">
+    <nav id="menu-familias" class="navbar navbar-expand-lg navbar-light bg-light shadow-sm d-none d-md-none d-lg-block">
         <div class="container-xl">
             {{--        <a class="navbar-brand" href="#">Container XL</a>--}}
             <div class="collapse navbar-collapse row" id="navbarsDesktopL">
@@ -176,9 +251,12 @@
                     </ul>--}}
 
 {{--                    <ul class="navbar-nav mr-auto col-md-8 d-flex flex-wrap justify-content-center align-items-center" id="menu">--}}
-                    <ul class="navbar-nav mr-auto col-md-12 d-flex flex-wrap justify-content-left align-items-center" id="menu">
+                    <ul class="navbar-nav mr-auto col-md-12 d-flex flex-wrap justify-content-center align-items-center" id="menu">
                         @foreach ($navbar as $key => $categoria1)
-                            <li class="nav-item dropdown mx-1 column-items" id="prueba1"><a class="d-flex flex-wrap justify-content-center align-items-center" title="{{$categoria1['nivel1']}}"  href="javascript:;">{{$categoria1['nivel1']}} <i class="material-icons iconMod">keyboard_arrow_down</i></a>
+                            <li class="nav-item dropdown mr-lg-4 ml-md-1 ml-lg-2 column-items" id="prueba1" style="@if($key == 0){{ 'margin-left:-1.7rem !important;' }}@else{{ 'margin-left: 0.7rem !important;' }}@endif">
+                                <a class="d-flex flex-wrap justify-content-center align-items-center" title="{{$categoria1['nivel1']}}"  href="javascript:;">
+                                    {{$categoria1['nivel1']}}
+                                </a>
                                 @if(isset($categoria1['nivel2']))
                                 <ul class="{{count($categoria1['nivel2']) > 10 ? 'column-navbar':''}} dropdown-menu">
 
@@ -236,7 +314,7 @@
 </div>
 
 {{--Vista Movil --}}
-<nav class="navbar navbar-dark sticky-top bg-dark  d-block d-sm-block d-lg-none">
+<nav class="navbar navbar-dark sticky-top bg-dark  d-block d-sm-block d-lg-none" style="background-color: #3d3c3b !important;">
     <div class="div-navbar-movil">
         <div class="row" style="width: 100%">
             <div class="col-10">
@@ -472,3 +550,12 @@
         </div>
     </div>
 </div>
+<script>
+    $(document).on('click', '#toggle-navbar', function(){
+        if($("#menu-familias").hasClass('d-lg-block')){
+            $("#menu-familias").removeClass('d-lg-block')
+        } else {
+            $("#menu-familias").addClass('d-lg-block')
+        }
+    })
+</script>
