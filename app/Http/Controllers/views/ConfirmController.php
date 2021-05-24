@@ -40,12 +40,27 @@ class ConfirmController extends Controller {
 
         $state = "success";
         if (!$cart) {
+            $state = "failure";
             return view("pages/confirm", compact('state', 'payment'));
         }
 
         $address = explode(",", $address);
         $clientData = $this->dataClient($clientForm, $address);
         $client = $repositoryCheckout->insertClient($clientData);
+
+        /**
+         *
+         * Se Cambia de lugar esta línea porque donde estaba el carrito ya estaba cerrado
+         * y tiene una condición en la consulta que obtiene los productos si el carrito
+         * está abierto.
+         * $products = $cartRepository->getProductsFromCartFinal($cart->id_carrito);-
+         *
+         */
+        $products = $cartRepository->getProductsFromCartFinal($cart->id_carrito);
+        if($products->count() == 0){
+            $state = "failure";
+            return view("pages/confirm", compact('state', 'payment'));
+        }
 
         $order = $repository->insertOrder($client, $cart->total);
         $webOrder = $repositoryCheckout->insertWebOrder($order, $cart, $payment);
@@ -66,7 +81,7 @@ class ConfirmController extends Controller {
         $billingDeleveryData = array_merge($deliveryForm, $billingForm, ['idPedidos' => $order->idPedidos], ['id_cliente' => $client]);
         $repositoryCheckout->insertDeliveryBilling($billingDeleveryData);
 
-        $products = $cartRepository->getProductsFromCartFinal($cart->id_carrito);
+
         $repository->insertProductsOrder($order, $products);
 
         $this->sendAlertMailOrder($clientData, $order->idPedidos, $payment, $mailSeller);
