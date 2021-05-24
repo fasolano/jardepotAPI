@@ -269,7 +269,9 @@ function getCartProductsView(){
         };
         parameters['success'] = function (response) {
             response = JSON.parse(response);
-
+            if(response.cart.length != 0){
+                $('.payment-method').css('display', 'd-block');
+            }
             $.each(response.cart, function (i, e) {
                 var item = '<tr>' +
                     '<td><img style="width: 80px;height: 80px;"' +
@@ -300,6 +302,8 @@ function getCartProductsView(){
             calculateTotal();
         };
         ajaxCall(parameters);
+    } else {
+        $('.payment-method').css('display', 'none');
     }
 }
 

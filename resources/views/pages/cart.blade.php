@@ -84,18 +84,18 @@
                         <div class="col-md-3 text-center my-2">
                             <a class="btn btn-warning" href="{{url('/')}}">Seguir comprando</a>
                         </div>
-                        <div class="col-md-3 text-center my-2">
+                        <div class="col-md-3 text-center my-2 payment-method">
                             <a class="btn btn-warning btn-modal-paypal" href="javascript: void(0)" id="btn-paypal-modal" data-toggle="modal"
                                data-target="#modalPayPal">¡Pagar con tarjeta!
                                 <img src="{{asset("assets/images/bancos/boton-paypal.png")}}" style="width: 150px;" title="Pagar Paypal" alt="Pagar Paypal">
                             </a>
                         </div>
-                        <div class="col-md-3 text-center my-2">
+                        <div class="col-md-3 text-center my-2 payment-method">
                             <a class="btn btn-warning btn-modal-mercado" href="javascript: void(0)" data-toggle="modal"
                                data-target="#modalMercadoPago" style="background-color: #c7c7c7; border: none;">¡Compra con Mensualidades!
                                 <img src="{{asset("assets/images/bancos/mercadopago.png")}}" title="Pagar MergadoPago" alt="Pagar MercadoPago"></a>
                         </div>
-                        <div class="col-md-3 text-center my-2">
+                        <div class="col-md-3 text-center my-2 payment-method">
                             <a href="{{url('/checkout')}}" class="btn btn-warning">Pagar con transferencia o depósito bancario</a>
                         </div>
                     </div>
