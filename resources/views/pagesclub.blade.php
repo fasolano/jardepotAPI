@@ -127,7 +127,7 @@
     </script>
     <script>
         gtag('config', 'AW-786429434/m1HsCJHKk_EBEPrr__YC', {
-            'phone_conversion_number': '442 380 1818'
+            'phone_conversion_number': '442 396 0365'
         });
     </script>
     <script>
@@ -192,7 +192,7 @@
         script.src = target;var elem = document.head;elem.appendChild(script);
     </script>
     <noscript>
-        <a href='https://www.clickcease.com' rel='nofollow'><img src='https://monitor.clickcease.com/stats/stats.aspx' alt='ClickCease'/></a>
+        <a href='https://www.clickcease.com' rel='nofollow'><img src='https://monitor.clickcease.com/stats/stats' alt='ClickCease'/></a>
     </noscript>
     <!--  Clickcease.com tracking-->
 
@@ -204,8 +204,14 @@
         </div>
     </div>
     <div id="overlay-bussy"><div id="loading"></div></div>
+    <div style="">
+        <img src="/assets/images/otros/business/header-1920.png" style="width: 100%;"/>
+    </div>
     <div class="container-fluid h-100 w-100">
         @yield('content')
+    </div>
+    <div>
+        <img src="/assets/images/otros/business/footer-1920.png" style="width: 100%;"/>
     </div>
 
 

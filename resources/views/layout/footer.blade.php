@@ -30,7 +30,7 @@
                 </div>
                 <div style="margin-bottom: 20px;">
                     <p>Querétaro</p>
-                    <a href="tel:4423801818" style="color: #fff;"><span class="my-4" style="font-size: 15px; font-weight: 300;">442 380 1818</span></a><br>
+                    <a href="tel:4423960365" style="color: #fff;"><span class="my-4" style="font-size: 15px; font-weight: 300;">442 396 0365</span></a><br>
                     <a href="tel:4421239272" style="color: #fff;"><span class="my-4" style="font-size: 15px; font-weight: 300;">442 123 9272</span></a><br>
                 </div>
             </div>

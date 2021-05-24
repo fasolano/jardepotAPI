@@ -483,7 +483,7 @@
                             </div>
                             <div style="margin-bottom: 20px;">
                                 <p style="margin-bottom: 0px;">Querétaro</p>
-                                <a href="tel:4423801818" class="telModal"><span class="my-4" style="font-size: 15px; font-weight: 300;"><i class="material-icons">call</i>442 380 1818</span></a><br>
+                                <a href="tel:4423960365" class="telModal"><span class="my-4" style="font-size: 15px; font-weight: 300;"><i class="material-icons">call</i>442 396 0365</span></a><br>
                                 <a href="tel:4421239272" class="telModal"><span class="my-4" style="font-size: 15px; font-weight: 300;"><i class="material-icons">call</i>442 123 9272</span></a><br>
                             </div>
                         </div>
