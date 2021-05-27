@@ -99,7 +99,7 @@
 
     {{-- <div class="row justify-content-md-center mt-4 d-block d-sm-block d-md-none"></div>--}}
 
-    <div class="d-none d-sm-none d-md-block m-3">
+    <div class="m-3">
         @include('components.infoCompra')
     </div>
 
