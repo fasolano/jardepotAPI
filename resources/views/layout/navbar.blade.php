@@ -57,6 +57,26 @@
             margin-left: .25rem !important;
         }
     }
+    @media (max-width: 1260px){
+        .ml-xxs-n1{
+            margin-left: -.25rem !important;
+        }
+        .ml-xxs-n2{
+            margin-left: -.5rem !important;
+        }
+        .ml-xxs-n3{
+            margin-left: -.75rem !important;
+        }
+        .ml-xxs-1{
+            margin-left: .25rem !important;
+        }
+        .ml-xxs-2{
+            margin-left: .5rem !important;
+        }
+        .ml-xxs-3{
+            margin-left: .75rem !important;
+        }
+    }
 </style>
 <div class="sticky-top">
     <nav class="navbar-dark bg-dark container-fluid d-none d-md-none d-lg-block">
@@ -133,10 +153,10 @@
         <div class="container-xl" style="height: 82px !important">
             <div class="container ">
                 <div class="row">
-                    <div class="col-md-1 my-3 ml-xl-1 mr-lg-n4 ml-md-n3 pr-md-n3">
+                    <div class="col-md-1 my-3 ml-xl-1 mr-lg-n4 ml-md-n3 pr-md-n3 ml-xxs-n3">
                         <i style="color: #ffffff; font-size: 50px; cursor:pointer;" id="toggle-navbar" class="material-icons d-flex">menu</i>
                     </div>
-                    <div class="col-md-2 my-3 mr-n3 ml-n3">
+                    <div class="col-md-2 my-3 mr-n3 ml-n3 ml-xxs-1">
                         <a class="navbar-brand" href="{{url('/')}}" style="height: 50px">
                             <picture >
                                 <source srcset="{{asset('img/logos/logoJardepot.webp')}}" type="image/webp">
@@ -149,7 +169,7 @@
                                     alt="Imagen Temporada" title="Imagen Temporada">--}}
                         </a>
                     </div>
-                    <div class="col-md-7 my-2 mr-n5">
+                    <div class="col-md-7 my-2 mr-n5 ml-xxs-3">
                         <div class="" id="navbarsExample06">
                             <form id="search-form" class="form-inline my-2 my-md-0 search-form">
                                 <div class="input-group mb-3 mt-1" style="width: 95%">
@@ -204,15 +224,15 @@
                                 $producto = urlencode(" " . $product['name']);
                             }
                         @endphp
-                        <button class="btn ml-2" role="button" style="color: #FFF;padding: 0 0 0 0 !important; margin-top:5px;" type="button" onclick="location.href='{{route('sales')}}'">
+                        <button class="btn ml-2 ml-xxs-1" role="button" style="color: #FFF;padding: 0 0 0 0 !important; margin-top:5px;" type="button" onclick="location.href='{{route('sales')}}'">
                             <div class="icon_ofertas mx-1" alt="¡Ver ofertas!" title="¡Ver ofertas!"></div>
                             <div style="font-size: 11px;" class="mt-1">¡Ofertas!</a></div>
                         </button>
-                        <button class="btn ml-2" role="button" style="color: #FFF;padding: 0 0 0 0 !important; margin-top:5px;" type="button" onclick="return gtag_report_conversion('https://wa.me/525551857805?text=Hola,%20me%20gustaría%20saber%20sobre%20{{ $producto }}')">
+                        <button class="btn ml-2 ml-xxs-1" role="button" style="color: #FFF;padding: 0 0 0 0 !important; margin-top:5px;" type="button" onclick="return gtag_report_conversion('https://wa.me/525551857805?text=Hola,%20me%20gustaría%20saber%20sobre%20{{ $producto }}')">
                             <div class="icon_whatsapp mx-1" alt="Asesoría" title="Asesoría"></div>
                             <div style="font-size: 11px;" class="mt-1">Asesoría</div>
                         </button>
-                        <button class="btn ml-2" role="button" style="color: #FFF;padding: 0 0 0 0 !important; margin-top:5px;" type="button" onclick="window.open('https://wa.me/527226481040?text=Hola,%20me%20gustaría%20saber%20sobre%20las%20refacciones%20de%20{{ $producto }}')">
+                        <button class="btn ml-2 ml-xxs-1" role="button" style="color: #FFF;padding: 0 0 0 0 !important; margin-top:5px;" type="button" onclick="window.open('https://wa.me/527226481040?text=Hola,%20me%20gustaría%20saber%20sobre%20las%20refacciones%20de%20{{ $producto }}')">
                             <div class="icon_refacciones mx-2" alt="Refacciones" title="Refacciones"></div>
                             <div style="font-size: 11px;" class="mt-1">Refacciones</div>
                         </button>
@@ -258,7 +278,7 @@
 {{--                    <ul class="navbar-nav mr-auto col-md-8 d-flex flex-wrap justify-content-center align-items-center" id="menu">--}}
                     <ul class="navbar-nav mr-auto col-md-12 d-flex flex-wrap justify-content-center align-items-center" id="menu">
                         @foreach ($navbar as $key => $categoria1)
-                            <li class="nav-item dropdown mr-xl-4 ml-md-1 ml-xl-2 column-items" id="prueba1" style="@if($key == 0){{ 'margin-left:-1.7rem;' }}@endif">
+                            <li class="nav-item dropdown mr-xl-4 ml-md-1 ml-xl-2 column-items ml-xxs-n1" id="prueba1" style="@if($key == 0){{ 'margin-left:-1.7rem;' }}@endif">
                                 <a class="d-flex flex-wrap justify-content-center align-items-center" title="{{$categoria1['nivel1']}}"  href="javascript:;">
                                     {{$categoria1['nivel1']}}
                                 </a>
