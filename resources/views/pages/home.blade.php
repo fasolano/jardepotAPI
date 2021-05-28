@@ -221,7 +221,7 @@
                             Todo el equipamiento en maquinaria para <strong>mejorar el
                             rendimiento de lo cultivos.</strong> Encuentre en nuestro extenso
                             catálogo, herramientas de primeras marcas para labrar tierras,
-                            separar los granos en las cocechas.
+                            separar los granos en las cosechas.
                         </p>
                     </div>
                 </div>
@@ -243,7 +243,7 @@
                         <br>
                         <p style="font-size: 12px;" class="mt-n1">
                             Contamos con el equipamiento necesario para la ejecución
-                            de una obra, para <strong>compactar superfucies, cortadoras de piso,
+                            de una obra, para <strong>compactar superficies, cortadoras de piso,
                             equipos para romper o demolición.</strong>
                         </p>
                     </div>
