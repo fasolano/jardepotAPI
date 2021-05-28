@@ -251,9 +251,9 @@
             </div>
         </div>
     </div>
-    <div class="row shadow border border-light p-3 bg-white mt-3 rounded">
+    {{-- <div class="row shadow border border-light p-3 bg-white mt-3 rounded">
         <h4 style="font-size: 23px !important;">{!! $descriptionLevel2->descripcionSitio !!}</h4>
-    </div>
+    </div> --}}
     <br/>
     <div class="d-block d-sm-block d-md-none mt-5">
         @include('components.infoCompra')
