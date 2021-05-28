@@ -182,7 +182,7 @@
     <div class="row pb-4 shadow" style="background-color: #ffffff; box-shadow:rgba(0, 0, 0, 0.54);">
         <div class="col-md-4 mt-4 col-lg-4 col-sm-12">
             <div class="row">
-                <div class="col-md-10 offset-md-1 text-center w-90">
+                <div class="col-md-10 offset-md-1 col-sm-10 offset-sm-1 text-center w-90">
                     <img
                         class="justify-self-center"
                         src="/assets/images/icons/equipos-jardineria.png"
@@ -205,7 +205,7 @@
         </div>
         <div class="col-md-4 mt-4 col-lg-4 col-sm-12">
             <div class="row">
-                <div class="col-10 offset-md-1 text-center">
+                <div class="col-md-10 offset-md-1 col-sm-10 offset-sm-1 text-center w-90">
                     <img
                         class="justify-self-center"
                         src="/assets/images/icons/equipos-agricolas.png"
@@ -229,7 +229,7 @@
         </div>
         <div class="col-md-4 mt-4 col-lg-4 col-sm-12">
             <div class="row">
-                <div class="col-10 offset-md-1 text-center">
+                <div class="col-md-10 offset-md-1 col-sm-10 offset-sm-1 text-center w-90">
                     <img
                         class="justify-self-center"
                         src="/assets/images/icons/equipos-construccion.png"
