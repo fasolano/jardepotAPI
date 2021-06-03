@@ -166,7 +166,7 @@
             @endif
         @endforeach
     </div>
-    <div class="row mt-4">
+    {{-- <div class="row mt-4">
         <div class="col-12" style="background-color: #3d3c3b; color: white;
             border-bottom: 4px solid #e76a27;">
             <h2 class="text-center my-3">¿Quiénes somos?</h2>
@@ -250,10 +250,10 @@
                 </div>
             </div>
         </div>
-    </div>
-    {{-- <div class="row shadow border border-light p-3 bg-white mt-3 rounded">
-        <h4 style="font-size: 23px !important;">{!! $descriptionLevel2->descripcionSitio !!}</h4>
     </div> --}}
+    <div class="row shadow border border-light p-3 bg-white mt-3 rounded">
+        <h4 style="font-size: 23px !important;">{!! $descriptionLevel2->descripcionSitio !!}</h4>
+    </div>
     <br/>
     <div class="d-block d-sm-block d-md-none mt-5">
         @include('components.infoCompra')
