@@ -170,12 +170,12 @@
         <div class="col-12" style="background-color: #3d3c3b; color: white;
             border-bottom: 4px solid #e76a27;">
             <h2 class="text-center my-3">¿Quiénes somos?</h2>
-            <p class="text-center" style="font-size: 18px;">
+            <h2 class="text-center" style="font-size: 18px;">
                 Somos su tienda líder en México en maquinaria ligera para agricultura,
                 construcción, jardinería o sanitización tanto para profesionales
                 como para uso particular. Contamos con equipamientos y modelos de las
                 mejores marcas del mercado que garantizan una gran eficiencia y vida útil.
-            </p>
+            </h2>
         </div>
     </div>
 
